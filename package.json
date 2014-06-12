@@ -1,0 +1,57 @@
+{
+  "name": "azure-storage",
+  "author": "Microsoft Corporation",
+  "version": "0.1.0",
+  "description": "Microsoft Azure Storage Client Library for Node.js",
+  "tags": [
+    "azure",
+    "storage",
+    "sdk"
+  ],
+  "keywords": [
+    "node",
+    "azure",
+    "storage"
+  ],
+  "main": "./lib/azure-storage.js",
+  "engines": {
+    "node": ">= 0.8.26"
+  },
+  "licenses": [
+    {
+      "type": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "dependencies": {
+    "xml2js": "0.2.7",
+    "xmlbuilder": "0.4.3",
+    "underscore": "~1.4.4",
+    "request": "~2.27.0",
+    "validator": "~3.1.0",
+    "mime": "~1.2.4",
+    "underscore": "~1.4.4",
+    "request": "~2.27.0",
+    "node-uuid": "~1.4.0",
+    "extend": "~1.2.1"
+  },
+  "devDependencies": {
+    "mocha": ">= 1.18.0",
+    "jshint": ">= 2.1.4",
+    "should": "1.2.x",
+    "grunt": "~0.4.2",
+    "grunt-jsdoc": "~0.5.1",
+    "grunt-devserver": "~0.4.1"
+  },
+  "homepage": "http://github.com/Azure/azure-storage-node",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Azure/azure-storage-node.git"
+  },
+  "bugs": {
+    "url": "http://github.com/Azure/azure-storage-node/issues"
+  },
+  "scripts": {
+    "test": "mocha -t 0 --recursive test"
+  }
+}
