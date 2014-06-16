@@ -44,7 +44,7 @@ describe('sharedkey-tests', function () {
     webResource.withHeader(HeaderConstants.DATE_HEADER, 'Fri, 23 Sep 2011 01:37:34 GMT');
 
     sharedkey.signRequest(webResource, function () {
-      assert.equal(webResource.headers[HeaderConstants.AUTHORIZATION], 'SharedKey devstoreaccount1:IB4RSGc63bIKUYeaMwbW1lF90fO7EVzR8pxa7byqq14=');
+      assert.equal(webResource.headers[HeaderConstants.AUTHORIZATION], 'SharedKey devstoreaccount1:/Nzbqsmrbb107sFMOfcMFuK2TdkGCUUY4TjPspfeCTc=');
 
       done();
     });
