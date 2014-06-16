@@ -1,5 +1,7 @@
 # Microsoft Azure Storage SDK for Node.js 
 
+[![NPM version](https://badge.fury.io/js/azure-storage.svg)](http://badge.fury.io/js/azure-storage)
+
 This project provides a Node.js package that makes it easy to consume and manage Microsoft Azure Storage Services.
 
 > If you are looking for documentation for the Azure SDK for Node.js, see [http://dl.windowsazure.com/nodedocs/index.html](http://dl.windowsazure.com/nodedocs/index.html) or visit [https://github.com/Azure/azure-sdk-for-node](https://github.com/Azure/azure-sdk-for-node). While the Azure SDK for Node.js provides support for working with Azure Storage, you should consider using the Azure Storage SDK as it supports features not available in the Azure SDK for Node.js

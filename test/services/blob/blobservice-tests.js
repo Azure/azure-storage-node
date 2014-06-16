@@ -21,6 +21,7 @@ var qs = require('querystring');
 var path = require('path');
 var util = require('util');
 var url = require('url');
+var extend = require('extend');
 
 var request = require('request');
 
@@ -1048,7 +1049,7 @@ describe('BlobService', function () {
         assert.strictEqual(parsedUrl.port, '80');
         assert.strictEqual(parsedUrl.hostname, 'host.com');
         assert.strictEqual(parsedUrl.pathname, '/' + containerName + '/' + blobName);
-        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&sv=2013-08-15&sr=b&sig=Lb4Vj4NfcvbX%2F7Eoq%2FmzjCciWkh5Ve9d6ODKaLqD%2B24%3D');
+        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&sv=2014-02-14&sr=b&sig=KAewjRdjdHO6gBSe0R0xqGrEwdGf1Ua%2FhnUfjxOhY7w%3D');
 
         done();
       });
@@ -1123,8 +1124,8 @@ describe('BlobService', function () {
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_EXPIRY], '2011-10-12T11:53:40Z');
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_RESOURCE], Constants.BlobConstants.ResourceTypes.BLOB);
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_PERMISSIONS], BlobUtilities.SharedAccessPermissions.READ);
-      assert.equal(sasQueryString[QueryStringConstants.SIGNED_VERSION], '2013-08-15');
-      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'sVFelmZkt63VUuHYfzFk7itznw+/fkL1Z9zOzlhcNao=');
+      assert.equal(sasQueryString[QueryStringConstants.SIGNED_VERSION], '2014-02-14');
+      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'kXVNIN/SsiEQ1onxqp2bmxay8PFy0mCtEQE41lOyKy8=');
 
       done();
     });
@@ -1212,6 +1213,57 @@ describe('BlobService', function () {
           sharedBlobService.getBlobProperties(containerName, blobName, function (error, result) {
             assert.equal(error, null);
             assert.notEqual(result, null);
+
+            blobService.deleteContainer(containerName, function (deleteError) {
+              assert.equal(deleteError, null);
+              done();
+            });
+          });
+        });
+      });
+    });
+
+    it('should append api-version', function (done) {
+      var containerName = testutil.generateId(containerNamesPrefix, containerNames, false);
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, false);
+      var blobService = azure.createBlobService()
+      .withFilter(new azure.ExponentialRetryPolicyFilter());
+
+      blobService.createContainer(containerName, function (error) {
+        assert.equal(error, null);
+
+        blobService.createBlockBlobFromText(containerName, blobName, 'id1', function (error2) {
+          assert.equal(error2, null);
+    
+          var startDate = new Date();
+          var expiryDate = new Date(startDate);
+          expiryDate.setMinutes(startDate.getMinutes() + 5);
+
+          var sharedAccessPolicy = {
+            AccessPolicy: {
+              Permissions: BlobUtilities.SharedAccessPermissions.READ,
+              Start: startDate,
+              Expiry: expiryDate
+            }
+          };
+
+          var token = blobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
+
+          var sharedAccessBlobService = azure.createBlobServiceWithSas(blobService.host, token);
+
+          var callback = function(webResource) {
+            var copy = extend(true, {}, webResource);
+            sharedAccessBlobService.storageCredentials.signRequest(copy, function() {
+              assert.notEqual(copy.uri.indexOf('api-version'), -1);
+            });
+          };
+
+          sharedAccessBlobService.on('sendingRequestEvent', callback);
+
+          sharedAccessBlobService.getBlobProperties(containerName, blobName, function (error, result) {
+            assert.equal(error, null);
+            assert.notEqual(result, null);
+            sharedAccessBlobService.removeAllListeners();
 
             blobService.deleteContainer(containerName, function (deleteError) {
               assert.equal(deleteError, null);
