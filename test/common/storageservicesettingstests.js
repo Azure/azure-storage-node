@@ -23,7 +23,7 @@ var azure = testutil.libRequire('azure-storage');
 var Constants = azure.Constants;
 var StorageServiceClientConstants = Constants.StorageServiceClientConstants;
 var ConnectionStringKeys = Constants.ConnectionStringKeys;
-var StorageServiceSettings = azure.StorageServiceSettings;
+var StorageServiceSettings = testutil.libRequire('common/services/storageservicesettings');
 
 describe('StorageServiceSettingsTests', function(done) {
 

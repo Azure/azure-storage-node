@@ -29,10 +29,10 @@ var request = require('request');
 var testutil = require('../../framework/util');
 
 // Lib includes
-var azureutil = testutil.libRequire('common/lib/util/util');
+var azureutil = testutil.libRequire('common/util/util');
 var azure = testutil.libRequire('azure-storage');
-var WebResource = testutil.libRequire('common/lib/http/webresource');
-var SR = testutil.libRequire('common/lib/util/sr');
+var WebResource = azure.WebResource;
+var SR = azure.SR;
 var SharedAccessSignature = azure.SharedAccessSignature;
 var BlobService = azure.BlobService;
 var ServiceClient = azure.ServiceClient;
@@ -1149,7 +1149,6 @@ describe('BlobService', function () {
           var sharedAccessPolicy = {
             AccessPolicy: {
               Permissions: BlobUtilities.SharedAccessPermissions.READ,
-              Start: startDate,
               Expiry: expiryDate
             }
           };
@@ -1202,7 +1201,6 @@ describe('BlobService', function () {
           var sharedAccessPolicy = {
             AccessPolicy: {
               Permissions: BlobUtilities.SharedAccessPermissions.READ,
-              Start: startDate,
               Expiry: expiryDate
             }
           };
@@ -1242,7 +1240,6 @@ describe('BlobService', function () {
           var sharedAccessPolicy = {
             AccessPolicy: {
               Permissions: BlobUtilities.SharedAccessPermissions.READ,
-              Start: startDate,
               Expiry: expiryDate
             }
           };

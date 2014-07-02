@@ -26,8 +26,7 @@ var azure = testutil.libRequire('azure-storage');
 var TableQuery = azure.TableQuery;
 var TableBatch = azure.TableBatch;
 
-var Constants = testutil.libRequire('common/lib/util/constants');
-var QueryStringConstants = Constants.QueryStringConstants;
+var QueryStringConstants = azure.Constants.QueryStringConstants;
 
 var TableUtilities = azure.TableUtilities;
 var eg = TableUtilities.entityGenerator;

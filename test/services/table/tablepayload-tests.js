@@ -24,7 +24,7 @@ var testutil = require('../../framework/util');
 
 // Lib includes
 var azure = testutil.libRequire('azure-storage');
-var azureutil = testutil.libRequire('common/lib/util/util');
+var azureutil = testutil.libRequire('common/util/util');
 
 var TableQuery = azure.TableQuery;
 var TableUtilities = azure.TableUtilities;
