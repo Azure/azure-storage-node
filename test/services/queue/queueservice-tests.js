@@ -892,7 +892,6 @@ describe('QueueServiceTests', function() {
           var sharedAccessPolicy = [{
             AccessPolicy: {
               Permissions: QueueUtilities.SharedAccessPermissions.PROCESS,
-              Start: startDate,
               Expiry: expiryDate
             },
             Id: id,

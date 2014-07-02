@@ -41,10 +41,9 @@ describe('exponentialretrypolicyfilter-tests', function () {
   });
 
   afterEach(function (done) {
-    tableService.deleteTableIfExists(tableName, function(deleteError) {
-      if(!deleteError) {
-        done();
-      }
+    tableService.deleteTableIfExists(tableName, function (deleteError) {
+      assert.equal(deleteError, null);
+      done();
     });
   });
 

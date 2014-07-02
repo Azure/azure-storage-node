@@ -27,11 +27,13 @@ var StorageServiceClientConstants = Constants.StorageServiceClientConstants;
 var QueryStringConstants = Constants.QueryStringConstants;
 var HeaderConstants = Constants.HeaderConstants;
 
+var SharedKey = testutil.libRequire('common/signing/sharedkey');
+
 var sharedkey;
 
 describe('sharedkey-tests', function () {
   before(function (done) {
-    sharedkey = new azure.SharedKey(StorageServiceClientConstants.DEVSTORE_STORAGE_ACCOUNT, StorageServiceClientConstants.DEVSTORE_STORAGE_ACCESS_KEY, false);
+    sharedkey = new SharedKey(StorageServiceClientConstants.DEVSTORE_STORAGE_ACCOUNT, StorageServiceClientConstants.DEVSTORE_STORAGE_ACCESS_KEY, false);
 
     done();
   });

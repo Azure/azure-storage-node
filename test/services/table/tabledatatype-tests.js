@@ -24,7 +24,7 @@ var tabletestutil = require('./table-test-utils');
 
 // Lib includes
 var azure = testutil.libRequire('azure-storage');
-var azureutil = testutil.libRequire('common/lib/util/util');
+var azureutil = testutil.libRequire('common/util/util');
 var eg = azure.TableUtilities.entityGenerator;
 
 var TableUtilities = azure.TableUtilities;

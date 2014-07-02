@@ -20,7 +20,7 @@ var assert = require('assert');
 var testutil = require('../../framework/util');
 
 // Lib includes
-var util = testutil.libRequire('common/lib/util/util');
+var util = testutil.libRequire('common/util/util');
 
 describe('util-tests', function() {
   it('should be an empty object', function (done) {
@@ -72,98 +72,12 @@ describe('util-tests', function() {
     done();
   });
 
-  it('should be int', function (done) {
-    // positives
-    assert.equal(util.stringIsInt('1'), true);
-    assert.equal(util.stringIsInt('1asd'), false);
-    assert.equal(util.stringIsInt('asd1'), false);
-    assert.equal(util.stringIsInt('1.23'), false);
-
-    // negatives
-    assert.equal(util.stringIsInt('-1'), true);
-    assert.equal(util.stringIsInt('-1asd'), false);
-    assert.equal(util.stringIsInt('-asd1'), false);
-    assert.equal(util.stringIsInt('-1.23'), false);
-
-    // nulls
-    assert.equal(util.stringIsInt(null), false);
-    assert.equal(util.stringIsInt(), false);
-
-    done();
-  });
-
-  it('should be float', function (done) {
-    // positives
-    assert.equal(util.stringIsFloat('1'), false);
-    assert.equal(util.stringIsFloat('1.'), false);
-    assert.equal(util.stringIsFloat('1.0'), false);
-    assert.equal(util.stringIsFloat('1.1'), true);
-    assert.equal(util.stringIsFloat('1.0a'), false);
-    assert.equal(util.stringIsFloat('1a'), false);
-
-    // negatives
-    assert.equal(util.stringIsFloat('-1'), false);
-    assert.equal(util.stringIsFloat('-1.'), false);
-    assert.equal(util.stringIsFloat('-1.0'), false);
-    assert.equal(util.stringIsFloat('-1.1'), true);
-    assert.equal(util.stringIsFloat('-1.0a'), false);
-    assert.equal(util.stringIsFloat('-1a'), false);
-
-    // nulls
-    assert.equal(util.stringIsFloat(null), false);
-    assert.equal(util.stringIsFloat(), false);
-
-    done();
-  });
-
-  it('should be a number', function (done) {
-    // int positives
-    assert.equal(util.stringIsNumber('1'), true);
-    assert.equal(util.stringIsNumber('1asd'), false);
-    assert.equal(util.stringIsNumber('asd1'), false);
-
-    // int negatives
-    assert.equal(util.stringIsNumber('-1'), true);
-    assert.equal(util.stringIsNumber('-1asd'), false);
-    assert.equal(util.stringIsNumber('-asd1'), false);
-
-    // float positives
-    assert.equal(util.stringIsNumber('1.'), true);
-    assert.equal(util.stringIsNumber('1.0'), true);
-    assert.equal(util.stringIsNumber('1.1'), true);
-    assert.equal(util.stringIsNumber('1.0a'), false);
-    assert.equal(util.stringIsNumber('1a'), false);
-
-    // float negatives
-    assert.equal(util.stringIsNumber('-1.'), true);
-    assert.equal(util.stringIsNumber('-1.0'), true);
-    assert.equal(util.stringIsNumber('-1.1'), true);
-    assert.equal(util.stringIsNumber('-1.0a'), false);
-    assert.equal(util.stringIsNumber('-1a'), false);
-
-    // nulls
-    assert.equal(util.stringIsFloat(null), false);
-    assert.equal(util.stringIsFloat(), false);
-
-    done();
-  });
-
   it('keys counting works', function (done) {
     // int positives
     assert.equal(util.objectKeysLength({ }), 0);
     assert.equal(util.objectKeysLength(null), 0);
     assert.equal(util.objectKeysLength({ prop1: 1 }), 1);
     assert.equal(util.objectKeysLength({ prop1: 1, prop2: 2 }), 2);
-
-    done();
-  });
-
-  it('first key works', function (done) {
-    // int positives
-    assert.equal(util.objectFirstKey({}), null);
-    assert.equal(util.objectFirstKey(null), null);
-    assert.equal(util.objectFirstKey({ prop1: 1 }), 'prop1');
-    assert.equal(util.objectFirstKey({ prop1: 1, prop2: 2 }), 'prop1');
 
     done();
   });

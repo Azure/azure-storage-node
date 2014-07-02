@@ -18,8 +18,7 @@ var should = require('should');
 var assert = require('assert');
 
 var testutil = require('../framework/util');
-var azure = testutil.libRequire('azure-storage');
-var ServiceSettings = azure.ServiceSettings;
+var ServiceSettings = testutil.libRequire('common/services/servicesettings');
 
 describe('ServiceSettingsTests', function () {
   
