@@ -18,7 +18,7 @@ var should = require('should');
 var assert = require('assert');
 
 var testutil = require('../framework/util');
-var HmacSha256Sign = testutil.libRequire('common/lib/services/hmacsha256sign');
+var HmacSha256Sign = testutil.libRequire('common/signing/hmacsha256sign');
 var azure = testutil.libRequire('azure-storage');
 var StorageServiceClient = azure.StorageServiceClient;
 

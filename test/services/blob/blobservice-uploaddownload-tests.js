@@ -24,9 +24,9 @@ var path = require('path');
 var testutil = require('../../framework/util');
 
 // Lib includes
-var azureutil = testutil.libRequire('/common/lib/util/util');
-var SR = testutil.libRequire('/common/lib/util/sr');
+var azureutil = testutil.libRequire('/common/util/util');
 var azure = testutil.libRequire('azure-storage');
+var SR = azure.SR;
 var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
 var HeaderConstants = Constants.HeaderConstants;
@@ -72,7 +72,8 @@ function writeFile(fileName, content) {
 
 describe('blob-uploaddownload-tests', function () {
   before(function (done) {
-    blobService = azure.createBlobService();
+    blobService = azure.createBlobService()
+      .withFilter(new azure.ExponentialRetryPolicyFilter());
 
     done();
   });

@@ -20,9 +20,9 @@ var util = require('util');
 // Test includes
 var testutil = require('../framework/util');
 
-var azure = testutil.libRequire('azure-storage');
-var ServiceSettings = azure.ServiceSettings;
+var ServiceSettings = testutil.libRequire('common/services/servicesettings');
 
+var azure = testutil.libRequire('azure-storage');
 var Constants = azure.Constants;
 var ConnectionStringKeys = Constants.ConnectionStringKeys;
 var SR = azure.SR;

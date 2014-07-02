@@ -22,7 +22,7 @@ var testutil = require('../framework/util');
 var azure = testutil.libRequire('azure-storage');
 var Constants = azure.Constants;
 var StorageUtilities = azure.StorageUtilities;
-var SR = testutil.libRequire('common/lib/util/sr');
+var SR = testutil.libRequire('common/util/sr');
 var RetryPolicyFilter = azure.RetryPolicyFilter;
 
 var hostName = process.env['AZURE_STORAGE_ACCOUNT'];

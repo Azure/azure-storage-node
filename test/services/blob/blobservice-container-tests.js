@@ -18,7 +18,7 @@ var guid = require('node-uuid');
 
 // Lib includes
 var testutil = require('../../framework/util');
-var SR = testutil.libRequire('common/lib/util/sr');
+var SR = testutil.libRequire('common/util/sr');
 
 var azure = testutil.libRequire('azure-storage');
 

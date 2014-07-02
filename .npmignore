@@ -4,8 +4,5 @@
 # Node #
 node_modules/
 
-# Test folder #
-test/
-
 # Examples #
 examples/blobuploader/

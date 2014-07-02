@@ -17,8 +17,7 @@
 var should = require('should');
 
 var testutil = require('../../framework/util');
-var azure = testutil.libRequire('azure-storage');
-var Validate = azure.Validate;
+var Validate = testutil.libRequire('common/util/validate');
 
 describe('servicesettings-tests', function () {
   describe('isValidUri', function () {
