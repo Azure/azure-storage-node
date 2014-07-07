@@ -115,7 +115,7 @@ function uploadBlobs(sourceDirectoryPath, containerName, callback) {
         files.forEach(function (file) {
           var blobName = file.replace(/^.*[\\\/]/, '');
 
-          blobService.createBlockBlobFromFile(containerName, blobName, file, function (error) {
+          blobService.createBlockBlobFromLocalFile(containerName, blobName, file, function (error) {
             finished++;
 
             if (error) {
@@ -155,7 +155,7 @@ function downloadBlobs(containerName, destinationDirectoryPath, callback) {
       var blobsDownloaded = 0;
 
       blobs.forEach(function (blob) {
-          blobService.getBlobToFile(containerName, blob.name, destinationDirectoryPath + '/' + blob.name, function (error2) {
+          blobService.getBlobToLocalFile(containerName, blob.name, destinationDirectoryPath + '/' + blob.name, function (error2) {
           blobsDownloaded++;
 
           if (error2) {
