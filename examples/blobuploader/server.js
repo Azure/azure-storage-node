@@ -113,7 +113,7 @@ app.post('/uploadhandler', function (req, res) {
         metadata: { fileName: newName }
       };
 
-      blobClient.createBlockBlobFromFile(containerName, fields.itemName, files.uploadedFile.path, options, function (error) {
+      blobClient.createBlockBlobFromLocalFile(containerName, fields.itemName, files.uploadedFile.path, options, function (error) {
         if (error != null) {
           helpers.renderError(res);
         } else {
