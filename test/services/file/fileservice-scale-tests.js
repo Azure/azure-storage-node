@@ -18,28 +18,45 @@ var assert = require('assert');
 var fs = require('fs');
 var crypto = require('crypto');
 var util = require('util');
+var guid = require('node-uuid');
 
 var testutil = require('../../framework/util');
 var azure = testutil.libRequire('azure-storage');
 
-var blobService = null;
-var containerName = 'blobservicescaletest';
-describe('BlobServiceUploadDownloadScale', function () {
+var shareNamesPrefix = 'share-';
+var directoryNamesPrefix = 'dir-';
+
+var fileService;
+var shareName;
+var directoryName;
+var fileName;
+
+describe('FileUploadDownloadScale', function () {
   before(function (done) {
-    blobService = azure.createBlobService();
-    blobService.createContainer(containerName, function(error) {
-      done();
+    fileService = azure.createFileService()
+      .withFilter(new azure.ExponentialRetryPolicyFilter());
+
+    shareName = getName(shareNamesPrefix);
+    fileService.createShareIfNotExists(shareName, function (createError) {
+      assert.equal(createError, null);
+
+      directoryName = getName(directoryNamesPrefix);
+      fileService.createDirectoryIfNotExists(shareName, directoryName, function (createError) {
+        assert.equal(createError, null);
+        done();
+      });
     });
   });
 
   after(function (done) {
-    blobService.deleteContainer(containerName, function(error) {
+    fileService.deleteShareIfExists(shareName, function (deleteError) {
+      assert.equal(deleteError, null);
       done();
     });
   });
 
-  var apis = ['createBlockBlobFromLocalFile', 'createPageBlobFromLocalFile'];
-  var sizes = [0, 1024, 1024 * 1024, 4 * 1024 * 1024, 32 * 1024 * 1024, 64 * 1024 * 1024, 148 * 1024 * 1024 - 512, 148 * 1024 * 1024, 148 * 1024 * 1024 + 512];
+  var apis = ['createFileFromLocalFile'];
+  var sizes = [0, 1024, 1024 * 1024, 4 * 1024 * 1024, 32 * 1024 * 1024, 64 * 1024 * 1024, 148 * 1024 * 1024];
   for(var i = 0; i < apis.length; i++) {
     for(var j = 0; j < sizes.length; j++) {
       it(util.format('%s should work %s bytes file', apis[i], sizes[j]), getTestFunction(apis[i], sizes[j])); 
@@ -49,35 +66,30 @@ describe('BlobServiceUploadDownloadScale', function () {
   function getTestFunction(api, size) {
     return function(done) {
       var name = api + 'scale' + size + '.tmp';
-      var uploadFunc = blobService[api];
+      var uploadFunc = fileService[api];
       generateTempFile(name, size, function(error, fileInfo) {
         assert.equal(error, null);
-        var blobName = api + size;
-        var uploadOptions = {storeBlobContentMD5: true};
-        uploadFunc.call(blobService, containerName, blobName, fileInfo.name, uploadOptions, function(error) {
-          if(api === 'createPageBlobFromLocalFile' && size !== 0 && size % 512 !== 0) {
-            assert.equal(error.message, util.format('The page blob size must be aligned to a 512-byte boundary. The current stream length is %s', size));
-            done();
-          } else {
-            assert.equal(error, null);
-            blobService.getBlobProperties(containerName, blobName, function(error, blob) {
-              assert.equal(blob.contentMD5, fileInfo.contentMD5);
-              assert.equal(blob.contentLength, fileInfo.size);
-              var downloadFileName = blobName + '_download.tmp';
-              var downloadOptions = {validateContentMD5: true};
-              blobService.getBlobToLocalFile(containerName, blobName, downloadFileName, downloadOptions, function(error, blob) {
+        var fileName = api + size;
+        var uploadOptions = {storeFileContentMD5: true};
+        uploadFunc.call(fileService, shareName, directoryName, fileName, fileInfo.name, uploadOptions, function(error) {
+          assert.equal(error, null);
+          fileService.getFileProperties(shareName, directoryName, fileName, function(error, file) {
+            assert.equal(file.contentMD5, fileInfo.contentMD5);
+            assert.equal(file.contentLength, fileInfo.size);
+            var downloadFileName = fileName + '_download.tmp';
+            var downloadOptions = {validateContentMD5: true};
+            fileService.getFileToLocalFile(shareName, directoryName, fileName, downloadFileName, downloadOptions, function(error, file) {
+              assert.equal(error, null);
+              assert.equal(file.contentMD5, fileInfo.contentMD5);
+              fs.stat(downloadFileName, function(error, stat) {
                 assert.equal(error, null);
-                assert.equal(blob.contentMD5, fileInfo.contentMD5);
-                fs.stat(downloadFileName, function(error, stat) {
-                  assert.equal(error, null);
-                  assert.equal(stat.size, fileInfo.size);
-                  try { fs.unlinkSync(name); } catch (e) {}
-                  try { fs.unlinkSync(downloadFileName); } catch (e) {}
-                  done();
-                });
+                assert.equal(stat.size, fileInfo.size);
+                try { fs.unlinkSync(name); } catch (e) {}
+                try { fs.unlinkSync(downloadFileName); } catch (e) {}
+                done();
               });
             });
-          }
+          });
         });
       });
     }
@@ -120,3 +132,7 @@ describe('BlobServiceUploadDownloadScale', function () {
     callback(null, fileInfo);
   }
 });
+
+function getName (prefix) {
+  return prefix + guid.v1().toLowerCase();
+}

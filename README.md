@@ -15,6 +15,9 @@ This project provides a Node.js package that makes it easy to consume and manage
     - Query/Create/Read/Update/Delete Entities
 - Blobs
     - Create/Read/Update/Delete Blobs
+- Files
+	- Create/Update/Delete Directories
+	- Create/Read/Update/Delete Files
 - Queues
     - Create/Delete Queues
     - Insert/Peek Queue Messages
@@ -128,13 +131,13 @@ blobService.createContainerIfNotExists('taskcontainer', {publicAccessLevel : 'bl
 });
 ```
 
-To upload a file (assuming it is called task1-upload.txt and it is placed in the same folder as the script below), the method **createBlockBlobFromFile** can be used.
+To upload a file (assuming it is called task1-upload.txt and it is placed in the same folder as the script below), the method **createBlockBlobFromLocalFile** can be used.
 
 ```Javascript
 var azure = require('azure-storage');
 var blobService = azure.createBlobService();
 
-blobService.createBlockBlobFromFile('mycontainer', 'taskblob', 'task1-upload.txt', function(error, result, response){
+blobService.createBlockBlobFromLocalFile('mycontainer', 'taskblob', 'task1-upload.txt', function(error, result, response){
   if(!error){
     // file uploaded
   }
@@ -142,7 +145,7 @@ blobService.createBlockBlobFromFile('mycontainer', 'taskblob', 'task1-upload.txt
 ```
 
 
-For page blobs, use **createPageBlobFromFile**. There are other methods for uploading blobs also, such as **createBlockBlobFromText** or **createPageBlobFromStream**.
+For page blobs, use **createPageBlobFromLocalFile**. There are other methods for uploading blobs also, such as **createBlockBlobFromText** or **createPageBlobFromStream**.
 
 There are also several ways to download block and page blobs. For example, **getBlockBlobToStream** downloads the blob to a stream:
   
@@ -224,6 +227,63 @@ queueService.getMessages(queueName, function(error, serverMessages){
 });
 ```
 
+### File Storage
+
+The **createShareIfNotExists** method can be used to create a
+share in which to store a file or a directory of files:
+
+```Javascript
+var azure = require('azure-storage');
+var fileService = azure.createFileService();
+fileService.createShareIfNotExists('taskshare', function(error, result, response){
+    if(!error){
+        // if result = true, share was created.
+        // if result = false, share already existed.
+    }
+});
+```
+
+To create a directory, the method **createDirectoryIfNotExists** can be used.
+
+```Javascript
+var azure = require('azure-storage');
+var fileService = azure.createFileService();
+
+fileService.createDirectoryIfNotExists('taskshare', 'taskdirectory', function(error, result, response){
+    if(!error){
+        // if result = true, share was created.
+        // if result = false, share already existed.
+    }
+});
+```
+
+To upload a file (assuming it is called task1-upload.txt and it is placed in the same folder as the script below), the method **createFileFromLocalFile** can be used.
+
+```Javascript
+var azure = require('azure-storage');
+var fileService = azure.createFileService();
+
+fileService.createFileFromLocalFile('taskshare', 'taskdirectory', 'taskfile', 'task1-upload.txt', function(error, result, response){
+  if(!error){
+    // file uploaded
+  }
+});
+```
+
+There are other methods for uploading files also, such as **createFileFromText** or **createFileFromStream**.
+
+There are also several ways to download files. For example, **getFileToStream** downloads the file to a stream:
+  
+```Javascript
+var fileService = azure.createFileService();
+var fs = require('fs');
+fileService.getFileToStream('taskshare', 'taskdirectory', 'taskfile', fs.createWriteStream('output.txt'), function(error, result, response){
+  if(!error) {
+    // file retrieved
+  }
+});
+```
+
 ## Code Samples
 
 How-Tos focused around accomplishing specific tasks are available on the [Microsoft Azure Node.js Developer Center](http://azure.microsoft.com/en-us/develop/nodejs/).
@@ -236,7 +296,7 @@ How-Tos focused around accomplishing specific tasks are available on the [Micros
 
 # Running Tests
 
-In order to run the tests, the following environment variables need to be set up using an admin command prompt:
+In order to run the tests, the following environment variables need to be set up:
 
 AZURE_STORAGE_CONNECTION_STRING="valid storage connection string"
 

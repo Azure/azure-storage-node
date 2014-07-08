@@ -858,7 +858,7 @@ describe('BlobService', function () {
 
           // Create the empty page blob
           var blobOptions = {blockIdPrefix : 'blockId' };
-          blobService.createBlockBlobFromFile(containerName, blobName, fileNameSource, blobOptions, function (err) {
+          blobService.createBlockBlobFromLocalFile(containerName, blobName, fileNameSource, blobOptions, function (err) {
             assert.equal(err, null);
 
             blobService.getBlobToText(containerName, blobName, { rangeStart: 2 }, function (err3, content1, blob) {
@@ -883,7 +883,7 @@ describe('BlobService', function () {
 
         fs.writeFile(fileNameSource, blobText, function () {
           // Create the empty page blob
-          blobService.createBlockBlobFromFile(containerName, blobName, fileNameSource, { contentType: null, contentTypeHeader: null, blockIdPrefix : 'blockId' }, function (err) {
+          blobService.createBlockBlobFromLocalFile(containerName, blobName, fileNameSource, { contentType: null, contentTypeHeader: null, blockIdPrefix : 'blockId' }, function (err) {
             assert.equal(err, null);
 
             blobService.getBlobToText(containerName, blobName, { rangeStart: 2 }, function (err3, content1, blob) {
@@ -1330,7 +1330,7 @@ describe('BlobService', function () {
     blobService.createContainer(containerName, function (createError1, container1) {
       assert.equal(createError1, null);
       assert.notEqual(container1, null);
-      blobService.createPageBlobFromFile(containerName, blobName, fileName, localOptions, function (err) {
+      blobService.createPageBlobFromLocalFile(containerName, blobName, fileName, localOptions, function (err) {
         assert.notEqual(err, null);
         assert.equal(err.message, SR.MAXIMUM_EXECUTION_TIMEOUT_EXCEPTION);
         try{ fs.unlinkSync(fileName); } catch (e) {}
