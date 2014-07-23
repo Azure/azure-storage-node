@@ -61,6 +61,10 @@ describe('BlobContainer', function () {
     it('should work', function (done) {
       containerName = getName(containerNamesPrefix);
 
+      assert.doesNotThrow(function () { blobService.doesContainerExist('$root', function () { }); });
+      
+      assert.doesNotThrow(function () { blobService.doesContainerExist('$logs', function () { }); });
+      
       blobService.doesContainerExist(containerName, function (existsError, exists) {
         assert.equal(existsError, null);
         assert.strictEqual(exists, false);
@@ -84,6 +88,12 @@ describe('BlobContainer', function () {
     it('should detect incorrect container names', function (done) {
       assert.throws(function () { blobService.createContainer(null, function () { }); },
         /Required argument container for function createContainer is not defined/);
+        
+      assert.throws(function () { blobService.createContainer('$root1', function () { }); },
+        /Container name format is incorrect./);
+      
+      assert.throws(function () { blobService.createContainer('$root$logs', function () { }); },
+        /Container name format is incorrect./);
 
       assert.throws(function () { blobService.createContainer('', function () { }); },
         /Required argument container for function createContainer is not defined/);
