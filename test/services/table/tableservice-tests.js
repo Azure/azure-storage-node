@@ -125,6 +125,15 @@ describe('tableservice-tests', function () {
     done();
   });
 
+  describe('doesTableExist', function () {
+    it('should work', function (done) {
+      assert.doesNotThrow(function () { tableService.doesTableExist('$MetricsMinutePrimaryTransactionsBlob', function () { }); });
+      assert.doesNotThrow(function () { tableService.doesTableExist('$MetricsTransactionsTable', function () { }); });     
+       
+      done();
+    });
+  });
+
   describe('CreateTable', function () {
     it('should detect incorrect table names', function (done) {
       assert.throws(function () { tableService.createTable(null, function () { }); },
@@ -147,7 +156,7 @@ describe('tableservice-tests', function () {
 
       assert.throws(function () { tableService.createTable('$Metrics', function () { }); },
         /Table name format is incorrect./);
-
+      
       done();
     });
 
