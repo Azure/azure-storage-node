@@ -263,7 +263,7 @@ describe('FileDirectory', function () {
         directories.push.apply(directories, result.entries.directories);
         var token = result.continuationToken;
         if(token) {
-          listFilesAndDirectoriesWithoutPrefix(shareName, directoryName, token, callback);
+          listFilesAndDirectories(shareName, directoryName, token, callback);
         }
         else {
           callback();
@@ -338,6 +338,36 @@ describe('FileDirectory', function () {
                 assert.equal(files[1].name, fileName2);
                 done();
               });
+            });
+          });
+        });
+      });
+    });
+
+    it('multipleLevelsDirectory', function (done) {
+      fileService.createFile(shareName, directoryName, fileName1, 0, function (fileErr1) {
+        assert.equal(fileErr1, null);
+
+        var nextDirectory = directoryName + "/next";
+        var dotdotDirectory = nextDirectory + "/..";
+
+        listFilesAndDirectories(shareName, dotdotDirectory, null, function() {
+          assert.equal(directories.length, 0);
+          assert.equal(files.length, 1);
+          assert.equal(files[0].name, fileName1);
+
+          files = [];
+          directories = [];
+
+          fileService.createDirectory(shareName, nextDirectory, function(dirErr2) {
+            assert.equal(dirErr2, null);
+
+            listFilesAndDirectories(shareName, dotdotDirectory, null, function() {
+              assert.equal(directories.length, 1);
+              assert.equal(directories[0].name, "next");
+              assert.equal(files.length, 1);
+              assert.equal(files[0].name, fileName1);
+              done();
             });
           });
         });
