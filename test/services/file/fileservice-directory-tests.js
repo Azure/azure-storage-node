@@ -121,6 +121,32 @@ describe('FileDirectory', function () {
         });
       });
     });
+
+    it('should work when the directory name starts and ends with slash', function (done) {
+      var directoryNameWithSlash = '/' + getName(directoryNamesPrefix) + '/';
+      fileService.createDirectory(shareName, directoryNameWithSlash, function (createError, directory1, createDirectoryResponse) {
+        assert.equal(createError, null);
+        assert.notEqual(directory1, null);
+        if (directory1) {
+          assert.notEqual(directory1.name, null);
+          assert.notEqual(directory1.etag, null);
+          assert.notEqual(directory1.lastModified, null);
+        }
+
+        assert.equal(createDirectoryResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
+
+        // creating again will result in a duplicate error
+        fileService.createDirectory(shareName, directoryNameWithSlash, function (createError2, directory2) {
+          assert.equal(createError2.code, Constants.StorageErrorCodeStrings.RESOURCE_ALREADY_EXISTS);
+          assert.equal(directory2, null);
+
+          fileService.deleteDirectory(shareName, directoryNameWithSlash, function (deleteError) {
+              assert.equal(deleteError, null);
+              done();
+            });
+        });
+      });
+    });
   });
 
   describe('createDirectoryIfNotExists', function() {
@@ -263,7 +289,7 @@ describe('FileDirectory', function () {
         directories.push.apply(directories, result.entries.directories);
         var token = result.continuationToken;
         if(token) {
-          listFilesAndDirectoriesWithoutPrefix(shareName, directoryName, token, callback);
+          listFilesAndDirectories(shareName, directoryName, token, callback);
         }
         else {
           callback();
@@ -338,6 +364,36 @@ describe('FileDirectory', function () {
                 assert.equal(files[1].name, fileName2);
                 done();
               });
+            });
+          });
+        });
+      });
+    });
+
+    it('multipleLevelsDirectory', function (done) {
+      fileService.createFile(shareName, directoryName, fileName1, 0, function (fileErr1) {
+        assert.equal(fileErr1, null);
+
+        var nextDirectory = directoryName + "/next";
+        var dotdotDirectory = nextDirectory + "/..";
+
+        listFilesAndDirectories(shareName, dotdotDirectory, null, function() {
+          assert.equal(directories.length, 0);
+          assert.equal(files.length, 1);
+          assert.equal(files[0].name, fileName1);
+
+          files = [];
+          directories = [];
+
+          fileService.createDirectory(shareName, nextDirectory, function(dirErr2) {
+            assert.equal(dirErr2, null);
+
+            listFilesAndDirectories(shareName, dotdotDirectory, null, function() {
+              assert.equal(directories.length, 1);
+              assert.equal(directories[0].name, "next");
+              assert.equal(files.length, 1);
+              assert.equal(files[0].name, fileName1);
+              done();
             });
           });
         });

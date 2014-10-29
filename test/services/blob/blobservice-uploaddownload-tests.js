@@ -415,10 +415,12 @@ describe('blob-uploaddownload-tests', function () {
 
                     assert.equal(entries, 3);
                   }
-
-                  try { fs.unlinkSync(fileNameSource); } catch (e) {}
-
-                  done();
+                  
+                  blobService.getBlobToLocalFile(containerName, blobName, fileNameSource, function (error) {
+                    assert.equal(error, null);
+                    try { fs.unlinkSync(fileNameSource); } catch (e) { }
+                    done();
+                  });
                 });
               });
             });
@@ -483,8 +485,13 @@ describe('blob-uploaddownload-tests', function () {
               assert.notEqual(list, null);
               assert.notEqual(list.CommittedBlocks, null);
               assert.equal(list.CommittedBlocks.length, 2);
-
-              done();
+              
+              var fileNameSource = testutil.generateId('getBlobFile', [], false) + '.test';
+              blobService.getBlobToLocalFile(containerName, blobName, fileNameSource, function (error) {
+                assert.equal(error, null);
+                try { fs.unlinkSync(fileNameSource); } catch (e) { }
+                done();
+              });
             });
           });
         });
@@ -840,6 +847,60 @@ describe('blob-uploaddownload-tests', function () {
     });
   });
 
+  var generateTempFile = function (fileName, size, hasEmptyBlock, callback) {
+    var blockSize = 4 * 1024 * 1024;
+    var fileInfo = { name: fileName, contentMD5: '', size: size };
+
+    var md5hash = crypto.createHash('md5');
+    var offset = 0;
+    var file = fs.openSync(fileName, 'w');
+    do {
+      var value = crypto.randomBytes(1);
+      var zero = hasEmptyBlock ? (parseInt(value[0], 10) >= 64) : false;
+      var writeSize = Math.min(blockSize, size);
+      var buffer;
+
+      if (zero) {
+        buffer = new Buffer(writeSize);
+        buffer.fill(0);
+      } else {
+        buffer = crypto.randomBytes(writeSize);
+      }
+        
+      fs.writeSync(file, buffer, 0, buffer.length, offset);
+      size -= buffer.length;
+      offset += buffer.length;
+      md5hash.update(buffer);
+    } while(size > 0);
+        
+    fileInfo.contentMD5 = md5hash.digest('base64');
+    callback(fileInfo);
+  };
+  
+  var getFileMD5 = function (fileName, callback) {
+    var md5hash = crypto.createHash('md5');
+    var blockSize = 4 * 1024 * 1024;
+    var buffer = new Buffer(blockSize);
+    var offset = 0;
+    var bytesRead = 0;
+    var file = fs.openSync(fileName, 'r');
+    var fileInfo = { name: fileName, contentMD5: '' };
+    do {
+      bytesRead = fs.readSync(file, buffer, 0, buffer.length, offset);
+      if (bytesRead > 0) {
+        offset += bytesRead;
+        if (blockSize == bytesRead) {
+          md5hash.update(buffer);
+        } else {
+          md5hash.update(buffer.slice(0, bytesRead));
+        }
+      }
+    } while(bytesRead > 0);
+
+    fileInfo.contentMD5 = md5hash.digest('base64');
+    callback(fileInfo);
+  };
+
   describe('CreateBlockBlobFromFile', function() {
     var zeroFileContentMD5;
     before(function (done) {
@@ -926,8 +987,122 @@ describe('blob-uploaddownload-tests', function () {
         });
       });
     });
-  });
 
+    it('should have same md5 with range-based downloading to local file', function (done) {
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, false);
+      var fileNameSource = testutil.generateId('getBlobFile', [], false) + '.test';
+      var fileSize = 97 * 1024 * 1024;  // Don't be a multiple of 4MB to cover more scenarios
+      generateTempFile(fileNameSource, fileSize, false, function (fileInfo) {
+        var baseMD5 = fileInfo.contentMD5;
+        uploadOptions.parallelOperationThreadCount = 5;
+        blobService.createBlockBlobFromLocalFile(containerName, blobName, fileNameSource, uploadOptions, function (error) {
+          assert.equal(error, null);
+          
+          blobService.getBlobProperties(containerName, blobName, function (error, blobProperties) {
+            assert.equal(error, null);
+            assert.notEqual(blobProperties, null);
+            assert.strictEqual(blobProperties.contentMD5, baseMD5);
+            var downloadOptions = { parallelOperationThreadCount : 5 };
+            blobService.getBlobToLocalFile(containerName, blobName, fileNameSource, downloadOptions, function (error) {
+              assert.equal(error, null);
+              
+              getFileMD5(fileNameSource, function (fileInfo) {
+                assert.strictEqual(fileInfo.contentMD5, baseMD5);
+                try { fs.unlinkSync(fileNameSource); } catch (e) { }
+                done();
+              });
+            });
+          });
+        });
+      });
+    });
+    
+    it('should have same md5 with range-based downloading to stream', function (done) {
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, false);
+      var fileNameSource = testutil.generateId('getBlobFile', [], false) + '.test';
+      var fileSize = 97 * 1024 * 1024;  // Don't be a multiple of 4MB to cover more scenarios
+      generateTempFile(fileNameSource, fileSize, false, function (fileInfo) {
+        var baseMD5 = fileInfo.contentMD5;
+        uploadOptions.parallelOperationThreadCount = 5;
+        blobService.createBlockBlobFromLocalFile(containerName, blobName, fileNameSource, uploadOptions, function (error) {
+          assert.equal(error, null);
+          
+          blobService.getBlobProperties(containerName, blobName, function (error, blobProperties) {
+            assert.equal(error, null);
+            assert.notEqual(blobProperties, null);
+            assert.strictEqual(blobProperties.contentMD5, baseMD5);
+            var downloadOptions = { parallelOperationThreadCount : 5 };
+            var downloadedFileName = testutil.generateId('getBlobFile', [], false) + '.test';
+            var stream = fs.createWriteStream(downloadedFileName);
+            blobService.getBlobToStream(containerName, blobName, stream, downloadOptions, function (error) {
+              assert.equal(error, null);
+              
+              getFileMD5(downloadedFileName, function (fileInfo) {
+                assert.strictEqual(fileInfo.contentMD5, baseMD5);
+                try {
+                  fs.unlinkSync(downloadedFileName);
+                  fs.unlinkSync(fileNameSource);
+                } catch (e) { }
+                done();
+              });
+            });
+          });
+        });
+      });
+    });
+
+    it('should download a range of block blob to local file', function (done) {
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, false);
+      var fileNameSource = testutil.generateId('getBlobFile', [], false) + '.test';
+      var fileSize = 97 * 1024 * 1024;  // Don't be a multiple of 4MB to cover more scenarios
+      generateTempFile(fileNameSource, fileSize, false, function (fileInfo) {
+        uploadOptions.parallelOperationThreadCount = 5;
+        blobService.createBlockBlobFromLocalFile(containerName, blobName, fileNameSource, uploadOptions, function (error) {
+          assert.equal(error, null);
+          try { fs.unlinkSync(fileNameSource); } catch (e) { }
+
+          var downloadOptions = { parallelOperationThreadCount : 5, rangeStart: 100, rangeEnd: 70000000 };
+          var downloadedFileName = testutil.generateId('getBlobFile', [], false) + '.test';
+          blobService.getBlobToLocalFile(containerName, blobName, downloadedFileName, downloadOptions, function (error) {
+            assert.equal(error, null);
+            
+            var content = fs.readFileSync(downloadedFileName);
+            assert.equal(content.length, downloadOptions.rangeEnd - downloadOptions.rangeStart + 1);
+            delete content;
+            try { fs.unlinkSync(downloadedFileName); } catch (e) { }
+            done();
+          });
+        });
+      });
+    });
+  });
+  
+  it('should download a range of block blob to stream', function (done) {
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, false);
+    var fileNameSource = testutil.generateId('getBlobFile', [], false) + '.test';
+    var fileSize = 97 * 1024 * 1024;  // Don't be a multiple of 4MB to cover more scenarios
+    generateTempFile(fileNameSource, fileSize, false, function (fileInfo) {
+      uploadOptions.parallelOperationThreadCount = 5;
+      blobService.createBlockBlobFromLocalFile(containerName, blobName, fileNameSource, uploadOptions, function (error) {
+        assert.equal(error, null);
+        try { fs.unlinkSync(fileNameSource); } catch (e) { }
+        
+        var downloadOptions = { parallelOperationThreadCount : 5, rangeStart: 100, rangeEnd: 70000000 };
+        var downloadedFileName = testutil.generateId('getBlobFile', [], false) + '.test';
+        var stream = fs.createWriteStream(downloadedFileName);
+        blobService.getBlobToStream(containerName, blobName, stream, downloadOptions, function (error) {
+          assert.equal(error, null);
+          
+          var content = fs.readFileSync(downloadedFileName);
+          assert.equal(content.length, downloadOptions.rangeEnd - downloadOptions.rangeStart + 1);
+          delete content;
+          try { fs.unlinkSync(downloadedFileName); } catch (e) { }
+          done();
+        });
+      });
+    });
+  });
+  
   describe('CreateBlockBlobFromStream', function() {
     var len;
     var stream;
@@ -1168,6 +1343,124 @@ describe('blob-uploaddownload-tests', function () {
           assert.equal(existsErr, null);
           assert.equal(exists, false);
           done();
+        });
+      });
+    });
+    
+    it('should have same md5 with range-based downloading to local file', function (done) {
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, false);
+      var fileNameSource = testutil.generateId('getBlobFile', [], false) + '.test';
+      var fileSize = 97 * 1024 * 1024;  // Don't be a multiple of 4MB to cover more scenarios
+      generateTempFile(fileNameSource, fileSize, true, function (fileInfo) {
+        var baseMD5 = fileInfo.contentMD5;
+        uploadOptions.parallelOperationThreadCount = 5;
+        uploadOptions.storeBlobContentMD5 = true;
+        blobService.createPageBlobFromLocalFile(containerName, blobName, fileNameSource, uploadOptions, function (error) {
+          assert.equal(error, null);
+          
+          blobService.getBlobProperties(containerName, blobName, function (error, blobProperties) {
+            assert.equal(error, null);
+            assert.notEqual(blobProperties, null);
+            assert.strictEqual(blobProperties.contentMD5, baseMD5);
+            
+            var downloadOptions = { parallelOperationThreadCount : 5 };
+            blobService.getBlobToLocalFile(containerName, blobName, fileNameSource, downloadOptions, function (error) {
+              assert.equal(error, null);
+              
+              getFileMD5(fileNameSource, function (fileInfo) {
+                assert.strictEqual(fileInfo.contentMD5, baseMD5);
+                try { fs.unlinkSync(fileNameSource); } catch (e) { }
+                done();
+              });
+            });
+          });
+        });
+      });
+    });
+
+    it('should have same md5 with range-based downloading to stream', function (done) {
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, false);
+      var fileNameSource = testutil.generateId('getBlobFile', [], false) + '.test';
+      var fileSize = 97 * 1024 * 1024;  // Don't be a multiple of 4MB to cover more scenarios
+      generateTempFile(fileNameSource, fileSize, true, function (fileInfo) {
+        var baseMD5 = fileInfo.contentMD5;
+        uploadOptions.parallelOperationThreadCount = 5;
+        uploadOptions.storeBlobContentMD5 = true;
+        blobService.createPageBlobFromLocalFile(containerName, blobName, fileNameSource, uploadOptions, function (error) {
+          assert.equal(error, null);
+          
+          blobService.getBlobProperties(containerName, blobName, function (error, blobProperties) {
+            assert.equal(error, null);
+            assert.notEqual(blobProperties, null);
+            assert.strictEqual(blobProperties.contentMD5, baseMD5);
+
+            var downloadOptions = { parallelOperationThreadCount : 5 };
+            var downloadedFileName = testutil.generateId('getBlobFile', [], false) + '.test';
+            var stream = fs.createWriteStream(downloadedFileName);
+            blobService.getBlobToStream(containerName, blobName, stream, downloadOptions, function (error) {
+              assert.equal(error, null);
+              
+              getFileMD5(downloadedFileName, function (fileInfo) {
+                assert.strictEqual(fileInfo.contentMD5, baseMD5);
+                try {
+                  fs.unlinkSync(fileNameSource);
+                  fs.unlinkSync(downloadedFileName);
+                } catch (e) { }
+                done();
+              });
+            });
+          });
+        });
+      });
+    });
+    
+    it('should download a range of page blob to local file', function (done) {
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, false);
+      var fileNameSource = testutil.generateId('getBlobFile', [], false) + '.test';
+      var fileSize = 97 * 1024 * 1024;  // Don't be a multiple of 4MB to cover more scenarios
+      generateTempFile(fileNameSource, fileSize, true, function (fileInfo) {
+        uploadOptions.parallelOperationThreadCount = 5;
+        blobService.createPageBlobFromLocalFile(containerName, blobName, fileNameSource, uploadOptions, function (error) {
+          assert.equal(error, null);
+          try { fs.unlinkSync(fileNameSource); } catch (e) { }
+          
+          var downloadOptions = { parallelOperationThreadCount : 5 , rangeStart: 512, rangeEnd: 51199999 };
+          var downloadedFileName = testutil.generateId('getBlobFile', [], false) + '.test';
+          blobService.getBlobToLocalFile(containerName, blobName, downloadedFileName, downloadOptions, function (error) {
+            assert.equal(error, null);
+            
+            var content = fs.readFileSync(downloadedFileName);
+            assert.equal(content.length, downloadOptions.rangeEnd - downloadOptions.rangeStart + 1);
+            delete content;
+            try { fs.unlinkSync(downloadedFileName); } catch (e) { }
+            done();
+          });
+        });
+      });
+    });
+
+    it('should download a range of page blob to stream', function (done) {
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, false);
+      var fileNameSource = testutil.generateId('getBlobFile', [], false) + '.test';
+      var fileSize = 97 * 1024 * 1024;  // Don't be a multiple of 4MB to cover more scenarios
+      generateTempFile(fileNameSource, fileSize, true, function (fileInfo) {
+        uploadOptions.parallelOperationThreadCount = 5;
+        blobService.createPageBlobFromLocalFile(containerName, blobName, fileNameSource, uploadOptions, function (error) {
+          assert.equal(error, null);
+          try { fs.unlinkSync(fileNameSource); } catch (e) { }
+          
+          var downloadOptions = { parallelOperationThreadCount : 5 , rangeStart: 512, rangeEnd: 51199999 };
+          var downloadedFileName = testutil.generateId('getBlobFile', [], false) + '.test';
+          var stream = fs.createWriteStream(downloadedFileName);
+          blobService.getBlobToStream(containerName, blobName, stream, downloadOptions, function (error) {
+            assert.equal(error, null);
+            
+            var content = fs.readFileSync(downloadedFileName);
+            assert.equal(content.length, downloadOptions.rangeEnd - downloadOptions.rangeStart + 1);
+            delete content;
+            try { fs.unlinkSync(downloadedFileName); } catch (e) { }
+            done();
+          });
         });
       });
     });

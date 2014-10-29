@@ -1,6 +1,29 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
 be taken. This is a CTP v1 release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
 
+2014.10.28 Version 0.4.0
+
+ALL
+* Provide an option to enable/disable nagling. Nagling is disabled by default. It can be enabled by setting options.useNagleAlgorithm to true.
+* Added batch operation callback in sequence mode.
+
+BLOB
+* Added support to download a single blob in parallel similar to upload. You can set ‘parallelOperationThreadCount’ option for api’s that download a blob to indicate number of parallel operations to use for download.
+* Added speed summary in blob downloading.
+
+FILE
+* Fixed an issue which caused an invalid resource name error when the directory name starts or ends with a '/'
+
+2014.08.20 Version 0.3.3
+
+BLOB
+* Fixed an issue where SAS tokens were being incorrectly generated for the root container and when the blob name required encoding.
+* Documented the 'parallelOperationThreadCount' option as input to various uploadBlob APIs.
+
+FILE
+* Fixed an issue where signing was incorrect when the URI contained '.' or '..'.
+* Fixed an issue where "getURI" was requiring a file parameter, although the parameter should be optional.
+
 2014.07.25 Version 0.3.2
 
 ALL
