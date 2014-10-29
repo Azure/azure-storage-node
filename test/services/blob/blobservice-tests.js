@@ -1318,8 +1318,17 @@ describe('BlobService', function () {
         // This is testing the root container functionality, which we don't want to pollute with random blobs.
         // Thus, trying to delete blob both before and after the actual test.
         before(function (done) {
-          blobService.deleteBlobIfExists(containerName, blobName, function() {
-            done();
+          blobService.doesContainerExist(containerName, function (error, exist) {
+            assert.equal(error, null);
+            if (exist) {
+              blobService.deleteBlobIfExists(containerName, blobName, function () {
+                done();
+              });
+            } else {
+              blobService.createContainer(containerName, function () {
+                done();
+              });
+            }
           });
         });
 

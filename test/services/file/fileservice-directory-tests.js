@@ -121,6 +121,32 @@ describe('FileDirectory', function () {
         });
       });
     });
+
+    it('should work when the directory name starts and ends with slash', function (done) {
+      var directoryNameWithSlash = '/' + getName(directoryNamesPrefix) + '/';
+      fileService.createDirectory(shareName, directoryNameWithSlash, function (createError, directory1, createDirectoryResponse) {
+        assert.equal(createError, null);
+        assert.notEqual(directory1, null);
+        if (directory1) {
+          assert.notEqual(directory1.name, null);
+          assert.notEqual(directory1.etag, null);
+          assert.notEqual(directory1.lastModified, null);
+        }
+
+        assert.equal(createDirectoryResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
+
+        // creating again will result in a duplicate error
+        fileService.createDirectory(shareName, directoryNameWithSlash, function (createError2, directory2) {
+          assert.equal(createError2.code, Constants.StorageErrorCodeStrings.RESOURCE_ALREADY_EXISTS);
+          assert.equal(directory2, null);
+
+          fileService.deleteDirectory(shareName, directoryNameWithSlash, function (deleteError) {
+              assert.equal(deleteError, null);
+              done();
+            });
+        });
+      });
+    });
   });
 
   describe('createDirectoryIfNotExists', function() {
