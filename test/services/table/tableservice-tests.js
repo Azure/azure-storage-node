@@ -830,7 +830,7 @@ describe('tableservice-tests', function () {
     it('SASWithPolicy', function(done) {
       tableService.createTable(tableName1, function (error1) {
         assert.equal(error1, null);
-        insertManyEntities(function () {  
+        insertManyEntities(function () {
 
           var id = guid.v1();
           var startDate = new Date();
@@ -869,13 +869,32 @@ describe('tableservice-tests', function () {
 
                 runTableTests(sharedTableService, done);
               }, 30000);
-            })
+            });
           });
         });
       });
     });
   });
+
+  describe('NagleAlgorithm', function () {
+    it('should work when Nagle is enabled', function (done) {
+      tableService.createTable(tableName1, function (error1) {
+        assert.equal(error1, null);
+        var callback = function () {
+          tableService.queryEntities(tableName1, null, null, function (queryError, queryResult, queryResponse) {
+            assert.equal(queryError, null);
+            assert.ok(queryResponse.isSuccessful);
+            assert.ok(queryResult.entries);
+
+            done();
+          });
+        };
+
+        insertManyEntities(callback, {useNagleAlgorithm : true});
+      });
+    });
   });
+});
 
 function runTableTests(sharedTableService, done) {
   // Point query, in the valid range, should succeed.
@@ -926,7 +945,7 @@ function runTableTests(sharedTableService, done) {
   });
 }
 
-function insertManyEntities (callback) {
+function insertManyEntities (callback, options) {
   var insertEntity = function(pk, rk, pkMax, rkMax, callback) {
     var entity = {
       PartitionKey: eg.String(pk + ''),
@@ -934,7 +953,7 @@ function insertManyEntities (callback) {
       field1: eg.String('pk' + pk + 'rk' + rk)
     };
 
-    tableService.insertEntity(tableName1, entity, function (error) {
+    tableService.insertEntity(tableName1, entity, options, function (error) {
       assert.equal(error, null);
 
       if ((pk === pkMax) && (rk === rkMax)) {
