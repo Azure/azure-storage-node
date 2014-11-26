@@ -70,14 +70,14 @@ describe('FileUploadDownloadScale', function () {
       generateTempFile(name, size, function(error, fileInfo) {
         assert.equal(error, null);
         var fileName = api + size;
-        var uploadOptions = {storeFileContentMD5: true};
+        var uploadOptions = {storeFileContentMD5: true, parallelOperationThreadCount: 5};
         uploadFunc.call(fileService, shareName, directoryName, fileName, fileInfo.name, uploadOptions, function(error) {
           assert.equal(error, null);
           fileService.getFileProperties(shareName, directoryName, fileName, function(error, file) {
             assert.equal(file.contentMD5, fileInfo.contentMD5);
             assert.equal(file.contentLength, fileInfo.size);
             var downloadFileName = fileName + '_download.tmp';
-            var downloadOptions = {validateContentMD5: true};
+            var downloadOptions = {validateContentMD5: true, parallelOperationThreadCount: 5};
             fileService.getFileToLocalFile(shareName, directoryName, fileName, downloadFileName, downloadOptions, function(error, file) {
               assert.equal(error, null);
               assert.equal(file.contentMD5, fileInfo.contentMD5);

@@ -441,6 +441,7 @@ describe('blob-uploaddownload-tests', function () {
 
       blobService.createBlockFromStream('blockid1', containerName, blobName, fs.createReadStream(fileName), stat.size, function (error2) {
         assert.equal(error2, null);
+        try { fs.unlinkSync(fileName); } catch (e) {}
         done();
       });
     });
@@ -1467,11 +1468,6 @@ describe('blob-uploaddownload-tests', function () {
   });
 
   describe('CreatePageBlobFromStream', function() {
-    before(function (done) {
-      pageBlobContentMD5 = writeFile(pageBlobName, fileText);
-      done();
-    });
-
     //Most cases are in CreatePageBlobFromFile
     it('should work with basic file', function(done) {
       var stream = fs.createReadStream(pageFileName);

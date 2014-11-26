@@ -52,7 +52,7 @@ var containerNamesPrefix = 'cont' + Math.floor(Math.random() * 10000);
 var blobNames = [];
 var blobNamesPrefix = 'blob';
 
-var fileName = 'blobservice_test_page.tmp';
+var fileName = 'blobservice_test.tmp';
 var blob60MBuffer = new Buffer(80 * 1024 * 1024);
 
 var testPrefix = 'blobservice-tests';

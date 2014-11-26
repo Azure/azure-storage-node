@@ -43,8 +43,8 @@ function generateEntities(count) {
   
   for(var i = 0 ; i < count ; i++) {
     var entity = {
-      PartitionKey: eg.String('partition1'),
-      RowKey: eg.String('row' + (i + 1)),
+      PartitionKey: eg.String('partition1-ô- -\'-"-%20-%27-pk'),
+      RowKey: eg.String('row-ô- -\'\'-"-%20-%27-rk' + (i + 1)),
       Address:  eg.String('street' + (i + 1)),
       Name:  eg.String('jennifer' + (i + 1))
     };
