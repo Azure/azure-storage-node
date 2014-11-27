@@ -298,13 +298,17 @@ How-Tos focused around accomplishing specific tasks are available on the [Micros
 
 In order to run the tests, the following environment variables need to be set up:
 
-AZURE_STORAGE_CONNECTION_STRING="valid storage connection string"
+Unix
+```shell
+export AZURE_STORAGE_ACCOUNT="valid storage account name"
+export AZURE_STORAGE_ACCESS_KEY="valid storage account key"
+```
 
-or 
-
-AZURE_STORAGE_ACCOUNT="valid storage account name"
-
-AZURE_STORAGE_ACCESS_KEY="valid storage account key"
+Windows
+```Batchfile
+set AZURE_STORAGE_ACCOUNT="valid storage account name"
+set AZURE_STORAGE_ACCESS_KEY="valid storage account key"
+```
 
 In order to be able to use a proxy like fiddler, an additional environment variable should be set up:
 
@@ -312,7 +316,7 @@ HTTP_PROXY=http://127.0.0.1:8888
 
 The tests can then be run from the module's root directory using:
 
-`npm test`
+`grunt`
 
 # Need Help?
 

@@ -49,6 +49,17 @@ module.exports = function(grunt) {
             }
         }
     },
+    mochaTest: {
+      test: {
+        options: {
+          timeout: 3000,
+          reporter: 'spec',
+          quiet: false,
+          clearRequireCache: false
+        },
+        src: ['test/**/*.js']
+      }
+    },
     devserver: { options:
       { 'type' : 'http',
         'port' : 8888,
@@ -58,6 +69,8 @@ module.exports = function(grunt) {
   });
   grunt.loadNpmTasks('grunt-jsdoc');
   grunt.loadNpmTasks('grunt-devserver');
+  grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.registerTask('default', 'mochaTest');
   
   grunt.loadTasks('tasks');
 
