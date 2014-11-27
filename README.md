@@ -300,16 +300,12 @@ In order to run the tests, the following environment variables need to be set up
 
 Unix
 ```shell
-export AZURE_STORAGE_CONNECTION_STRING="valid storage connection string"
-# OR
 export AZURE_STORAGE_ACCOUNT="valid storage account name"
 export AZURE_STORAGE_ACCESS_KEY="valid storage account key"
 ```
 
 Windows
 ```Batchfile
-set AZURE_STORAGE_CONNECTION_STRING="valid storage connection string"
-:: OR
 set AZURE_STORAGE_ACCOUNT="valid storage account name"
 set AZURE_STORAGE_ACCESS_KEY="valid storage account key"
 ```
