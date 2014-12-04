@@ -73,6 +73,45 @@ describe('File', function () {
     done();
   });
 
+  describe('getUrl', function() {
+    var share = 'share';
+    var directory = 'directory';
+    var file = 'file'
+    it('Directory and file', function(done) {
+      var url = fileService.getUrl(share, directory, file, true);
+      var host = fileService.host.primaryHost;
+      assert.strictEqual(url, host + share + '/' + directory + '/' + file);
+
+      url = fileService.getUrl(share, directory, file, false);
+      host = fileService.host.secondaryHost;
+      assert.strictEqual(url, host + share + '/' + directory + '/' + file);
+
+      done();
+    });
+
+    it('No file', function(done) {
+      var url = fileService.getUrl(share, directory, null, true);
+      var host = fileService.host.primaryHost;
+      assert.strictEqual(url, host + share + '/' + directory);
+      url = fileService.getUrl(share, directory, '', true);
+      assert.strictEqual(url, host + share + '/' + directory);
+
+      done();
+    });
+
+    it('No directory', function(done) {
+      var url = fileService.getUrl(share, '', null, true);
+      var host = fileService.host.primaryHost;
+      assert.strictEqual(url, host + share);
+
+      var url = fileService.getUrl(share, '', file, true);
+      var host = fileService.host.primaryHost;
+      assert.strictEqual(url, host + share + '/' + file);
+
+      done();
+    });
+  });
+
   describe('doesFileExist', function () {
     it('should work', function (done) {
       fileService.doesFileExist(shareName, directoryName, fileName, function (existsError, exists) {

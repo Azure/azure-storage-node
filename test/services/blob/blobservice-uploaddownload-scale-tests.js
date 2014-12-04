@@ -53,18 +53,18 @@ describe('BlobServiceUploadDownloadScale', function () {
       generateTempFile(name, size, function(error, fileInfo) {
         assert.equal(error, null);
         var blobName = api + size;
-        var uploadOptions = {storeBlobContentMD5: true};
+        var uploadOptions = {storeBlobContentMD5: true, parallelOperationThreadCount: 5};
         uploadFunc.call(blobService, containerName, blobName, fileInfo.name, uploadOptions, function(error) {
           if(api === 'createPageBlobFromLocalFile' && size !== 0 && size % 512 !== 0) {
             assert.equal(error.message, util.format('The page blob size must be aligned to a 512-byte boundary. The current stream length is %s', size));
             done();
           } else {
             assert.equal(error, null);
-            blobService.getBlobProperties(containerName, blobName, function(error, blob) {
+            blobService.getBlobProperties(containerName, blobName, function (error, blob) {
               assert.equal(blob.contentMD5, fileInfo.contentMD5);
               assert.equal(blob.contentLength, fileInfo.size);
               var downloadFileName = blobName + '_download.tmp';
-              var downloadOptions = {validateContentMD5: true};
+              var downloadOptions = {validateContentMD5: true, parallelOperationThreadCount: 5};
               blobService.getBlobToLocalFile(containerName, blobName, downloadFileName, downloadOptions, function(error, blob) {
                 assert.equal(error, null);
                 assert.equal(blob.contentMD5, fileInfo.contentMD5);

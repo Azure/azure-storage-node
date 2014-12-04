@@ -52,7 +52,7 @@ var containerNamesPrefix = 'cont' + Math.floor(Math.random() * 10000);
 var blobNames = [];
 var blobNamesPrefix = 'blob';
 
-var fileName = 'blobservice_test_page.tmp';
+var fileName = 'blobservice_test.tmp';
 var blob60MBuffer = new Buffer(80 * 1024 * 1024);
 
 var testPrefix = 'blobservice-tests';
@@ -1264,6 +1264,103 @@ describe('BlobService', function () {
 
             blobService.deleteContainer(containerName, function (deleteError) {
               assert.equal(deleteError, null);
+              done();
+            });
+          });
+        });
+      });
+    });
+  
+    describe('SasStrangeChars', function() {
+      it('SasStrangeCharsBlobName', function (done) {
+        var containerName = testutil.generateId(containerNamesPrefix, containerNames, false);
+        var blobName = 'def@#/abef?def/& &/abcde+=-';
+        var blobService = azure.createBlobService().withFilter(new azure.ExponentialRetryPolicyFilter());
+        var blobText = 'sampletext!';
+
+        blobService.createContainer(containerName, function (error) {
+          assert.equal(error, null);
+
+          blobService.createBlockBlobFromText(containerName, blobName, blobText, function (error2) {
+            assert.equal(error2, null);
+      
+            var startDate = new Date();
+            var expiryDate = new Date(startDate);
+            expiryDate.setMinutes(startDate.getMinutes() + 5);
+
+            var sharedAccessPolicy = {
+              AccessPolicy: {
+                Permissions: BlobUtilities.SharedAccessPermissions.READ,
+                Expiry: expiryDate
+              }
+            };
+
+            var token = blobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
+
+            var sharedAccessBlobService = azure.createBlobServiceWithSas(blobService.host, token);
+
+            sharedAccessBlobService.getBlobToText(containerName, blobName, function (downloadErr, blobTextResponse) {
+              assert.equal(downloadErr, null);
+              assert.equal(blobTextResponse, blobText);
+
+              done();
+            });
+          });
+        });
+      });
+
+      describe('SasRootContainer', function() {
+        var containerName = '$root';
+        var blobName = 'sampleBlobName';
+        var blobService = azure.createBlobService().withFilter(new azure.ExponentialRetryPolicyFilter());
+        var blobText = 'sampletext!';
+
+        // This is testing the root container functionality, which we don't want to pollute with random blobs.
+        // Thus, trying to delete blob both before and after the actual test.
+        before(function (done) {
+          blobService.doesContainerExist(containerName, function (error, exist) {
+            assert.equal(error, null);
+            if (exist) {
+              blobService.deleteBlobIfExists(containerName, blobName, function () {
+                done();
+              });
+            } else {
+              blobService.createContainer(containerName, function () {
+                done();
+              });
+            }
+          });
+        });
+
+        after(function (done) {
+          blobService.deleteBlobIfExists(containerName, blobName, function() {
+            done();
+          });
+        });
+
+        it('should work', function(done) {
+          blobService.createBlockBlobFromText(containerName, blobName, blobText, function (error2) {
+            assert.equal(error2, null);
+      
+            var startDate = new Date();
+            var expiryDate = new Date(startDate);
+            expiryDate.setMinutes(startDate.getMinutes() + 5);
+
+            var sharedAccessPolicy = {
+              AccessPolicy: {
+                Permissions: BlobUtilities.SharedAccessPermissions.READ,
+                Expiry: expiryDate
+              }
+            };
+
+            var token = blobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
+
+            var sharedAccessBlobService = azure.createBlobServiceWithSas(blobService.host, token);
+
+            sharedAccessBlobService.getBlobToText(containerName, blobName, function (downloadErr, blobTextResponse) {
+              assert.equal(downloadErr, null);
+              assert.equal(blobTextResponse, blobText);
+
               done();
             });
           });

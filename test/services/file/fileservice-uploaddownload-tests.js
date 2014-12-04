@@ -36,6 +36,7 @@ var directoryNamesPrefix = 'dir-';
 var fileNamesPrefix = 'file-';
 
 var localFileName = 'fileservice_test_block.tmp';
+var localLargeFileName = 'fileservice_test_large.tmp';
 var notExistFileName = 'fileservice_not_exist.tmp';
 var zeroSizeFileName = 'fileservice_zero_size_file.tmp';
 var downloadFileName = 'fileservice_download.tmp';
@@ -51,6 +52,44 @@ function writeFile(fileName, content) {
   md5hash.update(content);
   return md5hash.digest('base64');
 }
+
+function generateTempFile(fileName, size, hasEmptyBlock, callback) {
+  var blockSize = 4 * 1024 * 1024;
+  var fileInfo = { name: fileName, contentMD5: '', size: size };
+
+  if (fs.existsSync(fileName)) {
+    var status = fs.statSync(fileName);
+    if (status.size == size) {
+      callback(fileInfo);
+      return;
+    }
+  }   
+
+  var md5hash = crypto.createHash('md5');
+  var offset = 0;
+  var file = fs.openSync(fileName, 'w');
+  do {
+    var value = crypto.randomBytes(1);
+    var zero = hasEmptyBlock ? (parseInt(value[0], 10) >= 64) : false;
+    var writeSize = Math.min(blockSize, size);
+    var buffer;
+
+    if (zero) {
+      buffer = new Buffer(writeSize);
+      buffer.fill(0);
+    } else {
+      buffer = crypto.randomBytes(writeSize);
+    }
+      
+    fs.writeSync(file, buffer, 0, buffer.length, offset);
+    size -= buffer.length;
+    offset += buffer.length;
+    md5hash.update(buffer);
+  } while(size > 0);
+      
+  fileInfo.contentMD5 = md5hash.digest('base64');
+  callback(fileInfo);
+};
 
 describe('FileUploadDownload', function () {
   before(function (done) {
@@ -74,6 +113,7 @@ describe('FileUploadDownload', function () {
     try { fs.unlinkSync(notExistFileName); } catch (e) {}
     try { fs.unlinkSync(zeroSizeFileName); } catch (e) {}
     try { fs.unlinkSync(downloadFileName); } catch (e) {}
+    try { fs.unlinkSync(localLargeFileName); } catch (e) {}
     fileService.deleteShareIfExists(shareName, function (deleteError) {
       assert.equal(deleteError, null);
       done();
@@ -494,6 +534,27 @@ describe('FileUploadDownload', function () {
       });
     });
 
+    it('should work with file range', function(done) {
+      var size = 99*1024*1024; // Do not use a multiple of 4MB size
+      var rangeStart = 100;
+      var rangeEnd = size - 200;
+      generateTempFile(localLargeFileName, size, false, function (fileInfo) {
+        var uploadOptions = {storeBlobContentMD5: true, parallelOperationThreadCount: 5};
+        fileService.createFileFromLocalFile(shareName, directoryName, fileName, localLargeFileName, uploadOptions, function (err) {
+          assert.equal(err, null);
+          var downloadOptions = {validateContentMD5: true, parallelOperationThreadCount: 5, rangeStart: 100, rangeEnd: size - 200};
+          fileService.getFileToLocalFile(shareName, directoryName, fileName, downloadFileName, downloadOptions, function (err, file) {
+            assert.equal(err, null);
+            assert.ok(file);
+
+            var status = fs.statSync(downloadFileName);
+            assert.equal(status.size, rangeEnd - rangeStart + 1);
+            done();
+          });
+        });
+      });
+    });
+
     it('should calculate content md5', function(done) {
       fileContentMD5 = writeFile(localFileName, fileText);
       fileService.createFileFromLocalFile(shareName, directoryName, fileName, localFileName, {storeFileContentMD5: true}, function (err) {
@@ -541,6 +602,35 @@ describe('FileUploadDownload', function () {
         });
 	    });
 	  });
+
+    it('getFileToStream with range', function (done) {
+      var size = 99*1024*1024; // Do not use a multiple of 4MB size
+      var rangeStart = 100;
+      var rangeEnd = size - 200;
+      generateTempFile(localLargeFileName, size, false, function (fileInfo) {
+        var stream = fs.createReadStream(localLargeFileName);
+        var uploadOptions = {storeBlobContentMD5: true, parallelOperationThreadCount: 5};
+        fileService.createFileFromStream(shareName, directoryName, fileName, stream, size, uploadOptions, function (uploadError, file, uploadResponse) {
+          assert.equal(uploadError, null);
+          assert.ok(file);
+          assert.ok(uploadResponse.isSuccessful);
+
+          var downloadOptions = {validateContentMD5: true, parallelOperationThreadCount: 5, rangeStart: 100, rangeEnd: size - 200};
+          fileService.getFileToStream(shareName, directoryName, fileName, fs.createWriteStream(downloadFileName), downloadOptions, function (downloadErr, file, downloadResponse) {
+            assert.equal(downloadErr, null);
+            assert.ok(downloadResponse.isSuccessful);
+            assert.ok(file);
+
+            var exists = azureutil.pathExistsSync(downloadFileName);
+            assert.equal(exists, true);
+
+            var status = fs.statSync(downloadFileName);
+            assert.equal(status.size, rangeEnd - rangeStart + 1);
+            done();
+          });
+        });
+      });
+    });
 
     it('should calculate content md5', function(done) {
       fileContentMD5 = writeFile(localFileName, fileText);
