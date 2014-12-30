@@ -16,11 +16,11 @@
 
 var should = require('should');
 var mocha = require('mocha');
-var guid = require('node-uuid');
 
 // Test includes
 var testutil = require('../../framework/util');
 var tabletestutil = require('./table-test-utils');
+var TestSuite = require('../../framework/test-suite');
 
 // Lib includes
 var azure = testutil.libRequire('azure-storage');
@@ -28,17 +28,24 @@ var azure = testutil.libRequire('azure-storage');
 var tableNames = [];
 var tablePrefix = 'tableservice';
 
-var testPrefix = 'tableservice-gb-tests';
+var suite = new TestSuite('tableservice-gb-tests');
 
 var tableService;
 var suiteUtil;
 
 describe('tableservice-gb-tests', function () {
   before(function (done) {
-    tableService = azure.createTableService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
+    if (suite.isMocked) {
+      testutil.POLL_REQUEST_INTERVAL = 0;
+    }
+    suite.setupSuite(function () {
+      tableService = azure.createTableService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      done();
+    }); 
+  });
 
-    done();
+  after(function (done) {
+    suite.teardownSuite(done);
   });
 
   var tableName;
@@ -48,12 +55,12 @@ describe('tableservice-gb-tests', function () {
   var value = 'test';
 
   beforeEach(function (done) {
-    tableNamePrefix = (tablePrefix + guid.v1()).replace(/-/g,'');
-    tableName = tableNamePrefix + '1';
-  
-    tableService.createTable(tableName, function (err) {
-      should.not.exist(err);
-      done();
+    suite.setupTest(function(){
+      tableName = suite.getName(tablePrefix).replace(/-/g,'');
+      tableService.createTable(tableName, function (err) {
+        should.not.exist(err);
+        done();
+      });
     });
   });
 
@@ -62,7 +69,7 @@ describe('tableservice-gb-tests', function () {
     tabletestutil.listTables(tableService, tablePrefix, tables, null, null, function() {
       var deleteTables = function(tablesToDelete) {
         if (tablesToDelete.length === 0) {
-          done();
+          suite.teardownTest(done);
         } else {
           tableService.deleteTable(tablesToDelete[0], function (createError, table, createResponse) {
             deleteTables(tablesToDelete.slice(1));

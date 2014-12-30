@@ -18,6 +18,7 @@ var assert = require('assert');
 
 // Test includes
 var testutil = require('../../framework/util');
+var TestSuite = require('../../framework/test-suite');
 
 // Lib includes
 var azure = testutil.libRequire('azure-storage');
@@ -34,23 +35,37 @@ var tablePrefix = 'linearretry';
 var tableService;
 var tableName;
 
+var suite = new TestSuite('linerretrypolicyfilter-tests');
+
 describe('linearretrypolicyfilter-tests', function () {
   before(function (done) {
-    linearRetryPolicyFilter = new LinearRetryPolicyFilter();
-    tableService = azure.createTableService().withFilter(linearRetryPolicyFilter);
-    done();
+    if (suite.isMocked) {
+      testutil.POLL_REQUEST_INTERVAL = 0;
+    }
+    suite.setupSuite(function () {
+      linearRetryPolicyFilter = new LinearRetryPolicyFilter();
+      tableService = azure.createTableService().withFilter(linearRetryPolicyFilter);
+      done();
+    });
+  });
+
+  after(function (done) {
+    suite.teardownSuite(done);
+  });
+
+  beforeEach(function (done) {
+    suite.setupTest(done);
   });
 
   afterEach(function (done) {
     tableService.deleteTableIfExists(tableName, function(deleteError) {
-      if(!deleteError) {
-        done();
-      }
+      assert.equal(deleteError, null);
+      suite.teardownTest(done);
     });
   });
 
   it('should fail when the table already exists', function (done) {
-    tableName = testutil.generateId(tablePrefix, tableNames, false);
+    tableName = testutil.generateId(tablePrefix, tableNames, suite.isMocked);
 
     var retryCount = 3;
     var retryInterval = 30;
@@ -72,13 +87,13 @@ describe('linearretrypolicyfilter-tests', function () {
   });
 
   it('should eventually succeed while using custom policy and multiple retries are used with a linear backoff', function (done) {
-    tableName = testutil.generateId(tablePrefix, tableNames, false);
+    tableName = testutil.generateId(tablePrefix, tableNames, suite.isMocked);
 
     var retryCount = 3;
 
     // 30 seconds between attempts should be enough to give enough time for the
     // table creation to succeed after a deletion.
-    var retryInterval = 30000;
+    var retryInterval = (suite.isRecording || !suite.isMocked) ? 30000 : 30;
 
     linearRetryPolicyFilter.retryCount = retryCount;
     linearRetryPolicyFilter.retryInterval = retryInterval;
@@ -113,8 +128,7 @@ describe('linearretrypolicyfilter-tests', function () {
   });
 
   it('should fail when deleteTable is tried', function (done) {
-    tableName = testutil.generateId(tablePrefix, tableNames, false);
-
+    tableName = testutil.generateId(tablePrefix, tableNames, suite.isMocked);
     var retryCount = 3;
     var retryInterval = 30;
 

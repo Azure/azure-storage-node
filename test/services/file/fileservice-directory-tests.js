@@ -14,18 +14,18 @@
 // limitations under the License.
 // 
 var assert = require('assert');
-var guid = require('node-uuid');
 
 // Lib includes
 var testutil = require('../../framework/util');
 var SR = testutil.libRequire('common/util/sr');
+var TestSuite = require('../../framework/test-suite');
 
 var azure = testutil.libRequire('azure-storage');
 
 var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
 
-var shareNamesPrefix = 'share-';
+var shareNamesPrefix = 'directory-test-share-';
 var directoryNamesPrefix = 'dir-';
 var fileNamesPrefix = 'file-';
 
@@ -33,28 +33,40 @@ var fileService;
 var shareName;
 var directoryName;
 
+var suite = new TestSuite('fileservice-directory-tests');
+
 describe('FileDirectory', function () {
   before(function (done) {
-    fileService = azure.createFileService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
-
-    shareName = getName(shareNamesPrefix);
-    fileService.createShareIfNotExists(shareName, function (createError) {
-      assert.equal(createError, null);
+    if (suite.isMocked) {
+      testutil.POLL_REQUEST_INTERVAL = 0;
+    }
+    suite.setupSuite(function () {
+      fileService = azure.createFileService().withFilter(new azure.ExponentialRetryPolicyFilter());
       done();
     });
   });
 
   after(function (done) {
-    fileService.deleteShareIfExists(shareName, function (deleteError) {
-      assert.equal(deleteError, null);
-      done();
-    });
+    suite.teardownSuite(done);
   });
 
   beforeEach(function (done) {
-    directoryName = getName(directoryNamesPrefix);
-    done();
+    directoryName = suite.getName(directoryNamesPrefix);
+    suite.setupTest(done);
+  });
+
+  afterEach(function (done) {
+    suite.teardownTest(done);
+  });
+
+  describe('prepare file directory test', function () {
+    it('should create the test share', function (done) {
+      shareName = suite.getName(shareNamesPrefix);
+      fileService.createShareIfNotExists(shareName, function (createError) {
+        assert.equal(createError, null);
+        done();
+      });
+    });
   });
 
   describe('doesDirectoryExist', function () {
@@ -90,10 +102,8 @@ describe('FileDirectory', function () {
     it('should detect incorrect directory names', function (done) {
       assert.throws(function () { fileService.createDirectory(shareName, null, function () { }); },
         /Required argument directory for function createDirectory is not defined/);
-
       assert.throws(function () { fileService.createDirectory(shareName, '', function () { }); },
         /Required argument directory for function createDirectory is not defined/);
-
       done();
     });
 
@@ -123,7 +133,7 @@ describe('FileDirectory', function () {
     });
 
     it('should work when the directory name starts and ends with slash', function (done) {
-      var directoryNameWithSlash = '/' + getName(directoryNamesPrefix) + '/';
+      var directoryNameWithSlash = '/' + suite.getName(directoryNamesPrefix) + '/';
       fileService.createDirectory(shareName, directoryNameWithSlash, function (createError, directory1, createDirectoryResponse) {
         assert.equal(createError, null);
         assert.notEqual(directory1, null);
@@ -147,7 +157,7 @@ describe('FileDirectory', function () {
         });
       });
     });
-  });
+  }); 
 
   describe('createDirectoryIfNotExists', function() {
     it('should create a directory if not exists', function (done) {
@@ -274,13 +284,22 @@ describe('FileDirectory', function () {
   describe('listFilesAndDirectories', function () {
     var files;
     var directories;
+    var directoryName1;
+    var directoryName2;
+    var fileName1;
+    var fileName2;
+    var fileText1;
+    var fileText2;
 
-    var directoryName1 = getName(directoryNamesPrefix);
-    var directoryName2 = getName(directoryNamesPrefix);
-    var fileName1 = getName(fileNamesPrefix);
-    var fileName2 = getName(fileNamesPrefix);
-    var fileText1 = 'hello1';
-    var fileText2 = 'hello2';
+    before (function (done) {
+      directoryName1 = suite.getName(directoryNamesPrefix);
+      directoryName2 = suite.getName(directoryNamesPrefix);
+      fileName1 = suite.getName(fileNamesPrefix);
+      fileName2 = suite.getName(fileNamesPrefix);
+      fileText1 = 'hello1';
+      fileText2 = 'hello2';
+      done();
+    });    
 
     var listFilesAndDirectories = function (shareName, directoryName, token, callback) {
       fileService.listFilesAndDirectoriesSegmented(shareName, directoryName, token, function(error, result) {
@@ -400,8 +419,13 @@ describe('FileDirectory', function () {
       });
     });
   });
-});
 
-function getName (prefix) {
-  return prefix + guid.v1().toLowerCase();
-}
+  describe('cleanup file directory test', function () {
+    it('should delete the test share', function (done) {
+      fileService.deleteShareIfExists(shareName, function (deleteError) {
+        assert.equal(deleteError, null);
+        done();
+      });
+    });
+  });
+});

@@ -14,7 +14,6 @@
 // limitations under the License.
 // 
 var assert = require('assert');
-var guid = require('node-uuid');
 var fs = require('fs');
 var util = require('util');
 var crypto = require('crypto');
@@ -24,14 +23,16 @@ var path = require('path');
 var testutil = require('../../framework/util');
 var SR = testutil.libRequire('common/util/sr');
 var azureutil = testutil.libRequire('/common/util/util');
+var TestSuite = require('../../framework/test-suite');
 
 var azure = testutil.libRequire('azure-storage');
+var rfs = testutil.libRequire('common/streams/readablefs');
 
 var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
 var HeaderConstants = Constants.HeaderConstants;
 
-var shareNamesPrefix = 'share-';
+var shareNamesPrefix = 'upload-test-share-';
 var directoryNamesPrefix = 'dir-';
 var fileNamesPrefix = 'file-';
 
@@ -45,6 +46,9 @@ var fileService;
 var shareName;
 var directoryName;
 var fileName;
+
+var suite = new TestSuite('fileservice-uploaddownload-tests');
+var runOrSkip = suite.isMocked ? it.skip : it;
 
 function writeFile(fileName, content) {
   fs.writeFileSync(fileName, content);
@@ -93,19 +97,13 @@ function generateTempFile(fileName, size, hasEmptyBlock, callback) {
 
 describe('FileUploadDownload', function () {
   before(function (done) {
-    fileService = azure.createFileService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
-
-    shareName = getName(shareNamesPrefix);
-    fileService.createShareIfNotExists(shareName, function (createError) {
-      assert.equal(createError, null);
-
-      directoryName = getName(directoryNamesPrefix);
-      fileService.createDirectoryIfNotExists(shareName, directoryName, function (createError) {
-        assert.equal(createError, null);
-        done();
-      });
-    });
+    if (suite.isMocked) {
+      testutil.POLL_REQUEST_INTERVAL = 0;
+    }
+    suite.setupSuite(function () {
+      fileService = azure.createFileService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      done();
+    });     
   });
 
   after(function (done) {
@@ -114,19 +112,34 @@ describe('FileUploadDownload', function () {
     try { fs.unlinkSync(zeroSizeFileName); } catch (e) {}
     try { fs.unlinkSync(downloadFileName); } catch (e) {}
     try { fs.unlinkSync(localLargeFileName); } catch (e) {}
-    fileService.deleteShareIfExists(shareName, function (deleteError) {
-      assert.equal(deleteError, null);
-      done();
-    });
+    suite.teardownSuite(done);
   });
 
   beforeEach(function (done) {
-    fileName = getName(fileNamesPrefix);
-    done();
+    fileName = suite.getName(fileNamesPrefix);
+    suite.setupTest(done);
+  });
+
+  afterEach(function (done) {
+    suite.teardownTest(done);
+  });
+
+  describe('prepare file upload-download test', function () {
+    it('should create the test share', function (done) {
+      shareName = suite.getName(shareNamesPrefix);
+      fileService.createShareIfNotExists(shareName, function (createError) {
+        assert.equal(createError, null);
+        directoryName = suite.getName(directoryNamesPrefix);
+        fileService.createDirectoryIfNotExists(shareName, directoryName, function (createError) {
+        assert.equal(createError, null);
+          done();
+        });
+      });
+    });
   });
 
   describe('createWriteStream', function() {
-     it('existing file', function (done) {
+     runOrSkip('existing file', function (done) {
       var fileBuffer = new Buffer( 5 * 1024 * 1024 );
       fileBuffer.fill(1);
 
@@ -136,7 +149,7 @@ describe('FileUploadDownload', function () {
           assert.equal(err, null);
           // Pipe file to a file
           var stream = fileService.createWriteStreamToExistingFile(shareName, directoryName, fileName);
-          var readable = fs.createReadStream(localFileName);
+          var readable = rfs.createReadStream(localFileName);
           readable.pipe(stream);
           stream.on('close', function () {
             fileService.getFileToText(shareName, directoryName, fileName, function (err, text) {
@@ -149,7 +162,7 @@ describe('FileUploadDownload', function () {
       });
     });
 
-    it('new file', function (done) {
+    runOrSkip('new file', function (done) {
       var fileBuffer = new Buffer( 6 * 1024 * 1024 );
       fileBuffer.fill(1);
 
@@ -157,7 +170,7 @@ describe('FileUploadDownload', function () {
       fs.writeFile(localFileName, fileBuffer, function() {
         // Pipe file to a file
         var stream = fileService.createWriteStreamToNewFile(shareName, directoryName, fileName, 6 * 1024 * 1024);
-        var readable = fs.createReadStream(localFileName);
+        var readable = rfs.createReadStream(localFileName);
         readable.pipe(stream);
         stream.on('close', function () {
           fileService.getFileToText(shareName, directoryName, fileName, function (err, text) {
@@ -169,7 +182,7 @@ describe('FileUploadDownload', function () {
       });
     });
 
-    it('store the MD5 on the server', function (done) {
+    runOrSkip('store the MD5 on the server', function (done) {
       var fileBuffer = new Buffer( 3 * 1024 * 1024 );
       fileBuffer.fill(1);
 
@@ -180,7 +193,7 @@ describe('FileUploadDownload', function () {
         assert.equal(err, null);
         // Pipe file to a file
         var stream = fileService.createWriteStreamToExistingFile(shareName, directoryName, fileName, {storeFileContentMD5: true});
-        var readable = fs.createReadStream(localFileName);
+        var readable = rfs.createReadStream(localFileName);
         readable.pipe(stream);
         stream.on('close', function () {
           fileService.getFileProperties(shareName, directoryName, fileName, function (err, file) {
@@ -204,12 +217,12 @@ describe('FileUploadDownload', function () {
         done();
       });
 
-      fs.createReadStream(localFileName).pipe(stream);
+      rfs.createReadStream(localFileName).pipe(stream);
     });
   });
 
   describe('createReadStream', function() {
-    it('download file', function (done) {
+    runOrSkip('download file', function (done) {
       var sourceFileNameTarget = testutil.generateId('getFileSourceFile', [], false) + '.test';
       var destinationFileNameTarget = testutil.generateId('getFileDestinationFile', [], false) + '.test';
 
@@ -218,7 +231,7 @@ describe('FileUploadDownload', function () {
 
       fs.writeFileSync(sourceFileNameTarget, fileBuffer);
 
-      fileService.createFileFromStream(shareName, directoryName, fileName, fs.createReadStream(sourceFileNameTarget), 5 * 1024, function (uploadError, file, uploadResponse) {
+      fileService.createFileFromStream(shareName, directoryName, fileName, rfs.createReadStream(sourceFileNameTarget), 5 * 1024, function (uploadError, file, uploadResponse) {
 	      assert.equal(uploadError, null);
 	      assert.ok(file);
 	      assert.ok(uploadResponse.isSuccessful);
@@ -304,7 +317,7 @@ describe('FileUploadDownload', function () {
  			fileService.createFile(shareName, directoryName, fileName, fileText.length + 5, function (err) {
         assert.equal(err, null);
 
-        var stream = fs.createReadStream(localFileName);
+        var stream = rfs.createReadStream(localFileName);
         fileService.createRangesFromStream(shareName, directoryName, fileName, stream, 5, 5 + fileText.length - 1, function(err2) {
           assert.equal(err2, null);
 
@@ -332,7 +345,7 @@ describe('FileUploadDownload', function () {
         };
 
         fileService.on('sendingRequestEvent', callback);
-        fileService.createRangesFromStream(shareName, directoryName, fileName, fs.createReadStream(localFileName), 0, fileText.length - 1, {useTransactionalMD5: true}, function(err2) {
+        fileService.createRangesFromStream(shareName, directoryName, fileName, rfs.createReadStream(localFileName), 0, fileText.length - 1, {useTransactionalMD5: true}, function(err2) {
           // Upload all data
           assert.equal(err2, null);
           fileService.removeAllListeners('sendingRequestEvent');   
@@ -361,7 +374,7 @@ describe('FileUploadDownload', function () {
         };
 
         fileService.on('sendingRequestEvent', callback);
-        fileService.createRangesFromStream(shareName, directoryName, fileName, fs.createReadStream(localFileName), 0, fileText.length - 1, {contentMD5: fileMD5}, function(err2) {
+        fileService.createRangesFromStream(shareName, directoryName, fileName, rfs.createReadStream(localFileName), 0, fileText.length - 1, {contentMD5: fileMD5}, function(err2) {
           // Upload all data
           assert.equal(err2, null);
           fileService.removeAllListeners('sendingRequestEvent');   
@@ -386,24 +399,24 @@ describe('FileUploadDownload', function () {
       buffer[0] = '1';
       writeFile(localFileName, buffer);
 
- 			fileService.createFile(shareName, directoryName, fileName, 1024 * 1024 * 1024, function (err) {
+  			fileService.createFile(shareName, directoryName, fileName, 1024 * 1024 * 1024, function (err) {
         assert.equal(err, null);
 
-	      fileService.createRangesFromStream(shareName, directoryName, fileName, fs.createReadStream(localFileName), 512, 512 + buffer.length - 1, function(err2) {
-	        assert.equal(err2, null);
+        fileService.createRangesFromStream(shareName, directoryName, fileName, rfs.createReadStream(localFileName), 512, 512 + buffer.length - 1, function(err2) {
+          assert.equal(err2, null);
 
         	fileService.clearRange(shareName, directoryName, fileName, 512, 512 + buffer.length - 1, function (err) {
-	        	assert.equal(err, null);
+          	assert.equal(err, null);
 
-	        	fileService.listRanges(shareName, directoryName, fileName, function (error, ranges) {
-		          assert.equal(error, null);
-		          assert.notEqual(ranges, null);
-		          assert.equal(ranges.length, 0);
+          	fileService.listRanges(shareName, directoryName, fileName, function (error, ranges) {
+  	          assert.equal(error, null);
+  	          assert.notEqual(ranges, null);
+  	          assert.equal(ranges.length, 0);
 
-		          done();
-		        });
-		      });
-				});
+  	          done();
+  	        });
+  	      });
+  			});
       });
     });
 
@@ -416,7 +429,7 @@ describe('FileUploadDownload', function () {
  			fileService.createFile(shareName, directoryName, fileName, 1024 * 1024 * 1024, function (err) {
         assert.equal(err, null);
 
-	      fileService.createRangesFromStream(shareName, directoryName, fileName, fs.createReadStream(localFileName), 0, buffer.length - 1, function(err2) {
+	      fileService.createRangesFromStream(shareName, directoryName, fileName, rfs.createReadStream(localFileName), 0, buffer.length - 1, function(err2) {
 	        assert.equal(err2, null);
 
         	fileService.clearRange(shareName, directoryName, fileName, 512, 1023, function (err) {
@@ -447,7 +460,7 @@ describe('FileUploadDownload', function () {
  			fileService.createFile(shareName, directoryName, fileName, 1024 * 1024 * 1024, function (err) {
         assert.equal(err, null);
 
-	      fileService.createRangesFromStream(shareName, directoryName, fileName, fs.createReadStream(localFileName), 0, buffer.length - 1, function(err2) {
+	      fileService.createRangesFromStream(shareName, directoryName, fileName, rfs.createReadStream(localFileName), 0, buffer.length - 1, function(err2) {
 	        assert.equal(err2, null);
 
 	        // Only one range present
@@ -488,10 +501,10 @@ describe('FileUploadDownload', function () {
  			fileService.createFile(shareName, directoryName, fileName, 1024 * 1024 * 1024, function (err) {
         assert.equal(err, null);
 
-	      fileService.createRangesFromStream(shareName, directoryName, fileName, fs.createReadStream(localFileName), 0, buffer.length - 1, function (err2) {
+	      fileService.createRangesFromStream(shareName, directoryName, fileName, rfs.createReadStream(localFileName), 0, buffer.length - 1, function (err2) {
 	        assert.equal(err2, null);
 
-          fileService.createRangesFromStream(shareName, directoryName, fileName, fs.createReadStream(localFileName), 1048576, 1048576 + buffer.length - 1, function (err3) {
+          fileService.createRangesFromStream(shareName, directoryName, fileName, rfs.createReadStream(localFileName), 1048576, 1048576 + buffer.length - 1, function (err3) {
             assert.equal(err3, null);
 
             // Get ranges
@@ -534,7 +547,7 @@ describe('FileUploadDownload', function () {
       });
     });
 
-    it('should work with file range', function(done) {
+    runOrSkip('should work with file range', function(done) {
       var size = 99*1024*1024; // Do not use a multiple of 4MB size
       var rangeStart = 100;
       var rangeEnd = size - 200;
@@ -581,7 +594,7 @@ describe('FileUploadDownload', function () {
 
 	  it('getFileToStream', function (done) {
 	  	fileContentMD5 = writeFile(localFileName, fileText);
-	  	var stream = fs.createReadStream(localFileName);
+	  	var stream = rfs.createReadStream(localFileName);
 	    fileService.createFileFromStream(shareName, directoryName, fileName, stream, fileText.length, function (uploadError, file, uploadResponse) {
 	      assert.equal(uploadError, null);
 	      assert.ok(file);
@@ -603,12 +616,12 @@ describe('FileUploadDownload', function () {
 	    });
 	  });
 
-    it('getFileToStream with range', function (done) {
+    runOrSkip('getFileToStream with range', function (done) {
       var size = 99*1024*1024; // Do not use a multiple of 4MB size
       var rangeStart = 100;
       var rangeEnd = size - 200;
       generateTempFile(localLargeFileName, size, false, function (fileInfo) {
-        var stream = fs.createReadStream(localLargeFileName);
+        var stream = rfs.createReadStream(localLargeFileName);
         var uploadOptions = {storeBlobContentMD5: true, parallelOperationThreadCount: 5};
         fileService.createFileFromStream(shareName, directoryName, fileName, stream, size, uploadOptions, function (uploadError, file, uploadResponse) {
           assert.equal(uploadError, null);
@@ -634,7 +647,7 @@ describe('FileUploadDownload', function () {
 
     it('should calculate content md5', function(done) {
       fileContentMD5 = writeFile(localFileName, fileText);
-      var stream = fs.createReadStream(localFileName);
+      var stream = rfs.createReadStream(localFileName);
       fileService.createFileFromStream(shareName, directoryName, fileName, stream, fileText.length, {storeFileContentMD5: true}, function (uploadError, file, uploadResponse) {
 	      assert.equal(uploadError, null);
 	      assert.ok(file);
@@ -897,7 +910,7 @@ describe('FileUploadDownload', function () {
 
     beforeEach(function (done) {
       len = Buffer.byteLength(fileText);
-      stream = fs.createReadStream(localFileName);
+      stream = rfs.createReadStream(localFileName);
       done();
     });
 
@@ -907,7 +920,7 @@ describe('FileUploadDownload', function () {
       });
     });
 
-    it('should work with basic stream', function(done) {   var stream = fs.createReadStream(localFileName);   fileService.createFileFromStream(shareName, directoryName, fileName,
+    it('should work with basic stream', function(done) {   var stream = rfs.createReadStream(localFileName);   fileService.createFileFromStream(shareName, directoryName, fileName,
     stream, fileText.length, function (err) { assert.equal(err, null);
 
         fileService.getFileProperties(shareName, directoryName, fileName, function (err1, file) {
@@ -955,7 +968,7 @@ describe('FileUploadDownload', function () {
     it('should work with content type', function (done) {
       var fileOptions = { contentType: 'text'};
 
-      fileService.createFileFromStream(shareName, directoryName, fileName, fs.createReadStream(localFileName), fileText.length, fileOptions, function (uploadError, fileResponse, uploadResponse) {
+      fileService.createFileFromStream(shareName, directoryName, fileName, rfs.createReadStream(localFileName), fileText.length, fileOptions, function (uploadError, fileResponse, uploadResponse) {
         assert.equal(uploadError, null);
         assert.notEqual(fileResponse, null);
         assert.ok(uploadResponse.isSuccessful);
@@ -975,16 +988,13 @@ describe('FileUploadDownload', function () {
       });
     });
 
-    it('should work with parallelOperationsThreadCount in options', function(done) {
-      var options = {
-        parallelOperationThreadCount : 4
-      };
-
+    runOrSkip('should work with parallelOperationsThreadCount in options', function(done) {
+      var options = { parallelOperationThreadCount : 4 };
       var buffer = new Buffer(65 * 1024 * 1024);
       buffer.fill(0);
       buffer[0] = '1';
       writeFile(localFileName, buffer);
-      var stream = fs.createReadStream(localFileName);
+      var stream = rfs.createReadStream(localFileName);
       
       fileService.createFileFromStream(shareName, directoryName, fileName, stream, buffer.length, options, function (err) {
         assert.equal(err, null);
@@ -1007,7 +1017,7 @@ describe('FileUploadDownload', function () {
       }
     };
 
-    it('storeFileContentMD5/useTransactionalMD5 on file', function (done) {
+    runOrSkip('storeFileContentMD5/useTransactionalMD5 on file', function (done) {
       var fileBuffer = new Buffer(5 * 1024 * 1024);
       fileBuffer.fill(0);
       fileBuffer[0] = '1';
@@ -1037,7 +1047,7 @@ describe('FileUploadDownload', function () {
       });
     });
     
-    it('storeFileContentMD5/useTransactionalMD5 with streams/ranges', function (done) {
+    runOrSkip('storeFileContentMD5/useTransactionalMD5 with streams/ranges', function (done) {
       var fileBuffer = new Buffer(5 * 1024 * 1024);
       fileBuffer.fill(0);
       fileBuffer[0] = '1';
@@ -1092,7 +1102,7 @@ describe('FileUploadDownload', function () {
       });
     });
 
-    it('disableContentMD5Validation', function (done) {
+    runOrSkip('disableContentMD5Validation', function (done) {
       var fileBuffer = new Buffer(5 * 1024 * 1024);
       fileBuffer.fill(0);
       fileBuffer[0] = '1';
@@ -1127,8 +1137,13 @@ describe('FileUploadDownload', function () {
       });
     });
   });
-});
 
-function getName (prefix) {
-  return prefix + guid.v1().toLowerCase();
-}
+  describe('cleanup file upload-download test', function () {
+    it('should delete the test share', function (done) {
+      fileService.deleteShareIfExists(shareName, function (deleteError) {
+        assert.equal(deleteError, null);
+        done();
+      });
+    });
+  });
+});

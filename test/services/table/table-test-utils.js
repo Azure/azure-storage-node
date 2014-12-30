@@ -27,8 +27,7 @@ exports.listTables = function (prefix, options, token, callback) {
     var token = result.continuationToken;
     if(token) {
       listTables(prefix, options, token, callback);
-    }
-    else {
+    } else {
       callback();
     }
   });
@@ -65,8 +64,7 @@ exports.listTables = function (tableService, prefix, accum, options, token, call
     var token = result.continuationToken;
     if(token) {
       listTables(tableService, prefix, accum, options, token, callback);
-    }
-    else {
+    } else {
       callback();
     }
   });

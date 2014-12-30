@@ -16,9 +16,12 @@
 var assert = require('assert');
 
 var testutil = require('../framework/util');
+var TestSuite = require('../framework/test-suite');
 var azure = testutil.libRequire('azure-storage');
 var Constants = azure.Constants;
 var StorageUtilities = azure.StorageUtilities;
+
+var suite = new TestSuite('servicestats-tests');
 
 var blobService;
 var queueService;
@@ -26,19 +29,30 @@ var tableService;
 
 describe('ServiceStats', function () {
   before(function (done) {
-    blobService = azure.createBlobService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
-    blobService.defaultLocationMode = StorageUtilities.LocationMode.SECONDARY_ONLY;
+    if (suite.isMocked) {
+      testutil.POLL_REQUEST_INTERVAL = 0;
+    }
+    suite.setupSuite(function () {
+      blobService = azure.createBlobService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      blobService.defaultLocationMode = StorageUtilities.LocationMode.SECONDARY_ONLY;
+      queueService = azure.createQueueService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      queueService.defaultLocationMode = StorageUtilities.LocationMode.SECONDARY_ONLY;
+      tableService = azure.createTableService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      tableService.defaultLocationMode = StorageUtilities.LocationMode.SECONDARY_ONLY;
+      done();
+    });
+  });
 
-    queueService = azure.createQueueService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
-    queueService.defaultLocationMode = StorageUtilities.LocationMode.SECONDARY_ONLY;
+  after(function (done) {
+    suite.teardownSuite(done);
+  });
 
-    tableService = azure.createTableService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
-    tableService.defaultLocationMode = StorageUtilities.LocationMode.SECONDARY_ONLY;
+  beforeEach(function (done) {
+    suite.setupTest(done);
+  });
 
-    done();
+   afterEach(function (done) {
+    suite.teardownTest(done);
   });
 
   describe('get service stats', function () {   

@@ -17,6 +17,7 @@ var assert = require('assert');
 
 // Test includes
 var testutil = require('../framework/util');
+var TestSuite = require('../framework/test-suite');
 
 // Lib includes
 var azure = testutil.libRequire('azure-storage');
@@ -33,10 +34,27 @@ var blobServiceWithFilter;
 
 var container = 'secondarytestscontainer';
 
+var suite = new TestSuite('secondary-tests');
+
 describe('SecondaryTests', function () {
+  before(function (done) {
+    if (suite.isMocked) {
+      testutil.POLL_REQUEST_INTERVAL = 0;
+    }
+    suite.setupSuite(done);
+  });
+
+  after(function (done) {
+    suite.teardownSuite(done);
+  });
+
   beforeEach(function (done) {
     blobService = azure.createBlobService();
-    done();
+    suite.setupTest(done);
+  });
+
+   afterEach(function (done) {
+    suite.teardownTest(done);
   });
 
   describe('locationModeWithMissingHost', function () {
@@ -157,7 +175,7 @@ describe('SecondaryTests', function () {
 
 		var retryOnContainerBeingDeleted = new RetryPolicyFilter();
 		retryOnContainerBeingDeleted.retryCount = retryCount;
-		retryOnContainerBeingDeleted.retryInterval = 1000;
+		retryOnContainerBeingDeleted.retryInterval = (suite.isRecording || !suite.isMocked) ? 1000 : 10;
 
 		retryOnContainerBeingDeleted.shouldRetry = function(statusCode, retryData) {
 			var retryInfo = {

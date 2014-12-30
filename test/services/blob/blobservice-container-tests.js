@@ -19,6 +19,7 @@ var guid = require('node-uuid');
 // Lib includes
 var testutil = require('../../framework/util');
 var SR = testutil.libRequire('common/util/sr');
+var TestSuite = require('../../framework/test-suite');
 
 var azure = testutil.libRequire('azure-storage');
 
@@ -29,37 +30,50 @@ var HttpConstants = Constants.HttpConstants;
 var containerNamesPrefix = 'cont-';
 var blobNamesPrefix = 'blob-';
 
+var suite = new TestSuite('blobservice-container-tests');
+var timeout = (suite.isRecording || !suite.isMocked) ? 30000 : 10;
+
 var blobService;
 var containerName;
 
 var blobs = [];
 
 describe('BlobContainer', function () {
-  before(function (done) {
-    blobService = azure.createBlobService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
-    done();
+  before(function (done) {    
+    if (suite.isMocked) {
+      testutil.POLL_REQUEST_INTERVAL = 0;
+    }
+    suite.setupSuite(function () {
+      blobService = azure.createBlobService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      done();
+    }); 
+  });
+
+  after(function (done) {
+    suite.teardownSuite(done);
   });
 
   beforeEach(function (done) {
-    containerName = getName(containerNamesPrefix);
-    blobService.createContainerIfNotExists(containerName, function (createError, container) {
-      assert.equal(createError, null);
-      assert.notEqual(container, null);
-      done();
+    containerName = suite.getName(containerNamesPrefix);
+    suite.setupTest(function () {
+      blobService.createContainerIfNotExists(containerName, function (createError, container) {
+        assert.equal(createError, null);
+        assert.notEqual(container, null);
+        done();
+      });
     });
   });
 
   afterEach(function (done) {
     blobService.deleteContainerIfExists(containerName, function (deleteError) {
       assert.equal(deleteError, null);
-      done();
+      suite.teardownTest(done);
     });
   });
 
   describe('doesContainerExist', function () {
     it('should work', function (done) {
-      containerName = getName(containerNamesPrefix);
+      containerName = suite.getName(containerNamesPrefix);
 
       assert.doesNotThrow(function () { blobService.doesContainerExist('$root', function () { }); });
       
@@ -114,7 +128,7 @@ describe('BlobContainer', function () {
     });
 
     it('should work', function (done) {
-      var containerName = getName(containerNamesPrefix);
+      var containerName = suite.getName(containerNamesPrefix);
 
       blobService.createContainer(containerName, function (createError, container1, createContainerResponse) {
         assert.equal(createError, null);
@@ -143,7 +157,7 @@ describe('BlobContainer', function () {
 
   describe('createContainerIfNotExists', function() {
     it('should create a container if not exists', function (done) {
-      var containerName = getName(containerNamesPrefix);
+      var containerName = suite.getName(containerNamesPrefix);
 
       blobService.createContainerIfNotExists(containerName, function (createError, created) {
         assert.equal(createError, null);
@@ -181,7 +195,7 @@ describe('BlobContainer', function () {
 
   describe('deleteContainerIfExists', function() {
     it('should delete a container if exists', function (done) {
-      var containerName = getName(containerNamesPrefix);
+      var containerName = suite.getName(containerNamesPrefix);
 
       blobService.doesContainerExist(containerName, function(existsError, exists){
         assert.equal(existsError, null);
@@ -388,7 +402,7 @@ describe('BlobContainer', function () {
       var blobServiceAnonymous = azure.createBlobServiceAnonymous(blobService.host.primaryHost)
         .withFilter(new azure.ExponentialRetryPolicyFilter());
 
-      var blobName = getName(blobNamesPrefix);
+      var blobName = suite.getName(blobNamesPrefix);
       var blobText = 'Hello World!';
 
       blobService.createBlockBlobFromText(containerName, blobName, blobText, function (err) {
@@ -436,11 +450,11 @@ describe('BlobContainer', function () {
                         });
                       });
                     });
-                  }, 30000);
+                  }, timeout);
                 });
               });
             });
-          }, 30000);
+          }, timeout);
         });
       });
     });
@@ -496,10 +510,10 @@ describe('BlobContainer', function () {
                   assert.ok(getResponse3.isSuccessful);
                   done();
                 });
-              }, 30000);
+              }, timeout);
             });
           });
-        }, 30000);
+        }, timeout);
       });
     });
 
@@ -555,15 +569,15 @@ describe('BlobContainer', function () {
             assert.equal(entries, 3);
             done();
           });
-        }, 30000);
+        }, timeout);
       });
     });
   });
 
   describe('listBlobs', function () {
     it('should work', function (done) {
-      var blobName1 = getName(blobNamesPrefix);
-      var blobName2 = getName(blobNamesPrefix);
+      var blobName1 = suite.getName(blobNamesPrefix);
+      var blobName2 = suite.getName(blobNamesPrefix);
       var blobText1 = 'hello1';
       var blobText2 = 'hello2';
 
@@ -650,8 +664,8 @@ describe('BlobContainer', function () {
     });
 
     it('should work with prefix', function(done) {
-      var blobName1 = getName(blobNamesPrefix);
-      var blobName2 = getName(blobNamesPrefix);
+      var blobName1 = suite.getName(blobNamesPrefix);
+      var blobName2 = suite.getName(blobNamesPrefix);
       var blobText1 = 'hello1';
       var blobText2 = 'hello2';
 
@@ -711,10 +725,6 @@ describe('BlobContainer', function () {
     });
   });
 });
-
-function getName (prefix){
-  return prefix + guid.v1().toLowerCase();
-}
 
 function listBlobs (prefix, options, token, callback) {
   blobService.listBlobsSegmentedWithPrefix(containerName, prefix, token, options, function(error, result) {

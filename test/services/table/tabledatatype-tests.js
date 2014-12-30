@@ -15,12 +15,12 @@
 // 
 
 var assert = require('assert');
-var guid = require('node-uuid');
 var _ = require('underscore');
 
 // Test includes
 var testutil = require('../../framework/util');
 var tabletestutil = require('./table-test-utils');
+var TestSuite = require('../../framework/test-suite');
 
 // Lib includes
 var azure = testutil.libRequire('azure-storage');
@@ -36,13 +36,15 @@ var tableNamePrefix = 'tabledatatype';
 var tableService;
 var tableName;
 
+var suite = new TestSuite('tableservice-datatype-tests');
+
 var stringVal = 'mystring';
 var int64Val = '4294967296';
 var int32Val = 123;
 var doubleVal = 123.45;
 var boolVal = false;
 var dateVal = new Date(Date.UTC(2012, 10, 10, 3, 4, 5, 200));
-var guidVal = guid.v1();
+var guidVal = 'debc44d5-04a9-42ea-ab2f-4e2cb49ff833';
 var binaryVal = new Buffer(3);
 binaryVal[0] = 0x01;
 binaryVal[1] = 0x02;
@@ -83,22 +85,36 @@ var entity = {
 
 describe('tabledatatype-tests', function () {
   before(function (done) {
-    tableService = azure.createTableService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());      
-
-    tableName = tableNamePrefix + (guid.v1()).replace(/-/g,'');
-    tableService.createTable(tableName, function () {
-      tableService.insertEntity(tableName, entity, function (err) {
-        assert.equal(err, null);
-        done();
-      });
-    });
+    if (suite.isMocked) {
+      testutil.POLL_REQUEST_INTERVAL = 0;
+    }
+    suite.setupSuite(function () {
+      tableService = azure.createTableService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      done();
+    });   
   });
 
   after(function (done) {
-    tableService.deleteTableIfExists(tableName, function (err) {
-      assert.equal(err, null);
-      done(err);
+    suite.teardownSuite(done);
+  });
+
+  beforeEach(function (done) {
+    suite.setupTest(done);
+  });
+
+  afterEach(function (done) {
+    suite.teardownTest(done);
+  });
+
+  describe('prepare a table for data type tests', function () {
+    it('should create a table for data type tests', function(done) {
+      tableName = suite.getName(tableNamePrefix).replace(/-/g,'');
+      tableService.createTable(tableName, function () {
+        tableService.insertEntity(tableName, entity, function (err) {
+          assert.equal(err, null);
+          done();
+        });
+      });
     });
   });
 
@@ -395,5 +411,14 @@ describe('tabledatatype-tests', function () {
         done();
       });
     }) 
+  });
+
+  describe('delete the table for data type tests', function () {
+    it('should create a table for data type tests', function(done) {
+      tableService.deleteTableIfExists(tableName, function (err) {
+        assert.equal(err, null);
+        done(err);
+      });
+    });
   });
 });
