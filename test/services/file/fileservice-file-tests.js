@@ -14,18 +14,18 @@
 // limitations under the License.
 // 
 var assert = require('assert');
-var guid = require('node-uuid');
 
 // Lib includes
 var testutil = require('../../framework/util');
 var SR = testutil.libRequire('common/util/sr');
+var TestSuite = require('../../framework/test-suite');
 
 var azure = testutil.libRequire('azure-storage');
 
 var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
 
-var shareNamesPrefix = 'share-';
+var shareNamesPrefix = 'file-test-share-';
 var directoryNamesPrefix = 'dir-';
 var fileNamesPrefix = 'file-';
 
@@ -44,69 +44,154 @@ var properties = {
   contentLength: '5'
 }
 
+var suite = new TestSuite('fileservice-file-tests');
+
 describe('File', function () {
   before(function (done) {
-    fileService = azure.createFileService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
-
-    shareName = getName(shareNamesPrefix);
-    fileService.createShareIfNotExists(shareName, function (createError) {
-      assert.equal(createError, null);
-      
-      directoryName = getName(directoryNamesPrefix);
-      fileService.createDirectoryIfNotExists(shareName, directoryName, function (createError) {
-        assert.equal(createError, null);
-        done();
-      });
-    });
-  });
-
-  after(function (done) {
-    fileService.deleteShareIfExists(shareName, function (deleteError) {
-      assert.equal(deleteError, null);
+    if (suite.isMocked) {
+      testutil.POLL_REQUEST_INTERVAL = 0;
+    }
+    suite.setupSuite(function () {
+      fileService = azure.createFileService().withFilter(new azure.ExponentialRetryPolicyFilter());
       done();
     });
   });
 
+  after(function (done) {
+    suite.teardownSuite(done);
+  });
+
   beforeEach(function (done) {
-    fileName = getName(fileNamesPrefix);
-    done();
+    fileName = suite.getName(fileNamesPrefix);
+    suite.setupTest(done);
+  });
+
+  afterEach(function (done) {
+    suite.teardownTest(done);
+  });
+
+  describe('prepare file test', function () {
+    it('should create the test share', function (done) {
+      shareName = suite.getName(shareNamesPrefix);
+      fileService.createShareIfNotExists(shareName, function (createError) {
+        assert.equal(createError, null);
+        
+        directoryName = suite.getName(directoryNamesPrefix);
+        fileService.createDirectoryIfNotExists(shareName, directoryName, function (createError) {
+          assert.equal(createError, null);
+          done();
+        });
+      });
+    });
   });
 
   describe('getUrl', function() {
     var share = 'share';
     var directory = 'directory';
     var file = 'file'
-    it('Directory and file', function(done) {
-      var url = fileService.getUrl(share, directory, file, true);
-      var host = fileService.host.primaryHost;
-      assert.strictEqual(url, host + share + '/' + directory + '/' + file);
+    var fileServiceForUrl = azure.createFileService('storageAccount', 'storageAccessKey');
+    var url;
 
-      url = fileService.getUrl(share, directory, file, false);
-      host = fileService.host.secondaryHost;
-      assert.strictEqual(url, host + share + '/' + directory + '/' + file);
+    it('Directory and file', function (done) {
+      fileServiceForUrl.setHost({ primaryHost: 'host.com' });
+      url = fileServiceForUrl.getUrl(share, directory, file, true);
+      assert.strictEqual(url, 'https://host.com/' + share + '/' + directory + '/' + file);
+      
+      fileServiceForUrl.setHost({ primaryHost: 'http://host.com:80' });
+      url = fileServiceForUrl.getUrl(share, directory, file, true);
+      assert.strictEqual(url, 'http://host.com/' + share + '/' + directory + '/' + file);
+      
+      fileServiceForUrl.setHost({ primaryHost: 'https://host.com:443' });
+      url = fileServiceForUrl.getUrl(share, directory, file, true);
+      assert.strictEqual(url, 'https://host.com/' + share + '/' + directory + '/' + file);
+      
+      fileServiceForUrl.setHost({ primaryHost: 'http://host.com:88' });
+      url = fileServiceForUrl.getUrl(share, directory, file, true);
+      assert.strictEqual(url, 'http://host.com:88/' + share + '/' + directory + '/' + file);
+      
+      fileServiceForUrl.setHost({ primaryHost: 'https://host.com:88' });
+      url = fileServiceForUrl.getUrl(share, directory, file, true);
+      assert.strictEqual(url, 'https://host.com:88/' + share + '/' + directory + '/' + file);
+      
+      fileServiceForUrl.setHost({ secondaryHost: 'host-secondary.com' });
+      url = fileServiceForUrl.getUrl(share, directory, file, false);
+      assert.strictEqual(url, 'https://host-secondary.com/' + share + '/' + directory + '/' + file);
+      
+      fileServiceForUrl.setHost({ secondaryHost: 'http://host-secondary.com:80' });
+      url = fileServiceForUrl.getUrl(share, directory, file, false);
+      assert.strictEqual(url, 'http://host-secondary.com/' + share + '/' + directory + '/' + file);
+      
+      fileServiceForUrl.setHost({ secondaryHost: 'https://host-secondary.com:88' });
+      url = fileServiceForUrl.getUrl(share, directory, file, false);
+      assert.strictEqual(url, 'https://host-secondary.com:88/' + share + '/' + directory + '/' + file);
 
       done();
     });
 
-    it('No file', function(done) {
-      var url = fileService.getUrl(share, directory, null, true);
-      var host = fileService.host.primaryHost;
-      assert.strictEqual(url, host + share + '/' + directory);
-      url = fileService.getUrl(share, directory, '', true);
-      assert.strictEqual(url, host + share + '/' + directory);
+    it('No file', function (done) {
+      fileServiceForUrl.setHost({ primaryHost: 'host.com' });
+      url = fileServiceForUrl.getUrl(share, directory, null, true);
+      assert.strictEqual(url, 'https://host.com/' + share + '/' + directory);
+      url = fileServiceForUrl.getUrl(share, directory, '', true);
+      assert.strictEqual(url, 'https://host.com/' + share + '/' + directory);
+      
+      fileServiceForUrl.setHost({ primaryHost: 'http://host.com:80' });
+      url = fileServiceForUrl.getUrl(share, directory, null, true);
+      assert.strictEqual(url, 'http://host.com/' + share + '/' + directory);
+      url = fileServiceForUrl.getUrl(share, directory, '', true);
+      assert.strictEqual(url, 'http://host.com/' + share + '/' + directory);
+      
+      fileServiceForUrl.setHost({ primaryHost: 'https://host.com:443' });
+      url = fileServiceForUrl.getUrl(share, directory, null, true);
+      assert.strictEqual(url, 'https://host.com/' + share + '/' + directory);
+      url = fileServiceForUrl.getUrl(share, directory, '', true);
+      assert.strictEqual(url, 'https://host.com/' + share + '/' + directory);
+      
+      fileServiceForUrl.setHost({ primaryHost: 'http://host.com:88' });
+      url = fileServiceForUrl.getUrl(share, directory, null, true);
+      assert.strictEqual(url, 'http://host.com:88/' + share + '/' + directory);
+      url = fileServiceForUrl.getUrl(share, directory, '', true);
+      assert.strictEqual(url, 'http://host.com:88/' + share + '/' + directory);
+      
+      fileServiceForUrl.setHost({ primaryHost: 'https://host.com:88' });
+      url = fileServiceForUrl.getUrl(share, directory, null, true);
+      assert.strictEqual(url, 'https://host.com:88/' + share + '/' + directory);
+      url = fileServiceForUrl.getUrl(share, directory, '', true);
+      assert.strictEqual(url, 'https://host.com:88/' + share + '/' + directory);
 
       done();
     });
 
-    it('No directory', function(done) {
-      var url = fileService.getUrl(share, '', null, true);
-      var host = fileService.host.primaryHost;
-      assert.strictEqual(url, host + share);
-
-      var url = fileService.getUrl(share, '', file, true);
-      var host = fileService.host.primaryHost;
-      assert.strictEqual(url, host + share + '/' + file);
+    it('No directory', function (done) {
+      fileServiceForUrl.setHost({ primaryHost: 'host.com' });
+      url = fileServiceForUrl.getUrl(share, '', null, true);
+      assert.strictEqual(url, 'https://host.com/' + share);
+      url = fileServiceForUrl.getUrl(share, '', file, true);
+      assert.strictEqual(url, 'https://host.com/' + share + '/' + file);
+      
+      fileServiceForUrl.setHost({ primaryHost: 'http://host.com:80' });
+      url = fileServiceForUrl.getUrl(share, '', null, true);
+      assert.strictEqual(url, 'http://host.com/' + share);
+      url = fileServiceForUrl.getUrl(share, '', file, true);
+      assert.strictEqual(url, 'http://host.com/' + share + '/' + file);
+      
+      fileServiceForUrl.setHost({ primaryHost: 'https://host.com:443' });
+      url = fileServiceForUrl.getUrl(share, '', null, true);
+      assert.strictEqual(url, 'https://host.com/' + share);
+      url = fileServiceForUrl.getUrl(share, '', file, true);
+      assert.strictEqual(url, 'https://host.com/' + share + '/' + file);
+      
+      fileServiceForUrl.setHost({ primaryHost: 'http://host.com:88' });
+      url = fileServiceForUrl.getUrl(share, '', null, true);
+      assert.strictEqual(url, 'http://host.com:88/' + share);
+      url = fileServiceForUrl.getUrl(share, '', file, true);
+      assert.strictEqual(url, 'http://host.com:88/' + share + '/' + file);
+      
+      fileServiceForUrl.setHost({ primaryHost: 'https://host.com:88' });
+      url = fileServiceForUrl.getUrl(share, '', null, true);
+      assert.strictEqual(url, 'https://host.com:88/' + share);
+      url = fileServiceForUrl.getUrl(share, '', file, true);
+      assert.strictEqual(url, 'https://host.com:88/' + share + '/' + file);
 
       done();
     });
@@ -565,8 +650,13 @@ describe('File', function () {
       });
     });
   });
-});
 
-function getName (prefix) {
-  return prefix + guid.v1().toLowerCase();
-}
+  describe('cleanup file test', function () {
+    it('should delete the test share', function (done) {
+      fileService.deleteShareIfExists(shareName, function (deleteError) {
+        assert.equal(deleteError, null);
+        done();
+      });
+    });
+  });
+});

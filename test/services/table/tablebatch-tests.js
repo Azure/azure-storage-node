@@ -20,6 +20,7 @@ var guid = require('node-uuid');
 // Test includes
 var testutil = require('../../framework/util');
 var tabletestutil = require('./table-test-utils');
+var TestSuite = require('../../framework/test-suite');
 
 // Lib includes
 var azure = testutil.libRequire('azure-storage');
@@ -32,11 +33,12 @@ var HttpConstants = azure.Constants.HttpConstants;
 
 var tableService;
 var tablePrefix = 'batchtests';
-var tableNamePrefix;
 
 var tables = [];
 var tableName1;
 var tableName2;
+
+var suite = new TestSuite('tableservice-batch-tests');
 
 function listTables (prefix, options, token, callback) {
   tableService.listTablesSegmentedWithPrefix(prefix, token, options, function(error, result) {
@@ -65,7 +67,7 @@ function generateEntities(count) {
       Int32Property: eg.Int32(42),
       Int64Property: eg.Int64('5432873627392'),
       DoubleProperty: eg.Double(4.81516),
-      DateTimeProperty: eg.DateTime(new Date(2014, 04, 07, 08, 20, 53)),
+      DateTimeProperty: eg.DateTime(new Date(Date.UTC(2014, 04, 07, 08, 20, 53))),
     };
 
     entities.push(entity);
@@ -126,24 +128,30 @@ function compareEntities (entityFromService, entity) {
 
 describe('batchserviceclient-tests', function () {
   before(function (done) {
-    tableService = azure.createTableService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
+    if (suite.isMocked) {
+      testutil.POLL_REQUEST_INTERVAL = 0;
+    }
+    suite.setupSuite(function () {
+      tableService = azure.createTableService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      done();
+    });
+  });
 
-    done();
+  after(function (done) {
+    suite.teardownSuite(done);
   });
 
   beforeEach(function (done) {
-    tableNamePrefix = (tablePrefix + guid.v1()).replace(/-/g,'');
-    tableName1 = tableNamePrefix + '1';
-    tableName2 = tableNamePrefix + '2';
-    done();
+    tableName1 = suite.getName(tablePrefix).replace(/-/g,'');
+    tableName2 = suite.getName(tablePrefix).replace(/-/g,'');
+    suite.setupTest(done);
   });
 
   afterEach(function (done) {
     listTables(tablePrefix, null, null, function() {
       var deleteTables = function(tablesToDelete) {
         if (tablesToDelete.length === 0) {
-          done();
+          suite.teardownTest(done);
         } else {
           tableService.deleteTable(tablesToDelete[0], function (createError, table, createResponse) {
             deleteTables(tablesToDelete.slice(1));

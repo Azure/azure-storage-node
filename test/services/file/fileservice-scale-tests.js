@@ -18,12 +18,12 @@ var assert = require('assert');
 var fs = require('fs');
 var crypto = require('crypto');
 var util = require('util');
-var guid = require('node-uuid');
 
 var testutil = require('../../framework/util');
 var azure = testutil.libRequire('azure-storage');
+var TestSuite = require('../../framework/test-suite');
 
-var shareNamesPrefix = 'share-';
+var shareNamesPrefix = 'scale-test-share-';
 var directoryNamesPrefix = 'dir-';
 
 var fileService;
@@ -31,69 +31,97 @@ var shareName;
 var directoryName;
 var fileName;
 
+var suite = new TestSuite('fileservice-scale-tests');
+var runOrSkip = suite.isMocked ? it.skip : it;
+
 describe('FileUploadDownloadScale', function () {
   before(function (done) {
-    fileService = azure.createFileService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
-
-    shareName = getName(shareNamesPrefix);
-    fileService.createShareIfNotExists(shareName, function (createError) {
-      assert.equal(createError, null);
-
-      directoryName = getName(directoryNamesPrefix);
-      fileService.createDirectoryIfNotExists(shareName, directoryName, function (createError) {
-        assert.equal(createError, null);
-        done();
-      });
-    });
-  });
-
-  after(function (done) {
-    fileService.deleteShareIfExists(shareName, function (deleteError) {
-      assert.equal(deleteError, null);
+    if (suite.isMocked) {
+      testutil.POLL_REQUEST_INTERVAL = 0;
+    }
+    suite.setupSuite(function () {
+      fileService = azure.createFileService().withFilter(new azure.ExponentialRetryPolicyFilter());
       done();
     });
   });
 
-  var apis = ['createFileFromLocalFile'];
-  var sizes = [0, 1024, 1024 * 1024, 4 * 1024 * 1024, 32 * 1024 * 1024, 64 * 1024 * 1024, 148 * 1024 * 1024];
-  for(var i = 0; i < apis.length; i++) {
-    for(var j = 0; j < sizes.length; j++) {
-      it(util.format('%s should work %s bytes file', apis[i], sizes[j]), getTestFunction(apis[i], sizes[j])); 
-    }
-  }
+  after(function (done) {
+    suite.teardownSuite(done);
+  });
 
-  function getTestFunction(api, size) {
-    return function(done) {
-      var name = api + 'scale' + size + '.tmp';
-      var uploadFunc = fileService[api];
-      generateTempFile(name, size, function(error, fileInfo) {
-        assert.equal(error, null);
-        var fileName = api + size;
-        var uploadOptions = {storeFileContentMD5: true, parallelOperationThreadCount: 5};
-        uploadFunc.call(fileService, shareName, directoryName, fileName, fileInfo.name, uploadOptions, function(error) {
+  beforeEach(function (done) {
+    suite.setupTest(done);
+  });
+
+  afterEach(function (done) {
+    suite.teardownTest(done);
+  });
+
+  describe('prepare file scale test', function () {
+    runOrSkip('should create the test share', function (done) {
+      shareName = suite.getName(shareNamesPrefix);
+      fileService.createShareIfNotExists(shareName, function (createError) {
+        assert.equal(createError, null);
+        
+        directoryName = suite.getName(directoryNamesPrefix);
+        fileService.createDirectoryIfNotExists(shareName, directoryName, function (createError) {
+          assert.equal(createError, null);
+          done();
+        });
+      });
+    });
+  });
+
+  describe('file scale test', function () {
+    var apis = ['createFileFromLocalFile'];
+    var sizes = [0, 1024, 1024 * 1024, 4 * 1024 * 1024, 32 * 1024 * 1024, 64 * 1024 * 1024, 148 * 1024 * 1024];
+    for(var i = 0; i < apis.length; i++) {
+      for(var j = 0; j < sizes.length; j++) {
+        runOrSkip(util.format('%s should work %s bytes file', apis[i], sizes[j]), getTestFunction(apis[i], sizes[j])); 
+      }
+    }
+
+    function getTestFunction(api, size) {
+      return function(done) {
+        var name = api + 'scale' + size + '.tmp';
+        var uploadFunc = fileService[api];
+        generateTempFile(name, size, function(error, fileInfo) {
           assert.equal(error, null);
-          fileService.getFileProperties(shareName, directoryName, fileName, function(error, file) {
-            assert.equal(file.contentMD5, fileInfo.contentMD5);
-            assert.equal(file.contentLength, fileInfo.size);
-            var downloadFileName = fileName + '_download.tmp';
-            var downloadOptions = {validateContentMD5: true, parallelOperationThreadCount: 5};
-            fileService.getFileToLocalFile(shareName, directoryName, fileName, downloadFileName, downloadOptions, function(error, file) {
-              assert.equal(error, null);
+          var fileName = api + size;
+          var uploadOptions = {storeFileContentMD5: true, parallelOperationThreadCount: 5};
+          uploadFunc.call(fileService, shareName, directoryName, fileName, fileInfo.name, uploadOptions, function(error) {
+            assert.equal(error, null);
+            fileService.getFileProperties(shareName, directoryName, fileName, function(error, file) {
               assert.equal(file.contentMD5, fileInfo.contentMD5);
-              fs.stat(downloadFileName, function(error, stat) {
+              assert.equal(file.contentLength, fileInfo.size);
+              var downloadFileName = fileName + '_download.tmp';
+              var downloadOptions = {validateContentMD5: true, parallelOperationThreadCount: 5};
+              fileService.getFileToLocalFile(shareName, directoryName, fileName, downloadFileName, downloadOptions, function(error, file) {
                 assert.equal(error, null);
-                assert.equal(stat.size, fileInfo.size);
-                try { fs.unlinkSync(name); } catch (e) {}
-                try { fs.unlinkSync(downloadFileName); } catch (e) {}
-                done();
+                assert.equal(file.contentMD5, fileInfo.contentMD5);
+                fs.stat(downloadFileName, function(error, stat) {
+                  assert.equal(error, null);
+                  assert.equal(stat.size, fileInfo.size);
+                  try { fs.unlinkSync(name); } catch (e) {}
+                  try { fs.unlinkSync(downloadFileName); } catch (e) {}
+                  done();
+                });
               });
             });
           });
         });
-      });
+      };
     }
-  }
+  });
+
+  describe('cleanup file scale test', function () {
+    runOrSkip('should delete the test share', function (done) {
+      fileService.deleteShareIfExists(shareName, function (deleteError) {
+        assert.equal(deleteError, null);
+        done();
+      });
+    });
+  });
 
   var internalBuffer = null;
   function generateTempFile(fileName, size, callback) {
@@ -132,7 +160,3 @@ describe('FileUploadDownloadScale', function () {
     callback(null, fileInfo);
   }
 });
-
-function getName (prefix) {
-  return prefix + guid.v1().toLowerCase();
-}

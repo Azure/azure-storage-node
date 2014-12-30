@@ -1,6 +1,19 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
 be taken. This is a CTP v1 release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
 
+2014.12 Version 0.4.2
+ALL
+* Fixed an issue that batch operation could probably wait without callback.
+* Added the readable-stream module to adapt stream operations in both node 0.8 and node 0.10.
+* Supported nock in tests.
+
+BLOB
+* Supported trimming the default port of http or https when getting URL for the blob service.
+* Fixed an issue that the metadata is not populated when getting the blob to text.
+
+FILE
+* Supported trimming the default port of http or https when getting URL for the file service.
+
 2014.11.28 Version 0.4.1
 
 ALL

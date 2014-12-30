@@ -15,12 +15,12 @@
 // 
 
 var assert = require('assert');
-var guid = require('node-uuid');
 var util = require('util');
 
 // Test includes
 var testutil = require('../../framework/util');
 var tabletestutil = require('./table-test-utils');
+var TestSuite = require('../../framework/test-suite');
 
 // Lib includes
 var azure = testutil.libRequire('azure-storage');
@@ -53,7 +53,10 @@ var entity2 = { PartitionKey: eg.String('part2'),
 var tableService;
 
 var tablePrefix = 'tableservice';
-var tableNamePrefix;
+
+var suite = new TestSuite('tableservice-tests');
+var runOrSkip = suite.isMocked ? it.skip : it;
+var timeout = (suite.isRecording || !suite.isMocked) ? 30000 : 10;
 
 var tables = [];
 var tableName1;
@@ -76,17 +79,23 @@ var compareEntities = function (entity, entityFromService) {
 
 describe('tableservice-tests', function () {
   before(function (done) {
-    tableService = azure.createTableService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
+    if (suite.isMocked) {
+      testutil.POLL_REQUEST_INTERVAL = 0;
+    }
+    suite.setupSuite(function () {
+      tableService = azure.createTableService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      done();
+    }); 
+  });
 
-    done();
+  after(function (done) {
+    suite.teardownSuite(done);
   });
 
   beforeEach(function (done) {
-    tableNamePrefix = (tablePrefix + guid.v1()).replace(/-/g,'');
-    tableName1 = tableNamePrefix + '1';
-    tableName2 = tableNamePrefix + '2';
-    done();
+    tableName1 = suite.getName(tablePrefix).replace(/-/g,'');
+    tableName2 = suite.getName(tablePrefix).replace(/-/g,'');
+    suite.setupTest(done);
   });
 
   afterEach(function (done) {
@@ -94,7 +103,7 @@ describe('tableservice-tests', function () {
     tabletestutil.listTables(tableService, tablePrefix, tables, null, null, function() {
       var deleteTables = function(tablesToDelete) {
         if (tablesToDelete.length === 0) {
-          done();
+          suite.teardownTest(done);
         } else {
           tableService.deleteTable(tablesToDelete[0], function (createError, table, createResponse) {
             deleteTables(tablesToDelete.slice(1));
@@ -127,10 +136,15 @@ describe('tableservice-tests', function () {
 
   describe('doesTableExist', function () {
     it('should work', function (done) {
-      assert.doesNotThrow(function () { tableService.doesTableExist('$MetricsMinutePrimaryTransactionsBlob', function () { }); });
-      assert.doesNotThrow(function () { tableService.doesTableExist('$MetricsTransactionsTable', function () { }); });     
-       
-      done();
+      assert.doesNotThrow(function () { 
+        tableService.doesTableExist('$MetricsMinutePrimaryTransactionsBlob', function () { 
+          assert.doesNotThrow(function () { 
+            tableService.doesTableExist('$MetricsTransactionsTable', function () { 
+              done();
+            }); 
+          });     
+        }); 
+      });      
     });
   });
 
@@ -797,7 +811,7 @@ describe('tableservice-tests', function () {
   });
 
   describe('SAS', function () {
-    it('SASNoPolicy', function (done) {
+    runOrSkip('SASNoPolicy', function (done) {
       tableService.createTable(tableName1, function (error1) {
         assert.equal(error1, null);
         insertManyEntities(function () {  
@@ -827,12 +841,13 @@ describe('tableservice-tests', function () {
       });
     });
 
-    it('SASWithPolicy', function(done) {
+    // Skip this case in nock because the signing key is different between live run and mocked run
+    runOrSkip('SASWithPolicy', function(done) {
       tableService.createTable(tableName1, function (error1) {
         assert.equal(error1, null);
         insertManyEntities(function () {
 
-          var id = guid.v1();
+          var id = '011ec48e-81e1-4dc8-a6ac-e246bc547bad';
           var startDate = new Date();
           var expiryDate = new Date(startDate);
           expiryDate.setMinutes(startDate.getMinutes() + 100);
@@ -868,7 +883,7 @@ describe('tableservice-tests', function () {
                 var sharedTableService = azure.createTableServiceWithSas(tableService.host, tableSAS);
 
                 runTableTests(sharedTableService, done);
-              }, 30000);
+              }, timeout);
             });
           });
         });

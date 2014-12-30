@@ -14,11 +14,11 @@
 // limitations under the License.
 // 
 var assert = require('assert');
-var guid = require('node-uuid');
 
 // Lib includes
 var testutil = require('../../framework/util');
 var SR = testutil.libRequire('common/util/sr');
+var TestSuite = require('../../framework/test-suite');
 
 var azure = testutil.libRequire('azure-storage');
 
@@ -26,28 +26,37 @@ var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
 
 var shares = [];
-var shareNamesPrefix = 'share-';
+var shareNamesPrefix = 'share-test-share-';
 
 var fileService;
 var shareName;
 
+var suite = new TestSuite('fileservice-share-tests');
+
 describe('FileShare', function () {
   before(function (done) {
-    fileService = azure.createFileService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
+    if (suite.isMocked) {
+      testutil.POLL_REQUEST_INTERVAL = 0;
+    }
+    suite.setupSuite(function () {
+      fileService = azure.createFileService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      done();
+    });
+  });
 
-    done();
+  after(function (done) {
+    suite.teardownSuite(done);
   });
 
   beforeEach(function (done) {
-    shareName = getName(shareNamesPrefix);
-    done();
+    shareName = suite.getName(shareNamesPrefix);
+    suite.setupTest(done);
   });
 
   afterEach(function (done) {
     fileService.deleteShareIfExists(shareName, function (deleteError) {
       assert.equal(deleteError, null);
-      done();
+      suite.teardownTest(done);
     });
   });
 
@@ -286,28 +295,28 @@ describe('FileShare', function () {
 
   describe('listShares', function () {
     it('shouldWork', function (done) {
-      var shareName1 = getName(shareNamesPrefix);
+      var shareName1 = suite.getName(shareNamesPrefix);
       var metadata1 = {
         color: 'orange',
         sharenumber: '01',
         somemetadataname: 'SomeMetadataValue'
       };
 
-      var shareName2 = getName(shareNamesPrefix);
+      var shareName2 = suite.getName(shareNamesPrefix);
       var metadata2 = {
         color: 'pink',
         sharenumber: '02',
         somemetadataname: 'SomeMetadataValue'
       };
 
-      var shareName3 = getName(shareNamesPrefix);
+      var shareName3 = suite.getName(shareNamesPrefix);
       var metadata3 = {
         color: 'brown',
         sharenumber: '03',
         somemetadataname: 'SomeMetadataValue'
       };
 
-      var shareName4 = getName(shareNamesPrefix);
+      var shareName4 = suite.getName(shareNamesPrefix);
       var metadata4 = {
         color: 'blue',
         sharenumber: '04',
@@ -441,8 +450,4 @@ function listShares (prefix, options, token, callback) {
       callback();
     }
   });
-}
-
-function getName (prefix){
-  return prefix + guid.v1().toLowerCase();
 }

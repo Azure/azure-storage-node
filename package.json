@@ -1,7 +1,7 @@
 {
   "name": "azure-storage",
   "author": "Microsoft Corporation",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Microsoft Azure Storage Client Library for Node.js",
   "tags": [
     "azure",
@@ -32,10 +32,12 @@
     "mime": "~1.2.4",
     "underscore": "~1.4.4",
     "node-uuid": "~1.4.0",
-    "extend": "~1.2.1"
+    "extend": "~1.2.1",
+    "readable-stream": "~1.0.0"
   },
   "devDependencies": {
     "mocha": ">= 1.18.0",
+    "nock": "0.16",
     "jshint": ">= 2.1.4",
     "should": "1.2.x",
     "grunt": "~0.4.2",
@@ -51,6 +53,6 @@
     "url": "http://github.com/Azure/azure-storage-node/issues"
   },
   "scripts": {
-    "test": "mocha --no-timeouts --recursive test"
+    "test": "jshint lib & mocha --no-timeouts --recursive test"
   }
 }

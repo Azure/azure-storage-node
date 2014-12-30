@@ -15,10 +15,10 @@
 // 
 
 var assert = require('assert');
-var guid = require('node-uuid');
 
 // Test includes
 var testutil = require('../../framework/util');
+var TestSuite = require('../../framework/test-suite');
 
 // Lib includes
 var azure = testutil.libRequire('azure-storage');
@@ -33,10 +33,11 @@ var eg = TableUtilities.entityGenerator;
 
 var tableService;
 var tablePrefix = 'querytests';
-var tableNamePrefix;
 
 var tables = [];
 var tableName;
+
+var suite = new TestSuite('tableservice-query-tests');
 
 function generateEntities(count) {
   var entities = [];
@@ -86,17 +87,23 @@ function compareEntities (entityFromService, entity) {
 };
 
 describe('tablequery-tests', function () {
-  beforeEach(function (done) {
-    tableService = azure.createTableService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
+  before(function (done) {
+    if (suite.isMocked) {
+      testutil.POLL_REQUEST_INTERVAL = 0;
+    }
+    suite.setupSuite(function () {
+      tableService = azure.createTableService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      done();
+    }); 
+  });
 
-    done();
+  after(function (done) {
+    suite.teardownSuite(done);
   });
 
   beforeEach(function (done) {
-    tableNamePrefix = (tablePrefix + guid.v1()).replace(/-/g,'');
-    tableName = tableNamePrefix + '1';
-    done();
+    tableName = suite.getName(tablePrefix).replace(/-/g,'');
+    suite.setupTest(done);
   });
 
   afterEach(function (done) {
@@ -104,7 +111,7 @@ describe('tablequery-tests', function () {
       assert.equal(deleteError, null);
       assert.ok(deleteResponse.isSuccessful);
 
-      done();
+      suite.teardownTest(done);
     });
   });
 

@@ -17,7 +17,11 @@ var assert = require('assert');
 var _ = require('underscore');
 
 var testutil = require('../framework/util');
+var TestSuite = require('../framework/test-suite');
 var azure = testutil.libRequire('azure-storage');
+
+var suite = new TestSuite('serviceproperty-tests');
+var timeout = (suite.isRecording || !suite.isMocked) ? 30000 : 10;
 
 var blobService;
 var queueService;
@@ -25,16 +29,27 @@ var tableService;
 
 describe('ServiceProperties', function () {
   before(function (done) {
-    blobService = azure.createBlobService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
+    if (suite.isMocked) {
+      testutil.POLL_REQUEST_INTERVAL = 0;
+    }
+    suite.setupSuite(function () {
+      blobService = azure.createBlobService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      queueService = azure.createQueueService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      tableService = azure.createTableService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      done();
+    });
+  });
 
-    queueService = azure.createQueueService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
+  after(function (done) {
+    suite.teardownSuite(done);
+  });
 
-    tableService = azure.createTableService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
+  beforeEach(function (done) {
+    suite.setupTest(done);
+  });
 
-    done();
+   afterEach(function (done) {
+    suite.teardownTest(done);
   });
 
   describe('fullServiceProperties', function () {   
@@ -100,7 +115,7 @@ function fullServicePropertiesTest(service, serviceProperties, done){
         done();
       });
     };
-    setTimeout(inner, 30000);
+    setTimeout(inner, timeout);
   });
 }
 
@@ -117,7 +132,7 @@ function overwriteServicePropertiesTest(service, serviceProperties, done){
           done();
         });
       };
-      setTimeout(inner, 30000);
+      setTimeout(inner, timeout);
     });
   });
 }
@@ -133,7 +148,7 @@ function baseServicePropertiesTest(service, serviceProperties, done){
         done();
       });
     };
-    setTimeout(inner, 30000);
+    setTimeout(inner, timeout);
   });
 }
 

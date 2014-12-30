@@ -17,13 +17,18 @@ var url = require('url');
 
 var assert = require('assert');
 var testutil = require('../../framework/util');
+var TestSuite = require('../../framework/test-suite');
 var azure = testutil.libRequire('azure-storage');
 
 var Constants = azure.Constants;
 var StorageServiceClientConstants = Constants.StorageServiceClientConstants;
 var QueueUtilities = azure.QueueUtilities;
 var HttpConstants = Constants.HttpConstants;
-var guid = require('node-uuid');
+
+var queueNamesPrefix = 'queue-';
+
+var suite = new TestSuite('queueservice-tests');
+var runOrSkip = suite.isMocked ? it.skip : it;
 
 var queueService;
 
@@ -47,16 +52,24 @@ var listQueues = function listQueues (prefix, options, token, callback) {
 describe('QueueServiceTests', function() {
   var queueName;
   var queueName2;
-  before(function (done) {
-    queueService = azure.createQueueService().withFilter(new azure.ExponentialRetryPolicyFilter());
-    done();
+  before(function (done) {        
+    if (suite.isMocked) {
+      testutil.POLL_REQUEST_INTERVAL = 0;
+    }
+    suite.setupSuite(function () {
+      queueService = azure.createQueueService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      done();
+    });
+  });
+
+  after(function (done) {
+    suite.teardownSuite(done);
   });
 
   beforeEach(function (done) {
-    queueNamesPrefix = 'sample' + guid.v1();
-    queueName = queueNamesPrefix + 1;
-    queueName2 = queueNamesPrefix + 2;
-    done();
+    queueName = suite.getName(queueNamesPrefix);
+    queueName2 = suite.getName(queueNamesPrefix);
+    suite.setupTest(done);
   });
 
   afterEach(function (done) {
@@ -65,7 +78,7 @@ describe('QueueServiceTests', function() {
       assert.equal(error, null);
       queueService.deleteQueueIfExists(queueName2, function(error) {
         assert.equal(error, null);
-        done();
+        suite.teardownTest(done);
       });
     });
   });
@@ -842,7 +855,7 @@ describe('QueueServiceTests', function() {
   });
 
   describe('testSAS', function() {
-    it('should work with noPolicy', function(done) {
+    runOrSkip('should work with noPolicy', function(done) {
       queueService.createQueueIfNotExists(queueName, function() {
         var text = 'Sample message text';
         queueService.createMessage(queueName, text, function() {
@@ -879,7 +892,8 @@ describe('QueueServiceTests', function() {
       });
     });
 
-    it('should work with policy', function(done) {
+    // Skip this case in nock because the signing key is different between live run and mocked run
+    runOrSkip('should work with policy', function(done) {
       queueService.createQueueIfNotExists(queueName, function() {
         var text = 'Sample message text';
         queueService.createMessage(queueName, text, function() {
@@ -901,11 +915,8 @@ describe('QueueServiceTests', function() {
             Id: id,
           };
 
-
           queueService.getQueueAcl(queueName, function(error, result, response) {
-
             queueService.setQueueAcl(queueName, sharedAccessPolicy, function() {
-
               // Timeout is needed for the policy to take affect on the service. 
               setTimeout(function () {
                 var queueSAS = queueService.generateSharedAccessSignature(queueName, sharedAccessPolicyJustId);

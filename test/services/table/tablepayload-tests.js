@@ -15,12 +15,12 @@
 // 
 
 var assert = require('assert');
-var guid = require('node-uuid');
 var extend = require('extend');
 var _ = require('underscore');
 
 // Test includes
 var testutil = require('../../framework/util');
+var TestSuite = require('../../framework/test-suite');
 
 // Lib includes
 var azure = testutil.libRequire('azure-storage');
@@ -29,6 +29,8 @@ var azureutil = testutil.libRequire('common/util/util');
 var TableQuery = azure.TableQuery;
 var TableUtilities = azure.TableUtilities;
 var eg = TableUtilities.entityGenerator;
+
+var suite = new TestSuite('tableservice-payload-tests');
 
 var shouldTypeExistIfMinimalMetadata = function (edmType) {
     if (name.indexOf('Binary') !== -1) {
@@ -72,33 +74,43 @@ var getNewEntityToTest = function () {
     Int32Property: eg.Int32(42),
     Int64Property: eg.Int64('5432873627392'),
     DoubleProperty: eg.Double(4.81516),
-    GuidProperty: eg.Guid(guid.v1()),
-    DateTimeProperty: eg.DateTime(new Date(2014, 04, 07, 08, 20, 53)),
+    GuidProperty: eg.Guid('dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2'),
+    DateTimeProperty: eg.DateTime(new Date(Date.UTC(2014, 04, 07, 08, 20, 53))),
   };
 }
 
 var tableService;
-var tableNamePrefix = 'tablequerytests';
+var tableNamePrefix = 'tablepayloadtests';
 var tableName;
 var tableNameInit;
 
-describe('tableservice-tablequery-tests', function () {
+describe('tableservice-payload-tests', function () {
   before(function (done) {
-    tableService = azure.createTableService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
-    done();
+    if (suite.isMocked) {
+      testutil.POLL_REQUEST_INTERVAL = 0;
+    }
+    suite.setupSuite(function () {
+      tableService = azure.createTableService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      done();
+    }); 
+  });
+
+  after(function (done) {
+    suite.teardownSuite(done);
   });
 
   beforeEach(function (done) {
-    tableNameInit = tableNamePrefix + guid.v1().replace(/-/g,'');
-    done();
+    tableNameInit = suite.getName(tableNamePrefix).replace(/-/g,'');
+    suite.setupTest(done);
   });
 
   afterEach(function (done) {
     tableService.deleteTableIfExists(tableNameInit + "1", function() {
       tableService.deleteTableIfExists(tableNameInit + "2", function() {
         tableService.deleteTableIfExists(tableNameInit + "3", function() {
-          tableService.deleteTableIfExists(tableNameInit + "4", done);
+          tableService.deleteTableIfExists(tableNameInit + "4", function() {
+            suite.teardownTest(done);
+          });
         });
       });
     });
