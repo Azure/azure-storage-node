@@ -24,16 +24,15 @@
     }
   ],
   "dependencies": {
-    "xml2js": "0.2.7",
-    "xmlbuilder": "0.4.3",
-    "underscore": "~1.4.4",
-    "request": "~2.27.0",
-    "validator": "~3.1.0",
-    "mime": "~1.2.4",
-    "underscore": "~1.4.4",
-    "node-uuid": "~1.4.0",
     "extend": "~1.2.1",
-    "readable-stream": "~1.0.0"
+    "mime": "~1.2.4",
+    "node-uuid": "~1.4.0",
+    "readable-stream": "~1.0.0",
+    "request": "~2.27.0",
+    "underscore": "~1.4.4",
+    "validator": "~3.22.2",
+    "xml2js": "0.2.7",
+    "xmlbuilder": "0.4.3"
   },
   "devDependencies": {
     "mocha": ">= 1.18.0",
