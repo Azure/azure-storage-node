@@ -427,7 +427,7 @@ describe('blob-uploaddownload-tests', function () {
             assert.notEqual(webresource.headers[HeaderConstants.CONTENT_MD5], null);
           };
 
-          blobService.on('sendingRequestEvent', callback)
+          blobService.on('sendingRequestEvent', callback);
           blobService.createPagesFromStream(containerName, blobName, rfs.createReadStream(fileNameSource), 0, 511, {useTransactionalMD5: true}, function(err2) {
             // Upload all data
             assert.equal(err2, null);
@@ -743,7 +743,6 @@ describe('blob-uploaddownload-tests', function () {
       });
     });
     
-
     runOrSkip('BlockBlobDownloadRangeValidation', function (done) {
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var fileNameSource = testutil.generateId('getBlockBlobRange', [], suite.isMocked) + '.test';

@@ -242,7 +242,7 @@ describe('BlobContainer', function () {
 
   describe('getContainerProperties', function () {
     it('should work', function (done) {
-      var metadata = { 'color': 'blue' };
+      var metadata = { 'Color': 'Blue' };
       blobService.setContainerMetadata(containerName, metadata, function (setMetadataError, setMetadataResult, setMetadataResponse) {
         assert.equal(setMetadataError, null);
         assert.ok(setMetadataResponse.isSuccessful);
@@ -255,7 +255,7 @@ describe('BlobContainer', function () {
             assert.equal('available', container2.leaseState);
             assert.equal(null, container2.leaseDuration);
             assert.notEqual(null, container2.requestId);
-            assert.strictEqual(container2.metadata.color, metadata.color);
+            assert.strictEqual(container2.metadata.color, metadata.Color);
           }
 
           assert.notEqual(getResponse, null);
@@ -272,7 +272,7 @@ describe('BlobContainer', function () {
 
   describe('setContainerMetadata', function () {
     it('should work', function (done) {
-      var metadata = { 'class': 'test' };
+      var metadata = { 'Class': 'Test' };
       blobService.setContainerMetadata(containerName, metadata, function (setMetadataError, setMetadataResult, setMetadataResponse) {
         assert.equal(setMetadataError, null);
         assert.ok(setMetadataResponse.isSuccessful);
@@ -282,7 +282,31 @@ describe('BlobContainer', function () {
           assert.notEqual(containerMetadata, null);
           assert.notEqual(containerMetadata.metadata, null);
           if (containerMetadata.metadata) {
-            assert.equal(containerMetadata.metadata.class, 'test');
+            assert.equal(containerMetadata.metadata.class, 'Test');
+          }
+
+          assert.ok(getMetadataResponse.isSuccessful);
+
+          blobService.deleteContainer(containerName, function (deleteError) {
+            assert.equal(deleteError, null);
+            done();
+          });
+        });
+      });
+    });
+
+    it('should merge the metadata', function (done) {
+      var metadata = { color: 'blue', Color: 'Orange', COLOR: 'Red' };
+      blobService.setContainerMetadata(containerName, metadata, function (setMetadataError, setMetadataResult, setMetadataResponse) {
+        assert.equal(setMetadataError, null);
+        assert.ok(setMetadataResponse.isSuccessful);
+
+        blobService.getContainerMetadata(containerName, function (getMetadataError, containerMetadata, getMetadataResponse) {
+          assert.equal(getMetadataError, null);
+          assert.notEqual(containerMetadata, null);
+          assert.notEqual(containerMetadata.metadata, null);
+          if (containerMetadata.metadata) {
+            assert.equal(containerMetadata.metadata.color, 'blue,Orange,Red');
           }
 
           assert.ok(getMetadataResponse.isSuccessful);
@@ -724,6 +748,115 @@ describe('BlobContainer', function () {
       });
     });
   });
+
+  describe('listBlobDirectories', function () {
+    it('should list blob directories', function (done) {
+      var blobPrefix1 = suite.getName(blobNamesPrefix) + '/';
+      var blobPrefix2 = blobPrefix1 + suite.getName(blobNamesPrefix) + '/';
+      var blobName1 = blobPrefix1 + suite.getName(blobNamesPrefix);
+      var blobName2 = blobPrefix2 + suite.getName(blobNamesPrefix);
+      var blobText1 = 'hello1';
+      var blobText2 = 'hello2';
+
+      blobs.length = 0;
+
+      listBlobDirectoriesWithoutPrefix(null, null, function() {
+        assert.equal(blobs.length, 0);
+
+        blobService.createBlockBlobFromText(containerName, blobName1, blobText1, function (blobErr1) {
+          assert.equal(blobErr1, null);
+
+          listBlobDirectoriesWithoutPrefix(null, null, function() {
+            assert.equal(blobs.length, 1);
+            assert.equal(blobs[0].name, blobPrefix1);
+
+            blobService.createBlockBlobFromText(containerName, blobName2, blobText2, function (blobErr2) {
+              assert.equal(blobErr2, null);
+
+              blobs.length = 0;
+
+              listBlobDirectoriesWithoutPrefix(null, null, function() {
+                assert.equal(blobs.length, 1);
+
+                var prefix = blobs[0].name;
+                blobs.length = 0;
+                listBlobDirectoriesWithPrefix(prefix, null, null, function() {
+                  assert.equal(blobs.length, 1);
+                  assert.equal(blobs[0].name, blobPrefix2);
+
+                  prefix = blobs[0].name;
+                  blobs.length = 0;
+                  listBlobs(prefix, null, null, function (blobErr) {
+                    assert.equal(blobErr, null);
+                    assert.equal(blobs.length, 1);
+                    assert.equal(blobs[0].name, blobName2);
+                    done();
+                  })
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+
+    it('should list blob directories with prefix', function (done) {
+      var blobPrefix1 = suite.getName(blobNamesPrefix) + '/';
+      var blobPrefix2 = blobPrefix1 + suite.getName(blobNamesPrefix) + '/';
+      var blobPrefix3 = blobPrefix1 + suite.getName(blobNamesPrefix) + '/';
+      var blobName1 = blobPrefix1 + suite.getName(blobNamesPrefix);
+      var blobName2 = blobPrefix2 + suite.getName(blobNamesPrefix);
+      var blobName3 = blobPrefix3 + suite.getName(blobNamesPrefix);
+      var blobText1 = 'hello1';
+      var blobText2 = 'hello2';
+      var blobText3 = 'hello3';
+
+      blobs.length = 0;
+      var prefix = blobPrefix1.slice(0, -1); 
+      listBlobDirectoriesWithPrefix(prefix, null, null, function() {
+        assert.equal(blobs.length, 0);
+
+        blobService.createBlockBlobFromText(containerName, blobName1, blobText1, function (blobErr1) {
+          assert.equal(blobErr1, null);
+
+          
+          listBlobDirectoriesWithPrefix(prefix, null, null, function() {
+            assert.equal(blobs.length, 1);
+            assert.equal(blobs[0].name, blobPrefix1);
+
+            blobService.createBlockBlobFromText(containerName, blobName2, blobText2, function (blobErr2) {
+              assert.equal(blobErr2, null);
+
+              blobService.createBlockBlobFromText(containerName, blobName3, blobText3, function (blobErr3) {
+              assert.equal(blobErr3, null);
+
+                blobs.length = 0;
+                listBlobDirectoriesWithPrefix(blobPrefix1, null, null, function() {
+                  assert.equal(blobs.length, 2);
+
+                  var prefix = blobs[1].name.slice(0, -1); 
+                  blobs.length = 0;
+                  listBlobDirectoriesWithPrefix(prefix, null, null, function() {
+                    assert.equal(blobs.length, 1);
+                    assert.equal(blobs[0].name, blobPrefix3);
+
+                    prefix = blobs[0].name;
+                    blobs.length = 0;
+                    listBlobs(prefix, null, null, function (blobErr) {
+                      assert.equal(blobErr, null);
+                      assert.equal(blobs.length, 1);
+                      assert.equal(blobs[0].name, blobName3);
+                      done();
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  });
 });
 
 function listBlobs (prefix, options, token, callback) {
@@ -733,6 +866,34 @@ function listBlobs (prefix, options, token, callback) {
     var token = result.continuationToken;
     if(token) {
       listBlobs(prefix, options, token, callback);
+    }
+    else {
+      callback();
+    }
+  });
+}
+
+function listBlobDirectoriesWithPrefix(prefix, options, token, callback) {
+  blobService.listBlobDirectoriesSegmentedWithPrefix(containerName, prefix, token, options, function(error, result) {
+    assert.equal(error, null);
+    blobs.push.apply(blobs, result.entries);
+    var token = result.continuationToken;
+    if(token) {
+      listBlobDirectoriesWithPrefix(prefix, options, token, callback);
+    }
+    else {
+      callback();
+    }
+  });
+}
+
+function listBlobDirectoriesWithoutPrefix(options, token, callback) {
+  blobService.listBlobDirectoriesSegmented(containerName, token, options, function(error, result) {
+    assert.equal(error, null);
+    blobs.push.apply(blobs, result.entries);
+    var token = result.continuationToken;
+    if(token) {
+      listBlobDirectoriesWithoutPrefix(options, token, callback);
     }
     else {
       callback();

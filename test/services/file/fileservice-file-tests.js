@@ -505,7 +505,7 @@ describe('File', function () {
       fileService.createFile(shareName, directoryName, fileName, 0, function (createError) {
         assert.equal(createError, null);
 
-        var metadata = { 'class': 'test' };
+        var metadata = { 'Class': 'Test' };
         fileService.setFileMetadata(shareName, directoryName, fileName, metadata, function (setMetadataError, setMetadataResult, setMetadataResponse) {
           assert.equal(setMetadataError, null);
           assert.ok(setMetadataResponse.isSuccessful);
@@ -514,7 +514,7 @@ describe('File', function () {
             assert.equal(getMetadataError, null);
             assert.notEqual(file, null);
             assert.notEqual(file.metadata, null);
-            assert.equal(file.metadata.class, 'test');
+            assert.equal(file.metadata.class, 'Test');
             assert.ok(getMetadataResponse.isSuccessful);
 
             done();
@@ -524,7 +524,7 @@ describe('File', function () {
     });
 
     it('withCreate', function (done) {
-      var metadata = { 'class': 'test' };
+      var metadata = { 'Class': 'Test' };
       fileService.createFile(shareName, directoryName, fileName, 0, {metadata: metadata}, function (createError) {
         assert.equal(createError, null);
 
@@ -532,7 +532,7 @@ describe('File', function () {
           assert.equal(getMetadataError, null);
           assert.notEqual(file, null);
           assert.notEqual(file.metadata, null);
-          assert.equal(file.metadata.class, 'test');
+          assert.equal(file.metadata.class, 'Test');
           assert.ok(getMetadataResponse.isSuccessful);
 
           done();
@@ -544,7 +544,7 @@ describe('File', function () {
       fileService.createFile(shareName, directoryName, fileName, 0, function (createError) {
         assert.equal(createError, null);
 
-        var metadata = { 'color': 'blue' };
+        var metadata = { 'Color': 'Blue' };
         fileService.setFileMetadata(shareName, directoryName, fileName, metadata, function (setMetadataError, setMetadataResult, setMetadataResponse) {
           assert.equal(setMetadataError, null);
           assert.ok(setMetadataResponse.isSuccessful);
@@ -553,7 +553,31 @@ describe('File', function () {
             assert.equal(getError, null);
             assert.notEqual(file, null);
             assert.notEqual(null, file.requestId);
-            assert.strictEqual(file.metadata.color, metadata.color);
+            assert.strictEqual(file.metadata.color, metadata.Color);
+
+            assert.notEqual(getResponse, null);
+            assert.equal(getResponse.isSuccessful, true);
+
+            done();
+          });
+        });
+      });
+    });
+
+    it('should merge the metadata', function (done) {
+      fileService.createFile(shareName, directoryName, fileName, 0, function (createError) {
+        assert.equal(createError, null);
+
+        var metadata = { color: 'blue', Color: 'Orange', COLOR: 'Red' };
+        fileService.setFileMetadata(shareName, directoryName, fileName, metadata, function (setMetadataError, setMetadataResult, setMetadataResponse) {
+          assert.equal(setMetadataError, null);
+          assert.ok(setMetadataResponse.isSuccessful);
+
+          fileService.getFileProperties(shareName, directoryName, fileName, function (getError, file, getResponse) {
+            assert.equal(getError, null);
+            assert.notEqual(file, null);
+            assert.notEqual(null, file.requestId);
+            assert.strictEqual(file.metadata.color, 'blue,Orange,Red');
 
             assert.notEqual(getResponse, null);
             assert.equal(getResponse.isSuccessful, true);
@@ -632,7 +656,7 @@ describe('File', function () {
       fileService.createFile(shareName, '', fileName, 0, function (createError) {
         assert.equal(createError, null);
 
-        var metadata = { 'class': 'test' };
+        var metadata = { color: 'blue', Color: 'Orange', COLOR: 'Red' };
         fileService.setFileMetadata(shareName, '', fileName, metadata, function (setMetadataError, setMetadataResult, setMetadataResponse) {
           assert.equal(setMetadataError, null);
           assert.ok(setMetadataResponse.isSuccessful);
@@ -641,7 +665,7 @@ describe('File', function () {
             assert.equal(getMetadataError, null);
             assert.notEqual(file, null);
             assert.notEqual(file.metadata, null);
-            assert.equal(file.metadata.class, 'test');
+            assert.equal(file.metadata.color, 'blue,Orange,Red');
             assert.ok(getMetadataResponse.isSuccessful);
 
             done();
