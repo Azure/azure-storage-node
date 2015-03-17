@@ -215,7 +215,7 @@ describe('FileShare', function () {
         assert.equal(createError, null);
         assert.equal(created, true);
 
-        var metadata = { 'color': 'blue' };
+        var metadata = { 'Color': 'Blue' };
         fileService.setShareMetadata(shareName, metadata, function (setMetadataError, setMetadataResult, setMetadataResponse) {
           assert.equal(setMetadataError, null);
           assert.ok(setMetadataResponse.isSuccessful);
@@ -224,7 +224,7 @@ describe('FileShare', function () {
             assert.equal(getError, null);
             assert.notEqual(share2, null);
             assert.notEqual(null, share2.requestId);
-            assert.strictEqual(share2.metadata.color, metadata.color);
+            assert.strictEqual(share2.metadata.color, metadata.Color);
 
             assert.notEqual(getResponse, null);
             assert.equal(getResponse.isSuccessful, true);
@@ -255,6 +255,32 @@ describe('FileShare', function () {
             assert.notEqual(shareMetadata, null);
             assert.notEqual(shareMetadata.metadata, null);
             assert.equal(shareMetadata.metadata.class, 'test');
+            assert.ok(getMetadataResponse.isSuccessful);
+
+            fileService.deleteShare(shareName, function (deleteError) {
+              assert.equal(deleteError, null);
+              done();
+            });
+          });
+        });
+      });
+    });
+
+    it('should merge the metadata', function (done) {
+      fileService.createShareIfNotExists(shareName, function (createError, created) {
+        assert.equal(createError, null);
+        assert.equal(created, true);
+
+        var metadata = { color: 'blue', Color: 'Orange', COLOR: 'Red' };
+        fileService.setShareMetadata(shareName, metadata, function (setMetadataError, setMetadataResult, setMetadataResponse) {
+          assert.equal(setMetadataError, null);
+          assert.ok(setMetadataResponse.isSuccessful);
+
+          fileService.getShareMetadata(shareName, function (getMetadataError, shareMetadata, getMetadataResponse) {
+            assert.equal(getMetadataError, null);
+            assert.notEqual(shareMetadata, null);
+            assert.notEqual(shareMetadata.metadata, null);
+            assert.equal(shareMetadata.metadata.color, 'blue,Orange,Red');
             assert.ok(getMetadataResponse.isSuccessful);
 
             fileService.deleteShare(shareName, function (deleteError) {

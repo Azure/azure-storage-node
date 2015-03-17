@@ -10,9 +10,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata0?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6beed409-0003-0038-375d-e26f8f000000',
+  'x-ms-request-id': 'db29c539-0003-001f-619a-3a66ef000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:29 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:26 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -20,9 +20,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata1?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '56d814ff-0003-0005-060b-4ed292000000',
+  'x-ms-request-id': 'e001263e-0003-0038-4ca2-e30a2a000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:29 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:25 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -30,9 +30,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .put('/queue-testdata2')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7acc4eae-0003-000e-41a1-35c797000000',
+  'x-ms-request-id': '4d2055de-0003-0028-3eda-2d7496000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:29 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:27 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -41,11 +41,11 @@ nock('https://xplat.queue.core.windows.net:443')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '54c7e5ee-0003-000a-2038-341393000000',
+  'x-ms-request-id': '09776ba6-0003-003a-4384-8906f3000000',
   'x-ms-version': '2014-02-14',
   'x-ms-approximate-messages-count': '0',
   'x-ms-meta-class': 'test',
-  date: 'Thu, 27 Nov 2014 09:38:31 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:27 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -53,9 +53,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .delete('/queue-testdata2')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '33aed011-0003-003b-573d-1532f5000000',
+  'x-ms-request-id': '5a018eef-0003-0016-5de1-ca7019000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:32 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:28 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -63,9 +63,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata2?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '08ba8108-0003-001c-3c7b-945986000000',
+  'x-ms-request-id': 'fcd0b98b-0003-0007-3cae-cba43a000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:33 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:29 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -73,9 +73,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata3?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6f35556e-0003-0010-2d81-4af1c0000000',
+  'x-ms-request-id': '2da5f354-0003-000b-4f53-5a5b44000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:33 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:29 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -83,9 +83,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .put('/queue-testdata4')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1cb881b7-0003-0006-3721-d6e95b000000',
+  'x-ms-request-id': '53a2bd47-0003-000f-5e4b-7e14b7000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:35 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:30 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -94,11 +94,11 @@ nock('https://xplat.queue.core.windows.net:443')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '46299fd5-0003-004a-1fe1-2a0591000000',
+  'x-ms-request-id': 'd4330172-0003-0014-0a1c-44b8ba000000',
   'x-ms-version': '2014-02-14',
   'x-ms-approximate-messages-count': '0',
   'x-ms-meta-class': 'test',
-  date: 'Thu, 27 Nov 2014 09:38:35 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:31 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -107,11 +107,11 @@ nock('https://xplat.queue.core.windows.net:443')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7e9c3e12-0003-0004-03bd-4df367000000',
+  'x-ms-request-id': '85d71866-0003-0041-2322-ca089c000000',
   'x-ms-version': '2014-02-14',
   'x-ms-approximate-messages-count': '0',
   'x-ms-meta-class': 'test',
-  date: 'Thu, 27 Nov 2014 09:38:36 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:31 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -119,9 +119,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .delete('/queue-testdata4')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a7c4efc4-0003-0048-6120-b613f2000000',
+  'x-ms-request-id': '9a762c4c-0003-0045-4ba6-72ed43000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:37 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -129,9 +129,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata5?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '88719196-0003-003e-330e-e159ef000000',
+  'x-ms-request-id': '1092bdd2-0003-0049-2983-1dbf2c000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:37 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:32 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -141,9 +141,9 @@ nock('https://xplat.queue.core.windows.net:443')
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4253dec5-0003-0046-0df8-5e8bad000000',
+  'x-ms-request-id': 'b72d4747-0003-0025-0db9-75f1b4000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:36 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:33 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -151,9 +151,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .put('/queue-testdata6')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '18d1b9a1-0003-003c-7ffc-960de9000000',
+  'x-ms-request-id': '1a30d27b-0003-002a-1460-fb9043000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:39 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:34 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -161,9 +161,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .put('/queue-testdata7')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3c4be88c-0003-0030-703a-fca604000000',
+  'x-ms-request-id': '075a1a25-0003-002f-6769-493a76000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:40 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:34 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -173,9 +173,9 @@ nock('https://xplat.queue.core.windows.net:443')
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '554a92fb-0003-0011-3fc3-058e99000000',
+  'x-ms-request-id': '3b03448a-0003-0033-1c7a-7a07c3000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:40 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:35 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -184,10 +184,10 @@ nock('https://xplat.queue.core.windows.net:443')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1c865f22-0003-002e-370a-06e2ec000000',
+  'x-ms-request-id': '4303222b-0003-0037-4877-9b91f9000000',
   'x-ms-version': '2014-02-14',
   'x-ms-approximate-messages-count': '0',
-  date: 'Thu, 27 Nov 2014 09:38:42 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:37 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -195,9 +195,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .delete('/queue-testdata6')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '953a64a0-0003-0037-20e5-830a46000000',
+  'x-ms-request-id': '55868ec1-0003-0000-7759-429261000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:42 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -206,11 +206,11 @@ nock('https://xplat.queue.core.windows.net:443')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a54befd0-0003-0040-16b8-6f6a9b000000',
+  'x-ms-request-id': '001519dc-0003-0040-72fe-52b2cd000000',
   'x-ms-version': '2014-02-14',
   'x-ms-approximate-messages-count': '0',
   'x-ms-meta-class': 'test',
-  date: 'Thu, 27 Nov 2014 09:38:42 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:37 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -218,9 +218,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .delete('/queue-testdata7')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cfad2b71-0003-0049-7fe1-586ce0000000',
+  'x-ms-request-id': '86d7a46d-0003-001d-0c6e-d0b5f2000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:43 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:38 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -228,9 +228,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .put('/queue-testdata8')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a1719945-0003-0016-26de-e11d07000000',
+  'x-ms-request-id': 'e9c0702a-0003-0021-5200-ff9732000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:44 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -239,9 +239,9 @@ nock('https://xplat.queue.core.windows.net:443')
 .post('/queue-testdata8/messages', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '27ec0e85-0003-000b-5d77-8c49aa000000',
+  'x-ms-request-id': '45a632e4-0003-0011-2e03-1f2f81000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:44 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -250,55 +250,55 @@ nock('https://xplat.queue.core.windows.net:443')
 .post('/queue-testdata8/messages', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cb81210a-0003-0028-7176-a9ef48000000',
+  'x-ms-request-id': '8c72a63e-0003-0002-6761-1d7209000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:45 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.queue.core.windows.net:443')
   .get('/queue-testdata8/messages?numofmessages=1&peekonly=true')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>23cac68e-e3af-47c3-9e8e-b2bc9c901c28</MessageId><InsertionTime>Thu, 27 Nov 2014 09:38:45 GMT</InsertionTime><ExpirationTime>Thu, 04 Dec 2014 09:38:45 GMT</ExpirationTime><DequeueCount>0</DequeueCount><MessageText>aGkgdGhlcmU=</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>4fee5c79-3c05-40b6-ad2f-fb5dc4c63cd1</MessageId><InsertionTime>Fri, 13 Mar 2015 04:37:39 GMT</InsertionTime><ExpirationTime>Fri, 20 Mar 2015 04:37:39 GMT</ExpirationTime><DequeueCount>0</DequeueCount><MessageText>aGkgdGhlcmU=</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '684e4ee7-0003-0031-3ff5-4df9ec000000',
+  'x-ms-request-id': '2f00a5f2-0003-002e-7083-5542ae000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:46 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.queue.core.windows.net:443')
   .get('/queue-testdata8/messages')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>23cac68e-e3af-47c3-9e8e-b2bc9c901c28</MessageId><InsertionTime>Thu, 27 Nov 2014 09:38:45 GMT</InsertionTime><ExpirationTime>Thu, 04 Dec 2014 09:38:45 GMT</ExpirationTime><DequeueCount>1</DequeueCount><PopReceipt>AgAAAAMAAAAAAAAA0TKXAyYK0AE=</PopReceipt><TimeNextVisible>Thu, 27 Nov 2014 09:39:17 GMT</TimeNextVisible><MessageText>aGkgdGhlcmU=</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>4fee5c79-3c05-40b6-ad2f-fb5dc4c63cd1</MessageId><InsertionTime>Fri, 13 Mar 2015 04:37:39 GMT</InsertionTime><ExpirationTime>Fri, 20 Mar 2015 04:37:39 GMT</ExpirationTime><DequeueCount>1</DequeueCount><PopReceipt>AgAAAAMAAAAAAAAAc2HYgkdd0AE=</PopReceipt><TimeNextVisible>Fri, 13 Mar 2015 04:38:11 GMT</TimeNextVisible><MessageText>aGkgdGhlcmU=</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6c09ae61-0003-0012-790e-7eedba000000',
+  'x-ms-request-id': '8bf06492-0003-0047-27e2-fcad69000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:47 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.queue.core.windows.net:443')
-  .delete('/queue-testdata8/messages/23cac68e-e3af-47c3-9e8e-b2bc9c901c28?popreceipt=AgAAAAMAAAAAAAAA0TKXAyYK0AE%3D')
+  .delete('/queue-testdata8/messages/4fee5c79-3c05-40b6-ad2f-fb5dc4c63cd1?popreceipt=AgAAAAMAAAAAAAAAc2HYgkdd0AE%3D')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b1d29f15-0003-001b-7434-e794e2000000',
+  'x-ms-request-id': '7e2ec6d8-0003-004b-4704-abc349000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:47 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:41 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.queue.core.windows.net:443')
   .get('/queue-testdata8/messages')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>c6bb2387-3439-4850-8d87-6b26ce52fa37</MessageId><InsertionTime>Thu, 27 Nov 2014 09:38:46 GMT</InsertionTime><ExpirationTime>Thu, 04 Dec 2014 09:38:46 GMT</ExpirationTime><DequeueCount>1</DequeueCount><PopReceipt>AgAAAAMAAAAAAAAAoVl3BCYK0AE=</PopReceipt><TimeNextVisible>Thu, 27 Nov 2014 09:39:19 GMT</TimeNextVisible><MessageText>YnllIHRoZXJl</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>6e122f62-c828-4e3c-9a3d-6e8270055799</MessageId><InsertionTime>Fri, 13 Mar 2015 04:37:40 GMT</InsertionTime><ExpirationTime>Fri, 20 Mar 2015 04:37:40 GMT</ExpirationTime><DequeueCount>1</DequeueCount><PopReceipt>AgAAAAMAAAAAAAAAIVOTg0dd0AE=</PopReceipt><TimeNextVisible>Fri, 13 Mar 2015 04:38:12 GMT</TimeNextVisible><MessageText>YnllIHRoZXJl</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ca81fc16-0003-004c-493d-c1aabd000000',
+  'x-ms-request-id': '7fa211ef-0003-003c-672a-67f40b000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:48 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -306,9 +306,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .delete('/queue-testdata8/messages')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '67b18cd6-0003-002d-7259-1799ec000000',
+  'x-ms-request-id': '3141cc3b-0003-0018-31c6-00e864000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:50 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -318,9 +318,9 @@ nock('https://xplat.queue.core.windows.net:443')
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5bfeab40-0003-0036-2173-21be4d000000',
+  'x-ms-request-id': '77f10a2d-0003-0030-1012-0c5c74000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:50 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -329,10 +329,10 @@ nock('https://xplat.queue.core.windows.net:443')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8f29df51-0003-002b-4807-881d1f000000',
+  'x-ms-request-id': '718193e3-0003-0035-3f6b-d05f3c000000',
   'x-ms-version': '2014-02-14',
   'x-ms-approximate-messages-count': '0',
-  date: 'Thu, 27 Nov 2014 09:38:51 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:44 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -340,9 +340,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .delete('/queue-testdata8')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'bf613919-0003-0020-5872-9a5886000000',
+  'x-ms-request-id': 'ef1ab467-0003-0039-2487-9c2ca8000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:51 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:43 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -350,9 +350,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata9?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3dd646c3-0003-0001-0e9a-d48e67000000',
+  'x-ms-request-id': '507e2ce0-0003-003e-5154-104b73000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:52 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:45 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -360,9 +360,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .put('/queue-testdata10')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd8f4ac08-0003-0032-377a-f404c5000000',
+  'x-ms-request-id': '57a69dd9-0003-0042-0d1f-676f6f000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:52 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:46 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -371,9 +371,9 @@ nock('https://xplat.queue.core.windows.net:443')
 .post('/queue-testdata10/messages', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2fde9a80-0003-0013-2595-c29da4000000',
+  'x-ms-request-id': '3ab040b6-0003-0046-5e48-758ed3000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:54 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:46 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -382,55 +382,55 @@ nock('https://xplat.queue.core.windows.net:443')
 .post('/queue-testdata10/messages', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '91aff279-0003-0008-5128-68bd03000000',
+  'x-ms-request-id': '7c5b038c-0003-0023-6f35-3812d1000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:54 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:46 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.queue.core.windows.net:443')
   .get('/queue-testdata10/messages?numofmessages=1&peekonly=true')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>e77e4c57-570f-45af-98b9-1da6e5834063</MessageId><InsertionTime>Thu, 27 Nov 2014 09:38:54 GMT</InsertionTime><ExpirationTime>Thu, 04 Dec 2014 09:38:54 GMT</ExpirationTime><DequeueCount>0</DequeueCount><MessageText>aGkgdGhlcmU=</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>238a508d-5b80-4f22-a0c0-e3005fd6ef07</MessageId><InsertionTime>Fri, 13 Mar 2015 04:37:46 GMT</InsertionTime><ExpirationTime>Fri, 20 Mar 2015 04:37:46 GMT</ExpirationTime><DequeueCount>0</DequeueCount><MessageText>aGkgdGhlcmU=</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0cdd9d04-0003-004d-4744-87f5a3000000',
+  'x-ms-request-id': '56e08a87-0003-0027-5f79-0104c4000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:55 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:47 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.queue.core.windows.net:443')
   .get('/queue-testdata10/messages')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>e77e4c57-570f-45af-98b9-1da6e5834063</MessageId><InsertionTime>Thu, 27 Nov 2014 09:38:54 GMT</InsertionTime><ExpirationTime>Thu, 04 Dec 2014 09:38:54 GMT</ExpirationTime><DequeueCount>1</DequeueCount><PopReceipt>AgAAAAMAAAAAAAAAofTXCCYK0AE=</PopReceipt><TimeNextVisible>Thu, 27 Nov 2014 09:39:26 GMT</TimeNextVisible><MessageText>aGkgdGhlcmU=</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>238a508d-5b80-4f22-a0c0-e3005fd6ef07</MessageId><InsertionTime>Fri, 13 Mar 2015 04:37:46 GMT</InsertionTime><ExpirationTime>Fri, 20 Mar 2015 04:37:46 GMT</ExpirationTime><DequeueCount>1</DequeueCount><PopReceipt>AgAAAAMAAAAAAAAAXMY+h0dd0AE=</PopReceipt><TimeNextVisible>Fri, 13 Mar 2015 04:38:18 GMT</TimeNextVisible><MessageText>aGkgdGhlcmU=</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6cdc540e-0003-001a-659b-722e46000000',
+  'x-ms-request-id': '8ea85a7f-0003-002c-65af-750d3d000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:56 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:48 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.queue.core.windows.net:443')
-  .delete('/queue-testdata10/messages/e77e4c57-570f-45af-98b9-1da6e5834063?popreceipt=AgAAAAMAAAAAAAAAofTXCCYK0AE%3D')
+  .delete('/queue-testdata10/messages/238a508d-5b80-4f22-a0c0-e3005fd6ef07?popreceipt=AgAAAAMAAAAAAAAAXMY%2Bh0dd0AE%3D')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1f19373c-0003-0023-59b2-e1c6e2000000',
+  'x-ms-request-id': 'caf24edb-0003-0044-124c-3b163d000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:56 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:48 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.queue.core.windows.net:443')
   .get('/queue-testdata10/messages')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>d676d239-28e6-427e-af80-a3da1fe112e5</MessageId><InsertionTime>Thu, 27 Nov 2014 09:38:55 GMT</InsertionTime><ExpirationTime>Thu, 04 Dec 2014 09:38:55 GMT</ExpirationTime><DequeueCount>1</DequeueCount><PopReceipt>AgAAAAMAAAAAAAAAYUe/CSYK0AE=</PopReceipt><TimeNextVisible>Thu, 27 Nov 2014 09:39:28 GMT</TimeNextVisible><MessageText>YnllIHRoZXJl</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>eab6d926-4138-4264-be04-c9eb86c4f22f</MessageId><InsertionTime>Fri, 13 Mar 2015 04:37:47 GMT</InsertionTime><ExpirationTime>Fri, 20 Mar 2015 04:37:47 GMT</ExpirationTime><DequeueCount>1</DequeueCount><PopReceipt>AgAAAAMAAAAAAAAAKbj5h0dd0AE=</PopReceipt><TimeNextVisible>Fri, 13 Mar 2015 04:38:19 GMT</TimeNextVisible><MessageText>YnllIHRoZXJl</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '51ba94ed-0003-002c-7206-7484a4000000',
+  'x-ms-request-id': '84406aec-0003-0048-5966-72f6be000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:58 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:49 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -438,9 +438,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .delete('/queue-testdata10/messages')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b4ecb2e9-0003-0035-61c5-a791f6000000',
+  'x-ms-request-id': 'e9013bbb-0003-004d-61e5-3a4a95000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:58 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:49 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -450,9 +450,9 @@ nock('https://xplat.queue.core.windows.net:443')
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b5a8122d-0003-0002-2481-ae7a7d000000',
+  'x-ms-request-id': 'db29cc3e-0003-001f-1b9a-3a66ef000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:38:58 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:50 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -461,10 +461,10 @@ nock('https://xplat.queue.core.windows.net:443')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cfb019ba-0003-0047-4a26-76c910000000',
+  'x-ms-request-id': 'd4331987-0003-0014-361c-44b8ba000000',
   'x-ms-version': '2014-02-14',
   'x-ms-approximate-messages-count': '0',
-  date: 'Thu, 27 Nov 2014 09:38:59 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:51 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -472,9 +472,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .delete('/queue-testdata10')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '118869d4-0003-0000-12eb-77def1000000',
+  'x-ms-request-id': '85d71e26-0003-0041-5722-ca089c000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:01 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:51 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -482,9 +482,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata11?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5ccbb5d7-0003-001d-592d-818ea2000000',
+  'x-ms-request-id': 'b72d4ff4-0003-0025-19b9-75f1b4000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:01 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:52 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -492,9 +492,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .put('/queue-testdata12')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a85471eb-0003-0025-7ffa-f61922000000',
+  'x-ms-request-id': '1a30eb99-0003-002a-1c60-fb9043000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:02 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:53 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -503,9 +503,9 @@ nock('https://xplat.queue.core.windows.net:443')
 .post('/queue-testdata12/messages', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b346da80-0003-002f-32cb-3d16ee000000',
+  'x-ms-request-id': '075a3b18-0003-002f-5869-493a76000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:02 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:53 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -514,55 +514,55 @@ nock('https://xplat.queue.core.windows.net:443')
 .post('/queue-testdata12/messages', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ca05c309-0003-000f-4ed2-df81a4000000',
+  'x-ms-request-id': '3b034a58-0003-0033-2a7a-7a07c3000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:03 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:54 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.queue.core.windows.net:443')
   .get('/queue-testdata12/messages?numofmessages=1&peekonly=true')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>6179906e-5728-48eb-ae30-5b08f4c42a31</MessageId><InsertionTime>Thu, 27 Nov 2014 09:39:03 GMT</InsertionTime><ExpirationTime>Thu, 04 Dec 2014 09:39:03 GMT</ExpirationTime><DequeueCount>0</DequeueCount><MessageText>hi there</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>10917884-a975-472f-88d4-d22c0771bca7</MessageId><InsertionTime>Fri, 13 Mar 2015 04:37:54 GMT</InsertionTime><ExpirationTime>Fri, 20 Mar 2015 04:37:54 GMT</ExpirationTime><DequeueCount>0</DequeueCount><MessageText>hi there</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '328daf7c-0003-0041-486c-c71fe7000000',
+  'x-ms-request-id': '43034273-0003-0037-7b77-9b91f9000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:04 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:56 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.queue.core.windows.net:443')
   .get('/queue-testdata12/messages')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>6179906e-5728-48eb-ae30-5b08f4c42a31</MessageId><InsertionTime>Thu, 27 Nov 2014 09:39:03 GMT</InsertionTime><ExpirationTime>Thu, 04 Dec 2014 09:39:03 GMT</ExpirationTime><DequeueCount>1</DequeueCount><PopReceipt>AgAAAAMAAAAAAAAAYeIfDiYK0AE=</PopReceipt><TimeNextVisible>Thu, 27 Nov 2014 09:39:35 GMT</TimeNextVisible><MessageText>hi there</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>10917884-a975-472f-88d4-d22c0771bca7</MessageId><InsertionTime>Fri, 13 Mar 2015 04:37:54 GMT</InsertionTime><ExpirationTime>Fri, 20 Mar 2015 04:37:54 GMT</ExpirationTime><DequeueCount>1</DequeueCount><PopReceipt>AgAAAAMAAAAAAAAAUrmZi0dd0AE=</PopReceipt><TimeNextVisible>Fri, 13 Mar 2015 04:38:25 GMT</TimeNextVisible><MessageText>hi there</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '64c5d5a0-0003-000d-163e-8d9dfe000000',
+  'x-ms-request-id': '5586aedb-0003-0000-6a59-429261000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:05 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:55 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.queue.core.windows.net:443')
-  .delete('/queue-testdata12/messages/6179906e-5728-48eb-ae30-5b08f4c42a31?popreceipt=AgAAAAMAAAAAAAAAYeIfDiYK0AE%3D')
+  .delete('/queue-testdata12/messages/10917884-a975-472f-88d4-d22c0771bca7?popreceipt=AgAAAAMAAAAAAAAAUrmZi0dd0AE%3D')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ca61f874-0003-0003-7d67-5df96d000000',
+  'x-ms-request-id': '001532ef-0003-0040-62fe-52b2cd000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:05 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:56 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.queue.core.windows.net:443')
   .get('/queue-testdata12/messages')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>b2acd417-45ce-4587-a625-e1a691bfc467</MessageId><InsertionTime>Thu, 27 Nov 2014 09:39:04 GMT</InsertionTime><ExpirationTime>Thu, 04 Dec 2014 09:39:04 GMT</ExpirationTime><DequeueCount>1</DequeueCount><PopReceipt>AgAAAAMAAAAAAAAA8Wz/DiYK0AE=</PopReceipt><TimeNextVisible>Thu, 27 Nov 2014 09:39:37 GMT</TimeNextVisible><MessageText>bye there</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>8b9d9bb1-2c68-482b-980c-3369454f8238</MessageId><InsertionTime>Fri, 13 Mar 2015 04:37:54 GMT</InsertionTime><ExpirationTime>Fri, 20 Mar 2015 04:37:54 GMT</ExpirationTime><DequeueCount>1</DequeueCount><PopReceipt>AgAAAAMAAAAAAAAA2u9PjEdd0AE=</PopReceipt><TimeNextVisible>Fri, 13 Mar 2015 04:38:27 GMT</TimeNextVisible><MessageText>bye there</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c4545529-0003-001f-540d-8e6a68000000',
+  'x-ms-request-id': '86d7b83b-0003-001d-296e-d0b5f2000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:06 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:57 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -570,9 +570,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .delete('/queue-testdata12/messages')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1ff6f3a8-0003-0015-04f4-fd9e25000000',
+  'x-ms-request-id': 'e9c0853e-0003-0021-5200-ff9732000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:07 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:58 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -582,9 +582,9 @@ nock('https://xplat.queue.core.windows.net:443')
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cbe15277-0003-0009-23af-324893000000',
+  'x-ms-request-id': '45a638ca-0003-0011-1803-1f2f81000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:07 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:58 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -593,10 +593,10 @@ nock('https://xplat.queue.core.windows.net:443')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '68cdd66c-0003-0026-79fa-3a34c8000000',
+  'x-ms-request-id': '8c72aad4-0003-0002-5c61-1d7209000000',
   'x-ms-version': '2014-02-14',
   'x-ms-approximate-messages-count': '0',
-  date: 'Thu, 27 Nov 2014 09:39:08 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:58 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -604,9 +604,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .delete('/queue-testdata12')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7e386675-0003-0043-7afe-d60213000000',
+  'x-ms-request-id': '2f00bd87-0003-002e-0183-5542ae000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:09 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:59 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -614,9 +614,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata13?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2c0d9e91-0003-0024-0278-5ca8d0000000',
+  'x-ms-request-id': '8bf07bb3-0003-0047-4ae2-fcad69000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:10 GMT' });
+  date: 'Fri, 13 Mar 2015 04:37:59 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -624,9 +624,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .put('/queue-testdata14')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '529d4859-0003-0019-522b-9d5738000000',
+  'x-ms-request-id': '7e2ed36a-0003-004b-4d04-abc349000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:10 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:00 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -635,9 +635,9 @@ nock('https://xplat.queue.core.windows.net:443')
 .post('/queue-testdata14/messages', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6be3b1cb-0003-0022-22eb-b3b0a9000000',
+  'x-ms-request-id': '7fa23860-0003-003c-1a2a-67f40b000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:11 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:00 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -646,55 +646,55 @@ nock('https://xplat.queue.core.windows.net:443')
 .post('/queue-testdata14/messages', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1d2d7973-0003-003f-6ec1-9c9903000000',
+  'x-ms-request-id': '3141d44c-0003-0018-42c6-00e864000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:11 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:01 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.queue.core.windows.net:443')
   .get('/queue-testdata14/messages?numofmessages=1&peekonly=true')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>6ba1ab7c-5f22-43c4-b0e5-5644b9f18a50</MessageId><InsertionTime>Thu, 27 Nov 2014 09:39:12 GMT</InsertionTime><ExpirationTime>Thu, 04 Dec 2014 09:39:12 GMT</ExpirationTime><DequeueCount>0</DequeueCount><MessageText>hi there</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>57ae7700-6a7c-4b02-95e5-a2cb8d13c4e4</MessageId><InsertionTime>Fri, 13 Mar 2015 04:38:01 GMT</InsertionTime><ExpirationTime>Fri, 20 Mar 2015 04:38:01 GMT</ExpirationTime><DequeueCount>0</DequeueCount><MessageText>hi there</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '04c48835-0003-000c-04d0-e960ac000000',
+  'x-ms-request-id': '77f111c1-0003-0030-1912-0c5c74000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:14 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:01 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.queue.core.windows.net:443')
   .get('/queue-testdata14/messages')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>6ba1ab7c-5f22-43c4-b0e5-5644b9f18a50</MessageId><InsertionTime>Thu, 27 Nov 2014 09:39:12 GMT</InsertionTime><ExpirationTime>Thu, 04 Dec 2014 09:39:12 GMT</ExpirationTime><DequeueCount>1</DequeueCount><PopReceipt>AgAAAAMAAAAAAAAAMRVjEyYK0AE=</PopReceipt><TimeNextVisible>Thu, 27 Nov 2014 09:39:44 GMT</TimeNextVisible><MessageText>hi there</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>57ae7700-6a7c-4b02-95e5-a2cb8d13c4e4</MessageId><InsertionTime>Fri, 13 Mar 2015 04:38:01 GMT</InsertionTime><ExpirationTime>Fri, 20 Mar 2015 04:38:01 GMT</ExpirationTime><DequeueCount>1</DequeueCount><PopReceipt>AgAAAAMAAAAAAAAAxSjoj0dd0AE=</PopReceipt><TimeNextVisible>Fri, 13 Mar 2015 04:38:33 GMT</TimeNextVisible><MessageText>hi there</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '41e643f8-0003-003d-2867-0a6082000000',
+  'x-ms-request-id': '71819d42-0003-0035-146b-d05f3c000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:13 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:03 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.queue.core.windows.net:443')
-  .delete('/queue-testdata14/messages/6ba1ab7c-5f22-43c4-b0e5-5644b9f18a50?popreceipt=AgAAAAMAAAAAAAAAMRVjEyYK0AE%3D')
+  .delete('/queue-testdata14/messages/57ae7700-6a7c-4b02-95e5-a2cb8d13c4e4?popreceipt=AgAAAAMAAAAAAAAAxSjoj0dd0AE%3D')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c614b632-0003-001e-5f2a-5d0a21000000',
+  'x-ms-request-id': 'ef1acc58-0003-0039-1287-9c2ca8000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:14 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:02 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.queue.core.windows.net:443')
   .get('/queue-testdata14/messages')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>9144d46b-3180-4234-bcd3-a91963c7d8c4</MessageId><InsertionTime>Thu, 27 Nov 2014 09:39:12 GMT</InsertionTime><ExpirationTime>Thu, 04 Dec 2014 09:39:12 GMT</ExpirationTime><DequeueCount>1</DequeueCount><PopReceipt>AgAAAAMAAAAAAAAAwZ9CFCYK0AE=</PopReceipt><TimeNextVisible>Thu, 27 Nov 2014 09:39:45 GMT</TimeNextVisible><MessageText>bye there</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>4934c709-3019-4dd3-8f3b-ec9a6273c545</MessageId><InsertionTime>Fri, 13 Mar 2015 04:38:02 GMT</InsertionTime><ExpirationTime>Fri, 20 Mar 2015 04:38:02 GMT</ExpirationTime><DequeueCount>1</DequeueCount><PopReceipt>AgAAAAMAAAAAAAAAt3CfkEdd0AE=</PopReceipt><TimeNextVisible>Fri, 13 Mar 2015 04:38:34 GMT</TimeNextVisible><MessageText>bye there</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '856c4429-0003-0027-40b1-44afb3000000',
+  'x-ms-request-id': '507e31d5-0003-003e-4754-104b73000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:16 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:04 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -702,9 +702,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .delete('/queue-testdata14/messages')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2173a115-0003-0044-44e8-749a1b000000',
+  'x-ms-request-id': '57a6a359-0003-0042-181f-676f6f000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:16 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:05 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -714,9 +714,9 @@ nock('https://xplat.queue.core.windows.net:443')
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f5b449ed-0003-0039-11d3-485872000000',
+  'x-ms-request-id': '3ab04c12-0003-0046-4848-758ed3000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:16 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:05 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -725,10 +725,10 @@ nock('https://xplat.queue.core.windows.net:443')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c5ac006e-0003-0042-36da-440ffa000000',
+  'x-ms-request-id': '7c5b2ce8-0003-0023-3335-3812d1000000',
   'x-ms-version': '2014-02-14',
   'x-ms-approximate-messages-count': '0',
-  date: 'Thu, 27 Nov 2014 09:39:17 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:05 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -736,9 +736,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .delete('/queue-testdata14')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e1fb008d-0003-004b-570e-25a0fd000000',
+  'x-ms-request-id': '56e09434-0003-0027-0479-0104c4000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:17 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:06 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -746,9 +746,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata15?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'bae056ce-0003-0018-358a-2770fa000000',
+  'x-ms-request-id': '8ea86026-0003-002c-07af-750d3d000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:18 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:07 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -756,9 +756,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .put('/queue-testdata16')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '632a421e-0003-0021-4028-5f3b70000000',
+  'x-ms-request-id': 'caf252de-0003-0044-094c-3b163d000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:19 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:07 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -767,9 +767,9 @@ nock('https://xplat.queue.core.windows.net:443')
 .post('/queue-testdata16/messages', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '032c481d-0003-002a-0c93-3561c5000000',
+  'x-ms-request-id': '84406f89-0003-0048-5566-72f6be000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:20 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:08 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -778,10 +778,10 @@ nock('https://xplat.queue.core.windows.net:443')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1fe700bc-0003-0033-0820-e85885000000',
+  'x-ms-request-id': 'e9014f50-0003-004d-07e5-3a4a95000000',
   'x-ms-version': '2014-02-14',
   'x-ms-approximate-messages-count': '1',
-  date: 'Thu, 27 Nov 2014 09:39:21 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:08 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -789,9 +789,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .delete('/queue-testdata16')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '07d1332d-0003-0014-1508-c65fb7000000',
+  'x-ms-request-id': 'f2274f56-0003-003d-6648-8f733d000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:22 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -799,9 +799,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata17?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '62a298dc-0003-0045-2d75-76e3b2000000',
+  'x-ms-request-id': 'cc5953b8-0003-001a-25c8-e1c973000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:23 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:10 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -809,9 +809,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata18?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e56bc71a-0003-003a-1fb0-152e76000000',
+  'x-ms-request-id': '2d659543-0003-001e-6a6d-8469af000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:23 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:10 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -819,9 +819,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .put('/queue-testdata18')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c40a8590-0003-0007-5c8b-469df1000000',
+  'x-ms-request-id': '76d38fcf-0003-004a-134f-00507a000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:23 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -829,9 +829,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .put('/queue-testdata18?comp=metadata')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6beee4c8-0003-0038-045d-e26f8f000000',
+  'x-ms-request-id': '289a0f29-0003-0013-03c3-b27b54000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:24 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:13 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -840,11 +840,11 @@ nock('https://xplat.queue.core.windows.net:443')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '56d8321a-0003-0005-5e0b-4ed292000000',
+  'x-ms-request-id': '211a7363-0003-0004-571a-3374ec000000',
   'x-ms-version': '2014-02-14',
   'x-ms-approximate-messages-count': '0',
   'x-ms-meta-uc8fcuba39uc774uc6b4ub2e4': 'test',
-  date: 'Thu, 27 Nov 2014 09:39:25 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:12 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -852,9 +852,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .delete('/queue-testdata18')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7acc58c5-0003-000e-51a1-35c797000000',
+  'x-ms-request-id': '590be9df-0003-0008-2037-e4b014000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:24 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:13 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -862,9 +862,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata19?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5e6f1972-0003-0017-22a4-94f133000000',
+  'x-ms-request-id': '9bffec8c-0003-000c-4cb1-973fd3000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:28 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:13 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -872,9 +872,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata20?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '33a725f2-0003-0034-7c40-58cb89000000',
+  'x-ms-request-id': '80d7d7d2-0003-0010-6de1-041442000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:27 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:14 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -882,9 +882,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .put('/queue-testdata20')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c3dee618-0003-0029-4da8-80ff58000000',
+  'x-ms-request-id': '3986c617-0003-0001-1c95-598ae2000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:28 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:15 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -892,9 +892,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .put('/queue-testdata20?comp=metadata')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '54c83e8b-0003-000a-3938-341393000000',
+  'x-ms-request-id': '2a0a0967-0003-0006-3ae2-dc35a5000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:30 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:14 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -903,11 +903,11 @@ nock('https://xplat.queue.core.windows.net:443')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '33aee294-0003-003b-193d-1532f5000000',
+  'x-ms-request-id': '3ab4cd1e-0003-0032-754a-48cdd2000000',
   'x-ms-version': '2014-02-14',
   'x-ms-approximate-messages-count': '0',
-  'x-ms-meta-class': 'test',
-  date: 'Thu, 27 Nov 2014 09:39:30 GMT' });
+  'x-ms-meta-class': 'Test',
+  date: 'Fri, 13 Mar 2015 04:38:15 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -916,11 +916,11 @@ nock('https://xplat.queue.core.windows.net:443')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '08ba96ae-0003-001c-517b-945986000000',
+  'x-ms-request-id': '0b8cef24-0003-0022-4bc0-80b4fe000000',
   'x-ms-version': '2014-02-14',
   'x-ms-approximate-messages-count': '0',
-  'x-ms-meta-class': 'test',
-  date: 'Thu, 27 Nov 2014 09:39:30 GMT' });
+  'x-ms-meta-class': 'Test',
+  date: 'Fri, 13 Mar 2015 04:38:17 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -928,9 +928,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .delete('/queue-testdata20')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6f35673e-0003-0010-3581-4af1c0000000',
+  'x-ms-request-id': '268000ca-0003-003b-5c85-7f5da7000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:30 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:17 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -938,77 +938,52 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata21?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1cb8a069-0003-0006-2921-d6e95b000000',
+  'x-ms-request-id': '741952d1-0003-003f-21ae-1ebea7000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:32 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:18 GMT' });
  return result; }],
 [function (nock) { 
+var result = 
+nock('https://xplat.queue.core.windows.net:443')
+  .head('/queue-testdata22?comp=metadata')
+  .reply(404, "", { 'transfer-encoding': 'chunked',
+  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'e9d29100-0003-001c-57a2-fe7fa9000000',
+  'x-ms-version': '2014-02-14',
+  date: 'Fri, 13 Mar 2015 04:38:18 GMT' });
+ return result; },
+function (nock) { 
 var result = 
 nock('https://xplat.queue.core.windows.net:443')
   .put('/queue-testdata22')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4629b804-0003-004a-3be1-2a0591000000',
+  'x-ms-request-id': 'f81a3cc1-0003-0020-150f-cc412d000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:32 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:18 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.queue.core.windows.net:443')
-  .get('/queue-testdata22/messages')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList />", { 'cache-control': 'no-cache',
+  .put('/queue-testdata22?comp=metadata')
+  .reply(204, "", { 'content-length': '0',
+  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '684d6702-0003-0024-06fb-3770b2000000',
+  'x-ms-version': '2014-02-14',
+  date: 'Fri, 13 Mar 2015 04:38:19 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://xplat.queue.core.windows.net:443')
+  .get('/queue-testdata22?comp=metadata')
+  .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4253f7d8-0003-0046-0cf8-5e8bad000000',
+  'x-ms-request-id': '2b14ce79-0003-0029-5228-7e8d81000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:33 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplat.queue.core.windows.net:443')
-  .filteringRequestBody(function (path) { return '*';})
-.post('/queue-testdata22/messages', '*')
-  .reply(201, "", { 'transfer-encoding': 'chunked',
-  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '18d1c947-0003-003c-6dfc-960de9000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:34 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplat.queue.core.windows.net:443')
-  .filteringRequestBody(function (path) { return '*';})
-.post('/queue-testdata22/messages', '*')
-  .reply(201, "", { 'transfer-encoding': 'chunked',
-  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3c4bfccf-0003-0030-103a-fca604000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:35 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplat.queue.core.windows.net:443')
-  .get('/queue-testdata22/messages?peekonly=true')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>17a2dca0-f044-4b59-be80-ecab12050e8a</MessageId><InsertionTime>Thu, 27 Nov 2014 09:39:35 GMT</InsertionTime><ExpirationTime>Thu, 04 Dec 2014 09:39:35 GMT</ExpirationTime><DequeueCount>0</DequeueCount><MessageText>bXNnMQ==</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/xml',
-  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '554a9e14-0003-0011-2cc3-058e99000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:35 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplat.queue.core.windows.net:443')
-  .get('/queue-testdata22/messages?numofmessages=2')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>17a2dca0-f044-4b59-be80-ecab12050e8a</MessageId><InsertionTime>Thu, 27 Nov 2014 09:39:35 GMT</InsertionTime><ExpirationTime>Thu, 04 Dec 2014 09:39:35 GMT</ExpirationTime><DequeueCount>1</DequeueCount><PopReceipt>AgAAAAMAAAAAAAAAsaECISYK0AE=</PopReceipt><TimeNextVisible>Thu, 27 Nov 2014 09:40:07 GMT</TimeNextVisible><MessageText>bXNnMQ==</MessageText></QueueMessage><QueueMessage><MessageId>488351eb-f063-4e5a-a046-61af7d25e3f4</MessageId><InsertionTime>Thu, 27 Nov 2014 09:39:35 GMT</InsertionTime><ExpirationTime>Thu, 04 Dec 2014 09:39:35 GMT</ExpirationTime><DequeueCount>1</DequeueCount><PopReceipt>AgAAAAMAAAAAAAAAsaECISYK0AE=</PopReceipt><TimeNextVisible>Thu, 27 Nov 2014 09:40:07 GMT</TimeNextVisible><MessageText>bXNnMg==</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/xml',
-  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1c866b5d-0003-002e-010a-06e2ec000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:37 GMT' });
+  'x-ms-approximate-messages-count': '0',
+  'x-ms-meta-color': 'blue,Orange,Red',
+  date: 'Fri, 13 Mar 2015 04:38:19 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1017,10 +992,11 @@ nock('https://xplat.queue.core.windows.net:443')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '953a7c7b-0003-0037-21e5-830a46000000',
+  'x-ms-request-id': '3cd74012-0003-0019-331a-838357000000',
   'x-ms-version': '2014-02-14',
-  'x-ms-approximate-messages-count': '2',
-  date: 'Thu, 27 Nov 2014 09:39:37 GMT' });
+  'x-ms-approximate-messages-count': '0',
+  'x-ms-meta-color': 'blue,Orange,Red',
+  date: 'Fri, 13 Mar 2015 04:38:21 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1028,9 +1004,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .delete('/queue-testdata22')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a54bfc38-0003-0040-6db8-6f6a9b000000',
+  'x-ms-request-id': '4b35ae0a-0003-000a-151d-d1ac5b000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:38 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:20 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1038,9 +1014,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata23?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cfad3d6d-0003-0049-72e1-586ce0000000',
+  'x-ms-request-id': '4764c370-0003-0036-31f7-7158d4000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:39 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:21 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -1048,9 +1024,21 @@ nock('https://xplat.queue.core.windows.net:443')
   .put('/queue-testdata24')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a171e6b6-0003-0016-41de-e11d07000000',
+  'x-ms-request-id': 'c21a0262-0003-0026-3d1d-bbbe61000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:39 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:23 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://xplat.queue.core.windows.net:443')
+  .get('/queue-testdata24/messages')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList />", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml',
+  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'ca736632-0003-002b-0f4c-4acce1000000',
+  'x-ms-version': '2014-02-14',
+  date: 'Fri, 13 Mar 2015 04:38:23 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1059,34 +1047,44 @@ nock('https://xplat.queue.core.windows.net:443')
 .post('/queue-testdata24/messages', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '27ec1f99-0003-000b-7b77-8c49aa000000',
+  'x-ms-request-id': '0ae11e73-0003-0043-4553-607bc7000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:40 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplat.queue.core.windows.net:443')
-  .get('/queue-testdata24/messages')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>5d32b738-22fe-486d-abbc-97bf2a7d6e72</MessageId><InsertionTime>Thu, 27 Nov 2014 09:39:40 GMT</InsertionTime><ExpirationTime>Thu, 04 Dec 2014 09:39:40 GMT</ExpirationTime><DequeueCount>1</DequeueCount><PopReceipt>AgAAAAMAAAAAAAAAkeutIyYK0AE=</PopReceipt><TimeNextVisible>Thu, 27 Nov 2014 09:40:11 GMT</TimeNextVisible><MessageText>aGkgdGhlcmU=</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/xml',
-  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cb815d96-0003-0028-3976-a9ef48000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:40 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:23 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.queue.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/queue-testdata24/messages/5d32b738-22fe-486d-abbc-97bf2a7d6e72?popreceipt=AgAAAAMAAAAAAAAAkeutIyYK0AE%3D&visibilitytimeout=10', '*')
-  .reply(204, "", { 'content-length': '0',
+.post('/queue-testdata24/messages', '*')
+  .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '684e69a1-0003-0031-77f5-4df9ec000000',
+  'x-ms-request-id': '85d52d55-0003-0034-55a0-71e422000000',
   'x-ms-version': '2014-02-14',
-  'x-ms-popreceipt': 'AwAAAAMAAAAAAAAAEbAzGCYK0AEBAAAA',
-  'x-ms-time-next-visible': 'Thu, 27 Nov 2014 09:39:52 GMT',
-  date: 'Thu, 27 Nov 2014 09:39:42 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:24 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://xplat.queue.core.windows.net:443')
+  .get('/queue-testdata24/messages?peekonly=true')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>33e4513a-76dd-47f6-84cf-9f8fdd540264</MessageId><InsertionTime>Fri, 13 Mar 2015 04:38:24 GMT</InsertionTime><ExpirationTime>Fri, 20 Mar 2015 04:38:24 GMT</ExpirationTime><DequeueCount>0</DequeueCount><MessageText>bXNnMQ==</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml',
+  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'da9d3798-0003-000e-51f2-1a2a45000000',
+  'x-ms-version': '2014-02-14',
+  date: 'Fri, 13 Mar 2015 04:38:25 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://xplat.queue.core.windows.net:443')
+  .get('/queue-testdata24/messages?numofmessages=2')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>33e4513a-76dd-47f6-84cf-9f8fdd540264</MessageId><InsertionTime>Fri, 13 Mar 2015 04:38:24 GMT</InsertionTime><ExpirationTime>Fri, 20 Mar 2015 04:38:24 GMT</ExpirationTime><DequeueCount>1</DequeueCount><PopReceipt>AgAAAAMAAAAAAAAAxKC1nUdd0AE=</PopReceipt><TimeNextVisible>Fri, 13 Mar 2015 04:38:56 GMT</TimeNextVisible><MessageText>bXNnMQ==</MessageText></QueueMessage><QueueMessage><MessageId>3cce1522-99f5-43e2-80fe-6b6baf3e4070</MessageId><InsertionTime>Fri, 13 Mar 2015 04:38:25 GMT</InsertionTime><ExpirationTime>Fri, 20 Mar 2015 04:38:25 GMT</ExpirationTime><DequeueCount>1</DequeueCount><PopReceipt>AgAAAAMAAAAAAAAAxKC1nUdd0AE=</PopReceipt><TimeNextVisible>Fri, 13 Mar 2015 04:38:56 GMT</TimeNextVisible><MessageText>bXNnMg==</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml',
+  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'eb8a6a08-0003-0012-2a83-2511fa000000',
+  'x-ms-version': '2014-02-14',
+  date: 'Fri, 13 Mar 2015 04:38:25 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1095,10 +1093,10 @@ nock('https://xplat.queue.core.windows.net:443')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6c09c56b-0003-0012-430e-7eedba000000',
+  'x-ms-request-id': '7adf0573-0003-0003-2895-c5b321000000',
   'x-ms-version': '2014-02-14',
-  'x-ms-approximate-messages-count': '1',
-  date: 'Thu, 27 Nov 2014 09:39:42 GMT' });
+  'x-ms-approximate-messages-count': '2',
+  date: 'Fri, 13 Mar 2015 04:38:26 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1106,9 +1104,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .delete('/queue-testdata24')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b1d2ba62-0003-001b-2634-e794e2000000',
+  'x-ms-request-id': '397fe60a-0003-001b-6415-86d8da000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:43 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:27 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1116,31 +1114,77 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata25?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ca820f6f-0003-004c-6d3d-c1aabd000000',
+  'x-ms-request-id': '85d72792-0003-0041-2f22-ca089c000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:44 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:27 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://xplat.queue.core.windows.net:443')
+  .put('/queue-testdata26')
+  .reply(201, "", { 'transfer-encoding': 'chunked',
+  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '9a7638d4-0003-0045-77a6-72ed43000000',
+  'x-ms-version': '2014-02-14',
+  date: 'Fri, 13 Mar 2015 04:38:28 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://xplat.queue.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/queue-testdata26/messages/mymsg?popreceipt=AgAAAAEAAACucgAAvMW8%2BdqjzAE%3D&visibilitytimeout=10', '*')
-  .reply(404, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>QueueNotFound</Code><Message>The specified queue does not exist.\nRequestId:67b1d888-0003-002d-0559-1799ec000000\nTime:2014-11-27T09:39:45.8931049Z</Message></Error>", { 'content-length': '217',
+.post('/queue-testdata26/messages', '*')
+  .reply(201, "", { 'transfer-encoding': 'chunked',
+  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '1092cb61-0003-0049-5683-1dbf2c000000',
+  'x-ms-version': '2014-02-14',
+  date: 'Fri, 13 Mar 2015 04:38:29 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://xplat.queue.core.windows.net:443')
+  .get('/queue-testdata26/messages')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><QueueMessagesList><QueueMessage><MessageId>5b3d4714-ad61-4923-87c7-718df04fc953</MessageId><InsertionTime>Fri, 13 Mar 2015 04:38:29 GMT</InsertionTime><ExpirationTime>Fri, 20 Mar 2015 04:38:29 GMT</ExpirationTime><DequeueCount>1</DequeueCount><PopReceipt>AgAAAAMAAAAAAAAAtOHhn0dd0AE=</PopReceipt><TimeNextVisible>Fri, 13 Mar 2015 04:39:00 GMT</TimeNextVisible><MessageText>aGkgdGhlcmU=</MessageText></QueueMessage></QueueMessagesList>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '67b1d888-0003-002d-0559-1799ec000000',
+  'x-ms-request-id': 'b72d5ea1-0003-0025-2ab9-75f1b4000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:45 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:29 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://xplat.queue.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.put('/queue-testdata26/messages/5b3d4714-ad61-4923-87c7-718df04fc953?popreceipt=AgAAAAMAAAAAAAAAtOHhn0dd0AE%3D&visibilitytimeout=10', '*')
+  .reply(204, "", { 'content-length': '0',
+  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '1a311a29-0003-002a-1460-fb9043000000',
+  'x-ms-version': '2014-02-14',
+  'x-ms-popreceipt': 'AwAAAAMAAAAAAAAAWEhUlEdd0AEBAAAA',
+  'x-ms-time-next-visible': 'Fri, 13 Mar 2015 04:38:40 GMT',
+  date: 'Fri, 13 Mar 2015 04:38:30 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata26?comp=metadata')
-  .reply(404, "", { 'transfer-encoding': 'chunked',
+  .reply(200, "", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5bfeb6da-0003-0036-4273-21be4d000000',
+  'x-ms-request-id': '5586f503-0003-0000-4359-429261000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:45 GMT' });
+  'x-ms-approximate-messages-count': '1',
+  date: 'Fri, 13 Mar 2015 04:38:30 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://xplat.queue.core.windows.net:443')
+  .delete('/queue-testdata26')
+  .reply(204, "", { 'content-length': '0',
+  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '00155de8-0003-0040-4afe-52b2cd000000',
+  'x-ms-version': '2014-02-14',
+  date: 'Fri, 13 Mar 2015 04:38:31 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1148,19 +1192,31 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata27?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8f29eb66-0003-002b-5907-881d1f000000',
+  'x-ms-request-id': '86d7db86-0003-001d-466e-d0b5f2000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:46 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:33 GMT' });
  return result; }],
 [function (nock) { 
+var result = 
+nock('https://xplat.queue.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.put('/queue-testdata28/messages/mymsg?popreceipt=AgAAAAEAAACucgAAvMW8%2BdqjzAE%3D&visibilitytimeout=10', '*')
+  .reply(404, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>QueueNotFound</Code><Message>The specified queue does not exist.\nRequestId:e9c0aa79-0003-0021-0a00-ff9732000000\nTime:2015-03-13T04:38:33.5396894Z</Message></Error>", { 'content-length': '217',
+  'content-type': 'application/xml',
+  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'e9c0aa79-0003-0021-0a00-ff9732000000',
+  'x-ms-version': '2014-02-14',
+  date: 'Fri, 13 Mar 2015 04:38:33 GMT' });
+ return result; },
+function (nock) { 
 var result = 
 nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata28?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'bf6145b9-0003-0020-7172-9a5886000000',
+  'x-ms-request-id': '45a6416b-0003-0011-5603-1f2f81000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:47 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:33 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1168,9 +1224,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata29?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3dd6570a-0003-0001-3a9a-d48e67000000',
+  'x-ms-request-id': '8c72b33d-0003-0002-3161-1d7209000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:48 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:33 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -1178,9 +1234,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata30?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd8f4c675-0003-0032-247a-f404c5000000',
+  'x-ms-request-id': '2f00f0ea-0003-002e-6183-5542ae000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:47 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:34 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1188,9 +1244,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata31?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2fdeae3e-0003-0013-4f95-c29da4000000',
+  'x-ms-request-id': '8bf0a283-0003-0047-4ee2-fcad69000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:49 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:34 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -1198,53 +1254,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata32?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '91b002b0-0003-0008-4928-68bd03000000',
+  'x-ms-request-id': '7e2ee786-0003-004b-5f04-abc349000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:50 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplat.queue.core.windows.net:443')
-  .put('/queue-testdata32')
-  .reply(201, "", { 'transfer-encoding': 'chunked',
-  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0cddba2a-0003-004d-3d44-87f5a3000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:50 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplat.queue.core.windows.net:443')
-  .head('/queue-testdata32?comp=metadata')
-  .reply(200, "", { 'cache-control': 'no-cache',
-  'transfer-encoding': 'chunked',
-  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6cdc6846-0003-001a-5f9b-722e46000000',
-  'x-ms-version': '2014-02-14',
-  'x-ms-approximate-messages-count': '0',
-  date: 'Thu, 27 Nov 2014 09:39:52 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplat.queue.core.windows.net:443')
-  .head('/queue-testdata32?comp=metadata')
-  .reply(200, "", { 'cache-control': 'no-cache',
-  'transfer-encoding': 'chunked',
-  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1f195cde-0003-0023-46b2-e1c6e2000000',
-  'x-ms-version': '2014-02-14',
-  'x-ms-approximate-messages-count': '0',
-  date: 'Thu, 27 Nov 2014 09:39:52 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplat.queue.core.windows.net:443')
-  .delete('/queue-testdata32')
-  .reply(204, "", { 'content-length': '0',
-  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '51baa732-0003-002c-0406-7484a4000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:54 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:35 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1252,9 +1264,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata33?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b4ecfdd0-0003-0035-70c5-a791f6000000',
+  'x-ms-request-id': '7fa294e3-0003-003c-6f2a-67f40b000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:53 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:36 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -1262,9 +1274,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata34?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b5a8220e-0003-0002-4b81-ae7a7d000000',
+  'x-ms-request-id': '3141e511-0003-0018-25c6-00e864000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:53 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1272,9 +1284,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .put('/queue-testdata34')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cfb05ac2-0003-0047-3926-76c910000000',
+  'x-ms-request-id': '77f12b0e-0003-0030-5e12-0c5c74000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:55 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:37 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1283,10 +1295,22 @@ nock('https://xplat.queue.core.windows.net:443')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1188a859-0003-0000-50eb-77def1000000',
+  'x-ms-request-id': '7181bbee-0003-0035-206b-d05f3c000000',
   'x-ms-version': '2014-02-14',
   'x-ms-approximate-messages-count': '0',
-  date: 'Thu, 27 Nov 2014 09:39:56 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:38 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://xplat.queue.core.windows.net:443')
+  .head('/queue-testdata34?comp=metadata')
+  .reply(200, "", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'ef1b03d8-0003-0039-3487-9c2ca8000000',
+  'x-ms-version': '2014-02-14',
+  'x-ms-approximate-messages-count': '0',
+  date: 'Fri, 13 Mar 2015 04:38:38 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1294,19 +1318,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .delete('/queue-testdata34')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5ccbcaf6-0003-001d-052d-818ea2000000',
+  'x-ms-request-id': '507e3a08-0003-003e-1454-104b73000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:56 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplat.queue.core.windows.net:443')
-  .head('/queue-testdata34?comp=metadata')
-  .reply(404, "", { 'transfer-encoding': 'chunked',
-  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a85491ec-0003-0025-30fa-f61922000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:57 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1314,9 +1328,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata35?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b346ec1f-0003-002f-1fcb-3d16ee000000',
+  'x-ms-request-id': '57a6ae34-0003-0042-051f-676f6f000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:58 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:40 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -1324,19 +1338,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata36?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ca05d3f3-0003-000f-71d2-df81a4000000',
+  'x-ms-request-id': '3ab06c40-0003-0046-1448-758ed3000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:58 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplat.queue.core.windows.net:443')
-  .head('/queue-testdata36?comp=metadata')
-  .reply(404, "", { 'transfer-encoding': 'chunked',
-  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '328e192e-0003-0041-156c-c71fe7000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:39:59 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1344,9 +1348,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .put('/queue-testdata36')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '64c5ea73-0003-000d-543e-8d9dfe000000',
+  'x-ms-request-id': '7c5b7744-0003-0023-0635-3812d1000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:40:01 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1355,22 +1359,10 @@ nock('https://xplat.queue.core.windows.net:443')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ca62175d-0003-0003-4067-5df96d000000',
+  'x-ms-request-id': '56e0a7b2-0003-0027-2779-0104c4000000',
   'x-ms-version': '2014-02-14',
   'x-ms-approximate-messages-count': '0',
-  date: 'Thu, 27 Nov 2014 09:40:01 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplat.queue.core.windows.net:443')
-  .head('/queue-testdata36?comp=metadata')
-  .reply(200, "", { 'cache-control': 'no-cache',
-  'transfer-encoding': 'chunked',
-  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c45467bc-0003-001f-800d-8e6a68000000',
-  'x-ms-version': '2014-02-14',
-  'x-ms-approximate-messages-count': '0',
-  date: 'Thu, 27 Nov 2014 09:40:01 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:41 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1378,9 +1370,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .delete('/queue-testdata36')
   .reply(204, "", { 'content-length': '0',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1ff71c93-0003-0015-50f4-fd9e25000000',
+  'x-ms-request-id': '8ea86bb4-0003-002c-15af-750d3d000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:40:02 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1388,30 +1380,9 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata36?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cbe1a27f-0003-0009-03af-324893000000',
+  'x-ms-request-id': 'caf25aed-0003-0044-1f4c-3b163d000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:40:02 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplat.queue.core.windows.net:443')
-  .put('/queue-testdata36')
-  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>QueueBeingDeleted</Code><Message>The specified queue is being deleted.\nRequestId:68cde7d6-0003-0026-5efa-3a34c8000000\nTime:2014-11-27T09:40:04.1541969Z</Message></Error>", { 'content-length': '223',
-  'content-type': 'application/xml',
-  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '68cde7d6-0003-0026-5efa-3a34c8000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:40:03 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplat.queue.core.windows.net:443')
-  .head('/queue-testdata36?comp=metadata')
-  .reply(404, "", { 'transfer-encoding': 'chunked',
-  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7e38e92a-0003-0043-16fe-d60213000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:40:04 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1419,7 +1390,112 @@ nock('https://xplat.queue.core.windows.net:443')
   .head('/queue-testdata37?comp=metadata')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2c0dab66-0003-0024-5778-5ca8d0000000',
+  'x-ms-request-id': '84407754-0003-0048-1866-72f6be000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 27 Nov 2014 09:40:05 GMT' });
+  date: 'Fri, 13 Mar 2015 04:38:43 GMT' });
+ return result; }],
+[function (nock) { 
+var result = 
+nock('https://xplat.queue.core.windows.net:443')
+  .head('/queue-testdata38?comp=metadata')
+  .reply(404, "", { 'transfer-encoding': 'chunked',
+  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'e9017180-0003-004d-5be5-3a4a95000000',
+  'x-ms-version': '2014-02-14',
+  date: 'Fri, 13 Mar 2015 04:38:43 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://xplat.queue.core.windows.net:443')
+  .head('/queue-testdata38?comp=metadata')
+  .reply(404, "", { 'transfer-encoding': 'chunked',
+  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'f2275bed-0003-003d-3448-8f733d000000',
+  'x-ms-version': '2014-02-14',
+  date: 'Fri, 13 Mar 2015 04:38:44 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://xplat.queue.core.windows.net:443')
+  .put('/queue-testdata38')
+  .reply(201, "", { 'transfer-encoding': 'chunked',
+  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'cc595c93-0003-001a-73c8-e1c973000000',
+  'x-ms-version': '2014-02-14',
+  date: 'Fri, 13 Mar 2015 04:38:46 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://xplat.queue.core.windows.net:443')
+  .head('/queue-testdata38?comp=metadata')
+  .reply(200, "", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '2d659d45-0003-001e-7e6d-8469af000000',
+  'x-ms-version': '2014-02-14',
+  'x-ms-approximate-messages-count': '0',
+  date: 'Fri, 13 Mar 2015 04:38:45 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://xplat.queue.core.windows.net:443')
+  .head('/queue-testdata38?comp=metadata')
+  .reply(200, "", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '76d39d26-0003-004a-444f-00507a000000',
+  'x-ms-version': '2014-02-14',
+  'x-ms-approximate-messages-count': '0',
+  date: 'Fri, 13 Mar 2015 04:38:46 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://xplat.queue.core.windows.net:443')
+  .delete('/queue-testdata38')
+  .reply(204, "", { 'content-length': '0',
+  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '289a5397-0003-0013-06c3-b27b54000000',
+  'x-ms-version': '2014-02-14',
+  date: 'Fri, 13 Mar 2015 04:38:48 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://xplat.queue.core.windows.net:443')
+  .head('/queue-testdata38?comp=metadata')
+  .reply(404, "", { 'transfer-encoding': 'chunked',
+  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '211a837b-0003-0004-341a-3374ec000000',
+  'x-ms-version': '2014-02-14',
+  date: 'Fri, 13 Mar 2015 04:38:47 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://xplat.queue.core.windows.net:443')
+  .put('/queue-testdata38')
+  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>QueueBeingDeleted</Code><Message>The specified queue is being deleted.\nRequestId:590c0f5d-0003-0008-1837-e4b014000000\nTime:2015-03-13T04:38:48.9259828Z</Message></Error>", { 'content-length': '223',
+  'content-type': 'application/xml',
+  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '590c0f5d-0003-0008-1837-e4b014000000',
+  'x-ms-version': '2014-02-14',
+  date: 'Fri, 13 Mar 2015 04:38:48 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://xplat.queue.core.windows.net:443')
+  .head('/queue-testdata38?comp=metadata')
+  .reply(404, "", { 'transfer-encoding': 'chunked',
+  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '9bfff639-0003-000c-6bb1-973fd3000000',
+  'x-ms-version': '2014-02-14',
+  date: 'Fri, 13 Mar 2015 04:38:49 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://xplat.queue.core.windows.net:443')
+  .head('/queue-testdata39?comp=metadata')
+  .reply(404, "", { 'transfer-encoding': 'chunked',
+  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '80d7e08e-0003-0010-52e1-041442000000',
+  'x-ms-version': '2014-02-14',
+  date: 'Fri, 13 Mar 2015 04:38:49 GMT' });
  return result; }]];

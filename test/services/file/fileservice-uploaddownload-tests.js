@@ -555,7 +555,7 @@ describe('FileUploadDownload', function () {
         var uploadOptions = {storeBlobContentMD5: true, parallelOperationThreadCount: 5};
         fileService.createFileFromLocalFile(shareName, directoryName, fileName, localLargeFileName, uploadOptions, function (err) {
           assert.equal(err, null);
-          var downloadOptions = {validateContentMD5: true, parallelOperationThreadCount: 5, rangeStart: 100, rangeEnd: size - 200};
+          var downloadOptions = {useTransactionalMD5: true, parallelOperationThreadCount: 5, rangeStart: 100, rangeEnd: size - 200};
           fileService.getFileToLocalFile(shareName, directoryName, fileName, downloadFileName, downloadOptions, function (err, file) {
             assert.equal(err, null);
             assert.ok(file);
@@ -628,7 +628,7 @@ describe('FileUploadDownload', function () {
           assert.ok(file);
           assert.ok(uploadResponse.isSuccessful);
 
-          var downloadOptions = {validateContentMD5: true, parallelOperationThreadCount: 5, rangeStart: 100, rangeEnd: size - 200};
+          var downloadOptions = {useTransactionalMD5: true, parallelOperationThreadCount: 5, rangeStart: 100, rangeEnd: size - 200};
           fileService.getFileToStream(shareName, directoryName, fileName, fs.createWriteStream(downloadFileName), downloadOptions, function (downloadErr, file, downloadResponse) {
             assert.equal(downloadErr, null);
             assert.ok(downloadResponse.isSuccessful);
@@ -867,7 +867,7 @@ describe('FileUploadDownload', function () {
     });
 
     it('should work with zero size file', function(done) {
-      var fileOptions = { storeFileContentMD5: true};
+      var fileOptions = {storeFileContentMD5: true};
       fileService.createFileFromLocalFile(shareName, directoryName, fileName, zeroSizeFileName, fileOptions, function (err1) {
         assert.equal(err1, null);
 
@@ -1023,7 +1023,7 @@ describe('FileUploadDownload', function () {
       fileBuffer[0] = '1';
       var fileMD5 = writeFile(localFileName, fileBuffer);
 
-      var fileOptions = { storeFileContentMD5: true, useTransactionalMD5: true, contentType: 'text'};
+      var fileOptions = {storeFileContentMD5: true, useTransactionalMD5: true, contentType: 'text'};
       fileService.on('sendingRequestEvent', callback);
       fileService.createFileFromLocalFile(shareName, directoryName, fileName, localFileName, fileOptions, function (uploadError, fileResponse, uploadResponse) {
         fileService.removeAllListeners('sendingRequestEvent');
@@ -1053,7 +1053,7 @@ describe('FileUploadDownload', function () {
       fileBuffer[0] = '1';
       var fileMD5 = writeFile(localFileName, fileBuffer);
 
-      var fileOptions = { storeFileContentMD5: true, useTransactionalMD5: true, contentType: 'text'};
+      var fileOptions = {storeFileContentMD5: true, useTransactionalMD5: true, contentType: 'text'};
       fileService.on('sendingRequestEvent', callback);
       fileService.createFileFromLocalFile(shareName, directoryName, fileName, localFileName, fileOptions, function (uploadError, fileResponse, uploadResponse) {
         fileService.removeAllListeners('sendingRequestEvent');
@@ -1082,7 +1082,7 @@ describe('FileUploadDownload', function () {
     it('storeFileContentMD5/useTransactionalMD5 with text', function (done) {
       var data1 = 'Hello, World!';
 
-      var fileOptions = { storeFileContentMD5: true, useTransactionalMD5: true};
+      var fileOptions = {storeFileContentMD5: true, useTransactionalMD5: true};
       fileService.on('sendingRequestEvent', callback);
       fileService.createFileFromText(shareName, directoryName, fileName, data1, fileOptions, function (err) {
         fileService.removeAllListeners('sendingRequestEvent');

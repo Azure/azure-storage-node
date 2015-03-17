@@ -95,7 +95,7 @@ describe('FileUploadDownloadScale', function () {
               assert.equal(file.contentMD5, fileInfo.contentMD5);
               assert.equal(file.contentLength, fileInfo.size);
               var downloadFileName = fileName + '_download.tmp';
-              var downloadOptions = {validateContentMD5: true, parallelOperationThreadCount: 5};
+              var downloadOptions = {useTransactionalMD5: true, parallelOperationThreadCount: 5};
               fileService.getFileToLocalFile(shareName, directoryName, fileName, downloadFileName, downloadOptions, function(error, file) {
                 assert.equal(error, null);
                 assert.equal(file.contentMD5, fileInfo.contentMD5);

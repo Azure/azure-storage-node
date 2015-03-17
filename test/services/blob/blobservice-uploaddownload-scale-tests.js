@@ -87,16 +87,32 @@ describe('BlobServiceUploadDownloadScale', function () {
                 assert.equal(blob.contentMD5, fileInfo.contentMD5);
                 assert.equal(blob.contentLength, fileInfo.size);
                 var downloadFileName = blobName + '_download.tmp';
-                var downloadOptions = {validateContentMD5: true, parallelOperationThreadCount: 5};
-                blobService.getBlobToLocalFile(containerName, blobName, downloadFileName, downloadOptions, function(error, blob) {
+                var downloadOptions = {useTransactionalMD5: true, parallelOperationThreadCount: 5};
+                
+                // Test downloading to a local file.
+                blobService.getBlobToLocalFile(containerName, blobName, downloadFileName, downloadOptions, function (error, blob) {
                   assert.equal(error, null);
                   assert.equal(blob.contentMD5, fileInfo.contentMD5);
                   fs.stat(downloadFileName, function(error, stat) {
                     assert.equal(error, null);
                     assert.equal(stat.size, fileInfo.size);
-                    try { fs.unlinkSync(name); } catch (e) {}
-                    try { fs.unlinkSync(downloadFileName); } catch (e) {}
-                    done();
+                    
+                    // Test downloading to a readable stream and pipe.
+                    var writable = fs.createWriteStream(downloadFileName);
+                    blobService.createReadStream(containerName, blobName, downloadOptions, function (error, blob) {
+                      assert.equal(error, null);
+                      assert.equal(blob.contentMD5, fileInfo.contentMD5);
+                    }).pipe(writable);
+
+                    writable.on('finish', function () {
+                      fs.stat(downloadFileName, function (error, stat) {
+                        assert.equal(error, null);
+                        assert.equal(stat.size, fileInfo.size);
+                        try { fs.unlinkSync(name); } catch (e) { }
+                        try { fs.unlinkSync(downloadFileName); } catch (e) { }
+                        done();
+                      });
+                    });
                   });
                 });
               });

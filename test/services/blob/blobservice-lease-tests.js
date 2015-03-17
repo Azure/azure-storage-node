@@ -495,6 +495,7 @@ describe('BlobServiceLeasing', function () {
           assert.equal(leaseError, null);
           assert.notEqual(lease, null);
           assert.strictEqual(lease.time, 0);
+
           assert.notEqual(leaseResponse, null);
           assert.ok(leaseResponse.isSuccessful);
 

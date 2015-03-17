@@ -634,7 +634,7 @@ describe('QueueServiceTests', function() {
 
   describe('SetQueueMetadata', function () {
     it('should work', function (done) {
-      var metadata = { 'class': 'test' };
+      var metadata = { 'Class': 'Test' };
 
       queueService.createQueueIfNotExists(queueName, function (createError) {
         assert.equal(createError, null);
@@ -649,8 +649,31 @@ describe('QueueServiceTests', function() {
             if (queue) {
               assert.notEqual(queue.metadata, null);
 
-              assert.equal(queue.metadata.class, 'test');
+              assert.equal(queue.metadata.class, 'Test');
 
+              done();
+            }
+          });
+        });
+      });
+    });
+
+    it('should merge the metadata', function (done) {
+      var metadata = { color: 'blue', Color: 'Orange', COLOR: 'Red' };
+
+      queueService.createQueueIfNotExists(queueName, function (createError) {
+        assert.equal(createError, null);
+
+        queueService.setQueueMetadata(queueName, metadata, function (setError) {
+          assert.equal(setError, null);
+
+          queueService.getQueueMetadata(queueName, function (getError, queue) {
+            assert.equal(getError, null);
+
+            assert.notEqual(queue, null);
+            if (queue) {
+              assert.notEqual(queue.metadata, null);
+              assert.equal(queue.metadata.color, 'blue,Orange,Red');
               done();
             }
           });

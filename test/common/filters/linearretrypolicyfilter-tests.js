@@ -129,6 +129,7 @@ describe('linearretrypolicyfilter-tests', function () {
 
   it('should fail when deleteTable is tried', function (done) {
     tableName = testutil.generateId(tablePrefix, tableNames, suite.isMocked);
+
     var retryCount = 3;
     var retryInterval = 30;
 
