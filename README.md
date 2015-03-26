@@ -1,37 +1,41 @@
 # Microsoft Azure Storage SDK for Node.js 
 
-[![NPM version](https://badge.fury.io/js/azure-storage.svg)](http://badge.fury.io/js/azure-storage)
+[![NPM version](https://badge.fury.io/js/azure-storage.svg)](http://badge.fury.io/js/azure-storage) [![Build Status](https://travis-ci.org/Azure/azure-storage-node.svg?branch=master)](https://travis-ci.org/Azure/azure-storage-node)
 
 This project provides a Node.js package that makes it easy to consume and manage Microsoft Azure Storage Services.
 
 > If you are looking for documentation for the Azure SDK for Node.js, see [http://dl.windowsazure.com/nodedocs/index.html](http://dl.windowsazure.com/nodedocs/index.html) or visit [https://github.com/Azure/azure-sdk-for-node](https://github.com/Azure/azure-sdk-for-node). While the Azure SDK for Node.js provides support for working with Azure Storage, you should consider using the Azure Storage SDK as it supports features not available in the Azure SDK for Node.js
 
-
-
 # Features
 
 - Tables
-    - Create/Delete Tables
-    - Query/Create/Read/Update/Delete Entities
+  - Create/Delete Tables
+  - Query/Create/Read/Update/Delete Entities
 - Blobs
-    - Create/Read/Update/Delete Blobs
+  - Create/Delete Containers
+  - Create/Read/Update/Delete Blobs
 - Files
-	- Create/Update/Delete Directories
-	- Create/Read/Update/Delete Files
+  - Create/Delete Shares
+  - Create/Delete Directories
+  - Create/Read/Update/Delete Files
 - Queues
-    - Create/Delete Queues
-    - Insert/Peek Queue Messages
-    - Advanced Queue Operations
-	
+  - Create/Delete Queues
+  - Insert/Peek Queue Messages
+  - Advanced Queue Operations
+  
 # Getting Started
 
 ## Install
 
+```
 npm install azure-storage
+```
 
 ## Usage
 
+```Javascript
 var azure = require('azure-storage');
+```
 
 When using the Storage SDK, you must provide connection information for the storage account to use. This can be provided using:
 
@@ -46,8 +50,8 @@ To ensure a table exists, call **createTableIfNotExists**:
 ```Javascript
 var azure = require('azure-storage');
 var tableService = azure.createTableService();
-tableService.createTableIfNotExists('mytable', function(error, result, response){
-  if(!error){
+tableService.createTableIfNotExists('mytable', function(error, result, response) {
+  if (!error) {
     // result contains true if created; false if already exists
   }
 });
@@ -56,18 +60,19 @@ A new entity can be added by calling **insertEntity**:
 
 ```Javascript
 var azure = require('azure-storage');
-var tableService = azure.createTableService(),
+var tableService = azure.createTableService();
 var entGen = azure.TableUtilities.entityGenerator;
-var entity = { 	PartitionKey: entGen.String('part2'),
-				RowKey: entGen.String('row1'),
-				boolValueTrue: entGen.Boolean(true),
-				boolValueFalse: entGen.Boolean(false),
-				intValue: entGen.Int32(42),
-				dateValue: entGen.DateTime(new Date(Date.UTC(2011, 10, 25))),
-				complexDateValue: entGen.DateTime(new Date(Date.UTC(2013, 02, 16, 01, 46, 20)))
-			 };
-tableService.insertEntity('mytable',entity, function (error, result, response) {
-  if(!error){
+var entity = {
+  PartitionKey: entGen.String('part2'),
+  RowKey: entGen.String('row1'),
+  boolValueTrue: entGen.Boolean(true),
+  boolValueFalse: entGen.Boolean(false),
+  intValue: entGen.Int32(42),
+  dateValue: entGen.DateTime(new Date(Date.UTC(2011, 10, 25))),
+  complexDateValue: entGen.DateTime(new Date(Date.UTC(2013, 02, 16, 01, 46, 20)))
+};
+tableService.insertEntity('mytable', entity, function(error, result, response) {
+  if (!error) {
     // result contains the ETag for the new entity
   }
 });
@@ -92,8 +97,8 @@ The method **retrieveEntity** can then be used to fetch the entity that was just
 ```Javascript
 var azure = require('azure-storage');
 var tableService = azure.createTableService();
-tableService.retrieveEntity('mytable', 'part2', 'row1', function(error, result, response){
-  if(!error){
+tableService.retrieveEntity('mytable', 'part2', 'row1', function(error, result, response) {
+  if (!error) {
     // result contains the entity
   }
 });
@@ -104,12 +109,12 @@ Use **TableQuery** to build complex queries:
 ```Javascript
 var azure = require('azure-storage');
 var tableService = azure.createTableService();
-var query = azure.TableQuery()
-		    .top(5)
-		    .where('PartitionKey eq ?', 'part2');
+var query = new azure.TableQuery()
+  .top(5)
+  .where('PartitionKey eq ?', 'part2');
 
 tableSvc.queryEntities('mytable', query, null, function(error, result, response) {
-  if(!error) {
+  if (!error) {
     // result.entries contains entities matching the query
   }
 });
@@ -123,11 +128,13 @@ container in which to store a blob:
 ```Javascript
 var azure = require('azure-storage');
 var blobService = azure.createBlobService();
-blobService.createContainerIfNotExists('taskcontainer', {publicAccessLevel : 'blob'}, function(error, result, response){
-    if(!error){
-        // if result = true, container was created.
-        // if result = false, container already existed.
-    }
+blobService.createContainerIfNotExists('taskcontainer', {
+  publicAccessLevel: 'blob'
+}, function(error, result, response) {
+  if (!error) {
+    // if result = true, container was created.
+    // if result = false, container already existed.
+  }
 });
 ```
 
@@ -137,8 +144,8 @@ To upload a file (assuming it is called task1-upload.txt and it is placed in the
 var azure = require('azure-storage');
 var blobService = azure.createBlobService();
 
-blobService.createBlockBlobFromLocalFile('mycontainer', 'taskblob', 'task1-upload.txt', function(error, result, response){
-  if(!error){
+blobService.createBlockBlobFromLocalFile('mycontainer', 'taskblob', 'task1-upload.txt', function(error, result, response) {
+  if (!error) {
     // file uploaded
   }
 });
@@ -147,13 +154,13 @@ blobService.createBlockBlobFromLocalFile('mycontainer', 'taskblob', 'task1-uploa
 
 For page blobs, use **createPageBlobFromLocalFile**. There are other methods for uploading blobs also, such as **createBlockBlobFromText** or **createPageBlobFromStream**.
 
-There are also several ways to download block and page blobs. For example, **getBlockBlobToStream** downloads the blob to a stream:
+There are also several ways to download block and page blobs. For example, **getBlobToStream** downloads the blob to a stream:
   
 ```Javascript
 var blobService = azure.createBlobService();
 var fs = require('fs');
-blobService.getBlockBlobToStream('mycontainer', 'taskblob', fs.createWriteStream('output.txt'), function(error, result, response){
-  if(!error) {
+blobService.getBlobToStream('mycontainer', 'taskblob', fs.createWriteStream('output.txt'), function(error, result, response) {
+  if (!error) {
     // blob retrieved
   }
 });
@@ -165,17 +172,16 @@ To create a Shared Access Signature (SAS), use the **generateSharedAccessSignatu
 var azure = require('azure-storage');
 var blobService = azure.createBlobService();
 
-
 var startDate = new Date();
 var expiryDate = new Date(startDate);
 expiryDate.setMinutes(startDate.getMinutes() + 100);
 startDate.setMinutes(startDate.getMinutes() - 100);
 
 var sharedAccessPolicy = {
-    AccessPolicy: {
-      Permissions: azure.BlobUtilities.SharedAccessPermissions.READ,
-      Start: startDate,
-      Expiry: expiryDate
+  AccessPolicy: {
+    Permissions: azure.BlobUtilities.SharedAccessPermissions.READ,
+    Start: startDate,
+    Expiry: expiryDate
   },
 };
 
@@ -190,10 +196,10 @@ The **createQueueIfNotExists** method can be used to ensure a queue exists:
 ```Javascript
 var azure = require('azure-storage');
 var queueService = azure.createQueueService();
-queueService.createQueueIfNotExists('taskqueue', function(error){
-    if(!error){
-        // Queue exists
-    }
+queueService.createQueueIfNotExists('taskqueue', function(error) {
+  if (!error) {
+    // Queue exists
+  }
 });
 ```
 
@@ -201,10 +207,10 @@ The **createMessage** method can then be called to insert the message into the q
 
 ```Javascript
 var queueService = azure.createQueueService();
-queueService.createMessage('taskqueue', 'Hello world!', function(error){
-    if(!error){
-        // Message inserted
-    }
+queueService.createMessage('taskqueue', 'Hello world!', function(error) {
+  if (!error) {
+    // Message inserted
+  }
 });
 ```
 
@@ -212,18 +218,18 @@ It is then possible to call the **getMessage** method, process the message and t
 
 ```Javascript
 var queueService = azure.createQueueService(),
-    queueName = 'taskqueue';
-queueService.getMessages(queueName, function(error, serverMessages){
-    if(!error){
-        // Process the message in less than 30 seconds, the message
-        // text is available in serverMessages[0].messagetext
+  queueName = 'taskqueue';
+queueService.getMessages(queueName, function(error, serverMessages) {
+  if (!error) {
+    // Process the message in less than 30 seconds, the message
+    // text is available in serverMessages[0].messagetext
 
-        queueService.deleteMessage(queueName, serverMessages[0].messageid, serverMessages[0].popreceipt, function(error){
-            if(!error){
-                // Message deleted
-            }
-        });
-    }
+    queueService.deleteMessage(queueName, serverMessages[0].messageid, serverMessages[0].popreceipt, function(error) {
+      if (!error) {
+        // Message deleted
+      }
+    });
+  }
 });
 ```
 
@@ -235,11 +241,11 @@ share in which to store a file or a directory of files:
 ```Javascript
 var azure = require('azure-storage');
 var fileService = azure.createFileService();
-fileService.createShareIfNotExists('taskshare', function(error, result, response){
-    if(!error){
-        // if result = true, share was created.
-        // if result = false, share already existed.
-    }
+fileService.createShareIfNotExists('taskshare', function(error, result, response) {
+  if (!error) {
+    // if result = true, share was created.
+    // if result = false, share already existed.
+  }
 });
 ```
 
@@ -249,11 +255,11 @@ To create a directory, the method **createDirectoryIfNotExists** can be used.
 var azure = require('azure-storage');
 var fileService = azure.createFileService();
 
-fileService.createDirectoryIfNotExists('taskshare', 'taskdirectory', function(error, result, response){
-    if(!error){
-        // if result = true, share was created.
-        // if result = false, share already existed.
-    }
+fileService.createDirectoryIfNotExists('taskshare', 'taskdirectory', function(error, result, response) {
+  if (!error) {
+    // if result = true, share was created.
+    // if result = false, share already existed.
+  }
 });
 ```
 
@@ -263,8 +269,8 @@ To upload a file (assuming it is called task1-upload.txt and it is placed in the
 var azure = require('azure-storage');
 var fileService = azure.createFileService();
 
-fileService.createFileFromLocalFile('taskshare', 'taskdirectory', 'taskfile', 'task1-upload.txt', function(error, result, response){
-  if(!error){
+fileService.createFileFromLocalFile('taskshare', 'taskdirectory', 'taskfile', 'task1-upload.txt', function(error, result, response) {
+  if (!error) {
     // file uploaded
   }
 });
@@ -277,8 +283,8 @@ There are also several ways to download files. For example, **getFileToStream** 
 ```Javascript
 var fileService = azure.createFileService();
 var fs = require('fs');
-fileService.getFileToStream('taskshare', 'taskdirectory', 'taskfile', fs.createWriteStream('output.txt'), function(error, result, response){
-  if(!error) {
+fileService.getFileToStream('taskshare', 'taskdirectory', 'taskfile', fs.createWriteStream('output.txt'), function(error, result, response) {
+  if (!error) {
     // file retrieved
   }
 });
@@ -298,21 +304,28 @@ How-Tos focused around accomplishing specific tasks are available on the [Micros
 
 In order to run the tests, the following environment variables need to be set up:
 
+```
 AZURE_STORAGE_CONNECTION_STRING="valid storage connection string"
+```
 
 or 
 
+```
 AZURE_STORAGE_ACCOUNT="valid storage account name"
-
 AZURE_STORAGE_ACCESS_KEY="valid storage account key"
+```
 
 In order to be able to use a proxy like fiddler, an additional environment variable should be set up:
 
+```
 HTTP_PROXY=http://127.0.0.1:8888
+```
 
 The tests can then be run from the module's root directory using:
 
-`npm test`
+```
+npm test
+```
 
 # Need Help?
 

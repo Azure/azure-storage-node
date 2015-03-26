@@ -4,7 +4,6 @@ be taken. This is a CTP v1 release and the changes described below indicate the 
 2015.03 Version 0.4.3
 
 ALL
-* Fixed an issue that cannot generate the SAS tokens with the specified version of 2014-02-14.
 * Fixed an issue that setting metadata keys are converted into lowercase. The metadata keys retrieved from the service will however still be converted into lowercase by the http component of Node.js.(https://github.com/joyent/node/issues/1954)
 * Included all storage error code strings in the error constants definition.
 * Documented the client request ID option in all APIs.
