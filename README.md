@@ -104,7 +104,7 @@ Use **TableQuery** to build complex queries:
 ```Javascript
 var azure = require('azure-storage');
 var tableService = azure.createTableService();
-var query = azure.TableQuery()
+var query = new azure.TableQuery()
 		    .top(5)
 		    .where('PartitionKey eq ?', 'part2');
 
