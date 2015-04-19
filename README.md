@@ -22,6 +22,9 @@ This project provides a Node.js package that makes it easy to consume and manage
   - Create/Delete Queues
   - Insert/Peek Queue Messages
   - Advanced Queue Operations
+- Service Properties
+    - setServiceProperties
+
   
 # Getting Started
 
@@ -289,6 +292,31 @@ fileService.getFileToStream('taskshare', 'taskdirectory', 'taskfile', fs.createW
   }
 });
 ```
+
+### Service Properties
+
+The **setServiceProperties** method can be used to modify the CORS settings on your storage account:
+
+```Javascript
+var azure = require('azure-storage');
+var blobService = azure.createBlobService();
+
+var serviceProperties = {};
+serviceProperties.Cors = {
+    CorsRule: [{
+        AllowedOrigins: ['*'],
+        AllowedMethods: ['GET'],
+        AllowedHeaders: [],
+        ExposedHeaders: [],
+        MaxAgeInSeconds: 60
+    }]
+};
+
+blobService.setServiceProperties(serviceProperties, function(err, result, response) {
+   console.log(err, result);
+});
+```
+
 
 ## Code Samples
 
