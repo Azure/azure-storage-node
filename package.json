@@ -1,7 +1,7 @@
 {
   "name": "azure-storage",
   "author": "Microsoft Corporation",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Microsoft Azure Storage Client Library for Node.js",
   "tags": [
     "azure",
@@ -24,25 +24,26 @@
     }
   ],
   "dependencies": {
-    "xml2js": "0.2.7",
-    "xmlbuilder": "0.4.3",
-    "underscore": "~1.4.4",
-    "request": "~2.27.0",
-    "validator": "~3.1.0",
-    "mime": "~1.2.4",
-    "underscore": "~1.4.4",
-    "node-uuid": "~1.4.0",
     "extend": "~1.2.1",
-    "readable-stream": "~1.0.0"
+    "mime": "~1.2.4",
+    "node-uuid": "~1.4.0",
+    "readable-stream": "~1.0.0",
+    "request": "~2.27.0",
+    "underscore": "~1.4.4",
+    "validator": "~3.22.2",
+    "xml2js": "0.2.7",
+    "xmlbuilder": "0.4.3"
   },
   "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-devserver": "^0.6.0",
+    "grunt-jsdoc": "~0.5.1",
+    "grunt-mocha": "^0.4.12",
+    "grunt-mocha-test": "^0.12.7",
+    "jshint": ">= 2.1.4",
     "mocha": ">= 1.18.0",
     "nock": "0.16",
-    "jshint": ">= 2.1.4",
-    "should": "1.2.x",
-    "grunt": "~0.4.2",
-    "grunt-jsdoc": "~0.5.1",
-    "grunt-devserver": "~0.4.1"
+    "should": "1.2.x"
   },
   "homepage": "http://github.com/Azure/azure-storage-node",
   "repository": {

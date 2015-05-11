@@ -24,6 +24,7 @@ var url = require('url');
 var extend = require('extend');
 
 var request = require('request');
+var _ = require('underscore');
 
 // Test includes
 var testutil = require('../../framework/util');
@@ -46,7 +47,7 @@ var HttpConstants = Constants.HttpConstants;
 var HeaderConstants = Constants.HeaderConstants;
 var StorageServiceClientConstants = Constants.StorageServiceClientConstants;
 var QueryStringConstants = Constants.QueryStringConstants;
-var VersionConstants = Constants.VersionConstants;
+var CompatibleVersionConstants = Constants.CompatibleVersionConstants;
 
 var blobNames = [];
 var blobNamesPrefix = 'blob';
@@ -924,6 +925,33 @@ describe('BlobService', function () {
         });
       });
 
+      it('should ignore the metadata in the options', function (done) {  
+        var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);  
+         
+        var metadata = { color: 'blue' };  
+        blobService.createBlockBlobFromText(containerName, blobName, 'hello', function (blobErr) {  
+          assert.equal(blobErr, null);  
+
+          var options = { metadata: {color: 'red'} };  
+          blobService.setBlobMetadata(containerName, blobName, metadata, options, function (setErr) {  
+            assert.equal(setErr, null);  
+            
+            blobService.getBlobMetadata(containerName, blobName, function (getErr, blob) {  
+              assert.equal(getErr, null);  
+  
+              assert.notEqual(blob, null);  
+              if (blob) {  
+                assert.notEqual(blob.metadata, null);  
+                if (blob.metadata) {  
+                  assert.equal(blob.metadata.color, metadata.color);  
+                }  
+              }  
+              done();  
+            });  
+          });  
+        });  
+      }); 
+
       it('should merge the metadata', function (done) {
         var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
         
@@ -1195,7 +1223,7 @@ describe('BlobService', function () {
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_EXPIRY], '2011-10-12T11:53:40Z');
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_RESOURCE], Constants.BlobConstants.ResourceTypes.BLOB);
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_PERMISSIONS], BlobUtilities.SharedAccessPermissions.READ);
-      assert.equal(sasQueryString[QueryStringConstants.SIGNED_VERSION], Constants.VersionConstants.FEBRUARY_2014);
+      assert.equal(sasQueryString[QueryStringConstants.SIGNED_VERSION], HeaderConstants.TARGET_STORAGE_VERSION);
       assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'kXVNIN/SsiEQ1onxqp2bmxay8PFy0mCtEQE41lOyKy8=');
 
       done();
@@ -1253,7 +1281,7 @@ describe('BlobService', function () {
       });
     });
   
-    runOrSkip(util.format('should be able to download blob using old SAS Version: %s', VersionConstants.FEBRUARY_2012), function (done) {
+    runOrSkip(util.format('should be able to download blob using old SAS Version: %s', CompatibleVersionConstants.FEBRUARY_2012), function (done) {
       var containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var blobService = azure.createBlobService()
@@ -1276,7 +1304,7 @@ describe('BlobService', function () {
             }
           };
 
-          var token = blobService.generateSharedAccessSignatureWithVersion(containerName, blobName, sharedAccessPolicy, VersionConstants.FEBRUARY_2012);
+          var token = blobService.generateSharedAccessSignatureWithVersion(containerName, blobName, sharedAccessPolicy, CompatibleVersionConstants.FEBRUARY_2012);
           var sharedBlobService = azure.createBlobServiceWithSas(blobService.host, token);
       
           sharedBlobService.getBlobProperties(containerName, blobName, function (error, result) {
@@ -1292,43 +1320,42 @@ describe('BlobService', function () {
       });
     });
 
-    runOrSkip(util.format('should be able to download blob using specified SAS Version: %s', VersionConstants.FEBRUARY_2014), function (done) {
+    it(util.format('should NOT be able to download blob using specified SAS Version: %s', '2014-02-14'), function (done) {
       var containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
-      var blobService = azure.createBlobService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
+      var blobService = azure.createBlobService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      var sharedAccessPolicy = {
+        AccessPolicy: {
+          Permissions: BlobUtilities.SharedAccessPermissions.READ,
+          Expiry: new Date()
+        }
+      };
 
-      blobService.createContainer(containerName, function (error) {
-        assert.equal(error, null);
+      var unsupportedVersion = '2014-02-14';
+      var values = _.values(CompatibleVersionConstants);
+      var message = azureutil.stringFormat(SR.INVALID_SAS_VERSION, unsupportedVersion, values);
+      assert.throws(function () { blobService.generateSharedAccessSignatureWithVersion(containerName, blobName, sharedAccessPolicy, unsupportedVersion); },
+        function (err) { return err.message === message; });
+      done();
+    });
 
-        blobService.createBlockBlobFromText(containerName, blobName, 'id1', function (error2) {
-          assert.equal(error2, null);
-   
-          var startDate = new Date();
-          var expiryDate = new Date(startDate);
-          expiryDate.setMinutes(startDate.getMinutes() + 5);
+    it('should NOT be able to specify api-version in SAS', function (done) {
+      var containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+      var blobService = azure.createBlobService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      var sharedAccessPolicy = {
+        AccessPolicy: {
+          Permissions: BlobUtilities.SharedAccessPermissions.READ,
+          Expiry: new Date()
+        }
+      };
 
-          var sharedAccessPolicy = {
-            AccessPolicy: {
-              Permissions: BlobUtilities.SharedAccessPermissions.READ,
-              Expiry: expiryDate
-            }
-          };
+      var token = blobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy) + "?api-version=2014-02-14";
+      var sharedAccessBlobService = azure.createBlobServiceWithSas(blobService.host, token);
 
-          var token = blobService.generateSharedAccessSignatureWithVersion(containerName, blobName, sharedAccessPolicy, VersionConstants.FEBRUARY_2014);
-          var sharedBlobService = azure.createBlobServiceWithSas(blobService.host, token);
-      
-          sharedBlobService.getBlobProperties(containerName, blobName, function (error, result) {
-            assert.equal(error, null);
-            assert.notEqual(result, null);
-
-            blobService.deleteContainer(containerName, function (deleteError) {
-              assert.equal(deleteError, null);
-              done();
-            });
-          });
-        });
-      });
+      assert.throws( function () { sharedAccessBlobService.getBlobProperties(containerName, blobName, function () {}); },
+        function (err) { return err.message === SR.INVALID_SAS_TOKEN; });
+      done();
     });
 
     runOrSkip('should append api-version', function (done) {

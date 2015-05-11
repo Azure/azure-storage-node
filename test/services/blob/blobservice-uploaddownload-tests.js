@@ -999,6 +999,26 @@ describe('blob-uploaddownload-tests', function () {
       });
     });
 
+    it('should work with metadata', function(done) {  
+      var options = {  
+          storeBlobContentMD5 : true,  
+          useTransactionalMD5 : true,  
+          metadata: { color: 'blue' }  
+      };  
+      blobService.createBlockBlobFromLocalFile(containerName, blockBlobName, zeroSizeFileName, options, function (err) {  
+        assert.equal(err, null);  
+  
+        blobService.getBlobProperties(containerName, blockBlobName, function (err, blob) {  
+          assert.equal(err, null);  
+          assert.equal(blob.contentLength, 0);  
+          assert.equal(blob.contentMD5, zeroFileContentMD5);  
+          assert.notEqual(blob.metadata, null);  
+          assert.equal(blob.metadata.color, options.metadata.color);  
+          done();  
+        });  
+      });  
+    });  
+
     runOrSkip('should have same md5 with range-based downloading to local file', function (done) {
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var fileNameSource = testutil.generateId('getBlobRangeMD5', [], suite.isMocked) + '.test';
@@ -1284,10 +1304,7 @@ describe('blob-uploaddownload-tests', function () {
     });
 
     it('should set content md5', function(done) {
-      var options = {
-        storeBlobContentMD5 : true,
-        useTransactionalMD5 : true
-      };
+      var options = { storeBlobContentMD5 : true };
 
       blobService.createPageBlobFromLocalFile(containerName, pageBlobName, pageFileName, options, function (err) {
         assert.equal(err, null);
@@ -1301,10 +1318,7 @@ describe('blob-uploaddownload-tests', function () {
     });
 
     it('should overwrite the existing page blob', function(done) {
-      var options = {
-        storeBlobContentMD5 : true,
-        useTransactionalMD5 : true
-      };
+      var options = { storeBlobContentMD5 : true };
 
       blobService.createPageBlobFromLocalFile(containerName, pageBlobName, pageFileName, options, function (err) {
         assert.equal(err, null);
@@ -1356,6 +1370,26 @@ describe('blob-uploaddownload-tests', function () {
           done();
         });
       });
+    });
+
+    it('should work with metadata', function(done) {  
+      var options = {  
+          storeBlobContentMD5 : true,  
+          useTransactionalMD5 : true,  
+          metadata: { color: 'blue' }  
+      };  
+      blobService.createPageBlobFromLocalFile(containerName, pageBlobName, zeroSizeFileName, options, function (err) {  
+        assert.equal(err, null);  
+  
+        blobService.getBlobProperties(containerName, pageBlobName, function (err, blob) {  
+          assert.equal(err, null);   
+          assert.equal(blob.contentLength, 0);
+          assert.equal(blob.contentMD5, zeroFileContentMD5);  
+          assert.notEqual(blob.metadata, null);  
+          assert.equal(blob.metadata.color, options.metadata.color);  
+          done();  
+        });  
+      });  
     });
     
     runOrSkip('should have same md5 with range-based downloading to local file', function (done) {

@@ -498,11 +498,11 @@ describe('FileUploadDownload', function () {
       buffer[0] = '1';
       writeFile(localFileName, buffer);
 
- 			fileService.createFile(shareName, directoryName, fileName, 1024 * 1024 * 1024, function (err) {
+      fileService.createFile(shareName, directoryName, fileName, 1024 * 1024 * 1024, function (err) {
         assert.equal(err, null);
 
-	      fileService.createRangesFromStream(shareName, directoryName, fileName, rfs.createReadStream(localFileName), 0, buffer.length - 1, function (err2) {
-	        assert.equal(err2, null);
+        fileService.createRangesFromStream(shareName, directoryName, fileName, rfs.createReadStream(localFileName), 0, buffer.length - 1, function (err2) {
+          assert.equal(err2, null);
 
           fileService.createRangesFromStream(shareName, directoryName, fileName, rfs.createReadStream(localFileName), 1048576, 1048576 + buffer.length - 1, function (err3) {
             assert.equal(err3, null);
@@ -520,7 +520,7 @@ describe('FileUploadDownload', function () {
               done();
             });
           });
-				});
+        });
       });
     });
   });
@@ -535,6 +535,9 @@ describe('FileUploadDownload', function () {
         fileService.getFileToLocalFile(shareName, directoryName, fileName, downloadFileName, function (err, file) {
           assert.equal(err, null);
           assert.ok(file);
+          assert.equal(file.share, shareName);
+          assert.equal(file.directory, directoryName);
+          assert.equal(file.name, fileName);
 
           var exists = azureutil.pathExistsSync(downloadFileName);
           assert.equal(exists, true);
@@ -590,20 +593,23 @@ describe('FileUploadDownload', function () {
   });
 
   describe('GetFileToStream', function() {
-  	var fileText = "Hello world!";
+    var fileText = "Hello world!";
 
-	  it('getFileToStream', function (done) {
-	  	fileContentMD5 = writeFile(localFileName, fileText);
-	  	var stream = rfs.createReadStream(localFileName);
-	    fileService.createFileFromStream(shareName, directoryName, fileName, stream, fileText.length, function (uploadError, file, uploadResponse) {
-	      assert.equal(uploadError, null);
-	      assert.ok(file);
-	      assert.ok(uploadResponse.isSuccessful);
+    it('getFileToStream', function (done) {
+      fileContentMD5 = writeFile(localFileName, fileText);
+      var stream = rfs.createReadStream(localFileName);
+      fileService.createFileFromStream(shareName, directoryName, fileName, stream, fileText.length, function (uploadError, file, uploadResponse) {
+        assert.equal(uploadError, null);
+        assert.ok(file);
+        assert.ok(uploadResponse.isSuccessful);
 
         fileService.getFileToStream(shareName, directoryName, fileName, fs.createWriteStream(downloadFileName), function (downloadErr, file, downloadResponse) {
-	        assert.equal(downloadErr, null);
-	        assert.ok(downloadResponse.isSuccessful);
-	        assert.ok(file);
+          assert.equal(downloadErr, null);
+          assert.ok(downloadResponse.isSuccessful);
+          assert.ok(file);
+          assert.equal(file.share, shareName);
+          assert.equal(file.directory, directoryName);
+          assert.equal(file.name, fileName);
 
           var exists = azureutil.pathExistsSync(downloadFileName);
           assert.equal(exists, true);
@@ -613,8 +619,8 @@ describe('FileUploadDownload', function () {
             done();
           });
         });
-	    });
-	  });
+      });
+    });
 
     runOrSkip('getFileToStream with range', function (done) {
       var size = 99*1024*1024; // Do not use a multiple of 4MB size
@@ -672,23 +678,26 @@ describe('FileUploadDownload', function () {
     });
   });
 
-	describe('CreateFileFromText', function () {
-	  it('shouldWork', function (done) {
-	    var fileText = 'Hello World';
-	    fileService.createFileFromText(shareName, directoryName, fileName, fileText, function (uploadError, file, uploadResponse) {
-	      assert.equal(uploadError, null);
-	      assert.ok(file);
-	      assert.ok(uploadResponse.isSuccessful);
+  describe('CreateFileFromText', function () {
+    it('shouldWork', function (done) {
+      var fileText = 'Hello World';
+      fileService.createFileFromText(shareName, directoryName, fileName, fileText, function (uploadError, file, uploadResponse) {
+        assert.equal(uploadError, null);
+        assert.ok(file);
+        assert.ok(uploadResponse.isSuccessful);
+        assert.equal(file.share, shareName);
+        assert.equal(file.directory, directoryName);
+        assert.equal(file.name, fileName);
 
-	      fileService.getFileToText(shareName, directoryName, fileName, function (downloadErr, text, file, downloadResponse) {
-	        assert.equal(downloadErr, null);
-	        assert.ok(downloadResponse.isSuccessful);
-	        assert.ok(file);
-	        assert.equal(text, fileText);
+        fileService.getFileToText(shareName, directoryName, fileName, function (downloadErr, text, file, downloadResponse) {
+          assert.equal(downloadErr, null);
+          assert.ok(downloadResponse.isSuccessful);
+          assert.ok(file);
+          assert.equal(text, fileText);
 
-	        done();
-	      });
-	    });
+          done();
+        });
+      });
 	  });
 
 	  it('strangeChars1', function (done) {
@@ -789,8 +798,12 @@ describe('FileUploadDownload', function () {
     });
 
     it('should work with basic file', function(done) {
-      fileService.createFileFromLocalFile(shareName, directoryName, fileName, localFileName, function (err) {
+      fileService.createFileFromLocalFile(shareName, directoryName, fileName, localFileName, function (err, file) {
         assert.equal(err, null);
+        assert.equal(file.share, shareName);
+        assert.equal(file.directory, directoryName);
+        assert.equal(file.name, fileName);
+
         fileService.getFileProperties(shareName, directoryName, fileName, function (err, file) {
           assert.equal(file.contentMD5, undefined);
 
@@ -920,8 +933,13 @@ describe('FileUploadDownload', function () {
       });
     });
 
-    it('should work with basic stream', function(done) {   var stream = rfs.createReadStream(localFileName);   fileService.createFileFromStream(shareName, directoryName, fileName,
-    stream, fileText.length, function (err) { assert.equal(err, null);
+    it('should work with basic stream', function(done) {   
+      var stream = rfs.createReadStream(localFileName);   
+      fileService.createFileFromStream(shareName, directoryName, fileName, stream, fileText.length, function (err, file) { 
+        assert.equal(err, null);
+        assert.equal(file.share, shareName);
+        assert.equal(file.directory, directoryName);
+        assert.equal(file.name, fileName);
 
         fileService.getFileProperties(shareName, directoryName, fileName, function (err1, file) {
           assert.equal(err1, null);
