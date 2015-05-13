@@ -22,7 +22,9 @@ This project provides a Node.js package that makes it easy to consume and manage
   - Create/Delete Queues
   - Insert/Peek Queue Messages
   - Advanced Queue Operations
-  
+
+Please check details on [API reference documents](http://azure.github.io/azure-storage-node).
+
 # Getting Started
 
 ## Install
