@@ -673,7 +673,9 @@ describe('QueueServiceTests', function() {
             assert.notEqual(queue, null);
             if (queue) {
               assert.notEqual(queue.metadata, null);
+
               assert.equal(queue.metadata.color, 'blue,Orange,Red');
+
               done();
             }
           });

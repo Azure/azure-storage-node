@@ -17,49 +17,61 @@
 module.exports = function(grunt) {
   //init stuff
   grunt.initConfig({
-    downloadNuGet: {
-      path : '.nuget',
-      src : 'http://www.nuget.org/nuget.exe'
+    pkg: grunt.file.readJSON('package.json'),
+
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec',
+          quiet: false,
+          clearRequireCache: false
+        },
+        src: ['test/**/*.js']
+      }
     },
 
     //jsdoc config
-    jsdoc : {
-        dist : {
-            src: [
-                  "README.md",
-                  "lib/azure-storage.js",
-                  "lib/common/filters/retrypolicyfilter.js",
-                  "lib/common/filters/linearretrypolicyfilter.js",
-                  "lib/common/filters/exponentialretrypolicyfilter.js",
-                  "lib/common/services/storageutilities.js",
-                  "lib/common/util/date.js",
-                  "lib/services/blob/blobservice.js",
-                  "lib/services/blob/blobutilities.js",
-                  "lib/services/queue/queueservice.js",
-                  "lib/services/queue/queueutilities.js",
-                  "lib/services/table/tableservice.js",
-                  "lib/services/table/tablebatch.js",
-                  "lib/services/table/tablequery.js",
-                  "lib/services/table/tableutilities.js"
-            ],
-            options: {
-                destination: 'docs',
-                template : 'node_modules/ink-docstrap/template',
-                configure: 'jsdoc/jsdoc.json'
-            }
+    jsdoc: {
+      dist: {
+        src: [
+          "README.md",
+          "lib/azure-storage.js",
+          "lib/common/filters/retrypolicyfilter.js",
+          "lib/common/filters/linearretrypolicyfilter.js",
+          "lib/common/filters/exponentialretrypolicyfilter.js",
+          "lib/common/services/storageutilities.js",
+          "lib/services/blob/blobservice.js",
+          "lib/services/blob/blobutilities.js",
+          "lib/services/queue/queueservice.js",
+          "lib/services/queue/queueutilities.js",
+          "lib/services/table/tableservice.js",
+          "lib/services/table/tablebatch.js",
+          "lib/services/table/tablequery.js",
+          "lib/services/table/tableutilities.js",
+          "lib/services/file/fileservice.js",
+          "lib/services/file/fileutilities.js",
+        ],
+        options: {
+          destination: 'docs',
+          template: "node_modules/grunt-jsdoc/node_modules/ink-docstrap/template",
+          configure: "jsdoc/jsdoc.json"
         }
+      }
     },
-    devserver: { options:
-      { 'type' : 'http',
-        'port' : 8888,
-        'base' : 'docs'
+
+    // devserver config
+    devserver: {
+      server : {},
+      options: {
+        'base': 'docs'
       }
     }
   });
-  grunt.loadNpmTasks('grunt-jsdoc');
-  grunt.loadNpmTasks('grunt-devserver');
-  
-  grunt.loadTasks('tasks');
 
-  grunt.registerTask('publishdocs', ['githubPages:target']);
+  grunt.loadNpmTasks('grunt-jsdoc');
+  grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.loadNpmTasks('grunt-devserver');
+
+  grunt.registerTask('default', ['mochaTest']);
+  grunt.registerTask('doc', ['jsdoc', 'devserver']);
 };
