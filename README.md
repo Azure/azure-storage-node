@@ -8,6 +8,8 @@ This project provides a Node.js package that makes it easy to consume and manage
 
 # Features
 
+**[API Reference](http://azure.github.io/azure-storage-node)**
+
 - Tables
   - Create/Delete Tables
   - Query/Create/Read/Update/Delete Entities
@@ -22,8 +24,6 @@ This project provides a Node.js package that makes it easy to consume and manage
   - Create/Delete Queues
   - Insert/Peek Queue Messages
   - Advanced Queue Operations
-
-Please check details on [API reference documents](http://azure.github.io/azure-storage-node).
 
 # Getting Started
 
