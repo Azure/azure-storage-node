@@ -28,7 +28,7 @@
     "mime": "~1.2.4",
     "node-uuid": "~1.4.0",
     "readable-stream": "~1.0.0",
-    "request": "~2.27.0",
+    "request": "~2.45.0",
     "underscore": "~1.4.4",
     "validator": "~3.22.2",
     "xml2js": "0.2.7",
