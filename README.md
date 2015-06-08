@@ -4,7 +4,7 @@
 
 This project provides a Node.js package that makes it easy to consume and manage Microsoft Azure Storage Services.
 
-> If you are looking for documentation for the Azure SDK for Node.js, see [http://dl.windowsazure.com/nodedocs/index.html](http://dl.windowsazure.com/nodedocs/index.html) or visit [https://github.com/Azure/azure-sdk-for-node](https://github.com/Azure/azure-sdk-for-node). While the Azure SDK for Node.js provides support for working with Azure Storage, you should consider using the Azure Storage SDK as it supports features not available in the Azure SDK for Node.js
+> If you are looking for the Node.js SDK for other Azure services, visit [https://github.com/Azure/azure-sdk-for-node](https://github.com/Azure/azure-sdk-for-node).
 
 # Features
 
@@ -22,6 +22,9 @@ This project provides a Node.js package that makes it easy to consume and manage
   - Create/Delete Queues
   - Insert/Peek Queue Messages
   - Advanced Queue Operations
+- Service Properties
+  - Get Service Properties
+  - Set Service Properties
 
 Please check details on [API reference documents](http://azure.github.io/azure-storage-node).
 
@@ -289,6 +292,109 @@ fileService.getFileToStream('taskshare', 'taskdirectory', 'taskfile', fs.createW
   if (!error) {
     // file retrieved
   }
+});
+```
+
+### Service Properties 
+
+The **getServiceProperties** method can be used to fetch the logging, metrics and CORS settings on your storage account:
+
+```Javascript  
+var azure = require('azure-storage');
+var blobService = azure.createBlobService();
+
+blobService.getServiceProperties(function(error, result, response) {  
+  if (!error) {
+     var serviceProperties = result;
+     // properties are fetched
+  } 
+});  
+```
+
+The **setServiceProperties** method can be used to modify the logging, metrics and CORS settings on your storage account:
+
+```Javascript  
+var azure = require('azure-storage');
+var blobService = azure.createBlobService();
+
+var serviceProperties = generateServiceProperties(); 
+
+blobService.setServiceProperties(serviceProperties, function(error, result, response) {  
+  if (!error) {
+    // properties are set
+  }
+});  
+
+function generateServiceProperties() {
+  return serviceProperties = {
+    Logging: {
+      Version: '1.0',
+      Delete: true,
+      Read: true,
+      Write: true,
+      RetentionPolicy: {
+        Enabled: true,
+        Days: 10,
+      },
+    },
+    HourMetrics: {
+      Version: '1.0',
+      Enabled: true,
+      IncludeAPIs: true,
+      RetentionPolicy: {
+        Enabled: true,
+        Days: 10,
+      },
+    },
+    MinuteMetrics: {
+      Version: '1.0',
+      Enabled: true,
+      IncludeAPIs: true,
+      RetentionPolicy: {
+        Enabled: true,
+        Days: 10,
+      },
+    },
+    Cors: {
+      CorsRule: [
+        {
+          AllowedOrigins: ['www.azure.com', 'www.microsoft.com'],
+          AllowedMethods: ['GET', 'PUT'],
+          AllowedHeaders: ['x-ms-meta-data*', 'x-ms-meta-target*', 'x-ms-meta-xyz', 'x-ms-meta-foo'],
+          ExposedHeaders: ['x-ms-meta-data*', 'x-ms-meta-source*', 'x-ms-meta-abc', 'x-ms-meta-bcd'],
+          MaxAgeInSeconds: 500,
+        },
+        {
+          AllowedOrigins: ['www.msdn.com', 'www.asp.com'],
+          AllowedMethods: ['GET', 'PUT'],
+          AllowedHeaders: ['x-ms-meta-data*', 'x-ms-meta-target*', 'x-ms-meta-xyz', 'x-ms-meta-foo'],
+          ExposedHeaders: ['x-ms-meta-data*', 'x-ms-meta-source*', 'x-ms-meta-abc', 'x-ms-meta-bcd'],
+          MaxAgeInSeconds: 500,
+        },
+      ],
+    },
+  };
+}
+```
+
+When modifying the service properties, you can fetch the properties and then modify the them to prevent overwriting the existing settings.
+
+```Javascript
+var azure = require('azure-storage');
+var blobService = azure.createBlobService();
+
+blobService.getServiceProperties(function(error, result, response) {  
+  if (!error) {
+    var serviceProperties = result;
+     
+    // modify the properties
+
+    blobService.setServiceProperties(serviceProperties, function(error, result, response) {  
+      if (!error) {
+        // properties are set
+      }
+    });
+  } 
 });
 ```
 

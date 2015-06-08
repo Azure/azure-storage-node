@@ -24,7 +24,8 @@ module.exports = function(grunt) {
         options: {
           reporter: 'spec',
           quiet: false,
-          clearRequireCache: false
+          clearRequireCache: false,
+          timeout: 100000
         },
         src: ['test/**/*.js']
       }
@@ -34,27 +35,27 @@ module.exports = function(grunt) {
     jsdoc: {
       dist: {
         src: [
-          "README.md",
-          "lib/azure-storage.js",
-          "lib/common/filters/retrypolicyfilter.js",
-          "lib/common/filters/linearretrypolicyfilter.js",
-          "lib/common/filters/exponentialretrypolicyfilter.js",
-          "lib/common/services/storageutilities.js",
-          "lib/services/blob/blobservice.js",
-          "lib/services/blob/blobutilities.js",
-          "lib/services/queue/queueservice.js",
-          "lib/services/queue/queueutilities.js",
-          "lib/services/table/tableservice.js",
-          "lib/services/table/tablebatch.js",
-          "lib/services/table/tablequery.js",
-          "lib/services/table/tableutilities.js",
-          "lib/services/file/fileservice.js",
-          "lib/services/file/fileutilities.js",
+          'README.md',
+          'lib/azure-storage.js',
+          'lib/common/filters/retrypolicyfilter.js',
+          'lib/common/filters/linearretrypolicyfilter.js',
+          'lib/common/filters/exponentialretrypolicyfilter.js',
+          'lib/common/services/storageutilities.js',
+          'lib/services/blob/blobservice.js',
+          'lib/services/blob/blobutilities.js',
+          'lib/services/queue/queueservice.js',
+          'lib/services/queue/queueutilities.js',
+          'lib/services/table/tableservice.js',
+          'lib/services/table/tablebatch.js',
+          'lib/services/table/tablequery.js',
+          'lib/services/table/tableutilities.js',
+          'lib/services/file/fileservice.js',
+          'lib/services/file/fileutilities.js',
         ],
         options: {
           destination: 'docs',
-          template: "node_modules/grunt-jsdoc/node_modules/ink-docstrap/template",
-          configure: "jsdoc/jsdoc.json"
+          template: 'node_modules/grunt-jsdoc/node_modules/ink-docstrap/template',
+          configure: 'jsdoc/jsdoc.json'
         }
       }
     },
@@ -65,13 +66,23 @@ module.exports = function(grunt) {
       options: {
         'base': 'docs'
       }
+    },
+
+    jshint: {
+      all: ['Gruntfile.js', 'lib/**/*.js'],
+      options: {
+        jshintrc: true
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-jsdoc');
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-devserver');
+  grunt.loadNpmTasks('grunt-nsp-package');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
-  grunt.registerTask('default', ['mochaTest']);
   grunt.registerTask('doc', ['jsdoc', 'devserver']);
+  grunt.registerTask('validate', ['jshint', 'validate-package']);
+  grunt.registerTask('default', ['validate', 'mochaTest']);
 };
