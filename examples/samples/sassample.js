@@ -165,8 +165,9 @@ function createPolicies (callback) {
   var signedIdentifiers = [readWriteSharedAccessPolicy, readSharedAccessPolicy];
 
   // Wait 30 seconds for the container acl to be processed
-  var func = function() {
-    blobService.setContainerAcl(container, signedIdentifiers, BlobUtilities.BlobContainerPublicAccessType.CONTAINER, function(error) {
+  var func = function () {
+    var options = { publicAccessLevel: BlobUtilities.BlobContainerPublicAccessType.CONTAINER };
+    blobService.setContainerAcl(container, signedIdentifiers, options, function(error) {
       if (error) {
         console.log(error);
       } else {

@@ -940,7 +940,7 @@ describe('QueueServiceTests', function() {
             Id: id,
           };
 
-          queueService.getQueueAcl(queueName, function(error, result, response) {
+          queueService.getQueueAcl(queueName, function (error, result, response) {
             queueService.setQueueAcl(queueName, sharedAccessPolicy, function() {
               // Timeout is needed for the policy to take affect on the service. 
               setTimeout(function () {

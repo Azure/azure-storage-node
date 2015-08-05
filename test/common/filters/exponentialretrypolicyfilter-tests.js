@@ -98,8 +98,9 @@ describe('exponentialretrypolicyfilter-tests', function () {
     exponentialRetryPolicyFilter.retryInterval = retryInterval;
 
     // replace shouldRetry to skip return codes verification and retry on 409 (deleting)
-    exponentialRetryPolicyFilter.shouldRetry = function (statusCode, retryData) {
-      var currentCount = (retryData && retryData.retryCount) ? retryData.retryCount : 0;
+    exponentialRetryPolicyFilter.shouldRetry = function (statusCode, requestOptions) {
+      var retryData = (requestOptions && requestOptions.retryContext) ? requestOptions.retryContext : {};
+      var currentCount = retryData.retryCount ? retryData.retryCount : 0;
 
       var retryInfo = {
         retryInterval: this.retryInterval,

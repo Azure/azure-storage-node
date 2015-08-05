@@ -145,7 +145,6 @@ blobClient.createContainerIfNotExists(containerName, function (error) {
   }
 });
 
-
 function setSAS(containerName, blobName) {
     var sharedAccessPolicy = {
         AccessPolicy: {
@@ -158,7 +157,8 @@ function setSAS(containerName, blobName) {
 }
 
 function setPermissions() {
-  blobClient.setContainerAcl(containerName, azure.BlobUtilities.BlobContainerPublicAccessType.BLOB, function (error) {
+  var options = { publicAccessLevel: azure.BlobUtilities.BlobContainerPublicAccessType.BLOB };
+  blobClient.setContainerAcl(containerName, null, options, function (error) {
     if (error) {
       console.log(error);
     } else {

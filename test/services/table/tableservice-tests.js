@@ -875,7 +875,7 @@ describe('tableservice-tests', function () {
           tableService.getTableAcl(tableName1, function(error, result, response) {
             result.signedIdentifiers.push(sharedAccessPolicy);
 
-            tableService.setTableAcl(tableName1, result, function() {
+            tableService.setTableAcl(tableName1, result.signedIdentifiers, function() {
 
               // Need a 30 second delay for the policy to take affect on the service.
               setTimeout(function() {
