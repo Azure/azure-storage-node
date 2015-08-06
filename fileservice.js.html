@@ -116,6 +116,10 @@
 						</li>
 						
 						<li>
+							<a href="global.html#createFileServiceWithSas">createFileServiceWithSas</a>
+						</li>
+						
+						<li>
 							<a href="global.html#createQueueService">createQueueService</a>
 						</li>
 						
@@ -175,11 +179,13 @@
 
 // Module dependencies.
 var fs = require('fs');
+var qs = require('querystring');
 var url = require('url');
 var util = require('util');
 var _ = require('underscore');
 var extend = require('extend');
 var crypto = require('crypto');
+var path = require('path');
 
 var azureCommon = require('./../../common/common');
 var azureutil = azureCommon.util;
@@ -209,6 +215,7 @@ var FileRangeStream = require('./internal/filerangestream');
 var ShareResult = require('./models/shareresult');
 var DirectoryResult = require('./models/directoryresult');
 var FileResult = require('./models/fileresult');
+var AclResult = azureCommon.AclResult;
 
 /**
 * Creates a new FileService object.
@@ -234,9 +241,10 @@ var FileResult = require('./models/fileresult');
 * @param {string} [storageAccessKey]                  The storage access key.
 * @param {string|object} [host]                       The host address. To define primary only, pass a string. 
 *                                                     Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.
+* @param {string} [sasToken]                          The Shared Access Signature token.
 */
-function FileService(storageAccountOrConnectionString, storageAccessKey, host) {
-  var storageServiceSettings = StorageServiceClient.getStorageSettings(storageAccountOrConnectionString, storageAccessKey, host);
+function FileService(storageAccountOrConnectionString, storageAccessKey, host, sasToken) {
+  var storageServiceSettings = StorageServiceClient.getStorageSettings(storageAccountOrConnectionString, storageAccessKey, host, sasToken);
 
   FileService['super_'].call(this,
     storageServiceSettings._name,
@@ -262,13 +270,15 @@ util.inherits(FileService, StorageServiceClient);
 * @param {string} [file]         File name
 * @return {string} The encoded resource name.
 */
-function createResourceName(share, directory, file) {
+function createResourceName(share, directory, file, forSAS) {
   var encode = function(name) {
-    var value = encodeURIComponent(name);
-    value = value.replace(/%2F/g, '/');
-    value = value.replace(/%5C/g, '/');
-    value = value.replace(/\+/g, '%20');  
-    return value;         
+    if (name && !forSAS) {
+      name = encodeURIComponent(name);
+      name = name.replace(/%2F/g, '/');
+      name = name.replace(/%5C/g, '/');
+      name = name.replace(/\+/g, '%20');
+    }
+    return name;
   };
 
   var name = share;
@@ -291,10 +301,57 @@ function createResourceName(share, directory, file) {
     name += encode(file);
   }
 
-  return name;
+  return path.normalize(name).replace(/\\/g, '/');
 }
 
-// Account methods
+// File service methods
+
+/**
+* Gets the properties of a storage account's File service, including Azure Storage Analytics.
+*
+* @this {FileService}
+* @param {object}       [options]                               The request options.
+* @param {LocationMode} [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to. 
+*                                                               Please see StorageUtilities.LocationMode for the possible values.
+* @param {int}          [options.timeoutIntervalInMs]           The server timeout interval, in milliseconds, to use for the request.
+* @param {int}          [options.maximumExecutionTimeInMs]      The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+*                                                               The maximum execution time interval begins at the time that the client begins building the request. The maximum
+*                                                               execution time is checked intermittently while performing requests, and before executing retries.
+* @param {string}       [options.clientRequestId]               A string that represents the client request ID with a 1KB character limit.
+* @param {bool}         [options.useNagleAlgorithm]             Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+*                                                               The default value is false.
+* @param {errorOrResult}  callback                              `error` will contain information if an error occurs; otherwise, `result` will contain the properties 
+*                                                               and `response` will contain information related to this operation.
+*/
+FileService.prototype.getServiceProperties = function (optionsOrCallback, callback) {
+  return this.getAccountServiceProperties(optionsOrCallback, callback);
+};
+
+/**
+* Sets the properties of a storage account's File service, including Azure Storage Analytics.
+* You can also use this operation to set the default request version for all incoming requests that do not have a version specified.
+*
+* @this {FileService}
+* @param {object}             serviceProperties                        The service properties.
+* @param {object}             [options]                                The request options.
+* @param {LocationMode}       [options.locationMode]                   Specifies the location mode used to decide which location the request should be sent to. 
+*                                                                      Please see StorageUtilities.LocationMode for the possible values.
+* @param {int}                [options.timeoutIntervalInMs]            The server timeout interval, in milliseconds, to use for the request.
+* @param {int}                [options.maximumExecutionTimeInMs]       The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+*                                                                      The maximum execution time interval begins at the time that the client begins building the request. The maximum
+*                                                                      execution time is checked intermittently while performing requests, and before executing retries.
+* @param {string}             [options.clientRequestId]                A string that represents the client request ID with a 1KB character limit.
+* @param {bool}               [options.useNagleAlgorithm]              Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+*                                                                      The default value is false.
+* @param {errorOrResponse}    callback                                 `error` will contain information
+*                                                                      if an error occurs; otherwise, `response`
+*                                                                      will contain information related to this operation.
+*/
+FileService.prototype.setServiceProperties = function (serviceProperties, optionsOrCallback, callback) {
+  return this.setAccountServiceProperties(serviceProperties, optionsOrCallback, callback);
+};
+
+// Share methods
 
 /**
 * Lists a segment containing a collection of share items under the specified account.
@@ -310,10 +367,10 @@ function createResourceName(share, directory, file) {
 * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
-* @param {errorOrResult}  callback                                        `error` will contain information
+* @param {errorOrResult}      callback                                    `error` will contain information
 *                                                                         if an error occurs; otherwise `result` will contain `entries` and `continuationToken`. 
 *                                                                         `entries`  gives a list of shares and the `continuationToken` is used for the next listing operation.
 *                                                                         `response` will contain information related to this operation.
@@ -338,10 +395,10 @@ FileService.prototype.listSharesSegmented = function (currentToken, optionsOrCal
 * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
-* @param {errorOrResult}  callback                                        `error` will contain information
+* @param {errorOrResult}      callback                                    `error` will contain information
 *                                                                         if an error occurs; otherwise `result` will contain `entries` and `continuationToken`. 
 *                                                                         `entries`  gives a list of shares and the `continuationToken` is used for the next listing operation.
 *                                                                         `response` will contain information related to this operation.
@@ -349,71 +406,69 @@ FileService.prototype.listSharesSegmented = function (currentToken, optionsOrCal
 FileService.prototype.listSharesSegmentedWithPrefix = function (prefix, currentToken, optionsOrCallback, callback) {
   var userOptions;
   azureutil.normalizeArgs(optionsOrCallback, callback, function (o, c) { userOptions = o; callback = c; });
-
+  
   validate.validateArgs('listShares', function (v) {
     v.callback(callback);
   });
-
+  
   var options = extend(true, {}, userOptions);
   var webResource = WebResource.get()
     .withQueryOption(QueryStringConstants.COMP, 'list')
     .withQueryOption(QueryStringConstants.MAX_RESULTS, options.maxResults)
     .withQueryOption(QueryStringConstants.INCLUDE, options.include);
-
-  if(!azureutil.objectIsNull(currentToken)) {
+  
+  if (!azureutil.objectIsNull(currentToken)) {
     webResource.withQueryOption(QueryStringConstants.MARKER, currentToken.nextMarker);
   }
-
+  
   webResource.withQueryOption(QueryStringConstants.PREFIX, prefix);
-
+  
   //options.requestLocationMode = azureutil.getNextListingLocationMode(currentToken);
-
+  
   var processResponseCallback = function (responseObject, next) {
     responseObject.listSharesResult = null;
-
+    
     if (!responseObject.error) {
       responseObject.listSharesResult = {
         entries: null,
         continuationToken: null
       };
       responseObject.listSharesResult.entries = [];
-
+      
       var shares = [];
-
+      
       if (responseObject.response.body.EnumerationResults.Shares && responseObject.response.body.EnumerationResults.Shares.Share) {
         shares = responseObject.response.body.EnumerationResults.Shares.Share;
         if (!_.isArray(shares)) {
-          shares = [ shares ];
+          shares = [shares];
         }
       }
-
+      
       shares.forEach(function (currentShare) {
         var shareResult = ShareResult.parse(currentShare);
         responseObject.listSharesResult.entries.push(shareResult);
       });
-
-      if(responseObject.response.body.EnumerationResults.NextMarker) {
+      
+      if (responseObject.response.body.EnumerationResults.NextMarker) {
         responseObject.listSharesResult.continuationToken = {
           nextMarker: null,
           targetLocation: null
         };
-
+        
         responseObject.listSharesResult.continuationToken.nextMarker = responseObject.response.body.EnumerationResults.NextMarker;
         responseObject.listSharesResult.continuationToken.targetLocation = responseObject.targetLocation;
       }
     }
-
+    
     var finalCallback = function (returnObject) {
       callback(returnObject.error, returnObject.listSharesResult, returnObject.response);
     };
-
+    
     next(responseObject, finalCallback);
   };
-
+  
   this.performRequest(webResource, null, options, processResponseCallback);
 };
-
-// Share methods
 
 /**
 * Checks whether or not a share exists on the service.
@@ -427,10 +482,10 @@ FileService.prototype.listSharesSegmentedWithPrefix = function (prefix, currentT
 * @param {int}                [options.maximumExecutionTimeInMs]      The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                     The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                     execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]               The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]               A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]             Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                     The default value is false.
-* @param {errorOrResult}  callback                                    `error` will contain information
+* @param {errorOrResult}      callback                                `error` will contain information
 *                                                                     if an error occurs; otherwise `result` will
 *                                                                     be true if the share exists, or false if the share does not exist. 
 *                                                                     `response` will contain information related to this operation.
@@ -446,6 +501,7 @@ FileService.prototype.doesShareExist = function (share, optionsOrCallback, callb
 * @this {FileService}
 * @param {string}             share                               The share name.
 * @param {object}             [options]                           The request options.
+* @param {int}                [options.quota]                     Specifies the maximum size of the share, in gigabytes.
 * @param {LocationMode}       [options.locationMode]              Specifies the location mode used to decide which location the request should be sent to. 
 *                                                                 Please see StorageUtilities.LocationMode for the possible values.
 * @param {object}             [options.metadata]                  The metadata key/value pairs.
@@ -453,10 +509,10 @@ FileService.prototype.doesShareExist = function (share, optionsOrCallback, callb
 * @param {int}                [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                 The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                 execution time is checked intermittently while performing requests, and before executing retries.   
-* @param {string}             [options.clientRequestId]           The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]           A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                 The default value is false.                               
-* @param {errorOrResult}  callback                                `error` will contain information
+* @param {errorOrResult}      callback                            `error` will contain information
 *                                                                 if an error occurs; otherwise `result` will contain
 *                                                                 the share information.
 *                                                                 `response` will contain information related to this operation.
@@ -468,12 +524,14 @@ FileService.prototype.createShare = function (share, optionsOrCallback, callback
   validate.validateArgs('createShare', function (v) {
     v.string(share, 'share');
     v.shareNameIsValid(share);
+    v.shareQuotaIsValid(userOptions.quota);
     v.callback(callback);
   });
 
   var options = extend(true, {}, userOptions);
   var webResource = WebResource.put(share)
-    .withQueryOption(QueryStringConstants.RESTYPE, 'share');
+    .withQueryOption(QueryStringConstants.RESTYPE, 'share')
+    .withHeader(HeaderConstants.SHARE_QUOTA, options.quota);
 
   webResource.addOptionalMetadataHeaders(options.metadata);
 
@@ -511,10 +569,10 @@ FileService.prototype.createShare = function (share, optionsOrCallback, callback
 * @param {int}                [options.maximumExecutionTimeInMs]        The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                       The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                       execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                 The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                 A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]               Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                       The default value is false.
-* @param {errorOrResult}  callback                                      `error` will contain information
+* @param {errorOrResult}      callback                                  `error` will contain information
 *                                                                       if an error occurs; otherwise `result` will
 *                                                                       be true if the share was created, or false if the share
 *                                                                       already exists.
@@ -578,10 +636,10 @@ FileService.prototype.createShareIfNotExists = function (share, optionsOrCallbac
 * @param {int}                [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                 The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                 execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]           The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]           A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                 The default value is false.
-* @param {errorOrResult}  callback                                `error` will contain information
+* @param {errorOrResult}      callback                            `error` will contain information
 *                                                                 if an error occurs; otherwise `result` will contain
 *                                                                 information for the share.
 *                                                                 `response` will contain information related to this operation.
@@ -622,6 +680,115 @@ FileService.prototype.getShareProperties = function (share, optionsOrCallback, c
 };
 
 /**
+* Sets the properties for the specified share.
+*
+* @this {FileService}
+* @param {string}             share                                       The share name.
+* @param {object}             [properties]                                The share properties to set.
+* @param {string|int}         [properties.quota]                          Specifies the maximum size of the share, in gigabytes.
+* @param {object}             [options]                                   The request options.                           
+* @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
+* @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+*                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
+*                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
+* @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+*                                                                         The default value is false.
+* @param {errorOrResult}      callback                                    `error` will contain information
+*                                                                         if an error occurs; otherwise `result` will contain
+*                                                                         information about the file.
+*                                                                         `response` will contain information related to this operation.
+*/
+FileService.prototype.setShareProperties = function (share, properties, optionsOrCallback, callback) {
+  var userOptions;
+  azureutil.normalizeArgs(optionsOrCallback, callback, function (o, c) { userOptions = o; callback = c; });
+  
+  validate.validateArgs('setShareProperties', function (v) {
+    v.string(share, 'share');
+    v.shareNameIsValid(share);
+    v.shareQuotaIsValid(userOptions.quota);
+    v.callback(callback);
+  });
+  
+  var options = extend(true, properties, userOptions);
+  var resourceName = createResourceName(share);
+  var webResource = WebResource.put(resourceName)
+    .withQueryOption(QueryStringConstants.RESTYPE, 'share')
+    .withQueryOption(QueryStringConstants.COMP, 'properties')
+    .withHeader(HeaderConstants.SHARE_QUOTA, options.quota);
+  
+  FileResult.setProperties(webResource, options);
+  
+  var processResponseCallback = function (responseObject, next) {
+    responseObject.shareResult = null;
+    if (!responseObject.error) {
+      responseObject.shareResult = new ShareResult(share);
+      responseObject.shareResult.getPropertiesFromHeaders(responseObject.response.headers);
+    }
+    
+    var finalCallback = function (returnObject) {
+      callback(returnObject.error, returnObject.shareResult, returnObject.response);
+    };
+    
+    next(responseObject, finalCallback);
+  };
+  
+  this.performRequest(webResource, null, options, processResponseCallback);
+};
+
+/**
+* Gets the share statistics for a share.
+*
+* @this {FileService}
+* @param {string}           share                                   The share name.
+* @param {object}           [options]                               The request options.
+* @param {LocationMode}     [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to. 
+*                                                                   Please see StorageUtilities.LocationMode for the possible values.
+* @param {int}              [options.timeoutIntervalInMs]           The timeout interval, in milliseconds, to use for the request.
+* @param {int}              [options.maximumExecutionTimeInMs]      The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+*                                                                   The maximum execution time interval begins at the time that the client begins building the request. The maximum
+*                                                                   execution time is checked intermittently while performing requests, and before executing retries.
+* @param {string}           [options.clientRequestId]               A string that represents the client request ID with a 1KB character limit.
+* @param {bool}             [options.useNagleAlgorithm]             Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+*                                                                   The default value is false.
+* @param {errorOrResult}    callback                                `error` will contain information if an error occurs; otherwise, `result` will contain the stats and 
+*                                                                   `response` will contain information related to this operation.
+*/
+FileService.prototype.getShareStats = function (share, optionsOrCallback, callback) {
+  var userOptions;
+  azureutil.normalizeArgs(optionsOrCallback, callback, function (o, c) { userOptions = o; callback = c; });
+  
+  validate.validateArgs('getShareStats', function (v) {
+    v.callback(callback);
+  });
+  
+  var options = extend(true, {}, userOptions);
+  var resourceName = createResourceName(share);
+  var webResource = WebResource.get(resourceName)
+    .withQueryOption(QueryStringConstants.RESTYPE, 'share')
+    .withQueryOption(QueryStringConstants.COMP, 'stats');
+  
+  var processResponseCallback = function (responseObject, next) {
+    responseObject.shareResult = null;
+    if (!responseObject.error) {
+      responseObject.shareResult = ShareResult.parse(responseObject.response.body, share);
+      responseObject.shareResult.getPropertiesFromHeaders(responseObject.response.headers);
+    }
+    
+    // function to be called after all filters
+    var finalCallback = function (returnObject) {
+      callback(returnObject.error, returnObject.shareResult, returnObject.response);
+    };
+    
+    // call the first filter
+    next(responseObject, finalCallback);
+  };
+  
+  this.performRequest(webResource, null, options, processResponseCallback);
+};
+
+
+/**
 * Returns all user-defined metadata for the share.
 *
 * @this {FileService}
@@ -633,10 +800,10 @@ FileService.prototype.getShareProperties = function (share, optionsOrCallback, c
 * @param {int}                [options.maximumExecutionTimeInMs]        The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                       The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                       execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                 The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                 A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]               Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                       The default value is false.
-* @param {errorOrResult}  callback                                      `error` will contain information
+* @param {errorOrResult}      callback                                  `error` will contain information
 *                                                                       if an error occurs; otherwise `result` will contain
 *                                                                       information for the share.
 *                                                                       `response` will contain information related to this operation.
@@ -655,8 +822,6 @@ FileService.prototype.getShareMetadata = function (share, optionsOrCallback, cal
   var webResource = WebResource.head(share)
     .withQueryOption(QueryStringConstants.RESTYPE, 'share')
     .withQueryOption(QueryStringConstants.COMP, 'metadata');
-
-  //options.requestLocationMode = Constants.RequestLocationMode.PRIMARY_OR_SECONDARY;
 
   var self = this;
   var processResponseCallback = function (responseObject, next) {
@@ -693,7 +858,7 @@ FileService.prototype.getShareMetadata = function (share, optionsOrCallback, cal
 * @param {int}                [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                 The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                 execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]           The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]           A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                 The default value is false.
 * @param {errorOrResponse}  callback                              `error` will contain information
@@ -736,6 +901,127 @@ FileService.prototype.setShareMetadata = function (share, metadata, optionsOrCal
 };
 
 /**
+* Gets the share's ACL.
+*
+* @this {FileService}
+* @param {string}             share                               The share name.
+* @param {object}             [options]                           The request options.
+* @param {LocationMode}       [options.locationMode]              Specifies the location mode used to decide which location the request should be sent to. 
+*                                                                 Please see StorageUtilities.LocationMode for the possible values.
+* @param {int}                [options.timeoutIntervalInMs]       The server timeout interval, in milliseconds, to use for the request.
+* @param {int}                [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+*                                                                 The maximum execution time interval begins at the time that the client begins building the request. The maximum
+*                                                                 execution time is checked intermittently while performing requests, and before executing retries.
+* @param {string}             [options.clientRequestId]           A string that represents the client request ID with a 1KB character limit.
+* @param {bool}               [options.useNagleAlgorithm]         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+*                                                                 The default value is false.
+* @param {errorOrResult}      callback                            `error` will contain information
+*                                                                 if an error occurs; otherwise `result` will contain
+*                                                                 information for the share.
+*                                                                 `response` will contain information related to this operation.
+*/
+FileService.prototype.getShareAcl = function (share, optionsOrCallback, callback) {
+  var userOptions;
+  azureutil.normalizeArgs(optionsOrCallback, callback, function (o, c) { userOptions = o; callback = c; });
+  
+  validate.validateArgs('getShareAcl', function (v) {
+    v.string(share, 'share');
+    v.shareNameIsValid(share);
+    v.callback(callback);
+  });
+  
+  var options = extend(true, {}, userOptions);
+  var webResource = WebResource.get(share)
+    .withQueryOption(QueryStringConstants.RESTYPE, 'share')
+    .withQueryOption(QueryStringConstants.COMP, 'acl');
+  
+  options.requestLocationMode = Constants.RequestLocationMode.PRIMARY_OR_SECONDARY;
+  
+  var processResponseCallback = function (responseObject, next) {
+    responseObject.shareResult = null;
+    if (!responseObject.error) {
+      responseObject.shareResult = new ShareResult(share);
+      responseObject.shareResult.getPropertiesFromHeaders(responseObject.response.headers);
+      responseObject.shareResult.signedIdentifiers = AclResult.parse(responseObject.response.body);
+    }
+    
+    var finalCallback = function (returnObject) {
+      callback(returnObject.error, returnObject.shareResult, returnObject.response);
+    };
+    
+    next(responseObject, finalCallback);
+  };
+  
+  this.performRequest(webResource, null, options, processResponseCallback);
+};
+
+/**
+* Updates the share's ACL.
+*
+* @this {FileService}
+* @param {string}             share                               The share name.
+* @param {object}             signedIdentifiers                   The signed identifiers. Signed identifiers must be in an array.
+* @param {object}             [options]                           The request options.
+* @param {int}                [options.timeoutIntervalInMs]       The server timeout interval, in milliseconds, to use for the request.
+* @param {int}                [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+*                                                                 The maximum execution time interval begins at the time that the client begins building the request. The maximum
+*                                                                 execution time is checked intermittently while performing requests, and before executing retries.
+* @param {string}             [options.clientRequestId]           A string that represents the client request ID with a 1KB character limit.
+* @param {bool}               [options.useNagleAlgorithm]         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+*                                                                 The default value is false.
+* @param {errorOrResult}      callback                            `error` will contain information
+*                                                                 if an error occurs; otherwise `result` will contain
+*                                                                 information for the share.
+*                                                                 `response` will contain information related to this operation.
+*/
+FileService.prototype.setShareAcl = function (share, signedIdentifiers, optionsOrCallback, callback) {
+  var userOptions;
+  azureutil.normalizeArgs(optionsOrCallback, callback, function (o, c) { userOptions = o; callback = c; });
+  
+  validate.validateArgs('setShareAcl', function (v) {
+    v.string(share, 'share');
+    v.shareNameIsValid(share);
+    v.callback(callback);
+  });
+  
+  var options = extend(true, {}, userOptions);
+  
+  var policies = null;
+  if (signedIdentifiers) {
+    if (!_.isArray(signedIdentifiers)) {
+      throw new Error(SR.INVALID_SIGNED_IDENTIFIERS);
+    }
+    
+    policies = AclResult.serialize(signedIdentifiers);
+  }
+  
+  var webResource = WebResource.put(share)
+    .withQueryOption(QueryStringConstants.RESTYPE, 'share')
+    .withQueryOption(QueryStringConstants.COMP, 'acl')
+    .withHeader(HeaderConstants.CONTENT_LENGTH, !azureutil.objectIsNull(policies) ? Buffer.byteLength(policies) : 0)
+    .withBody(policies);
+  
+  var processResponseCallback = function (responseObject, next) {
+    responseObject.shareResult = null;
+    if (!responseObject.error) {
+      responseObject.shareResult = new ShareResult(share);
+      responseObject.shareResult.getPropertiesFromHeaders(responseObject.response.headers);
+      if (signedIdentifiers) {
+        responseObject.shareResult.signedIdentifiers = signedIdentifiers;
+      }
+    }
+    
+    var finalCallback = function (returnObject) {
+      callback(returnObject.error, returnObject.shareResult, returnObject.response);
+    };
+    
+    next(responseObject, finalCallback);
+  };
+  
+  this.performRequest(webResource, webResource.body, options, processResponseCallback);
+};
+
+/**
 * Marks the specified share for deletion.
 * The share and any files contained within it are later deleted during garbage collection.
 *
@@ -748,7 +1034,7 @@ FileService.prototype.setShareMetadata = function (share, metadata, optionsOrCal
 * @param {int}                [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                 The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                 execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]           The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]           A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                 The default value is false.
 * @param {errorOrResponse}  callback                              `error` will contain information
@@ -793,10 +1079,10 @@ FileService.prototype.deleteShare = function (share, optionsOrCallback, callback
 * @param {int}                [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                 The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                 execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]           The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]           A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                 The default value is false.
-* @param {errorOrResult} callback                                 `error` will contain information
+* @param {errorOrResult}      callback                            `error` will contain information
 *                                                                 if an error occurs; otherwise `result` will 
 *                                                                 be true if the share exists and was deleted, or false if the share
 *                                                                 did not exist.
@@ -814,7 +1100,7 @@ FileService.prototype.deleteShareIfExists = function (share, optionsOrCallback, 
 
   var options = extend(true, {}, userOptions);
   var self = this;
-  self._doesShareExist(share, true, options, function(error, exists, response) {
+  self._doesShareExist(share, true, options, function (error, exists, response) {
     if(error){
       callback(error, exists, response);
     } else if (!exists) {
@@ -853,10 +1139,10 @@ FileService.prototype.deleteShareIfExists = function (share, optionsOrCallback, 
 * @param {int}                [options.maximumExecutionTimeInMs]      The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                     The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                     execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]               The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]               A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]             Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                     The default value is false.
-* @param {errorOrResult}  callback                                    `error` will contain information
+* @param {errorOrResult}      callback                                `error` will contain information
 *                                                                     if an error occurs; otherwise `result` will
 *                                                                     be true if the directory exists, or false if the directory does not exist. 
 *                                                                     `response` will contain information related to this operation.
@@ -879,10 +1165,10 @@ FileService.prototype.doesDirectoryExist = function (share, directory, optionsOr
 * @param {int}                [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                 The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                 execution time is checked intermittently while performing requests, and before executing retries.    
-* @param {string}             [options.clientRequestId]           The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]           A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                 The default value is false.                              
-* @param {errorOrResult}  callback                                `error` will contain information
+* @param {errorOrResult}      callback                            `error` will contain information
 *                                                                 if an error occurs; otherwise `result` will contain
 *                                                                 the directory information.
 *                                                                 `response` will contain information related to this operation.
@@ -934,10 +1220,10 @@ FileService.prototype.createDirectory = function (share, directory, optionsOrCal
 * @param {int}                [options.maximumExecutionTimeInMs]        The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                       The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                       execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                 The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                 A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]               Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                       The default value is false.
-* @param {errorOrResult}  callback                                      `error` will contain information
+* @param {errorOrResult}      callback                                  `error` will contain information
 *                                                                       if an error occurs; otherwise `result` will
 *                                                                       be true if the directory was created, or false if the directory
 *                                                                       already exists.
@@ -1003,10 +1289,10 @@ FileService.prototype.createDirectoryIfNotExists = function (share, directory, o
 * @param {int}                [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                 The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                 execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]           The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]           A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                 The default value is false.
-* @param {errorOrResult}  callback                                `error` will contain information
+* @param {errorOrResult}      callback                            `error` will contain information
 *                                                                 if an error occurs; otherwise `result` will contain
 *                                                                 information for the directory.
 *                                                                 `response` will contain information related to this operation.
@@ -1025,11 +1311,13 @@ FileService.prototype.getDirectoryProperties = function (share, directory, optio
   var options = extend(true, {}, userOptions);
   var webResource = WebResource.head(createResourceName(share, directory))
     .withQueryOption(QueryStringConstants.RESTYPE, 'directory');
-
+  
+  var self = this;
   var processResponseCallback = function (responseObject, next) {
     responseObject.directoryResult = null;
     if (!responseObject.error) {
       responseObject.directoryResult = new DirectoryResult(directory);
+      responseObject.directoryResult.metadata = self.parseMetadataHeaders(responseObject.response.headers);
       responseObject.directoryResult.getPropertiesFromHeaders(responseObject.response.headers);
     }
 
@@ -1056,7 +1344,7 @@ FileService.prototype.getDirectoryProperties = function (share, directory, optio
 * @param {int}                [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                 The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                 execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]           The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]           A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                 The default value is false.
 * @param {errorOrResponse}  callback                              `error` will contain information
@@ -1102,10 +1390,10 @@ FileService.prototype.deleteDirectory = function (share, directory, optionsOrCal
 * @param {int}                [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                 The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                 execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]           The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]           A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                 The default value is false.
-* @param {errorOrResult} callback                                 `error` will contain information
+* @param {errorOrResult}      callback                            `error` will contain information
 *                                                                 if an error occurs; otherwise `result` will 
 *                                                                 be true if the directory exists and was deleted, or false if the directory
 *                                                                 did not exist.
@@ -1163,10 +1451,10 @@ FileService.prototype.deleteDirectoryIfExists = function (share, directory, opti
 * @param {int}                [options.maximumExecutionTimeInMs]The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                               The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                               execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]         The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]         A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]       Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                               The default value is false.
-* @param {errorOrResult}  callback                              `error` will contain information
+* @param {errorOrResult}      callback                          `error` will contain information
 *                                                               if an error occurs; otherwise `result` will contain
 *                                                               entries.files, entries.directories and the continuationToken for the next listing operation.
 *                                                               `response` will contain information related to this operation.
@@ -1191,8 +1479,6 @@ FileService.prototype.listFilesAndDirectoriesSegmented = function (share, direct
   if (!azureutil.objectIsNull(currentToken)) {
     webResource.withQueryOption(QueryStringConstants.MARKER, currentToken.nextMarker);
   }
-  
-  //options.requestLocationMode = azureutil.getNextListingLocationMode(currentToken);
 
   var processResponseCallback = function (responseObject, next) {
     responseObject.listResult = null;
@@ -1256,7 +1542,184 @@ FileService.prototype.listFilesAndDirectoriesSegmented = function (share, direct
   this.performRequest(webResource, null, options, processResponseCallback);
 };
 
+/**
+* Returns all user-defined metadata for the specified directory.
+*
+* @this {FileService}
+* @param {string}             share                                       The share name.
+* @param {string}             directory                                   The directory name. Use '' to refer to the base directory.
+* @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
+* @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+*                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
+*                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
+* @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+*                                                                         The default value is false.
+* @param {errorOrResult}      callback                                    `error` will contain information
+*                                                                         if an error occurs; otherwise `result` will contain
+*                                                                         information about the file.
+*                                                                         `response` will contain information related to this operation.
+*/
+FileService.prototype.getDirectoryMetadata = function (share, directory, optionsOrCallback, callback) {
+  var userOptions;
+  azureutil.normalizeArgs(optionsOrCallback, callback, function (o, c) { userOptions = o; callback = c; });
+  
+  validate.validateArgs('getDirectoryMetadata', function (v) {
+    v.string(share, 'share');
+    v.stringAllowEmpty(directory, 'directory');
+    v.shareNameIsValid(share);
+    v.callback(callback);
+  });
+  
+  var options = extend(true, {}, userOptions);
+  var resourceName = createResourceName(share, directory);
+  var webResource = WebResource.head(resourceName)
+    .withQueryOption(QueryStringConstants.RESTYPE, 'directory')
+    .withQueryOption(QueryStringConstants.COMP, 'metadata');
+  
+  var self = this;
+  var processResponseCallback = function (responseObject, next) {
+    responseObject.directoryResult = null;
+    if (!responseObject.error) {
+      responseObject.directoryResult = new DirectoryResult(directory);
+      responseObject.directoryResult.metadata = self.parseMetadataHeaders(responseObject.response.headers);
+      responseObject.directoryResult.getPropertiesFromHeaders(responseObject.response.headers);
+    }
+    
+    var finalCallback = function (returnObject) {
+      callback(returnObject.error, returnObject.directoryResult, returnObject.response);
+    };
+    
+    next(responseObject, finalCallback);
+  };
+  
+  this.performRequest(webResource, null, options, processResponseCallback);
+};
+
+/**
+* Sets user-defined metadata for the specified directory as one or more name-value pairs 
+*
+* @this {FileService}
+* @param {string}             share                                       The share name.
+* @param {string}             directory                                   The directory name. Use '' to refer to the base directory.
+* @param {object}             metadata                                    The metadata key/value pairs.
+* @param {object}             [options]                                   The request options.
+* @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
+* @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+*                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
+*                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
+* @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+*                                                                         The default value is false.
+* @param {errorOrResult}      callback                                    `error` will contain information
+*                                                                         if an error occurs; otherwise `result` will contain
+*                                                                         information on the file.
+*                                                                         `response` will contain information related to this operation.
+*/
+FileService.prototype.setDirectoryMetadata = function (share, directory, metadata, optionsOrCallback, callback) {
+  var userOptions;
+  azureutil.normalizeArgs(optionsOrCallback, callback, function (o, c) { userOptions = o; callback = c; });
+  
+  validate.validateArgs('setDirectoryMetadata', function (v) {
+    v.string(share, 'share');
+    v.stringAllowEmpty(directory, 'directory');
+    v.shareNameIsValid(share);
+    v.object(metadata, 'metadata');
+    v.callback(callback);
+  });
+  
+  var options = extend(true, {}, userOptions);
+  var resourceName = createResourceName(share, directory);
+  var webResource = WebResource.put(resourceName)
+    .withQueryOption(QueryStringConstants.RESTYPE, 'directory')
+    .withQueryOption(QueryStringConstants.COMP, 'metadata');
+  
+  webResource.addOptionalMetadataHeaders(metadata);
+  
+  var processResponseCallback = function (responseObject, next) {
+    responseObject.directoryResult = null;
+    if (!responseObject.error) {
+      responseObject.directoryResult = new DirectoryResult(directory);
+      responseObject.directoryResult.getPropertiesFromHeaders(responseObject.response.headers);
+    }
+    
+    var finalCallback = function (returnObject) {
+      callback(returnObject.error, returnObject.directoryResult, returnObject.response);
+    };
+    
+    next(responseObject, finalCallback);
+  };
+  
+  this.performRequest(webResource, null, options, processResponseCallback);
+};
+
 // File methods
+
+/**
+* Retrieves a shared access signature token.
+*
+* @this {FileService}
+* @param {string}                   share                                         The share name.
+* @param {string}                   [directory]                                   The directory name. Use '' to refer to the base directory.
+* @param {string}                   [file]                                        The file name.
+* @param {object}                   sharedAccessPolicy                            The shared access policy.
+* @param {string}                   [sharedAccessPolicy.Id]                       The signed identifier.
+* @param {object}                   [sharedAccessPolicy.AccessPolicy.Permissions] The permission type.
+* @param {date|string}              [sharedAccessPolicy.AccessPolicy.Start]       The time at which the Shared Access Signature becomes valid (The UTC value will be used).
+* @param {date|string}              sharedAccessPolicy.AccessPolicy.Expiry        The time at which the Shared Access Signature becomes expired (The UTC value will be used).
+* @param {object}                   [headers]                                     The optional header values to set for a file returned wth this SAS.
+* @param {string}                   [headers.cacheControl]                        The optional value of the Cache-Control response header to be returned when this SAS is used.
+* @param {string}                   [headers.contentType]                         The optional value of the Content-Type response header to be returned when this SAS is used.
+* @param {string}                   [headers.contentEncoding]                     The optional value of the Content-Encoding response header to be returned when this SAS is used.
+* @param {string}                   [headers.contentLanguage]                     The optional value of the Content-Language response header to be returned when this SAS is used.
+* @param {string}                   [headers.contentDisposition]                  The optional value of the Content-Disposition response header to be returned when this SAS is used.
+* @return {string}                                                                The shared access signature query string. Note this string does not contain the leading "?".
+*/
+FileService.prototype.generateSharedAccessSignature = function (share, directory, file, sharedAccessPolicy, headers) {
+  // check if the FileService is able to generate a shared access signature
+  if (!this.storageCredentials || !this.storageCredentials.generateSignedQueryString) {
+    throw new Error(SR.CANNOT_CREATE_SAS_WITHOUT_ACCOUNT_KEY);
+  }
+
+  // Validate share name. File name is optional.
+  validate.validateArgs('generateSharedAccessSignature', function (v) {
+    v.string(share, 'share');
+    v.shareNameIsValid(share);
+    v.object(sharedAccessPolicy, 'sharedAccessPolicy');
+  });
+
+  var resourceType = FileConstants.ResourceTypes.SHARE;
+  if (file) {
+    validate.validateArgs('generateSharedAccessSignature', function (v) {
+      v.stringAllowEmpty(directory, 'directory');
+      v.string(file, 'file');
+    });
+    resourceType = FileConstants.ResourceTypes.FILE;
+  } else {
+    directory = ''; // If file is not set, directory is not a part of the string to sign.
+  }
+
+  if (sharedAccessPolicy.AccessPolicy) {
+    if (!azureutil.objectIsNull(sharedAccessPolicy.AccessPolicy.Start)) {
+      if (!_.isDate(sharedAccessPolicy.AccessPolicy.Start)) {
+        sharedAccessPolicy.AccessPolicy.Start = new Date(sharedAccessPolicy.AccessPolicy.Start);
+      }
+ 
+      sharedAccessPolicy.AccessPolicy.Start = azureutil.truncatedISO8061Date(sharedAccessPolicy.AccessPolicy.Start);
+    }
+
+    if (!azureutil.objectIsNull(sharedAccessPolicy.AccessPolicy.Expiry)) {
+      if (!_.isDate(sharedAccessPolicy.AccessPolicy.Expiry)) {
+        sharedAccessPolicy.AccessPolicy.Expiry = new Date(sharedAccessPolicy.AccessPolicy.Expiry);
+      }
+
+      sharedAccessPolicy.AccessPolicy.Expiry = azureutil.truncatedISO8061Date(sharedAccessPolicy.AccessPolicy.Expiry);
+    }
+  }
+
+  var resourceName = createResourceName(share, directory, file, true);
+  return this.storageCredentials.generateSignedQueryString(Constants.ServiceType.File, resourceName, sharedAccessPolicy, null, { headers: headers, resourceType: resourceType });
+};
 
 /**
 * Retrieves a file or directory URL.
@@ -1264,14 +1727,15 @@ FileService.prototype.listFilesAndDirectoriesSegmented = function (share, direct
 * @param {string}                   share                    The share name.
 * @param {string}                   directory                The directory name. Use '' to refer to the base directory.
 * @param {string}                   [file]                   The file name. File names may not start or end with the delimiter '/'.
+* @param {string}                   [sasToken]               The Shared Access Signature token.
 * @param {boolean}                  [primary]                A boolean representing whether to use the primary or the secondary endpoint.
 * @return {string}                                           The formatted URL string.
 * @example
 * var azure = require('azure-storage');
 * var FileService = azure.createFileService();
-* var url = FileService.getUrl(shareName, directoryName, fileName, true);
+* var url = FileService.getUrl(shareName, directoryName, fileName, sasToken, true);
 */
-FileService.prototype.getUrl = function (share, directory, file, primary) {
+FileService.prototype.getUrl = function (share, directory, file, sasToken, primary) {
   validate.validateArgs('getUrl', function (v) {
     v.string(share, 'share');
     v.stringAllowEmpty(directory, 'directory');
@@ -1281,14 +1745,13 @@ FileService.prototype.getUrl = function (share, directory, file, primary) {
   var host;
   if(!azureutil.objectIsNull(primary) && primary === false) {
     host = this.host.secondaryHost;
-  }
-  else {
+  } else {
     host = this.host.primaryHost;
   }
   host = azureutil.trimPortFromUri(host);
 
   var name = createResourceName(share, directory, file);
-  return url.resolve(host, url.format({pathname: this._getPath('/' + name)}));
+  return url.resolve(host, url.format({pathname: this._getPath('/' + name), query: qs.parse(sasToken)}));
 };
 
 /**
@@ -1306,10 +1769,10 @@ FileService.prototype.getUrl = function (share, directory, file, primary) {
 * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
-* @param {errorOrResult}  callback                                        `error` will contain information
+* @param {errorOrResult}      callback                                    `error` will contain information
 *                                                                         if an error occurs; otherwise `result` will contain
 *                                                                         information about the file.
 *                                                                         `response` will contain information related to this operation.
@@ -1329,8 +1792,6 @@ FileService.prototype.getFileProperties = function (share, directory, file, opti
   var options = extend(true, {}, userOptions);
   var resourceName = createResourceName(share, directory, file);
   var webResource = WebResource.head(resourceName);
-
-  //options.requestLocationMode = Constants.RequestLocationMode.PRIMARY_OR_SECONDARY;
 
   var self = this;
   var processResponseCallback = function (responseObject, next) {
@@ -1365,10 +1826,10 @@ FileService.prototype.getFileProperties = function (share, directory, file, opti
 * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
-* @param {errorOrResult}  callback                                        `error` will contain information
+* @param {errorOrResult}      callback                                    `error` will contain information
 *                                                                         if an error occurs; otherwise `result` will contain
 *                                                                         information about the file.
 *                                                                         `response` will contain information related to this operation.
@@ -1389,8 +1850,6 @@ FileService.prototype.getFileMetadata = function (share, directory, file, option
   var resourceName = createResourceName(share, directory, file);
   var webResource = WebResource.head(resourceName)
     .withQueryOption(QueryStringConstants.COMP, 'metadata');
-
-  //options.requestLocationMode = Constants.RequestLocationMode.PRIMARY_OR_SECONDARY;
 
   var self = this;
   var processResponseCallback = function (responseObject, next) {
@@ -1419,30 +1878,31 @@ FileService.prototype.getFileMetadata = function (share, directory, file, option
 * @param {string}             share                                       The share name.
 * @param {string}             directory                                   The directory name. Use '' to refer to the base directory.
 * @param {string}             file                                        The file name. File names may not start or end with the delimiter '/'.
-* @param {object}             [options]                                   The request options.
-* @param {string}             [options.contentType]                       The MIME content type of the file. The default type is application/octet-stream.
-* @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the file.
-* @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-* @param {string}             [options.contentMD5]                        The MD5 hash of the file content.
-* @param {string}             [options.cacheControl]                      The file service stores this value but does not use or modify it.
-* @param {string}             [options.contentDisposition]                The file's content disposition.
-* @param {string}             [options.contentLength]                     Resizes a file to the specified size. If the specified byte value is less than the current size of the file, 
-*                                                                         then all ranges above the specified byte value are cleared.
+* @param {object}             [properties]                                The file properties to set.
+* @param {string}             [properties.contentType]                    The MIME content type of the file. The default type is application/octet-stream.
+* @param {string}             [properties.contentEncoding]                The content encodings that have been applied to the file.
+* @param {string}             [properties.contentLanguage]                The natural languages used by this resource.
+* @param {string}             [properties.contentMD5]                     The MD5 hash of the file content.
+* @param {string}             [properties.cacheControl]                   The file's cache control.
+* @param {string}             [properties.contentDisposition]             The file's content disposition.
+* @param {string}             [properties.contentLength]                  Resizes a file to the specified size. If the specified byte value is less than the current size of the file, 
+*                                                                         then all ranges above the specified byte value are cleared.         
+* @param {object}             [options]                                   The request options.            
 * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
 *                                                                         Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
 * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
-* @param {errorOrResult}  callback                                        `error` will contain information
+* @param {errorOrResult}      callback                                    `error` will contain information
 *                                                                         if an error occurs; otherwise `result` will contain
 *                                                                         information about the file.
 *                                                                         `response` will contain information related to this operation.
 */
-FileService.prototype.setFileProperties = function (share, directory, file, optionsOrCallback, callback) {
+FileService.prototype.setFileProperties = function (share, directory, file, properties, optionsOrCallback, callback) {
   var userOptions;
   azureutil.normalizeArgs(optionsOrCallback, callback, function (o, c) { userOptions = o; callback = c; });
 
@@ -1454,7 +1914,7 @@ FileService.prototype.setFileProperties = function (share, directory, file, opti
     v.callback(callback);
   });
 
-  var options = extend(true, {}, userOptions);
+  var options = extend(true, properties, userOptions);
   var resourceName = createResourceName(share, directory, file);
   var webResource = WebResource.put(resourceName)
     .withQueryOption(QueryStringConstants.COMP, 'properties');
@@ -1494,10 +1954,10 @@ FileService.prototype.setFileProperties = function (share, directory, file, opti
 * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
-* @param {errorOrResult}  callback                                        `error` will contain information
+* @param {errorOrResult}      callback                                    `error` will contain information
 *                                                                         if an error occurs; otherwise `result` will contain
 *                                                                         information on the file.
 *                                                                         `response` will contain information related to this operation.
@@ -1552,10 +2012,10 @@ FileService.prototype.setFileMetadata = function (share, directory, file, metada
 * @param {int}                  [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                           execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}               [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}               [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}                 [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                           The default value is false.
-* @param {errorOrResult}  callback                                          `error` will contain information
+* @param {errorOrResult}        callback                                    `error` will contain information
 *                                                                           if an error occurs; otherwise `result` will contain
 *                                                                           information about the file.
 *                                                                           `response` will contain information related to this operation.
@@ -1578,7 +2038,7 @@ FileService.prototype.resizeFile = function (share, directory, file, size, optio
   var webResource = WebResource.put(resourceName)
     .withQueryOption(QueryStringConstants.COMP, 'properties');
 
-  webResource.withHeader(HeaderConstants.CONTENT_LENGTH_HEADER, size);
+  webResource.withHeader(HeaderConstants.FILE_CONTENT_LENGTH, size);
 
   var processResponseCallback = function(responseObject, next) {
     responseObject.fileResult = null;
@@ -1611,10 +2071,10 @@ FileService.prototype.resizeFile = function (share, directory, file, size, optio
 * @param {int}                [options.maximumExecutionTimeInMs]      The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                     The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                     execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]               The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]               A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]             Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                     The default value is false.
-* @param {errorOrResult}  callback                                    `error` will contain information
+* @param {errorOrResult}      callback                                `error` will contain information
 *                                                                     if an error occurs; otherwise `errorOrResult` will 
 *                                                                     be true if the file exists, or false if the file does not exist. 
 *                                                                     `response` will contain information related to this operation.
@@ -1624,7 +2084,7 @@ FileService.prototype.doesFileExist = function (share, directory, file, optionsO
 };
 
 /**
-* Creates a file of the specified length.
+* Creates a file of the specified length. If the file already exists on the service, it will be overwritten.
 *
 * @this {FileService}
 * @param {string}             share                                       The share name.
@@ -1645,10 +2105,10 @@ FileService.prototype.doesFileExist = function (share, directory, file, optionsO
 * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
-* @param {errorOrResult}  callback                                        `error` will contain information
+* @param {errorOrResult}      callback                                    `error` will contain information
 *                                                                         if an error occurs; otherwise `result` will contain
 *                                                                         the directory information.
 *                                                                        `response` will contain information related to this operation.
@@ -1668,8 +2128,8 @@ FileService.prototype.createFile = function (share, directory, file, length, opt
   var resourceName = createResourceName(share, directory, file);
   var options = extend(true, {}, userOptions);
   var webResource = WebResource.put(resourceName)
-    .withHeader(HeaderConstants.TYPE_HEADER, 'file')
-    .withHeader(HeaderConstants.CONTENT_LENGTH_HEADER, length);
+    .withHeader(HeaderConstants.TYPE, 'file')
+    .withHeader(HeaderConstants.FILE_CONTENT_LENGTH, length);
 
   FileResult.setProperties(webResource, options);
 
@@ -1704,7 +2164,7 @@ FileService.prototype.createFile = function (share, directory, file, length, opt
 * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
 * @param {errorOrResponse}  callback                                      `error` will contain information
@@ -1751,10 +2211,10 @@ FileService.prototype.deleteFile = function (share, directory, file, optionsOrCa
 * @param {int}                [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                 The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                 execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]           The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]           A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                 The default value is false.
-* @param {errorOrResult} callback                                 `error` will contain information
+* @param {errorOrResult}      callback                            `error` will contain information
 *                                                                 if an error occurs; otherwise `result` will
 *                                                                 be true if the file was deleted, or false if the file
 *                                                                 does not exist.
@@ -1815,7 +2275,7 @@ FileService.prototype.deleteFileIfExists = function (share, directory, file, opt
 * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
 * @param {FileService~FileToText}  callback                               `error` will contain information
@@ -1842,7 +2302,6 @@ FileService.prototype.getFileToText = function (share, directory, file, optionsO
 
   FileResult.setHeaders(webResource, options);
   this._setRangeContentMD5Header(webResource, options);
-  //options.requestLocationMode = Constants.RequestLocationMode.PRIMARY_OR_SECONDARY;
 
   var self = this;
   var processResponseCallback = function (responseObject, next) {
@@ -1868,9 +2327,8 @@ FileService.prototype.getFileToText = function (share, directory, file, optionsO
   this.performRequest(webResource, null, options, processResponseCallback);
 };
 
-
 /**
-* Downloads a file into a file.
+* Downloads an Azure file into a file.
 *
 * @this {FileService}
 * @param {string}             share                                       The share name.
@@ -1888,10 +2346,10 @@ FileService.prototype.getFileToText = function (share, directory, file, optionsO
 * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
-* @param {errorOrResult}  callback                                        `error` will contain information if an error occurs; 
+* @param {errorOrResult}      callback                                    `error` will contain information if an error occurs; 
 *                                                                         otherwise `result` will contain the file information.
 *                                                                         `response` will contain information related to this operation.
 * @example
@@ -1956,10 +2414,10 @@ FileService.prototype.getFileToLocalFile = function (share, directory, file, loc
 * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
-* @param {errorOrResult}  callback                                        `error` will contain information if an error occurs; 
+* @param {errorOrResult}      callback                                    `error` will contain information if an error occurs; 
 *                                                                         otherwise `result` will contain the file information.
 *                                                                         `response` will contain information related to this operation.
 * @return {Stream}
@@ -2015,10 +2473,10 @@ FileService.prototype.createReadStream = function (share, directory, file, optio
 * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
-* @param {errorOrResult}  callback                                        `error` will contain information if an error occurs; 
+* @param {errorOrResult}      callback                                    `error` will contain information if an error occurs; 
 *                                                                         otherwise `result` will contain the file information.
 *                                                                         `response` will contain information related to this operation.
 *
@@ -2093,10 +2551,10 @@ FileService.prototype.getFileToStream = function (share, directory, file, writeS
 * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
-* @param {errorOrResult}  callback                                        `error` will contain information
+* @param {errorOrResult}      callback                                    `error` will contain information
 *                                                                         if an error occurs; otherwise `result` will contain
 *                                                                         the range information.
 *                                                                         `response` will contain information related to this operation.
@@ -2117,8 +2575,6 @@ FileService.prototype.listRanges = function (share, directory, file, optionsOrCa
   var options = extend(true, {}, userOptions);
   var webResource = WebResource.get(resourceName)
     .withQueryOption(QueryStringConstants.COMP, 'rangelist');
-
-  //options.requestLocationMode = RequestLocationMode.PRIMARY_OR_SECONDARY;
 
   FileResult.setHeaders(webResource, options);
 
@@ -2172,10 +2628,10 @@ FileService.prototype.listRanges = function (share, directory, file, optionsOrCa
 * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
-* @param {errorOrResult}  callback                                        `error` will contain information
+* @param {errorOrResult}      callback                                    `error` will contain information
 *                                                                         if an error occurs; otherwise `result` will contain
 *                                                                         the directory information.
 *                                                                        `response` will contain information related to this operation.
@@ -2233,10 +2689,10 @@ FileService.prototype.clearRange = function (share, directory, file, rangeStart,
 * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
-* @param {errorOrResult}  callback                                        `error` will contain information
+* @param {errorOrResult}      callback                                    `error` will contain information
 *                                                                         if an error occurs; otherwise `result` will contain
 *                                                                         the file information.
 *                                                                         `response` will contain information related to this operation.
@@ -2275,7 +2731,7 @@ FileService.prototype.createRangesFromStream = function (share, directory, file,
 };
 
 /**
-* Uploads a file from a text string.
+* Uploads a file from a text string. If the file already exists on the service, it will be overwritten.
 *
 * @this {FileService}
 * @param {string}             share                                       The share name.
@@ -2300,7 +2756,7 @@ FileService.prototype.createRangesFromStream = function (share, directory, file,
 * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
 * @param {FileService~FileToText}  callback                               `error` will contain information
@@ -2344,7 +2800,7 @@ FileService.prototype.createFileFromText = function (share, directory, file, tex
 };
 
 /**
-* Uploads a file to storage from a local file.
+* Uploads a file to storage from a local file. If the file already exists on the service, it will be overwritten.
 *
 * @this {FileService}
 * @param {string}             share                                       The share name.
@@ -2369,10 +2825,10 @@ FileService.prototype.createFileFromText = function (share, directory, file, tex
 * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
-* @param {errorOrResult}  callback                                        The callback function.
+* @param {errorOrResult}      callback                                    The callback function.
 * @return {SpeedSummary}
 */
 FileService.prototype.createFileFromLocalFile = function (share, directory, file, localFileName, optionsOrCallback, callback) {
@@ -2411,7 +2867,7 @@ FileService.prototype.createFileFromLocalFile = function (share, directory, file
 };
 
 /**
-* Uploads a file from a stream.
+* Uploads a file from a stream. If the file already exists on the service, it will be overwritten.
 *
 * @this {FileService}
 * @param {string}             share                                       The share name.
@@ -2437,10 +2893,10 @@ FileService.prototype.createFileFromLocalFile = function (share, directory, file
 * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
-* @param {errorOrResult}  callback                                        The callback function.
+* @param {errorOrResult}      callback                                    The callback function.
 * @return {SpeedSummary}
 */
 FileService.prototype.createFileFromStream = function(share, directory, file, stream, streamLength, optionsOrCallback, callback) {
@@ -2501,10 +2957,10 @@ FileService.prototype.createFileFromStream = function(share, directory, file, st
 * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
-* @param {errorOrResult}  callback                                        The callback function.
+* @param {errorOrResult}      callback                                    The callback function.
 * @return {Stream}
 * @example
 * var azure = require('azure-storage');
@@ -2567,11 +3023,10 @@ FileService.prototype.createWriteStreamToExistingFile = function (share, directo
 * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
-* @param {errorOrResult}  callback                                        The callback function.
-* @param {errorOrResponse}  callback                                      The callback function.
+* @param {errorOrResult}      callback                                    The callback function.
 * @return {Stream}
 * @example
 * var azure = require('azure-storage');
@@ -2618,6 +3073,127 @@ FileService.prototype.createWriteStreamToNewFile = function (share, directory, f
   return stream;
 };
 
+/**
+* Starts to copy a file to a destination within the storage account.
+*
+* @this {FileService}
+* @param {string}             sourceUri                                 The source file or blob URI.
+* @param {string}             targetShare                               The target share name.
+* @param {string}             targetDirectory                           The target directory name.
+* @param {string}             targetFile                                The target file name.
+* @param {object}             [options]                                 The request options.
+* @param {object}             [options.metadata]                        The target file metadata key/value pairs.
+* @param {object}             [options.accessConditions]                The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+* @param {object}             [options.sourceAccessConditions]          The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+* @param {LocationMode}       [options.locationMode]                    Specifies the location mode used to decide which location the request should be sent to. 
+*                                                                       Please see StorageUtilities.LocationMode for the possible values.
+* @param {int}                [options.timeoutIntervalInMs]             The server timeout interval, in milliseconds, to use for the request.
+* @param {int}                [options.maximumExecutionTimeInMs]        The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+*                                                                       The maximum execution time interval begins at the time that the client begins building the request. The maximum
+*                                                                       execution time is checked intermittently while performing requests, and before executing retries.
+* @param {string}             [options.clientRequestId]                 A string that represents the client request ID with a 1KB character limit.
+* @param {bool}               [options.useNagleAlgorithm]               Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+*                                                                       The default value is false.
+* @param {errorOrResult}      callback                                  `error` will contain information
+*                                                                       if an error occurs; otherwise `result` will contain
+*                                                                       the file information.
+*                                                                       `response` will contain information related to this operation.
+*/
+FileService.prototype.startCopyFile = function (sourceUri, targetShare, targetDirectory, targetFile, optionsOrCallback, callback) {
+  var userOptions;
+  azureutil.normalizeArgs(optionsOrCallback, callback, function (o, c) { userOptions = o; callback = c; });
+  
+  validate.validateArgs('startCopyFile', function (v) {
+    v.string(targetShare, 'targetShare');
+    v.stringAllowEmpty(targetDirectory, 'targetDirectory');
+    v.string(targetFile, 'targetFile');
+    v.shareNameIsValid(targetShare);
+    v.callback(callback);
+  });
+  
+  var targetResourceName = createResourceName(targetShare, targetDirectory, targetFile);
+  
+  var options = extend(true, {}, userOptions);
+  
+  var webResource = WebResource.put(targetResourceName)
+    .withHeader(HeaderConstants.COPY_SOURCE, sourceUri)
+    .addOptionalMetadataHeaders(options.metadata);
+  
+  var processResponseCallback = function (responseObject, next) {
+    responseObject.fileResult = null;
+    if (!responseObject.error) {
+      responseObject.fileResult = new FileResult(targetShare, targetDirectory, targetFile);
+      responseObject.fileResult.getPropertiesFromHeaders(responseObject.response.headers, true);
+      
+      if (options.metadata) {
+        responseObject.fileResult.metadata = options.metadata;
+      }
+    }
+    
+    var finalCallback = function (returnObject) {
+      callback(returnObject.error, returnObject.fileResult, returnObject.response);
+    };
+    
+    next(responseObject, finalCallback);
+  };
+  
+  this.performRequest(webResource, null, options, processResponseCallback);
+};
+
+/**
+* Abort a file copy operation.
+*
+* @this {FileService}
+* @param {string}             share                                     The destination share name.
+* @param {string}             directory                                 The destination directory name.
+* @param {string}             file                                      The destination file name.
+* @param {string}             copyId                                    The copy operation identifier.
+* @param {object}             [options]                                 The request options.
+* @param {LocationMode}       [options.locationMode]                    Specifies the location mode used to decide which location the request should be sent to. 
+*                                                                       Please see StorageUtilities.LocationMode for the possible values.
+* @param {int}                [options.timeoutIntervalInMs]             The server timeout interval, in milliseconds, to use for the request.
+* @param {int}                [options.maximumExecutionTimeInMs]        The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+*                                                                       The maximum execution time interval begins at the time that the client begins building the request. The maximum
+*                                                                       execution time is checked intermittently while performing requests, and before executing retries.
+* @param {string}             [options.clientRequestId]                 A string that represents the client request ID with a 1KB character limit.
+* @param {bool}               [options.useNagleAlgorithm]               Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+*                                                                       The default value is false.
+* @param {errorOrResult}      callback                                  `error` will contain information
+*                                                                       if an error occurs; otherwise `result` will contain
+*                                                                       the file information.
+*                                                                       `response` will contain information related to this operation.
+*/
+FileService.prototype.abortCopyFile = function (share, directory, file, copyId, optionsOrCallback, callback) {
+  var userOptions;
+  azureutil.normalizeArgs(optionsOrCallback, callback, function (o, c) { userOptions = o; callback = c; });
+  
+  validate.validateArgs('abortCopyFile', function (v) {
+    v.string(share, 'share');
+    v.stringAllowEmpty(directory, 'directory');
+    v.string(file, 'file');
+    v.shareNameIsValid(share);
+    v.callback(callback);
+  });
+  
+  var resourceName = createResourceName(share, directory, file);
+  
+  var options = extend(true, {}, userOptions);
+  var webResource = WebResource.put(resourceName)
+    .withQueryOption(QueryStringConstants.COPY_ID, copyId)
+    .withQueryOption(QueryStringConstants.COMP, 'copy')
+    .withHeader(HeaderConstants.COPY_ACTION, 'abort');
+  
+  var processResponseCallback = function (responseObject, next) {
+    var finalCallback = function (returnObject) {
+      callback(returnObject.error, returnObject.response);
+    };
+    
+    next(responseObject, finalCallback);
+  };
+  
+  this.performRequest(webResource, null, options, processResponseCallback);
+};
+
 // Internal Methods
 
 /**
@@ -2640,7 +3216,7 @@ FileService.prototype.createWriteStreamToNewFile = function (share, directory, f
 * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
 * @param {Function(error, file, response)}  callback                      `error` will contain information
@@ -2705,7 +3281,7 @@ FileService.prototype._createRanges = function (share, directory, file, text, re
 * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
 * @param {function(error, null)}  callback                                The callback function.
@@ -2839,7 +3415,7 @@ FileService.prototype._createFileFromChunkStream = function(share, directory, fi
 * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
 * @param {errorOrResult}      callback                                    `error` will contain information if an error occurs; 
@@ -2910,7 +3486,7 @@ FileService.prototype._getFileToStream = function (share, directory, file, write
 * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
 * @param {errorOrResult}      callback                                    `error` will contain information if an error occurs; 
@@ -3196,7 +3772,7 @@ function getExistsResponseCallback (callback) {
 * @param {int}                [options.maximumExecutionTimeInMs]                The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                               The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                               execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                         The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                         A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                       Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                               The default value is false.
 * @param {Function(error, fileExists, response)}  callback                      `error` will contain information
@@ -3243,7 +3819,7 @@ FileService.prototype._doesFileExist = function (share, directory, file, primary
 * @param {int}                [options.maximumExecutionTimeInMs]                The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                               The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                               execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                         The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]                         A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                       Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                               The default value is false.
 * @param {Function(error, directoryExists, response)}  callback                 `error` will contain information
@@ -3287,10 +3863,10 @@ FileService.prototype._doesDirectoryExist = function (share, directory, primaryO
 * @param {int}                [options.maximumExecutionTimeInMs]      The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
 *                                                                     The maximum execution time interval begins at the time that the client begins building the request. The maximum
 *                                                                     execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]               The client request ID with a 1KB character limit.
+* @param {string}             [options.clientRequestId]               A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]             Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                     The default value is false.
-* @param {errorOrResult} callback                                     `error` will contain information
+* @param {errorOrResult}      callback                                `error` will contain information
 *                                                                     if an error occurs; otherwise `result` will 
 *                                                                     be true if the share exists and was deleted, or false if the share
 *                                                                     did not exist.
@@ -3345,7 +3921,7 @@ module.exports = FileService;
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Tue May 12th 2015 using the <a
+		on Thu Aug 6th 2015 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
