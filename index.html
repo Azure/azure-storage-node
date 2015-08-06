@@ -116,6 +116,10 @@
 						</li>
 						
 						<li>
+							<a href="global.html#createFileServiceWithSas">createFileServiceWithSas</a>
+						</li>
+						
+						<li>
 							<a href="global.html#createQueueService">createQueueService</a>
 						</li>
 						
@@ -180,7 +184,7 @@
 <p><a href="http://badge.fury.io/js/azure-storage"><img src="https://badge.fury.io/js/azure-storage.svg" alt="NPM version"></a> <a href="https://travis-ci.org/Azure/azure-storage-node"><img src="https://travis-ci.org/Azure/azure-storage-node.svg?branch=master" alt="Build Status"></a></p>
 <p>This project provides a Node.js package that makes it easy to consume and manage Microsoft Azure Storage Services.</p>
 <blockquote>
-<p>If you are looking for documentation for the Azure SDK for Node.js, see <a href="http://dl.windowsazure.com/nodedocs/index.html"><a href="http://dl.windowsazure.com/nodedocs/index.html">http://dl.windowsazure.com/nodedocs/index.html</a></a> or visit <a href="https://github.com/Azure/azure-sdk-for-node"><a href="https://github.com/Azure/azure-sdk-for-node">https://github.com/Azure/azure-sdk-for-node</a></a>. While the Azure SDK for Node.js provides support for working with Azure Storage, you should consider using the Azure Storage SDK as it supports features not available in the Azure SDK for Node.js</p>
+<p>If you are looking for the Node.js SDK for other Azure services, visit <a href="https://github.com/Azure/azure-sdk-for-node"><a href="https://github.com/Azure/azure-sdk-for-node">https://github.com/Azure/azure-sdk-for-node</a></a>.</p>
 </blockquote>
 <h1>Features</h1>
 <ul>
@@ -206,7 +210,13 @@
 <li>Advanced Queue Operations</li>
 </ul>
 </li>
+<li>Service Properties<ul>
+<li>Get Service Properties</li>
+<li>Set Service Properties</li>
 </ul>
+</li>
+</ul>
+<p>Please check details on <a href="http://azure.github.io/azure-storage-node">API reference documents</a>.</p>
 <h1>Getting Started</h1>
 <h2>Install</h2>
 <pre><code class="lang-shell">npm install azure-storage</code></pre>
@@ -395,6 +405,96 @@ fileService.getFileToStream('taskshare', 'taskdirectory', 'taskfile', fs.createW
     // file retrieved
   }
 });</code></pre>
+<h3>Service Properties</h3>
+<p>The <strong>getServiceProperties</strong> method can be used to fetch the logging, metrics and CORS settings on your storage account:</p>
+<pre><code class="lang-Javascript">var azure = require('azure-storage');
+var blobService = azure.createBlobService();
+
+blobService.getServiceProperties(function(error, result, response) {  
+  if (!error) {
+     var serviceProperties = result;
+     // properties are fetched
+  } 
+});</code></pre>
+<p>The <strong>setServiceProperties</strong> method can be used to modify the logging, metrics and CORS settings on your storage account:</p>
+<pre><code class="lang-Javascript">var azure = require('azure-storage');
+var blobService = azure.createBlobService();
+
+var serviceProperties = generateServiceProperties(); 
+
+blobService.setServiceProperties(serviceProperties, function(error, result, response) {  
+  if (!error) {
+    // properties are set
+  }
+});  
+
+function generateServiceProperties() {
+  return serviceProperties = {
+    Logging: {
+      Version: '1.0',
+      Delete: true,
+      Read: true,
+      Write: true,
+      RetentionPolicy: {
+        Enabled: true,
+        Days: 10,
+      },
+    },
+    HourMetrics: {
+      Version: '1.0',
+      Enabled: true,
+      IncludeAPIs: true,
+      RetentionPolicy: {
+        Enabled: true,
+        Days: 10,
+      },
+    },
+    MinuteMetrics: {
+      Version: '1.0',
+      Enabled: true,
+      IncludeAPIs: true,
+      RetentionPolicy: {
+        Enabled: true,
+        Days: 10,
+      },
+    },
+    Cors: {
+      CorsRule: [
+        {
+          AllowedOrigins: ['www.azure.com', 'www.microsoft.com'],
+          AllowedMethods: ['GET', 'PUT'],
+          AllowedHeaders: ['x-ms-meta-data*', 'x-ms-meta-target*', 'x-ms-meta-xyz', 'x-ms-meta-foo'],
+          ExposedHeaders: ['x-ms-meta-data*', 'x-ms-meta-source*', 'x-ms-meta-abc', 'x-ms-meta-bcd'],
+          MaxAgeInSeconds: 500,
+        },
+        {
+          AllowedOrigins: ['www.msdn.com', 'www.asp.com'],
+          AllowedMethods: ['GET', 'PUT'],
+          AllowedHeaders: ['x-ms-meta-data*', 'x-ms-meta-target*', 'x-ms-meta-xyz', 'x-ms-meta-foo'],
+          ExposedHeaders: ['x-ms-meta-data*', 'x-ms-meta-source*', 'x-ms-meta-abc', 'x-ms-meta-bcd'],
+          MaxAgeInSeconds: 500,
+        },
+      ],
+    },
+  };
+}</code></pre>
+<p>When modifying the service properties, you can fetch the properties and then modify the them to prevent overwriting the existing settings.</p>
+<pre><code class="lang-Javascript">var azure = require('azure-storage');
+var blobService = azure.createBlobService();
+
+blobService.getServiceProperties(function(error, result, response) {  
+  if (!error) {
+    var serviceProperties = result;
+
+    // modify the properties
+
+    blobService.setServiceProperties(serviceProperties, function(error, result, response) {  
+      if (!error) {
+        // properties are set
+      }
+    });
+  } 
+});</code></pre>
 <h2>Code Samples</h2>
 <p>How-Tos focused around accomplishing specific tasks are available on the <a href="http://azure.microsoft.com/en-us/develop/nodejs/">Microsoft Azure Node.js Developer Center</a>.</p>
 <ul>
@@ -456,7 +556,7 @@ set AZURE_STORAGE_ACCESS_KEY=&quot;valid storage account key&quot;</code></pre>
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Tue May 12th 2015 using the <a
+		on Thu Aug 6th 2015 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>

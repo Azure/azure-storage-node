@@ -116,6 +116,10 @@
 						</li>
 						
 						<li>
+							<a href="global.html#createFileServiceWithSas">createFileServiceWithSas</a>
+						</li>
+						
+						<li>
 							<a href="global.html#createQueueService">createQueueService</a>
 						</li>
 						
@@ -180,7 +184,7 @@ useNagleAlgorithm                                   Determines whether the Nagle
     
         
 <dt>
-    <h4 class="name" id="FileService"><span class="type-signature"></span>new FileService<span class="signature">(<span class="optional">storageAccountOrConnectionString</span>, <span class="optional">storageAccessKey</span>, <span class="optional">host</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="FileService"><span class="type-signature"></span>new FileService<span class="signature">(<span class="optional">storageAccountOrConnectionString</span>, <span class="optional">storageAccessKey</span>, <span class="optional">host</span>, <span class="optional">sasToken</span>)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -326,6 +330,39 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
         </tr>
 
 	
+
+        <tr>
+            
+                <td class="name"><code>sasToken</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The Shared Access Signature token.</p></td>
+        </tr>
+
+	
 	</tbody>
 </table>
 
@@ -359,7 +396,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-79">line 79</a>
+				 <a href="fileservice.js.html#sunlight-1-line-83">line 83</a>
 			</li>
 		</ul>
 	</dd>
@@ -411,6 +448,501 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
         <h3 class="subsection-title">Methods</h3>
 
         <dl>
+            
+<dt>
+    <h4 class="name" id="abortCopyFile"><span class="type-signature"></span>abortCopyFile<span class="signature">(share, directory, file, copyId, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Abort a file copy operation.</p>
+    </div>
+    
+
+    
+    
+    
+        <h5>This:</h5>
+        <ul><li>{<a href="FileService.html">FileService</a>}</li></ul>
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>share</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The destination share name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>directory</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The destination directory name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>file</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The destination file name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>copyId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The copy operation identifier.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>locationMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">LocationMode</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
+                                                                      Please see StorageUtilities.LocationMode for the possible values.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timeoutIntervalInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The server timeout interval, in milliseconds, to use for the request.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>maximumExecutionTimeInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+                                                                      The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                      execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>clientRequestId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>useNagleAlgorithm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+                                                                      The default value is false.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#errorOrResult">errorOrResult</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information
+                                                                      if an error occurs; otherwise <code>result</code> will contain
+                                                                      the file information.
+                                                                      <code>response</code> will contain information related to this operation.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="fileservice.js.html">services/file/fileservice.js</a>,
+				 <a href="fileservice.js.html#sunlight-1-line-3003">line 3003</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
             
 <dt>
     <h4 class="name" id="clearRange"><span class="type-signature"></span>clearRange<span class="signature">(share, directory, file, rangeStart, rangeEnd, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
@@ -797,7 +1329,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -909,7 +1441,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-2024">line 2024</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2476">line 2476</a>
 			</li>
 		</ul>
 	</dd>
@@ -1231,7 +1763,7 @@ If a directory with the same name already exists, the operation fails.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -1343,7 +1875,7 @@ If a directory with the same name already exists, the operation fails.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-731">line 731</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1013">line 1013</a>
 			</li>
 		</ul>
 	</dd>
@@ -1664,7 +2196,7 @@ If a directory with the same name already exists, the operation fails.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -1777,7 +2309,7 @@ If a directory with the same name already exists, the operation fails.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-796">line 796</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1078">line 1078</a>
 			</li>
 		</ul>
 	</dd>
@@ -1821,7 +2353,7 @@ If a directory with the same name already exists, the operation fails.</p>
     
     
     <div class="description">
-        <p>Creates a file of the specified length.</p>
+        <p>Creates a file of the specified length. If the file already exists on the service, it will be overwritten.</p>
     </div>
     
 
@@ -2397,7 +2929,7 @@ If a directory with the same name already exists, the operation fails.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -2509,7 +3041,7 @@ If a directory with the same name already exists, the operation fails.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1497">line 1497</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1953">line 1953</a>
 			</li>
 		</ul>
 	</dd>
@@ -2547,7 +3079,7 @@ If a directory with the same name already exists, the operation fails.</p>
     
     
     <div class="description">
-        <p>Uploads a file to storage from a local file.</p>
+        <p>Uploads a file to storage from a local file. If the file already exists on the service, it will be overwritten.</p>
     </div>
     
 
@@ -3218,7 +3750,7 @@ If a directory with the same name already exists, the operation fails.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -3327,7 +3859,7 @@ If a directory with the same name already exists, the operation fails.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-2219">line 2219</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2671">line 2671</a>
 			</li>
 		</ul>
 	</dd>
@@ -3384,7 +3916,7 @@ If a directory with the same name already exists, the operation fails.</p>
     
     
     <div class="description">
-        <p>Uploads a file from a stream.</p>
+        <p>Uploads a file from a stream. If the file already exists on the service, it will be overwritten.</p>
     </div>
     
 
@@ -4086,7 +4618,7 @@ If a directory with the same name already exists, the operation fails.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -4195,7 +4727,7 @@ If a directory with the same name already exists, the operation fails.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-2287">line 2287</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2739">line 2739</a>
 			</li>
 		</ul>
 	</dd>
@@ -4252,7 +4784,7 @@ If a directory with the same name already exists, the operation fails.</p>
     
     
     <div class="description">
-        <p>Uploads a file from a text string.</p>
+        <p>Uploads a file from a text string. If the file already exists on the service, it will be overwritten.</p>
     </div>
     
 
@@ -4931,7 +5463,7 @@ If a directory with the same name already exists, the operation fails.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -5043,7 +5575,7 @@ If a directory with the same name already exists, the operation fails.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-2152">line 2152</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2604">line 2604</a>
 			</li>
 		</ul>
 	</dd>
@@ -5554,7 +6086,7 @@ If a directory with the same name already exists, the operation fails.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -5666,7 +6198,7 @@ If a directory with the same name already exists, the operation fails.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-2085">line 2085</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2537">line 2537</a>
 			</li>
 		</ul>
 	</dd>
@@ -6150,7 +6682,7 @@ If a directory with the same name already exists, the operation fails.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -6261,7 +6793,7 @@ If a directory with the same name already exists, the operation fails.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1813">line 1813</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2267">line 2267</a>
 			</li>
 		</ul>
 	</dd>
@@ -6449,6 +6981,39 @@ If a share with the same name already exists, the operation fails.</p>
 
         <tr>
             
+                <td class="name"><code>quota</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies the maximum size of the share, in gigabytes.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
                 <td class="name"><code>locationMode</code></td>
             
 
@@ -6610,7 +7175,7 @@ If a share with the same name already exists, the operation fails.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -6722,7 +7287,7 @@ If a share with the same name already exists, the operation fails.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-305">line 305</a>
+				 <a href="fileservice.js.html#sunlight-1-line-357">line 357</a>
 			</li>
 		</ul>
 	</dd>
@@ -7045,7 +7610,7 @@ If a share with the same name already exists, the operation fails.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -7158,7 +7723,7 @@ If a share with the same name already exists, the operation fails.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-373">line 373</a>
+				 <a href="fileservice.js.html#sunlight-1-line-427">line 427</a>
 			</li>
 		</ul>
 	</dd>
@@ -7848,7 +8413,7 @@ If it does not, please create the file using createFile before calling this meth
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -7957,7 +8522,7 @@ If it does not, please create the file using createFile before calling this meth
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-2358">line 2358</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2810">line 2810</a>
 			</li>
 		</ul>
 	</dd>
@@ -8012,7 +8577,7 @@ If it does not, please create the file using createFile before calling this meth
         
             
 <dt>
-    <h4 class="name" id="createWriteStreamToNewFile"><span class="type-signature"></span>createWriteStreamToNewFile<span class="signature">(share, directory, file, length, <span class="optional">options</span>, callback, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    <h4 class="name" id="createWriteStreamToNewFile"><span class="type-signature"></span>createWriteStreamToNewFile<span class="signature">(share, directory, file, length, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
     
     
 </dt>
@@ -8696,7 +9261,7 @@ If it does not, please create the file using createFile before calling this meth
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -8772,37 +9337,6 @@ If it does not, please create the file using createFile before calling this meth
         </tr>
 
 	
-
-        <tr>
-            
-                <td class="name"><code>callback</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#errorOrResponse">errorOrResponse</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The callback function.</p></td>
-        </tr>
-
-	
 	</tbody>
 </table>
 
@@ -8836,7 +9370,7 @@ If it does not, please create the file using createFile before calling this meth
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-2422">line 2422</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2873">line 2873</a>
 			</li>
 		</ul>
 	</dd>
@@ -9182,7 +9716,7 @@ If it does not, please create the file using createFile before calling this meth
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -9293,7 +9827,7 @@ If it does not, please create the file using createFile before calling this meth
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-907">line 907</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1191">line 1191</a>
 			</li>
 		</ul>
 	</dd>
@@ -9614,7 +10148,7 @@ If it does not, please create the file using createFile before calling this meth
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -9727,7 +10261,7 @@ If it does not, please create the file using createFile before calling this meth
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-955">line 955</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1239">line 1239</a>
 			</li>
 		</ul>
 	</dd>
@@ -10079,7 +10613,7 @@ If it does not, please create the file using createFile before calling this meth
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -10189,7 +10723,7 @@ If it does not, please create the file using createFile before calling this meth
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1554">line 1554</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2010">line 2010</a>
 			</li>
 		</ul>
 	</dd>
@@ -10541,7 +11075,7 @@ If it does not, please create the file using createFile before calling this meth
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -10654,7 +11188,7 @@ If it does not, please create the file using createFile before calling this meth
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1604">line 1604</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2060">line 2060</a>
 			</li>
 		</ul>
 	</dd>
@@ -10945,7 +11479,7 @@ The share and any files contained within it are later deleted during garbage col
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -11056,7 +11590,7 @@ The share and any files contained within it are later deleted during garbage col
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-599">line 599</a>
+				 <a href="fileservice.js.html#sunlight-1-line-881">line 881</a>
 			</li>
 		</ul>
 	</dd>
@@ -11347,7 +11881,7 @@ The share and any files contained within it are later deleted during garbage col
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -11460,7 +11994,7 @@ The share and any files contained within it are later deleted during garbage col
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-646">line 646</a>
+				 <a href="fileservice.js.html#sunlight-1-line-928">line 928</a>
 			</li>
 		</ul>
 	</dd>
@@ -11781,7 +12315,7 @@ The share and any files contained within it are later deleted during garbage col
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -11893,7 +12427,7 @@ The share and any files contained within it are later deleted during garbage col
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-705">line 705</a>
+				 <a href="fileservice.js.html#sunlight-1-line-987">line 987</a>
 			</li>
 		</ul>
 	</dd>
@@ -12245,7 +12779,7 @@ The share and any files contained within it are later deleted during garbage col
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -12357,7 +12891,7 @@ The share and any files contained within it are later deleted during garbage col
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1463">line 1463</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1919">line 1919</a>
 			</li>
 		</ul>
 	</dd>
@@ -12647,7 +13181,7 @@ The share and any files contained within it are later deleted during garbage col
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -12759,7 +13293,993 @@ The share and any files contained within it are later deleted during garbage col
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-279">line 279</a>
+				 <a href="fileservice.js.html#sunlight-1-line-330">line 330</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="generateSharedAccessSignature"><span class="type-signature"></span>generateSharedAccessSignature<span class="signature">(share, <span class="optional">directory</span>, <span class="optional">file</span>, sharedAccessPolicy, <span class="optional">headers</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Retrieves a shared access signature token.</p>
+    </div>
+    
+
+    
+    
+    
+        <h5>This:</h5>
+        <ul><li>{<a href="FileService.html">FileService</a>}</li></ul>
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>share</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The share name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>directory</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The directory name. Use '' to refer to the base directory.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>file</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The file name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>sharedAccessPolicy</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The shared access policy.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>Id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The signed identifier.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>AccessPolicy.Permissions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The permission type.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>AccessPolicy.Start</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">date</span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The time at which the Shared Access Signature becomes valid (The UTC value will be used).</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>AccessPolicy.Expiry</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">date</span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The time at which the Shared Access Signature becomes expired (The UTC value will be used).</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>headers</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The optional header values to set for a file returned wth this SAS.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>cacheControl</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The optional value of the Cache-Control response header to be returned when this SAS is used.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>contentType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The optional value of the Content-Type response header to be returned when this SAS is used.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>contentEncoding</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The optional value of the Content-Encoding response header to be returned when this SAS is used.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>contentLanguage</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The optional value of the Content-Language response header to be returned when this SAS is used.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>contentDisposition</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The optional value of the Content-Disposition response header to be returned when this SAS is used.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="fileservice.js.html">services/file/fileservice.js</a>,
+				 <a href="fileservice.js.html#sunlight-1-line-1515">line 1515</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The shared access signature query string. Note this string does not contain the leading &quot;?&quot;.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">string</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getDirectoryMetadata"><span class="type-signature"></span>getDirectoryMetadata<span class="signature">(share, directory, callback)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Returns all user-defined metadata for the specified directory.</p>
+    </div>
+    
+
+    
+    
+    
+        <h5>This:</h5>
+        <ul><li>{<a href="FileService.html">FileService</a>}</li></ul>
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>share</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The share name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>directory</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The directory name. Use '' to refer to the base directory.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options.timeoutIntervalInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The server timeout interval, in milliseconds, to use for the request.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options.maximumExecutionTimeInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+                                                                        The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                        execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options.clientRequestId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options.useNagleAlgorithm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+                                                                        The default value is false.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#errorOrResult">errorOrResult</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information
+                                                                        if an error occurs; otherwise <code>result</code> will contain
+                                                                        information about the file.
+                                                                        <code>response</code> will contain information related to this operation.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="fileservice.js.html">services/file/fileservice.js</a>,
+				 <a href="fileservice.js.html#sunlight-1-line-1400">line 1400</a>
 			</li>
 		</ul>
 	</dd>
@@ -13080,7 +14600,7 @@ The share and any files contained within it are later deleted during garbage col
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -13192,7 +14712,7 @@ The share and any files contained within it are later deleted during garbage col
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-855">line 855</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1137">line 1137</a>
 			</li>
 		</ul>
 	</dd>
@@ -13491,7 +15011,7 @@ It does not modify or return the content of the file.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -13596,7 +15116,7 @@ It does not modify or return the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1217">line 1217</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1674">line 1674</a>
 			</li>
 		</ul>
 	</dd>
@@ -13949,7 +15469,7 @@ It does not return or modify the content of the file.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -14061,7 +15581,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1158">line 1158</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1617">line 1617</a>
 			</li>
 		</ul>
 	</dd>
@@ -14099,7 +15619,7 @@ It does not return or modify the content of the file.</p>
     
     
     <div class="description">
-        <p>Downloads a file into a file.</p>
+        <p>Downloads an Azure file into a file.</p>
     </div>
     
 
@@ -14576,7 +16096,7 @@ It does not return or modify the content of the file.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -14687,7 +16207,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1746">line 1746</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2200">line 2200</a>
 			</li>
 		</ul>
 	</dd>
@@ -15208,7 +16728,7 @@ It does not return or modify the content of the file.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -15319,7 +16839,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1875">line 1875</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2329">line 2329</a>
 			</li>
 		</ul>
 	</dd>
@@ -15776,7 +17296,7 @@ It does not return or modify the content of the file.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -15888,7 +17408,778 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1667">line 1667</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2123">line 2123</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getServiceProperties"><span class="type-signature"></span>getServiceProperties<span class="signature">(<span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Gets the properties of a storage account's File service, including Azure Storage Analytics.</p>
+    </div>
+    
+
+    
+    
+    
+        <h5>This:</h5>
+        <ul><li>{<a href="FileService.html">FileService</a>}</li></ul>
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>locationMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">LocationMode</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
+                                                              Please see StorageUtilities.LocationMode for the possible values.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timeoutIntervalInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The server timeout interval, in milliseconds, to use for the request.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>maximumExecutionTimeInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+                                                              The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                              execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>clientRequestId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>useNagleAlgorithm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+                                                              The default value is false.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#errorOrResult">errorOrResult</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information if an error occurs; otherwise, <code>result</code> will contain the properties 
+                                                              and <code>response</code> will contain information related to this operation.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="fileservice.js.html">services/file/fileservice.js</a>,
+				 <a href="fileservice.js.html#sunlight-1-line-163">line 163</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getShareAcl"><span class="type-signature"></span>getShareAcl<span class="signature">(share, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Gets the share's ACL.</p>
+    </div>
+    
+
+    
+    
+    
+        <h5>This:</h5>
+        <ul><li>{<a href="FileService.html">FileService</a>}</li></ul>
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>share</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The share name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>locationMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">LocationMode</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
+                                                                Please see StorageUtilities.LocationMode for the possible values.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timeoutIntervalInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The server timeout interval, in milliseconds, to use for the request.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>maximumExecutionTimeInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+                                                                The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>clientRequestId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>useNagleAlgorithm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+                                                                The default value is false.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#errorOrResult">errorOrResult</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information
+                                                                if an error occurs; otherwise <code>result</code> will contain
+                                                                information for the share.
+                                                                <code>response</code> will contain information related to this operation.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="fileservice.js.html">services/file/fileservice.js</a>,
+				 <a href="fileservice.js.html#sunlight-1-line-760">line 760</a>
 			</li>
 		</ul>
 	</dd>
@@ -16178,7 +18469,7 @@ It does not return or modify the content of the file.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -16290,7 +18581,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-485">line 485</a>
+				 <a href="fileservice.js.html#sunlight-1-line-648">line 648</a>
 			</li>
 		</ul>
 	</dd>
@@ -16580,7 +18871,7 @@ It does not return or modify the content of the file.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -16692,7 +18983,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-430">line 430</a>
+				 <a href="fileservice.js.html#sunlight-1-line-484">line 484</a>
 			</li>
 		</ul>
 	</dd>
@@ -16722,7 +19013,407 @@ It does not return or modify the content of the file.</p>
         
             
 <dt>
-    <h4 class="name" id="getUrl"><span class="type-signature"></span>getUrl<span class="signature">(share, directory, <span class="optional">file</span>, <span class="optional">primary</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    <h4 class="name" id="getShareStats"><span class="type-signature"></span>getShareStats<span class="signature">(share, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Gets the share statistics for a share.</p>
+    </div>
+    
+
+    
+    
+    
+        <h5>This:</h5>
+        <ul><li>{<a href="FileService.html">FileService</a>}</li></ul>
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>share</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The share name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>locationMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">LocationMode</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
+                                                                  Please see StorageUtilities.LocationMode for the possible values.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timeoutIntervalInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The timeout interval, in milliseconds, to use for the request.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>maximumExecutionTimeInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+                                                                  The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                  execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>clientRequestId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>useNagleAlgorithm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+                                                                  The default value is false.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#errorOrResult">errorOrResult</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information if an error occurs; otherwise, <code>result</code> will contain the stats and 
+                                                                  <code>response</code> will contain information related to this operation.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="fileservice.js.html">services/file/fileservice.js</a>,
+				 <a href="fileservice.js.html#sunlight-1-line-594">line 594</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getUrl"><span class="type-signature"></span>getUrl<span class="signature">(share, directory, <span class="optional">file</span>, <span class="optional">sasToken</span>, <span class="optional">primary</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
     
     
 </dt>
@@ -16861,6 +19552,39 @@ It does not return or modify the content of the file.</p>
 
         <tr>
             
+                <td class="name"><code>sasToken</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The Shared Access Signature token.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
                 <td class="name"><code>primary</code></td>
             
 
@@ -16924,7 +19648,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1115">line 1115</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1575">line 1575</a>
 			</li>
 		</ul>
 	</dd>
@@ -16974,7 +19698,7 @@ It does not return or modify the content of the file.</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">var azure = require(&#x27;azure-storage&#x27;);var FileService = azure.createFileService();var url = FileService.getUrl(shareName, directoryName, fileName, true);</pre>
+    <pre class="sunlight-highlight-javascript">var azure = require(&#x27;azure-storage&#x27;);var FileService = azure.createFileService();var url = FileService.getUrl(shareName, directoryName, fileName, sasToken, true);</pre>
 
 
     
@@ -17343,7 +20067,7 @@ It does not return or modify the content of the file.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -17448,7 +20172,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1015">line 1015</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1299">line 1299</a>
 			</li>
 		</ul>
 	</dd>
@@ -17866,7 +20590,7 @@ It does not return or modify the content of the file.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -17978,7 +20702,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1945">line 1945</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2399">line 2399</a>
 			</li>
 		</ul>
 	</dd>
@@ -18334,7 +21058,7 @@ It does not return or modify the content of the file.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -18446,7 +21170,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-162">line 162</a>
+				 <a href="fileservice.js.html#sunlight-1-line-215">line 215</a>
 			</li>
 		</ul>
 	</dd>
@@ -18866,7 +21590,7 @@ It does not return or modify the content of the file.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -18978,7 +21702,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-190">line 190</a>
+				 <a href="fileservice.js.html#sunlight-1-line-243">line 243</a>
 			</li>
 		</ul>
 	</dd>
@@ -19327,7 +22051,7 @@ It does not return or modify the content of the file.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -19439,7 +22163,437 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1404">line 1404</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1860">line 1860</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="setDirectoryMetadata"><span class="type-signature"></span>setDirectoryMetadata<span class="signature">(share, directory, metadata, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sets user-defined metadata for the specified directory as one or more name-value pairs</p>
+    </div>
+    
+
+    
+    
+    
+        <h5>This:</h5>
+        <ul><li>{<a href="FileService.html">FileService</a>}</li></ul>
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>share</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The share name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>directory</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The directory name. Use '' to refer to the base directory.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>metadata</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The metadata key/value pairs.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>timeoutIntervalInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The server timeout interval, in milliseconds, to use for the request.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>maximumExecutionTimeInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+                                                                        The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                        execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>clientRequestId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>useNagleAlgorithm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+                                                                        The default value is false.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#errorOrResult">errorOrResult</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information
+                                                                        if an error occurs; otherwise <code>result</code> will contain
+                                                                        information on the file.
+                                                                        <code>response</code> will contain information related to this operation.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="fileservice.js.html">services/file/fileservice.js</a>,
+				 <a href="fileservice.js.html#sunlight-1-line-1456">line 1456</a>
 			</li>
 		</ul>
 	</dd>
@@ -19823,7 +22977,7 @@ It does not modify or return the content of the file.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -19935,7 +23089,7 @@ It does not modify or return the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1346">line 1346</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1802">line 1802</a>
 			</li>
 		</ul>
 	</dd>
@@ -19965,7 +23119,7 @@ It does not modify or return the content of the file.</p>
         
             
 <dt>
-    <h4 class="name" id="setFileProperties"><span class="type-signature"></span>setFileProperties<span class="signature">(share, directory, file, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="setFileProperties"><span class="type-signature"></span>setFileProperties<span class="signature">(share, directory, file, <span class="optional">properties</span>, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -20106,7 +23260,7 @@ It does not modify or return the content of the file.</p>
 
         <tr>
             
-                <td class="name"><code>options</code></td>
+                <td class="name"><code>properties</code></td>
             
 
             <td class="type">
@@ -20132,7 +23286,7 @@ It does not modify or return the content of the file.</p>
 
             
 
-            <td class="description last"><p>The request options.</p>
+            <td class="description last"><p>The file properties to set.</p>
                 <h6>Properties</h6>
                 
 
@@ -20318,7 +23472,7 @@ It does not modify or return the content of the file.</p>
 
             
 
-            <td class="description last"><p>The file service stores this value but does not use or modify it.</p></td>
+            <td class="description last"><p>The file's cache control.</p></td>
         </tr>
 
 	
@@ -20388,6 +23542,67 @@ It does not modify or return the content of the file.</p>
                                                                         then all ranges above the specified byte value are cleared.</p></td>
         </tr>
 
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
 	
 
         <tr>
@@ -20520,7 +23735,7 @@ It does not modify or return the content of the file.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -20632,7 +23847,808 @@ It does not modify or return the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1286">line 1286</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1742">line 1742</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="setServiceProperties"><span class="type-signature"></span>setServiceProperties<span class="signature">(serviceProperties, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sets the properties of a storage account's File service, including Azure Storage Analytics.
+You can also use this operation to set the default request version for all incoming requests that do not have a version specified.</p>
+    </div>
+    
+
+    
+    
+    
+        <h5>This:</h5>
+        <ul><li>{<a href="FileService.html">FileService</a>}</li></ul>
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>serviceProperties</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The service properties.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>locationMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">LocationMode</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
+                                                                     Please see StorageUtilities.LocationMode for the possible values.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timeoutIntervalInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The server timeout interval, in milliseconds, to use for the request.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>maximumExecutionTimeInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+                                                                     The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                     execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>clientRequestId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>useNagleAlgorithm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+                                                                     The default value is false.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#errorOrResponse">errorOrResponse</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information
+                                                                     if an error occurs; otherwise, <code>response</code>
+                                                                     will contain information related to this operation.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="fileservice.js.html">services/file/fileservice.js</a>,
+				 <a href="fileservice.js.html#sunlight-1-line-187">line 187</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="setShareAcl"><span class="type-signature"></span>setShareAcl<span class="signature">(share, signedIdentifiers, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Updates the share's ACL.</p>
+    </div>
+    
+
+    
+    
+    
+        <h5>This:</h5>
+        <ul><li>{<a href="FileService.html">FileService</a>}</li></ul>
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>share</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The share name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>signedIdentifiers</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The signed identifiers. Signed identifiers must be in an array.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>timeoutIntervalInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The server timeout interval, in milliseconds, to use for the request.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>maximumExecutionTimeInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+                                                                The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>clientRequestId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>useNagleAlgorithm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+                                                                The default value is false.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#errorOrResult">errorOrResult</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information
+                                                                if an error occurs; otherwise <code>result</code> will contain
+                                                                information for the share.
+                                                                <code>response</code> will contain information related to this operation.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="fileservice.js.html">services/file/fileservice.js</a>,
+				 <a href="fileservice.js.html#sunlight-1-line-814">line 814</a>
 			</li>
 		</ul>
 	</dd>
@@ -20955,7 +24971,7 @@ It's not possible to modify an individual name/value pair.</p>
 
             
 
-            <td class="description last"><p>The client request ID with a 1KB character limit.</p></td>
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
         </tr>
 
 	
@@ -21066,7 +25082,1066 @@ It's not possible to modify an individual name/value pair.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-544">line 544</a>
+				 <a href="fileservice.js.html#sunlight-1-line-705">line 705</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="setShareProperties"><span class="type-signature"></span>setShareProperties<span class="signature">(share, <span class="optional">properties</span>, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sets the properties for the specified share.</p>
+    </div>
+    
+
+    
+    
+    
+        <h5>This:</h5>
+        <ul><li>{<a href="FileService.html">FileService</a>}</li></ul>
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>share</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The share name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>properties</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The share properties to set.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>quota</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies the maximum size of the share, in gigabytes.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>timeoutIntervalInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The server timeout interval, in milliseconds, to use for the request.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>maximumExecutionTimeInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+                                                                        The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                        execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>clientRequestId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>useNagleAlgorithm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+                                                                        The default value is false.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#errorOrResult">errorOrResult</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information
+                                                                        if an error occurs; otherwise <code>result</code> will contain
+                                                                        information about the file.
+                                                                        <code>response</code> will contain information related to this operation.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="fileservice.js.html">services/file/fileservice.js</a>,
+				 <a href="fileservice.js.html#sunlight-1-line-539">line 539</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="startCopyFile"><span class="type-signature"></span>startCopyFile<span class="signature">(sourceUri, targetShare, targetDirectory, targetFile, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Starts to copy a file to a destination within the storage account.</p>
+    </div>
+    
+
+    
+    
+    
+        <h5>This:</h5>
+        <ul><li>{<a href="FileService.html">FileService</a>}</li></ul>
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>sourceUri</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The source file or blob URI.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>targetShare</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The target share name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>targetDirectory</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The target directory name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>targetFile</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The target file name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>metadata</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The target file metadata key/value pairs.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>accessConditions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The access conditions. See <a href="http://msdn.microsoft.com/en-us/library/dd179371.aspx">http://msdn.microsoft.com/en-us/library/dd179371.aspx</a> for more information.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>sourceAccessConditions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The access conditions. See <a href="http://msdn.microsoft.com/en-us/library/dd179371.aspx">http://msdn.microsoft.com/en-us/library/dd179371.aspx</a> for more information.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>locationMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">LocationMode</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
+                                                                      Please see StorageUtilities.LocationMode for the possible values.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timeoutIntervalInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The server timeout interval, in milliseconds, to use for the request.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>maximumExecutionTimeInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+                                                                      The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                      execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>clientRequestId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>useNagleAlgorithm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+                                                                      The default value is false.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#errorOrResult">errorOrResult</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information
+                                                                      if an error occurs; otherwise <code>result</code> will contain
+                                                                      the file information.
+                                                                      <code>response</code> will contain information related to this operation.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="fileservice.js.html">services/file/fileservice.js</a>,
+				 <a href="fileservice.js.html#sunlight-1-line-2939">line 2939</a>
 			</li>
 		</ul>
 	</dd>
@@ -21266,7 +26341,7 @@ It's not possible to modify an individual name/value pair.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-3161">line 3161</a>
+				 <a href="fileservice.js.html#sunlight-1-line-3733">line 3733</a>
 			</li>
 		</ul>
 	</dd>
@@ -21312,7 +26387,7 @@ It's not possible to modify an individual name/value pair.</p>
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Tue May 12th 2015 using the <a
+		on Thu Aug 6th 2015 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
