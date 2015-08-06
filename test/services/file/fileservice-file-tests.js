@@ -14,6 +14,7 @@
 // limitations under the License.
 // 
 var assert = require('assert');
+var util = require('util');
 
 // Lib includes
 var testutil = require('../../framework/util');
@@ -22,6 +23,7 @@ var TestSuite = require('../../framework/test-suite');
 
 var azure = testutil.libRequire('azure-storage');
 
+var FileUtilities = azure.FileUtilities;
 var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
 
@@ -45,6 +47,7 @@ var properties = {
 }
 
 var suite = new TestSuite('fileservice-file-tests');
+var runOrSkip = suite.isMocked ? it.skip : it;
 
 describe('File', function () {
   before(function (done) {
@@ -94,35 +97,35 @@ describe('File', function () {
 
     it('Directory and file', function (done) {
       fileServiceForUrl.setHost({ primaryHost: 'host.com' });
-      url = fileServiceForUrl.getUrl(share, directory, file, true);
+      url = fileServiceForUrl.getUrl(share, directory, file, null, true);
       assert.strictEqual(url, 'https://host.com/' + share + '/' + directory + '/' + file);
       
       fileServiceForUrl.setHost({ primaryHost: 'http://host.com:80' });
-      url = fileServiceForUrl.getUrl(share, directory, file, true);
+      url = fileServiceForUrl.getUrl(share, directory, file, null, true);
       assert.strictEqual(url, 'http://host.com/' + share + '/' + directory + '/' + file);
       
       fileServiceForUrl.setHost({ primaryHost: 'https://host.com:443' });
-      url = fileServiceForUrl.getUrl(share, directory, file, true);
+      url = fileServiceForUrl.getUrl(share, directory, file, null, true);
       assert.strictEqual(url, 'https://host.com/' + share + '/' + directory + '/' + file);
       
       fileServiceForUrl.setHost({ primaryHost: 'http://host.com:88' });
-      url = fileServiceForUrl.getUrl(share, directory, file, true);
+      url = fileServiceForUrl.getUrl(share, directory, file, null, true);
       assert.strictEqual(url, 'http://host.com:88/' + share + '/' + directory + '/' + file);
       
       fileServiceForUrl.setHost({ primaryHost: 'https://host.com:88' });
-      url = fileServiceForUrl.getUrl(share, directory, file, true);
+      url = fileServiceForUrl.getUrl(share, directory, file, null, true);
       assert.strictEqual(url, 'https://host.com:88/' + share + '/' + directory + '/' + file);
       
       fileServiceForUrl.setHost({ secondaryHost: 'host-secondary.com' });
-      url = fileServiceForUrl.getUrl(share, directory, file, false);
+      url = fileServiceForUrl.getUrl(share, directory, file, null, false);
       assert.strictEqual(url, 'https://host-secondary.com/' + share + '/' + directory + '/' + file);
       
       fileServiceForUrl.setHost({ secondaryHost: 'http://host-secondary.com:80' });
-      url = fileServiceForUrl.getUrl(share, directory, file, false);
+      url = fileServiceForUrl.getUrl(share, directory, file, null, false);
       assert.strictEqual(url, 'http://host-secondary.com/' + share + '/' + directory + '/' + file);
       
       fileServiceForUrl.setHost({ secondaryHost: 'https://host-secondary.com:88' });
-      url = fileServiceForUrl.getUrl(share, directory, file, false);
+      url = fileServiceForUrl.getUrl(share, directory, file, null, false);
       assert.strictEqual(url, 'https://host-secondary.com:88/' + share + '/' + directory + '/' + file);
 
       done();
@@ -130,33 +133,33 @@ describe('File', function () {
 
     it('No file', function (done) {
       fileServiceForUrl.setHost({ primaryHost: 'host.com' });
-      url = fileServiceForUrl.getUrl(share, directory, null, true);
+      url = fileServiceForUrl.getUrl(share, directory, null, null, true);
       assert.strictEqual(url, 'https://host.com/' + share + '/' + directory);
       url = fileServiceForUrl.getUrl(share, directory, '', true);
       assert.strictEqual(url, 'https://host.com/' + share + '/' + directory);
       
       fileServiceForUrl.setHost({ primaryHost: 'http://host.com:80' });
-      url = fileServiceForUrl.getUrl(share, directory, null, true);
+      url = fileServiceForUrl.getUrl(share, directory, null, null, true);
       assert.strictEqual(url, 'http://host.com/' + share + '/' + directory);
-      url = fileServiceForUrl.getUrl(share, directory, '', true);
+      url = fileServiceForUrl.getUrl(share, directory, '', null, true);
       assert.strictEqual(url, 'http://host.com/' + share + '/' + directory);
       
       fileServiceForUrl.setHost({ primaryHost: 'https://host.com:443' });
-      url = fileServiceForUrl.getUrl(share, directory, null, true);
+      url = fileServiceForUrl.getUrl(share, directory, null, null, true);
       assert.strictEqual(url, 'https://host.com/' + share + '/' + directory);
-      url = fileServiceForUrl.getUrl(share, directory, '', true);
+      url = fileServiceForUrl.getUrl(share, directory, '', null, true);
       assert.strictEqual(url, 'https://host.com/' + share + '/' + directory);
       
       fileServiceForUrl.setHost({ primaryHost: 'http://host.com:88' });
-      url = fileServiceForUrl.getUrl(share, directory, null, true);
+      url = fileServiceForUrl.getUrl(share, directory, null, null, true);
       assert.strictEqual(url, 'http://host.com:88/' + share + '/' + directory);
-      url = fileServiceForUrl.getUrl(share, directory, '', true);
+      url = fileServiceForUrl.getUrl(share, directory, '', null, true);
       assert.strictEqual(url, 'http://host.com:88/' + share + '/' + directory);
       
       fileServiceForUrl.setHost({ primaryHost: 'https://host.com:88' });
-      url = fileServiceForUrl.getUrl(share, directory, null, true);
+      url = fileServiceForUrl.getUrl(share, directory, null, null, true);
       assert.strictEqual(url, 'https://host.com:88/' + share + '/' + directory);
-      url = fileServiceForUrl.getUrl(share, directory, '', true);
+      url = fileServiceForUrl.getUrl(share, directory, '', null, true);
       assert.strictEqual(url, 'https://host.com:88/' + share + '/' + directory);
 
       done();
@@ -164,33 +167,33 @@ describe('File', function () {
 
     it('No directory', function (done) {
       fileServiceForUrl.setHost({ primaryHost: 'host.com' });
-      url = fileServiceForUrl.getUrl(share, '', null, true);
+      url = fileServiceForUrl.getUrl(share, '', null, null, true);
       assert.strictEqual(url, 'https://host.com/' + share);
-      url = fileServiceForUrl.getUrl(share, '', file, true);
+      url = fileServiceForUrl.getUrl(share, '', file, null, true);
       assert.strictEqual(url, 'https://host.com/' + share + '/' + file);
       
       fileServiceForUrl.setHost({ primaryHost: 'http://host.com:80' });
-      url = fileServiceForUrl.getUrl(share, '', null, true);
+      url = fileServiceForUrl.getUrl(share, '', null, null, true);
       assert.strictEqual(url, 'http://host.com/' + share);
-      url = fileServiceForUrl.getUrl(share, '', file, true);
+      url = fileServiceForUrl.getUrl(share, '', file, null, true);
       assert.strictEqual(url, 'http://host.com/' + share + '/' + file);
       
       fileServiceForUrl.setHost({ primaryHost: 'https://host.com:443' });
-      url = fileServiceForUrl.getUrl(share, '', null, true);
+      url = fileServiceForUrl.getUrl(share, '', null, null, true);
       assert.strictEqual(url, 'https://host.com/' + share);
-      url = fileServiceForUrl.getUrl(share, '', file, true);
+      url = fileServiceForUrl.getUrl(share, '', file, null, true);
       assert.strictEqual(url, 'https://host.com/' + share + '/' + file);
       
       fileServiceForUrl.setHost({ primaryHost: 'http://host.com:88' });
-      url = fileServiceForUrl.getUrl(share, '', null, true);
+      url = fileServiceForUrl.getUrl(share, '', null, null, true);
       assert.strictEqual(url, 'http://host.com:88/' + share);
-      url = fileServiceForUrl.getUrl(share, '', file, true);
+      url = fileServiceForUrl.getUrl(share, '', file, null, true);
       assert.strictEqual(url, 'http://host.com:88/' + share + '/' + file);
       
       fileServiceForUrl.setHost({ primaryHost: 'https://host.com:88' });
-      url = fileServiceForUrl.getUrl(share, '', null, true);
+      url = fileServiceForUrl.getUrl(share, '', null, null, true);
       assert.strictEqual(url, 'https://host.com:88/' + share);
-      url = fileServiceForUrl.getUrl(share, '', file, true);
+      url = fileServiceForUrl.getUrl(share, '', file, null, true);
       assert.strictEqual(url, 'https://host.com:88/' + share + '/' + file);
 
       done();
@@ -564,6 +567,29 @@ describe('File', function () {
       });
     });
 
+    it('should ignore the metadata in the options', function (done) {
+      fileService.createFile(shareName, directoryName, fileName, 0, function (createError) {
+        assert.equal(createError, null);
+
+        var metadata = { 'Class': 'Test' };
+        var options = { metadata: { color: 'White', Color: 'Black', COLOR: 'yellow' } }; 
+        fileService.setFileMetadata(shareName, directoryName, fileName, metadata, options, function (setMetadataError, setMetadataResult, setMetadataResponse) {
+          assert.equal(setMetadataError, null);
+          assert.ok(setMetadataResponse.isSuccessful);
+
+          fileService.getFileMetadata(shareName, directoryName, fileName, function (getMetadataError, file, getMetadataResponse) {
+            assert.equal(getMetadataError, null);
+            assert.notEqual(file, null);
+            assert.notEqual(file.metadata, null);
+            assert.equal(file.metadata.class, 'Test');
+            assert.ok(getMetadataResponse.isSuccessful);
+
+            done();
+          });
+        });
+      });
+    });
+
     it('should merge the metadata', function (done) {
       fileService.createFile(shareName, directoryName, fileName, 0, function (createError) {
         assert.equal(createError, null);
@@ -672,6 +698,240 @@ describe('File', function () {
           });
         });
       });
+    });
+  });
+  
+  describe('startCopyFile', function () {
+    it('should work', function (done) {
+      var sourceShareName = suite.getName(shareNamesPrefix);
+      var targetShareName = suite.getName(shareNamesPrefix);
+      
+      var sourceDirectoryName = suite.getName(directoryNamesPrefix);
+      var targetDirectoryName = suite.getName(directoryNamesPrefix);
+      
+      var sourceFileName = suite.getName(fileNamesPrefix);
+      var targetFileName = suite.getName(fileNamesPrefix);
+      
+      var fileText = 'hi there';
+      
+      fileService.createShare(sourceShareName, function (createShareErr) {
+        assert.equal(createShareErr, null);
+        
+        fileService.createDirectory(sourceShareName, sourceDirectoryName, function (createDirectoryErr) {
+          assert.equal(createDirectoryErr, null);
+
+          fileService.createShare(targetShareName, function (createShareErr) {
+            assert.equal(createShareErr, null);
+            
+            fileService.createDirectory(targetShareName, targetDirectoryName, function (createDirectoryErr) {
+              assert.equal(createDirectoryErr, null);
+              
+              var sourceMetadata = { 'Class': 'sourceFile', 'SourceColor': 'Blue' };
+              var options = { metadata : sourceMetadata };
+              fileService.createFileFromText(sourceShareName, sourceDirectoryName, sourceFileName, fileText, options, function (uploadErr) {
+                assert.equal(uploadErr, null);
+                
+                var destMetadata = { 'Class': 'destFile', 'DestColor': 'White' };
+                options = { metadata : destMetadata };
+                fileService.startCopyFile(fileService.getUrl(sourceShareName, sourceDirectoryName, sourceFileName), targetShareName, targetDirectoryName, targetFileName, options, function (copyErr, copyRes) {
+                  assert.equal(copyErr, null);
+                  
+                  fileService.getFileProperties(targetShareName, targetDirectoryName, targetFileName, function (getError, file, getResponse) {
+                    assert.equal(getError, null);
+                    assert.equal(file.metadata.class, 'destFile');
+                    assert.equal(file.metadata.sourcecolor, undefined);
+                    assert.equal(file.metadata.destcolor, 'White');
+
+                    fileService.abortCopyFile(targetShareName, targetDirectoryName, targetFileName, copyRes.copyId, function (copyErr) {
+                      assert.notEqual(copyErr, null);
+                      assert.equal(copyErr.statusCode, 409);
+
+                      fileService.getFileToText(targetShareName, targetDirectoryName, targetFileName, function (downloadErr, text) {
+                        assert.equal(downloadErr, null);
+                        assert.equal(text, fileText);
+                        
+                        fileService.deleteShare(sourceShareName, function (deleteError) {
+                          assert.equal(deleteError, null);
+                          fileService.deleteShare(targetShareName, function (deleteError) {
+                            assert.equal(deleteError, null);
+                            done();
+                          });
+                        });
+                      });
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+
+    runOrSkip('should work with SAS', function (done) {
+      var sourceShareName = suite.getName(shareNamesPrefix);
+      var targetShareName = suite.getName(shareNamesPrefix);
+      
+      var sourceDirectoryName = suite.getName(directoryNamesPrefix);
+      var targetDirectoryName = suite.getName(directoryNamesPrefix);
+      
+      var sourceFileName = suite.getName(fileNamesPrefix);
+      var targetFileName = suite.getName(fileNamesPrefix);
+      
+      var fileText = 'hi there';
+      
+      fileService.createShare(sourceShareName, function (createShareErr) {
+        assert.equal(createShareErr, null);
+        
+        fileService.createDirectory(sourceShareName, sourceDirectoryName, function (createDirectoryErr) {
+          assert.equal(createDirectoryErr, null);
+          
+          fileService.createShare(targetShareName, function (createShareErr) {
+            assert.equal(createShareErr, null);
+            
+            fileService.createDirectory(targetShareName, targetDirectoryName, function (createDirectoryErr) {
+              assert.equal(createDirectoryErr, null);
+              
+              fileService.createFileFromText(sourceShareName, sourceDirectoryName, sourceFileName, fileText, function (uploadErr) {
+                assert.equal(uploadErr, null);
+                
+                var sourceSharedAccessPolicy = {
+                  AccessPolicy: {
+                    Expiry: new Date('February 12, 2020 11:03:40 am GMT'),
+                    Permissions: 'r'
+                  }
+                };
+                
+                var destSharedAccessPolicy = {
+                  AccessPolicy: {
+                    Expiry: new Date('February 12, 2020 11:03:40 am GMT'),
+                    Permissions: 'rwd'
+                  }
+                };
+
+                var fileUrl = fileService.getUrl(sourceShareName, sourceDirectoryName, sourceFileName, fileService.generateSharedAccessSignature(sourceShareName, sourceDirectoryName, sourceFileName, sourceSharedAccessPolicy));
+                var shareSas = fileService.generateSharedAccessSignature(targetShareName, targetDirectoryName, targetFileName, destSharedAccessPolicy);
+                var fileServiceTarget = azure.createFileServiceWithSas(fileService.host, shareSas);
+                fileServiceTarget.startCopyFile(fileUrl, targetShareName, targetDirectoryName, targetFileName, function (copyErr, copyRes) {
+                  assert.equal(copyErr, null);
+                  
+                  fileServiceTarget.abortCopyFile(targetShareName, targetDirectoryName, targetFileName, copyRes.copyId, function (copyErr) {
+                    // Only account owner can abort the operation
+                    assert.notEqual(copyErr, null);
+                    assert.equal(copyErr.statusCode, 404);
+
+                    fileService.abortCopyFile(targetShareName, targetDirectoryName, targetFileName, '6bea9e94-001a-0003-5edd-4475ea000000', function (copyErr) {
+                      // Wrong copy ID will result in 409
+                      assert.notEqual(copyErr, null);
+                      assert.equal(copyErr.statusCode, 409);
+
+                      fileService.abortCopyFile(targetShareName, targetDirectoryName, targetFileName, copyRes.copyId, function (copyErr) {
+                        // Aborting completed file will result in 409
+                        assert.notEqual(copyErr, null);
+                        assert.equal(copyErr.statusCode, 409);
+
+                        fileService.getFileProperties(targetShareName, targetDirectoryName, targetFileName, function (getError, file, getResponse) {
+                          assert.equal(getError, null);
+                          assert.equal(file.copySource, fileUrl);
+                          assert.equal(file.copyStatus, 'success');
+                          assert.equal(file.copyStatusDescription, undefined);
+                          assert.equal(file.copyId, copyRes.copyId);
+                          assert.equal(file.copyProgress, util.format('%s/%s', file.contentLength, file.contentLength));
+                          
+                          fileService.getFileToText(targetShareName, targetDirectoryName, targetFileName, function (downloadErr, text) {
+                            assert.equal(downloadErr, null);
+                            assert.equal(text, fileText);
+                            
+                            fileService.deleteShare(sourceShareName, function (deleteError) {
+                              assert.equal(deleteError, null);
+                              fileService.deleteShare(targetShareName, function (deleteError) {
+                                assert.equal(deleteError, null);
+                                done();
+                              });
+                            });
+                          });
+                        });
+                      });
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+  
+  describe('single file sas', function () {
+    var fileText = 'hi there';
+    var sasTestFileName;
+    var sasTestFileNameWithSpecialChar;
+
+    var startDate = new Date('May 30, 2015 08:00:00 am GMT');
+    var expiryDate = new Date('May 30, 2020 08:00:00 am GMT');
+    var sharedAccessPolicy = {
+          AccessPolicy: {
+            Permissions: FileUtilities.SharedAccessPermissions.READ,
+            Start: startDate,
+            Expiry: expiryDate
+          }
+        };
+
+    before(function (done) {
+      sasTestFileName = suite.getName(fileNamesPrefix);
+      sasTestFileNameWithSpecialChar = '~!@#$%^&()_+}{' + fileName;
+
+      suite.setupTest(function () {
+        fileService.createFileFromText(shareName, directoryName, sasTestFileName, fileText, function (uploadErr) {
+          assert.equal(uploadErr, null);
+          fileService.createFileFromText(shareName, directoryName, sasTestFileNameWithSpecialChar, fileText, function (uploadErr) {
+            assert.equal(uploadErr, null);
+            suite.teardownTest(done); 
+          });
+        });  
+      });
+      
+    });
+
+    runOrSkip('should work with a normal file name', function (done) {
+      var sasToken = fileService.generateSharedAccessSignature(shareName, directoryName, sasTestFileName, sharedAccessPolicy);
+      var fileServiceSAS = azure.createFileServiceWithSas(fileService.host, sasToken);
+
+      fileServiceSAS.getFileProperties(shareName, directoryName, sasTestFileName, function (getError, file, getResponse) {
+        assert.equal(getError, null);
+        assert.notEqual(file, null);
+        assert.notEqual(getResponse, null);
+        assert.equal(getResponse.isSuccessful, true);
+
+        assert.equal(file.name, sasTestFileName);
+        assert.equal(file.contentLength, fileText.length);
+        assert.notEqual(file.etag, null);
+        assert.notEqual(file.lastModified, null);
+        assert.notEqual(file.requestId, null);
+
+        done();
+      });      
+    });
+
+    runOrSkip('should work with a file name with special characters', function (done) {
+      var sasToken = fileService.generateSharedAccessSignature(shareName, directoryName, sasTestFileNameWithSpecialChar, sharedAccessPolicy);
+      var fileServiceSAS = azure.createFileServiceWithSas(fileService.host, sasToken);
+
+      fileServiceSAS.getFileProperties(shareName, directoryName, sasTestFileNameWithSpecialChar, function (getError, file, getResponse) {
+        assert.equal(getError, null);
+        assert.notEqual(file, null);
+        assert.notEqual(getResponse, null);
+        assert.equal(getResponse.isSuccessful, true);
+
+        assert.equal(file.name, sasTestFileNameWithSpecialChar);
+        assert.equal(file.contentLength, fileText.length);
+        assert.notEqual(file.etag, null);
+        assert.notEqual(file.lastModified, null);
+        assert.notEqual(file.requestId, null);
+
+        done();
+      });    
     });
   });
 

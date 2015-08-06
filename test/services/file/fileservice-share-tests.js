@@ -14,6 +14,7 @@
 // limitations under the License.
 // 
 var assert = require('assert');
+var url = require('url');
 
 // Lib includes
 var testutil = require('../../framework/util');
@@ -23,6 +24,7 @@ var TestSuite = require('../../framework/test-suite');
 var azure = testutil.libRequire('azure-storage');
 
 var Constants = azure.Constants;
+var FileUtilities = azure.FileUtilities;
 var HttpConstants = Constants.HttpConstants;
 
 var shares = [];
@@ -32,6 +34,8 @@ var fileService;
 var shareName;
 
 var suite = new TestSuite('fileservice-share-tests');
+var runOrSkip = suite.isMocked ? it.skip : it;
+var timeout = (suite.isRecording || !suite.isMocked) ? 30000 : 10;
 
 describe('FileShare', function () {
   before(function (done) {
@@ -104,8 +108,10 @@ describe('FileShare', function () {
       done();
     });
 
-    it('should work', function (done) {
-      fileService.createShare(shareName, function (createError, share1, createShareResponse) {
+    it('should work with options', function (done) {
+      var quotaValue = 10;
+      var options = { quota: quotaValue };
+      fileService.createShare(shareName, options, function (createError, share1, createShareResponse) {
         assert.equal(createError, null);
         assert.notEqual(share1, null);
         if (share1) {
@@ -121,10 +127,20 @@ describe('FileShare', function () {
           assert.equal(createError2.code, Constants.FileErrorCodeStrings.SHARE_ALREADY_EXISTS);
           assert.equal(share2, null);
 
-          fileService.deleteShare(shareName, function (deleteError) {
+          fileService.getShareProperties(shareName, function (getError, shareResult, getResponse) {
+            assert.equal(getError, null);
+            assert.notEqual(shareResult, null);
+            assert.notEqual(shareResult.requestId, null);
+            assert.equal(shareResult.quota, quotaValue);
+            
+            assert.notEqual(getResponse, null);
+            assert.equal(getResponse.isSuccessful, true);
+            
+            fileService.deleteShare(shareName, function (deleteError) {
               assert.equal(deleteError, null);
               done();
             });
+          });
         });
       });
     });
@@ -206,6 +222,37 @@ describe('FileShare', function () {
         Error
       );
       done();
+    });
+  });
+  
+  describe('setShareProperties', function () {
+    it('should work', function (done) {
+      fileService.createShareIfNotExists(shareName, function (createError, created) {
+        assert.equal(createError, null);
+        assert.equal(created, true);
+        
+        var quotaValue = 30;
+        var properties = { quota: quotaValue };
+        fileService.setShareProperties(shareName, properties, function (setPropError, setPropResult, setPropResponse) {
+          assert.equal(setPropError, null);
+          assert.ok(setPropResponse.isSuccessful);
+          
+          fileService.getShareProperties(shareName, function (getError, share2, getResponse) {
+            assert.equal(getError, null);
+            assert.notEqual(share2, null);
+            assert.notEqual(null, share2.requestId);
+            assert.equal(share2.quota, quotaValue);
+            
+            assert.notEqual(getResponse, null);
+            assert.equal(getResponse.isSuccessful, true);
+            
+            fileService.deleteShare(shareName, function (deleteError) {
+              assert.equal(deleteError, null);
+              done();
+            });
+          });
+        });
+      });
     });
   });
 
@@ -291,6 +338,33 @@ describe('FileShare', function () {
         });
       });
     });
+
+    it('should ignore the metadata in the options', function (done) {
+      fileService.createShareIfNotExists(shareName, function (createError, created) {
+        assert.equal(createError, null);
+        assert.equal(created, true);
+
+        var metadata = { color: 'blue', Color: 'Orange', COLOR: 'Red' };
+        var options = { metadata: { color: 'White', Color: 'Black', COLOR: 'yellow' } };
+        fileService.setShareMetadata(shareName, metadata, options, function (setMetadataError, setMetadataResult, setMetadataResponse) {
+          assert.equal(setMetadataError, null);
+          assert.ok(setMetadataResponse.isSuccessful);
+
+          fileService.getShareMetadata(shareName, function (getMetadataError, shareMetadata, getMetadataResponse) {
+            assert.equal(getMetadataError, null);
+            assert.notEqual(shareMetadata, null);
+            assert.notEqual(shareMetadata.metadata, null);
+            assert.strictEqual(shareMetadata.metadata.color, 'blue,Orange,Red');
+            assert.ok(getMetadataResponse.isSuccessful);
+
+            fileService.deleteShare(shareName, function (deleteError) {
+              assert.equal(deleteError, null);
+              done();
+            });
+          });
+        });
+      });
+    });
   });
 
   describe('setShareMetadataThrows', function () {
@@ -349,49 +423,58 @@ describe('FileShare', function () {
         somemetadataname: 'SomeMetadataValue'
       };
 
-      var validateAndDeleteShares = function (shares, entries) {
+      var validateAndDeleteShares = function (shares, entries, callback) {
+        var count = shares.length;
         shares.forEach(function (share) {
           if (share.name == shareName1) {
             assert.equal(share.metadata.color, metadata1.color);
             assert.equal(share.metadata.sharenumber, metadata1.sharenumber);
             assert.equal(share.metadata.somemetadataname, metadata1.somemetadataname);
             entries.push(share.name);
-
+            
             fileService.deleteShare(share.name, function (deleteError1) {
+              count--;
               assert.equal(null, deleteError1);
             });
-          }
-          else if (share.name == shareName2) {
+          } else if (share.name == shareName2) {
             assert.equal(share.metadata.color, metadata2.color);
             assert.equal(share.metadata.sharenumber, metadata2.sharenumber);
             assert.equal(share.metadata.somemetadataname, metadata2.somemetadataname);
             entries.push(share.name);
-
             fileService.deleteShare(share.name, function (deleteError2) {
+              count--;
               assert.equal(null, deleteError2);
             });
-          }
-          else if (share.name == shareName3) {
+          } else if (share.name == shareName3) {
             assert.equal(share.metadata.color, metadata3.color);
             assert.equal(share.metadata.sharenumber, metadata3.sharenumber);
             assert.equal(share.metadata.somemetadataname, metadata3.somemetadataname);
             entries.push(share.name);
-
             fileService.deleteShare(share.name, function (deleteError3) {
+              count--;
               assert.equal(null, deleteError3);
             });
-          }
-          else if (share.name == shareName4) {
+          } else if (share.name == shareName4) {
             assert.equal(share.metadata.color, metadata4.color);
             assert.equal(share.metadata.sharenumber, metadata4.sharenumber);
             assert.equal(share.metadata.somemetadataname, metadata4.somemetadataname);
             entries.push(share.name);
-
             fileService.deleteShare(share.name, function (deleteError4) {
+              count--;
               assert.equal(null, deleteError4);
             });
           }
         });
+        
+        var wait = function () {
+          if (count > 0) {
+            setTimeout(wait, 1000);
+          } else {
+            callback();
+          }
+        };
+        
+        wait();
 
         return entries;
       };
@@ -424,9 +507,8 @@ describe('FileShare', function () {
               shares.length = 0;
               listShares(shareNamesPrefix, options, null, function () {
                 var entries = [];
-                validateAndDeleteShares(shares, entries);
+                validateAndDeleteShares(shares, entries, done);
                 assert.equal(entries.length, 4);
-                done();
               });
             });
           });
@@ -442,8 +524,7 @@ describe('FileShare', function () {
           var token = result.continuationToken;
           if(token) {
             listSharesWithoutPrefix(options, token, callback);
-          }
-          else {
+          } else {
             callback();
           }
         });
@@ -462,6 +543,251 @@ describe('FileShare', function () {
       });
     });
   });
+
+  describe('shared access signature', function () {
+    it('should work with shared access policy', function (done) {
+      var share = 'testshare';
+      var directoryName = "testdir";
+      var fileName = "testfile";
+      var fileServiceassert = azure.createFileService('storageAccount', 'storageAccessKey', 'host.com:80');
+      var sharedAccessPolicy = {
+        AccessPolicy: {
+          Expiry: new Date('February 12, 2015 11:03:40 am GMT')
+        }
+      };
+      
+      var fileUrl = fileServiceassert.getUrl(share, directoryName, fileName, fileServiceassert.generateSharedAccessSignature(share, directoryName, fileName, sharedAccessPolicy));
+      var parsedUrl = url.parse(fileUrl);
+      assert.strictEqual(parsedUrl.protocol, 'https:');
+      assert.strictEqual(parsedUrl.port, '80');
+      assert.strictEqual(parsedUrl.hostname, 'host.com');
+      assert.strictEqual(parsedUrl.pathname, '/' + share + '/' + directoryName + '/' + fileName);
+      assert.strictEqual(parsedUrl.query, 'se=2015-02-12T11%3A03%3A40Z&sv=2015-02-21&sr=f&sig=6jJZ1sVSqHgSJJjfqI2VI3SDmE%2FFTJ%2FVtAk8BhJVQi4%3D');
+      
+      done();
+    });
+
+    // Skip this case in nock because the signing key is different between live run and mocked run
+    runOrSkip('should work with share and file policies', function (done) {
+      var sharePolicy = {
+        AccessPolicy: {
+          Permissions: 'rw',
+          Expiry: new Date('2015-10-01')
+        }
+      };
+
+      var filePolicy = {
+        AccessPolicy: {
+          Permissions: 'd',
+          Expiry: new Date('2015-10-10')
+        }
+      };
+      
+      fileService.createShareIfNotExists(shareName, function (createError, share, createResponse) {
+        var fileName = suite.getName("file-");
+        var directoryName = '.';
+        var shareSas = fileService.generateSharedAccessSignature(shareName, directoryName, null, sharePolicy);
+        var fileServiceShareSas = azure.createFileServiceWithSas(fileService.host, shareSas);
+        fileServiceShareSas.createFile(shareName, directoryName, fileName, 5, function (createError, file, createResponse) {
+          assert.equal(createError, null);
+          assert.strictEqual(file.share, shareName);
+          assert.strictEqual(file.directory, directoryName);
+          assert.strictEqual(file.name, fileName);
+          var fileSas = fileService.generateSharedAccessSignature(shareName, directoryName, fileName, filePolicy);
+          var fileServiceFileSas = azure.createFileServiceWithSas(fileService.host, fileSas);
+          fileServiceFileSas.deleteFile(shareName, directoryName, fileName, function (deleteError) {
+            assert.equal(deleteError, null);
+
+            done();
+          });
+        });
+      });
+
+    });
+  });
+
+  describe('getShareAcl', function () {
+    it('should work', function (done) {
+      fileService.createShareIfNotExists(shareName, function () {
+        fileService.getShareAcl(shareName, function (shareAclError, shareResult, shareAclResponse) {
+          assert.equal(shareAclError, null);
+          assert.notEqual(shareResult, null);
+          if (shareResult) {
+            assert.equal(shareResult.publicAccessLevel, FileUtilities.SharePublicAccessType.OFF);
+          }
+          assert.equal(shareAclResponse.isSuccessful, true);
+          done();
+        });
+      });
+    });
+  });
+  
+  describe('setShareAcl', function () {    
+    it('should work with policies', function (done) {
+      var readWriteStartDate = new Date(Date.UTC(2012, 10, 10));
+      var readWriteExpiryDate = new Date(readWriteStartDate);
+      readWriteExpiryDate.setMinutes(readWriteStartDate.getMinutes() + 10);
+      readWriteExpiryDate.setMilliseconds(999);
+      
+      var readWriteSharedAccessPolicy = {
+        Id: 'readwrite',
+        AccessPolicy: {
+          Start: readWriteStartDate,
+          Expiry: readWriteExpiryDate,
+          Permissions: 'rw'
+        }
+      };
+      
+      var readSharedAccessPolicy = {
+        Id: 'read',
+        AccessPolicy: {
+          Expiry: readWriteStartDate,
+          Permissions: 'r'
+        }
+      };
+      
+      fileService.createShareIfNotExists(shareName, function () {
+        var directoryName = suite.getName('dir-');
+        var fileName = suite.getName('file-');
+        var fileText = 'Hello World!';
+        
+        fileService.createDirectoryIfNotExists(shareName, directoryName, function (directoryError, directoryResult, directoryResponse) {
+          assert.equal(directoryError, null);
+          assert.notEqual(directoryResult, null);
+          
+          var signedIdentifiers = [readWriteSharedAccessPolicy, readSharedAccessPolicy];
+          fileService.setShareAcl(shareName, signedIdentifiers, function (setAclError, setAclShare1, setResponse1) {
+            assert.equal(setAclError, null);
+            assert.notEqual(setAclShare1, null);
+            assert.ok(setResponse1.isSuccessful);
+            
+            setTimeout(function () {
+              fileService.getShareAcl(shareName, function (getAclError, getAclShare1, getResponse1) {
+                assert.equal(getAclError, null);
+                assert.notEqual(getAclShare1, null);
+                assert.equal(getAclShare1.publicAccessLevel, FileUtilities.SharePublicAccessType.OFF);
+                assert.equal(getAclShare1.signedIdentifiers[0].AccessPolicy.Expiry.getTime(), readWriteExpiryDate.getTime());
+                assert.ok(getResponse1.isSuccessful);
+                
+                fileService.setShareAcl(shareName, [], function (setAclError2, setAclShare2, setResponse2) {
+                  assert.equal(setAclError2, null);
+                  assert.notEqual(setAclShare2, null);
+                  assert.ok(setResponse2.isSuccessful);
+                  
+                  setTimeout(function () {
+                    fileService.getShareAcl(shareName, function (getAclError2, getAclShare2, getResponse3) {
+                      assert.equal(getAclError2, null);
+                      assert.notEqual(getAclShare2, null);
+                      assert.equal(getAclShare2.publicAccessLevel, FileUtilities.SharePublicAccessType.OFF);
+                      assert.ok(getResponse3.isSuccessful);
+                      done();
+                    });
+                  }, timeout);
+                });
+              });
+            }, timeout);
+          });
+        });
+      });
+    });
+    
+    it('should work with signed identifiers', function (done) {
+      var signedIdentifiers = [
+        {
+          Id: 'id1',
+          AccessPolicy: {
+            Start: '2009-10-10T00:00:00.123Z',
+            Expiry: '2009-10-11T00:00:00.456Z',
+            Permissions: 'r'
+          }
+        },
+        {
+          Id: 'id2',
+          AccessPolicy: {
+            Start: '2009-11-10T00:00:00.006Z',
+            Expiry: '2009-11-11T00:00:00.4Z',
+            Permissions: 'w'
+          }
+        }];
+      
+      fileService.createShareIfNotExists(shareName, function () {
+        var directoryName = suite.getName('dir-');
+        var fileName = suite.getName('file-');
+        var fileText = 'Hello World!';
+        
+        fileService.createDirectoryIfNotExists(shareName, directoryName, function (directoryError, directoryResult, directoryResponse) {
+          assert.equal(directoryError, null);
+          assert.notEqual(directoryResult, null);
+          fileService.setShareAcl(shareName, signedIdentifiers, function (setAclError, setAclShare, setAclResponse) {
+            assert.equal(setAclError, null);
+            assert.notEqual(setAclShare, null);
+            assert.ok(setAclResponse.isSuccessful);
+            setTimeout(function () {
+              fileService.getShareAcl(shareName, function (getAclError, shareAcl, getAclResponse) {
+                assert.equal(getAclError, null);
+                assert.notEqual(shareAcl, null);
+                assert.notEqual(getAclResponse, null);
+                
+                if (getAclResponse) {
+                  assert.equal(getAclResponse.isSuccessful, true);
+                }
+                
+                var entries = 0;
+                shareAcl.signedIdentifiers.forEach(function (identifier) {
+                  if (identifier.Id === 'id1') {
+                    assert.equal(identifier.AccessPolicy.Start.getTime(), new Date('2009-10-10T00:00:00.123Z').getTime());
+                    assert.equal(identifier.AccessPolicy.Expiry.getTime(), new Date('2009-10-11T00:00:00.456Z').getTime());
+                    assert.equal(identifier.AccessPolicy.Permissions, 'r');
+                    entries += 1;
+                  } else if (identifier.Id === 'id2') {
+                    assert.equal(identifier.AccessPolicy.Start.getTime(), new Date('2009-11-10T00:00:00.006Z').getTime());
+                    assert.equal(identifier.AccessPolicy.Start.getMilliseconds(), 6);
+                    assert.equal(identifier.AccessPolicy.Expiry.getTime(), new Date('2009-11-11T00:00:00.4Z').getTime());
+                    assert.equal(identifier.AccessPolicy.Expiry.getMilliseconds(), 400);
+                    assert.equal(identifier.AccessPolicy.Permissions, 'w');
+                    entries += 2;
+                  }
+                });
+                assert.equal(entries, 3);
+                done();
+              });
+            }, timeout);
+          });
+        });
+      });
+    });
+  });
+  
+  describe('getShareStats', function () {
+    it('should work', function (done) {
+      fileService.createShareIfNotExists(shareName, function (createError, created) {
+        assert.equal(createError, null);
+        assert.equal(created, true);
+        
+        fileService.getShareStats(shareName, function (getError, stats, getResponse) {
+          assert.equal(getError, null);
+          assert.equal(stats.sharestats.shareusage, 0);
+          
+          var fileText = 'hi there';
+          var fileName = suite.getName("file-");
+          fileService.createFileFromText(shareName, '', fileName, fileText, function (uploadErr) {
+            assert.equal(uploadErr, null);
+            
+            fileService.getShareStats(shareName, function (getError, stats, getResponse) {
+              assert.equal(getError, null);
+              assert.equal(stats.sharestats.shareusage, 1);
+
+              fileService.deleteShare(shareName, function (deleteError) {
+                assert.equal(deleteError, null);
+                done();
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+
 });
 
 function listShares (prefix, options, token, callback) {
@@ -471,8 +797,7 @@ function listShares (prefix, options, token, callback) {
     var token = result.continuationToken;
     if(token) {
       listShares(prefix, options, token, callback);
-    }
-    else {
+    } else {
       callback();
     }
   });

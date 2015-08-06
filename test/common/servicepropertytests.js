@@ -19,6 +19,9 @@ var _ = require('underscore');
 var testutil = require('../framework/util');
 var TestSuite = require('../framework/test-suite');
 var azure = testutil.libRequire('azure-storage');
+var Constants = azure.Constants;
+var HeaderConstants = Constants.HeaderConstants;
+var ServiceTypes = Constants.ServiceType;
 
 var suite = new TestSuite('serviceproperty-tests');
 var timeout = (suite.isRecording || !suite.isMocked) ? 30000 : 10;
@@ -26,6 +29,7 @@ var timeout = (suite.isRecording || !suite.isMocked) ? 30000 : 10;
 var blobService;
 var queueService;
 var tableService;
+var fileService;
 
 describe('ServiceProperties', function () {
   before(function (done) {
@@ -36,6 +40,7 @@ describe('ServiceProperties', function () {
       blobService = azure.createBlobService().withFilter(new azure.ExponentialRetryPolicyFilter());
       queueService = azure.createQueueService().withFilter(new azure.ExponentialRetryPolicyFilter());
       tableService = azure.createTableService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      fileService = azure.createFileService().withFilter(new azure.ExponentialRetryPolicyFilter());
       done();
     });
   });
@@ -54,35 +59,45 @@ describe('ServiceProperties', function () {
 
   describe('fullServiceProperties', function () {   
     it('should get/set complete blob service properties', function (done) {
-      var serviceProperties = defaultServiceProperties(true);
+      var serviceProperties = defaultServiceProperties(ServiceTypes.Blob);
       fullServicePropertiesTest(blobService, serviceProperties, done);
     });
 
     it('should get/set complete queue service properties', function (done) {
-      var serviceProperties = defaultServiceProperties(false);      
+      var serviceProperties = defaultServiceProperties(ServiceTypes.Queue);      
       fullServicePropertiesTest(queueService, serviceProperties, done);
     });
 
     it('should get/set complete table service properties', function (done) {
-      var serviceProperties = defaultServiceProperties(false);     
+      var serviceProperties = defaultServiceProperties(ServiceTypes.Table);     
       fullServicePropertiesTest(tableService, serviceProperties, done);
+    });
+    
+    it('should get/set complete file service properties', function (done) {
+      var serviceProperties = defaultServiceProperties(ServiceTypes.File);
+      fullServicePropertiesTest(fileService, serviceProperties, done);
     });
   });
 
   describe('defaultServiceProperties', function () {   
     it('should write default blob service properties', function (done) {
-      var serviceProperties = emptyServiceProperties();
-      baseServicePropertiesTest(blobService, serviceProperties, done);
+      var serviceProperties = emptyServiceProperties(ServiceTypes.Blob);
+      baseServicePropertiesTest(blobService, ServiceTypes.Blob, serviceProperties, done);
     });
 
     it('should write default queue service properties', function (done) {
-      var serviceProperties = emptyServiceProperties();      
-      baseServicePropertiesTest(queueService, serviceProperties, done);
+      var serviceProperties = emptyServiceProperties(ServiceTypes.Queue);
+      baseServicePropertiesTest(queueService, ServiceTypes.Queue, serviceProperties, done);
     });
 
     it('should write default table service properties', function (done) {
-      var serviceProperties = emptyServiceProperties();     
-      baseServicePropertiesTest(tableService, serviceProperties, done);
+      var serviceProperties = emptyServiceProperties(ServiceTypes.Table);
+      baseServicePropertiesTest(tableService, ServiceTypes.Table, serviceProperties, done);
+    });
+    
+    it('should write default file service properties', function (done) {
+      var serviceProperties = emptyServiceProperties(ServiceTypes.File);
+      baseServicePropertiesTest(fileService, ServiceTypes.File, serviceProperties, done);
     });
   });
 
@@ -101,6 +116,11 @@ describe('ServiceProperties', function () {
     it('should overwrite with empty table service properties', function (done) {
       var serviceProperties = mostlyNullServiceProperties();     
       overwriteServicePropertiesTest(tableService, serviceProperties, done);
+    });
+    
+    it('should overwrite with empty file service properties', function (done) {
+      var serviceProperties = mostlyNullServiceProperties();
+      overwriteServicePropertiesTest(fileService, serviceProperties, done);
     });
   });
 });
@@ -137,8 +157,8 @@ function overwriteServicePropertiesTest(service, serviceProperties, done){
   });
 }
 
-function baseServicePropertiesTest(service, serviceProperties, done){
-  var expectedServiceProperties = baseServiceProperties();
+function baseServicePropertiesTest(service, serviceType, serviceProperties, done){
+  var expectedServiceProperties = baseServiceProperties(serviceType);
   service.setServiceProperties(serviceProperties, function (error) {
     assert.equal(error, null);
     var inner = function(){
@@ -185,33 +205,35 @@ function sortCorsRuleArrays(serviceProperties){
   }
 } 
 
-function defaultServiceProperties(isBlobService){
+function defaultServiceProperties(serviceType){
   var serviceProperties = {};
-
-  serviceProperties.Logging = {};
-  serviceProperties.Logging.Version = '1.0';
-  serviceProperties.Logging.Delete = true;
-  serviceProperties.Logging.Read = true;
-  serviceProperties.Logging.Write = true;
-  serviceProperties.Logging.RetentionPolicy = {};
-  serviceProperties.Logging.RetentionPolicy.Enabled = true;
-  serviceProperties.Logging.RetentionPolicy.Days = 1;
-
-  serviceProperties.HourMetrics = {};
-  serviceProperties.HourMetrics.Enabled = true;
-  serviceProperties.HourMetrics.Version = '1.0';
-  serviceProperties.HourMetrics.IncludeAPIs = true;
-  serviceProperties.HourMetrics.RetentionPolicy = {};
-  serviceProperties.HourMetrics.RetentionPolicy.Enabled = true;
-  serviceProperties.HourMetrics.RetentionPolicy.Days = 1;
-
-  serviceProperties.MinuteMetrics = {};
-  serviceProperties.MinuteMetrics.Enabled = true;
-  serviceProperties.MinuteMetrics.Version = '1.0';
-  serviceProperties.MinuteMetrics.IncludeAPIs = true;
-  serviceProperties.MinuteMetrics.RetentionPolicy = {};
-  serviceProperties.MinuteMetrics.RetentionPolicy.Enabled = true;
-  serviceProperties.MinuteMetrics.RetentionPolicy.Days = 1;
+  
+  if (serviceType != ServiceTypes.File) {
+    serviceProperties.Logging = {};
+    serviceProperties.Logging.Version = '1.0';
+    serviceProperties.Logging.Delete = true;
+    serviceProperties.Logging.Read = true;
+    serviceProperties.Logging.Write = true;
+    serviceProperties.Logging.RetentionPolicy = {};
+    serviceProperties.Logging.RetentionPolicy.Enabled = true;
+    serviceProperties.Logging.RetentionPolicy.Days = 1;
+    
+    serviceProperties.HourMetrics = {};
+    serviceProperties.HourMetrics.Enabled = true;
+    serviceProperties.HourMetrics.Version = '1.0';
+    serviceProperties.HourMetrics.IncludeAPIs = true;
+    serviceProperties.HourMetrics.RetentionPolicy = {};
+    serviceProperties.HourMetrics.RetentionPolicy.Enabled = true;
+    serviceProperties.HourMetrics.RetentionPolicy.Days = 1;
+    
+    serviceProperties.MinuteMetrics = {};
+    serviceProperties.MinuteMetrics.Enabled = true;
+    serviceProperties.MinuteMetrics.Version = '1.0';
+    serviceProperties.MinuteMetrics.IncludeAPIs = true;
+    serviceProperties.MinuteMetrics.RetentionPolicy = {};
+    serviceProperties.MinuteMetrics.RetentionPolicy.Enabled = true;
+    serviceProperties.MinuteMetrics.RetentionPolicy.Days = 1;
+  }
 
   serviceProperties.Cors = {};
   var rule = {};
@@ -221,48 +243,51 @@ function defaultServiceProperties(isBlobService){
   rule.ExposedHeaders = ['x-ms-meta-data*', 'x-ms-meta-source*', 'x-ms-meta-abc', 'x-ms-meta-bcd'];
   rule.MaxAgeInSeconds = 500;
   serviceProperties.Cors.CorsRule = [rule, rule];
-
-  if(isBlobService){
-    serviceProperties.DefaultServiceVersion = '2013-08-15';
+  
+  if (serviceType === ServiceTypes.Blob) {
+    serviceProperties.DefaultServiceVersion = HeaderConstants.TARGET_STORAGE_VERSION;
   }
 
   return serviceProperties;
 }
 
-function emptyServiceProperties(){
+function emptyServiceProperties(serviceType){
   var serviceProperties = {};
-
-  serviceProperties.Logging = {};
-  serviceProperties.HourMetrics = {};
-  serviceProperties.MinuteMetrics = {};
+  
+  if (serviceType != ServiceTypes.File) {
+    serviceProperties.Logging = {};
+    serviceProperties.HourMetrics = {};
+    serviceProperties.MinuteMetrics = {};
+  }
   serviceProperties.Cors = {};
 
   return serviceProperties;
 }
 
-function baseServiceProperties(){
+function baseServiceProperties(serviceType){
   var serviceProperties = {};
-
-  serviceProperties.Logging = {};
-  serviceProperties.Logging.Version = '1.0';
-  serviceProperties.Logging.Delete = false;
-  serviceProperties.Logging.Read = false;
-  serviceProperties.Logging.Write = false;
-  serviceProperties.Logging.RetentionPolicy = {};
-  serviceProperties.Logging.RetentionPolicy.Enabled = false;
-
-  serviceProperties.HourMetrics = {};
-  serviceProperties.HourMetrics.Version = '1.0';
-  serviceProperties.HourMetrics.Enabled = false;
-  serviceProperties.HourMetrics.RetentionPolicy = {};
-  serviceProperties.HourMetrics.RetentionPolicy.Enabled = false;
-
-  serviceProperties.MinuteMetrics = {};
-  serviceProperties.MinuteMetrics.Version = '1.0';
-  serviceProperties.MinuteMetrics.Enabled = false;
-  serviceProperties.MinuteMetrics.RetentionPolicy = {};
-  serviceProperties.MinuteMetrics.RetentionPolicy.Enabled = false;
-
+  
+  if (serviceType != ServiceTypes.File) {
+    serviceProperties.Logging = {};
+    serviceProperties.Logging.Version = '1.0';
+    serviceProperties.Logging.Delete = false;
+    serviceProperties.Logging.Read = false;
+    serviceProperties.Logging.Write = false;
+    serviceProperties.Logging.RetentionPolicy = {};
+    serviceProperties.Logging.RetentionPolicy.Enabled = false;
+    
+    serviceProperties.HourMetrics = {};
+    serviceProperties.HourMetrics.Version = '1.0';
+    serviceProperties.HourMetrics.Enabled = false;
+    serviceProperties.HourMetrics.RetentionPolicy = {};
+    serviceProperties.HourMetrics.RetentionPolicy.Enabled = false;
+    
+    serviceProperties.MinuteMetrics = {};
+    serviceProperties.MinuteMetrics.Version = '1.0';
+    serviceProperties.MinuteMetrics.Enabled = false;
+    serviceProperties.MinuteMetrics.RetentionPolicy = {};
+    serviceProperties.MinuteMetrics.RetentionPolicy.Enabled = false;
+  }
   serviceProperties.Cors = {};
 
   return serviceProperties;

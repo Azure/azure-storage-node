@@ -21,6 +21,7 @@ var util = require('util');
 var testutil = require('../framework/util');
 
 var ServiceSettings = testutil.libRequire('common/services/servicesettings');
+var StorageServiceSettings = testutil.libRequire('common/services/storageservicesettings');
 
 var azure = testutil.libRequire('azure-storage');
 var Constants = azure.Constants;
@@ -29,16 +30,7 @@ var SR = azure.SR;
 
 describe('ConnectionString', function () {
 
-  var validKeys = [
-    ConnectionStringKeys.USE_DEVELOPMENT_STORAGE_NAME,
-    ConnectionStringKeys.DEVELOPMENT_STORAGE_PROXY_URI_NAME,
-    ConnectionStringKeys.DEFAULT_ENDPOINTS_PROTOCOL_NAME,
-    ConnectionStringKeys.ACCOUNT_NAME_NAME,
-    ConnectionStringKeys.ACCOUNT_KEY_NAME,
-    ConnectionStringKeys.BLOB_ENDPOINT_NAME,
-    ConnectionStringKeys.QUEUE_ENDPOINT_NAME,
-    ConnectionStringKeys.TABLE_ENDPOINT_NAME
-  ];
+  var validKeys = StorageServiceSettings.validKeys;
 
   it('valid', function (done) {
     var defaultConnectionString = 'DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=KWPLd0rpW2T0U7K2pVpF8rYr1BgYtR7wYQk33AYiXeUoquiaY6o0TWqduxmPHlqeCNZ3LU0DHptbeIHy5l/Yhg==;';
@@ -86,6 +78,23 @@ describe('ConnectionString', function () {
     var parsedConnectionString = ServiceSettings.parseAndValidateKeys('DefaultEndpointsProtocol=qwdwdqdw=@#!@;BlobEndpoint=value2', validKeys);
     assert.equal(parsedConnectionString['DefaultEndpointsProtocol'], 'qwdwdqdw=@#!@');
     assert.equal(parsedConnectionString['BlobEndpoint'], 'value2');
+
+    done();
+  });
+
+  it('connectionString with SAS', function (done) {
+    var sas = 'sig=wdwdqdw=@#!@&sr=c';
+    var blobEndpoint = '10.0.0.1';
+    var connectionString = util.format('SharedAccessSignature=%s;BlobEndpoint=%s', sas, blobEndpoint);
+    var parsedConnectionString = ServiceSettings.parseAndValidateKeys(connectionString, validKeys);
+    assert.equal(parsedConnectionString['SharedAccessSignature'], sas);
+    assert.equal(parsedConnectionString['BlobEndpoint'], blobEndpoint);
+
+    var newSas = '?' + sas;
+    connectionString = util.format('SharedAccessSignature=%s;BlobEndpoint=%s', newSas, blobEndpoint);
+    var settings = StorageServiceSettings.createFromConnectionString(connectionString);
+    assert.equal(settings._blobEndpoint.primaryHost, blobEndpoint);
+    assert.equal(settings._sasToken, sas);
 
     done();
   });

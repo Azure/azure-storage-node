@@ -1132,8 +1132,8 @@ describe('FileUploadDownload', function () {
         assert.notEqual(fileResponse, null);
         assert.ok(uploadResponse.isSuccessful);
 
-        var setPropertiesOptions = {contentMD5: 'MDAwMDAwMDA='};
-        fileService.setFileProperties(shareName, directoryName, fileName, setPropertiesOptions, function (setFilePropertiesErr) {
+        var properties = {contentMD5: 'MDAwMDAwMDA='};
+        fileService.setFileProperties(shareName, directoryName, fileName, properties, function (setFilePropertiesErr) {
           assert.equal(setFilePropertiesErr, null);
 
           fileService.getFileToStream(shareName, directoryName, fileName, fs.createWriteStream(downloadFileName), { disableContentMD5Validation: false }, function (downloadErr) {

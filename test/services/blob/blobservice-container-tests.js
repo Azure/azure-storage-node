@@ -431,8 +431,9 @@ describe('BlobContainer', function () {
 
       blobService.createBlockBlobFromText(containerName, blobName, blobText, function (err) {
         assert.equal(err, null);
-
-        blobService.setContainerAcl(containerName, null, BlobUtilities.BlobContainerPublicAccessType.BLOB, function (setAclError, setAclContainer1, setResponse1) {
+        
+        var options = {publicAccessLevel: BlobUtilities.BlobContainerPublicAccessType.BLOB};
+        blobService.setContainerAcl(containerName, null, options, function (setAclError, setAclContainer1, setResponse1) {
           assert.equal(setAclError, null);
           assert.notEqual(setAclContainer1, null);
           assert.ok(setResponse1.isSuccessful);
@@ -449,8 +450,9 @@ describe('BlobContainer', function () {
                 assert.notEqual(blockBlob, null);
                 assert.ok(getBlobResponse.isSuccessful);
                 assert.equal(blobTextResponse, blobText);
-
-                blobService.setContainerAcl(containerName, null, BlobUtilities.BlobContainerPublicAccessType.CONTAINER, function (setAclError2, setAclContainer2, setResponse2) {
+                
+                options.publicAccessLevel = BlobUtilities.BlobContainerPublicAccessType.CONTAINER;
+                blobService.setContainerAcl(containerName, null, options, function (setAclError2, setAclContainer2, setResponse2) {
                   assert.equal(setAclError2, null);
                   assert.notEqual(setAclContainer2, null);
                   assert.ok(setResponse2.isSuccessful);
@@ -506,9 +508,9 @@ describe('BlobContainer', function () {
         }
       };
 
+      var options = { publicAccessLevel: BlobUtilities.BlobContainerPublicAccessType.BLOB };
       var signedIdentifiers = [readWriteSharedAccessPolicy, readSharedAccessPolicy];
-
-      blobService.setContainerAcl(containerName, signedIdentifiers, BlobUtilities.BlobContainerPublicAccessType.BLOB, function (setAclError, setAclContainer1, setResponse1) {
+      blobService.setContainerAcl(containerName, signedIdentifiers, options, function (setAclError, setAclContainer1, setResponse1) {
         assert.equal(setAclError, null);
         assert.notEqual(setAclContainer1, null);
         assert.ok(setResponse1.isSuccessful);
@@ -520,8 +522,9 @@ describe('BlobContainer', function () {
             assert.equal(getAclContainer1.publicAccessLevel, BlobUtilities.BlobContainerPublicAccessType.BLOB);
             assert.equal(getAclContainer1.signedIdentifiers[0].AccessPolicy.Expiry.getTime(), readWriteExpiryDate.getTime());
             assert.ok(getResponse1.isSuccessful);
-
-            blobService.setContainerAcl(containerName, null, BlobUtilities.BlobContainerPublicAccessType.CONTAINER, function (setAclError2, setAclContainer2, setResponse2) {
+            
+            options.publicAccessLevel = BlobUtilities.BlobContainerPublicAccessType.CONTAINER;
+            blobService.setContainerAcl(containerName, null, options, function (setAclError2, setAclContainer2, setResponse2) {
               assert.equal(setAclError2, null);
               assert.notEqual(setAclContainer2, null);
               assert.ok(setResponse2.isSuccessful);
@@ -557,8 +560,9 @@ describe('BlobContainer', function () {
             Permissions: 'w'
           }
         }];
-
-      blobService.setContainerAcl(containerName, signedIdentifiers, BlobUtilities.BlobContainerPublicAccessType.OFF, function (setAclError, setAclContainer, setAclResponse) {
+      
+      var options = {publicAccessLevel: BlobUtilities.BlobContainerPublicAccessType.OFF};
+      blobService.setContainerAcl(containerName, signedIdentifiers, options, function (setAclError, setAclContainer, setAclResponse) {
         assert.equal(setAclError, null);
         assert.notEqual(setAclContainer, null);
         assert.ok(setAclResponse.isSuccessful);
@@ -578,7 +582,7 @@ describe('BlobContainer', function () {
               if (identifier.Id === 'id1') {
                 assert.equal(identifier.AccessPolicy.Start.getTime(), new Date('2009-10-10T00:00:00.123Z').getTime());
                 assert.equal(identifier.AccessPolicy.Expiry.getTime(), new Date('2009-10-11T00:00:00.456Z').getTime());
-                assert.equal(identifier.AccessPolicy.Permission, 'r');
+                assert.equal(identifier.AccessPolicy.Permissions, 'r');
                 entries += 1;
               }
               else if (identifier.Id === 'id2') {
@@ -586,7 +590,7 @@ describe('BlobContainer', function () {
                 assert.equal(identifier.AccessPolicy.Start.getMilliseconds(), 6);
                 assert.equal(identifier.AccessPolicy.Expiry.getTime(), new Date('2009-11-11T00:00:00.4Z').getTime());
                 assert.equal(identifier.AccessPolicy.Expiry.getMilliseconds(), 400);
-                assert.equal(identifier.AccessPolicy.Permission, 'w');
+                assert.equal(identifier.AccessPolicy.Permissions, 'w');
                 entries += 2;
               }
             });

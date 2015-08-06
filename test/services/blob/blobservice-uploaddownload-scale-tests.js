@@ -54,17 +54,17 @@ describe('BlobServiceUploadDownloadScale', function () {
 
   describe('prepare blob scale test', function () {
     runOrSkip('should create the test container', function (done) {
-      blobService.createContainer(containerName, function(error) {
+      blobService.createContainer(containerName, function (error) {
         done();
       });
     });
   });
-
+  
   describe('file scale test', function () {
-    var apis = ['createBlockBlobFromLocalFile', 'createPageBlobFromLocalFile'];
+    var apis = ['createBlockBlobFromLocalFile', 'createPageBlobFromLocalFile', 'createAppendBlobFromLocalFile'];
     var sizes = [0, 1024, 1024 * 1024, 4 * 1024 * 1024, 32 * 1024 * 1024, 64 * 1024 * 1024, 148 * 1024 * 1024 - 512, 148 * 1024 * 1024, 148 * 1024 * 1024 + 512];
-    for(var i = 0; i < apis.length; i++) {
-      for(var j = 0; j < sizes.length; j++) {
+    for (var i = 0; i < apis.length; i++) {
+      for (var j = 0; j < sizes.length; j++) {
         runOrSkip(util.format('%s should work %s bytes file', apis[i], sizes[j]), getTestFunction(apis[i], sizes[j])); 
       }
     }
@@ -76,7 +76,15 @@ describe('BlobServiceUploadDownloadScale', function () {
         generateTempFile(name, size, function(error, fileInfo) {
           assert.equal(error, null);
           var blobName = api + size;
-          var uploadOptions = {storeBlobContentMD5: true, parallelOperationThreadCount: 5};
+          var uploadOptions = { storeBlobContentMD5: true, parallelOperationThreadCount: 5 };
+          if (api === 'createAppendBlobFromLocalFile') {
+            uploadOptions.useTransactionalMD5 = true;
+            if (size === 0) {
+              try { fs.unlinkSync(name); } catch (e) { }
+              done();
+              return;
+            }
+          }
           uploadFunc.call(blobService, containerName, blobName, fileInfo.name, uploadOptions, function(error) {
             if(api === 'createPageBlobFromLocalFile' && size !== 0 && size % 512 !== 0) {
               assert.equal(error.message, util.format('The page blob size must be aligned to a 512-byte boundary. The current stream length is %s', size));
@@ -103,8 +111,8 @@ describe('BlobServiceUploadDownloadScale', function () {
                       assert.equal(error, null);
                       assert.equal(blob.contentMD5, fileInfo.contentMD5);
                     }).pipe(writable);
-
-                    writable.on('finish', function () {
+                    
+                    writable.on('finish', function () { 
                       fs.stat(downloadFileName, function (error, stat) {
                         assert.equal(error, null);
                         assert.equal(stat.size, fileInfo.size);

@@ -17,6 +17,7 @@
 module.exports = function(grunt) {
   //init stuff
   grunt.initConfig({
+
     pkg: grunt.file.readJSON('package.json'),
 
     mochaTest: {

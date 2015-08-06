@@ -1,0 +1,18 @@
+Tracking Breaking Changes in 0.5.0
+ALL
+* The suffix "_HEADER" is removed from all the http header constants.
+* The generateSharedAccessSignatureWithVersion function in each service is deprecated.
+* The shouldRetry function in the retry policy filters takes a "requestOption" object instead of a "retryData" object.
+
+BLOB
+* The "publicAccessLevel" parameter in the BlobService.setContainerACL function is moved into the "options" parameter.
+* The properties in the BlobService.setBlobProperties function are moved from the "options" to the "properties" parameter.
+* The "AccessPolicy.Permission" is renamed to "AccessPolicy.Permissions" on the result object of the BlobService.getContainerAcl function.
+
+TABLE
+* The "signedIdentifiers" parameter in the TableService.SetTableACL function is moved out from the "options" parameter.
+* The "AccessPolicy.Permission" is renamed to "AccessPolicy.Permissions" on the result object of the TableService.getTableAcl function.
+
+QUEUE
+* The option "options.messagetext" is renamed to "options.messageText" in the QueueService.UpdateMessage function.
+* The "AccessPolicy.Permission" is renamed to "AccessPolicy.Permissions" on the result object of the QueueService.getQueueAcl function.

@@ -42,11 +42,11 @@ describe('sharedkey-tests', function () {
     var webResource = WebResource.get('container');
     webResource.withQueryOption(QueryStringConstants.RESTYPE, 'container');
     webResource.withHeader(HeaderConstants.CONTENT_TYPE, '');
-    webResource.withHeader(HeaderConstants.STORAGE_VERSION_HEADER, HeaderConstants.TARGET_STORAGE_VERSION);
-    webResource.withHeader(HeaderConstants.DATE_HEADER, 'Fri, 23 Sep 2011 01:37:34 GMT');
+    webResource.withHeader(HeaderConstants.STORAGE_VERSION, HeaderConstants.TARGET_STORAGE_VERSION);
+    webResource.withHeader(HeaderConstants.MS_DATE, 'Fri, 23 Sep 2011 01:37:34 GMT');
 
     sharedkey.signRequest(webResource, function () {
-      assert.equal(webResource.headers[HeaderConstants.AUTHORIZATION], 'SharedKey devstoreaccount1:/Nzbqsmrbb107sFMOfcMFuK2TdkGCUUY4TjPspfeCTc=');
+      assert.equal(webResource.headers[HeaderConstants.AUTHORIZATION], 'SharedKey devstoreaccount1:rAm6r9icxd7g1hW2QQqUIjDZn73vJvvoXzimbGlqMlk=');
 
       done();
     });

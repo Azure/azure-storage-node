@@ -183,8 +183,7 @@ describe('BlobService', function () {
                 callback(entries);
               }
             });
-          }
-          else if (container.name == containerName2) {
+          } else if (container.name == containerName2) {
             assert.equal(container.metadata.color, metadata2.Color);
             assert.equal(container.metadata.containernumber, metadata2.containerNumber);
             assert.equal(container.metadata.somemetadataname, metadata2.somemetadataname);
@@ -196,8 +195,7 @@ describe('BlobService', function () {
                 callback(entries);
               }
             });
-          }
-          else if (container.name == containerName3) {
+          } else if (container.name == containerName3) {
             assert.equal(container.metadata.color, metadata3.color);
             assert.equal(container.metadata.containernumber, metadata3.containernumber);
             assert.equal(container.metadata.somemetadataname, metadata3.somemetadataname);
@@ -209,8 +207,7 @@ describe('BlobService', function () {
                 callback(entries);
               }
             });
-          }
-          else if (container.name == containerName4) {
+          } else if (container.name == containerName4) {
             assert.equal(container.metadata.color, metadata4.color);
             assert.equal(container.metadata.containernumber, metadata4.containernumber);
             assert.equal(container.metadata.somemetadataname, metadata4.somemetadataname);
@@ -272,8 +269,7 @@ describe('BlobService', function () {
           var token = result.continuationToken;
           if(token) {
             listContainersWithoutPrefix(options, token, callback);
-          }
-          else {
+          } else {
             callback();
           }
         });
@@ -706,14 +702,14 @@ describe('BlobService', function () {
         blobService.createBlockBlobFromText(containerName, blobName, text, function (blobErr) {
           assert.equal(blobErr, null);
 
-          var options = {};
-          options.contentType = 'text';
-          options.contentEncoding = 'utf8';
-          options.contentLanguage = 'pt';
-          options.cacheControl = 'true';
-          options.contentDisposition = 'attachment';
+          var properties = {};
+          properties.contentType = 'text';
+          properties.contentEncoding = 'utf8';
+          properties.contentLanguage = 'pt';
+          properties.cacheControl = 'true';
+          properties.contentDisposition = 'attachment';
 
-          blobService.setBlobProperties(containerName, blobName, options, function (setErr) {
+          blobService.setBlobProperties(containerName, blobName, properties, function (setErr) {
             assert.equal(setErr, null);
 
             blobService.getBlobProperties(containerName, blobName, function (getErr, blob) {
@@ -722,11 +718,11 @@ describe('BlobService', function () {
               assert.notEqual(blob, null);
               if (blob) {
                 assert.equal(text.length, blob.contentLength);
-                assert.equal(options.contentType, blob.contentType);
-                assert.equal(options.contentEncoding, blob.contentEncoding);
-                assert.equal(options.contentLanguage, blob.contentLanguage);
-                assert.equal(options.cacheControl, blob.cacheControl);
-                assert.equal(options.contentDisposition, blob.contentDisposition);
+                assert.equal(properties.contentType, blob.contentType);
+                assert.equal(properties.contentEncoding, blob.contentEncoding);
+                assert.equal(properties.contentLanguage, blob.contentLanguage);
+                assert.equal(properties.cacheControl, blob.cacheControl);
+                assert.equal(properties.contentDisposition, blob.contentDisposition);
               }
 
               done();
@@ -925,32 +921,32 @@ describe('BlobService', function () {
         });
       });
 
-      it('should ignore the metadata in the options', function (done) {  
-        var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);  
-         
-        var metadata = { color: 'blue' };  
-        blobService.createBlockBlobFromText(containerName, blobName, 'hello', function (blobErr) {  
-          assert.equal(blobErr, null);  
+      it('should ignore the metadata in the options', function (done) {
+        var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+        
+        var metadata = { color: 'blue' };
+        blobService.createBlockBlobFromText(containerName, blobName, 'hello', function (blobErr) {
+          assert.equal(blobErr, null);
 
-          var options = { metadata: {color: 'red'} };  
-          blobService.setBlobMetadata(containerName, blobName, metadata, options, function (setErr) {  
-            assert.equal(setErr, null);  
-            
-            blobService.getBlobMetadata(containerName, blobName, function (getErr, blob) {  
-              assert.equal(getErr, null);  
-  
-              assert.notEqual(blob, null);  
-              if (blob) {  
-                assert.notEqual(blob.metadata, null);  
-                if (blob.metadata) {  
-                  assert.equal(blob.metadata.color, metadata.color);  
-                }  
-              }  
-              done();  
-            });  
-          });  
-        });  
-      }); 
+          var options = { metadata: {color: 'red'} };
+          blobService.setBlobMetadata(containerName, blobName, metadata, options, function (setErr) {
+            assert.equal(setErr, null);
+          
+            blobService.getBlobMetadata(containerName, blobName, function (getErr, blob) {
+              assert.equal(getErr, null);
+
+              assert.notEqual(blob, null);
+              if (blob) {
+                assert.notEqual(blob.metadata, null);
+                if (blob.metadata) {
+                  assert.equal(blob.metadata.color, metadata.color);
+                }
+              }
+              done();
+            });
+          });
+        });
+      });
 
       it('should merge the metadata', function (done) {
         var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
@@ -1146,7 +1142,7 @@ describe('BlobService', function () {
         assert.strictEqual(parsedUrl.port, '80');
         assert.strictEqual(parsedUrl.hostname, 'host.com');
         assert.strictEqual(parsedUrl.pathname, '/' + containerName + '/' + blobName);
-        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&sv=2014-02-14&sr=b&sig=KAewjRdjdHO6gBSe0R0xqGrEwdGf1Ua%2FhnUfjxOhY7w%3D');
+        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&sv=2015-02-21&sr=b&sig=tw4l7oQlYZIRRR4%2FMXkUfgVkipiGbC7c26tiAH4C%2B7o%3D');
 
         done();
       });
@@ -1169,8 +1165,8 @@ describe('BlobService', function () {
               Permissions: 'rwdl'
             }
           }];
-
-          blobService.setContainerAcl(containerName, readWriteSharedAccessPolicy, null, function (err) {
+          
+          blobService.setContainerAcl(containerName, readWriteSharedAccessPolicy, function (err) {
             assert.equal(err, null);
 
             // wait for the acl to get set
@@ -1224,7 +1220,7 @@ describe('BlobService', function () {
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_RESOURCE], Constants.BlobConstants.ResourceTypes.BLOB);
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_PERMISSIONS], BlobUtilities.SharedAccessPermissions.READ);
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_VERSION], HeaderConstants.TARGET_STORAGE_VERSION);
-      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'kXVNIN/SsiEQ1onxqp2bmxay8PFy0mCtEQE41lOyKy8=');
+      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'fQ0Vsb7+niZdygUNPYbW5PMxW9p5B5/+JDGgAMAbnzs=');
 
       done();
     });
@@ -1279,64 +1275,6 @@ describe('BlobService', function () {
           });
         });
       });
-    });
-  
-    runOrSkip(util.format('should be able to download blob using old SAS Version: %s', CompatibleVersionConstants.FEBRUARY_2012), function (done) {
-      var containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
-      var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
-      var blobService = azure.createBlobService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
-
-      blobService.createContainer(containerName, function (error) {
-        assert.equal(error, null);
-
-        blobService.createBlockBlobFromText(containerName, blobName, 'id1', function (error2) {
-          assert.equal(error2, null);
-   
-          var startDate = new Date();
-          var expiryDate = new Date(startDate);
-          expiryDate.setMinutes(startDate.getMinutes() + 5);
-
-          var sharedAccessPolicy = {
-            AccessPolicy: {
-              Permissions: BlobUtilities.SharedAccessPermissions.READ,
-              Expiry: expiryDate
-            }
-          };
-
-          var token = blobService.generateSharedAccessSignatureWithVersion(containerName, blobName, sharedAccessPolicy, CompatibleVersionConstants.FEBRUARY_2012);
-          var sharedBlobService = azure.createBlobServiceWithSas(blobService.host, token);
-      
-          sharedBlobService.getBlobProperties(containerName, blobName, function (error, result) {
-            assert.equal(error, null);
-            assert.notEqual(result, null);
-
-            blobService.deleteContainer(containerName, function (deleteError) {
-              assert.equal(deleteError, null);
-              done();
-            });
-          });
-        });
-      });
-    });
-
-    it(util.format('should NOT be able to download blob using specified SAS Version: %s', '2014-02-14'), function (done) {
-      var containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
-      var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
-      var blobService = azure.createBlobService().withFilter(new azure.ExponentialRetryPolicyFilter());
-      var sharedAccessPolicy = {
-        AccessPolicy: {
-          Permissions: BlobUtilities.SharedAccessPermissions.READ,
-          Expiry: new Date()
-        }
-      };
-
-      var unsupportedVersion = '2014-02-14';
-      var values = _.values(CompatibleVersionConstants);
-      var message = azureutil.stringFormat(SR.INVALID_SAS_VERSION, unsupportedVersion, values);
-      assert.throws(function () { blobService.generateSharedAccessSignatureWithVersion(containerName, blobName, sharedAccessPolicy, unsupportedVersion); },
-        function (err) { return err.message === message; });
-      done();
     });
 
     it('should NOT be able to specify api-version in SAS', function (done) {
@@ -1507,6 +1445,100 @@ describe('BlobService', function () {
             });
           });
         });
+      });
+    });
+  });
+
+  describe('access condition', function () {
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+    var blobText = 'hi there';
+    var timeBeforeCreation = new Date().toUTCString();
+    var lastModified;
+    var etag;
+
+    it('Prepare the data', function (done) {
+      blobService.createContainer(containerName, function (createErr) {
+        assert.equal(createErr, null);
+        done();
+      });
+    });
+
+    it('should work with if-Exists condition', function (done) {
+      var option = { accessConditions: azure.AccessCondition.generateIfExistsCondition() };
+      blobService.createBlockBlobFromText(containerName, blobName, blobText, option, function (uploadErr1) {
+        assert.notEqual(uploadErr1, null);
+        assert.equal(uploadErr1.statusCode, 412);
+
+        blobService.createBlockBlobFromText(containerName, blobName, blobText, function (uploadErr2) {
+          blobService.getBlobProperties(containerName, blobName, function (getPropErr, properties) {
+            assert.equal(getPropErr, null);
+            assert.notEqual(properties.lastModified, null);
+            assert.notEqual(properties.etag, null);
+            lastModified = properties.lastModified;
+            etag = properties.etag;
+
+            done();
+          });
+        });
+      });
+    });
+
+    it('should work with if-None-Exists condition', function (done) {
+      var option = { accessConditions: azure.AccessCondition.generateIfNotExistsCondition() };
+      blobService.createBlockBlobFromText(containerName, blobName, blobText, option, function (uploadErr) {
+        assert.notEqual(uploadErr, null);
+        assert.equal(uploadErr.statusCode, 409);
+        assert.equal(uploadErr.code, 'BlobAlreadyExists');
+        done();
+      });
+    });
+
+    it('should work with if-Match condition', function (done) {
+      var option = { accessConditions: azure.AccessCondition.generateIfMatchCondition('abcdefg12345') };
+      blobService.createBlockBlobFromText(containerName, blobName, blobText, option, function (uploadErr) {
+        assert.notEqual(uploadErr, null);
+        assert.equal(uploadErr.statusCode, 412);
+        assert.equal(uploadErr.code, 'ConditionNotMet');
+        done();
+      });
+    });
+
+    it('should work with if-None-Match condition', function (done) {
+      var option = { accessConditions: azure.AccessCondition.generateIfNoneMatchCondition(etag) };
+      blobService.createBlockBlobFromText(containerName, blobName, blobText, option, function (uploadErr) {
+        assert.notEqual(uploadErr, null);
+        assert.equal(uploadErr.statusCode, 412);
+        assert.equal(uploadErr.code, 'ConditionNotMet');
+        done();
+      });
+    });
+
+    it('should work with if-Modified-Since condition (set with Date)', function (done) {
+      var date = new Date((new Date()).getTime() + 600000); // Add 10 minutes in case the time gap between client and server
+      var option = { accessConditions: azure.AccessCondition.generateIfModifiedSinceCondition(date) };
+      blobService.createBlockBlobFromText(containerName, blobName, blobText, option, function (uploadErr) {
+        assert.notEqual(uploadErr, null);
+        assert.equal(uploadErr.statusCode, 412);
+        assert.equal(uploadErr.code, 'ConditionNotMet');
+        done();
+      });
+    });
+
+    it('should work with if-Unmodified-Since condition (set with string)', function (done) {
+      var option = { accessConditions: azure.AccessCondition.generateIfNotModifiedSinceCondition(timeBeforeCreation) };
+      blobService.createBlockBlobFromText(containerName, blobName, blobText, option, function (uploadErr) {
+        assert.notEqual(uploadErr, null);
+        assert.equal(uploadErr.statusCode, 412);
+        assert.equal(uploadErr.code, 'ConditionNotMet');
+        done();
+      });
+    });
+
+    it('Cleanup the data', function (done) {
+      blobService.deleteContainer(containerName, function (deleteError) {
+        assert.equal(deleteError, null);
+        done();
       });
     });
   });

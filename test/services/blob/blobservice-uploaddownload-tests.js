@@ -39,7 +39,6 @@ var containerNames = [];
 var containerNamesPrefix = 'cont';
 var blobNames = [];
 var blobNamesPrefix = 'blob';
-var containerName;
 var containerNamePrefix = 'upload-download-test';
 var blockIdPrefix = 'block';
 var containerCount = 0;
@@ -47,20 +46,30 @@ var containerName = '';
 
 var blockBlobName = 'blockblob_nodesdktest';
 var pageBlobName = 'pageblob_nodesdktest';
+var appendBlobName = 'appendblob_nodesdktest';
 
 var blockFileName = 'blobservice_test_block.tmp';
 var pageFileName = 'blobservice_test_page.tmp';
 var page2KFileName = 'blobservice_test_2K_page.tmp';
+var appendFileName = 'blobservice_test_append.tmp';
+var append2KFileName = 'blobservice_test_2K_append.tmp';
 var notExistFileName = 'blobservice_not_exist.tmp';
 var zeroSizeFileName = 'blobservice_zero_size_file.tmp';
 var downloadName = 'blobservice_download.tmp';
 
 var fileText = 'Hello World!';
+
 var pageBlobBuffer = new Buffer(1 * 1024);
 var pageBlob2KBuffer = new Buffer(2 * 1024);
-var blockBlobContentMD5 = null;
+var appendBlobBuffer = new Buffer(1 * 1024);
+var appendBlob2KBuffer = new Buffer(2 * 1024);
+
 var pageBlobContentMD5 = '';
 var pageBlob2KContentMD5 = '';
+var blockBlobContentMD5 = null;
+var appendBlobContentMD5 = '';
+var appendBlob2KContentMD5 = '';
+
 var uploadOptions = {
   blockIdPrefix : blockIdPrefix
 };
@@ -68,20 +77,26 @@ var uploadOptions = {
 var suite = new TestSuite('blobservice-uploaddownload-tests');
 var runOrSkip = suite.isMocked ? it.skip : it;
 
-function writeFile(fileName, content) {
-  fs.writeFileSync(fileName, content);
+function getContentMD5(content) {
   var md5hash = crypto.createHash('md5');
   md5hash.update(content);
   return md5hash.digest('base64');
 }
 
+function writeFile(fileName, content) {
+  fs.writeFileSync(fileName, content);
+  return getContentMD5(content);
+}
+
 var generateTempFile = function (fileName, size, hasEmptyBlock, callback) {
   var blockSize = 4 * 1024 * 1024;
-  var fileInfo = { name: fileName, contentMD5: '', size: size };
+  var fileInfo = { name: fileName, contentMD5: '', size: size, content: '' };
 
   var md5hash = crypto.createHash('md5');
   var offset = 0;
   var file = fs.openSync(fileName, 'w');
+  var saveContent= size <= blockSize;
+
   do {
     var value = crypto.randomBytes(1);
     var zero = hasEmptyBlock ? (parseInt(value[0], 10) >= 64) : false;
@@ -99,6 +114,10 @@ var generateTempFile = function (fileName, size, hasEmptyBlock, callback) {
     size -= buffer.length;
     offset += buffer.length;
     md5hash.update(buffer);
+
+    if (saveContent) {
+      fileInfo.content += buffer.toString();
+    }
   } while(size > 0);
       
   fileInfo.contentMD5 = md5hash.digest('base64');
@@ -129,6 +148,21 @@ var getFileMD5 = function (fileName, callback) {
   callback(fileInfo);
 };
 
+var assertNoStalePropertyOnBlob = function(blob) {
+  assert.notEqual(blob, null);
+  assert.strictEqual(blob.leaseStatus, undefined);
+  assert.strictEqual(blob.leaseId, undefined);
+  assert.strictEqual(blob.leaseDuration, undefined);
+  assert.strictEqual(blob.leaseState, undefined);
+
+  assert.strictEqual(blob.copySource, undefined);
+  assert.strictEqual(blob.copyStatus, undefined);
+  assert.strictEqual(blob.copyCompletionTime, undefined);
+  assert.strictEqual(blob.copyStatusDescription, undefined);
+  assert.strictEqual(blob.copyId, undefined);
+  assert.strictEqual(blob.copyProgress, undefined);
+};
+
 describe('blob-uploaddownload-tests', function () {
   before(function (done) {
     if (suite.isMocked) {
@@ -136,6 +170,7 @@ describe('blob-uploaddownload-tests', function () {
     }
     suite.setupSuite(function () {
       blobService = azure.createBlobService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      //blobService.logger.level = azure.Logger.LogLevels.DEBUG;
       done();
     });
   });
@@ -144,6 +179,8 @@ describe('blob-uploaddownload-tests', function () {
     try { fs.unlinkSync(blockFileName); } catch (e) {}
     try { fs.unlinkSync(pageFileName); } catch (e) {}
     try { fs.unlinkSync(page2KFileName); } catch (e) {}
+    try { fs.unlinkSync(appendFileName); } catch (e) {}
+    try { fs.unlinkSync(append2KFileName); } catch (e) {}
     try { fs.unlinkSync(notExistFileName); } catch (e) {}
     try { fs.unlinkSync(zeroSizeFileName); } catch (e) {}
     try { fs.unlinkSync(downloadName); } catch (e) {}
@@ -212,8 +249,6 @@ describe('blob-uploaddownload-tests', function () {
       var blobBuffer = new Buffer( 6 * 1024 * 1024);
       blobBuffer.fill(1);
 
-      fs.writeFileSync(fileNameTarget, blobBuffer);
-
       // Write file so that it can be piped
       fs.writeFileSync(fileNameTarget, blobBuffer);
 
@@ -264,7 +299,8 @@ describe('blob-uploaddownload-tests', function () {
       containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var fileNameTarget = testutil.generateId('uploadPageBlobMD5Piping', [], suite.isMocked) + '.test';
-      var blobBuffer = new Buffer( 3 * 1024 * 1024 );
+      var length = 3 * 1024 * 1024;
+      var blobBuffer = new Buffer(length);
       blobBuffer.fill(1);
 
       blobService.createContainer(containerName, function (createError1, container1) {
@@ -274,18 +310,55 @@ describe('blob-uploaddownload-tests', function () {
         // Write file so that it can be piped
         pageBlobContentMD5 = writeFile(fileNameTarget, blobBuffer);
 
-        blobService.createPageBlob(containerName, blobName, 3 * 1024 * 1024, function (err) {
+        // Pipe file to a blob
+        var stream = blobService.createWriteStreamToNewPageBlob(containerName, blobName, length, {storeBlobContentMD5: true});
+        var readable = rfs.createReadStream(fileNameTarget);
+        readable.pipe(stream);
+        stream.on('close', function () {
+          blobService.getBlobProperties(containerName, blobName, function (err, blob) {
+            assert.equal(err, null);
+            assert.equal(blob.contentMD5, pageBlobContentMD5);
+
+            try { fs.unlinkSync(fileNameTarget); } catch (e) {}
+            done();
+          });
+        });
+      });
+    });
+
+    runOrSkip('should be able to upload an appendblob from piped stream', function (done) {
+      containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+      var fileNameTarget = testutil.generateId('uploadAppendBlobMD5Piping', [], suite.isMocked) + '.test';
+      var length = 3 * 1024 * 1024;
+      var blobBuffer = new Buffer(length);
+      blobBuffer.fill(1);
+
+      // Write file so that it can be piped
+      writeFile(fileNameTarget, blobBuffer);
+      
+      blobService.createContainer(containerName, function (createError1, container1) {
+        assert.equal(createError1, null);
+        assert.notEqual(container1, null);
+        
+        blobService.createOrReplaceAppendBlob(containerName, blobName, length, function (err) {
           assert.equal(err, null);
+          
+          assert.throws(function () { 
+            blobService.createWriteStreamToExistingAppendBlob(containerName, blobName, { storeBlobContentMD5: true }); 
+          });
+
           // Pipe file to a blob
-          var stream = blobService.createWriteStreamToExistingPageBlob(containerName, blobName, {storeBlobContentMD5: true});
-          var readable = rfs.createReadStream(fileNameTarget);
-          readable.pipe(stream);
+          var stream = blobService.createWriteStreamToExistingAppendBlob(containerName, blobName, { storeBlobContentMD5: false });
+          rfs.createReadStream(fileNameTarget).pipe(stream);
+
           stream.on('close', function () {
             blobService.getBlobProperties(containerName, blobName, function (err, blob) {
               assert.equal(err, null);
-              assert.equal(blob.contentMD5, pageBlobContentMD5);
-
-              try { fs.unlinkSync(fileNameTarget); } catch (e) {}
+              assert.equal(blob.contentLength, length);
+              assert.equal(blob.blobType, 'AppendBlob');
+              
+              try { fs.unlinkSync(fileNameTarget); } catch (e) { }
               done();
             });
           });
@@ -296,22 +369,21 @@ describe('blob-uploaddownload-tests', function () {
     runOrSkip('should be able to upload new page blob from piped stream', function (done) {
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var fileNameTarget = testutil.generateId('uploadPageBlobStreamPiping', [], suite.isMocked) + '.test';
-      var blobBuffer = new Buffer( 6 * 1024 * 1024 );
+      var length = 6 * 1024 * 1024;
+      var blobBuffer = new Buffer(length);
       blobBuffer.fill(1);
 
       // Write file so that it can be piped
       fs.writeFile(fileNameTarget, blobBuffer, function() {
         // Pipe file to a blob
-        var stream = blobService.createWriteStreamToNewPageBlob(containerName, blobName, 6 * 1024 * 1024);
+        var stream = blobService.createWriteStreamToNewPageBlob(containerName, blobName, length);
         var readable = rfs.createReadStream(fileNameTarget);
         readable.pipe(stream);
         stream.on('close', function () {
           blobService.getBlobToText(containerName, blobName, function (err, text) {
             assert.equal(err, null);
-
             assert.equal(text, blobBuffer);
-
-            try { fs.unlinkSync(fileNameTarget); } catch (e) {}
+            try { fs.unlinkSync(fileNameTarget); } catch (e) { }
             done();
           });
         });
@@ -322,13 +394,13 @@ describe('blob-uploaddownload-tests', function () {
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var sourceFileNameTarget = testutil.generateId('getBlobSourceFile', [], suite.isMocked) + '.test';
       var destinationFileNameTarget = testutil.generateId('getBlobDestinationFile', [], suite.isMocked) + '.test';
-
-      var blobBuffer = new Buffer( 5 * 1024 );
+      var length = 5 * 1024;
+      var blobBuffer = new Buffer(length);
       blobBuffer.fill(1);
 
       fs.writeFileSync(sourceFileNameTarget, blobBuffer);
 
-      blobService.createPageBlobFromStream(containerName, blobName, rfs.createReadStream(sourceFileNameTarget), 5 * 1024, function(uploadError) {
+      blobService.createPageBlobFromStream(containerName, blobName, rfs.createReadStream(sourceFileNameTarget), length, function(uploadError) {
         assert.equal(uploadError, null);
         var writable = fs.createWriteStream(destinationFileNameTarget);
         blobService.createReadStream(containerName, blobName).pipe(writable);
@@ -492,8 +564,34 @@ describe('blob-uploaddownload-tests', function () {
         });
       });
     });
+
+    runOrSkip('should download a range of block blob to stream', function (done) {
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+      var fileNameSource = testutil.generateId('getBlockBlobRangeStreamLocal', [], suite.isMocked) + '.test';
+      var fileSize = 97 * 1024 * 1024;  // Don't be a multiple of 4MB to cover more scenarios
+      generateTempFile(fileNameSource, fileSize, false, function (fileInfo) {
+        uploadOptions.parallelOperationThreadCount = 5;
+        blobService.createBlockBlobFromLocalFile(containerName, blobName, fileNameSource, uploadOptions, function (error) {
+          assert.equal(error, null);
+          try { fs.unlinkSync(fileNameSource); } catch (e) { }
+          
+          var downloadOptions = { parallelOperationThreadCount : 5, rangeStart: 100, rangeEnd: 70000000 };
+          var downloadedFileName = testutil.generateId('getBlockBlobRangeStream', [], suite.isMocked) + '.test';
+          var stream = fs.createWriteStream(downloadedFileName);
+          blobService.getBlobToStream(containerName, blobName, stream, downloadOptions, function (error) {
+            assert.equal(error, null);
+            
+            var content = fs.readFileSync(downloadedFileName);
+            assert.equal(content.length, downloadOptions.rangeEnd - downloadOptions.rangeStart + 1);
+            delete content;
+            try { fs.unlinkSync(downloadedFileName); } catch (e) { }
+            done();
+          });
+        });
+      });
+    });
   });
-  
+
   describe('CreateBlock', function() {
     it('createBlockFromStream should work without useTransactionalMD5', function(done) {
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
@@ -604,6 +702,108 @@ describe('blob-uploaddownload-tests', function () {
     });
   });
 
+  describe('AppendBlock', function() {
+    var appendText = 'stringappendtoblob';
+
+    it('should append a block to the append blob from a text', function (done) {
+      blobService.createOrReplaceAppendBlob(containerName, appendBlobName, function (err, blob) {
+        assert.equal(err, null);
+        
+        var textMD5 = getContentMD5(appendText);
+        var appendOption = {storeBlobContentMD5: true, useTransactionalMD5: true};
+        blobService.appendBlockFromText(containerName, appendBlobName, appendText, appendOption, function(err, blob) {
+          assert.equal(err, null);
+          assert.equal(blob.contentMD5, textMD5);
+
+          blobService.getBlobToText(containerName, appendBlobName, function (err, blobText) {
+            assert.equal(err, null);
+            assert.equal(blobText, appendText);
+            done();
+          });
+        });
+      });
+    });
+
+    it('should append a block to the append blob from a stream', function (done) {
+      blobService.createOrReplaceAppendBlob(containerName, appendBlobName, function (err, blob) {
+        assert.equal(err, null);
+
+        var streamMD5 = writeFile(appendFileName, appendText);
+        var stream = rfs.createReadStream(appendFileName);
+        var appendOption = {storeBlobContentMD5: true, useTransactionalMD5: true};
+        blobService.appendBlockFromStream(containerName, appendBlobName, stream, appendText.length, appendOption, function(err, blob) {
+          assert.equal(err, null);
+          assert.equal(blob.contentMD5, streamMD5);
+
+          blobService.getBlobToText(containerName, appendBlobName, function (err, blobText) {
+            assert.equal(err, null);
+            assert.equal(blobText, appendText);
+            done();
+          });
+        });
+      });
+    });
+
+    it('should append a block to the append blob with conditions', function (done) {
+      blobService.createOrReplaceAppendBlob(containerName, appendBlobName, function (err, blob) {
+        assert.equal(err, null);
+
+        var stream = rfs.createReadStream(appendFileName);
+        var appendOption = { appendPosition: 0 };
+        blobService.appendBlockFromStream(containerName, appendBlobName, stream, appendText.length, appendOption, function(err, blob) {
+          assert.equal(err, null);
+
+          appendOption.appendPosition += appendText.length;
+          blobService.appendBlockFromText(containerName, appendBlobName, appendText, appendOption, function(err, blob) {
+            assert.equal(err, null);
+
+            appendOption.appendPosition += appendText.length;
+            appendOption.maxBlobSize = appendText.length * 2; 
+            blobService.appendBlockFromText(containerName, appendBlobName, 'a', appendOption, function(err, blob) {
+              var errorKeyword = 'The max blob size condition specified was not met';
+              assert.notEqual(err, null);
+              assert.equal(err.statusCode, 412);
+              assert.notEqual(err.message.indexOf(errorKeyword), -1);
+
+              blobService.getBlobToText(containerName, appendBlobName, function (err, blobText) {
+                assert.equal(err, null);
+                assert.equal(blobText, appendText + appendText);
+                done();
+              });
+            });
+          });
+        });
+      });
+    });    
+
+    it('should throw conditional error when appends a block from a wrong position', function (done) {
+      blobService.createOrReplaceAppendBlob(containerName, appendBlobName, function (err, blob) {
+        assert.equal(err, null);
+
+        var appendOption = {appendPosition: 1};
+        blobService.appendBlockFromText(containerName, appendBlobName, appendText, appendOption, function(err, blob) {
+          assert.equal(err.statusCode, 412);
+          done();
+        });
+      });
+    });
+
+    it('should throw conditional error when appends a block exceeding the maximun blob size', function (done) {
+      blobService.createOrReplaceAppendBlob(containerName, appendBlobName, function (err, blob) {
+        assert.equal(err, null);
+
+        var appendOption = {maxBlobSize: appendText.length - 1};
+        blobService.appendBlockFromText(containerName, appendBlobName, appendText, appendOption, function(err, blob) {
+          var errorKeyword = 'The max blob size condition specified was not met';
+          assert.notEqual(err, null);
+          assert.equal(err.statusCode, 412);
+          assert.notEqual(err.message.indexOf(errorKeyword), -1);
+          done();
+        });
+      });
+    });
+  });
+ 
   describe('blob-MD5Validation-tests', function() {
     runOrSkip('Upload/Download with MD5 validation should work', function (done) {
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
@@ -669,8 +869,8 @@ describe('blob-uploaddownload-tests', function () {
           blobService.getBlobProperties(containerName, blobName, function (getBlobPropertiesErr) {
             assert.equal(getBlobPropertiesErr, null);
 
-            var setPropertiesOptions = {contentMD5: 'MDAwMDAwMDA='};
-            blobService.setBlobProperties(containerName, blobName, setPropertiesOptions, function (setBlobPropertiesErr) {
+            var properties = {contentMD5: 'MDAwMDAwMDA='};
+            blobService.setBlobProperties(containerName, blobName, properties, function (setBlobPropertiesErr) {
               assert.equal(setBlobPropertiesErr, null);
 
               blobService.getBlobToStream(containerName, blobName, fs.createWriteStream('task1-download.txt'), { disableContentMD5Validation: false }, function (downloadErr) {
@@ -714,8 +914,8 @@ describe('blob-uploaddownload-tests', function () {
           blobService.getBlobProperties(containerName, blobName, function (getBlobPropertiesErr) {
             assert.equal(getBlobPropertiesErr, null);
 
-            var setPropertiesOptions = {contentMD5: 'MDAwMDAwMDA='};
-            blobService.setBlobProperties(containerName, blobName, setPropertiesOptions, function (setBlobPropertiesErr) {
+            var properties = {contentMD5: 'MDAwMDAwMDA='};
+            blobService.setBlobProperties(containerName, blobName, properties, function (setBlobPropertiesErr) {
               assert.equal(setBlobPropertiesErr, null);
 
               blobService.getBlobToStream(containerName, blobName, fs.createWriteStream('task1-download.txt'), { disableContentMD5Validation: false }, function (downloadErr) {
@@ -839,6 +1039,7 @@ describe('blob-uploaddownload-tests', function () {
       blobService.createBlockBlobFromText(containerName, blobName, blobText, function (uploadError, blobResponse, uploadResponse) {
         assert.equal(uploadError, null);
         assert.notEqual(blobResponse, null);
+        assertNoStalePropertyOnBlob(blobResponse);
         assert.ok(uploadResponse.isSuccessful);
 
         blobService.getBlobToText(containerName, blobName, function (downloadErr, blobTextResponse) {
@@ -912,7 +1113,7 @@ describe('blob-uploaddownload-tests', function () {
     });
   });
 
-  describe('CreateBlockBlobFromFile', function() {
+  describe('createBlockBlobFromLocalFile', function() {
     var zeroFileContentMD5;
     before(function (done) {
       blockBlobContentMD5 = writeFile(blockFileName, fileText);
@@ -929,8 +1130,10 @@ describe('blob-uploaddownload-tests', function () {
     });
 
     it('should work with basic file', function(done) {
-      blobService.createBlockBlobFromLocalFile(containerName, blockBlobName, blockFileName, uploadOptions, function (err) {
+      blobService.createBlockBlobFromLocalFile(containerName, blockBlobName, blockFileName, uploadOptions, function (err, blob) {
         assert.equal(err, null);
+        assertNoStalePropertyOnBlob(blob);
+
         blobService.getBlobProperties(containerName, blockBlobName, function (err, blob) {
           assert.equal(blob.contentMD5, blockBlobContentMD5);
 
@@ -999,25 +1202,25 @@ describe('blob-uploaddownload-tests', function () {
       });
     });
 
-    it('should work with metadata', function(done) {  
-      var options = {  
-          storeBlobContentMD5 : true,  
-          useTransactionalMD5 : true,  
-          metadata: { color: 'blue' }  
-      };  
-      blobService.createBlockBlobFromLocalFile(containerName, blockBlobName, zeroSizeFileName, options, function (err) {  
-        assert.equal(err, null);  
-  
-        blobService.getBlobProperties(containerName, blockBlobName, function (err, blob) {  
-          assert.equal(err, null);  
-          assert.equal(blob.contentLength, 0);  
-          assert.equal(blob.contentMD5, zeroFileContentMD5);  
-          assert.notEqual(blob.metadata, null);  
-          assert.equal(blob.metadata.color, options.metadata.color);  
-          done();  
-        });  
-      });  
-    });  
+    it('should work with metadata', function(done) {
+      var options = {
+        storeBlobContentMD5 : true,
+        useTransactionalMD5 : true,
+        metadata: { color: 'blue' }
+      };
+      blobService.createBlockBlobFromLocalFile(containerName, blockBlobName, zeroSizeFileName, options, function (err) {
+        assert.equal(err, null);
+
+        blobService.getBlobProperties(containerName, blockBlobName, function (err, blob) {
+          assert.equal(err, null);
+          assert.equal(blob.contentLength, 0);
+          assert.equal(blob.contentMD5, zeroFileContentMD5);
+          assert.notEqual(blob.metadata, null);
+          assert.equal(blob.metadata.color, options.metadata.color);
+          done();
+        });
+      });
+    });
 
     runOrSkip('should have same md5 with range-based downloading to local file', function (done) {
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
@@ -1107,34 +1310,8 @@ describe('blob-uploaddownload-tests', function () {
       });
     });
   });
-  
-  runOrSkip('should download a range of block blob to stream', function (done) {
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
-    var fileNameSource = testutil.generateId('getBlockBlobRangeStreamLocal', [], suite.isMocked) + '.test';
-    var fileSize = 97 * 1024 * 1024;  // Don't be a multiple of 4MB to cover more scenarios
-    generateTempFile(fileNameSource, fileSize, false, function (fileInfo) {
-      uploadOptions.parallelOperationThreadCount = 5;
-      blobService.createBlockBlobFromLocalFile(containerName, blobName, fileNameSource, uploadOptions, function (error) {
-        assert.equal(error, null);
-        try { fs.unlinkSync(fileNameSource); } catch (e) { }
-        
-        var downloadOptions = { parallelOperationThreadCount : 5, rangeStart: 100, rangeEnd: 70000000 };
-        var downloadedFileName = testutil.generateId('getBlockBlobRangeStream', [], suite.isMocked) + '.test';
-        var stream = fs.createWriteStream(downloadedFileName);
-        blobService.getBlobToStream(containerName, blobName, stream, downloadOptions, function (error) {
-          assert.equal(error, null);
-          
-          var content = fs.readFileSync(downloadedFileName);
-          assert.equal(content.length, downloadOptions.rangeEnd - downloadOptions.rangeStart + 1);
-          delete content;
-          try { fs.unlinkSync(downloadedFileName); } catch (e) { }
-          done();
-        });
-      });
-    });
-  });
-  
-  describe('CreateBlockBlobFromStream', function() {
+
+  describe('createBlockBlobFromStream', function() {
     var len;
     var stream;
 
@@ -1158,8 +1335,10 @@ describe('blob-uploaddownload-tests', function () {
     });
 
     it('should work with basic file stream', function(done) {
-      blobService.createBlockBlobFromStream(containerName, blockBlobName, stream, len, uploadOptions, function (err) {
+      blobService.createBlockBlobFromStream(containerName, blockBlobName, stream, len, uploadOptions, function (err, blob) {
         assert.equal(err, null);
+        assertNoStalePropertyOnBlob(blob);
+
         blobService.getBlobProperties(containerName, blockBlobName, function(err, blob) {
           assert.equal(blob.contentMD5, blockBlobContentMD5);
 
@@ -1254,7 +1433,7 @@ describe('blob-uploaddownload-tests', function () {
     });
   });
 
-  describe('CreatePageBlobFromFile', function() {
+  describe('createPageBlobFromLocalFile', function() {
     var zeroFileContentMD5;
     before(function (done) {
       pageBlobBuffer.fill(1);
@@ -1273,8 +1452,10 @@ describe('blob-uploaddownload-tests', function () {
     });
 
     it('should work with basic file', function(done) {
-      blobService.createPageBlobFromLocalFile(containerName, pageBlobName, pageFileName, function (err) {
+      blobService.createPageBlobFromLocalFile(containerName, pageBlobName, pageFileName, function (err, blob) {
         assert.equal(err, null);
+        assertNoStalePropertyOnBlob(blob);
+
         blobService.getBlobProperties(containerName, pageBlobName, function (err1, blob) {
           assert.equal(err1, null);
           assert.equal(blob.contentMD5, undefined);
@@ -1372,24 +1553,24 @@ describe('blob-uploaddownload-tests', function () {
       });
     });
 
-    it('should work with metadata', function(done) {  
-      var options = {  
-          storeBlobContentMD5 : true,  
-          useTransactionalMD5 : true,  
-          metadata: { color: 'blue' }  
-      };  
-      blobService.createPageBlobFromLocalFile(containerName, pageBlobName, zeroSizeFileName, options, function (err) {  
-        assert.equal(err, null);  
-  
-        blobService.getBlobProperties(containerName, pageBlobName, function (err, blob) {  
-          assert.equal(err, null);   
+    it('should work with metadata', function(done) {
+      var options = {
+        storeBlobContentMD5 : true,
+        useTransactionalMD5 : true,
+        metadata: { color: 'blue' }
+      };
+      blobService.createPageBlobFromLocalFile(containerName, pageBlobName, zeroSizeFileName, options, function (err) {
+        assert.equal(err, null);
+
+        blobService.getBlobProperties(containerName, pageBlobName, function (err, blob) {
+          assert.equal(err, null);
           assert.equal(blob.contentLength, 0);
-          assert.equal(blob.contentMD5, zeroFileContentMD5);  
-          assert.notEqual(blob.metadata, null);  
-          assert.equal(blob.metadata.color, options.metadata.color);  
-          done();  
-        });  
-      });  
+          assert.equal(blob.contentMD5, zeroFileContentMD5);
+          assert.notEqual(blob.metadata, null);
+          assert.equal(blob.metadata.color, options.metadata.color);
+          done();
+        });
+      });
     });
     
     runOrSkip('should have same md5 with range-based downloading to local file', function (done) {
@@ -1511,12 +1692,13 @@ describe('blob-uploaddownload-tests', function () {
     });
   });
 
-  describe('CreatePageBlobFromStream', function() {
+  describe('createPageBlobFromStream', function() {
     //Most cases are in CreatePageBlobFromFile
     it('should work with basic file', function(done) {
       var stream = rfs.createReadStream(pageFileName);
-      blobService.createPageBlobFromStream(containerName, pageBlobName, stream, 1024, function (err) {
+      blobService.createPageBlobFromStream(containerName, pageBlobName, stream, 1024, function (err, blob) {
         assert.equal(err, null);
+        assertNoStalePropertyOnBlob(blob);
 
         blobService.getBlobProperties(containerName, pageBlobName, function (err1, blob) {
           assert.equal(err1, null);
@@ -1553,8 +1735,538 @@ describe('blob-uploaddownload-tests', function () {
       });
     });
   });
+ 
+  describe('createAppendBlobFromLocalFile', function () {
+    var zeroFileContentMD5;
+    before(function (done) {
+      appendBlobBuffer.fill(1);
+      appendBlobContentMD5 = writeFile(appendFileName, appendBlobBuffer);
+      appendBlob2KBuffer.fill(1);
+      appendBlob2KContentMD5 = writeFile(append2KFileName, appendBlob2KBuffer);
+      var zeroBuffer = new Buffer(0);
+      zeroFileContentMD5 = writeFile(zeroSizeFileName, zeroBuffer);
+      done();
+    });
+    
+    afterEach(function (done) {
+      blobService.deleteBlobIfExists(containerName, appendBlobName, function (error) {
+        done();
+      });
+    });
+    
+    it('should work with basic file', function (done) {
+      blobService.createAppendBlobFromLocalFile(containerName, appendBlobName, appendFileName, function (err, blob) {
+        assert.equal(err, null);
+        assert.equal(blob.appendOffset, 0);
+        assert.equal(blob.committedBlockCount, 1);
+        assertNoStalePropertyOnBlob(blob);
 
-  describe('GetBlockBlobToFile', function() {
+        blobService.getBlobProperties(containerName, appendBlobName, function (err1, blob) {
+          assert.equal(err1, null);
+          assert.equal(blob.contentMD5, undefined);
+          assert.equal(blob.committedBlockCount, 1);
+          
+          blobService.getBlobToText(containerName, appendBlobName, function (downloadErr, blobTextResponse) {
+            assert.equal(downloadErr, null);
+            assert.equal(blobTextResponse, appendBlobBuffer.toString());
+            done();
+          });
+        });
+      });
+    });   
+
+    it('should work with speed summary', function (done) {
+      var speedSummary = blobService.createAppendBlobFromLocalFile(containerName, appendBlobName, appendFileName, function (err) {
+        assert.equal(err, null);
+        
+        blobService.getBlobProperties(containerName, appendBlobName, function (err1, blob) {
+          assert.equal(err1, null);
+          assert.equal(blob.contentMD5, undefined);
+          assert.equal(speedSummary.getTotalSize(false), 1024);
+          assert.equal(speedSummary.getCompleteSize(false), 1024);
+          assert.equal(speedSummary.getCompletePercent(), '100.0');
+          done();
+        });
+      });
+    });
+    
+    it('should set content md5', function (done) {
+      var options = { storeBlobContentMD5 : true };
+      
+      blobService.createAppendBlobFromLocalFile(containerName, appendBlobName, appendFileName, options, function (err) {
+        assert.equal(err, null);
+        
+        blobService.getBlobProperties(containerName, appendBlobName, function (getErr, blob) {
+          assert.equal(getErr, null);
+          assert.equal(blob.contentMD5, appendBlobContentMD5);
+          done();
+        });
+      });
+    });
+    
+    it('should overwrite the existing append blob', function (done) {
+      var options = { storeBlobContentMD5 : true };
+      
+      blobService.createAppendBlobFromLocalFile(containerName, appendBlobName, appendFileName, options, function (err) {
+        assert.equal(err, null);
+        
+        blobService.getBlobProperties(containerName, appendBlobName, function (err2, blob1) {
+          assert.equal(err2, null);
+          assert.notEqual(blob1, null);
+          assert.equal(blob1.contentMD5, appendBlobContentMD5);
+          assert.equal(blob1.contentLength, 1024);
+          options.contentMD5Header = null;
+          
+          blobService.createAppendBlobFromLocalFile(containerName, appendBlobName, append2KFileName, options, function (err3, blob) {
+            assert.equal(err3, null);
+            assert.equal(blob.appendOffset, 0);
+            assert.equal(blob.committedBlockCount, 1);
+            
+            blobService.getBlobProperties(containerName, appendBlobName, function (err4, blob2) {
+              assert.equal(err4, null);
+              assert.notEqual(blob2, null);
+              assert.equal(blob2.committedBlockCount, 1);
+              assert.equal(blob2.contentLength, 2 * 1024);
+              assert.equal(blob2.contentMD5, appendBlob2KContentMD5);
+              done();
+            });
+          });
+        });
+      });
+    });
+    
+    it('should work with zero size file', function (done) {
+      uploadOptions.storeBlobContentMD5 = true;
+      blobService.createAppendBlobFromLocalFile(containerName, appendBlobName, zeroSizeFileName, uploadOptions, function (err) {
+        assert.equal(err, null);
+        done();
+      });
+    });
+    
+    it('should work with not existing file', function (done) {
+      blobService.createAppendBlobFromLocalFile(containerName, appendBlobName, notExistFileName, uploadOptions, function (err) {
+        assert.notEqual(err, null);
+        assert.equal(path.basename(err.path), notExistFileName);
+        
+        blobService.doesBlobExist(containerName, appendBlobName, function (existsErr, exists) {
+          assert.equal(existsErr, null);
+          assert.equal(exists, false);
+          done();
+        });
+      });
+    });
+
+    it('should work with metadata', function(done) {
+      var options = {
+        storeBlobContentMD5 : true,
+        metadata: { color: 'blue' }
+      };
+      blobService.createAppendBlobFromLocalFile(containerName, appendBlobName, appendFileName, options, function (err) {
+        assert.equal(err, null);
+
+        blobService.getBlobProperties(containerName, appendBlobName, function (err, blob) {
+          assert.equal(err, null);
+          assert.equal(blob.contentLength, 1024);
+          assert.equal(blob.contentMD5, appendBlobContentMD5);
+          assert.notEqual(blob.metadata, null);
+          assert.equal(blob.metadata.color, options.metadata.color);
+          done();
+        });
+      });
+    });
+
+    runOrSkip('should download a range of append blob to local file', function (done) {
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+      var fileNameSource = testutil.generateId('getAppendBlobRangeLocal', [], suite.isMocked) + '.test';
+      var fileSize = 97 * 1024 * 1024;  // Don't be a multiple of 4MB to cover more scenarios
+      generateTempFile(fileNameSource, fileSize, true, function (fileInfo) {
+        uploadOptions.parallelOperationThreadCount = 1;
+        blobService.createAppendBlobFromLocalFile(containerName, blobName, fileNameSource, uploadOptions, function (error) {
+          assert.equal(error, null);
+          try { fs.unlinkSync(fileNameSource); } catch (e) { }
+          
+          var downloadOptions = { parallelOperationThreadCount : 5 , rangeStart: 512, rangeEnd: 51199999 };
+          var downloadedFileName = testutil.generateId('getAppendBlobRange', [], suite.isMocked) + '.test';
+          blobService.getBlobToLocalFile(containerName, blobName, downloadedFileName, downloadOptions, function (error) {
+            assert.equal(error, null);
+            
+            var content = fs.readFileSync(downloadedFileName);
+            assert.equal(content.length, downloadOptions.rangeEnd - downloadOptions.rangeStart + 1);
+            delete content;
+            try { fs.unlinkSync(downloadedFileName); } catch (e) { }
+            done();
+          });
+        });
+      });
+    });
+  });
+  
+  describe('createAppendBlobFromStream', function () {
+    var len;
+    var stream;
+    
+    before(function (done) {
+      appendBlobContentMD5 = writeFile(appendFileName, fileText);
+      var zeroBuffer = new Buffer(0);
+      zeroFileContentMD5 = writeFile(zeroSizeFileName, zeroBuffer);
+      done();
+    });
+    
+    beforeEach(function (done) {
+      len = Buffer.byteLength(fileText);
+      stream = rfs.createReadStream(appendFileName);
+      done();
+    });
+    
+    afterEach(function (done) {
+      blobService.deleteBlobIfExists(containerName, appendBlobName, function (error) {
+        done();
+      });
+    });
+    
+    it('should work with basic file stream', function (done) {
+      uploadOptions.storeBlobContentMD5 = true;
+      uploadOptions.useTransactionalMD5 = true;
+      blobService.createAppendBlobFromStream(containerName, appendBlobName, stream, len, uploadOptions, function (err, blob) {
+        assert.equal(err, null);
+        assert.equal(blob.appendOffset, 0);
+        assert.equal(blob.committedBlockCount, 1);
+        assertNoStalePropertyOnBlob(blob);
+
+        blobService.getBlobProperties(containerName, appendBlobName, function (err, blob) {
+          assert.equal(blob.contentMD5, appendBlobContentMD5);
+          
+          blobService.getBlobToText(containerName, appendBlobName, function (downloadErr, blobTextResponse) {
+            assert.equal(downloadErr, null);
+            assert.equal(blobTextResponse, fileText);
+            done();
+          });
+        });
+      });
+    });
+    
+    it('should work with contentMD5 in options', function (done) {
+      var options = {
+        contentMD5 : appendBlobContentMD5,
+        useTransactionalMD5: true,
+        storeBlobContentMD5: true
+      };
+      blobService.createAppendBlobFromStream(containerName, appendBlobName, stream, len, options, function (err) {
+        assert.equal(err, null);
+        blobService.getBlobProperties(containerName, appendBlobName, function (err, blob) {
+          assert.equal(blob.contentMD5, appendBlobContentMD5);
+          done();
+        });
+      });
+    });
+    
+    it('should work with the speed summary in options', function (done) {
+      var speedSummary = new azure.BlobService.SpeedSummary();
+      var options = {
+        speedSummary : speedSummary
+      };
+      
+      blobService.createAppendBlobFromStream(containerName, appendBlobName, stream, len, options, function (err) {
+        assert.equal(err, null);
+        assert.equal(speedSummary.getTotalSize(false), Buffer.byteLength(fileText));
+        assert.equal(speedSummary.getCompleteSize(false), Buffer.byteLength(fileText));
+        assert.equal(speedSummary.getCompletePercent(), '100.0');
+        done();
+      });
+    });
+    
+    it('should work with content type', function (done) {
+      var blobOptions = { contentType: 'text' };
+      
+      blobService.createAppendBlobFromStream(containerName, appendBlobName, rfs.createReadStream(appendFileName), fileText.length, blobOptions, function (uploadError, blobResponse, uploadResponse) {
+        assert.equal(uploadError, null);
+        assert.notEqual(blobResponse, null);
+        assert.ok(uploadResponse.isSuccessful);
+        
+        blobService.getBlobToText(containerName, appendBlobName, function (downloadErr, blobTextResponse) {
+          assert.equal(downloadErr, null);
+          assert.equal(blobTextResponse, fileText);
+          
+          blobService.getBlobProperties(containerName, appendBlobName, function (getBlobPropertiesErr, blobGetResponse) {
+            assert.equal(getBlobPropertiesErr, null);
+            assert.notEqual(blobGetResponse, null);
+            assert.equal(blobOptions.contentType, blobGetResponse.contentType);
+            
+            done();
+          });
+        });
+      });
+    });
+
+    runOrSkip('should download a range of append blob to stream', function (done) {
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+      var fileNameSource = testutil.generateId('getAppendBlobRangeStreamLocal', [], suite.isMocked) + '.test';
+      var fileSize = 97 * 1024 * 1024;  // Don't be a multiple of 4MB to cover more scenarios
+      generateTempFile(fileNameSource, fileSize, true, function (fileInfo) {
+        uploadOptions.parallelOperationThreadCount = 5;
+        blobService.createAppendBlobFromLocalFile(containerName, blobName, fileNameSource, uploadOptions, function (error) {
+          assert.equal(error, null);
+          try { fs.unlinkSync(fileNameSource); } catch (e) { }
+          
+          var downloadOptions = { parallelOperationThreadCount : 5 , rangeStart: 512, rangeEnd: 51199999 };
+          var downloadedFileName = testutil.generateId('getAppendBlobRangeStream', [], suite.isMocked) + '.test';
+          var stream = fs.createWriteStream(downloadedFileName);
+          blobService.getBlobToStream(containerName, blobName, stream, downloadOptions, function (error) {
+            assert.equal(error, null);
+            
+            var content = fs.readFileSync(downloadedFileName);
+            assert.equal(content.length, downloadOptions.rangeEnd - downloadOptions.rangeStart + 1);
+            delete content;
+            try { fs.unlinkSync(downloadedFileName); } catch (e) { }
+            done();
+          });
+        });
+      });
+    });
+  });
+  
+  describe('createAppendBlobFromText', function () {
+    it('should work for small size from text', function (done) {
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked) + ' a';
+      var blobText = 'Hello World';
+      
+      blobService.createAppendBlobFromText(containerName, blobName, blobText, function (uploadError, blobResult, uploadResponse) {
+        assert.equal(uploadError, null);
+        assert.notEqual(blobResult, null);
+        assert.equal(blobResult.appendOffset, 0);
+        assert.equal(blobResult.committedBlockCount, 1);
+        assert.ok(uploadResponse.isSuccessful);
+        
+        blobService.getBlobToText(containerName, blobName, function (downloadErr, blobTextResponse) {
+          assert.equal(downloadErr, null);
+          assert.equal(blobTextResponse, blobText);
+          
+          done();
+        });
+      });
+    });
+    
+    it('should store md5', function (done) {
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked) + ' a';
+      var blobText = 'Hello World';
+      var blobMD5 = azureutil.getContentMd5(blobText);
+      var options = {
+        storeBlobContentMD5: true
+      };
+      
+      blobService.createAppendBlobFromText(containerName, blobName, blobText, options, function (uploadError, blobResult, uploadResponse) {
+        assert.equal(uploadError, null);
+        assert.notEqual(blobResult, null);
+        assert.equal(blobResult.appendOffset, 0);
+        assert.equal(blobResult.committedBlockCount, 1);
+        assertNoStalePropertyOnBlob(blobResult);
+        assert.ok(uploadResponse.isSuccessful);
+        
+        blobService.getBlobProperties(containerName, blobName, function (error4, blobProperties) {
+          assert.equal(error4, null);
+          assert.notEqual(blobProperties, null);
+          assert.equal(blobProperties.contentMD5, blobMD5);
+          
+          done();
+        });
+      });
+    });
+    
+    it('should work with access condition', function (done) {
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+      var blobText = 'hello';
+      
+      blobService.createAppendBlobFromText(containerName, blobName, blobText, function (error2) {
+        assert.equal(error2, null);
+        
+        blobService.getBlobProperties(containerName, blobName, function (error4, blobProperties) {
+          assert.equal(error4, null);
+          
+          var options = { accessConditions: { 'if-none-match': blobProperties.etag } };
+          blobService.createAppendBlobFromText(containerName, blobName, blobText, options, function (error3) {
+            assert.notEqual(error3, null);
+            assert.equal(error3.code, Constants.StorageErrorCodeStrings.CONDITION_NOT_MET);
+            
+            done();
+          });
+        });
+      });
+    });
+  });
+
+  describe('AppendFromLocalFile', function () {  
+    afterEach(function (done) {
+      blobService.deleteBlobIfExists(containerName, appendBlobName, function (error) {
+        done();
+      });
+    });
+
+    it('should work with basic file', function (done) {
+      appendBlobBuffer.fill(1);
+      writeFile(appendFileName, appendBlobBuffer);
+
+      var text = appendBlobBuffer.toString();
+      blobService.createAppendBlobFromLocalFile(containerName, appendBlobName, appendFileName, function (err, blob) {
+        assert.equal(err, null);
+        assert.equal(blob.appendOffset, 0);
+        assert.equal(blob.committedBlockCount, 1);
+        assertNoStalePropertyOnBlob(blob);
+
+        blobService.AppendFromLocalFile(containerName, appendBlobName, appendFileName, function (err, blob) {
+          assert.equal(err, null);
+          assert.equal(blob.committedBlockCount, 2);
+
+          blobService.AppendFromLocalFile(containerName, appendBlobName, appendFileName, function (err, blob) {
+            assert.equal(err, null);
+            assert.equal(blob.committedBlockCount, 3);
+
+            blobService.getBlobToText(containerName, appendBlobName, function (downloadErr, blobTextResponse) {
+              assert.equal(downloadErr, null);
+              assert.equal(blobTextResponse, text + text + text);
+              done();
+            });
+          });
+        });
+      });
+    });
+  });
+
+  describe('AppendFromStream', function () { 
+    afterEach(function (done) {
+      blobService.deleteBlobIfExists(containerName, appendBlobName, function (error) {
+        done();
+      });
+    });
+
+    it('should append from stream', function (done) {
+      appendBlobBuffer.fill(1);
+      writeFile(appendFileName, appendBlobBuffer);
+
+      var text = appendBlobBuffer.toString();
+      blobService.createAppendBlobFromLocalFile(containerName, appendBlobName, appendFileName, function (err, blob) {
+        assert.equal(err, null);
+        assert.equal(blob.appendOffset, 0);
+        assert.equal(blob.committedBlockCount, 1);
+        assertNoStalePropertyOnBlob(blob);
+
+        appendBlobBuffer.fill(2);
+        writeFile(appendFileName, appendBlobBuffer);
+        var text1 = appendBlobBuffer.toString();
+        var stream1 = rfs.createReadStream(appendFileName);
+
+        blobService.AppendFromStream(containerName, appendBlobName, stream1, text.length, function (err, blob) {
+          assert.equal(err, null);
+          assert.equal(blob.committedBlockCount, 2);
+
+          appendBlobBuffer.fill(3);
+          writeFile(appendFileName, appendBlobBuffer);
+          var text2 = appendBlobBuffer.toString();        
+          var stream2 = rfs.createReadStream(appendFileName);
+
+          blobService.AppendFromStream(containerName, appendBlobName, stream2, text.length, function (err, blob) {
+            assert.equal(err, null);
+            assert.equal(blob.committedBlockCount, 3);
+
+            blobService.getBlobToText(containerName, appendBlobName, function (downloadErr, blobTextResponse) {
+              assert.equal(downloadErr, null);
+              assert.equal(blobTextResponse, text + text1 + text2);
+              done();
+            });
+          });
+        });
+      });
+    }); 
+  });
+
+  describe('AppendFromText', function () {  
+    afterEach(function (done) {
+      blobService.deleteBlobIfExists(containerName, appendBlobName, function (error) {
+        done();
+      });
+    });
+
+    it('should append plain text', function (done) {
+      appendBlobBuffer.fill(1);
+      writeFile(appendFileName, appendBlobBuffer);
+
+    var text = appendBlobBuffer.toString();
+      blobService.createAppendBlobFromLocalFile(containerName, appendBlobName, appendFileName, function (err, blob) {
+        assert.equal(err, null);
+        assert.equal(blob.appendOffset, 0);
+        assert.equal(blob.committedBlockCount, 1);
+        assertNoStalePropertyOnBlob(blob);
+
+        var text1 = 'redblack';
+        var text2 = 'yellowblue';
+        blobService.AppendFromText(containerName, appendBlobName, text1, function (err, blob) {
+          assert.equal(err, null);
+          assert.equal(blob.committedBlockCount, 2);
+
+          blobService.AppendFromText(containerName, appendBlobName, text2, function (err, blob) {
+            assert.equal(err, null);
+            assert.equal(blob.committedBlockCount, 3);
+
+            blobService.getBlobToText(containerName, appendBlobName, function (downloadErr, blobTextResponse) {
+              assert.equal(downloadErr, null);
+              assert.equal(blobTextResponse, text + text1 + text2);
+              done();
+            });
+          });
+        });
+      });
+    });
+  });
+
+  describe('getAppendBlobToFile', function () {
+    var appendBlobName = 'appendblob-test-getblob';
+    
+    it('should work with basic append blob', function (done) {
+      appendBlobContentMD5 = writeFile(appendFileName, fileText);
+      uploadOptions.storeBlobContentMD5 = true;
+      blobService.createAppendBlobFromLocalFile(containerName, appendBlobName, appendFileName, uploadOptions, function (err) {
+        assert.equal(err, null);
+        
+        blobService.getBlobToLocalFile(containerName, appendBlobName, downloadName, function (err, blob) {
+          assert.equal(err, null);
+          assert.equal(blob.blobType, 'AppendBlob');
+          assert.equal(blob.contentMD5, appendBlobContentMD5);
+          
+          var exists = azureutil.pathExistsSync(downloadName);
+          assert.equal(exists, true);
+          
+          fs.readFile(downloadName, function (err, text) {
+            assert.equal(text, fileText);
+            done();
+          });
+        });
+      });
+    });
+    
+    it('should calculate content md5', function (done) {
+      appendBlobContentMD5 = writeFile(appendFileName, fileText);
+      uploadOptions.storeBlobContentMD5 = true;
+      blobService.createAppendBlobFromLocalFile(containerName, appendBlobName, appendFileName, uploadOptions, function (err) {
+        assert.equal(err, null);
+        
+        var options = { disableContentMD5Validation : false };
+        blobService.getBlobToLocalFile(containerName, appendBlobName, downloadName, options, function (err, blob) {
+          assert.equal(err, null);
+          assert.equal(blob.blobType, 'AppendBlob');
+          assert.equal(blob.contentMD5, appendBlobContentMD5);
+          
+          var exists = azureutil.pathExistsSync(downloadName);
+          assert.equal(exists, true);
+          
+          fs.readFile(downloadName, function (err, text) {
+            assert.equal(text, fileText);
+            done();
+          });
+        });
+      });
+    }); 
+  });
+
+  describe('getBlockBlobToFile', function() {
     var blockBlobName = 'blockblob-test-getblob';
 
     it('should work with basic block blob', function(done) {
@@ -1599,7 +2311,7 @@ describe('blob-uploaddownload-tests', function () {
     });
   });
 
-  describe('GetPageBlobToFile', function() {
+  describe('getPageBlobToFile', function() {
     var pageBlobName = 'pageblob-test-getblob';
 
     it('should work with basic page blob', function(done) {

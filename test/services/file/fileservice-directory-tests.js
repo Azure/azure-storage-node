@@ -419,6 +419,134 @@ describe('FileDirectory', function () {
       });
     });
   });
+  
+  describe('directoryMetadata', function () {
+    it('should work', function (done) {
+      fileService.createDirectory(shareName, directoryName, function (createError) {
+        assert.equal(createError, null);
+        
+        var metadata = { 'Class': 'Test' };
+        fileService.setDirectoryMetadata(shareName, directoryName, metadata, function (setMetadataError, setMetadataResult, setMetadataResponse) {
+          assert.equal(setMetadataError, null);
+          assert.ok(setMetadataResponse.isSuccessful);
+          
+          fileService.getDirectoryMetadata(shareName, directoryName, function (getMetadataError, file, getMetadataResponse) {
+            assert.equal(getMetadataError, null);
+            assert.notEqual(file, null);
+            assert.notEqual(file.metadata, null);
+            assert.equal(file.metadata.class, 'Test');
+            assert.ok(getMetadataResponse.isSuccessful);
+            
+            done();
+          });
+        });
+      });
+    });
+    
+    it('withCreate', function (done) {
+      var metadata = { 'Class': 'Test' };
+      fileService.createDirectory(shareName, directoryName, { metadata: metadata }, function (createError) {
+        assert.equal(createError, null);
+        
+        fileService.getDirectoryMetadata(shareName, directoryName, function (getMetadataError, file, getMetadataResponse) {
+          assert.equal(getMetadataError, null);
+          assert.notEqual(file, null);
+          assert.notEqual(file.metadata, null);
+          assert.equal(file.metadata.class, 'Test');
+          assert.ok(getMetadataResponse.isSuccessful);
+          
+          done();
+        });
+      });
+    });
+    
+    it('withGetProperties', function (done) {
+      fileService.createDirectory(shareName, directoryName, function (createError) {
+        assert.equal(createError, null);
+        
+        var metadata = { 'Color': 'Blue' };
+        fileService.setDirectoryMetadata(shareName, directoryName, metadata, function (setMetadataError, setMetadataResult, setMetadataResponse) {
+          assert.equal(setMetadataError, null);
+          assert.ok(setMetadataResponse.isSuccessful);
+          
+          fileService.getDirectoryProperties(shareName, directoryName, function (getError, directory, getResponse) {
+            assert.equal(getError, null);
+            assert.notEqual(directory, null);
+            assert.notEqual(directory.requestId, null);
+            assert.strictEqual(directory.metadata.color, metadata.Color);
+            
+            assert.notEqual(getResponse, null);
+            assert.equal(getResponse.isSuccessful, true);
+            
+            done();
+          });
+        });
+      });
+    });
+
+    it('should ignore the metadata in the options', function (done) {
+      fileService.createDirectory(shareName, directoryName, function (createError) {
+        assert.equal(createError, null);
+        
+        var metadata = { 'Class': 'Test' };
+        var options = { metadata: { color: 'White', Color: 'Black', COLOR: 'yellow' } }; 
+        fileService.setDirectoryMetadata(shareName, directoryName, metadata, options, function (setMetadataError, setMetadataResult, setMetadataResponse) {
+          assert.equal(setMetadataError, null);
+          assert.ok(setMetadataResponse.isSuccessful);
+          
+          fileService.getDirectoryMetadata(shareName, directoryName, function (getMetadataError, file, getMetadataResponse) {
+            assert.equal(getMetadataError, null);
+            assert.notEqual(file, null);
+            assert.notEqual(file.metadata, null);
+            assert.equal(file.metadata.class, 'Test');
+            assert.ok(getMetadataResponse.isSuccessful);
+            
+            done();
+          });
+        });
+      });
+    });
+
+    it('should merge or replace the metadata', function (done) {
+      fileService.createDirectory(shareName, directoryName, function (createError) {
+        assert.equal(createError, null);
+        
+        var metadata = { color: 'blue', Color: 'Orange', COLOR: 'Red' };
+        fileService.setDirectoryMetadata(shareName, directoryName, metadata, function (setMetadataError, setMetadataResult, setMetadataResponse) {
+          assert.equal(setMetadataError, null);
+          assert.ok(setMetadataResponse.isSuccessful);
+          
+          fileService.getDirectoryProperties(shareName, directoryName, function (getError, directory, getResponse) {
+            assert.equal(getError, null);
+            assert.notEqual(directory, null);
+            assert.notEqual(directory.requestId, null);
+            assert.strictEqual(directory.metadata.color, 'blue,Orange,Red');
+            
+            assert.notEqual(getResponse, null);
+            assert.equal(getResponse.isSuccessful, true);
+            
+            metadata = { color: 'white', Color: 'BLACK' };
+            fileService.setDirectoryMetadata(shareName, directoryName, metadata, function (setMetadataError, setMetadataResult, setMetadataResponse) {
+              assert.equal(setMetadataError, null);
+              assert.ok(setMetadataResponse.isSuccessful);
+
+              fileService.getDirectoryProperties(shareName, directoryName, function (getError, directory, getResponse) {
+                assert.equal(getError, null);
+                assert.notEqual(directory, null);
+                assert.notEqual(directory.requestId, null);
+                assert.strictEqual(directory.metadata.color, 'white,BLACK');
+                
+                assert.notEqual(getResponse, null);
+                assert.equal(getResponse.isSuccessful, true);
+
+                done();
+              });
+            });
+          });
+        });
+      });
+    });
+  });
 
   describe('cleanup file directory test', function () {
     it('should delete the test share', function (done) {
