@@ -8,36 +8,36 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://xplat-secondary.blob.core.windows.net:80')
   .get('/?comp=stats&restype=service')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Wed, 05 Aug 2015 07:17:27 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Fri, 18 Sep 2015 03:06:49 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd2fdeab5-0001-0022-0f4f-cf9880000000',
+  'x-ms-request-id': '8dd201da-0001-0020-4cbf-f19a7a000000',
   'x-ms-version': '2015-02-21',
-  date: 'Wed, 05 Aug 2015 07:20:34 GMT',
+  date: 'Fri, 18 Sep 2015 03:10:23 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat-secondary.queue.core.windows.net:80')
   .get('/?comp=stats&restype=service')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Wed, 05 Aug 2015 07:17:23 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'cache-control': 'no-cache',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Fri, 18 Sep 2015 03:06:41 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a40ede2e-0003-0014-734f-cf35d2000000',
+  'x-ms-request-id': '51aa5ce1-0003-0029-6bbf-f180f4000000',
   'x-ms-version': '2015-02-21',
-  date: 'Wed, 05 Aug 2015 07:20:39 GMT',
+  date: 'Fri, 18 Sep 2015 03:10:22 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat-secondary.table.core.windows.net:80')
   .get('/?comp=stats&restype=service')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Wed, 05 Aug 2015 07:17:39 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Fri, 18 Sep 2015 03:07:03 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3463ebef-0002-0018-794f-cfdb23000000',
+  'x-ms-request-id': '23e902ab-0002-000a-0dbf-f1ef3f000000',
   'x-ms-version': '2015-02-21',
-  date: 'Wed, 05 Aug 2015 07:20:39 GMT',
+  date: 'Fri, 18 Sep 2015 03:10:23 GMT',
   connection: 'close' });
  return result; }]];
