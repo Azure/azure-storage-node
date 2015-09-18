@@ -453,711 +453,6 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
         <dl>
             
 <dt>
-    <h4 class="name" id="_createBlock"><span class="type-signature"></span>_createBlock<span class="signature">(blockId, container, blob, content, (Stream), length, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a new block to be committed as part of a block blob.</p>
-    </div>
-    
-
-    
-    
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="BlobService.html">BlobService</a>}</li></ul>
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-		<th>Argument</th>
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>blockId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The block identifier.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>container</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The container name.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>blob</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The blob name.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>content</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-|
-
-<span class="param-type">buffer</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The block content.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>(Stream)</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>stream                                    The stream to the data to store.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>length</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The length of the stream or text to upload.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The request options.</p>
-                <h6>Properties</h6>
-                
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-		<th>Argument</th>
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>useTransactionalMD5</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">bool</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Calculate and send/validate content MD5 for transactions.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>leaseId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The target blob lease identifier.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>contentMD5</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The blob’s MD5 hash.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>accessConditions</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The access conditions. See <a href="http://msdn.microsoft.com/en-us/library/dd179371.aspx">http://msdn.microsoft.com/en-us/library/dd179371.aspx</a> for more information.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>locationMode</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">LocationMode</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
-                                                                      Please see StorageUtilities.LocationMode for the possible values.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>timeoutIntervalInMs</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The server timeout interval, in milliseconds, to use for the request.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>maximumExecutionTimeInMs</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-                                                                      The maximum execution time interval begins at the time that the client begins building the request. The maximum
-                                                                      execution time is checked intermittently while performing requests, and before executing retries.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>clientRequestId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>useNagleAlgorithm</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">bool</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-                                                                      The default value is false.</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-            </td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>callback</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#errorOrResponse">errorOrResponse</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p><code>error</code> will contain information
-                                                                      if an error occurs; otherwise 
-                                                                      <code>response</code> will contain information related to this operation.</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-3081">line 3081</a>
-			</li>
-		</ul>
-	</dd>
-	
-
-	
-
-	
-
-	
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">undefined</span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
-    
-</dd>
-
-        
-            
-<dt>
     <h4 class="name" id="abortCopyBlob"><span class="type-signature"></span>abortCopyBlob<span class="signature">(container, blob, copyId, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
     
     
@@ -1625,7 +920,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-2090">line 2090</a>
+				 <a href="blobservice.js.html#sunlight-1-line-2091">line 2091</a>
 			</li>
 		</ul>
 	</dd>
@@ -2851,7 +2146,7 @@ If you are guaranteed to have a single writer scenario, please look at options.a
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-3743">line 3743</a>
+				 <a href="blobservice.js.html#sunlight-1-line-3745">line 3745</a>
 			</li>
 		</ul>
 	</dd>
@@ -3517,7 +2812,7 @@ If you are guaranteed to have a single writer scenario, please look at options.a
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-3794">line 3794</a>
+				 <a href="blobservice.js.html#sunlight-1-line-3796">line 3796</a>
 			</li>
 		</ul>
 	</dd>
@@ -4343,7 +3638,7 @@ If you are guaranteed to have a single writer scenario, please look at options.a
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-3590">line 3590</a>
+				 <a href="blobservice.js.html#sunlight-1-line-3592">line 3592</a>
 			</li>
 		</ul>
 	</dd>
@@ -5280,7 +4575,7 @@ If you are guaranteed to have a single writer scenario, please look at options.a
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-3653">line 3653</a>
+				 <a href="blobservice.js.html#sunlight-1-line-3655">line 3655</a>
 			</li>
 		</ul>
 	</dd>
@@ -6166,7 +5461,7 @@ If you are guaranteed to have a single writer scenario, please look at options.a
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-3708">line 3708</a>
+				 <a href="blobservice.js.html#sunlight-1-line-3710">line 3710</a>
 			</li>
 		</ul>
 	</dd>
@@ -7774,7 +7069,7 @@ container lease.</p>
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-2631">line 2631</a>
+				 <a href="blobservice.js.html#sunlight-1-line-2632">line 2632</a>
 			</li>
 		</ul>
 	</dd>
@@ -8537,7 +7832,7 @@ createBlock operation.</p>
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-3157">line 3157</a>
+				 <a href="blobservice.js.html#sunlight-1-line-3159">line 3159</a>
 			</li>
 		</ul>
 	</dd>
@@ -9367,7 +8662,7 @@ If you want to append data to an already existing blob, please look at AppendFro
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-3376">line 3376</a>
+				 <a href="blobservice.js.html#sunlight-1-line-3378">line 3378</a>
 			</li>
 		</ul>
 	</dd>
@@ -10308,7 +9603,7 @@ If you want to append data to an already existing blob, please look at AppendFro
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-3420">line 3420</a>
+				 <a href="blobservice.js.html#sunlight-1-line-3422">line 3422</a>
 			</li>
 		</ul>
 	</dd>
@@ -11196,7 +10491,7 @@ If you want to append data to an already existing blob, please look at AppendFro
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-3465">line 3465</a>
+				 <a href="blobservice.js.html#sunlight-1-line-3467">line 3467</a>
 			</li>
 		</ul>
 	</dd>
@@ -12640,7 +11935,7 @@ To avoid overwriting and instead throw an error if the blob exists, please pass 
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-2824">line 2824</a>
+				 <a href="blobservice.js.html#sunlight-1-line-2825">line 2825</a>
 			</li>
 		</ul>
 	</dd>
@@ -13611,7 +12906,7 @@ To avoid overwriting and instead throw an error if the blob exists, please pass 
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-2866">line 2866</a>
+				 <a href="blobservice.js.html#sunlight-1-line-2867">line 2867</a>
 			</li>
 		</ul>
 	</dd>
@@ -14463,7 +13758,7 @@ To avoid overwriting and instead throw an error if the blob exists, please pass 
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-2907">line 2907</a>
+				 <a href="blobservice.js.html#sunlight-1-line-2908">line 2908</a>
 			</li>
 		</ul>
 	</dd>
@@ -15139,7 +14434,7 @@ To avoid overwriting and instead throw an error if the blob exists, please pass 
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-2982">line 2982</a>
+				 <a href="blobservice.js.html#sunlight-1-line-2983">line 2983</a>
 			</li>
 		</ul>
 	</dd>
@@ -15768,7 +15063,7 @@ To avoid overwriting and instead throw an error if the blob exists, please pass 
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-3031">line 3031</a>
+				 <a href="blobservice.js.html#sunlight-1-line-3032">line 3032</a>
 			</li>
 		</ul>
 	</dd>
@@ -17463,7 +16758,7 @@ To avoid overwriting and instead throw an error if the blob exists, please pass 
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-3306">line 3306</a>
+				 <a href="blobservice.js.html#sunlight-1-line-3308">line 3308</a>
 			</li>
 		</ul>
 	</dd>
@@ -18259,7 +17554,7 @@ To avoid overwriting and instead throw an error if the blob exists, please pass 
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-2253">line 2253</a>
+				 <a href="blobservice.js.html#sunlight-1-line-2254">line 2254</a>
 			</li>
 		</ul>
 	</dd>
@@ -19148,7 +18443,7 @@ To avoid overwriting and instead throw an error if the blob exists, please pass 
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-2329">line 2329</a>
+				 <a href="blobservice.js.html#sunlight-1-line-2330">line 2330</a>
 			</li>
 		</ul>
 	</dd>
@@ -20087,7 +19382,7 @@ To avoid overwriting and instead throw an error if the blob exists, please pass 
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-2371">line 2371</a>
+				 <a href="blobservice.js.html#sunlight-1-line-2372">line 2372</a>
 			</li>
 		</ul>
 	</dd>
@@ -20764,7 +20059,7 @@ To avoid overwriting and instead throw an error if the blob exists, please pass 
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-2491">line 2491</a>
+				 <a href="blobservice.js.html#sunlight-1-line-2492">line 2492</a>
 			</li>
 		</ul>
 	</dd>
@@ -22315,7 +21610,7 @@ To avoid overwriting and instead throw an error if the blob exists, please pass 
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-2951">line 2951</a>
+				 <a href="blobservice.js.html#sunlight-1-line-2952">line 2952</a>
 			</li>
 		</ul>
 	</dd>
@@ -23170,7 +22465,7 @@ If you are guaranteed to have a single writer scenario, please look at options.a
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-3553">line 3553</a>
+				 <a href="blobservice.js.html#sunlight-1-line-3555">line 3555</a>
 			</li>
 		</ul>
 	</dd>
@@ -24023,7 +23318,7 @@ If it does not, please create the blob using createPageBlob before calling this 
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-2415">line 2415</a>
+				 <a href="blobservice.js.html#sunlight-1-line-2416">line 2416</a>
 			</li>
 		</ul>
 	</dd>
@@ -24880,7 +24175,7 @@ If you are guaranteed to have a single writer scenario, please look at options.a
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-3510">line 3510</a>
+				 <a href="blobservice.js.html#sunlight-1-line-3512">line 3512</a>
 			</li>
 		</ul>
 	</dd>
@@ -25763,7 +25058,7 @@ If you are guaranteed to have a single writer scenario, please look at options.a
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-2459">line 2459</a>
+				 <a href="blobservice.js.html#sunlight-1-line-2460">line 2460</a>
 			</li>
 		</ul>
 	</dd>
@@ -28708,7 +28003,7 @@ The container and any blobs contained within it are later deleted during garbage
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-3260">line 3260</a>
+				 <a href="blobservice.js.html#sunlight-1-line-3262">line 3262</a>
 			</li>
 		</ul>
 	</dd>
@@ -29300,7 +28595,7 @@ The container and any blobs contained within it are later deleted during garbage
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-2141">line 2141</a>
+				 <a href="blobservice.js.html#sunlight-1-line-2142">line 2142</a>
 			</li>
 		</ul>
 	</dd>
@@ -32582,7 +31877,7 @@ It does not return or modify the content of the blob.</p>
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-3268">line 3268</a>
+				 <a href="blobservice.js.html#sunlight-1-line-3270">line 3270</a>
 			</li>
 		</ul>
 	</dd>
@@ -34859,7 +34154,7 @@ It does not return or modify the content of the blob.</p>
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-2199">line 2199</a>
+				 <a href="blobservice.js.html#sunlight-1-line-2200">line 2200</a>
 			</li>
 		</ul>
 	</dd>
@@ -37474,7 +36769,7 @@ It does not return or modify the content of the blob.</p>
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-3219">line 3219</a>
+				 <a href="blobservice.js.html#sunlight-1-line-3221">line 3221</a>
 			</li>
 		</ul>
 	</dd>
@@ -39039,7 +38334,7 @@ It does not return or modify the content of the blob.</p>
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-2543">line 2543</a>
+				 <a href="blobservice.js.html#sunlight-1-line-2544">line 2544</a>
 			</li>
 		</ul>
 	</dd>
@@ -40530,7 +39825,7 @@ It does not return or modify the content of the blob.</p>
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-2681">line 2681</a>
+				 <a href="blobservice.js.html#sunlight-1-line-2682">line 2682</a>
 			</li>
 		</ul>
 	</dd>
@@ -43348,7 +42643,7 @@ It's not possible to modify an individual name/value pair.</p>
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-2739">line 2739</a>
+				 <a href="blobservice.js.html#sunlight-1-line-2740">line 2740</a>
 			</li>
 		</ul>
 	</dd>
@@ -44612,7 +43907,7 @@ You can also use this operation to set the default request version for all incom
 		<ul class="dummy">
 			<li>
 				<a href="blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="blobservice.js.html#sunlight-1-line-5570">line 5570</a>
+				 <a href="blobservice.js.html#sunlight-1-line-5572">line 5572</a>
 			</li>
 		</ul>
 	</dd>
@@ -44658,7 +43953,7 @@ You can also use this operation to set the default request version for all incom
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Thu Aug 6th 2015 using the <a
+		on Fri Sep 18th 2015 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
