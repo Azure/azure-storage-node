@@ -1,7 +1,7 @@
 {
   "name": "azure-storage",
   "author": "Microsoft Corporation",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Microsoft Azure Storage Client Library for Node.js",
   "tags": [
     "azure",

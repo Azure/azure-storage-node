@@ -552,9 +552,10 @@ describe('StorageServiceSettingsTests', function(done) {
       AZURE_STORAGE_ACCOUNT: expectedName,
       AZURE_STORAGE_ACCESS_KEY: expectedKey
     }, function(done) {
+      var originalAzureStorageConnectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;  
       delete process.env.AZURE_STORAGE_CONNECTION_STRING;
-      var settings = StorageServiceSettings.createFromEnvironment();
 
+      var settings = StorageServiceSettings.createFromEnvironment();
       assert.strictEqual(settings._name, expectedName);
       assert.strictEqual(settings._key, expectedKey);
       assert.strictEqual(settings._blobEndpoint.primaryHost, expectedBlobEndpoint);
@@ -564,6 +565,8 @@ describe('StorageServiceSettingsTests', function(done) {
       assert.strictEqual(settings._queueEndpoint.secondaryHost, expectedQueueSecondaryEndpoint);
       assert.strictEqual(settings._tableEndpoint.secondaryHost, expectedTableSecondaryEndpoint);
       assert.strictEqual(settings._usePathStyleUri, false);
+
+      process.env.AZURE_STORAGE_CONNECTION_STRING = originalAzureStorageConnectionString;
     });
     done();
   });
