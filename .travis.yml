@@ -3,9 +3,13 @@ node_js:
   - "0.12"
   - "0.10"
   - "0.8"
+  
+after_script:
+  - npm run coveralls
 
 install:
   - npm install -g npm@1.4.23
   - npm --version
   - npm install
   
+sudo: false
