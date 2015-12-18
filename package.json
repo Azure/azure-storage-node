@@ -1,7 +1,7 @@
 {
   "name": "azure-storage",
   "author": "Microsoft Corporation",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Microsoft Azure Storage Client Library for Node.js",
   "tags": [
     "azure",
@@ -20,9 +20,9 @@
   "license": "Apache-2.0",
   "dependencies": {
     "extend": "~1.2.1",
-    "mime": "~1.2.4",
+    "browserify-mime": "~1.2.9",
     "node-uuid": "~1.4.0",
-    "readable-stream": "~1.0.0",
+    "readable-stream": "~2.0.0",
     "request": "~2.57.0",
     "underscore": "~1.4.4",
     "validator": "~3.22.2",
@@ -30,6 +30,8 @@
     "xmlbuilder": "0.4.3"
   },
   "devDependencies": {
+    "browserify-fs": "^1.0.0",
+    "coveralls": "^2.11.4",
     "grunt": "~0.4.2",
     "grunt-contrib-jshint": "~0.11.0",
     "grunt-devserver": "^0.6.0",
@@ -37,11 +39,16 @@
     "grunt-mocha": "^0.4.12",
     "grunt-mocha-test": "^0.12.7",
     "grunt-nsp-package": "0.0.5",
+    "istanbul": "^0.3.22",
     "jshint": ">= 2.1.4",
     "mocha": ">= 1.18.0",
+    "mocha-lcov-reporter": "^1.0.0",
     "nock": "0.16",
     "nsp": "^1.0.1",
     "should": "1.2.x"
+  },
+  "browser": {
+    "fs": "browserify-fs"
   },
   "homepage": "http://github.com/Azure/azure-storage-node",
   "repository": {
@@ -53,6 +60,8 @@
   },
   "scripts": {
     "check": "jshint lib",
-    "test": "jshint lib & mocha --no-timeouts --recursive test"
+    "test": "jshint lib && mocha --no-timeouts --recursive test",
+    "cover": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec -u bdd --no-timeouts --recursive test",
+    "coveralls": "npm run cover && cat ./coverage/lcov.info | node ./node_modules/coveralls/bin/coveralls.js"
   }
 }

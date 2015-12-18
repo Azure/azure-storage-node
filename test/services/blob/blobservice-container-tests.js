@@ -147,9 +147,45 @@ describe('BlobContainer', function () {
           assert.equal(container2, null);
 
           blobService.deleteContainer(containerName, function (deleteError) {
-              assert.equal(deleteError, null);
-              done();
-            });
+            assert.equal(deleteError, null);
+            done();
+          });
+        });
+      });
+    });
+    
+    it('should work when the headers are set to string type', function (done) {
+      var containerName = suite.getName(containerNamesPrefix);
+
+      blobService.createContainer(containerName, function (createError, container1, createContainerResponse) {
+        assert.equal(createError, null);
+        assert.notEqual(container1, null);
+        if (container1) {
+          assert.notEqual(container1.name, null);
+          assert.notEqual(container1.etag, null);
+          assert.notEqual(container1.lastModified, null);
+        }
+
+        assert.equal(createContainerResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
+        
+        var callback = function(webresource) {
+          for (var headerName in webresource.headers) {
+            webresource.headers[headerName] = webresource.headers[headerName].toString();
+          }
+        };
+  
+        blobService.on('sendingRequestEvent', callback);
+
+        // creating again will result in a duplicate error
+        blobService.createContainer(containerName, function (createError2, container2) {
+          assert.equal(createError2.code, Constants.BlobErrorCodeStrings.CONTAINER_ALREADY_EXISTS);
+          assert.equal(container2, null);
+          blobService.removeAllListeners('sendingRequestEvent');
+
+          blobService.deleteContainer(containerName, function (deleteError) {
+            assert.equal(deleteError, null);
+            done();
+          });
         });
       });
     });

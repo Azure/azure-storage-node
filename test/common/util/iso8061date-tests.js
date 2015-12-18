@@ -21,6 +21,7 @@ var testutil = require('../../framework/util');
 
 // Lib includes
 var ISO8061Date = testutil.libRequire('common/util/iso8061date');
+var date = testutil.libRequire('common/util/date');
 
 describe('iso8061date-tests', function () {
   it('parse should work', function (done) {
@@ -68,6 +69,32 @@ describe('iso8061date-tests', function () {
     var datetimeAtom = "2011-07-17T14:00:23.2700000Z";
     var strdate = ISO8061Date.format(new Date(datetime));
     assert.equal(strdate, datetimeAtom);
+    done();
+  });
+});
+
+describe('date-tests', function () {
+  it ('daysFromNow should work', function (done) {
+    var shift = 5;
+    assert.equal(date.daysFromNow(shift).getDay(), ((new Date()).getDay() + shift) % 7);
+    done();
+  });
+  
+  it ('hoursFromNow should work', function (done) {
+    var shift = 20;
+    assert.equal(date.hoursFromNow(shift).getHours(), ((new Date()).getHours() + shift) % 24);
+    done();
+  });
+  
+  it ('minutesFromNow should work', function (done) {
+    var shift = 20;
+    assert.equal(date.minutesFromNow(shift).getMinutes(), ((new Date()).getMinutes() + shift) % 60);
+    done();
+  });
+  
+  it ('secondsFromNow should work', function (done) {
+    var shift = 58;
+    assert.equal(date.secondsFromNow(shift).getSeconds(), ((new Date()).getSeconds() + shift) % 60);
     done();
   });
 });

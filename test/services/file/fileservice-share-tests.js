@@ -572,14 +572,14 @@ describe('FileShare', function () {
       var sharePolicy = {
         AccessPolicy: {
           Permissions: 'rw',
-          Expiry: new Date('2015-10-01')
+          Expiry: new Date('2016-10-01')
         }
       };
 
       var filePolicy = {
         AccessPolicy: {
           Permissions: 'd',
-          Expiry: new Date('2015-10-10')
+          Expiry: new Date('2016-10-10')
         }
       };
       

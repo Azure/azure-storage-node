@@ -20,19 +20,6 @@ function TableTestUtils(service, testPrefix) {
   TableTestUtils.super_.call(this, service, testPrefix);
 }
 
-exports.listTables = function (prefix, options, token, callback) {
-  tableService.listTablesSegmentedWithPrefix(prefix, token, options, function(error, result) {
-    assert.equal(error, null);
-    tables.push.apply(tables, result.entries);
-    var token = result.continuationToken;
-    if(token) {
-      listTables(prefix, options, token, callback);
-    } else {
-      callback();
-    }
-  });
-}
-
 TableTestUtils.prototype.teardownTest = function (callback) {
   var self = this;
 
@@ -59,11 +46,12 @@ exports.createTableTestUtils = function (service, testPrefix) {
 };
 
 exports.listTables = function (tableService, prefix, accum, options, token, callback) {
+  var self = this;
   tableService.listTablesSegmentedWithPrefix(prefix, token, options, function(error, result) {
     accum.push.apply(accum, result.entries);
     var token = result.continuationToken;
     if(token) {
-      listTables(tableService, prefix, accum, options, token, callback);
+      self.listTables(tableService, prefix, accum, options, token, callback);
     } else {
       callback();
     }

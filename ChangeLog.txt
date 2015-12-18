@@ -1,6 +1,29 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
 be taken. This is a CTP v1 release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
 
+2015.12 Version 0.7.0
+
+ALL
+* Fixed the typo in the function generateDevelopmentStorageCredentials.
+* Fixed the issue that the HTTP global agent setting is changed during parallel uploading and downloading and impacts on other Node.js applications.
+* Fixed the issue that the chunked stream writing methods do not accept string.
+* Fixed the issue that the request fails when the content-length is set to string '0' in the 'sendingRequestEvent' event handler. 
+* Supported retry on XML parsing errors when the XML in the response body is corrupted.
+* Replaced the dependency "mime" to "browserify-mime" to work with Browserify.
+
+BLOB
+* Added an option to skip the blob or file size checking prior to the actual downloading.
+* Fixed the issue that it doesn't callback when loses the internet connection during uploading/uploading.
+* Fixed the issue that the local file cannot be removed in the callback when uploading a blob from a local file.
+* Fixed the issue that the stream length doesn't work when it is larger than 32MB in the createBlockBlobFromStream, createPageBlobFromStream, createAppendBlobFromStream and appendFromStream functions.
+* Fixed the issue that it doesn't return error in the page range validation when the size exceeds the limit. 
+* Renamed the function AppendFromLocalFile to appendFromLocalFile.
+* Renamed the function AppendFromStream to appendFromStream.
+* Renamed the function AppendFromText to appendFromText.
+
+TABLE
+* Fixed the issue that listTablesSegmentedWithPrefix with maxResult option throws exception. 
+
 2015.09 Version 0.6.0
 
 ALL

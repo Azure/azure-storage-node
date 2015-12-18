@@ -878,6 +878,41 @@ describe('QueueServiceTests', function() {
       });
     });
   });
+  
+  describe('Queue ACL', function() {
+    it('setQueueACL and getQueueACL should work', function(done) {
+      queueService.createQueueIfNotExists(queueName, function() {
+        var startDate = new Date('2015-01-01T12:00:00.0000000Z');
+        var expiryDate = new Date(startDate);
+        expiryDate.setMinutes(startDate.getMinutes() + 10);
+        var id = 'sampleIDForQueuePolicy';
+
+        var sharedAccessPolicy = [{
+          AccessPolicy: {
+            Permissions: QueueUtilities.SharedAccessPermissions.PROCESS,
+            Expiry: expiryDate
+          },
+          Id: id,
+        }];
+
+        var sharedAccessPolicyJustId = {
+          Id: id,
+        };
+
+        queueService.setQueueAcl(queueName, sharedAccessPolicy, function (error, result, response) {
+          assert.strictEqual(error, null);
+          queueService.getQueueAcl(queueName, function(error, result, response) {
+            assert.strictEqual(error, null);
+            assert.equal(result.name, queueName);
+            assert.equal(result.signedIdentifiers[0].Id, id);
+            assert.equal(result.signedIdentifiers[0].AccessPolicy.Permissions, QueueUtilities.SharedAccessPermissions.PROCESS);
+            assert.equal(result.signedIdentifiers[0].AccessPolicy.Expiry.toISOString(), expiryDate.toISOString());
+            done();
+          });
+        });
+      });
+    });
+  });
 
   describe('testSAS', function() {
     runOrSkip('should work with noPolicy', function(done) {
@@ -911,7 +946,6 @@ describe('QueueServiceTests', function() {
             var message = messages[0];
             assert.equal(message.messagetext, text);
             done();
-
           });
         });
       });
