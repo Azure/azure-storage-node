@@ -250,8 +250,7 @@ describe('tableservice-tests', function () {
               tables.forEach(function (currentTable) {
                 if (currentTable === tableName1) {
                   entries += 1;
-                }
-                else if (currentTable === tableName2) {
+                } else if (currentTable === tableName2) {
                   entries += 2;
                 }
               });
@@ -308,6 +307,34 @@ describe('tableservice-tests', function () {
             assert.equal(entries, 0);
 
             done();
+          });
+        });
+      });
+    });
+    
+    it('listTables with maximum result', function (done) {
+      var tables = [];
+      tabletestutil.listTables(tableService, tablePrefix, tables, null, null, function() {
+        assert.equal(tables.length, 0);
+
+        tableService.createTable(tableName1, function (createError, table1, createResponse) {
+          assert.equal(createError, null);
+          assert.notEqual(table1, null);
+          assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.NoContent);
+
+          tableService.createTable(tableName2, function (createError2, table2, createResponse2) {
+            assert.equal(createError2, null);
+            assert.notEqual(table2, null);
+            assert.equal(createResponse2.statusCode, HttpConstants.HttpResponseCodes.NoContent);
+            
+            var options = { maxResults: 1 };
+            tableService.listTablesSegmentedWithPrefix(tablePrefix, null, options, function(error, result) {
+              assert.equal(error, null);
+              assert.notEqual(result.continuationToken, null);
+              assert.notEqual(result.continuationToken.nextTableName, null);
+              assert.equal(result.entries.length, 1);
+              done();
+            });
           });
         });
       });
@@ -803,6 +830,40 @@ describe('tableservice-tests', function () {
               assert.equal(entityResult.content['_'], entity.content['_']);
             }
 
+            done();
+          });
+        });
+      });
+    });
+  });
+  
+  describe('Table ACL', function() {
+    it('setTableACL and getTableACL should work', function(done) {
+      tableService.createTableIfNotExists(tableName1, function() {
+        var startDate = new Date('2015-01-01T12:00:00.0000000Z');
+        var expiryDate = new Date(startDate.toISOString());
+        expiryDate.setMinutes(startDate.getMinutes() + 10);
+        var id = 'sampleIDForTablePolicy';
+
+        var sharedAccessPolicy = [{
+          AccessPolicy: {
+            Permissions: TableUtilities.SharedAccessPermissions.QUERY,
+            Expiry: expiryDate
+          },
+          Id: id,
+        }];
+
+        var sharedAccessPolicyJustId = {
+          Id: id,
+        };
+
+        tableService.setTableAcl(tableName1, sharedAccessPolicy, function (error, result, response) {
+          assert.strictEqual(error, null);
+          tableService.getTableAcl(tableName1, function(error, result, response) {
+            assert.strictEqual(error, null);
+            assert.equal(result.signedIdentifiers[0].Id, id);
+            assert.equal(result.signedIdentifiers[0].AccessPolicy.Permissions, TableUtilities.SharedAccessPermissions.QUERY);
+            assert.equal(result.signedIdentifiers[0].AccessPolicy.Expiry.toISOString(), expiryDate.toISOString());
             done();
           });
         });

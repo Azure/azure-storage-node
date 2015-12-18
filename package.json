@@ -1,7 +1,7 @@
 {
   "name": "azure-storage",
   "author": "Microsoft Corporation",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Microsoft Azure Storage Client Library for Node.js",
   "tags": [
     "azure",
@@ -22,7 +22,7 @@
     "extend": "~1.2.1",
     "browserify-mime": "~1.2.9",
     "node-uuid": "~1.4.0",
-    "readable-stream": "~1.0.0",
+    "readable-stream": "~2.0.0",
     "request": "~2.57.0",
     "underscore": "~1.4.4",
     "validator": "~3.22.2",

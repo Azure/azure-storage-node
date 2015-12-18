@@ -1,6 +1,7 @@
 # Microsoft Azure Storage SDK for Node.js 
 
 [![NPM version](https://badge.fury.io/js/azure-storage.svg)](http://badge.fury.io/js/azure-storage) [![Build Status](https://travis-ci.org/Azure/azure-storage-node.svg?branch=master)](https://travis-ci.org/Azure/azure-storage-node)
+[![Coverage Status](https://coveralls.io/repos/Azure/azure-storage-node/badge.svg?branch=master&service=github)](https://coveralls.io/github/Azure/azure-storage-node?branch=master)
 
 This project provides a Node.js package that makes it easy to consume and manage Microsoft Azure Storage Services.
 

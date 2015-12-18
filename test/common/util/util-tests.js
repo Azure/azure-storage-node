@@ -21,6 +21,7 @@ var testutil = require('../../framework/util');
 
 // Lib includes
 var util = testutil.libRequire('common/util/util');
+var speedSummary = testutil.libRequire('common/streams/speedsummary');
 
 describe('util-tests', function() {
   it('should be an empty object', function (done) {
@@ -107,6 +108,80 @@ describe('util-tests', function() {
     assert.equal(util.tryGetValueChain({a: { b: { c: 'd' }}}, [ 'a', 'b', 'k' ]), null);
     assert.equal(util.tryGetValueChain(null, [ 'a', 'b', 'k' ]), null);
 
+    done();
+  });
+});
+
+describe('speed-summary-tests', function() {
+  it('getElapsedSeconds should work', function (done) {
+    var summary = new speedSummary('test');
+    assert.equal(summary.getElapsedSeconds(true), '00:00:00');
+    assert.equal(summary.getElapsedSeconds(false), 0);
+    done();
+  });
+  
+  it('getCompletePercent should work', function (done) {
+    var summary = new speedSummary('test');
+    summary.totalSize = 100;
+    summary.completeSize = 1;
+    assert.equal(summary.getCompletePercent(2).toString(), '1.00');
+    done();
+  });
+  
+  it('getAverageSpeed should work', function (done) {
+    var summary = new speedSummary('test');
+    summary.totalSize = 100;
+    summary.completeSize = 10;
+    console.log(summary.getAverageSpeed(false));
+    assert.equal(summary.getAverageSpeed(true), '10.00B/S');
+    assert.equal(summary.getAverageSpeed(false).toString(), '10');
+    done();
+  });
+  
+  it('getSpeed should work', function (done) {
+    var summary = new speedSummary('test');
+    summary.totalSize = 100;
+    summary.completeSize = 15;
+    assert.equal(summary.getSpeed(true), '0B/S');
+    assert.equal(summary.getSpeed(false).toString(), '0');
+    done();
+  });
+  
+  it('increment should work', function (done) {
+    var summary = new speedSummary('test');
+    summary.totalSize = 100;
+    summary.completeSize = 15;
+    assert.equal(summary.increment(10), 25);
+    done();
+  });
+  
+  it('getAutoIncrementFunction should work', function (done) {
+    var summary = new speedSummary('test');
+    summary.totalSize = 100;
+    summary.completeSize = 15;
+    var increase = summary.getAutoIncrementFunction(10);
+    increase();
+    assert.equal(summary.getCompleteSize(false), 25);
+    done();
+  });
+  
+  it('getTotalSize should work', function (done) {
+    var summary = new speedSummary('test');
+    summary.totalSize = 100;
+    assert.equal(summary.getTotalSize(true), '100.00B');
+    assert.equal(summary.getTotalSize(false), 100);
+    done();
+  });
+  
+  it('getCompleteSize should work', function (done) {
+    var summary = new speedSummary('test');
+    summary.totalSize = 100;
+    summary.completeSize = 15;
+    var increase = summary.getAutoIncrementFunction(10);
+    increase();
+    assert.equal(summary.getCompleteSize(false), 25);
+    increase();
+    assert.equal(summary.getCompleteSize(true), '35.00B');
     done();
   });
 });
