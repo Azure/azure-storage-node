@@ -136,7 +136,7 @@
 						</li>
 						
 						<li>
-							<a href="global.html#generateDevelopmentStorageCredendentials">generateDevelopmentStorageCredendentials</a>
+							<a href="global.html#generateDevelopmentStorageCredentials">generateDevelopmentStorageCredentials</a>
 						</li>
 						
 
@@ -182,7 +182,7 @@ var fs = require('fs');
 var qs = require('querystring');
 var url = require('url');
 var util = require('util');
-var mime = require('mime');
+var mime = require('browserify-mime');
 var _ = require('underscore');
 var crypto = require('crypto');
 var extend = require('extend');
@@ -1666,6 +1666,9 @@ BlobService.prototype.setBlobMetadata = function (container, blob, metadata, opt
 * @param {string}             blob                                        The blob name.
 * @param {string}             localFileName                               The local path to the file to be downloaded.
 * @param {object}             [options]                                   The request options.
+* @param {boolean}            [options.skipSizeCheck]                     Skip the size check to perform direct download.
+*                                                                         Set the option to true for small blobs.
+*                                                                         Parallel download and speed summary won't work with this option on.
 * @param {SpeedSummary}       [options.speedSummary]                      The upload tracker objects.
 * @param {int}                [options.parallelOperationThreadCount]      Parallel operation thread count
 * @param {string}             [options.snapshotId]                        The snapshot identifier.
@@ -1777,6 +1780,9 @@ BlobService.prototype.createReadStream = function (container, blob, optionsOrCal
 * @param {string}             blob                                        The blob name.
 * @param {Stream}             writeStream                                 The write stream.
 * @param {object}             [options]                                   The request options.
+* @param {boolean}            [options.skipSizeCheck]                     Skip the size check to perform direct download.
+*                                                                         Set the option to true for small blobs.
+*                                                                         Parallel download and speed summary won't work with this option on.
 * @param {string}             [options.snapshotId]                        The snapshot identifier.
 * @param {string}             [options.leaseId]                           The lease identifier.
 * @param {string}             [options.rangeStart]                        Return only the bytes of the blob in the specified range.
@@ -1826,28 +1832,31 @@ BlobService.prototype.getBlobToStream = function (container, blob, writeStream, 
     accessConditions : options.accessConditions
   };
   
-  var self = this;
-  
-  this.getBlobProperties(container, blob, propertiesRequestOptions, function (error, properties) {
-    if (error) {
-      callback(error);
-    } else {
-      var size;
-      if (options.rangeStart) {
-        var endOffset = properties.contentLength - 1;
-        var end = options.rangeEnd ? Math.min(options.rangeEnd, endOffset) : endOffset;
-        size = end - options.rangeStart + 1;
+  if (options.skipSizeCheck) {
+    this._getBlobToStream(container, blob, writeStream, options, callback);
+  } else {
+    var self = this;
+    this.getBlobProperties(container, blob, propertiesRequestOptions, function (error, properties) {
+      if (error) {
+        callback(error);
       } else {
-        size = properties.contentLength;
+        var size;
+        if (options.rangeStart) {
+          var endOffset = properties.contentLength - 1;
+          var end = options.rangeEnd ? Math.min(options.rangeEnd, endOffset) : endOffset;
+          size = end - options.rangeStart + 1;
+        } else {
+          size = properties.contentLength;
+        }
+        if (size > self.singleBlobPutThresholdInBytes) {
+          options.contentMD5 = properties.contentMD5;
+          self._getBlobToRangeStream(container, blob, properties.blobType, writeStream, options, callback);
+        } else {
+          self._getBlobToStream(container, blob, writeStream, options, callback);
+        }
       }
-      if (size > self.singleBlobPutThresholdInBytes) {
-        options.contentMD5 = properties.contentMD5;
-        self._getBlobToRangeStream(container, blob, properties.blobType, writeStream, options, callback);
-      } else {
-        self._getBlobToStream(container, blob, writeStream, options, callback);
-      }
-    }
-  });
+    });
+  }
   
   return options.speedSummary;
 };
@@ -3506,7 +3515,7 @@ BlobService.prototype.createOrReplaceAppendBlob = function (container, blob, opt
 * To avoid overwriting and instead throw an error if the blob exists, please pass in an accessConditions parameter in the options object.
 * This API should be used strictly in a single writer scenario because the API internally uses the append-offset conditional header to avoid duplicate blocks.
 * If you are guaranteed to have a single writer scenario, please look at options.absorbConditionalErrorsOnRetry and see if setting this flag to true is acceptable for you.
-* If you want to append data to an already existing blob, please look at AppendFromLocalFile.
+* If you want to append data to an already existing blob, please look at appendFromLocalFile.
 *
 * @this {BlobService}
 * @param {string}             container                                   The container name.
@@ -3547,7 +3556,7 @@ BlobService.prototype.createAppendBlobFromLocalFile = function (container, blob,
 * To avoid overwriting and instead throw an error if the blob exists, please pass in an accessConditions parameter in the options object.
 * This API should be used strictly in a single writer scenario because the API internally uses the append-offset conditional header to avoid duplicate blocks.
 * If you are guaranteed to have a single writer scenario, please look at options.absorbConditionalErrorsOnRetry and see if setting this flag to true is acceptable for you.
-* If you want to append data to an already existing blob, please look at AppendFromStream.
+* If you want to append data to an already existing blob, please look at appendFromStream.
 *
 * @this {BlobService}
 * @param {string}             container                                   The container name.
@@ -3591,7 +3600,7 @@ BlobService.prototype.createAppendBlobFromStream = function (container, blob, st
 * To avoid overwriting and instead throw an error if the blob exists, please pass in an accessConditions parameter in the options object.
 * This API should be used strictly in a single writer scenario because the API internally uses the append-offset conditional header to avoid duplicate blocks.
 * If you are guaranteed to have a single writer scenario, please look at options.absorbConditionalErrorsOnRetry and see if setting this flag to true is acceptable for you.
-* If you want to append data to an already existing blob, please look at AppendFromText.
+* If you want to append data to an already existing blob, please look at appendFromText.
 *
 * @this {BlobService}
 * @param {string}             container                                   The container name.
@@ -3752,11 +3761,11 @@ BlobService.prototype.createWriteStreamToExistingAppendBlob = function (containe
 * @param {errorOrResult}      callback                                    The callback function.
 * @return {SpeedSummary}
 */
-BlobService.prototype.AppendFromLocalFile = function (container, blob, localFileName, optionsOrCallback, callback) {
+BlobService.prototype.appendFromLocalFile = function (container, blob, localFileName, optionsOrCallback, callback) {
   var userOptions;
   azureutil.normalizeArgs(optionsOrCallback, callback, function (o, c) { userOptions = o; callback = c; });
   
-  validate.validateArgs('AppendFromLocalFile', function (v) {
+  validate.validateArgs('appendFromLocalFile', function (v) {
     v.string(container, 'container');
     v.string(blob, 'blob');
     v.containerNameIsValid(container);
@@ -3772,7 +3781,13 @@ BlobService.prototype.AppendFromLocalFile = function (container, blob, localFile
       callback(error);
     } else {
       var stream = new FileReadStream(localFileName, { calcContentMd5: options.storeBlobContentMD5 });
-      self._uploadBlobFromStream(false, container, blob, BlobConstants.BlobTypes.APPEND, stream, stat.size, options, callback);
+      var streamCallback = function (appendError, blob, response) {
+        if (azureutil.objectIsFunction(stream.destroy)) {
+          stream.destroy();
+        }
+        callback(appendError, blob, response);
+      };
+      self._uploadBlobFromStream(false, container, blob, BlobConstants.BlobTypes.APPEND, stream, stat.size, options, streamCallback);
     }
   });
   
@@ -3815,7 +3830,7 @@ BlobService.prototype.AppendFromLocalFile = function (container, blob, localFile
 * @param {errorOrResult}      callback                                    The callback function.
 * @return {SpeedSummary}
 */
-BlobService.prototype.AppendFromStream = function (container, blob, stream, streamLength, optionsOrCallback, callback) {
+BlobService.prototype.appendFromStream = function (container, blob, stream, streamLength, optionsOrCallback, callback) {
   var options;
   azureutil.normalizeArgs(optionsOrCallback, callback, function (o, c) { options = o; callback = c; });
   
@@ -3870,7 +3885,7 @@ BlobService.prototype.AppendFromStream = function (container, blob, stream, stre
 *                                                                         `response` will contain information related to this operation.
 * @return {undefined}
 */
-BlobService.prototype.AppendFromText = function (container, blob, text, optionsOrCallback, callback) {
+BlobService.prototype.appendFromText = function (container, blob, text, optionsOrCallback, callback) {
   return this._uploadBlobFromText(false, container, blob, BlobConstants.BlobTypes.APPEND, text, optionsOrCallback, callback);
 };
 
@@ -4046,7 +4061,7 @@ BlobService.prototype._createBlobFromLocalFile = function (container, blob, blob
       size = stat.size;
       self._createBlob(container, blob, blobType, size, options, creationCallback);
     }
-  });  
+  });
   
   var creationCallback = function (createError, createBlob, createResponse) {
     if (createError) {
@@ -4058,7 +4073,13 @@ BlobService.prototype._createBlobFromLocalFile = function (container, blob, blob
       }
 
       var stream = new FileReadStream(localFileName, { calcContentMd5: options.storeBlobContentMD5 });
-      self._uploadBlobFromStream(true, container, blob, blobType, stream, size, options, callback);
+      var streamCallback = function (createError, createBlob, createResponse) {
+        if (azureutil.objectIsFunction(stream.destroy)) {
+          stream.destroy();
+        }
+        callback(createError, createBlob, createResponse);
+      };
+      self._uploadBlobFromStream(true, container, blob, blobType, stream, size, options, streamCallback);
     }
   };
   
@@ -4359,7 +4380,7 @@ BlobService.prototype._uploadBlobFromStream = function (isNewBlob, container, bl
       };
 
       if (streamLength > 0 && azureutil.objectIsNull(options.contentMD5) && options.storeBlobContentMD5) {
-        azureutil.calculateMD5(stream, self.singleBlobPutThresholdInBytes, options, function (internalBuff) {
+        azureutil.calculateMD5(stream, Math.min(self.singleBlobPutThresholdInBytes, streamLength), options, function (internalBuff) {
           self._putBlockBlob(container, blob, internalBuff, null, internalBuff.length, options, finalCallback);
         });
         stream.resume();
@@ -4932,6 +4953,7 @@ BlobService.prototype._uploadContentFromChunkStream = function (container, blob,
 
   // initialize chunk allocator
   var allocator = new ChunkAllocator(sizeLimitation, options.parallelOperationThreadCount, { logger: this.logger });
+  chunkStream.setOutputLength(streamLength);
 
   // if this is a FileReadStream, set the allocator on that stream
   if (chunkStream._stream && chunkStream._stream.setMemoryAllocator) {
@@ -4974,8 +4996,26 @@ BlobService.prototype._uploadContentFromChunkStream = function (container, blob,
       var contentMD5 = azureutil.getContentMd5(data);
       rangeOptions.contentMD5 = contentMD5;
     }
+    
+    var checkLengthLimit = function () {
+      if (!streamLength) return true;
+      if (range.start >= streamLength) {
+        self.logger.debug(util.format('Stop uploading data from %s bytes to %s bytes to blob %s because of limit %s', range.start, range.end, blob, streamLength));
+        chunkStream.stop();
+        return false;
+      } else if (range.end >= streamLength) {
+        self.logger.debug(util.format('Clip uploading data from %s bytes to %s bytes to blob %s because of limit %s', range.start, range.end, blob, streamLength));
+        range.end = streamLength - 1;
+        data = data.slice(0, streamLength - range.start);
+        if (options.useTransactionalMD5) {
+          rangeOptions.contentMD5 =  azureutil.getContentMd5(data);
+        }
+      }
+      return true;
+    };
 
     var uploadBlockBlobChunk = function () {
+      if (!checkLengthLimit()) return;
       var blockId = self.getBlockId(blockIdPrefix, blockCount);
       blockIds.push(blockId);
       
@@ -4991,6 +5031,8 @@ BlobService.prototype._uploadContentFromChunkStream = function (container, blob,
     };
 
     var uploadPageBlobChunk = function () {
+      if (!checkLengthLimit()) return;
+      
       if (azureutil.isBufferAllZero(data)) {
         self.logger.debug(util.format('Skip upload data from %s bytes to %s bytes to blob %s', range.start, range.end, blob));
         speedSummary.increment(data.length);
@@ -5009,6 +5051,8 @@ BlobService.prototype._uploadContentFromChunkStream = function (container, blob,
     };
 
     var uploadAppendBlobChunk = function () {
+      if (!checkLengthLimit()) return;
+      
       rangeOptions.appendPosition = Number(rangeOptions.initialAppendPosition) + Number(range.start);
 
       // We cannot differentiate between max size condition failing only in the retry versus failing in the first attempt and retry.  
@@ -5483,7 +5527,10 @@ BlobService.prototype._getBlobToRangeStream = function (container, blob, blobTyp
     leaseId : options.leaseId
   };
   
-  rangeStream.list(listOptions);
+   rangeStream.list(listOptions, function (error) {
+    callback(error);
+  });
+  
   return speedSummary;
 };
 
@@ -5559,6 +5606,9 @@ BlobService.prototype._getBlobToStream = function (container, blob, writeStream,
 * @param {string}             blob                                        The blob name.
 * @param {string}             localFileName                               The local path to the file to be downloaded.
 * @param {object}             [options]                                   The request options.
+* @param {boolean}            [options.skipSizeCheck]                     Skip the size check to perform direct download.
+*                                                                         Set the option to true for small blobs.
+*                                                                         Parallel download and speed summary won't work with this option on.
 * @param {string}             [options.snapshotId]                        The snapshot identifier.
 * @param {string}             [options.leaseId]                           The lease identifier.
 * @param {string}             [options.rangeStart]                        Return only the bytes of the blob in the specified range.
@@ -5760,7 +5810,7 @@ module.exports = BlobService;
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Fri Sep 18th 2015 using the <a
+		on Fri Dec 18th 2015 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
