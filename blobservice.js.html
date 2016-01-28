@@ -1669,7 +1669,7 @@ BlobService.prototype.setBlobMetadata = function (container, blob, metadata, opt
 * @param {boolean}            [options.skipSizeCheck]                     Skip the size check to perform direct download.
 *                                                                         Set the option to true for small blobs.
 *                                                                         Parallel download and speed summary won't work with this option on.
-* @param {SpeedSummary}       [options.speedSummary]                      The upload tracker objects.
+* @param {SpeedSummary}       [options.speedSummary]                      The download tracker objects.
 * @param {int}                [options.parallelOperationThreadCount]      Parallel operation thread count
 * @param {string}             [options.snapshotId]                        The snapshot identifier.
 * @param {string}             [options.leaseId]                           The lease identifier.
@@ -1783,6 +1783,7 @@ BlobService.prototype.createReadStream = function (container, blob, optionsOrCal
 * @param {boolean}            [options.skipSizeCheck]                     Skip the size check to perform direct download.
 *                                                                         Set the option to true for small blobs.
 *                                                                         Parallel download and speed summary won't work with this option on.
+* @param {SpeedSummary}       [options.speedSummary]                      The download tracker objects.
 * @param {string}             [options.snapshotId]                        The snapshot identifier.
 * @param {string}             [options.leaseId]                           The lease identifier.
 * @param {string}             [options.rangeStart]                        Return only the bytes of the blob in the specified range.
@@ -1802,6 +1803,7 @@ BlobService.prototype.createReadStream = function (container, blob, optionsOrCal
 * @param {errorOrResult}      callback                                    `error` will contain information if an error occurs; 
 *                                                                         otherwise `result` will contain the blob information.
 *                                                                         `response` will contain information related to this operation.
+* @return {SpeedSummary}
 *
 * @example
 * var azure = require('azure-storage');
@@ -1815,7 +1817,8 @@ BlobService.prototype.createReadStream = function (container, blob, optionsOrCal
 BlobService.prototype.getBlobToStream = function (container, blob, writeStream, optionsOrCallback, callback) {
   var userOptions;
   azureutil.normalizeArgs(optionsOrCallback, callback, function (o, c) { userOptions = o; callback = c; });
-
+  userOptions.speedSummary = userOptions.speedSummary || new SpeedSummary(blob);
+  
   validate.validateArgs('getBlobToStream', function (v) {
     v.string(container, 'container');
     v.string(blob, 'blob');
@@ -1848,6 +1851,8 @@ BlobService.prototype.getBlobToStream = function (container, blob, writeStream, 
         } else {
           size = properties.contentLength;
         }
+        options.speedSummary.totalSize = size;
+        
         if (size > self.singleBlobPutThresholdInBytes) {
           options.contentMD5 = properties.contentMD5;
           self._getBlobToRangeStream(container, blob, properties.blobType, writeStream, options, callback);
@@ -3325,7 +3330,7 @@ BlobService.prototype._createBlock = function (blockId, container, blob, content
 *                                                                         The default value is false.
 * @param {errorOrResult}      callback                                    `error` will contain information
 *                                                                         if an error occurs; otherwise `result` will contain
-*                                                                         the blocklist information.
+*                                                                         the blob result with the blocklist information.
 *                                                                         `response` will contain information related to this operation.
 */
 BlobService.prototype.commitBlocks = function (container, blob, blockList, optionsOrCallback, callback) {
@@ -3351,13 +3356,15 @@ BlobService.prototype.commitBlocks = function (container, blob, blockList, optio
   BlobResult.setPropertiesFromBlob(webResource, options);
 
   var processResponseCallback = function (responseObject, next) {
-    responseObject.list = null;
+    responseObject.blobResult = new BlobResult(container, blob);
+    responseObject.blobResult.list = null;
     if (!responseObject.error) {
-      responseObject.list = blockList;
+      responseObject.blobResult.getPropertiesFromHeaders(responseObject.response.headers);
+      responseObject.blobResult.list = blockList;
     }
 
     var finalCallback = function (returnObject) {
-      callback(returnObject.error, returnObject.list, returnObject.response);
+      callback(returnObject.error, returnObject.blobResult, returnObject.response);
     };
 
     next(responseObject, finalCallback);
@@ -4052,16 +4059,6 @@ BlobService.prototype._createBlobFromLocalFile = function (container, blob, blob
 
   var self = this;
   var size = 0;
-
-  // Check the file size to determine the upload method: single request or chunks
-  fs.stat(localFileName, function (error, stat) {
-    if (error) {
-      callback(error);
-    } else {
-      size = stat.size;
-      self._createBlob(container, blob, blobType, size, options, creationCallback);
-    }
-  });
   
   var creationCallback = function (createError, createBlob, createResponse) {
     if (createError) {
@@ -4082,6 +4079,16 @@ BlobService.prototype._createBlobFromLocalFile = function (container, blob, blob
       self._uploadBlobFromStream(true, container, blob, blobType, stream, size, options, streamCallback);
     }
   };
+
+  // Check the file size to determine the upload method: single request or chunks
+  fs.stat(localFileName, function (error, stat) {
+    if (error) {
+      callback(error);
+    } else {
+      size = stat.size;
+      self._createBlob(container, blob, blobType, size, options, creationCallback);
+    }
+  });
   
   return options.speedSummary;
 };
@@ -5335,15 +5342,15 @@ BlobService.prototype._setRangeContentMD5Header = function (webResource, options
 };
 
 /**
-* Downloads a blockblob or pageblob into a range stream.
+* Downloads a blockblob, pageblob or appendblob into a range stream.
 * @ignore
 * @this {BlobService}
 * @param {string}             container                                   The container name.
 * @param {string}             blob                                        The blob name.
-* @param {string}             blobType                                    The type of blob to create: block blob or page blob.
+* @param {string}             blobType                                    The type of blob to download: block blob, page blob or append blob.
 * @param {Stream}             writeStream                                 The write stream.
 * @param {object}             [options]                                   The request options.
-* @param {SpeedSummary}       [options.speedSummary]                      The upload tracker objects.
+* @param {SpeedSummary}       [options.speedSummary]                      The download tracker objects.
 * @param {int}                [options.parallelOperationThreadCount]      Parallel operation thread count
 * @param {string}             [options.snapshotId]                        The snapshot identifier.
 * @param {string}             [options.leaseId]                           The lease identifier.
@@ -5609,6 +5616,7 @@ BlobService.prototype._getBlobToStream = function (container, blob, writeStream,
 * @param {boolean}            [options.skipSizeCheck]                     Skip the size check to perform direct download.
 *                                                                         Set the option to true for small blobs.
 *                                                                         Parallel download and speed summary won't work with this option on.
+* @param {SpeedSummary}       [options.speedSummary]                      The download tracker objects.
 * @param {string}             [options.snapshotId]                        The snapshot identifier.
 * @param {string}             [options.leaseId]                           The lease identifier.
 * @param {string}             [options.rangeStart]                        Return only the bytes of the blob in the specified range.
@@ -5628,11 +5636,14 @@ BlobService.prototype._getBlobToStream = function (container, blob, writeStream,
 * @param {errorOrResult}      callback                                    `error` will contain information if an error occurs; 
 *                                                                         otherwise `result` will contain the blob information.
 *                                                                         `response` will contain information related to this operation.
+* @return {SpeedSummary}
+* 
 */
 BlobService.prototype._getBlobToLocalFile = function (container, blob, localFileName, optionsOrCallback, callback) {
   var options;
   azureutil.normalizeArgs(optionsOrCallback, callback, function (o, c) { options = o; callback = c; });
-
+  options.speedSummary = options.speedSummary || new SpeedSummary(blob);
+  
   var writeStream = fs.createWriteStream(localFileName, { 'highWaterMark': BlobConstants.MAX_QUEUED_WRITE_DISK_BUFFER_SIZE });
   
   this.getBlobToStream(container, blob, writeStream, options, function (error, responseBlob, response) {
@@ -5647,12 +5658,13 @@ BlobService.prototype._getBlobToLocalFile = function (container, blob, localFile
         fs.unlink(localFileName, function () {
           callback(error, responseBlob, response);
         });
-        
         return;
       }
     }
     callback(error, responseBlob, response);
-  }); 
+  });
+  
+  return options.speedSummary;
 };
 
 /**
@@ -5810,7 +5822,7 @@ module.exports = BlobService;
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Fri Dec 18th 2015 using the <a
+		on Wed Jan 27th 2016 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
