@@ -640,8 +640,14 @@ describe('blob-uploaddownload-tests', function () {
             UncommittedBlocks: ['id2']
           };
 
-          blobService.commitBlocks(containerName, blobName, blockList, function (error4) {
+          blobService.commitBlocks(containerName, blobName, blockList, function (error4, blob) {
             assert.equal(error4, null);
+            assert.equal(blob.container, containerName);
+            assert.equal(blob.blob, blobName);
+            assert.deepEqual(blob.list, blockList);
+            assert.notEqual(blob.etag, null);
+            assert.notEqual(blob.lastModified, null);
+            assert.notEqual(blob.contentMD5, null);
 
             blobService.listBlocks(containerName, blobName, BlobUtilities.BlockListFilter.ALL, function (error5, list) {
               assert.equal(error5, null);
@@ -674,8 +680,14 @@ describe('blob-uploaddownload-tests', function () {
             LatestBlocks: ['id1'],
           };
 
-          blobService.commitBlocks(containerName, blobName, blockList, function (error4) {
+          blobService.commitBlocks(containerName, blobName, blockList, function (error4, blob) {
             assert.equal(error4, null);
+            assert.equal(blob.container, containerName);
+            assert.equal(blob.blob, blobName);
+            assert.deepEqual(blob.list, blockList);
+            assert.notEqual(blob.etag, null);
+            assert.notEqual(blob.lastModified, null);
+            assert.notEqual(blob.contentMD5, null);
 
             blobService.listBlocks(containerName, blobName, BlobUtilities.BlockListFilter.ALL, function (error5, list) {
               assert.equal(error5, null);
@@ -1247,6 +1259,34 @@ describe('blob-uploaddownload-tests', function () {
               });
             });
           });
+        });
+      });
+    });
+
+    runOrSkip('getBlobToLocalFile should return the SpeedSummary correctly', function (done) {
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+      var fileNameSource = testutil.generateId('getBlobToLocalFileSpeedSummary', [], suite.isMocked) + '.test';
+      var fileSize = 97 * 1024 * 1024;  // Don't be a multiple of 4MB to cover more scenarios
+      generateTempFile(fileNameSource, fileSize, false, function (fileInfo) {
+        uploadOptions.parallelOperationThreadCount = 5;
+        blobService.createBlockBlobFromLocalFile(containerName, blobName, fileNameSource, uploadOptions, function (error) {
+          assert.equal(error, null);
+          
+          var speedSummary;
+          var downloadOptions = { 
+            parallelOperationThreadCount : 5
+          };
+          
+          speedSummary = blobService.getBlobToLocalFile(containerName, blobName, fileNameSource, downloadOptions, function (error) {
+            assert.equal(speedSummary.getTotalSize(false), fileSize);
+            assert.equal(speedSummary.getCompleteSize(false), fileSize);
+            assert.equal(speedSummary.getCompletePercent(), '100.0');
+            
+            try { fs.unlinkSync(fileNameSource); } catch (e) { }
+            done();
+          });
+          
+          assert.notEqual(speedSummary, null);
         });
       });
     });

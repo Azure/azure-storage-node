@@ -614,6 +614,38 @@ describe('FileUploadDownload', function () {
       });
     });
 
+    runOrSkip('should return speedSummary correctly', function(done) {
+      var size = 99*1024*1024; // Do not use a multiple of 4MB size
+      generateTempFile(localLargeFileName, size, false, function (fileInfo) {
+        var uploadOptions = {
+          storeBlobContentMD5: true,
+          parallelOperationThreadCount: 5
+        };
+          
+        fileService.createFileFromLocalFile(shareName, directoryName, fileName, localLargeFileName, uploadOptions, function (err) {
+          assert.equal(err, null);
+          
+          var speedSummary;
+          var downloadOptions = {
+            useTransactionalMD5: true, 
+            parallelOperationThreadCount: 5
+          };
+          
+          speedSummary = fileService.getFileToLocalFile(shareName, directoryName, fileName, downloadFileName, downloadOptions, function (err, file) {
+            assert.equal(err, null);
+            
+            assert.equal(speedSummary.getTotalSize(false), size);
+            assert.equal(speedSummary.getCompleteSize(false), size);
+            assert.equal(speedSummary.getCompletePercent(), '100.0');
+            
+            done();
+          });
+          
+          assert.notEqual(speedSummary, null);
+        });
+      });
+    });
+
     it('should calculate content md5', function(done) {
       fileContentMD5 = writeFile(localFileName, fileText);
       fileService.createFileFromLocalFile(shareName, directoryName, fileName, localFileName, {storeFileContentMD5: true}, function (err) {
