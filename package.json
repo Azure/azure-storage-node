@@ -23,7 +23,7 @@
     "browserify-mime": "~1.2.9",
     "node-uuid": "~1.4.0",
     "readable-stream": "~2.0.0",
-    "request": "~2.57.0",
+    "request": "~2.69.0",
     "underscore": "~1.4.4",
     "validator": "~3.22.2",
     "xml2js": "0.2.7",
