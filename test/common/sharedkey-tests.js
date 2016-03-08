@@ -15,6 +15,7 @@
 // 
 
 var assert = require('assert');
+var qs = require('querystring');
 
 // Test includes
 var testutil = require('../framework/util');
@@ -26,6 +27,7 @@ var Constants = azure.Constants;
 var StorageServiceClientConstants = Constants.StorageServiceClientConstants;
 var QueryStringConstants = Constants.QueryStringConstants;
 var HeaderConstants = Constants.HeaderConstants;
+var AccountSasConstants = Constants.AccountSasConstants;
 
 var SharedKey = testutil.libRequire('common/signing/sharedkey');
 
@@ -46,9 +48,40 @@ describe('sharedkey-tests', function () {
     webResource.withHeader(HeaderConstants.MS_DATE, 'Fri, 23 Sep 2011 01:37:34 GMT');
 
     sharedkey.signRequest(webResource, function () {
-      assert.equal(webResource.headers[HeaderConstants.AUTHORIZATION], 'SharedKey devstoreaccount1:rAm6r9icxd7g1hW2QQqUIjDZn73vJvvoXzimbGlqMlk=');
+      assert.equal(webResource.headers[HeaderConstants.AUTHORIZATION], 'SharedKey devstoreaccount1:3PhbC2d3D2e0wPNhjaFxNqF1wTGu0Su5lZ8fCCCqIvg=');
 
       done();
     });
+  });
+  
+  it('generateAccountSignedQueryString', function(done){
+    var sharedAccessPolicy = {
+      AccessPolicy: {
+        Services: AccountSasConstants.Services.BLOB,
+        ResourceTypes: AccountSasConstants.Resources.SERVICE,
+        Permissions: AccountSasConstants.Permissions.READ,
+        Protocols: AccountSasConstants.Protocols.HTTPSONLY,
+        IPAddressOrRange: '168.1.5.60-168.1.5.70',
+        Start: new Date('February 16, 2016 12:00:00 am GMT'),
+        Expiry: new Date('February 16, 2016 12:30:00 am GMT')
+      }
+    };
+      
+    var sharedAccessSignature = sharedkey.generateAccountSignedQueryString(sharedAccessPolicy);
+    
+    assert.notEqual(sharedAccessSignature, null);
+    var sasQueryString = qs.parse(sharedAccessSignature);
+
+    assert.equal(sasQueryString[QueryStringConstants.SIGNED_SERVICES], sharedAccessPolicy.AccessPolicy.Services);
+    assert.equal(sasQueryString[QueryStringConstants.SIGNED_RESOURCE_TYPES], sharedAccessPolicy.AccessPolicy.ResourceTypes);
+    assert.equal(sasQueryString[QueryStringConstants.SIGNED_PERMISSIONS], sharedAccessPolicy.AccessPolicy.Permissions);
+    assert.equal(sasQueryString[QueryStringConstants.SIGNED_START], sharedAccessPolicy.AccessPolicy.Start);
+    assert.equal(sasQueryString[QueryStringConstants.SIGNED_EXPIRY], sharedAccessPolicy.AccessPolicy.Expiry);
+    assert.equal(sasQueryString[QueryStringConstants.SIGNED_PROTOCOL], sharedAccessPolicy.AccessPolicy.Protocols);
+    assert.equal(sasQueryString[QueryStringConstants.SIGNED_IP], sharedAccessPolicy.AccessPolicy.IPAddressOrRange);
+    assert.equal(sasQueryString[QueryStringConstants.SIGNED_VERSION], HeaderConstants.TARGET_STORAGE_VERSION);
+    assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'VtoJt2HAMEek04cXAzh+fGqoBEPlg+izg2bROBVuC5Y=');
+
+    done();
   });
 });

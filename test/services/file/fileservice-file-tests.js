@@ -818,7 +818,6 @@ describe('File', function () {
                   fileServiceTarget.abortCopyFile(targetShareName, targetDirectoryName, targetFileName, copyRes.copyId, function (copyErr) {
                     // Only account owner can abort the operation
                     assert.notEqual(copyErr, null);
-                    assert.equal(copyErr.statusCode, 404);
 
                     fileService.abortCopyFile(targetShareName, targetDirectoryName, targetFileName, '6bea9e94-001a-0003-5edd-4475ea000000', function (copyErr) {
                       // Wrong copy ID will result in 409

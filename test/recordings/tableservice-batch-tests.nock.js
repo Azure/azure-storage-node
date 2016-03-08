@@ -6,6 +6,23 @@ exports.setEnvironment = function() {
 
 exports.scopes = [[function (nock) { 
 var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/Tables', '*')
+  .reply(204, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  location: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata0\')',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '9f9cf813-0002-0028-1ad9-75e1b8000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  'preference-applied': 'return-no-content',
+  dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata0\')',
+  date: 'Fri, 04 Mar 2016 05:52:10 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
 nock('https://xplat.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
@@ -13,39 +30,88 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata0\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ac1ad891-0002-0020-1dba-c47adb000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '9f9cf813-0002-0028-1ad9-75e1b8000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata0\')',
-  date: 'Fri, 28 Nov 2014 08:26:09 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:10 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/$batch', '*')
+  .reply(202, "--batchresponse_1c69f6ba-509d-4188-963a-4c5f264df9cb\r\nContent-Type: multipart/mixed; boundary=changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row1')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row1')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 1\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row2')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row2')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 2\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row3')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row3')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 3\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row4')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row4')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 4\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row5')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row5')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 5\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row6')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row6')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 6\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row7')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row7')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 7\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row8')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row8')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 8\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row9')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row9')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 9\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row10')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row10')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 10\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row11')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row11')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 11\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row12')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row12')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 12\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row13')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row13')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 13\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row14')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row14')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 14\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row15')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row15')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 15\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row16')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row16')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 16\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row17')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row17')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 17\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row18')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row18')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 18\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row19')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row19')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 19\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row20')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row20')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 20\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row21')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row21')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 21\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row22')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row22')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 22\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row23')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row23')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 23\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row24')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row24')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 24\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row25')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row25')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 25\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row26')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row26')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 26\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row27')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row27')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 27\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row28')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row28')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 28\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row29')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row29')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 29\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row30')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row30')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 30\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row31')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row31')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 31\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row32')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row32')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 32\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row33')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row33')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 33\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row34')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row34')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 34\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row35')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row35')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 35\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row36')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row36')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 36\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row37')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row37')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 37\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row38')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row38')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 38\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row39')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row39')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 39\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row40')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row40')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 40\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row41')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row41')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 41\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row42')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row42')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 42\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row43')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row43')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 43\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row44')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row44')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 44\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row45')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row45')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 45\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row46')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row46')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 46\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row47')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row47')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 47\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row48')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row48')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 48\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row49')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row49')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 49\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row50')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row50')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 50\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row51')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row51')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 51\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row52')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row52')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 52\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row53')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row53')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 53\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row54')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row54')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 54\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row55')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row55')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 55\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row56')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row56')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 56\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row57')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row57')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 57\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row58')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row58')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 58\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row59')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row59')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 59\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row60')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row60')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 60\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row61')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row61')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 61\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row62')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row62')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 62\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row63')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row63')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 63\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row64')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row64')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 64\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row65')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row65')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 65\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row66')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row66')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 66\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row67')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row67')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 67\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row68')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row68')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 68\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row69')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row69')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 69\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row70')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row70')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 70\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row71')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row71')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 71\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row72')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row72')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 72\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row73')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row73')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 73\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row74')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row74')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 74\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row75')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row75')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 75\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row76')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row76')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 76\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row77')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row77')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 77\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row78')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row78')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 78\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row79')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row79')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 79\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row80')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row80')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 80\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row81')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row81')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 81\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row82')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row82')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 82\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row83')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row83')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 83\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row84')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row84')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 84\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row85')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row85')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 85\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row86')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row86')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 86\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row87')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row87')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 87\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row88')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row88')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 88\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row89')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row89')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 89\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row90')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row90')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 90\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row91')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row91')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 91\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row92')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row92')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 92\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row93')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row93')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 93\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row94')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row94')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 94\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row95')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row95')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 95\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row96')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row96')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 96\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row97')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row97')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 97\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row98')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row98')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 98\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row99')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row99')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 99\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row100')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row100')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1--\r\n--batchresponse_1c69f6ba-509d-4188-963a-4c5f264df9cb--\r\n", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'multipart/mixed; boundary=batchresponse_1c69f6ba-509d-4188-963a-4c5f264df9cb',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '75286074-0002-001e-43d9-754cea000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:12 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/$batch', '*')
-  .reply(202, "--batchresponse_3c5e8685-eae0-4011-b824-d2dbecef2e80\r\nContent-Type: multipart/mixed; boundary=changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row1')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row1')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.632805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 1\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row2')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row2')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.632805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 2\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row3')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row3')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.632805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 3\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row4')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row4')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.632805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 4\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row5')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row5')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.632805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 5\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row6')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row6')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.632805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 6\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row7')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row7')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.632805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 7\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row8')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row8')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.632805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 8\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row9')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row9')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.632805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 9\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row10')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row10')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.632805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 10\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row11')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row11')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.632805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 11\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row12')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row12')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.632805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 12\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row13')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row13')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.632805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 13\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row14')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row14')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.632805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 14\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row15')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row15')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.632805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 15\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row16')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row16')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.632805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 16\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row17')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row17')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.632805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 17\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row18')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row18')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.632805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 18\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row19')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row19')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.632805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 19\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row20')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row20')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.633805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 20\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row21')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row21')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.633805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 21\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row22')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row22')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.633805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 22\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row23')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row23')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.633805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 23\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row24')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row24')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.633805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 24\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row25')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row25')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.633805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 25\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row26')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row26')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.633805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 26\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row27')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row27')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.633805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 27\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row28')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row28')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.633805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 28\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row29')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row29')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.633805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 29\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row30')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row30')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.633805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 30\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row31')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row31')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.633805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 31\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row32')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row32')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.633805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 32\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row33')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row33')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.633805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 33\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row34')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row34')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.633805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 34\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row35')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row35')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.633805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 35\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row36')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row36')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.633805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 36\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row37')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row37')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.633805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 37\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row38')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row38')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.633805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 38\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row39')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row39')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.633805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 39\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row40')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row40')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.633805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 40\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row41')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row41')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.633805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 41\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row42')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row42')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.633805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 42\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row43')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row43')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 43\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row44')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row44')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 44\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row45')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row45')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 45\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row46')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row46')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 46\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row47')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row47')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 47\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row48')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row48')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 48\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row49')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row49')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 49\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row50')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row50')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 50\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row51')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row51')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 51\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row52')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row52')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 52\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row53')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row53')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 53\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row54')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row54')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 54\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row55')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row55')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 55\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row56')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row56')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 56\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row57')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row57')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 57\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row58')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row58')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 58\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row59')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row59')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 59\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row60')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row60')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 60\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row61')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row61')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 61\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row62')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row62')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 62\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row63')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row63')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 63\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row64')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row64')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 64\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row65')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row65')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 65\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row66')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row66')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 66\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row67')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row67')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 67\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row68')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row68')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.634805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 68\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row69')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row69')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.635805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 69\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row70')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row70')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.635805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 70\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row71')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row71')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.635805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 71\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row72')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row72')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.635805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 72\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row73')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row73')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.635805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 73\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row74')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row74')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.635805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 74\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row75')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row75')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.635805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 75\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row76')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row76')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.635805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 76\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row77')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row77')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.635805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 77\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row78')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row78')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.635805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 78\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row79')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row79')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.635805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 79\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row80')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row80')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.635805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 80\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row81')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row81')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.635805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 81\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row82')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row82')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.635805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 82\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row83')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row83')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.635805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 83\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row84')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row84')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.635805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 84\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row85')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row85')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.635805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 85\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row86')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row86')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.635805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 86\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row87')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row87')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.635805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 87\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row88')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row88')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.635805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 88\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row89')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row89')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.635805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 89\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row90')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row90')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.636805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 90\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row91')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row91')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.636805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 91\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row92')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row92')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.636805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 92\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row93')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row93')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.636805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 93\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row94')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row94')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.636805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 94\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row95')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row95')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.636805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 95\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row96')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row96')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.636805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 96\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row97')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row97')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.636805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 97\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row98')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row98')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.636805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 98\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row99')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row99')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.636805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 99\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row100')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row100')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A11.636805Z'\"\r\n\r\n\r\n--changesetresponse_f505fd6c-cc40-4cf7-b9e4-9af393a16c70--\r\n--batchresponse_3c5e8685-eae0-4011-b824-d2dbecef2e80--\r\n", { 'cache-control': 'no-cache',
+  .reply(202, "--batchresponse_1c69f6ba-509d-4188-963a-4c5f264df9cb\r\nContent-Type: multipart/mixed; boundary=changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row1')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row1')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 1\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row2')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row2')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 2\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row3')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row3')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 3\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row4')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row4')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 4\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row5')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row5')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 5\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row6')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row6')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 6\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row7')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row7')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 7\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row8')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row8')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 8\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row9')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row9')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 9\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row10')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row10')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 10\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row11')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row11')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 11\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row12')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row12')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 12\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row13')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row13')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 13\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row14')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row14')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 14\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row15')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row15')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 15\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row16')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row16')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 16\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row17')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row17')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 17\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row18')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row18')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 18\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row19')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row19')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 19\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row20')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row20')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 20\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row21')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row21')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 21\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row22')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row22')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 22\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row23')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row23')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 23\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row24')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row24')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 24\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row25')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row25')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 25\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row26')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row26')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 26\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row27')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row27')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 27\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row28')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row28')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 28\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row29')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row29')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 29\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row30')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row30')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 30\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row31')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row31')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 31\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row32')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row32')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.266535Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 32\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row33')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row33')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 33\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row34')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row34')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 34\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row35')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row35')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 35\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row36')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row36')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 36\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row37')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row37')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 37\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row38')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row38')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 38\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row39')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row39')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 39\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row40')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row40')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 40\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row41')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row41')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 41\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row42')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row42')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 42\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row43')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row43')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 43\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row44')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row44')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 44\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row45')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row45')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 45\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row46')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row46')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 46\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row47')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row47')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 47\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row48')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row48')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 48\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row49')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row49')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 49\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row50')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row50')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 50\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row51')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row51')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 51\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row52')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row52')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 52\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row53')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row53')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 53\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row54')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row54')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 54\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row55')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row55')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 55\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row56')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row56')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 56\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row57')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row57')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 57\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row58')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row58')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 58\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row59')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row59')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 59\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row60')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row60')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 60\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row61')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row61')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 61\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row62')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row62')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 62\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row63')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row63')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 63\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row64')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row64')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 64\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row65')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row65')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 65\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row66')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row66')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 66\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row67')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row67')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 67\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row68')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row68')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 68\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row69')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row69')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 69\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row70')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row70')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 70\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row71')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row71')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 71\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row72')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row72')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 72\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row73')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row73')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 73\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row74')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row74')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 74\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row75')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row75')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 75\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row76')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row76')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 76\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row77')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row77')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 77\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row78')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row78')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 78\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row79')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row79')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 79\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row80')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row80')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 80\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row81')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row81')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 81\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row82')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row82')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 82\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row83')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row83')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 83\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row84')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row84')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 84\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row85')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row85')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 85\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row86')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row86')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 86\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row87')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row87')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 87\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row88')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row88')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 88\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row89')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row89')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 89\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row90')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row90')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 90\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row91')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row91')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 91\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row92')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row92')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 92\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row93')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row93')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 93\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row94')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row94')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 94\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row95')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row95')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 95\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row96')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row96')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 96\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row97')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row97')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 97\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row98')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row98')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 98\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row99')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row99')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 99\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row100')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata0(PartitionKey='partition1',RowKey='row100')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\"\r\n\r\n\r\n--changesetresponse_5f294f75-235e-425e-8444-751072672fd1--\r\n--batchresponse_1c69f6ba-509d-4188-963a-4c5f264df9cb--\r\n", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'multipart/mixed; boundary=batchresponse_3c5e8685-eae0-4011-b824-d2dbecef2e80',
+  'content-type': 'multipart/mixed; boundary=batchresponse_1c69f6ba-509d-4188-963a-4c5f264df9cb',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e2590d3f-0002-0001-09d6-7ac080000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '75286074-0002-001e-43d9-754cea000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:11 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:12 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .get('/batchteststestdata0')
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#batchteststestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row10\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row100\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row11\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row12\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row13\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row14\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row15\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row16\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row17\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row18\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row19\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row20\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row21\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row22\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row23\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row24\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row25\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row26\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row27\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row28\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row29\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row3\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row30\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row31\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row32\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row33\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row34\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row35\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row36\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row37\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row38\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row39\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row4\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row40\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row41\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row42\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row43\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row44\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row45\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row46\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row47\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row48\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row49\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row5\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row50\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row51\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row52\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row53\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row54\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row55\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row56\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row57\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row58\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row59\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row6\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row60\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row61\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row62\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row63\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row64\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row65\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row66\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row67\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row68\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row69\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row7\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row70\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row71\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row72\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row73\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row74\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row75\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row76\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row77\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row78\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row79\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row8\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row80\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row81\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row82\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row83\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row84\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row85\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row86\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row87\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row88\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row89\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row9\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row90\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row91\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row92\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row93\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row94\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row95\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row96\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row97\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row98\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row99\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '259bd08e-0002-0032-20d9-75ced7000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:13 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/batchteststestdata0')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#batchteststestdata0\",\"value\":[{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2014-11-28T08:26:11.632805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row10\",\"Timestamp\":\"2014-11-28T08:26:11.632805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row100\",\"Timestamp\":\"2014-11-28T08:26:11.636805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row11\",\"Timestamp\":\"2014-11-28T08:26:11.632805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row12\",\"Timestamp\":\"2014-11-28T08:26:11.632805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row13\",\"Timestamp\":\"2014-11-28T08:26:11.632805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row14\",\"Timestamp\":\"2014-11-28T08:26:11.632805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row15\",\"Timestamp\":\"2014-11-28T08:26:11.632805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row16\",\"Timestamp\":\"2014-11-28T08:26:11.632805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row17\",\"Timestamp\":\"2014-11-28T08:26:11.632805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row18\",\"Timestamp\":\"2014-11-28T08:26:11.632805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row19\",\"Timestamp\":\"2014-11-28T08:26:11.632805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2014-11-28T08:26:11.632805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row20\",\"Timestamp\":\"2014-11-28T08:26:11.633805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row21\",\"Timestamp\":\"2014-11-28T08:26:11.633805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row22\",\"Timestamp\":\"2014-11-28T08:26:11.633805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row23\",\"Timestamp\":\"2014-11-28T08:26:11.633805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row24\",\"Timestamp\":\"2014-11-28T08:26:11.633805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row25\",\"Timestamp\":\"2014-11-28T08:26:11.633805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row26\",\"Timestamp\":\"2014-11-28T08:26:11.633805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row27\",\"Timestamp\":\"2014-11-28T08:26:11.633805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row28\",\"Timestamp\":\"2014-11-28T08:26:11.633805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row29\",\"Timestamp\":\"2014-11-28T08:26:11.633805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row3\",\"Timestamp\":\"2014-11-28T08:26:11.632805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row30\",\"Timestamp\":\"2014-11-28T08:26:11.633805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row31\",\"Timestamp\":\"2014-11-28T08:26:11.633805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row32\",\"Timestamp\":\"2014-11-28T08:26:11.633805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row33\",\"Timestamp\":\"2014-11-28T08:26:11.633805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row34\",\"Timestamp\":\"2014-11-28T08:26:11.633805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row35\",\"Timestamp\":\"2014-11-28T08:26:11.633805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row36\",\"Timestamp\":\"2014-11-28T08:26:11.633805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row37\",\"Timestamp\":\"2014-11-28T08:26:11.633805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row38\",\"Timestamp\":\"2014-11-28T08:26:11.633805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row39\",\"Timestamp\":\"2014-11-28T08:26:11.633805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row4\",\"Timestamp\":\"2014-11-28T08:26:11.632805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row40\",\"Timestamp\":\"2014-11-28T08:26:11.633805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row41\",\"Timestamp\":\"2014-11-28T08:26:11.633805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row42\",\"Timestamp\":\"2014-11-28T08:26:11.633805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row43\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row44\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row45\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row46\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row47\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row48\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row49\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row5\",\"Timestamp\":\"2014-11-28T08:26:11.632805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row50\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row51\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row52\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row53\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row54\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row55\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row56\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row57\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row58\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row59\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row6\",\"Timestamp\":\"2014-11-28T08:26:11.632805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row60\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row61\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row62\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row63\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row64\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row65\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row66\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row67\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row68\",\"Timestamp\":\"2014-11-28T08:26:11.634805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row69\",\"Timestamp\":\"2014-11-28T08:26:11.635805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row7\",\"Timestamp\":\"2014-11-28T08:26:11.632805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row70\",\"Timestamp\":\"2014-11-28T08:26:11.635805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row71\",\"Timestamp\":\"2014-11-28T08:26:11.635805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row72\",\"Timestamp\":\"2014-11-28T08:26:11.635805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row73\",\"Timestamp\":\"2014-11-28T08:26:11.635805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row74\",\"Timestamp\":\"2014-11-28T08:26:11.635805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row75\",\"Timestamp\":\"2014-11-28T08:26:11.635805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row76\",\"Timestamp\":\"2014-11-28T08:26:11.635805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row77\",\"Timestamp\":\"2014-11-28T08:26:11.635805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row78\",\"Timestamp\":\"2014-11-28T08:26:11.635805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row79\",\"Timestamp\":\"2014-11-28T08:26:11.635805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row8\",\"Timestamp\":\"2014-11-28T08:26:11.632805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row80\",\"Timestamp\":\"2014-11-28T08:26:11.635805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row81\",\"Timestamp\":\"2014-11-28T08:26:11.635805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row82\",\"Timestamp\":\"2014-11-28T08:26:11.635805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row83\",\"Timestamp\":\"2014-11-28T08:26:11.635805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row84\",\"Timestamp\":\"2014-11-28T08:26:11.635805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row85\",\"Timestamp\":\"2014-11-28T08:26:11.635805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row86\",\"Timestamp\":\"2014-11-28T08:26:11.635805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row87\",\"Timestamp\":\"2014-11-28T08:26:11.635805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row88\",\"Timestamp\":\"2014-11-28T08:26:11.635805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row89\",\"Timestamp\":\"2014-11-28T08:26:11.635805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row9\",\"Timestamp\":\"2014-11-28T08:26:11.632805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row90\",\"Timestamp\":\"2014-11-28T08:26:11.636805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row91\",\"Timestamp\":\"2014-11-28T08:26:11.636805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row92\",\"Timestamp\":\"2014-11-28T08:26:11.636805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row93\",\"Timestamp\":\"2014-11-28T08:26:11.636805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row94\",\"Timestamp\":\"2014-11-28T08:26:11.636805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row95\",\"Timestamp\":\"2014-11-28T08:26:11.636805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row96\",\"Timestamp\":\"2014-11-28T08:26:11.636805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row97\",\"Timestamp\":\"2014-11-28T08:26:11.636805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row98\",\"Timestamp\":\"2014-11-28T08:26:11.636805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row99\",\"Timestamp\":\"2014-11-28T08:26:11.636805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#batchteststestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row10\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row100\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row11\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row12\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row13\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row14\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row15\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row16\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row17\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row18\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row19\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row20\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row21\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row22\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row23\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row24\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row25\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row26\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row27\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row28\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row29\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row3\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row30\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row31\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row32\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row33\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row34\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row35\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row36\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row37\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row38\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row39\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row4\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row40\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row41\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row42\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row43\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row44\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row45\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row46\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row47\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row48\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row49\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row5\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row50\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row51\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row52\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row53\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row54\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row55\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row56\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row57\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row58\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row59\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row6\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row60\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row61\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row62\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row63\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row64\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row65\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row66\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row67\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row68\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row69\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row7\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row70\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row71\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row72\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row73\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row74\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row75\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2675347Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row76\",\"Timestamp\":\"2016-03-04T05:52:12.2675347Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row77\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row78\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row79\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row8\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row80\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row81\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row82\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row83\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row84\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row85\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row86\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row87\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row88\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row89\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.266535Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row9\",\"Timestamp\":\"2016-03-04T05:52:12.266535Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row90\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row91\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row92\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row93\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row94\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row95\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row96\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row97\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row98\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A12.2685353Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row99\",\"Timestamp\":\"2016-03-04T05:52:12.2685353Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5b6350e9-0002-004d-3e58-7d720e000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '259bd08e-0002-0032-20d9-75ced7000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:12 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:13 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .get('/Tables?%24filter=TableName%20ge%20%27batchtests%27%20and%20TableName%20lt%20%27batchtests%7B%27')
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[{\"TableName\":\"batchteststestdata0\"}]}", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'cff4941a-0002-004a-6ada-75a660000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:13 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
@@ -54,11 +120,26 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[{\"TableName\":\"batchteststestdata0\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2f909574-0002-001a-04bb-1b15c8000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'cff4941a-0002-004a-6ada-75a660000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:13 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:13 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata0%27)')
+  .reply(204, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '454b5f15-0002-0041-2bda-75be14000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:14 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
@@ -67,12 +148,30 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '53de35a5-0002-0023-47fb-a9b265000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '454b5f15-0002-0041-2bda-75be14000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:14 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:14 GMT',
+  connection: 'close' });
  return result; }],
 [function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/Tables', '*')
+  .reply(204, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  location: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata2\')',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'a86ffaf2-0002-0022-2ada-75f831000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  'preference-applied': 'return-no-content',
+  dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata2\')',
+  date: 'Fri, 04 Mar 2016 05:52:15 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
@@ -81,53 +180,118 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f3d26442-0002-002c-24b2-42e6ea000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'a86ffaf2-0002-0022-2ada-75f831000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata2\')',
-  date: 'Fri, 28 Nov 2014 08:26:15 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:15 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/$batch', '*')
+  .reply(202, "--batchresponse_4aa337fb-8523-4775-9599-22433a46e5fa\r\nContent-Type: multipart/mixed; boundary=changesetresponse_4177a253-4123-439e-8cc5-4c90c01f41a9\r\n\r\n--changesetresponse_4177a253-4123-439e-8cc5-4c90c01f41a9\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 201 Created\r\nDataServiceVersion: 3.0;\r\nContent-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-content\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata2(PartitionKey='partition1',RowKey='row4')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A16.1045546Z'\"\r\n\r\n{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#batchteststestdata2/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A16.1045546Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row4\",\"Timestamp\":\"2016-03-04T05:52:16.1045546Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}\r\n--changesetresponse_4177a253-4123-439e-8cc5-4c90c01f41a9\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 201 Created\r\nDataServiceVersion: 3.0;\r\nContent-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8\r\nContent-ID: 1\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-content\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata2(PartitionKey='partition1',RowKey='row5')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A16.1045546Z'\"\r\n\r\n{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#batchteststestdata2/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A16.1045546Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row5\",\"Timestamp\":\"2016-03-04T05:52:16.1045546Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}\r\n--changesetresponse_4177a253-4123-439e-8cc5-4c90c01f41a9\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 201 Created\r\nDataServiceVersion: 3.0;\r\nContent-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8\r\nContent-ID: 2\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-content\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata2(PartitionKey='partition1',RowKey='row6')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A16.1045546Z'\"\r\n\r\n{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#batchteststestdata2/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A16.1045546Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row6\",\"Timestamp\":\"2016-03-04T05:52:16.1045546Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}\r\n--changesetresponse_4177a253-4123-439e-8cc5-4c90c01f41a9--\r\n--batchresponse_4aa337fb-8523-4775-9599-22433a46e5fa--\r\n", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'multipart/mixed; boundary=batchresponse_4aa337fb-8523-4775-9599-22433a46e5fa',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '4216f499-0002-0040-47da-75bfe9000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:15 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/$batch', '*')
-  .reply(202, "--batchresponse_1ac29955-fb38-40b1-bf31-c6117321d5a0\r\nContent-Type: multipart/mixed; boundary=changesetresponse_e52c901a-41ac-4b9a-a2b8-2660c242d696\r\n\r\n--changesetresponse_e52c901a-41ac-4b9a-a2b8-2660c242d696\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 201 Created\r\nDataServiceVersion: 3.0;\r\nContent-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-content\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata2(PartitionKey='partition1',RowKey='row4')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A16.5807036Z'\"\r\n\r\n{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#batchteststestdata2/@Element\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row4\",\"Timestamp\":\"2014-11-28T08:26:16.5807036Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}\r\n--changesetresponse_e52c901a-41ac-4b9a-a2b8-2660c242d696\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 201 Created\r\nDataServiceVersion: 3.0;\r\nContent-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8\r\nContent-ID: 1\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-content\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata2(PartitionKey='partition1',RowKey='row5')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A16.5807036Z'\"\r\n\r\n{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#batchteststestdata2/@Element\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row5\",\"Timestamp\":\"2014-11-28T08:26:16.5807036Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}\r\n--changesetresponse_e52c901a-41ac-4b9a-a2b8-2660c242d696\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 201 Created\r\nDataServiceVersion: 3.0;\r\nContent-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8\r\nContent-ID: 2\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-content\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata2(PartitionKey='partition1',RowKey='row6')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A16.5807036Z'\"\r\n\r\n{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#batchteststestdata2/@Element\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row6\",\"Timestamp\":\"2014-11-28T08:26:16.5807036Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}\r\n--changesetresponse_e52c901a-41ac-4b9a-a2b8-2660c242d696--\r\n--batchresponse_1ac29955-fb38-40b1-bf31-c6117321d5a0--\r\n", { 'cache-control': 'no-cache',
+  .reply(202, "--batchresponse_4aa337fb-8523-4775-9599-22433a46e5fa\r\nContent-Type: multipart/mixed; boundary=changesetresponse_4177a253-4123-439e-8cc5-4c90c01f41a9\r\n\r\n--changesetresponse_4177a253-4123-439e-8cc5-4c90c01f41a9\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 201 Created\r\nDataServiceVersion: 3.0;\r\nContent-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-content\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata2(PartitionKey='partition1',RowKey='row4')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A16.1045546Z'\"\r\n\r\n{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#batchteststestdata2/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A16.1045546Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row4\",\"Timestamp\":\"2016-03-04T05:52:16.1045546Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}\r\n--changesetresponse_4177a253-4123-439e-8cc5-4c90c01f41a9\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 201 Created\r\nDataServiceVersion: 3.0;\r\nContent-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8\r\nContent-ID: 1\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-content\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata2(PartitionKey='partition1',RowKey='row5')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A16.1045546Z'\"\r\n\r\n{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#batchteststestdata2/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A16.1045546Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row5\",\"Timestamp\":\"2016-03-04T05:52:16.1045546Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}\r\n--changesetresponse_4177a253-4123-439e-8cc5-4c90c01f41a9\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 201 Created\r\nDataServiceVersion: 3.0;\r\nContent-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8\r\nContent-ID: 2\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-content\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata2(PartitionKey='partition1',RowKey='row6')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A16.1045546Z'\"\r\n\r\n{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#batchteststestdata2/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A16.1045546Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row6\",\"Timestamp\":\"2016-03-04T05:52:16.1045546Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}\r\n--changesetresponse_4177a253-4123-439e-8cc5-4c90c01f41a9--\r\n--batchresponse_4aa337fb-8523-4775-9599-22433a46e5fa--\r\n", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'multipart/mixed; boundary=batchresponse_1ac29955-fb38-40b1-bf31-c6117321d5a0',
+  'content-type': 'multipart/mixed; boundary=batchresponse_4aa337fb-8523-4775-9599-22433a46e5fa',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cf3b7712-0002-0035-1108-f7efe5000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '4216f499-0002-0040-47da-75bfe9000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:16 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:15 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/$batch', '*')
+  .reply(202, "--batchresponse_4513c1a2-f6a1-4f8c-a869-325ac778f724\r\nContent-Type: multipart/mixed; boundary=changesetresponse_5bbfd500-b48c-4f8f-a916-7c5fa553e437\r\n\r\n--changesetresponse_5bbfd500-b48c-4f8f-a916-7c5fa553e437\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata2(PartitionKey='partition1',RowKey='row1')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata2(PartitionKey='partition1',RowKey='row1')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A17.0559132Z'\"\r\n\r\n\r\n--changesetresponse_5bbfd500-b48c-4f8f-a916-7c5fa553e437\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 1\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nDataServiceVersion: 1.0;\r\n\r\n\r\n--changesetresponse_5bbfd500-b48c-4f8f-a916-7c5fa553e437\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 2\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nDataServiceVersion: 1.0;\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A16.8294249Z'\"\r\n\r\n\r\n--changesetresponse_5bbfd500-b48c-4f8f-a916-7c5fa553e437\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 3\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nDataServiceVersion: 1.0;\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A16.830425Z'\"\r\n\r\n\r\n--changesetresponse_5bbfd500-b48c-4f8f-a916-7c5fa553e437\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 4\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nDataServiceVersion: 1.0;\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A16.830425Z'\"\r\n\r\n\r\n--changesetresponse_5bbfd500-b48c-4f8f-a916-7c5fa553e437\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 5\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nDataServiceVersion: 1.0;\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A16.830425Z'\"\r\n\r\n\r\n--changesetresponse_5bbfd500-b48c-4f8f-a916-7c5fa553e437--\r\n--batchresponse_4513c1a2-f6a1-4f8c-a869-325ac778f724--\r\n", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'multipart/mixed; boundary=batchresponse_4513c1a2-f6a1-4f8c-a869-325ac778f724',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '4a306db0-0002-0036-4bda-753b55000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:16 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/$batch', '*')
-  .reply(202, "--batchresponse_62aa5980-b533-4eaa-b4c5-26b6115c1c06\r\nContent-Type: multipart/mixed; boundary=changesetresponse_b743f016-94d3-4f80-af25-45d03117318b\r\n\r\n--changesetresponse_b743f016-94d3-4f80-af25-45d03117318b\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata2(PartitionKey='partition1',RowKey='row1')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata2(PartitionKey='partition1',RowKey='row1')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A17.6396996Z'\"\r\n\r\n\r\n--changesetresponse_b743f016-94d3-4f80-af25-45d03117318b\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 1\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nDataServiceVersion: 1.0;\r\n\r\n\r\n--changesetresponse_b743f016-94d3-4f80-af25-45d03117318b\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 2\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nDataServiceVersion: 1.0;\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A17.4042664Z'\"\r\n\r\n\r\n--changesetresponse_b743f016-94d3-4f80-af25-45d03117318b\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 3\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nDataServiceVersion: 1.0;\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A17.4042664Z'\"\r\n\r\n\r\n--changesetresponse_b743f016-94d3-4f80-af25-45d03117318b\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 4\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nDataServiceVersion: 1.0;\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A17.4042664Z'\"\r\n\r\n\r\n--changesetresponse_b743f016-94d3-4f80-af25-45d03117318b\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 5\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nDataServiceVersion: 1.0;\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A17.4042664Z'\"\r\n\r\n\r\n--changesetresponse_b743f016-94d3-4f80-af25-45d03117318b--\r\n--batchresponse_62aa5980-b533-4eaa-b4c5-26b6115c1c06--\r\n", { 'cache-control': 'no-cache',
+  .reply(202, "--batchresponse_4513c1a2-f6a1-4f8c-a869-325ac778f724\r\nContent-Type: multipart/mixed; boundary=changesetresponse_5bbfd500-b48c-4f8f-a916-7c5fa553e437\r\n\r\n--changesetresponse_5bbfd500-b48c-4f8f-a916-7c5fa553e437\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata2(PartitionKey='partition1',RowKey='row1')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata2(PartitionKey='partition1',RowKey='row1')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A17.0559132Z'\"\r\n\r\n\r\n--changesetresponse_5bbfd500-b48c-4f8f-a916-7c5fa553e437\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 1\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nDataServiceVersion: 1.0;\r\n\r\n\r\n--changesetresponse_5bbfd500-b48c-4f8f-a916-7c5fa553e437\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 2\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nDataServiceVersion: 1.0;\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A16.8294249Z'\"\r\n\r\n\r\n--changesetresponse_5bbfd500-b48c-4f8f-a916-7c5fa553e437\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 3\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nDataServiceVersion: 1.0;\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A16.830425Z'\"\r\n\r\n\r\n--changesetresponse_5bbfd500-b48c-4f8f-a916-7c5fa553e437\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 4\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nDataServiceVersion: 1.0;\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A16.830425Z'\"\r\n\r\n\r\n--changesetresponse_5bbfd500-b48c-4f8f-a916-7c5fa553e437\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nContent-ID: 5\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nDataServiceVersion: 1.0;\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A16.830425Z'\"\r\n\r\n\r\n--changesetresponse_5bbfd500-b48c-4f8f-a916-7c5fa553e437--\r\n--batchresponse_4513c1a2-f6a1-4f8c-a869-325ac778f724--\r\n", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'multipart/mixed; boundary=batchresponse_62aa5980-b533-4eaa-b4c5-26b6115c1c06',
+  'content-type': 'multipart/mixed; boundary=batchresponse_4513c1a2-f6a1-4f8c-a869-325ac778f724',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd04b8cb9-0002-0002-77d6-3f843d000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '4a306db0-0002-0036-4bda-753b55000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:16 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:16 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .get('/batchteststestdata2')
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#batchteststestdata2\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A17.0559132Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-03-04T05:52:17.0559132Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A16.830425Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2016-03-04T05:52:16.830425Z\",\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"BooleanProperty\":true,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\",\"DoubleProperty\":4.81516,\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"StringProperty\":\"stringSample\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A16.830425Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row3\",\"Timestamp\":\"2016-03-04T05:52:16.830425Z\",\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"BooleanProperty\":true,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\",\"DoubleProperty\":4.81516,\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"StringProperty\":\"stringSample\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A16.8294249Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row4\",\"Timestamp\":\"2016-03-04T05:52:16.8294249Z\",\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"BooleanProperty\":true,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\",\"DoubleProperty\":4.81516,\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"StringProperty\":\"newProperty\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A16.830425Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row5\",\"Timestamp\":\"2016-03-04T05:52:16.830425Z\",\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\",\"DoubleProperty\":4.81516,\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"StringProperty\":\"stringSample\"}]}", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '51cb0bcf-0002-0018-42da-75bb92000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:17 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/batchteststestdata2')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#batchteststestdata2\",\"value\":[{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2014-11-28T08:26:17.6396996Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2014-11-28T08:26:17.4042664Z\",\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"BooleanProperty\":true,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\",\"DoubleProperty\":4.81516,\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"StringProperty\":\"stringSample\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row3\",\"Timestamp\":\"2014-11-28T08:26:17.4042664Z\",\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"BooleanProperty\":true,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\",\"DoubleProperty\":4.81516,\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"StringProperty\":\"stringSample\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row4\",\"Timestamp\":\"2014-11-28T08:26:17.4042664Z\",\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"BooleanProperty\":true,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\",\"DoubleProperty\":4.81516,\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"StringProperty\":\"newProperty\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row5\",\"Timestamp\":\"2014-11-28T08:26:17.4042664Z\",\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\",\"DoubleProperty\":4.81516,\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"StringProperty\":\"stringSample\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#batchteststestdata2\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A17.0559132Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-03-04T05:52:17.0559132Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A16.830425Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2016-03-04T05:52:16.830425Z\",\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"BooleanProperty\":true,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\",\"DoubleProperty\":4.81516,\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"StringProperty\":\"stringSample\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A16.830425Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row3\",\"Timestamp\":\"2016-03-04T05:52:16.830425Z\",\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"BooleanProperty\":true,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\",\"DoubleProperty\":4.81516,\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"StringProperty\":\"stringSample\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A16.8294249Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row4\",\"Timestamp\":\"2016-03-04T05:52:16.8294249Z\",\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"BooleanProperty\":true,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\",\"DoubleProperty\":4.81516,\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"StringProperty\":\"newProperty\"},{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A16.830425Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row5\",\"Timestamp\":\"2016-03-04T05:52:16.830425Z\",\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\",\"DoubleProperty\":4.81516,\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"StringProperty\":\"stringSample\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a376c7ae-0002-0047-4a9d-0a5b96000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '51cb0bcf-0002-0018-42da-75bb92000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:17 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:17 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .get('/Tables?%24filter=TableName%20ge%20%27batchtests%27%20and%20TableName%20lt%20%27batchtests%7B%27')
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[{\"TableName\":\"batchteststestdata2\"}]}", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '9ca20b86-0002-001d-60da-754fed000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:18 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
@@ -136,24 +300,54 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[{\"TableName\":\"batchteststestdata2\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b4758bf1-0002-0000-78f3-266a93000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '9ca20b86-0002-001d-60da-754fed000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:18 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:18 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata0%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:aca64d93-0002-000d-79da-75790b000000\nTime:2016-03-04T05:52:19.3149180Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'aca64d93-0002-000d-79da-75790b000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:18 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata0%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:bcb48f74-0002-001d-4633-8bdbf9000000\nTime:2014-11-28T08:26:20.3309137Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:aca64d93-0002-000d-79da-75790b000000\nTime:2016-03-04T05:52:19.3149180Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'bcb48f74-0002-001d-4633-8bdbf9000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'aca64d93-0002-000d-79da-75790b000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:19 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:18 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata2%27)')
+  .reply(204, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '7cfe2aaf-0002-0012-6bda-75a21b000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:19 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
@@ -162,207 +356,460 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9abdcb96-0002-0025-8086-c8557b000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '7cfe2aaf-0002-0012-6bda-75a21b000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:20 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:19 GMT',
+  connection: 'close' });
  return result; }],
 [function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .get('/Tables?%24filter=TableName%20ge%20%27batchtests%27%20and%20TableName%20lt%20%27batchtests%7B%27')
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[]}", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '5bb55d6f-0002-0044-66da-754a6b000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:20 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables?%24filter=TableName%20ge%20%27batchtests%27%20and%20TableName%20lt%20%27batchtests%7B%27')
   .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '54829f76-0002-002f-087b-4e34af000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '5bb55d6f-0002-0044-66da-754a6b000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:20 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:20 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata0%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:4730cd56-0002-003a-6bda-75d5a4000000\nTime:2016-03-04T05:52:20.9498586Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '4730cd56-0002-003a-6bda-75d5a4000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:20 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata0%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:7801b3ff-0002-000f-2a4b-4b4ea8000000\nTime:2014-11-28T08:26:22.5491176Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:4730cd56-0002-003a-6bda-75d5a4000000\nTime:2016-03-04T05:52:20.9498586Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7801b3ff-0002-000f-2a4b-4b4ea8000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '4730cd56-0002-003a-6bda-75d5a4000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:21 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:20 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata2%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:7a54777b-0002-0008-3dda-758d74000000\nTime:2016-03-04T05:52:21.8955450Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '7a54777b-0002-0008-3dda-758d74000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:21 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata2%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:e9ae5c13-0002-0041-48b4-a6d48e000000\nTime:2014-11-28T08:26:22.7716981Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:7a54777b-0002-0008-3dda-758d74000000\nTime:2016-03-04T05:52:21.8955450Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e9ae5c13-0002-0041-48b4-a6d48e000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '7a54777b-0002-0008-3dda-758d74000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:22 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:21 GMT',
+  connection: 'close' });
  return result; }],
 [function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .get('/Tables?%24filter=TableName%20ge%20%27batchtests%27%20and%20TableName%20lt%20%27batchtests%7B%27')
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[]}", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '03aa56b0-0002-0025-6bda-750eb4000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:22 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables?%24filter=TableName%20ge%20%27batchtests%27%20and%20TableName%20lt%20%27batchtests%7B%27')
   .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '33287eb4-0002-000d-714c-72ce68000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '03aa56b0-0002-0025-6bda-750eb4000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:23 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:22 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata0%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:f77ed0d9-0002-0017-5ada-755664000000\nTime:2016-03-04T05:52:23.1630398Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'f77ed0d9-0002-0017-5ada-755664000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:22 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata0%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:1bb44c39-0002-0026-685b-0c9687000000\nTime:2014-11-28T08:26:25.0033932Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:f77ed0d9-0002-0017-5ada-755664000000\nTime:2016-03-04T05:52:23.1630398Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1bb44c39-0002-0026-685b-0c9687000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'f77ed0d9-0002-0017-5ada-755664000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:24 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:22 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata2%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:ccf3cebc-0002-0048-32da-75a49a000000\nTime:2016-03-04T05:52:23.4278882Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'ccf3cebc-0002-0048-32da-75a49a000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:23 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata2%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:d1f561fc-0002-0043-0794-99ac2d000000\nTime:2014-11-28T08:26:24.4554346Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:ccf3cebc-0002-0048-32da-75a49a000000\nTime:2016-03-04T05:52:23.4278882Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd1f561fc-0002-0043-0794-99ac2d000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'ccf3cebc-0002-0048-32da-75a49a000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:24 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:23 GMT',
+  connection: 'close' });
  return result; }],
 [function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .get('/Tables?%24filter=TableName%20ge%20%27batchtests%27%20and%20TableName%20lt%20%27batchtests%7B%27')
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[]}", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '59fa1e37-0002-0016-63da-755799000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:23 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables?%24filter=TableName%20ge%20%27batchtests%27%20and%20TableName%20lt%20%27batchtests%7B%27')
   .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f73403fa-0002-0024-7e2d-a9501e000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '59fa1e37-0002-0016-63da-755799000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:25 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:23 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata0%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:34655c0d-0002-0002-34da-7594fd000000\nTime:2016-03-04T05:52:25.0199741Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '34655c0d-0002-0002-34da-7594fd000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:24 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata0%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:240cf4cb-0002-0019-505c-dcf786000000\nTime:2014-11-28T08:26:26.8374512Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:34655c0d-0002-0002-34da-7594fd000000\nTime:2016-03-04T05:52:25.0199741Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '240cf4cb-0002-0019-505c-dcf786000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '34655c0d-0002-0002-34da-7594fd000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:25 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:24 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata2%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:7ef93ba5-0002-0034-34da-7539af000000\nTime:2016-03-04T05:52:25.7678994Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '7ef93ba5-0002-0034-34da-7539af000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:25 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata2%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:87daa117-0002-0022-3fe9-2cf471000000\nTime:2014-11-28T08:26:27.5374913Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:7ef93ba5-0002-0034-34da-7539af000000\nTime:2016-03-04T05:52:25.7678994Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '87daa117-0002-0022-3fe9-2cf471000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '7ef93ba5-0002-0034-34da-7539af000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:27 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:25 GMT',
+  connection: 'close' });
  return result; }],
 [function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .get('/Tables?%24filter=TableName%20ge%20%27batchtests%27%20and%20TableName%20lt%20%27batchtests%7B%27')
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[]}", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'e53348b9-0002-003e-13da-752026000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:25 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables?%24filter=TableName%20ge%20%27batchtests%27%20and%20TableName%20lt%20%27batchtests%7B%27')
   .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0dff8c1e-0002-003f-3807-6850f6000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'e53348b9-0002-003e-13da-752026000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:28 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:25 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata0%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:bb7d03a6-0002-001f-06da-754d17000000\nTime:2016-03-04T05:52:26.9312131Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'bb7d03a6-0002-001f-06da-754d17000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:26 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata0%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:4970b109-0002-000c-32df-862267000000\nTime:2014-11-28T08:26:29.0204494Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:bb7d03a6-0002-001f-06da-754d17000000\nTime:2016-03-04T05:52:26.9312131Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4970b109-0002-000c-32df-862267000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'bb7d03a6-0002-001f-06da-754d17000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:28 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:26 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata2%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:391483ca-0002-003d-70da-752321000000\nTime:2016-03-04T05:52:27.1564851Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '391483ca-0002-003d-70da-752321000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:26 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata2%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:23bee1e7-0002-003d-1dac-bad3f2000000\nTime:2014-11-28T08:26:30.4377320Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:391483ca-0002-003d-70da-752321000000\nTime:2016-03-04T05:52:27.1564851Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '23bee1e7-0002-003d-1dac-bad3f2000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '391483ca-0002-003d-70da-752321000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:30 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:26 GMT',
+  connection: 'close' });
  return result; }],
 [function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .get('/Tables?%24filter=TableName%20ge%20%27batchtests%27%20and%20TableName%20lt%20%27batchtests%7B%27')
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[]}", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'bc92db03-0002-0042-0fda-75bd13000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:27 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables?%24filter=TableName%20ge%20%27batchtests%27%20and%20TableName%20lt%20%27batchtests%7B%27')
   .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7d0d2336-0002-001e-5026-42deb0000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'bc92db03-0002-0042-0fda-75bd13000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:29 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:27 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata0%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:3c6c2461-0002-0038-0eda-75d75e000000\nTime:2016-03-04T05:52:28.7330187Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '3c6c2461-0002-0038-0eda-75d75e000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:28 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata0%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:a286f203-0002-0027-2568-b2eb20000000\nTime:2014-11-28T08:26:31.2188076Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:3c6c2461-0002-0038-0eda-75d75e000000\nTime:2016-03-04T05:52:28.7330187Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a286f203-0002-0027-2568-b2eb20000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '3c6c2461-0002-0038-0eda-75d75e000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:30 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:28 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata2%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:9b76785f-0002-001a-6cda-75b968000000\nTime:2016-03-04T05:52:29.2381530Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '9b76785f-0002-001a-6cda-75b968000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:28 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata2%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:51f22c83-0002-0044-31a7-47d4ee000000\nTime:2014-11-28T08:26:31.5077566Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:9b76785f-0002-001a-6cda-75b968000000\nTime:2016-03-04T05:52:29.2381530Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '51f22c83-0002-0044-31a7-47d4ee000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '9b76785f-0002-001a-6cda-75b968000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:30 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:28 GMT',
+  connection: 'close' });
  return result; }],
 [function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/Tables', '*')
+  .reply(204, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  location: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata14\')',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'af462769-0002-000f-72da-757bf1000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  'preference-applied': 'return-no-content',
+  dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata14\')',
+  date: 'Fri, 04 Mar 2016 05:52:29 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
@@ -371,40 +818,90 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata14\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b7993ba5-0002-0039-758b-e4db76000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'af462769-0002-000f-72da-757bf1000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata14\')',
-  date: 'Fri, 28 Nov 2014 08:26:32 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:29 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/$batch', '*')
+  .reply(202, "--batchresponse_181d68a4-01ef-4eb8-8e0f-3d58b03951da\r\nContent-Type: multipart/mixed; boundary=changesetresponse_20ffd417-341c-406d-8d9f-c8036afeaca2\r\n\r\n--changesetresponse_20ffd417-341c-406d-8d9f-c8036afeaca2\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata14(PartitionKey='partition1',RowKey='row1')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata14(PartitionKey='partition1',RowKey='row1')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A29.9155416Z'\"\r\n\r\n\r\n--changesetresponse_20ffd417-341c-406d-8d9f-c8036afeaca2--\r\n--batchresponse_181d68a4-01ef-4eb8-8e0f-3d58b03951da--\r\n", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'multipart/mixed; boundary=batchresponse_181d68a4-01ef-4eb8-8e0f-3d58b03951da',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '793c6ba2-0002-0006-33da-75617f000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:29 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/$batch', '*')
-  .reply(202, "--batchresponse_602ddfc3-ea58-47a6-b7e1-4c9ab95c7f2d\r\nContent-Type: multipart/mixed; boundary=changesetresponse_3c89ce3c-dcf5-46e7-849b-4a40725d92bf\r\n\r\n--changesetresponse_3c89ce3c-dcf5-46e7-849b-4a40725d92bf\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata14(PartitionKey='partition1',RowKey='row1')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata14(PartitionKey='partition1',RowKey='row1')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A32.9798692Z'\"\r\n\r\n\r\n--changesetresponse_3c89ce3c-dcf5-46e7-849b-4a40725d92bf--\r\n--batchresponse_602ddfc3-ea58-47a6-b7e1-4c9ab95c7f2d--\r\n", { 'cache-control': 'no-cache',
+  .reply(202, "--batchresponse_181d68a4-01ef-4eb8-8e0f-3d58b03951da\r\nContent-Type: multipart/mixed; boundary=changesetresponse_20ffd417-341c-406d-8d9f-c8036afeaca2\r\n\r\n--changesetresponse_20ffd417-341c-406d-8d9f-c8036afeaca2\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 204 No Content\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata14(PartitionKey='partition1',RowKey='row1')\r\nDataServiceId: https://xplat.table.core.windows.net/batchteststestdata14(PartitionKey='partition1',RowKey='row1')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A29.9155416Z'\"\r\n\r\n\r\n--changesetresponse_20ffd417-341c-406d-8d9f-c8036afeaca2--\r\n--batchresponse_181d68a4-01ef-4eb8-8e0f-3d58b03951da--\r\n", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'multipart/mixed; boundary=batchresponse_602ddfc3-ea58-47a6-b7e1-4c9ab95c7f2d',
+  'content-type': 'multipart/mixed; boundary=batchresponse_181d68a4-01ef-4eb8-8e0f-3d58b03951da',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6be8cf77-0002-0042-4b09-a853c3000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '793c6ba2-0002-0006-33da-75617f000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:32 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:29 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .get('/batchteststestdata14(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#batchteststestdata14/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A29.9155416Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-03-04T05:52:29.9155416Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  etag: 'W/"datetime\'2016-03-04T05%3A52%3A29.9155416Z\'"',
+  vary: 'Origin',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '5094b647-0002-0037-07da-753aa8000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:30 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/batchteststestdata14(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#batchteststestdata14/@Element\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2014-11-28T08:26:32.9798692Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#batchteststestdata14/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A29.9155416Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-03-04T05:52:29.9155416Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2014-11-28T08%3A26%3A32.9798692Z\'"',
+  etag: 'W/"datetime\'2016-03-04T05%3A52%3A29.9155416Z\'"',
+  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1317a2c2-0002-004b-59f3-ae098e000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '5094b647-0002-0037-07da-753aa8000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:34 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:30 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .get('/Tables?%24filter=TableName%20ge%20%27batchtests%27%20and%20TableName%20lt%20%27batchtests%7B%27')
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[{\"TableName\":\"batchteststestdata14\"}]}", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '2b9affdf-0002-0019-5eda-75ba6f000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:31 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
@@ -413,37 +910,82 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[{\"TableName\":\"batchteststestdata14\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ba1fc2c2-0002-0018-60a9-b3bc33000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '2b9affdf-0002-0019-5eda-75ba6f000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:34 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:31 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata0%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:15904b05-0002-004b-5dda-75a79d000000\nTime:2016-03-04T05:52:32.4023684Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '15904b05-0002-004b-5dda-75a79d000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:32 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata0%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:6927f58c-0002-0021-7fc3-d7ec24000000\nTime:2014-11-28T08:26:35.7589448Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:15904b05-0002-004b-5dda-75a79d000000\nTime:2016-03-04T05:52:32.4023684Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6927f58c-0002-0021-7fc3-d7ec24000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '15904b05-0002-004b-5dda-75a79d000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:35 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:32 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata2%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:f65b3711-0002-002d-35da-7515c7000000\nTime:2016-03-04T05:52:32.9983972Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'f65b3711-0002-002d-35da-7515c7000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:32 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata2%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:e775655d-0002-002a-339e-ad74f9000000\nTime:2014-11-28T08:26:35.7086087Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:f65b3711-0002-002d-35da-7515c7000000\nTime:2016-03-04T05:52:32.9983972Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e775655d-0002-002a-339e-ad74f9000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'f65b3711-0002-002d-35da-7515c7000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:35 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:32 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata14%27)')
+  .reply(204, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'b9a49ded-0002-0023-7cda-75f9cc000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:33 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
@@ -452,12 +994,30 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0b829b0c-0002-0033-6427-1d48b0000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'b9a49ded-0002-0023-7cda-75f9cc000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:37 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:33 GMT',
+  connection: 'close' });
  return result; }],
 [function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/Tables', '*')
+  .reply(204, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  location: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata16\')',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'e38af02b-0002-0005-5ada-756278000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  'preference-applied': 'return-no-content',
+  dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata16\')',
+  date: 'Fri, 04 Mar 2016 05:52:33 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
@@ -466,40 +1026,88 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata16\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c5fea150-0002-0014-6283-026787000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'e38af02b-0002-0005-5ada-756278000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata16\')',
-  date: 'Fri, 28 Nov 2014 08:26:37 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:33 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/$batch', '*')
+  .reply(202, "--batchresponse_320c1024-b849-460d-91fa-6c2093a17a71\r\nContent-Type: multipart/mixed; boundary=changesetresponse_0d43b0d2-ef63-417c-82e3-c22230c97bb6\r\n\r\n--changesetresponse_0d43b0d2-ef63-417c-82e3-c22230c97bb6\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 201 Created\r\nDataServiceVersion: 3.0;\r\nContent-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-content\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata16(PartitionKey='partition1',RowKey='row1')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A34.3804919Z'\"\r\n\r\n{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#batchteststestdata16/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A34.3804919Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-03-04T05:52:34.3804919Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}\r\n--changesetresponse_0d43b0d2-ef63-417c-82e3-c22230c97bb6--\r\n--batchresponse_320c1024-b849-460d-91fa-6c2093a17a71--\r\n", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'multipart/mixed; boundary=batchresponse_320c1024-b849-460d-91fa-6c2093a17a71',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'cff49edf-0002-004a-4ada-75a660000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:33 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/$batch', '*')
-  .reply(202, "--batchresponse_a5abf90d-bd33-4451-9c20-5e2d03e0b46f\r\nContent-Type: multipart/mixed; boundary=changesetresponse_31e4a61f-59ca-4822-a985-f12b0c74d2ea\r\n\r\n--changesetresponse_31e4a61f-59ca-4822-a985-f12b0c74d2ea\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 201 Created\r\nDataServiceVersion: 3.0;\r\nContent-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-content\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata16(PartitionKey='partition1',RowKey='row1')\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A38.2740582Z'\"\r\n\r\n{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#batchteststestdata16/@Element\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2014-11-28T08:26:38.2740582Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}\r\n--changesetresponse_31e4a61f-59ca-4822-a985-f12b0c74d2ea--\r\n--batchresponse_a5abf90d-bd33-4451-9c20-5e2d03e0b46f--\r\n", { 'cache-control': 'no-cache',
+  .reply(202, "--batchresponse_320c1024-b849-460d-91fa-6c2093a17a71\r\nContent-Type: multipart/mixed; boundary=changesetresponse_0d43b0d2-ef63-417c-82e3-c22230c97bb6\r\n\r\n--changesetresponse_0d43b0d2-ef63-417c-82e3-c22230c97bb6\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 201 Created\r\nDataServiceVersion: 3.0;\r\nContent-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-content\r\nLocation: https://xplat.table.core.windows.net/batchteststestdata16(PartitionKey='partition1',RowKey='row1')\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A34.3804919Z'\"\r\n\r\n{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#batchteststestdata16/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A34.3804919Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-03-04T05:52:34.3804919Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}\r\n--changesetresponse_0d43b0d2-ef63-417c-82e3-c22230c97bb6--\r\n--batchresponse_320c1024-b849-460d-91fa-6c2093a17a71--\r\n", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'multipart/mixed; boundary=batchresponse_a5abf90d-bd33-4451-9c20-5e2d03e0b46f',
+  'content-type': 'multipart/mixed; boundary=batchresponse_320c1024-b849-460d-91fa-6c2093a17a71',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '70739f78-0002-0045-6b96-fddc03000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'cff49edf-0002-004a-4ada-75a660000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:37 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:33 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/$batch', '*')
+  .reply(202, "--batchresponse_2aef3f49-9a2f-439a-9be2-8fd43c5ee0e3\r\nContent-Type: multipart/mixed; boundary=changesetresponse_c9f9063c-b3ea-4ab5-a955-fbe5a0867cd6\r\n\r\n--changesetresponse_c9f9063c-b3ea-4ab5-a955-fbe5a0867cd6\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 409 Conflict\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nContent-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8\r\n\r\n{\"odata.error\":{\"code\":\"EntityAlreadyExists\",\"message\":{\"lang\":\"en-US\",\"value\":\"The specified entity already exists.\\nRequestId:454b6664-0002-0041-14da-75be14000000\\nTime:2016-03-04T05:52:35.5251148Z\"}}}\r\n--changesetresponse_c9f9063c-b3ea-4ab5-a955-fbe5a0867cd6--\r\n--batchresponse_2aef3f49-9a2f-439a-9be2-8fd43c5ee0e3--\r\n", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'multipart/mixed; boundary=batchresponse_2aef3f49-9a2f-439a-9be2-8fd43c5ee0e3',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '454b6664-0002-0041-14da-75be14000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:35 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/$batch', '*')
-  .reply(202, "--batchresponse_f4952331-1d1e-48f3-acee-09cc8a3abba7\r\nContent-Type: multipart/mixed; boundary=changesetresponse_f95d9f14-4704-4703-afe3-1728c5496c7f\r\n\r\n--changesetresponse_f95d9f14-4704-4703-afe3-1728c5496c7f\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 409 Conflict\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nContent-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8\r\n\r\n{\"odata.error\":{\"code\":\"EntityAlreadyExists\",\"message\":{\"lang\":\"en-US\",\"value\":\"The specified entity already exists.\\nRequestId:a811cdf4-0002-003a-26bd-75b47b000000\\nTime:2014-11-28T08:26:39.6834284Z\"}}}\r\n--changesetresponse_f95d9f14-4704-4703-afe3-1728c5496c7f--\r\n--batchresponse_f4952331-1d1e-48f3-acee-09cc8a3abba7--\r\n", { 'cache-control': 'no-cache',
+  .reply(202, "--batchresponse_2aef3f49-9a2f-439a-9be2-8fd43c5ee0e3\r\nContent-Type: multipart/mixed; boundary=changesetresponse_c9f9063c-b3ea-4ab5-a955-fbe5a0867cd6\r\n\r\n--changesetresponse_c9f9063c-b3ea-4ab5-a955-fbe5a0867cd6\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 409 Conflict\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nPreference-Applied: return-no-content\r\nDataServiceVersion: 3.0;\r\nContent-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8\r\n\r\n{\"odata.error\":{\"code\":\"EntityAlreadyExists\",\"message\":{\"lang\":\"en-US\",\"value\":\"The specified entity already exists.\\nRequestId:454b6664-0002-0041-14da-75be14000000\\nTime:2016-03-04T05:52:35.5251148Z\"}}}\r\n--changesetresponse_c9f9063c-b3ea-4ab5-a955-fbe5a0867cd6--\r\n--batchresponse_2aef3f49-9a2f-439a-9be2-8fd43c5ee0e3--\r\n", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'multipart/mixed; boundary=batchresponse_f4952331-1d1e-48f3-acee-09cc8a3abba7',
+  'content-type': 'multipart/mixed; boundary=batchresponse_2aef3f49-9a2f-439a-9be2-8fd43c5ee0e3',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a811cdf4-0002-003a-26bd-75b47b000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '454b6664-0002-0041-14da-75be14000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:39 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:35 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .get('/Tables?%24filter=TableName%20ge%20%27batchtests%27%20and%20TableName%20lt%20%27batchtests%7B%27')
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[{\"TableName\":\"batchteststestdata16\"}]}", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'a8701123-0002-0022-70da-75f831000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:35 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
@@ -508,50 +1116,110 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[{\"TableName\":\"batchteststestdata16\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e85f709f-0002-0007-4533-a4b1f4000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'a8701123-0002-0022-70da-75f831000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:38 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:35 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata0%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:4216fd12-0002-0040-61da-75bfe9000000\nTime:2016-03-04T05:52:36.4272023Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '4216fd12-0002-0040-61da-75bfe9000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:35 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata0%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:74c27c7e-0002-0038-5d1e-2de7f4000000\nTime:2014-11-28T08:26:40.1921860Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:4216fd12-0002-0040-61da-75bfe9000000\nTime:2016-03-04T05:52:36.4272023Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '74c27c7e-0002-0038-5d1e-2de7f4000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '4216fd12-0002-0040-61da-75bfe9000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:40 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:35 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata2%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:4a307538-0002-0036-7bda-753b55000000\nTime:2016-03-04T05:52:37.1364741Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '4a307538-0002-0036-7bda-753b55000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:36 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata2%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:5ca4b773-0002-0005-17de-2deae7000000\nTime:2014-11-28T08:26:41.5293720Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:4a307538-0002-0036-7bda-753b55000000\nTime:2016-03-04T05:52:37.1364741Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5ca4b773-0002-0005-17de-2deae7000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '4a307538-0002-0036-7bda-753b55000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:40 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:36 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata14%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:51cb1e8d-0002-0018-1ada-75bb92000000\nTime:2016-03-04T05:52:37.9382547Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '51cb1e8d-0002-0018-1ada-75bb92000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:37 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata14%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:91829043-0002-000e-76ba-9b481d000000\nTime:2014-11-28T08:26:42.0426285Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:51cb1e8d-0002-0018-1ada-75bb92000000\nTime:2016-03-04T05:52:37.9382547Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '91829043-0002-000e-76ba-9b481d000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '51cb1e8d-0002-0018-1ada-75bb92000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:41 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:37 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata16%27)')
+  .reply(204, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'ab3baa0a-0002-000e-18da-757a0c000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:37 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
@@ -560,12 +1228,30 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'bcb7096e-0002-0017-072b-724d47000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'ab3baa0a-0002-000e-18da-757a0c000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:42 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:37 GMT',
+  connection: 'close' });
  return result; }],
 [function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/Tables', '*')
+  .reply(204, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  location: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata18\')',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '9ca213ea-0002-001d-64da-754fed000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  'preference-applied': 'return-no-content',
+  dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata18\')',
+  date: 'Fri, 04 Mar 2016 05:52:38 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
@@ -574,12 +1260,31 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata18\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'af892cfc-0002-0034-0a01-001e93000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '9ca213ea-0002-001d-64da-754fed000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata18\')',
-  date: 'Fri, 28 Nov 2014 08:26:42 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:38 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/batchteststestdata18', '*')
+  .reply(204, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  etag: 'W/"datetime\'2016-03-04T05%3A52%3A39.7370941Z\'"',
+  location: 'https://xplat.table.core.windows.net/batchteststestdata18(PartitionKey=\'partition1\',RowKey=\'row1\')',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '75358d7f-0002-003b-2cda-75d459000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  'preference-applied': 'return-no-content',
+  dataserviceid: 'https://xplat.table.core.windows.net/batchteststestdata18(PartitionKey=\'partition1\',RowKey=\'row1\')',
+  date: 'Fri, 04 Mar 2016 05:52:39 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
@@ -588,29 +1293,61 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/batchteststestdata18', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2014-11-28T08%3A26%3A44.2859494Z\'"',
+  etag: 'W/"datetime\'2016-03-04T05%3A52%3A39.7370941Z\'"',
   location: 'https://xplat.table.core.windows.net/batchteststestdata18(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '491a36ff-0002-0029-4da8-59a398000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '75358d7f-0002-003b-2cda-75d459000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/batchteststestdata18(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Fri, 28 Nov 2014 08:26:44 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:39 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/$batch', '*')
+  .reply(202, "--batchresponse_0df71dca-a8f3-461e-b96e-35e6f525a9bc\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 200 OK\r\nDataServiceVersion: 3.0;\r\nContent-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A39.7370941Z'\"\r\n\r\n{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#batchteststestdata18/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A39.7370941Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-03-04T05:52:39.7370941Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}\r\n--batchresponse_0df71dca-a8f3-461e-b96e-35e6f525a9bc--\r\n", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'multipart/mixed; boundary=batchresponse_0df71dca-a8f3-461e-b96e-35e6f525a9bc',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '3b99ec75-0002-0030-76da-75cc2d000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:40 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/$batch', '*')
-  .reply(202, "--batchresponse_b1c2a722-1aa9-481a-909e-30c21d2bdd4c\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 200 OK\r\nDataServiceVersion: 3.0;\r\nContent-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nETag: W/\"datetime'2014-11-28T08%3A26%3A44.2859494Z'\"\r\n\r\n{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#batchteststestdata18/@Element\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2014-11-28T08:26:44.2859494Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}\r\n--batchresponse_b1c2a722-1aa9-481a-909e-30c21d2bdd4c--\r\n", { 'cache-control': 'no-cache',
+  .reply(202, "--batchresponse_0df71dca-a8f3-461e-b96e-35e6f525a9bc\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 200 OK\r\nDataServiceVersion: 3.0;\r\nContent-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nETag: W/\"datetime'2016-03-04T05%3A52%3A39.7370941Z'\"\r\n\r\n{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#batchteststestdata18/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A52%3A39.7370941Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-03-04T05:52:39.7370941Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}\r\n--batchresponse_0df71dca-a8f3-461e-b96e-35e6f525a9bc--\r\n", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'multipart/mixed; boundary=batchresponse_b1c2a722-1aa9-481a-909e-30c21d2bdd4c',
+  'content-type': 'multipart/mixed; boundary=batchresponse_0df71dca-a8f3-461e-b96e-35e6f525a9bc',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '52e3db0f-0002-000a-3238-ad1b1e000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '3b99ec75-0002-0030-76da-75cc2d000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:44 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:40 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .get('/Tables?%24filter=TableName%20ge%20%27batchtests%27%20and%20TableName%20lt%20%27batchtests%7B%27')
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[{\"TableName\":\"batchteststestdata18\"}]}", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '7cfe33ca-0002-0012-26da-75a21b000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:40 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
@@ -619,63 +1356,138 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[{\"TableName\":\"batchteststestdata18\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'dc28063d-0002-003b-6270-0c8aa2000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '7cfe33ca-0002-0012-26da-75a21b000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:44 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:40 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata0%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:5bb56591-0002-0044-1fda-754a6b000000\nTime:2016-03-04T05:52:41.2053383Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '5bb56591-0002-0044-1fda-754a6b000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:40 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata0%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:21c08731-0002-001c-6e78-e356d3000000\nTime:2014-11-28T08:26:46.9121194Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:5bb56591-0002-0044-1fda-754a6b000000\nTime:2016-03-04T05:52:41.2053383Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '21c08731-0002-001c-6e78-e356d3000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '5bb56591-0002-0044-1fda-754a6b000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:46 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:40 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata2%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:4730eb8a-0002-003a-40da-75d5a4000000\nTime:2016-03-04T05:52:41.7933768Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '4730eb8a-0002-003a-40da-75d5a4000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:41 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata2%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:d4bb4cad-0002-0010-6fac-e3a7f5000000\nTime:2014-11-28T08:26:47.4705509Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:4730eb8a-0002-003a-40da-75d5a4000000\nTime:2016-03-04T05:52:41.7933768Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd4bb4cad-0002-0010-6fac-e3a7f5000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '4730eb8a-0002-003a-40da-75d5a4000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:46 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:41 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata14%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:7a547e3f-0002-0008-16da-758d74000000\nTime:2016-03-04T05:52:42.7288063Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '7a547e3f-0002-0008-16da-758d74000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:42 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata14%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:4899aab2-0002-0006-6e0b-89a490000000\nTime:2014-11-28T08:26:47.7126266Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:7a547e3f-0002-0008-16da-758d74000000\nTime:2016-03-04T05:52:42.7288063Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4899aab2-0002-0006-6e0b-89a490000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '7a547e3f-0002-0008-16da-758d74000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:47 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:42 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata16%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:03aa63cf-0002-0025-2ada-750eb4000000\nTime:2016-03-04T05:52:43.2389780Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '03aa63cf-0002-0025-2ada-750eb4000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:43 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata16%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:1e9959c5-0002-004a-5cda-58d664000000\nTime:2014-11-28T08:26:48.6622201Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:03aa63cf-0002-0025-2ada-750eb4000000\nTime:2016-03-04T05:52:43.2389780Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1e9959c5-0002-004a-5cda-58d664000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '03aa63cf-0002-0025-2ada-750eb4000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:48 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:43 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata18%27)')
+  .reply(204, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'd26f507c-0002-001c-6bda-754e10000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:43 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
@@ -684,12 +1496,30 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '88859f5d-0002-0004-6be8-f9aebc000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'd26f507c-0002-001c-6bda-754e10000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:49 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:43 GMT',
+  connection: 'close' });
  return result; }],
 [function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/Tables', '*')
+  .reply(204, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  location: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata20\')',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '05398c8b-0002-0011-76da-75a11c000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  'preference-applied': 'return-no-content',
+  dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata20\')',
+  date: 'Fri, 04 Mar 2016 05:52:43 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
@@ -698,26 +1528,58 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata20\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '78c9fccb-0002-0048-377e-2423bb000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '05398c8b-0002-0011-76da-75a11c000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata20\')',
-  date: 'Fri, 28 Nov 2014 08:26:50 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:43 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/$batch', '*')
+  .reply(202, "--batchresponse_a2100142-216d-4f5c-9e37-cbf7f20ba20f\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 404 Not Found\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nDataServiceVersion: 3.0;\r\nContent-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8\r\n\r\n{\"odata.error\":{\"code\":\"ResourceNotFound\",\"message\":{\"lang\":\"en-US\",\"value\":\"0:The specified resource does not exist.\\nRequestId:ae326630-0002-0043-79da-75bcee000000\\nTime:2016-03-04T05:52:45.2887073Z\"}}}\r\n--batchresponse_a2100142-216d-4f5c-9e37-cbf7f20ba20f--\r\n", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'multipart/mixed; boundary=batchresponse_a2100142-216d-4f5c-9e37-cbf7f20ba20f',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'ae326630-0002-0043-79da-75bcee000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:44 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/$batch', '*')
-  .reply(202, "--batchresponse_f8d344d8-86fb-444f-83ca-a6275db06eb6\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 404 Not Found\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nDataServiceVersion: 3.0;\r\nContent-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8\r\n\r\n{\"odata.error\":{\"code\":\"ResourceNotFound\",\"message\":{\"lang\":\"en-US\",\"value\":\"0:The specified resource does not exist.\\nRequestId:c45bbe48-0002-003e-270f-7227c9000000\\nTime:2014-11-28T08:26:51.2212991Z\"}}}\r\n--batchresponse_f8d344d8-86fb-444f-83ca-a6275db06eb6--\r\n", { 'cache-control': 'no-cache',
+  .reply(202, "--batchresponse_a2100142-216d-4f5c-9e37-cbf7f20ba20f\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 404 Not Found\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nDataServiceVersion: 3.0;\r\nContent-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8\r\n\r\n{\"odata.error\":{\"code\":\"ResourceNotFound\",\"message\":{\"lang\":\"en-US\",\"value\":\"0:The specified resource does not exist.\\nRequestId:ae326630-0002-0043-79da-75bcee000000\\nTime:2016-03-04T05:52:45.2887073Z\"}}}\r\n--batchresponse_a2100142-216d-4f5c-9e37-cbf7f20ba20f--\r\n", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'multipart/mixed; boundary=batchresponse_f8d344d8-86fb-444f-83ca-a6275db06eb6',
+  'content-type': 'multipart/mixed; boundary=batchresponse_a2100142-216d-4f5c-9e37-cbf7f20ba20f',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c45bbe48-0002-003e-270f-7227c9000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'ae326630-0002-0043-79da-75bcee000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:50 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:44 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .get('/Tables?%24filter=TableName%20ge%20%27batchtests%27%20and%20TableName%20lt%20%27batchtests%7B%27')
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[{\"TableName\":\"batchteststestdata20\"}]}", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '9d7187c0-0002-0039-1eda-75d6a3000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:44 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
@@ -726,76 +1588,166 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[{\"TableName\":\"batchteststestdata20\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '98133070-0002-0046-02c2-842c34000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '9d7187c0-0002-0039-1eda-75d6a3000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:52 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:44 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata0%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:a69ee489-0002-000c-50da-7578f6000000\nTime:2016-03-04T05:52:46.1036907Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'a69ee489-0002-000c-50da-7578f6000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:45 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata0%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:1c3aa533-0002-003c-6889-9b7ca9000000\nTime:2014-11-28T08:26:52.7720792Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:a69ee489-0002-000c-50da-7578f6000000\nTime:2016-03-04T05:52:46.1036907Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1c3aa533-0002-003c-6889-9b7ca9000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'a69ee489-0002-000c-50da-7578f6000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:52 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:45 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata2%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:3b434af6-0002-002a-6ada-75e342000000\nTime:2016-03-04T05:52:46.5192152Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '3b434af6-0002-002a-6ada-75e342000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:46 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata2%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:7c0f743b-0002-0030-69f7-50ec1a000000\nTime:2014-11-28T08:26:53.0087007Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:3b434af6-0002-002a-6ada-75e342000000\nTime:2016-03-04T05:52:46.5192152Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7c0f743b-0002-0030-69f7-50ec1a000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '3b434af6-0002-002a-6ada-75e342000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:52 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:46 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata14%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:53cf3f5c-0002-0020-56da-75facb000000\nTime:2016-03-04T05:52:46.8826015Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '53cf3f5c-0002-0020-56da-75facb000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:46 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata14%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:090795eb-0002-0011-5f30-62df7f000000\nTime:2014-11-28T08:26:54.2588440Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:53cf3f5c-0002-0020-56da-75facb000000\nTime:2016-03-04T05:52:46.8826015Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '090795eb-0002-0011-5f30-62df7f000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '53cf3f5c-0002-0020-56da-75facb000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:53 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:46 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata16%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:3465667b-0002-0002-3bda-7594fd000000\nTime:2016-03-04T05:52:47.9515983Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '3465667b-0002-0002-3bda-7594fd000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:47 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata16%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:46d0becb-0002-002e-1fb6-66364f000000\nTime:2014-11-28T08:26:54.3576960Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:3465667b-0002-0002-3bda-7594fd000000\nTime:2016-03-04T05:52:47.9515983Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '46d0becb-0002-002e-1fb6-66364f000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '3465667b-0002-0002-3bda-7594fd000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:53 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:47 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata18%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:7ef94543-0002-0034-6fda-7539af000000\nTime:2016-03-04T05:52:48.7159917Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '7ef94543-0002-0034-6fda-7539af000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:48 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata18%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:c9481114-0002-0037-0cba-1fde50000000\nTime:2014-11-28T08:26:55.3999137Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:7ef94543-0002-0034-6fda-7539af000000\nTime:2016-03-04T05:52:48.7159917Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c9481114-0002-0037-0cba-1fde50000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '7ef94543-0002-0034-6fda-7539af000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:55 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:48 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata20%27)')
+  .reply(204, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'e5335330-0002-003e-2eda-752026000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:48 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
@@ -804,12 +1756,30 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1941dab6-0002-0040-6323-cceb0c000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'e5335330-0002-003e-2eda-752026000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:55 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:48 GMT',
+  connection: 'close' });
  return result; }],
 [function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/Tables', '*')
+  .reply(204, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  location: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata22\')',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'bb7d0a4c-0002-001f-58da-754d17000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  'preference-applied': 'return-no-content',
+  dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata22\')',
+  date: 'Fri, 04 Mar 2016 05:52:49 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
@@ -818,12 +1788,28 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata22\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd6be4f1a-0002-0049-55fb-dbde69000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'bb7d0a4c-0002-001f-58da-754d17000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata22\')',
-  date: 'Fri, 28 Nov 2014 08:26:56 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:49 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .get('/Tables?%24filter=TableName%20ge%20%27batchtests%27%20and%20TableName%20lt%20%27batchtests%7B%27')
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[{\"TableName\":\"batchteststestdata22\"}]}", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '391499fa-0002-003d-39da-752321000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:49 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
@@ -832,89 +1818,194 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[{\"TableName\":\"batchteststestdata22\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '44c21d5e-0002-0016-7c71-e38c33000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '391499fa-0002-003d-39da-752321000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:56 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:49 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata0%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:708554fc-0002-000b-0dda-758e73000000\nTime:2016-03-04T05:52:51.1992144Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '708554fc-0002-000b-0dda-758e73000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:51 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata0%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:21155727-0002-000b-265d-017451000000\nTime:2014-11-28T08:26:58.4208219Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:708554fc-0002-000b-0dda-758e73000000\nTime:2016-03-04T05:52:51.1992144Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '21155727-0002-000b-265d-017451000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '708554fc-0002-000b-0dda-758e73000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:58 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:51 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata2%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:3c6c2e70-0002-0038-32da-75d75e000000\nTime:2016-03-04T05:52:51.8091290Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '3c6c2e70-0002-0038-32da-75d75e000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:51 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata2%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:fe50b60d-0002-0028-48a5-908afe000000\nTime:2014-11-28T08:26:59.3429624Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:3c6c2e70-0002-0038-32da-75d75e000000\nTime:2016-03-04T05:52:51.8091290Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fe50b60d-0002-0028-48a5-908afe000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '3c6c2e70-0002-0038-32da-75d75e000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:58 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:51 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata14%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:df4cab66-0002-0033-75da-75cf2a000000\nTime:2016-03-04T05:52:52.3202747Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'df4cab66-0002-0033-75da-75cf2a000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:52 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata14%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:fb529782-0002-0031-65a7-6bf008000000\nTime:2014-11-28T08:26:59.7451769Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:df4cab66-0002-0033-75da-75cf2a000000\nTime:2016-03-04T05:52:52.3202747Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fb529782-0002-0031-65a7-6bf008000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'df4cab66-0002-0033-75da-75cf2a000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:26:58 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:52 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata16%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:b767b168-0002-0029-63da-75e045000000\nTime:2016-03-04T05:52:53.1521657Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'b767b168-0002-0029-63da-75e045000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:52 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata16%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:6c403ddd-0002-0012-2fce-e08b22000000\nTime:2014-11-28T08:27:00.4991784Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:b767b168-0002-0029-63da-75e045000000\nTime:2016-03-04T05:52:53.1521657Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6c403ddd-0002-0012-2fce-e08b22000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'b767b168-0002-0029-63da-75e045000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:00 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:52 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata18%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:c14d9998-0002-0047-62da-75496c000000\nTime:2016-03-04T05:52:53.6784143Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'c14d9998-0002-0047-62da-75496c000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:53 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata18%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:a8c241af-0002-001b-1c2d-a87f9a000000\nTime:2014-11-28T08:27:01.5337793Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:c14d9998-0002-0047-62da-75496c000000\nTime:2016-03-04T05:52:53.6784143Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a8c241af-0002-001b-1c2d-a87f9a000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'c14d9998-0002-0047-62da-75496c000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:00 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:53 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata20%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:31619654-0002-0015-32da-75549e000000\nTime:2016-03-04T05:52:54.0653059Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '31619654-0002-0015-32da-75549e000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:53 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata20%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:0036881f-0002-004c-7516-98651c000000\nTime:2014-11-28T08:27:01.9029048Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:31619654-0002-0015-32da-75549e000000\nTime:2016-03-04T05:52:54.0653059Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0036881f-0002-004c-7516-98651c000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '31619654-0002-0015-32da-75549e000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:01 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:53 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata22%27)')
+  .reply(204, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'f5e1b1ba-0002-0046-14da-754891000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:53 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
@@ -923,12 +2014,30 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1f9c7bfb-0002-002d-20d7-0121bf000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'f5e1b1ba-0002-0046-14da-754891000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:01 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:53 GMT',
+  connection: 'close' });
  return result; }],
 [function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/Tables', '*')
+  .reply(204, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  location: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata24\')',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '15905414-0002-004b-11da-75a79d000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  'preference-applied': 'return-no-content',
+  dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata24\')',
+  date: 'Fri, 04 Mar 2016 05:52:55 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
@@ -937,12 +2046,28 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata24\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'afec4063-0002-0036-0f30-5c78c6000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '15905414-0002-004b-11da-75a79d000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata24\')',
-  date: 'Fri, 28 Nov 2014 08:27:02 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:55 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .get('/Tables?%24filter=TableName%20ge%20%27batchtests%27%20and%20TableName%20lt%20%27batchtests%7B%27')
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[{\"TableName\":\"batchteststestdata24\"}]}", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'f65b3f45-0002-002d-7fda-7515c7000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:55 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
@@ -951,102 +2076,222 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[{\"TableName\":\"batchteststestdata24\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '751da64c-0002-002b-1acd-f27e8b000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'f65b3f45-0002-002d-7fda-7515c7000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:03 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:55 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata0%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:b9a4aa21-0002-0023-3cda-75f9cc000000\nTime:2016-03-04T05:52:56.4697028Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'b9a4aa21-0002-0023-3cda-75f9cc000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:56 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata0%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:ac1b00ca-0002-0020-43ba-c47adb000000\nTime:2014-11-28T08:27:05.1983749Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:b9a4aa21-0002-0023-3cda-75f9cc000000\nTime:2016-03-04T05:52:56.4697028Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ac1b00ca-0002-0020-43ba-c47adb000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'b9a4aa21-0002-0023-3cda-75f9cc000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:04 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:56 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata2%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:e38af8fc-0002-0005-49da-756278000000\nTime:2016-03-04T05:52:57.1197591Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'e38af8fc-0002-0005-49da-756278000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:56 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata2%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:e25934da-0002-0001-25d6-7ac080000000\nTime:2014-11-28T08:27:06.1068050Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:e38af8fc-0002-0005-49da-756278000000\nTime:2016-03-04T05:52:57.1197591Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e25934da-0002-0001-25d6-7ac080000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'e38af8fc-0002-0005-49da-756278000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:05 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:56 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata14%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:b2486d8c-0002-0000-05da-759607000000\nTime:2016-03-04T05:52:57.3397003Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'b2486d8c-0002-0000-05da-759607000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:56 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata14%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:a63744a1-0002-0032-132e-85624f000000\nTime:2014-11-28T08:27:07.1417538Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:b2486d8c-0002-0000-05da-759607000000\nTime:2016-03-04T05:52:57.3397003Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a63744a1-0002-0032-132e-85624f000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'b2486d8c-0002-0000-05da-759607000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:06 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:56 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata16%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:7ac3b1bb-0002-000a-27da-758f8e000000\nTime:2016-03-04T05:52:58.0966895Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '7ac3b1bb-0002-000a-27da-758f8e000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:57 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata16%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:179c8a20-0002-0013-581d-d1be7e000000\nTime:2014-11-28T08:27:06.5266777Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:7ac3b1bb-0002-000a-27da-758f8e000000\nTime:2016-03-04T05:52:58.0966895Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '179c8a20-0002-0013-581d-d1be7e000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '7ac3b1bb-0002-000a-27da-758f8e000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:06 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:57 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata18%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:81cc6a3b-0002-003c-3cda-7522dc000000\nTime:2016-03-04T05:52:58.7873626Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '81cc6a3b-0002-003c-3cda-7522dc000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:57 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata18%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:c587e41d-0002-0008-3e88-fa9252000000\nTime:2014-11-28T08:27:08.0300120Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:81cc6a3b-0002-003c-3cda-7522dc000000\nTime:2016-03-04T05:52:58.7873626Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c587e41d-0002-0008-3e88-fa9252000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '81cc6a3b-0002-003c-3cda-7522dc000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:07 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:57 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata20%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:3f9dfc6f-0002-0031-24da-75cdd0000000\nTime:2016-03-04T05:52:59.5265921Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '3f9dfc6f-0002-0031-24da-75cdd0000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:58 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata20%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:5b637576-0002-004d-1558-7d720e000000\nTime:2014-11-28T08:27:09.0771288Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:3f9dfc6f-0002-0031-24da-75cdd0000000\nTime:2016-03-04T05:52:59.5265921Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5b637576-0002-004d-1558-7d720e000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '3f9dfc6f-0002-0031-24da-75cdd0000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:08 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:58 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata22%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:b9b01534-0002-0027-08da-750c4e000000\nTime:2016-03-04T05:53:00.0299258Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'b9b01534-0002-0027-08da-750c4e000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:59 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata22%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:2f90b777-0002-001a-33bb-1b15c8000000\nTime:2014-11-28T08:27:10.2986303Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:b9b01534-0002-0027-08da-750c4e000000\nTime:2016-03-04T05:53:00.0299258Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2f90b777-0002-001a-33bb-1b15c8000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'b9b01534-0002-0027-08da-750c4e000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:09 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:59 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata24%27)')
+  .reply(204, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'c28fd9b4-0002-0045-08da-754b96000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:52:59 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
@@ -1055,12 +2300,30 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '53de590e-0002-0023-36fb-a9b265000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'c28fd9b4-0002-0045-08da-754b96000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:09 GMT' });
+  date: 'Fri, 04 Mar 2016 05:52:59 GMT',
+  connection: 'close' });
  return result; }],
 [function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/Tables', '*')
+  .reply(204, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  location: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata26\')',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'c6e7a831-0002-0013-5bda-75a3e6000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  'preference-applied': 'return-no-content',
+  dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata26\')',
+  date: 'Fri, 04 Mar 2016 05:53:00 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
@@ -1069,12 +2332,28 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata26\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f3d28532-0002-002c-0ab2-42e6ea000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'c6e7a831-0002-0013-5bda-75a3e6000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata26\')',
-  date: 'Fri, 28 Nov 2014 08:27:10 GMT' });
+  date: 'Fri, 04 Mar 2016 05:53:00 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .get('/Tables?%24filter=TableName%20ge%20%27batchtests%27%20and%20TableName%20lt%20%27batchtests%7B%27')
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[{\"TableName\":\"batchteststestdata26\"}]}", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'aca65e92-0002-000d-3cda-75790b000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:53:01 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
@@ -1083,115 +2362,250 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[{\"TableName\":\"batchteststestdata26\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cf3b9d27-0002-0035-1108-f7efe5000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'aca65e92-0002-000d-3cda-75790b000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:11 GMT' });
+  date: 'Fri, 04 Mar 2016 05:53:01 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata0%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:7ff459f7-0002-003f-36da-7521db000000\nTime:2016-03-04T05:53:02.5464078Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '7ff459f7-0002-003f-36da-7521db000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:53:01 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata0%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:d04bbf2f-0002-0002-38d6-3f843d000000\nTime:2014-11-28T08:27:13.0856996Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:7ff459f7-0002-003f-36da-7521db000000\nTime:2016-03-04T05:53:02.5464078Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd04bbf2f-0002-0002-38d6-3f843d000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '7ff459f7-0002-003f-36da-7521db000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:12 GMT' });
+  date: 'Fri, 04 Mar 2016 05:53:01 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata2%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:db532166-0002-0021-44da-75fb36000000\nTime:2016-03-04T05:53:03.0630206Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'db532166-0002-0021-44da-75fb36000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:53:02 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata2%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:a376eff4-0002-0047-239d-0a5b96000000\nTime:2014-11-28T08:27:13.3453028Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:db532166-0002-0021-44da-75fb36000000\nTime:2016-03-04T05:53:03.0630206Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a376eff4-0002-0047-239d-0a5b96000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'db532166-0002-0021-44da-75fb36000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:12 GMT' });
+  date: 'Fri, 04 Mar 2016 05:53:02 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata14%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:17edcc08-0002-002b-36da-75e2bf000000\nTime:2016-03-04T05:53:03.6106005Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '17edcc08-0002-002b-36da-75e2bf000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:53:03 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata14%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:5482ec92-0002-002f-767b-4e34af000000\nTime:2014-11-28T08:27:13.8759922Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:17edcc08-0002-002b-36da-75e2bf000000\nTime:2016-03-04T05:53:03.6106005Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5482ec92-0002-002f-767b-4e34af000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '17edcc08-0002-002b-36da-75e2bf000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:13 GMT' });
+  date: 'Fri, 04 Mar 2016 05:53:03 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata16%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:03aa6fe3-0002-0025-67da-750eb4000000\nTime:2016-03-04T05:53:04.6441785Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '03aa6fe3-0002-0025-67da-750eb4000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:53:04 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata16%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:7801d4ce-0002-000f-394b-4b4ea8000000\nTime:2014-11-28T08:27:15.3788341Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:03aa6fe3-0002-0025-67da-750eb4000000\nTime:2016-03-04T05:53:04.6441785Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7801d4ce-0002-000f-394b-4b4ea8000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '03aa6fe3-0002-0025-67da-750eb4000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:15 GMT' });
+  date: 'Fri, 04 Mar 2016 05:53:04 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata18%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:f77efbe4-0002-0017-28da-755664000000\nTime:2016-03-04T05:53:05.2686509Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'f77efbe4-0002-0017-28da-755664000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:53:04 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata18%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:e9ae7e15-0002-0041-3cb4-a6d48e000000\nTime:2014-11-28T08:27:15.6029807Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:f77efbe4-0002-0017-28da-755664000000\nTime:2016-03-04T05:53:05.2686509Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e9ae7e15-0002-0041-3cb4-a6d48e000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'f77efbe4-0002-0017-28da-755664000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:14 GMT' });
+  date: 'Fri, 04 Mar 2016 05:53:04 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata20%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:ccf3e90d-0002-0048-3eda-75a49a000000\nTime:2016-03-04T05:53:05.5209899Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'ccf3e90d-0002-0048-3eda-75a49a000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:53:05 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata20%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:33289f1e-0002-000d-7f4c-72ce68000000\nTime:2014-11-28T08:27:16.7948720Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:ccf3e90d-0002-0048-3eda-75a49a000000\nTime:2016-03-04T05:53:05.5209899Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '33289f1e-0002-000d-7f4c-72ce68000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'ccf3e90d-0002-0048-3eda-75a49a000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:16 GMT' });
+  date: 'Fri, 04 Mar 2016 05:53:05 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata22%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:59fa3cad-0002-0016-1ada-755799000000\nTime:2016-03-04T05:53:06.3750516Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '59fa3cad-0002-0016-1ada-755799000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:53:05 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata22%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:2f7f5686-0002-0003-7aac-35d7f9000000\nTime:2014-11-28T08:27:17.2814186Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:59fa3cad-0002-0016-1ada-755799000000\nTime:2016-03-04T05:53:06.3750516Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2f7f5686-0002-0003-7aac-35d7f9000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '59fa3cad-0002-0016-1ada-755799000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:16 GMT' });
+  date: 'Fri, 04 Mar 2016 05:53:05 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata24%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:a69eee75-0002-000c-52da-7578f6000000\nTime:2016-03-04T05:53:07.0862560Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'a69eee75-0002-000c-52da-7578f6000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:53:06 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata24%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:e79118e1-0002-001f-7ba1-5f6971000000\nTime:2014-11-28T08:27:17.5080785Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:a69eee75-0002-000c-52da-7578f6000000\nTime:2016-03-04T05:53:07.0862560Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e79118e1-0002-001f-7ba1-5f6971000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'a69eee75-0002-000c-52da-7578f6000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:16 GMT' });
+  date: 'Fri, 04 Mar 2016 05:53:06 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata26%27)')
+  .reply(204, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '3b4351aa-0002-002a-47da-75e342000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:53:07 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
@@ -1200,12 +2614,30 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fc74e1ab-0002-0015-7bac-693fc4000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '3b4351aa-0002-002a-47da-75e342000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:17 GMT' });
+  date: 'Fri, 04 Mar 2016 05:53:07 GMT',
+  connection: 'close' });
  return result; }],
 [function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/Tables', '*')
+  .reply(204, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  location: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata28\')',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '53cf4698-0002-0020-32da-75facb000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  'preference-applied': 'return-no-content',
+  dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata28\')',
+  date: 'Fri, 04 Mar 2016 05:53:07 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
@@ -1214,26 +2646,58 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata28\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '755421a2-0002-0009-2c1f-0d8a24000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '53cf4698-0002-0020-32da-75facb000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'batchteststestdata28\')',
-  date: 'Fri, 28 Nov 2014 08:27:19 GMT' });
+  date: 'Fri, 04 Mar 2016 05:53:07 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/$batch', '*')
+  .reply(202, "--batchresponse_03af915d-a1c8-44a0-b60e-1f10b5a90b88\r\nContent-Type: multipart/mixed; boundary=changesetresponse_4bf35324-533d-4df0-8561-280d6b7ef774\r\n\r\n--changesetresponse_4bf35324-533d-4df0-8561-280d6b7ef774\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 400 Bad Request\r\nContent-ID: 1\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nDataServiceVersion: 3.0;\r\nContent-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8\r\n\r\n{\"odata.error\":{\"code\":\"InvalidInput\",\"message\":{\"lang\":\"en-US\",\"value\":\"1:One of the request inputs is not valid.\\nRequestId:34656f80-0002-0002-5dda-7594fd000000\\nTime:2016-03-04T05:53:09.0360119Z\"}}}\r\n--changesetresponse_4bf35324-533d-4df0-8561-280d6b7ef774--\r\n--batchresponse_03af915d-a1c8-44a0-b60e-1f10b5a90b88--\r\n", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'multipart/mixed; boundary=batchresponse_03af915d-a1c8-44a0-b60e-1f10b5a90b88',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '34656f80-0002-0002-5dda-7594fd000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:53:08 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/$batch', '*')
-  .reply(202, "--batchresponse_c0f1d2a9-c662-47ae-9b3b-2e8f12039168\r\nContent-Type: multipart/mixed; boundary=changesetresponse_0087b8c4-8476-47ac-9c8c-f3c990ba8d9f\r\n\r\n--changesetresponse_0087b8c4-8476-47ac-9c8c-f3c990ba8d9f\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 400 Bad Request\r\nContent-ID: 1\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nDataServiceVersion: 3.0;\r\nContent-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8\r\n\r\n{\"odata.error\":{\"code\":\"InvalidInput\",\"message\":{\"lang\":\"en-US\",\"value\":\"1:One of the request inputs is not valid.\\nRequestId:1bb47145-0002-0026-765b-0c9687000000\\nTime:2014-11-28T08:27:20.7278202Z\"}}}\r\n--changesetresponse_0087b8c4-8476-47ac-9c8c-f3c990ba8d9f--\r\n--batchresponse_c0f1d2a9-c662-47ae-9b3b-2e8f12039168--\r\n", { 'cache-control': 'no-cache',
+  .reply(202, "--batchresponse_03af915d-a1c8-44a0-b60e-1f10b5a90b88\r\nContent-Type: multipart/mixed; boundary=changesetresponse_4bf35324-533d-4df0-8561-280d6b7ef774\r\n\r\n--changesetresponse_4bf35324-533d-4df0-8561-280d6b7ef774\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nHTTP/1.1 400 Bad Request\r\nContent-ID: 1\r\nX-Content-Type-Options: nosniff\r\nCache-Control: no-cache\r\nDataServiceVersion: 3.0;\r\nContent-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8\r\n\r\n{\"odata.error\":{\"code\":\"InvalidInput\",\"message\":{\"lang\":\"en-US\",\"value\":\"1:One of the request inputs is not valid.\\nRequestId:34656f80-0002-0002-5dda-7594fd000000\\nTime:2016-03-04T05:53:09.0360119Z\"}}}\r\n--changesetresponse_4bf35324-533d-4df0-8561-280d6b7ef774--\r\n--batchresponse_03af915d-a1c8-44a0-b60e-1f10b5a90b88--\r\n", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'multipart/mixed; boundary=batchresponse_c0f1d2a9-c662-47ae-9b3b-2e8f12039168',
+  'content-type': 'multipart/mixed; boundary=batchresponse_03af915d-a1c8-44a0-b60e-1f10b5a90b88',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1bb47145-0002-0026-765b-0c9687000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '34656f80-0002-0002-5dda-7594fd000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:20 GMT' });
+  date: 'Fri, 04 Mar 2016 05:53:08 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .get('/Tables?%24filter=TableName%20ge%20%27batchtests%27%20and%20TableName%20lt%20%27batchtests%7B%27')
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[{\"TableName\":\"batchteststestdata28\"}]}", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '7ef94d82-0002-0034-56da-7539af000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:53:09 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
@@ -1242,128 +2706,278 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[{\"TableName\":\"batchteststestdata28\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
+  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd1f586fc-0002-0043-5a94-99ac2d000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '7ef94d82-0002-0034-56da-7539af000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:19 GMT' });
+  date: 'Fri, 04 Mar 2016 05:53:09 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata0%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:e5335c40-0002-003e-6cda-752026000000\nTime:2016-03-04T05:53:09.6119127Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'e5335c40-0002-003e-6cda-752026000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:53:09 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata0%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:f7342a5d-0002-0024-2f2d-a9501e000000\nTime:2014-11-28T08:27:21.2007073Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:e5335c40-0002-003e-6cda-752026000000\nTime:2016-03-04T05:53:09.6119127Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f7342a5d-0002-0024-2f2d-a9501e000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'e5335c40-0002-003e-6cda-752026000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:20 GMT' });
+  date: 'Fri, 04 Mar 2016 05:53:09 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata2%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:bb7d1083-0002-001f-45da-754d17000000\nTime:2016-03-04T05:53:10.8824344Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'bb7d1083-0002-001f-45da-754d17000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:53:10 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata2%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:240d19f3-0002-0019-685c-dcf786000000\nTime:2014-11-28T08:27:22.6184512Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:bb7d1083-0002-001f-45da-754d17000000\nTime:2016-03-04T05:53:10.8824344Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '240d19f3-0002-0019-685c-dcf786000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'bb7d1083-0002-001f-45da-754d17000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:22 GMT' });
+  date: 'Fri, 04 Mar 2016 05:53:10 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata14%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:3914ac42-0002-003d-2bda-752321000000\nTime:2016-03-04T05:53:11.1075780Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '3914ac42-0002-003d-2bda-752321000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:53:11 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata14%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:87dac2f4-0002-0022-24e9-2cf471000000\nTime:2014-11-28T08:27:23.3170687Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:3914ac42-0002-003d-2bda-752321000000\nTime:2016-03-04T05:53:11.1075780Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '87dac2f4-0002-0022-24e9-2cf471000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '3914ac42-0002-003d-2bda-752321000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:22 GMT' });
+  date: 'Fri, 04 Mar 2016 05:53:11 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata16%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:70856aac-0002-000b-68da-758e73000000\nTime:2016-03-04T05:53:12.0420138Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '70856aac-0002-000b-68da-758e73000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:53:11 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata16%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:0dffb044-0002-003f-5a07-6850f6000000\nTime:2014-11-28T08:27:24.2415833Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:70856aac-0002-000b-68da-758e73000000\nTime:2016-03-04T05:53:12.0420138Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0dffb044-0002-003f-5a07-6850f6000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '70856aac-0002-000b-68da-758e73000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:23 GMT' });
+  date: 'Fri, 04 Mar 2016 05:53:11 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata18%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:076bf776-0002-0001-22da-7597fa000000\nTime:2016-03-04T05:53:12.8248775Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '076bf776-0002-0001-22da-7597fa000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:53:12 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata18%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:4970d171-0002-000c-14df-862267000000\nTime:2014-11-28T08:27:24.7450213Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:076bf776-0002-0001-22da-7597fa000000\nTime:2016-03-04T05:53:12.8248775Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4970d171-0002-000c-14df-862267000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '076bf776-0002-0001-22da-7597fa000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:24 GMT' });
+  date: 'Fri, 04 Mar 2016 05:53:12 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata20%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:df4cb77d-0002-0033-2fda-75cf2a000000\nTime:2016-03-04T05:53:13.1630862Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'df4cb77d-0002-0033-2fda-75cf2a000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:53:13 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata20%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:23bf0417-0002-003d-71ac-bad3f2000000\nTime:2014-11-28T08:27:26.1661586Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:df4cb77d-0002-0033-2fda-75cf2a000000\nTime:2016-03-04T05:53:13.1630862Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '23bf0417-0002-003d-71ac-bad3f2000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'df4cb77d-0002-0033-2fda-75cf2a000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:25 GMT' });
+  date: 'Fri, 04 Mar 2016 05:53:13 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata22%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:b767b840-0002-0029-63da-75e045000000\nTime:2016-03-04T05:53:13.9900955Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'b767b840-0002-0029-63da-75e045000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:53:13 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata22%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:7d0d4b30-0002-001e-3726-42deb0000000\nTime:2014-11-28T08:27:25.9574356Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:b767b840-0002-0029-63da-75e045000000\nTime:2016-03-04T05:53:13.9900955Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7d0d4b30-0002-001e-3726-42deb0000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'b767b840-0002-0029-63da-75e045000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:25 GMT' });
+  date: 'Fri, 04 Mar 2016 05:53:13 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata24%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:c14db2c0-0002-0047-13da-75496c000000\nTime:2016-03-04T05:53:14.5128309Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'c14db2c0-0002-0047-13da-75496c000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:53:14 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata24%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:a2871784-0002-0027-0768-b2eb20000000\nTime:2014-11-28T08:27:26.9213773Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:c14db2c0-0002-0047-13da-75496c000000\nTime:2016-03-04T05:53:14.5128309Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a2871784-0002-0027-0768-b2eb20000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'c14db2c0-0002-0047-13da-75496c000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:26 GMT' });
+  date: 'Fri, 04 Mar 2016 05:53:14 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata26%27)')
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:5094c4d4-0002-0037-5fda-753aa8000000\nTime:2016-03-04T05:53:15.0810899Z</message></error>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml;charset=utf-8',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '5094c4d4-0002-0037-5fda-753aa8000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:53:14 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27batchteststestdata26%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:51f253ad-0002-0044-12a7-47d4ee000000\nTime:2014-11-28T08:27:27.2193272Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:5094c4d4-0002-0037-5fda-753aa8000000\nTime:2016-03-04T05:53:15.0810899Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '51f253ad-0002-0044-12a7-47d4ee000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '5094c4d4-0002-0037-5fda-753aa8000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:26 GMT' });
+  date: 'Fri, 04 Mar 2016 05:53:14 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.table.core.windows.net:443')
+  .delete('/Tables(%27batchteststestdata28%27)')
+  .reply(204, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '2b9b183b-0002-0019-7cda-75ba6f000000',
+  'x-ms-version': '2015-04-05',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 04 Mar 2016 05:53:14 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
@@ -1372,8 +2986,9 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b7996096-0002-0039-808b-e4db76000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '2b9b183b-0002-0019-7cda-75ba6f000000',
+  'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 28 Nov 2014 08:27:27 GMT' });
+  date: 'Fri, 04 Mar 2016 05:53:14 GMT',
+  connection: 'close' });
  return result; }]];
