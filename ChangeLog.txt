@@ -6,7 +6,7 @@ be taken. This is a CTP v1 release and the changes described below indicate the 
 ALL
 * Updated storage service version to 2015-04-05. Fore more information, please see - https://msdn.microsoft.com/en-us/library/azure/dd894041.aspx
 * Added support for Account SAS.
-* Supported IPACL and Protocols options for service SAS.
+* Added support for IPACL and Protocols options for service SAS.
 * Fixed the issue where the authentication may fail when a metadata key is in upper case.
 * Added 'nsp check' task for security vulnerability check.
 * Updated the dependency of the 'request' module to avoid the security vulnerability reported by the 'nsp' tool.
@@ -15,7 +15,7 @@ BLOB
 * Added new permission 'ADD' for service SAS.
 
 FILE
-* Supported metrics setting for service properties.
+* Added support for metrics setting for service properties.
 
 
 2016.01 Version 0.8.0
