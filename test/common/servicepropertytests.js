@@ -217,23 +217,23 @@ function defaultServiceProperties(serviceType){
     serviceProperties.Logging.RetentionPolicy = {};
     serviceProperties.Logging.RetentionPolicy.Enabled = true;
     serviceProperties.Logging.RetentionPolicy.Days = 1;
-    
-    serviceProperties.HourMetrics = {};
-    serviceProperties.HourMetrics.Enabled = true;
-    serviceProperties.HourMetrics.Version = '1.0';
-    serviceProperties.HourMetrics.IncludeAPIs = true;
-    serviceProperties.HourMetrics.RetentionPolicy = {};
-    serviceProperties.HourMetrics.RetentionPolicy.Enabled = true;
-    serviceProperties.HourMetrics.RetentionPolicy.Days = 1;
-    
-    serviceProperties.MinuteMetrics = {};
-    serviceProperties.MinuteMetrics.Enabled = true;
-    serviceProperties.MinuteMetrics.Version = '1.0';
-    serviceProperties.MinuteMetrics.IncludeAPIs = true;
-    serviceProperties.MinuteMetrics.RetentionPolicy = {};
-    serviceProperties.MinuteMetrics.RetentionPolicy.Enabled = true;
-    serviceProperties.MinuteMetrics.RetentionPolicy.Days = 1;
   }
+  
+  serviceProperties.HourMetrics = {};
+  serviceProperties.HourMetrics.Enabled = true;
+  serviceProperties.HourMetrics.Version = '1.0';
+  serviceProperties.HourMetrics.IncludeAPIs = true;
+  serviceProperties.HourMetrics.RetentionPolicy = {};
+  serviceProperties.HourMetrics.RetentionPolicy.Enabled = true;
+  serviceProperties.HourMetrics.RetentionPolicy.Days = 1;
+  
+  serviceProperties.MinuteMetrics = {};
+  serviceProperties.MinuteMetrics.Enabled = true;
+  serviceProperties.MinuteMetrics.Version = '1.0';
+  serviceProperties.MinuteMetrics.IncludeAPIs = true;
+  serviceProperties.MinuteMetrics.RetentionPolicy = {};
+  serviceProperties.MinuteMetrics.RetentionPolicy.Enabled = true;
+  serviceProperties.MinuteMetrics.RetentionPolicy.Days = 1;
 
   serviceProperties.Cors = {};
   var rule = {};
@@ -253,12 +253,12 @@ function defaultServiceProperties(serviceType){
 
 function emptyServiceProperties(serviceType){
   var serviceProperties = {};
-  
   if (serviceType != ServiceTypes.File) {
     serviceProperties.Logging = {};
-    serviceProperties.HourMetrics = {};
-    serviceProperties.MinuteMetrics = {};
   }
+  
+  serviceProperties.HourMetrics = {};
+  serviceProperties.MinuteMetrics = {};
   serviceProperties.Cors = {};
 
   return serviceProperties;
@@ -275,19 +275,19 @@ function baseServiceProperties(serviceType){
     serviceProperties.Logging.Write = false;
     serviceProperties.Logging.RetentionPolicy = {};
     serviceProperties.Logging.RetentionPolicy.Enabled = false;
-    
-    serviceProperties.HourMetrics = {};
-    serviceProperties.HourMetrics.Version = '1.0';
-    serviceProperties.HourMetrics.Enabled = false;
-    serviceProperties.HourMetrics.RetentionPolicy = {};
-    serviceProperties.HourMetrics.RetentionPolicy.Enabled = false;
-    
-    serviceProperties.MinuteMetrics = {};
-    serviceProperties.MinuteMetrics.Version = '1.0';
-    serviceProperties.MinuteMetrics.Enabled = false;
-    serviceProperties.MinuteMetrics.RetentionPolicy = {};
-    serviceProperties.MinuteMetrics.RetentionPolicy.Enabled = false;
   }
+  
+  serviceProperties.HourMetrics = {};
+  serviceProperties.HourMetrics.Version = '1.0';
+  serviceProperties.HourMetrics.Enabled = false;
+  serviceProperties.HourMetrics.RetentionPolicy = {};
+  serviceProperties.HourMetrics.RetentionPolicy.Enabled = false;
+  
+  serviceProperties.MinuteMetrics = {};
+  serviceProperties.MinuteMetrics.Version = '1.0';
+  serviceProperties.MinuteMetrics.Enabled = false;
+  serviceProperties.MinuteMetrics.RetentionPolicy = {};
+  serviceProperties.MinuteMetrics.RetentionPolicy.Enabled = false;
   serviceProperties.Cors = {};
 
   return serviceProperties;

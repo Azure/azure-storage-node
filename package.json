@@ -1,7 +1,7 @@
 {
   "name": "azure-storage",
   "author": "Microsoft Corporation",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Microsoft Azure Storage Client Library for Node.js",
   "tags": [
     "azure",
@@ -23,7 +23,7 @@
     "browserify-mime": "~1.2.9",
     "node-uuid": "~1.4.0",
     "readable-stream": "~2.0.0",
-    "request": "~2.57.0",
+    "request": "~2.69.0",
     "underscore": "~1.4.4",
     "validator": "~3.22.2",
     "xml2js": "0.2.7",
@@ -44,7 +44,7 @@
     "mocha": ">= 1.18.0",
     "mocha-lcov-reporter": "^1.0.0",
     "nock": "0.16",
-    "nsp": "^1.0.1",
+    "nsp": "^2.2.0",
     "should": "1.2.x"
   },
   "browser": {
@@ -59,8 +59,9 @@
     "url": "http://github.com/Azure/azure-storage-node/issues"
   },
   "scripts": {
-    "check": "jshint lib",
-    "test": "jshint lib && mocha --no-timeouts --recursive test",
+    "check": "jshint lib && nsp check",
+    "test": "jshint lib && nsp check && mocha --no-timeouts --recursive test",
+    "testwithoutcheck": "jshint lib && mocha --no-timeouts --recursive test",
     "cover": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec -u bdd --no-timeouts --recursive test",
     "coveralls": "npm run cover && cat ./coverage/lcov.info | node ./node_modules/coveralls/bin/coveralls.js"
   }

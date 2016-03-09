@@ -973,6 +973,34 @@ describe('BlobService', function () {
           });
         });
       });
+      
+      it('should work when there are upper cases in the metadata keys', function (done) {
+        var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+        
+        var metadata = { color1: 'blue', ColoR2: 'Orange', cOLOr3: 'Red', cOlor1: 'blAck', coLoR2: 'greEN', COlor3: 'puRPle' };
+        blobService.createBlockBlobFromText(containerName, blobName, 'hello', function (blobErr) {
+          assert.equal(blobErr, null);
+
+          blobService.setBlobMetadata(containerName, blobName, metadata, function (setErr) {
+            assert.equal(setErr, null);
+          
+            blobService.getBlobMetadata(containerName, blobName, function (getErr, blob) {
+              assert.equal(getErr, null);
+
+              assert.notEqual(blob, null);
+              if (blob) {
+                assert.notEqual(blob.metadata, null);
+                if (blob.metadata) {
+                  assert.strictEqual(blob.metadata.color1, 'blue,blAck');
+                  assert.strictEqual(blob.metadata.color2, 'Orange,greEN');
+                  assert.strictEqual(blob.metadata.color3, 'Red,puRPle');
+                }
+              }
+              done();
+            });
+          });
+        });
+      });
     });
 
     describe('delete the container for blob tests', function () {
@@ -1142,7 +1170,7 @@ describe('BlobService', function () {
         assert.strictEqual(parsedUrl.port, '80');
         assert.strictEqual(parsedUrl.hostname, 'host.com');
         assert.strictEqual(parsedUrl.pathname, '/' + containerName + '/' + blobName);
-        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&sv=2015-02-21&sr=b&sig=tw4l7oQlYZIRRR4%2FMXkUfgVkipiGbC7c26tiAH4C%2B7o%3D');
+        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&sv=2015-04-05&sr=b&sig=YMxhCsDBmWz%2F1eOEHLy1uEVDI33KfWZGqgPgIXAipEY%3D');
 
         done();
       });
@@ -1220,9 +1248,56 @@ describe('BlobService', function () {
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_RESOURCE], Constants.BlobConstants.ResourceTypes.BLOB);
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_PERMISSIONS], BlobUtilities.SharedAccessPermissions.READ);
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_VERSION], HeaderConstants.TARGET_STORAGE_VERSION);
-      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'fQ0Vsb7+niZdygUNPYbW5PMxW9p5B5/+JDGgAMAbnzs=');
+      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'bdwnvfDl7PHJLJObd1uhUnKYNSu0CZQP28/3yW1hXy4=');
 
       done();
+    });
+
+    runOrSkip('should be able to append block to AppendBlob using SharedAccessSignature', function (done) {
+      var containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+      var blobService = azure.createBlobService()
+      .withFilter(new azure.ExponentialRetryPolicyFilter());
+
+      blobService.createContainer(containerName, function (error) {
+        assert.equal(error, null);
+
+        blobService.createAppendBlobFromText(containerName, blobName, 'id1', function (error2) {
+          assert.equal(error2, null);
+   
+          var startDate = new Date();
+          var expiryDate = new Date(startDate);
+          expiryDate.setMinutes(startDate.getMinutes() + 5);
+
+          var sharedAccessPolicy = {
+            AccessPolicy: {
+              Permissions: BlobUtilities.SharedAccessPermissions.READ + 
+                           BlobUtilities.SharedAccessPermissions.ADD + 
+                           BlobUtilities.SharedAccessPermissions.WRITE,
+              Expiry: expiryDate
+            }
+          };
+
+          var headers = {
+            cacheControl: 'no-transform',
+            contentDisposition: 'attachment',
+            contentEncoding: 'gzip',
+            contentLanguage: 'tr,en',
+            contentType: 'text/html'
+          };
+          var token = blobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy, headers);
+          var sharedBlobService = azure.createBlobServiceWithSas(blobService.host, token);
+      
+          sharedBlobService.appendFromText(containerName, blobName, 'id2', function (error) {
+            assert.equal(error, null);
+
+            blobService.deleteContainer(containerName, function (deleteError) {
+              assert.equal(deleteError, null);
+              done();
+            });
+          });
+        });
+      });
     });
 
     runOrSkip('should be able to download blob using SharedAccessSignature', function (done) {
@@ -1397,16 +1472,14 @@ describe('BlobService', function () {
 
         // This is testing the root container functionality, which we don't want to pollute with random blobs.
         // Thus, trying to delete blob both before and after the actual test.
-        describe('prepare the root container', function() {
-          it('should work', function (done) {
-            blobService.doesContainerExist(containerName, function (error, exist) {
-              assert.equal(error, null);
-              if (exist) {
-                blobService.deleteBlobIfExists(containerName, blobName, function () { done(); });
-              } else {
-                blobService.createContainer(containerName, function () { done(); });
-              }
-            });
+        it('prepare the root container should work', function (done) {
+          blobService.doesContainerExist(containerName, function (error, exist) {
+            assert.equal(error, null);
+            if (exist) {
+              blobService.deleteBlobIfExists(containerName, blobName, function () { done(); });
+            } else {
+              blobService.createContainer(containerName, function () { done(); });
+            }
           });
         });
 
@@ -1438,11 +1511,9 @@ describe('BlobService', function () {
           });
         });
 
-        describe('cleanup the root container', function() {
-          it('should work', function (done) {
-            blobService.deleteBlobIfExists(containerName, blobName, function() {
-              done();
-            });
+        it('cleanup the root container should work', function (done) {
+          blobService.deleteBlobIfExists(containerName, blobName, function() {
+            done();
           });
         });
       });

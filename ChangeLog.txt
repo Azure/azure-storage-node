@@ -1,6 +1,23 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
 be taken. This is a CTP v1 release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
 
+2016.03 Version 0.9.0
+
+ALL
+* Updated storage service version to 2015-04-05. Fore more information, please see - https://msdn.microsoft.com/en-us/library/azure/dd894041.aspx
+* Added support for Account SAS.
+* Added support for IPACL and Protocols options for service SAS.
+* Fixed the issue where the authentication may fail when a metadata key is in upper case.
+* Added 'nsp check' task for security vulnerability check.
+* Updated the dependency of the 'request' module to avoid the security vulnerability reported by the 'nsp' tool.
+
+BLOB
+* Added new permission 'ADD' for service SAS.
+
+FILE
+* Added support for metrics setting for service properties.
+
+
 2016.01 Version 0.8.0
 
 ALL
