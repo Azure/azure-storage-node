@@ -16,6 +16,6 @@ install:
 
 script:
   # `nsp check` doesn't work on NodeJS 0.8*. Don't run `nsp check` against 0.8*
-  - case ${TRAVIS_NODE_VERSION} in 0.8*) npm testwithoutcheck;; *) npm test;; esac
+  - case ${TRAVIS_NODE_VERSION} in 0.8*) npm run testwithoutcheck;; *) npm test;; esac
 
 sudo: false
