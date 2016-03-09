@@ -136,6 +136,10 @@
 						</li>
 						
 						<li>
+							<a href="global.html#generateAccountSharedAccessSignature">generateAccountSharedAccessSignature</a>
+						</li>
+						
+						<li>
 							<a href="global.html#generateDevelopmentStorageCredentials">generateDevelopmentStorageCredentials</a>
 						</li>
 						
@@ -2301,20 +2305,23 @@ BlobService.prototype.abortCopyBlob = function (container, blob, copyId, options
 * Retrieves a shared access signature token.
 *
 * @this {BlobService}
-* @param {string}                   container                                     The container name.
-* @param {string}                   [blob]                                        The blob name.
-* @param {object}                   sharedAccessPolicy                            The shared access policy.
-* @param {string}                   [sharedAccessPolicy.Id]                       The signed identifier.
-* @param {object}                   [sharedAccessPolicy.AccessPolicy.Permissions] The permission type.
-* @param {date|string}              [sharedAccessPolicy.AccessPolicy.Start]       The time at which the Shared Access Signature becomes valid (The UTC value will be used).
-* @param {date|string}              sharedAccessPolicy.AccessPolicy.Expiry        The time at which the Shared Access Signature becomes expired (The UTC value will be used).
-* @param {object}                   [headers]                                     The optional header values to set for a blob returned wth this SAS.
-* @param {string}                   [headers.cacheControl]                        The optional value of the Cache-Control response header to be returned when this SAS is used.
-* @param {string}                   [headers.contentType]                         The optional value of the Content-Type response header to be returned when this SAS is used.
-* @param {string}                   [headers.contentEncoding]                     The optional value of the Content-Encoding response header to be returned when this SAS is used.
-* @param {string}                   [headers.contentLanguage]                     The optional value of the Content-Language response header to be returned when this SAS is used.
-* @param {string}                   [headers.contentDisposition]                  The optional value of the Content-Disposition response header to be returned when this SAS is used.
-* @return {string}                                                                The shared access signature query string. Note this string does not contain the leading "?".
+* @param {string}                   container                                           The container name.
+* @param {string}                   [blob]                                              The blob name.
+* @param {object}                   sharedAccessPolicy                                  The shared access policy.
+* @param {string}                   [sharedAccessPolicy.Id]                             The signed identifier.
+* @param {object}                   [sharedAccessPolicy.AccessPolicy.Permissions]       The permission type.
+* @param {date|string}              [sharedAccessPolicy.AccessPolicy.Start]             The time at which the Shared Access Signature becomes valid (The UTC value will be used).
+* @param {date|string}              [sharedAccessPolicy.AccessPolicy.Expiry]            The time at which the Shared Access Signature becomes expired (The UTC value will be used).
+* @param {string}                   [sharedAccessPolicy.AccessPolicy.IPAddressOrRange]  An IP address or a range of IP addresses from which to accept requests. When specifying a range, note that the range is inclusive.
+* @param {string}                   [sharedAccessPolicy.AccessPolicy.Protocol]          The protocol permitted for a request made with the account SAS. 
+*                                                                                       Possible values are both HTTPS and HTTP (https,http) or HTTPS only (https). The default value is https,http.
+* @param {object}                   [headers]                                           The optional header values to set for a blob returned wth this SAS.
+* @param {string}                   [headers.cacheControl]                              The optional value of the Cache-Control response header to be returned when this SAS is used.
+* @param {string}                   [headers.contentType]                               The optional value of the Content-Type response header to be returned when this SAS is used.
+* @param {string}                   [headers.contentEncoding]                           The optional value of the Content-Encoding response header to be returned when this SAS is used.
+* @param {string}                   [headers.contentLanguage]                           The optional value of the Content-Language response header to be returned when this SAS is used.
+* @param {string}                   [headers.contentDisposition]                        The optional value of the Content-Disposition response header to be returned when this SAS is used.
+* @return {string}                                                                      The shared access signature query string. Note this string does not contain the leading "?".
 */
 BlobService.prototype.generateSharedAccessSignature = function (container, blob, sharedAccessPolicy, headers) {
   // check if the BlobService is able to generate a shared access signature
@@ -5822,7 +5829,7 @@ module.exports = BlobService;
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Wed Jan 27th 2016 using the <a
+		on Wed Mar 9th 2016 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>

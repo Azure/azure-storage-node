@@ -136,6 +136,10 @@
 						</li>
 						
 						<li>
+							<a href="global.html#generateAccountSharedAccessSignature">generateAccountSharedAccessSignature</a>
+						</li>
+						
+						<li>
 							<a href="global.html#generateDevelopmentStorageCredentials">generateDevelopmentStorageCredentials</a>
 						</li>
 						
@@ -2003,6 +2007,397 @@ environment variables will be used.</p>
         
             
 <dt>
+    <h4 class="name" id="generateAccountSharedAccessSignature"><span class="type-signature"></span>generateAccountSharedAccessSignature<span class="signature">(<span class="optional">storageAccountOrConnectionString</span>, <span class="optional">storageAccessKey</span>, sharedAccessPolicy)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Generates an account shared access signature token</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>storageAccountOrConnectionString</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The storage account or the connection string.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>storageAccessKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The storage access key.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>sharedAccessPolicy</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The shared access policy.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>AccessPolicy.Services</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">SharedAccessServices</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The services (blob, file, queue, table) for a shared access signature associated with this shared access policy.
+                                                                                      Refer to <code>Constants.AccountSasConstants.Services</code>.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>AccessPolicy.ResourceTypes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">SharedAccessResourceTypes</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The resource type for a shared access signature associated with this shared access policy.
+                                                                                      Refer to <code>Constants.AccountSasConstants.ResourceTypes</code>.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>AccessPolicy.Permissions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">SharedAccessPermissions</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The permissions for a shared access signature. 
+                                                                                      Refer to <code>Constants.AccountSasConstants.Permissions</code>.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>AccessPolicy.Start</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The time at which the Shared Access Signature becomes valid.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>AccessPolicy.Expiry</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The time at which the Shared Access Signature becomes expired.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>AccessPolicy.IPAddressOrRange</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The permission type. Refer to <code>Constants.AccountSasConstants.ResourceTypes</code>.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>AccessPolicy.Protocol</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The possible protocol. Refer to <code>Constants.AccountSasConstants.ResourceTypes</code>.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="azure-storage.js.html">azure-storage.js</a>,
+				 <a href="azure-storage.js.html#sunlight-1-line-222">line 222</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="generateDevelopmentStorageCredentials"><span class="type-signature"></span>generateDevelopmentStorageCredentials<span class="signature">(<span class="optional">proxyUri</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
     
     
@@ -2294,7 +2689,7 @@ environment variables will be used.</p>
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-196">line 196</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-231">line 231</a>
 			</li>
 		</ul>
 	</dd>
@@ -2466,7 +2861,7 @@ environment variables will be used.</p>
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-198">line 198</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-233">line 233</a>
 			</li>
 		</ul>
 	</dd>
@@ -2512,7 +2907,7 @@ environment variables will be used.</p>
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Wed Jan 27th 2016 using the <a
+		on Wed Mar 9th 2016 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
