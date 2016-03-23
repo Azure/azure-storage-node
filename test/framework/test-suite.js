@@ -279,7 +279,7 @@ _.extend(TestSuite.prototype, {
   	if (this.isMocked) {
       return prefix + 'testdata' + (this.nameIndex++);
   	} else {
-      return prefix + Date().getTime().toString().toLowerCase();
+      return prefix + new Date().getTime().toString().toLowerCase();
   	}
   }
 });
