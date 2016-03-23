@@ -13,12 +13,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'linearretry1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c143b3b2-0002-0047-0cd5-75496c000000',
+  'x-ms-request-id': 'e994c801-0002-0037-101c-833aa8000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'linearretry1\')',
-  date: 'Fri, 04 Mar 2016 05:22:54 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -30,12 +30,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'linearretry1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c143b3b2-0002-0047-0cd5-75496c000000',
+  'x-ms-request-id': 'e994c801-0002-0037-101c-833aa8000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'linearretry1\')',
-  date: 'Fri, 04 Mar 2016 05:22:54 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -43,15 +43,15 @@ var result =
 nock('http://xplat.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(409, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>TableAlreadyExists</code><message xml:lang=\"en-US\">The table specified already exists.\nRequestId:79396b9d-0002-0006-47d5-75617f000000\nTime:2016-03-04T05:22:54.9426051Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(409, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>TableAlreadyExists</code><message xml:lang=\"en-US\">The table specified already exists.\nRequestId:12daa594-0002-0028-201c-83e1b8000000\nTime:2016-03-21T02:48:10.7987610Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '79396b9d-0002-0006-47d5-75617f000000',
+  'x-ms-request-id': '12daa594-0002-0028-201c-83e1b8000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
-  date: 'Fri, 04 Mar 2016 05:22:54 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -59,45 +59,45 @@ var result =
 nock('https://xplat.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(409, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>TableAlreadyExists</code><message xml:lang=\"en-US\">The table specified already exists.\nRequestId:79396b9d-0002-0006-47d5-75617f000000\nTime:2016-03-04T05:22:54.9426051Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(409, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>TableAlreadyExists</code><message xml:lang=\"en-US\">The table specified already exists.\nRequestId:12daa594-0002-0028-201c-83e1b8000000\nTime:2016-03-21T02:48:10.7987610Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '79396b9d-0002-0006-47d5-75617f000000',
+  'x-ms-request-id': '12daa594-0002-0028-201c-83e1b8000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
-  date: 'Fri, 04 Mar 2016 05:22:54 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27linearretry1%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('linearretry1')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('linearretry1')\" /><title /><updated>2016-03-04T05:22:56Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>linearretry1</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('linearretry1')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('linearretry1')\" /><title /><updated>2016-03-21T02:48:11Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>linearretry1</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '315eeb2f-0002-0015-16d5-75549e000000',
+  'x-ms-request-id': '9de76702-0002-0006-221c-83617f000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:22:55 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27linearretry1%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('linearretry1')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('linearretry1')\" /><title /><updated>2016-03-04T05:22:56Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>linearretry1</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('linearretry1')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('linearretry1')\" /><title /><updated>2016-03-21T02:48:11Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>linearretry1</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '315eeb2f-0002-0015-16d5-75549e000000',
+  'x-ms-request-id': '9de76702-0002-0006-221c-83617f000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:22:55 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -107,10 +107,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5091ad3c-0002-0037-33d5-753aa8000000',
+  'x-ms-request-id': '4091aa8e-0002-001e-0a1c-834cea000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:22:56 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:11 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -120,10 +120,10 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5091ad3c-0002-0037-33d5-753aa8000000',
+  'x-ms-request-id': '4091aa8e-0002-001e-0a1c-834cea000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:22:56 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:11 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -135,12 +135,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'linearretry2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f5dbc228-0002-0046-29d5-754891000000',
+  'x-ms-request-id': '3557e162-0002-004b-431c-83a79d000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'linearretry2\')',
-  date: 'Fri, 04 Mar 2016 05:22:56 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:11 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -152,12 +152,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'linearretry2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f5dbc228-0002-0046-29d5-754891000000',
+  'x-ms-request-id': '3557e162-0002-004b-431c-83a79d000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'linearretry2\')',
-  date: 'Fri, 04 Mar 2016 05:22:56 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:11 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -167,10 +167,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2b960cb0-0002-0019-75d5-75ba6f000000',
+  'x-ms-request-id': 'c354c751-0002-0014-781c-835563000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:22:57 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:13 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -180,10 +180,10 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2b960cb0-0002-0019-75d5-75ba6f000000',
+  'x-ms-request-id': 'c354c751-0002-0014-781c-835563000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:22:57 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:13 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -191,15 +191,15 @@ var result =
 nock('http://xplat.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(409, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>TableBeingDeleted</code><message xml:lang=\"en-US\">The specified table is being deleted. Try operation later.\nRequestId:9f9954ef-0002-0028-74d5-75e1b8000000\nTime:2016-03-04T05:22:58.4818382Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(409, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>TableBeingDeleted</code><message xml:lang=\"en-US\">The specified table is being deleted. Try operation later.\nRequestId:e9edace0-0002-0019-211c-83ba6f000000\nTime:2016-03-21T02:48:14.2220644Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9f9954ef-0002-0028-74d5-75e1b8000000',
+  'x-ms-request-id': 'e9edace0-0002-0019-211c-83ba6f000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
-  date: 'Fri, 04 Mar 2016 05:22:58 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:13 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -207,47 +207,15 @@ var result =
 nock('https://xplat.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(409, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>TableBeingDeleted</code><message xml:lang=\"en-US\">The specified table is being deleted. Try operation later.\nRequestId:9f9954ef-0002-0028-74d5-75e1b8000000\nTime:2016-03-04T05:22:58.4818382Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(409, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>TableBeingDeleted</code><message xml:lang=\"en-US\">The specified table is being deleted. Try operation later.\nRequestId:e9edace0-0002-0019-211c-83ba6f000000\nTime:2016-03-21T02:48:14.2220644Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9f9954ef-0002-0028-74d5-75e1b8000000',
+  'x-ms-request-id': 'e9edace0-0002-0019-211c-83ba6f000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
-  date: 'Fri, 04 Mar 2016 05:22:58 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://xplat.table.core.windows.net:443')
-  .filteringRequestBody(function (path) { return '*';})
-.post('/Tables', '*')
-  .reply(409, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>TableBeingDeleted</code><message xml:lang=\"en-US\">The specified table is being deleted. Try operation later.\nRequestId:b243371c-0002-0000-52d5-759607000000\nTime:2016-03-04T05:23:28.7008915Z</message></error>", { 'cache-control': 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/xml;charset=utf-8',
-  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b243371c-0002-0000-52d5-759607000000',
-  'x-ms-version': '2015-04-05',
-  'x-content-type-options': 'nosniff',
-  'preference-applied': 'return-no-content',
-  date: 'Fri, 04 Mar 2016 05:23:27 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplat.table.core.windows.net:443')
-  .filteringRequestBody(function (path) { return '*';})
-.post('/Tables', '*')
-  .reply(409, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>TableBeingDeleted</code><message xml:lang=\"en-US\">The specified table is being deleted. Try operation later.\nRequestId:b243371c-0002-0000-52d5-759607000000\nTime:2016-03-04T05:23:28.7008915Z</message></error>", { 'cache-control': 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/xml;charset=utf-8',
-  server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b243371c-0002-0000-52d5-759607000000',
-  'x-ms-version': '2015-04-05',
-  'x-content-type-options': 'nosniff',
-  'preference-applied': 'return-no-content',
-  date: 'Fri, 04 Mar 2016 05:23:27 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:13 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -259,12 +227,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'linearretry2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3b9359a2-0002-0030-07d6-75cc2d000000',
+  'x-ms-request-id': '6fba1c3d-0002-003c-771c-8322dc000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'linearretry2\')',
-  date: 'Fri, 04 Mar 2016 05:23:59 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -276,42 +244,42 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'linearretry2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3b9359a2-0002-0030-07d6-75cc2d000000',
+  'x-ms-request-id': '6fba1c3d-0002-003c-771c-8322dc000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'linearretry2\')',
-  date: 'Fri, 04 Mar 2016 05:23:59 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27linearretry2%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('linearretry2')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('linearretry2')\" /><title /><updated>2016-03-04T05:24:00Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>linearretry2</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('linearretry2')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('linearretry2')\" /><title /><updated>2016-03-21T02:48:45Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>linearretry2</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9022dc57-0002-0004-67d6-756385000000',
+  'x-ms-request-id': 'cb2e01b8-0002-0041-6e1c-83be14000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:23:59 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:45 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27linearretry2%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('linearretry2')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('linearretry2')\" /><title /><updated>2016-03-04T05:24:00Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>linearretry2</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('linearretry2')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('linearretry2')\" /><title /><updated>2016-03-21T02:48:45Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>linearretry2</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9022dc57-0002-0004-67d6-756385000000',
+  'x-ms-request-id': 'cb2e01b8-0002-0041-6e1c-83be14000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:23:59 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:45 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -321,10 +289,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7cfa1860-0002-0012-55d6-75a21b000000',
+  'x-ms-request-id': '01f763b5-0002-0009-1e1c-838c89000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:24:00 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:45 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -334,151 +302,151 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7cfa1860-0002-0012-55d6-75a21b000000',
+  'x-ms-request-id': '01f763b5-0002-0009-1e1c-838c89000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:24:00 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:45 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .delete('/Tables(%27linearretry3%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:48556f70-0002-0049-67d6-75a567000000\nTime:2016-03-04T05:24:01.4225491Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:225ab2f0-0002-0022-451c-83f831000000\nTime:2016-03-21T02:48:46.6301642Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '48556f70-0002-0049-67d6-75a567000000',
+  'x-ms-request-id': '225ab2f0-0002-0022-451c-83f831000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:24:01 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:46 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27linearretry3%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:48556f70-0002-0049-67d6-75a567000000\nTime:2016-03-04T05:24:01.4225491Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:225ab2f0-0002-0022-451c-83f831000000\nTime:2016-03-21T02:48:46.6301642Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '48556f70-0002-0049-67d6-75a567000000',
+  'x-ms-request-id': '225ab2f0-0002-0022-451c-83f831000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:24:01 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:46 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .delete('/Tables(%27linearretry3%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:5bb238e8-0002-0044-4fd6-754a6b000000\nTime:2016-03-04T05:24:01.8742713Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:47f0c746-0002-0027-0b1c-830c4e000000\nTime:2016-03-21T02:48:46.1408127Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5bb238e8-0002-0044-4fd6-754a6b000000',
+  'x-ms-request-id': '47f0c746-0002-0027-0b1c-830c4e000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:24:01 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:46 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27linearretry3%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:5bb238e8-0002-0044-4fd6-754a6b000000\nTime:2016-03-04T05:24:01.8742713Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:47f0c746-0002-0027-0b1c-830c4e000000\nTime:2016-03-21T02:48:46.1408127Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5bb238e8-0002-0044-4fd6-754a6b000000',
+  'x-ms-request-id': '47f0c746-0002-0027-0b1c-830c4e000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:24:01 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:46 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .delete('/Tables(%27linearretry3%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:7ff15339-0002-003f-20d6-7521db000000\nTime:2016-03-04T05:24:02.6282738Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:3dad3273-0002-0040-731c-83bfe9000000\nTime:2016-03-21T02:48:47.6561734Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7ff15339-0002-003f-20d6-7521db000000',
+  'x-ms-request-id': '3dad3273-0002-0040-731c-83bfe9000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:24:01 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:47 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27linearretry3%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:7ff15339-0002-003f-20d6-7521db000000\nTime:2016-03-04T05:24:02.6282738Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:3dad3273-0002-0040-731c-83bfe9000000\nTime:2016-03-21T02:48:47.6561734Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7ff15339-0002-003f-20d6-7521db000000',
+  'x-ms-request-id': '3dad3273-0002-0040-731c-83bfe9000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:24:01 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:47 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .delete('/Tables(%27linearretry3%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:47258ce8-0002-003a-3bd6-75d5a4000000\nTime:2016-03-04T05:24:03.0764204Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:86a1c793-0002-0031-721c-83cdd0000000\nTime:2016-03-21T02:48:48.5840237Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '47258ce8-0002-003a-3bd6-75d5a4000000',
+  'x-ms-request-id': '86a1c793-0002-0031-721c-83cdd0000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:24:02 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:47 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .delete('/Tables(%27linearretry3%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:47258ce8-0002-003a-3bd6-75d5a4000000\nTime:2016-03-04T05:24:03.0764204Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:86a1c793-0002-0031-721c-83cdd0000000\nTime:2016-03-21T02:48:48.5840237Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '47258ce8-0002-003a-3bd6-75d5a4000000',
+  'x-ms-request-id': '86a1c793-0002-0031-721c-83cdd0000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:24:02 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:47 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27linearretry3%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:db5051b9-0002-0021-2cd6-75fb36000000\nTime:2016-03-04T05:24:03.7706173Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:e74bb224-0002-0036-541c-833b55000000\nTime:2016-03-21T02:48:49.1382368Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'db5051b9-0002-0021-2cd6-75fb36000000',
+  'x-ms-request-id': 'e74bb224-0002-0036-541c-833b55000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:24:03 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:48 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27linearretry3%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:db5051b9-0002-0021-2cd6-75fb36000000\nTime:2016-03-04T05:24:03.7706173Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:e74bb224-0002-0036-541c-833b55000000\nTime:2016-03-21T02:48:49.1382368Z</message></error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml;charset=utf-8',
   vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'db5051b9-0002-0021-2cd6-75fb36000000',
+  'x-ms-request-id': 'e74bb224-0002-0036-541c-833b55000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:24:03 GMT',
+  date: 'Mon, 21 Mar 2016 02:48:48 GMT',
   connection: 'close' });
  return result; }]];

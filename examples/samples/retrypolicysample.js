@@ -114,7 +114,8 @@ function createContainer (callback) {
     if (error) {
       console.log(error);
     } else {
-      console.log(' Container info ' + containerResult.headers);
+      console.log(' Container info ');
+      console.log(containerResult);
       console.log('Created the container ' + container);
       callback();
     }

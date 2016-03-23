@@ -228,9 +228,9 @@ var queueService = azure.createQueueService(),
 queueService.getMessages(queueName, function(error, serverMessages) {
   if (!error) {
     // Process the message in less than 30 seconds, the message
-    // text is available in serverMessages[0].messagetext
+    // text is available in serverMessages[0].messageText
 
-    queueService.deleteMessage(queueName, serverMessages[0].messageid, serverMessages[0].popreceipt, function(error) {
+    queueService.deleteMessage(queueName, serverMessages[0].messageId, serverMessages[0].popReceipt, function(error) {
       if (!error) {
         // Message deleted
       }

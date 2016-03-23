@@ -92,13 +92,13 @@ describe('FileUploadDownloadScale', function () {
           uploadFunc.call(fileService, shareName, directoryName, fileName, fileInfo.name, uploadOptions, function(error) {
             assert.equal(error, null);
             fileService.getFileProperties(shareName, directoryName, fileName, function(error, file) {
-              assert.equal(file.contentMD5, fileInfo.contentMD5);
+              assert.equal(file.contentSettings.contentMD5, fileInfo.contentMD5);
               assert.equal(file.contentLength, fileInfo.size);
               var downloadFileName = fileName + '_download.tmp';
               var downloadOptions = {useTransactionalMD5: true, parallelOperationThreadCount: 5};
               fileService.getFileToLocalFile(shareName, directoryName, fileName, downloadFileName, downloadOptions, function(error, file) {
                 assert.equal(error, null);
-                assert.equal(file.contentMD5, fileInfo.contentMD5);
+                assert.equal(file.contentSettings.contentMD5, fileInfo.contentMD5);
                 fs.stat(downloadFileName, function(error, stat) {
                   assert.equal(error, null);
                   assert.equal(stat.size, fileInfo.size);

@@ -198,7 +198,7 @@ describe('FileUploadDownload', function () {
         stream.on('close', function () {
           fileService.getFileProperties(shareName, directoryName, fileName, function (err, file) {
             assert.equal(err, null);
-            assert.equal(file.contentMD5, fileContentMD5);
+            assert.equal(file.contentSettings.contentMD5, fileContentMD5);
             done();
           });
         });
@@ -374,10 +374,10 @@ describe('FileUploadDownload', function () {
         };
 
         fileService.on('sendingRequestEvent', callback);
-        fileService.createRangesFromStream(shareName, directoryName, fileName, rfs.createReadStream(localFileName), 0, fileText.length - 1, {contentMD5: fileMD5}, function(err2) {
+        fileService.createRangesFromStream(shareName, directoryName, fileName, rfs.createReadStream(localFileName), 0, fileText.length - 1, {transactionalContentMD5: fileMD5}, function(err2) {
           // Upload all data
           assert.equal(err2, null);
-          fileService.removeAllListeners('sendingRequestEvent');   
+          fileService.removeAllListeners('sendingRequestEvent');
 
            fileService.getFileToText(shareName, directoryName, fileName, function (downloadErr, text, file, downloadResponse) {
             assert.equal(downloadErr, null);
@@ -386,7 +386,7 @@ describe('FileUploadDownload', function () {
             assert.equal(text, fileText);
 
             done();
-          });           
+          });
         });
       });
     });
@@ -653,7 +653,7 @@ describe('FileUploadDownload', function () {
         var options = {disableContentMD5Validation : false};
         fileService.getFileToLocalFile(shareName, directoryName, fileName, downloadFileName, options, function (err, file) {
           assert.equal(err, null);
-          assert.equal(file.contentMD5, fileContentMD5);
+          assert.equal(file.contentSettings.contentMD5, fileContentMD5);
 
           var exists = azureutil.pathExistsSync(downloadFileName);
           assert.equal(exists, true);
@@ -805,7 +805,7 @@ describe('FileUploadDownload', function () {
           assert.equal(downloadErr, null);
           assert.ok(downloadResponse.isSuccessful);
           assert.ok(file);
-          assert.equal(file.contentMD5, fileContentMD5);
+          assert.equal(file.contentSettings.contentMD5, fileContentMD5);
 
           var exists = azureutil.pathExistsSync(downloadFileName);
           assert.equal(exists, true);
@@ -904,14 +904,14 @@ describe('FileUploadDownload', function () {
       var fileText = 'Hello World';
       var fileMD5 = azureutil.getContentMd5(fileText);
 
-      fileService.createFileFromText(shareName, directoryName, fileName, fileText, {storeFileContentMD5: true, contentMD5: fileMD5}, function (uploadError, file, uploadResponse) {
+      fileService.createFileFromText(shareName, directoryName, fileName, fileText, {storeFileContentMD5: true, contentSettings: { contentMD5: fileMD5 }}, function (uploadError, file, uploadResponse) {
         assert.equal(uploadError, null);
         assert.notEqual(file, null);
         assert.ok(uploadResponse.isSuccessful);
         
         fileService.getFileProperties(shareName, directoryName, fileName, function (getPropError, properties) {
           assert.equal(getPropError, null);
-          assert.equal(properties.contentMD5, fileMD5);
+          assert.equal(properties.contentSettings.contentMD5, fileMD5);
           fileService.getFileToText(shareName, directoryName, fileName, function (downloadErr, fileTextResponse) {
             assert.equal(downloadErr, null);
             assert.equal(fileTextResponse, fileText);
@@ -949,7 +949,7 @@ describe('FileUploadDownload', function () {
         assert.equal(file.name, fileName);
 
         fileService.getFileProperties(shareName, directoryName, fileName, function (err, file) {
-          assert.equal(file.contentMD5, undefined);
+          assert.equal(file.contentSettings, undefined);
 
           fileService.getFileToText(shareName, directoryName, fileName, function (downloadErr, fileTextResponse) {
             assert.equal(downloadErr, null);
@@ -966,7 +966,7 @@ describe('FileUploadDownload', function () {
 
         fileService.getFileProperties(shareName, directoryName, fileName, function (err1, file) {
           assert.equal(err1, null);
-          assert.equal(file.contentMD5, undefined);
+          assert.equal(file.contentSettings, undefined);
           assert.equal(speedSummary.getTotalSize(false), fileText.length);
           assert.equal(speedSummary.getCompleteSize(false), fileText.length);
           assert.equal(speedSummary.getCompletePercent(), '100.0');
@@ -986,7 +986,7 @@ describe('FileUploadDownload', function () {
 
         fileService.getFileProperties(shareName, directoryName, fileName, function (getErr, file) {
           assert.equal(getErr, null);
-          assert.equal(file.contentMD5, fileContentMD5);
+          assert.equal(file.contentSettings.contentMD5, fileContentMD5);
           done();
         });
       });
@@ -1008,7 +1008,7 @@ describe('FileUploadDownload', function () {
     });
 
     it('should work with content type', function (done) {
-      var fileOptions = { contentType: 'text' };
+      var fileOptions = { contentSettings: { contentType: 'text' }};
       fileService.createFileFromLocalFile(shareName, directoryName, fileName, localFileName, fileOptions, function (uploadError, fileResponse, uploadResponse) {
         assert.equal(uploadError, null);
         assert.notEqual(fileResponse, null);
@@ -1017,7 +1017,7 @@ describe('FileUploadDownload', function () {
         fileService.getFileProperties(shareName, directoryName, fileName, function (getFilePropertiesErr, fileGetResponse) {
           assert.equal(getFilePropertiesErr, null);
           assert.notEqual(fileGetResponse, null);
-          assert.equal(fileOptions.contentType, fileGetResponse.contentType);
+          assert.equal(fileOptions.contentSettings.contentType, fileGetResponse.contentSettings.contentType);
           done();
         });
       });
@@ -1031,7 +1031,7 @@ describe('FileUploadDownload', function () {
         fileService.getFileProperties(shareName, directoryName, fileName, function (err2, file) {
           assert.equal(err2, null);
           assert.equal(file.contentLength, 0);
-          assert.equal(file.contentMD5, zeroFileContentMD5);
+          assert.equal(file.contentSettings.contentMD5, zeroFileContentMD5);
           done();
         });
       });
@@ -1042,9 +1042,9 @@ describe('FileUploadDownload', function () {
         assert.notEqual(err, null);
         assert.equal(path.basename(err.path), notExistFileName);
 
-        fileService.doesFileExist(shareName, directoryName, fileName, function (existsErr, exists) {
+        fileService.doesFileExist(shareName, directoryName, fileName, function (existsErr, existsResult) {
           assert.equal(existsErr, null);
-          assert.equal(exists, false);
+          assert.equal(existsResult.exists, false);
           done();
         });
       });
@@ -1087,7 +1087,7 @@ describe('FileUploadDownload', function () {
 
         fileService.getFileProperties(shareName, directoryName, fileName, function (err1, file) {
           assert.equal(err1, null);
-          assert.equal(file.contentMD5, undefined);
+          assert.equal(file.contentSettings, undefined);
 
           fileService.getFileToText(shareName, directoryName, fileName, function (downloadErr, fileTextResponse) {
             assert.equal(downloadErr, null);
@@ -1100,13 +1100,15 @@ describe('FileUploadDownload', function () {
 
     it('should work with contentMD5 in options', function(done) {
       var options = {
-        contentMD5 : fileContentMD5
+        contentSettings: {
+          contentMD5: fileContentMD5
+        }
       };
 
       fileService.createFileFromStream(shareName, directoryName, fileName, stream, len, options, function (err) {
         assert.equal(err, null);
         fileService.getFileProperties(shareName, directoryName, fileName, function (err, file) {
-          assert.equal(file.contentMD5, fileContentMD5);
+          assert.equal(file.contentSettings.contentMD5, fileContentMD5);
           done();
         });
       });
@@ -1128,7 +1130,7 @@ describe('FileUploadDownload', function () {
     });
 
     it('should work with content type', function (done) {
-      var fileOptions = { contentType: 'text'};
+      var fileOptions = { contentSettings: { contentType: 'text' }};
 
       fileService.createFileFromStream(shareName, directoryName, fileName, rfs.createReadStream(localFileName), fileText.length, fileOptions, function (uploadError, fileResponse, uploadResponse) {
         assert.equal(uploadError, null);
@@ -1142,7 +1144,7 @@ describe('FileUploadDownload', function () {
           fileService.getFileProperties(shareName, directoryName, fileName, function (getFilePropertiesErr, fileGetResponse) {
             assert.equal(getFilePropertiesErr, null);
             assert.notEqual(fileGetResponse, null);
-            assert.equal(fileOptions.contentType, fileGetResponse.contentType);
+            assert.equal(fileOptions.contentSettings.contentType, fileGetResponse.contentSettings.contentType);
 
             done();
           });
@@ -1185,7 +1187,7 @@ describe('FileUploadDownload', function () {
       fileBuffer[0] = '1';
       var fileMD5 = writeFile(localFileName, fileBuffer);
 
-      var fileOptions = {storeFileContentMD5: true, useTransactionalMD5: true, contentType: 'text'};
+      var fileOptions = {storeFileContentMD5: true, useTransactionalMD5: true, contentSettings: { contentType: 'text' }};
       fileService.on('sendingRequestEvent', callback);
       fileService.createFileFromLocalFile(shareName, directoryName, fileName, localFileName, fileOptions, function (uploadError, fileResponse, uploadResponse) {
         fileService.removeAllListeners('sendingRequestEvent');
@@ -1196,12 +1198,13 @@ describe('FileUploadDownload', function () {
         // Set disableContentMD5Validation to false explicitly.
         fileService.getFileToLocalFile(shareName, directoryName, fileName, downloadFileName, function (downloadErr, downloadResult) {
           assert.equal(downloadErr, null);
-          assert.strictEqual(downloadResult.contentMD5, fileMD5);
+          assert.strictEqual(downloadResult.contentSettings.contentMD5, fileMD5);
 
-          fileService.getFileProperties(shareName, directoryName, fileName, function (getFilePropertiesErr, fileGetResponse) {
+          fileService.getFileProperties(shareName, directoryName, fileName, function (getFilePropertiesErr, fileGetResult) {
             assert.equal(getFilePropertiesErr, null);
-            assert.notEqual(fileGetResponse, null);
-            assert.equal(fileOptions.contentType, fileGetResponse.contentType);
+            assert.notEqual(fileGetResult, null);
+            assert.equal(fileOptions.contentSettings.contentType, fileGetResult.contentSettings.contentType);
+            assert.notEqual(fileGetResult.contentSettings.contentMD5, null);
 
             done();
           });
@@ -1215,7 +1218,7 @@ describe('FileUploadDownload', function () {
       fileBuffer[0] = '1';
       var fileMD5 = writeFile(localFileName, fileBuffer);
 
-      var fileOptions = {storeFileContentMD5: true, useTransactionalMD5: true, contentType: 'text'};
+      var fileOptions = {storeFileContentMD5: true, useTransactionalMD5: true, contentSettings: { contentType: 'text' }};
       fileService.on('sendingRequestEvent', callback);
       fileService.createFileFromLocalFile(shareName, directoryName, fileName, localFileName, fileOptions, function (uploadError, fileResponse, uploadResponse) {
         fileService.removeAllListeners('sendingRequestEvent');
@@ -1227,13 +1230,13 @@ describe('FileUploadDownload', function () {
         fileService.getFileToStream(shareName, directoryName, fileName, fs.createWriteStream(downloadFileName), downloadOptions, function (downloadErr1, downloadResult1) {
           assert.equal(downloadErr1, null);
           assert.strictEqual(parseInt(downloadResult1.contentLength, 10), 512);
-          assert.strictEqual(downloadResult1.contentMD5, undefined);
+          assert.strictEqual(downloadResult1.contentSettings.contentMD5, undefined);
 
           downloadOptions.useTransactionalMD5 = true
           fileService.getFileToStream(shareName, directoryName, fileName, fs.createWriteStream(downloadFileName), downloadOptions, function (downloadErr2, downloadResult2) {
             assert.equal(downloadErr2, null);
             assert.strictEqual(parseInt(downloadResult2.contentLength, 10), 512);
-            assert.strictEqual(downloadResult2.contentMD5, 'v2GerAzfP2jUluqTRBN+iw==');
+            assert.strictEqual(downloadResult2.contentSettings.contentMD5, 'v2GerAzfP2jUluqTRBN+iw==');
 
             done();
           });
@@ -1253,11 +1256,11 @@ describe('FileUploadDownload', function () {
         fileService.getFileToText(shareName, directoryName, fileName, function (err2, content, result) {
           assert.equal(err2, null);
           assert.equal(content, 'Hello, World!');
-          assert.equal(result.contentMD5, 'ZajifYh5KDgxtmS9i38K1A==');
+          assert.equal(result.contentSettings.contentMD5, 'ZajifYh5KDgxtmS9i38K1A==');
           
-          fileService.getFileProperties(shareName, directoryName, fileName, function (getFilePropertiesErr, blob) {
+          fileService.getFileProperties(shareName, directoryName, fileName, function (getFilePropertiesErr, file) {
             assert.equal(getFilePropertiesErr, null);
-            assert.equal(blob.contentMD5, 'ZajifYh5KDgxtmS9i38K1A==');
+            assert.equal(file.contentSettings.contentMD5, 'ZajifYh5KDgxtmS9i38K1A==');
             done();
           });
         });

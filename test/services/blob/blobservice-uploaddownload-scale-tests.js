@@ -92,7 +92,7 @@ describe('BlobServiceUploadDownloadScale', function () {
             } else {
               assert.equal(error, null);
               blobService.getBlobProperties(containerName, blobName, function (error, blob) {
-                assert.equal(blob.contentMD5, fileInfo.contentMD5);
+                assert.equal(blob.contentSettings.contentMD5, fileInfo.contentMD5);
                 assert.equal(blob.contentLength, fileInfo.size);
                 var downloadFileName = blobName + '_download.tmp';
                 var downloadOptions = {useTransactionalMD5: true, parallelOperationThreadCount: 5};
@@ -100,7 +100,7 @@ describe('BlobServiceUploadDownloadScale', function () {
                 // Test downloading to a local file.
                 blobService.getBlobToLocalFile(containerName, blobName, downloadFileName, downloadOptions, function (error, blob) {
                   assert.equal(error, null);
-                  assert.equal(blob.contentMD5, fileInfo.contentMD5);
+                  assert.equal(blob.contentSettings.contentMD5, fileInfo.contentMD5);
                   fs.stat(downloadFileName, function(error, stat) {
                     assert.equal(error, null);
                     assert.equal(stat.size, fileInfo.size);
@@ -109,7 +109,7 @@ describe('BlobServiceUploadDownloadScale', function () {
                     var writable = fs.createWriteStream(downloadFileName);
                     blobService.createReadStream(containerName, blobName, downloadOptions, function (error, blob) {
                       assert.equal(error, null);
-                      assert.equal(blob.contentMD5, fileInfo.contentMD5);
+                      assert.equal(blob.contentSettings.contentMD5, fileInfo.contentMD5);
                     }).pipe(writable);
                     
                     writable.on('finish', function () { 

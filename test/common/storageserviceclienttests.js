@@ -91,7 +91,7 @@ describe('StorageServiceClientTests', function () {
     });
   });
 
-  describe('NormalizedErrorsAreErrors', function () {
+  describe('NormalizedErrors_normalizeError', function () {
     it('should work', function (done) {
       var error = {
         Error: {
@@ -103,7 +103,7 @@ describe('StorageServiceClientTests', function () {
 
       var normalizedError = StorageServiceClient._normalizeError(error);
       normalizedError.should.be.an.instanceOf(Error);
-      normalizedError.should.have.keys('code', 'detail', 'resultcode', 'somethingelse');
+      normalizedError.should.have.keys('name', 'message', 'code', 'detail', 'resultcode', 'somethingelse');
 
       done();
     });

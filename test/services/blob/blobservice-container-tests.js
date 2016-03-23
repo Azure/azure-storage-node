@@ -20,6 +20,11 @@ var guid = require('node-uuid');
 var testutil = require('../../framework/util');
 var SR = testutil.libRequire('common/util/sr');
 var TestSuite = require('../../framework/test-suite');
+var errors = testutil.libRequire('common/errors/errors');
+var ArgumentError = errors.ArgumentError;
+var ArgumentNullError = errors.ArgumentNullError;
+var TimeoutError = errors.TimeoutError;
+var StorageError = errors.StorageError;
 
 var azure = testutil.libRequire('azure-storage');
 
@@ -79,18 +84,19 @@ describe('BlobContainer', function () {
       
       assert.doesNotThrow(function () { blobService.doesContainerExist('$logs', function () { }); });
       
-      blobService.doesContainerExist(containerName, function (existsError, exists) {
+      blobService.doesContainerExist(containerName, function (existsError, existResult1) {
         assert.equal(existsError, null);
-        assert.strictEqual(exists, false);
+        assert.strictEqual(existResult1.exists, false);
 
         blobService.createContainer(containerName, function (createError, container1, createContainerResponse) {
           assert.equal(createError, null);
           assert.notEqual(container1, null);
           assert.equal(createContainerResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
-          blobService.doesContainerExist(containerName, function (existsError, exists) {
+          blobService.doesContainerExist(containerName, function (existsError, existResult2) {
             assert.equal(existsError, null);
-            assert.strictEqual(exists, true);
+            assert.strictEqual(existResult2.exists, true);
+            assert.notEqual(existResult2.name, null);
             done();
           });
         });
@@ -101,28 +107,43 @@ describe('BlobContainer', function () {
   describe('createContainer', function () {
     it('should detect incorrect container names', function (done) {
       assert.throws(function () { blobService.createContainer(null, function () { }); },
-        /Required argument container for function createContainer is not defined/);
+        function(err){
+          return (err instanceof ArgumentNullError) && err.message === 'Required argument container for function createContainer is not defined';
+        });
         
       assert.throws(function () { blobService.createContainer('$root1', function () { }); },
-        /Container name format is incorrect./);
+        function(err){
+          return (err instanceof SyntaxError) && err.message === 'Container name format is incorrect.'; 
+        });
       
-      assert.throws(function () { blobService.createContainer('$root$logs', function () { }); },
-        /Container name format is incorrect./);
+      assert.throws(function () { blobService.createContainer('$root$logs', function () { }); },function(err){
+          return (err instanceof SyntaxError) && err.message === 'Container name format is incorrect.'; 
+        });
 
       assert.throws(function () { blobService.createContainer('', function () { }); },
-        /Required argument container for function createContainer is not defined/);
+        function(err){
+          return (err instanceof ArgumentNullError) && err.message === 'Required argument container for function createContainer is not defined';
+        });
 
       assert.throws(function () { blobService.createContainer('as', function () { }); },
-        /Container name must be between 3 and 63 characters long./);
+       function(err) {
+          return (err instanceof ArgumentError) && err.message === 'Container name must be between 3 and 63 characters long.';
+      });
 
       assert.throws(function () { blobService.createContainer('a--s', function () { }); },
-        /Container name format is incorrect./);
+        function(err){
+          return (err instanceof SyntaxError) && err.message === 'Container name format is incorrect.'; 
+        });
 
       assert.throws(function () { blobService.createContainer('cont-', function () { }); },
-        /Container name format is incorrect./);
+        function(err){
+          return (err instanceof SyntaxError) && err.message === 'Container name format is incorrect.'; 
+        });
 
       assert.throws(function () { blobService.createContainer('conTain', function () { }); },
-        /Container name format is incorrect./);
+        function(err){
+          return (err instanceof SyntaxError) && err.message === 'Container name format is incorrect.'; 
+        });
 
       done();
     });
@@ -195,17 +216,20 @@ describe('BlobContainer', function () {
     it('should create a container if not exists', function (done) {
       var containerName = suite.getName(containerNamesPrefix);
 
-      blobService.createContainerIfNotExists(containerName, function (createError, created) {
+      blobService.createContainerIfNotExists(containerName, function (createError, createResult1, response) {
         assert.equal(createError, null);
-        assert.equal(created, true);
+        assert.equal(createResult1.created, true);
+        assert.notEqual(createResult1.name, null);
 
-        blobService.doesContainerExist(containerName, function (existsError, exists) {
-          assert.equal(existsError, null);
-          assert.equal(exists, true);
+        blobService.doesContainerExist(containerName, function (existsError, existResult) {
+          assert.equal(existsError, null);          
+          assert.equal(existResult.exists, true);
+          assert.notEqual(existResult.name, null);
 
-          blobService.createContainerIfNotExists(containerName, function (createError2, created2) {
+          blobService.createContainerIfNotExists(containerName, function (createError2, createResult2) {
             assert.equal(createError2, null);
-            assert.equal(created2, false);
+            assert.equal(createResult2.created, false);
+            assert.notEqual(createResult2.name, null);
 
             blobService.deleteContainer(containerName, function (deleteError) {
               assert.equal(deleteError, null);
@@ -222,7 +246,7 @@ describe('BlobContainer', function () {
 
     it('should throw if called without a callback', function (done) {
       assert.throws(function () { blobService.createContainerIfNotExists('name'); },
-        Error
+        ArgumentNullError
       );
 
       done();
@@ -233,9 +257,9 @@ describe('BlobContainer', function () {
     it('should delete a container if exists', function (done) {
       var containerName = suite.getName(containerNamesPrefix);
 
-      blobService.doesContainerExist(containerName, function(existsError, exists){
+      blobService.doesContainerExist(containerName, function(existsError, existResult){
         assert.equal(existsError, null);
-        assert.strictEqual(exists, false);
+        assert.strictEqual(existResult.exists, false);
 
         blobService.deleteContainerIfExists(containerName, function (deleteError, deleted) {
           assert.equal(deleteError, null);
@@ -257,9 +281,9 @@ describe('BlobContainer', function () {
               assert.equal(deleteError2, null);
               assert.strictEqual(deleted2, true);
 
-              blobService.doesContainerExist(containerName, function(existsError, exists){
+              blobService.doesContainerExist(containerName, function(existsError, existResult2){
                 assert.equal(existsError, null);
-                assert.strictEqual(exists, false);
+                assert.strictEqual(existResult2.exists, false);
                 done();
               });
             });
@@ -270,7 +294,7 @@ describe('BlobContainer', function () {
 
     it('should throw if called without a callback', function (done) {
       assert.throws(function () { blobService.deleteContainerIfExists('name'); },
-        Error
+        ArgumentNullError
       );
       done();
     });
@@ -287,9 +311,9 @@ describe('BlobContainer', function () {
           assert.equal(getError, null);
           assert.notEqual(container2, null);
           if (container2) {
-            assert.equal('unlocked', container2.leaseStatus);
-            assert.equal('available', container2.leaseState);
-            assert.equal(null, container2.leaseDuration);
+            assert.equal('unlocked', container2.lease.status);
+            assert.equal('available', container2.lease.state);
+            assert.equal(null, container2.lease.duration);
             assert.notEqual(null, container2.requestId);
             assert.strictEqual(container2.metadata.color, metadata.Color);
           }
@@ -405,20 +429,20 @@ describe('BlobContainer', function () {
       }
 
       assert.throws( function() { setContainerMetadata(containerName, {'' : 'value1'}); },
-        function (err) {return (err instanceof Error) && err.message === SR.METADATA_KEY_INVALID});
+        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_KEY_INVALID});
       assert.throws( function() { setContainerMetadata(containerName, {' ' : 'value1'}); },
-        function (err) {return (err instanceof Error) && err.message === SR.METADATA_KEY_INVALID});
+        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_KEY_INVALID});
       assert.throws( function() { setContainerMetadata(containerName, {'\n\t' : 'value1'}); },
-        function (err) {return (err instanceof Error) && err.message === SR.METADATA_KEY_INVALID});
+        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_KEY_INVALID});
 
       assert.throws( function() { setContainerMetadata(containerName, {'key1' : null}); },
-        function (err) {return (err instanceof Error) && err.message === SR.METADATA_VALUE_INVALID});
+        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_VALUE_INVALID});
       assert.throws( function() { setContainerMetadata(containerName, {'key1' : ''}); },
-        function (err) {return (err instanceof Error) && err.message === SR.METADATA_VALUE_INVALID});
+        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_VALUE_INVALID});
       assert.throws( function() { setContainerMetadata(containerName, {'key1' : '\n\t'}); },
-        function (err) {return (err instanceof Error) && err.message === SR.METADATA_VALUE_INVALID});
+        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_VALUE_INVALID});
       assert.throws( function() { setContainerMetadata(containerName, {'key1' : ' '}); },
-        function (err) {return (err instanceof Error) && err.message === SR.METADATA_VALUE_INVALID});
+        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_VALUE_INVALID});
 
       // test that empty headers can be got.
       var callback = function(webresource) {
@@ -527,25 +551,19 @@ describe('BlobContainer', function () {
       readWriteExpiryDate.setMinutes(readWriteStartDate.getMinutes() + 10);
       readWriteExpiryDate.setMilliseconds(999);
 
-      var readWriteSharedAccessPolicy = {
-        Id: 'readwrite',
-        AccessPolicy: {
+      var options = { publicAccessLevel: BlobUtilities.BlobContainerPublicAccessType.BLOB };
+      var signedIdentifiers = {
+        readwrite: {
           Start: readWriteStartDate,
           Expiry: readWriteExpiryDate,
           Permissions: 'rw'
-        }
-      };
-
-      var readSharedAccessPolicy = {
-        Id: 'read',
-        AccessPolicy: {
+        },
+        read: {
           Expiry: readWriteStartDate,
           Permissions: 'r'
         }
       };
-
-      var options = { publicAccessLevel: BlobUtilities.BlobContainerPublicAccessType.BLOB };
-      var signedIdentifiers = [readWriteSharedAccessPolicy, readSharedAccessPolicy];
+      
       blobService.setContainerAcl(containerName, signedIdentifiers, options, function (setAclError, setAclContainer1, setResponse1) {
         assert.equal(setAclError, null);
         assert.notEqual(setAclContainer1, null);
@@ -556,7 +574,7 @@ describe('BlobContainer', function () {
             assert.equal(getAclError, null);
             assert.notEqual(getAclContainer1, null);
             assert.equal(getAclContainer1.publicAccessLevel, BlobUtilities.BlobContainerPublicAccessType.BLOB);
-            assert.equal(getAclContainer1.signedIdentifiers[0].AccessPolicy.Expiry.getTime(), readWriteExpiryDate.getTime());
+            assert.equal(getAclContainer1.signedIdentifiers.readwrite.Expiry.getTime(), readWriteExpiryDate.getTime());
             assert.ok(getResponse1.isSuccessful);
             
             options.publicAccessLevel = BlobUtilities.BlobContainerPublicAccessType.CONTAINER;
@@ -581,21 +599,18 @@ describe('BlobContainer', function () {
     });
 
     it('should work with signed identifiers', function (done) {
-      var signedIdentifiers = [
-        { Id: 'id1',
-          AccessPolicy: {
-            Start: '2009-10-10T00:00:00.123Z',
-            Expiry: '2009-10-11T00:00:00.456Z',
-            Permissions: 'r'
-          }
+      var signedIdentifiers = {
+        id1: {
+          Start: '2009-10-10T00:00:00.123Z',
+          Expiry: '2009-10-11T00:00:00.456Z',
+          Permissions: 'r'
         },
-        { Id: 'id2',
-          AccessPolicy: {
-            Start: '2009-11-10T00:00:00.006Z',
-            Expiry: '2009-11-11T00:00:00.4Z',
-            Permissions: 'w'
-          }
-        }];
+        id2: {
+          Start: '2009-11-10T00:00:00.006Z',
+          Expiry: '2009-11-11T00:00:00.4Z',
+          Permissions: 'w'
+        }
+      };
       
       var options = {publicAccessLevel: BlobUtilities.BlobContainerPublicAccessType.OFF};
       blobService.setContainerAcl(containerName, signedIdentifiers, options, function (setAclError, setAclContainer, setAclResponse) {
@@ -612,25 +627,14 @@ describe('BlobContainer', function () {
               assert.equal(getAclResponse.isSuccessful, true);
             }
 
-            var entries = 0;
-
-            containerAcl.signedIdentifiers.forEach(function (identifier) {
-              if (identifier.Id === 'id1') {
-                assert.equal(identifier.AccessPolicy.Start.getTime(), new Date('2009-10-10T00:00:00.123Z').getTime());
-                assert.equal(identifier.AccessPolicy.Expiry.getTime(), new Date('2009-10-11T00:00:00.456Z').getTime());
-                assert.equal(identifier.AccessPolicy.Permissions, 'r');
-                entries += 1;
-              }
-              else if (identifier.Id === 'id2') {
-                assert.equal(identifier.AccessPolicy.Start.getTime(), new Date('2009-11-10T00:00:00.006Z').getTime());
-                assert.equal(identifier.AccessPolicy.Start.getMilliseconds(), 6);
-                assert.equal(identifier.AccessPolicy.Expiry.getTime(), new Date('2009-11-11T00:00:00.4Z').getTime());
-                assert.equal(identifier.AccessPolicy.Expiry.getMilliseconds(), 400);
-                assert.equal(identifier.AccessPolicy.Permissions, 'w');
-                entries += 2;
-              }
-            });
-            assert.equal(entries, 3);
+            assert.equal(containerAcl.signedIdentifiers.id1.Start.getTime(), new Date('2009-10-10T00:00:00.123Z').getTime());
+            assert.equal(containerAcl.signedIdentifiers.id1.Expiry.getTime(), new Date('2009-10-11T00:00:00.456Z').getTime());
+            assert.equal(containerAcl.signedIdentifiers.id1.Permissions, 'r');
+            assert.equal(containerAcl.signedIdentifiers.id2.Start.getTime(), new Date('2009-11-10T00:00:00.006Z').getTime());
+            assert.equal(containerAcl.signedIdentifiers.id2.Start.getMilliseconds(), 6);
+            assert.equal(containerAcl.signedIdentifiers.id2.Expiry.getTime(), new Date('2009-11-11T00:00:00.4Z').getTime());
+            assert.equal(containerAcl.signedIdentifiers.id2.Expiry.getMilliseconds(), 400);
+            assert.equal(containerAcl.signedIdentifiers.id2.Permissions, 'w');
             done();
           });
         }, timeout);
@@ -778,6 +782,72 @@ describe('BlobContainer', function () {
                         assert.equal(deleteError, null);
                         done();
                       });
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+    
+    it('should work with copy details', function(done) {
+      var blobName1 = suite.getName(blobNamesPrefix);
+      var blobName2 = suite.getName(blobNamesPrefix);
+      var blobText1 = 'hello1';
+      var blobText2 = 'hello2';
+
+      blobs.length = 0;
+
+      listBlobs(null, null, null, function() {
+        assert.equal(blobs.length, 0);
+
+        blobService.createBlockBlobFromText(containerName, blobName1, blobText1, function (blobErr1) {
+          assert.equal(blobErr1, null);
+
+          // Test listing 1 blob
+          listBlobs(null, null, null, function() {
+            assert.equal(blobs.length, 1);
+            assert.equal(blobs[0].name, blobName1);
+
+            blobService.createBlockBlobFromText(containerName, blobName2, blobText2, function (blobErr2) {
+              assert.equal(blobErr2, null);
+
+              blobs.length = 0;
+              // Test listing multiple blobs with prefix
+              listBlobs(blobNamesPrefix, null, null, function() {
+                assert.equal(blobs.length, 2);
+                
+                var sourceUrl = blobService.getUrl(containerName, blobName1);
+                var blobName3 = suite.getName(blobNamesPrefix);
+                blobService.startCopyBlob(sourceUrl, containerName, blobName3, function (copyErr) {
+                  assert.equal(copyErr, null);
+
+                  var options = {
+                    include: BlobUtilities.BlobListingDetails.COPY
+                  };
+
+                  blobs.length = 0;
+                  // Test listing with prefix and including copy status
+                  listBlobs(blobNamesPrefix, options, null, function() {
+                    assert.equal(blobs.length, 3);
+                    var blob = blobs.filter(function(value, index, array) {
+                      return value.name === blobName3;
+                    });
+
+                    assert.equal(blob.length, 1);
+                    assert.notEqual(blob[0].copy.id, undefined);
+                    assert.notEqual(blob[0].copy.status, undefined);
+                    assert.notEqual(blob[0].copy.source, undefined);
+                    assert.notEqual(blob[0].copy.progress, undefined);
+                    assert.notEqual(blob[0].copy.completionTime, undefined);
+                    assert.equal(typeof blob[0].copy.bytesCopied === 'number', true);
+                    assert.equal(blob[0].copy.totalBytes, blobText1.length);
+
+                    blobService.deleteContainer(containerName, function (deleteError) {
+                      assert.equal(deleteError, null);
+                      done();
                     });
                   });
                 });

@@ -20,20 +20,25 @@ var testutil = require('../../framework/util');
 var TestSuite = require('../../framework/test-suite');
 var azure = testutil.libRequire('azure-storage');
 
+var errors = testutil.libRequire('common/errors/errors');
+var ArgumentError = errors.ArgumentError;
+var ArgumentNullError = errors.ArgumentNullError;
+var TimeoutError = errors.TimeoutError;
+var StorageError = errors.StorageError;
+
 var Constants = azure.Constants;
 var StorageServiceClientConstants = Constants.StorageServiceClientConstants;
 var QueueUtilities = azure.QueueUtilities;
 var HttpConstants = Constants.HttpConstants;
 
-var queueNamesPrefix = 'queue-';
-
 var suite = new TestSuite('queueservice-tests');
 var runOrSkip = suite.isMocked ? it.skip : it;
+
+var queueNamesPrefix = suite.getShortName('');
 
 var queueService;
 
 var queues = [];
-var queueNamesPrefix;
 
 var listQueues = function listQueues (prefix, options, token, callback) {
   queueService.listQueuesSegmentedWithPrefix(prefix, token, options, function(error, result) {
@@ -86,22 +91,36 @@ describe('QueueServiceTests', function() {
   describe('CreateQueue', function () {
     it('should detect incorrect queue names', function (done) {
       assert.throws(function () { queueService.createQueue(null, function () { }); },
-        /Required argument queue for function createQueue is not defined/);
+        function(err) {
+          return (err instanceof ArgumentNullError) && err.message === 'Required argument queue for function createQueue is not defined'; 
+        });
 
       assert.throws(function () { queueService.createQueue('', function () { }); },
-        /Required argument queue for function createQueue is not defined/);
+        function(err) {
+          return (err instanceof ArgumentNullError) && err.message === 'Required argument queue for function createQueue is not defined'; 
+        });
 
       assert.throws(function () { queueService.createQueue('as', function () { }); },
-        /Queue name must be between 3 and 63 characters long./);
+       function(err) {
+        if ((err instanceof ArgumentError) && err.message === 'Queue name must be between 3 and 63 characters long.') {
+          return true;
+        }
+      });
 
       assert.throws(function () { queueService.createQueue('a--s', function () { }); },
-        /Queue name format is incorrect./);
+        function(err){
+          return (err instanceof SyntaxError) && err.message === 'Queue name format is incorrect.'; 
+        });
 
       assert.throws(function () { queueService.createQueue('queue-', function () { }); },
-        /Queue name format is incorrect./);
+        function(err){
+          return (err instanceof SyntaxError) && err.message === 'Queue name format is incorrect.'; 
+        });
 
       assert.throws(function () { queueService.createQueue('quEue', function () { }); },
-        /Queue name format is incorrect./);
+        function(err){
+          return (err instanceof SyntaxError) && err.message === 'Queue name format is incorrect.'; 
+        });
 
       done();
     });
@@ -135,6 +154,7 @@ describe('QueueServiceTests', function() {
           if (getQueue) {
             assert.ok(getQueue.name);
             assert.equal(getQueue.name, queueName);
+            assert.deepEqual(getQueue.approximateMessageCount, 0);
 
             assert.ok(getQueue.metadata);
             assert.equal(getQueue.metadata['class'], metadata['class']);
@@ -174,9 +194,10 @@ describe('QueueServiceTests', function() {
         }
 
         // Try creating again
-        queueService.createQueueIfNotExists(queueName, { metadata: metadata }, function (createError2, queueCreated2) {
+        queueService.createQueueIfNotExists(queueName, { metadata: metadata }, function (createError2, queueResult) {
           assert.equal(createError2, null);
-          assert.equal(queueCreated2, false);
+          assert.equal(queueResult.created, false);
+          assert.equal(queueResult.name, queueName);
           assert.ok(createResponse.isSuccessful);
 
           done();
@@ -242,13 +263,99 @@ describe('QueueServiceTests', function() {
         assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         // Create message
-        queueService.createMessage(queueName, messageText1, function (createMessageError, message, createMessageResponse) {
+        queueService.createMessage(queueName, messageText1, function (createMessageError, createMessageResponse) {
           assert.equal(createMessageError, null);
           assert.ok(createMessageResponse.isSuccessful);
           assert.equal(createMessageResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
           // Create another message
-          queueService.createMessage(queueName, messageText2, function (createMessageError2, message2, createMessageResponse2) {
+          queueService.createMessage(queueName, messageText2, function (createMessageError2, createMessageResponse2) {
+            assert.equal(createMessageError, null);
+            assert.ok(createMessageResponse2.isSuccessful);
+            assert.equal(createMessageResponse2.statusCode, HttpConstants.HttpResponseCodes.Created);
+
+            // Peek a message
+            queueService.peekMessage(queueName, function (peekError, queueMessage, peekResponse) {
+              assert.equal(peekError, null);
+              assert.notEqual(queueMessage, null);
+              assert.ok(queueMessage);
+              assert.ok(queueMessage['messageId']);
+              assert.ok(queueMessage['insertionTime']);
+              assert.ok(queueMessage['expirationTime']);
+              assert.equal(queueMessage.messageText, messageText1);
+
+              assert.ok(peekResponse.isSuccessful);
+              assert.equal(peekResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
+
+              // Get a message
+              queueService.getMessage(queueName, function (getError, getQueueMessage, getResponse) {
+                assert.equal(getError, null);
+                assert.ok(getResponse.isSuccessful);
+                assert.equal(getResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
+
+                assert.equal(getQueueMessage.messageText, messageText1);
+
+                // Delete the message
+                queueService.deleteMessage(queueName, getQueueMessage.messageId, getQueueMessage.popReceipt, function (deleteError, deleteResponse) {
+                  assert.equal(deleteError, null);
+                  assert.ok(deleteResponse.isSuccessful);
+                  assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NoContent);
+
+                  // Get a message again
+                  queueService.getMessage(queueName, function (getError2, getQueueMessage2, getResponse2) {
+                    assert.equal(getError2, null);
+                    assert.ok(getResponse2.isSuccessful);
+                    assert.equal(getResponse2.statusCode, HttpConstants.HttpResponseCodes.Ok);
+
+                    assert.equal(getQueueMessage2.messageText, messageText2);
+
+                    // Clear messages
+                    queueService.clearMessages(queueName, function (clearError, clearResponse) {
+                      assert.equal(clearError, null);
+                      assert.ok(clearResponse.isSuccessful);
+                      assert.equal(clearResponse.statusCode, HttpConstants.HttpResponseCodes.NoContent);
+
+                      // Get a message again should yield empty
+                      queueService.getMessage(queueName, function (getError3, getQueueMessage3, getResponse3) {
+                        assert.equal(getError3, null);
+                        assert.ok(getResponse3.isSuccessful);
+                        assert.equal(getResponse3.statusCode, HttpConstants.HttpResponseCodes.Ok);
+
+                        assert.equal(getQueueMessage3, null);
+
+                        done();
+                      });
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+
+  describe('CreateAndPeekMessages', function () {
+    it('should work', function (done) {
+      var messageText1 = 'hi there';
+      var messageText2 = 'bye there';
+
+      // Create Queue
+      queueService.createQueue(queueName, function (createError1, queue1, createResponse1) {
+        assert.equal(createError1, null);
+        assert.notEqual(queue1, null);
+        assert.ok(createResponse1.isSuccessful);
+        assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.Created);
+
+        // Create message
+        queueService.createMessage(queueName, messageText1, function (createMessageError, createMessageResponse) {
+          assert.equal(createMessageError, null);
+          assert.ok(createMessageResponse.isSuccessful);
+          assert.equal(createMessageResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
+
+          // Create another message
+          queueService.createMessage(queueName, messageText2, function (createMessageError2, createMessageResponse2) {
             assert.equal(createMessageError, null);
             assert.ok(createMessageResponse2.isSuccessful);
             assert.equal(createMessageResponse2.statusCode, HttpConstants.HttpResponseCodes.Created);
@@ -260,10 +367,10 @@ describe('QueueServiceTests', function() {
 
               var queueMessage = queueMessages[0];
               assert.ok(queueMessage);
-              assert.ok(queueMessage['messageid']);
-              assert.ok(queueMessage['insertiontime']);
-              assert.ok(queueMessage['expirationtime']);
-              assert.equal(queueMessage.messagetext, messageText1);
+              assert.ok(queueMessage['messageId']);
+              assert.ok(queueMessage['insertionTime']);
+              assert.ok(queueMessage['expirationTime']);
+              assert.equal(queueMessage.messageText, messageText1);
 
               assert.ok(peekResponse.isSuccessful);
               assert.equal(peekResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
@@ -277,10 +384,10 @@ describe('QueueServiceTests', function() {
                 assert.equal(getResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
                 var getQueueMessage = getQueueMessages[0];
-                assert.equal(getQueueMessage.messagetext, messageText1);
+                assert.equal(getQueueMessage.messageText, messageText1);
 
                 // Delete message
-                queueService.deleteMessage(queueName, getQueueMessage.messageid, getQueueMessage.popreceipt, function (deleteError, deleteResponse) {
+                queueService.deleteMessage(queueName, getQueueMessage.messageId, getQueueMessage.popReceipt, function (deleteError, deleteResponse) {
                   assert.equal(deleteError, null);
                   assert.ok(deleteResponse.isSuccessful);
                   assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NoContent);
@@ -293,7 +400,7 @@ describe('QueueServiceTests', function() {
                     assert.equal(getResponse2.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
                     var getQueueMessage2 = getQueueMessages2[0];
-                    assert.equal(getQueueMessage2.messagetext, messageText2);
+                    assert.equal(getQueueMessage2.messageText, messageText2);
 
                     // Clear messages
                     queueService.clearMessages(queueName, function (clearError, clearResponse) {
@@ -333,13 +440,13 @@ describe('QueueServiceTests', function() {
         assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         // Create message
-        queueService.createMessage(queueName, new Buffer(messageText1), function (createMessageError, message, createMessageResponse) {
+        queueService.createMessage(queueName, new Buffer(messageText1), function (createMessageError, createMessageResponse) {
           assert.equal(createMessageError, null);
           assert.ok(createMessageResponse.isSuccessful);
           assert.equal(createMessageResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
           // Create another message
-          queueService.createMessage(queueName, new Buffer(messageText2), function (createMessageError2, message2, createMessageResponse2) {
+          queueService.createMessage(queueName, new Buffer(messageText2), function (createMessageError2, createMessageResponse2) {
             assert.equal(createMessageError, null);
             assert.ok(createMessageResponse2.isSuccessful);
             assert.equal(createMessageResponse2.statusCode, HttpConstants.HttpResponseCodes.Created);
@@ -351,10 +458,10 @@ describe('QueueServiceTests', function() {
 
               var queueMessage = queueMessages[0];
               assert.ok(queueMessage);
-              assert.ok(queueMessage['messageid']);
-              assert.ok(queueMessage['insertiontime']);
-              assert.ok(queueMessage['expirationtime']);
-              assert.equal(queueMessage.messagetext, messageText1);
+              assert.ok(queueMessage['messageId']);
+              assert.ok(queueMessage['insertionTime']);
+              assert.ok(queueMessage['expirationTime']);
+              assert.equal(queueMessage.messageText, messageText1);
 
               assert.ok(peekResponse.isSuccessful);
               assert.equal(peekResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
@@ -368,10 +475,10 @@ describe('QueueServiceTests', function() {
                 assert.equal(getResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
                 var getQueueMessage = getQueueMessages[0];
-                assert.equal(getQueueMessage.messagetext, messageText1);
+                assert.equal(getQueueMessage.messageText, messageText1);
 
                 // Delete message
-                queueService.deleteMessage(queueName, getQueueMessage.messageid, getQueueMessage.popreceipt, function (deleteError, deleteResponse) {
+                queueService.deleteMessage(queueName, getQueueMessage.messageId, getQueueMessage.popReceipt, function (deleteError, deleteResponse) {
                   assert.equal(deleteError, null);
                   assert.ok(deleteResponse.isSuccessful);
                   assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NoContent);
@@ -384,7 +491,7 @@ describe('QueueServiceTests', function() {
                     assert.equal(getResponse2.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
                     var getQueueMessage2 = getQueueMessages2[0];
-                    assert.equal(getQueueMessage2.messagetext, messageText2);
+                    assert.equal(getQueueMessage2.messageText, messageText2);
 
                     // Clear messages
                     queueService.clearMessages(queueName, function (clearError, clearResponse) {
@@ -426,13 +533,13 @@ describe('QueueServiceTests', function() {
         assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         // Create message
-        queueService.createMessage(queueName, messageText1, function (createMessageError, message, createMessageResponse) {
+        queueService.createMessage(queueName, messageText1, function (createMessageError, createMessageResponse) {
           assert.equal(createMessageError, null);
           assert.ok(createMessageResponse.isSuccessful);
           assert.equal(createMessageResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
           // Create another message
-          queueService.createMessage(queueName, messageText2, function (createMessageError2, message2, createMessageResponse2) {
+          queueService.createMessage(queueName, messageText2, function (createMessageError2, createMessageResponse2) {
             assert.equal(createMessageError, null);
             assert.ok(createMessageResponse2.isSuccessful);
             assert.equal(createMessageResponse2.statusCode, HttpConstants.HttpResponseCodes.Created);
@@ -444,10 +551,10 @@ describe('QueueServiceTests', function() {
 
               var queueMessage = queueMessages[0];
               if (queueMessage) {
-                assert.ok(queueMessage['messageid']);
-                assert.ok(queueMessage['insertiontime']);
-                assert.ok(queueMessage['expirationtime']);
-                assert.equal(queueMessage.messagetext, messageText1);
+                assert.ok(queueMessage['messageId']);
+                assert.ok(queueMessage['insertionTime']);
+                assert.ok(queueMessage['expirationTime']);
+                assert.equal(queueMessage.messageText, messageText1);
               }
 
               assert.ok(peekResponse.isSuccessful);
@@ -462,10 +569,10 @@ describe('QueueServiceTests', function() {
                 assert.equal(getResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
                 var getQueueMessage = getQueueMessages[0];
-                assert.equal(getQueueMessage.messagetext, messageText1);
+                assert.equal(getQueueMessage.messageText, messageText1);
 
                 // Delete message
-                queueService.deleteMessage(queueName, getQueueMessage.messageid, getQueueMessage.popreceipt, function (deleteError, deleteResponse) {
+                queueService.deleteMessage(queueName, getQueueMessage.messageId, getQueueMessage.popReceipt, function (deleteError, deleteResponse) {
                   assert.equal(deleteError, null);
                   assert.ok(deleteResponse.isSuccessful);
                   assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NoContent);
@@ -478,7 +585,7 @@ describe('QueueServiceTests', function() {
                     assert.equal(getResponse2.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
                     var getQueueMessage2 = getQueueMessages2[0];
-                    assert.equal(getQueueMessage2.messagetext, messageText2);
+                    assert.equal(getQueueMessage2.messageText, messageText2);
 
                     // Clear messages
                     queueService.clearMessages(queueName, function (clearError, clearResponse) {
@@ -520,13 +627,13 @@ describe('QueueServiceTests', function() {
         assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         // Create message
-        queueService.createMessage(queueName, new Buffer(messageText1), function (createMessageError, message, createMessageResponse) {
+        queueService.createMessage(queueName, new Buffer(messageText1), function (createMessageError, createMessageResponse) {
           assert.equal(createMessageError, null);
           assert.ok(createMessageResponse.isSuccessful);
           assert.equal(createMessageResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
           // Create another message
-          queueService.createMessage(queueName, new Buffer(messageText2), function (createMessageError2, message2, createMessageResponse2) {
+          queueService.createMessage(queueName, new Buffer(messageText2), function (createMessageError2, createMessageResponse2) {
             assert.equal(createMessageError, null);
             assert.ok(createMessageResponse2.isSuccessful);
             assert.equal(createMessageResponse2.statusCode, HttpConstants.HttpResponseCodes.Created);
@@ -538,10 +645,10 @@ describe('QueueServiceTests', function() {
 
               var queueMessage = queueMessages[0];
               if (queueMessage) {
-                assert.ok(queueMessage['messageid']);
-                assert.ok(queueMessage['insertiontime']);
-                assert.ok(queueMessage['expirationtime']);
-                assert.equal(queueMessage.messagetext, messageText1);
+                assert.ok(queueMessage['messageId']);
+                assert.ok(queueMessage['insertionTime']);
+                assert.ok(queueMessage['expirationTime']);
+                assert.equal(queueMessage.messageText, messageText1);
               }
 
               assert.ok(peekResponse.isSuccessful);
@@ -556,10 +663,10 @@ describe('QueueServiceTests', function() {
                 assert.equal(getResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
                 var getQueueMessage = getQueueMessages[0];
-                assert.equal(getQueueMessage.messagetext, messageText1);
+                assert.equal(getQueueMessage.messageText, messageText1);
 
                 // Delete message
-                queueService.deleteMessage(queueName, getQueueMessage.messageid, getQueueMessage.popreceipt, function (deleteError, deleteResponse) {
+                queueService.deleteMessage(queueName, getQueueMessage.messageId, getQueueMessage.popReceipt, function (deleteError, deleteResponse) {
                   assert.equal(deleteError, null);
                   assert.ok(deleteResponse.isSuccessful);
                   assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NoContent);
@@ -572,7 +679,7 @@ describe('QueueServiceTests', function() {
                     assert.equal(getResponse2.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
                     var getQueueMessage2 = getQueueMessages2[0];
-                    assert.equal(getQueueMessage2.messagetext, messageText2);
+                    assert.equal(getQueueMessage2.messageText, messageText2);
 
                     // Clear messages
                     queueService.clearMessages(queueName, function (clearError, clearResponse) {
@@ -606,7 +713,7 @@ describe('QueueServiceTests', function() {
         assert.equal(createError1, null);
 
         // Create message
-        queueService.createMessage(queueName, '', function (createMessageError, message, createMessageResponse) {
+        queueService.createMessage(queueName, '', function (createMessageError, createMessageResponse) {
           assert.equal(createMessageError, null);
           assert.equal(createMessageResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
@@ -700,13 +807,13 @@ describe('QueueServiceTests', function() {
             queueService.createMessage(queueName, 'msg2', function (error2) {
               assert.equal(error2, null);
 
-              queueService.getMessages(queueName, { peekOnly: true }, function (error3, messages) {
+              queueService.peekMessages(queueName, function (error3, messages) {
                 assert.equal(error3, null);
                 assert.notEqual(messages, null);
 
                 // By default only one is returned
                 assert.equal(messages.length, 1);
-                assert.equal(messages[0].messagetext, 'msg1');
+                assert.equal(messages[0].messageText, 'msg1');
 
                 queueService.getMessages(queueName, { numOfMessages: 2 }, function (error4, messages2) {
                   assert.equal(error4, null);
@@ -736,7 +843,7 @@ describe('QueueServiceTests', function() {
             assert.notEqual(messages, null);
             var message = messages[0];
 
-            queueService.updateMessage(queueName, message.messageid, message.popreceipt, 10, { messagetext: 'bye there' }, function (error4) {
+            queueService.updateMessage(queueName, message.messageId, message.popReceipt, 10, { messageText: 'bye there' }, function (error4) {
               assert.equal(error4, null);
 
               done();
@@ -750,7 +857,7 @@ describe('QueueServiceTests', function() {
   describe('UpdateMessageEncodingPopReceipt', function () {
     it('should work', function (done) {
       // no messages in the queue try to update a message should give fail to update instead of blowing up on authentication
-      queueService.updateMessage(queueName, 'mymsg', 'AgAAAAEAAACucgAAvMW8+dqjzAE=', 10, { messagetext: 'bye there' }, function (error) {
+      queueService.updateMessage(queueName, 'mymsg', 'AgAAAAEAAACucgAAvMW8+dqjzAE=', 10, { messageText: 'bye there' }, function (error) {
         assert.notEqual(error, null);
         assert.equal(error.code, Constants.QueueErrorCodeStrings.QUEUE_NOT_FOUND);
 
@@ -794,18 +901,19 @@ describe('QueueServiceTests', function() {
 
   describe('doesQueueExist', function() {
     it('should work', function(done) {
-      queueService.doesQueueExist(queueName, function(existsError, exists, createQueueResponse) {
+      queueService.doesQueueExist(queueName, function(existsError, existsResult, createQueueResponse) {
         assert.strictEqual(existsError, null);
-        assert.strictEqual(exists, false);
+        assert.strictEqual(existsResult.exists, false);
 
         queueService.createQueue(queueName, function(createError, queue1, createQueueResponse) {
           assert.strictEqual(createError, null);
           assert.notStrictEqual(queue1, null);
           assert.strictEqual(createQueueResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
-          queueService.doesQueueExist(queueName, function(existsError, exists, createQueueResponse) {
+          queueService.doesQueueExist(queueName, function(existsError, existsResult2, createQueueResponse) {
             assert.strictEqual(existsError, null);
-            assert.strictEqual(exists, true);
+            assert.strictEqual(existsResult2.exists, true);
+            assert.equal(existsResult2.name, queueName);
             done();
           });
         });
@@ -837,33 +945,29 @@ describe('QueueServiceTests', function() {
 
   describe('createQueueIfNotExists', function() {
     it('should work', function(done) {
-      queueService.doesQueueExist(queueName, function(existsError, exists, createQueueResponse) {
+      queueService.doesQueueExist(queueName, function(existsError, existsResult, createQueueResponse) {
         assert.strictEqual(existsError, null);
-        assert.strictEqual(exists, false);
+        assert.strictEqual(existsResult.exists, false);
 
         queueService.createQueueIfNotExists(queueName, function(createError, queue, createResponse) {
 
           assert.strictEqual(createError, null);
-          assert.notStrictEqual(queue, null);
           assert.ok(createResponse.isSuccessful);
           assert.strictEqual(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
-          assert.ok(queue);
-          if (createResponse.queue) {
-            assert.ok(queue.name);
-            assert.equal(queue.name, queueName);
+          assert.strictEqual(queue.created, true);
+          assert.equal(queue.name, queueName);
 
-            assert.ok(queue.metadata);
-            assert.equal(queue.metadata['class'], metadata['class']);
-          }
-
-          queueService.doesQueueExist(queueName, function(existsError, exists) {
+          queueService.doesQueueExist(queueName, function(existsError, existsResult) {
             assert.strictEqual(existsError, null);
-            assert.strictEqual(exists, true);
+            assert.strictEqual(existsResult.exists, true);
+            assert.equal(existsResult.name, queueName);
 
             queueService.createQueueIfNotExists(queueName, function(createError, queue) {
               assert.strictEqual(createError, null);
-              assert.strictEqual(queue, false);
+              assert.strictEqual(queue.created, false);              
+              assert.equal(queue.name, queueName);
+              
               queueService.deleteQueue(queueName, function(deleteError) {
                 assert.equal(deleteError, null);
                 queueService.createQueueIfNotExists(queueName, function (createError3) {
@@ -887,16 +991,11 @@ describe('QueueServiceTests', function() {
         expiryDate.setMinutes(startDate.getMinutes() + 10);
         var id = 'sampleIDForQueuePolicy';
 
-        var sharedAccessPolicy = [{
-          AccessPolicy: {
+        var sharedAccessPolicy = {
+          sampleIDForQueuePolicy: {
             Permissions: QueueUtilities.SharedAccessPermissions.PROCESS,
             Expiry: expiryDate
-          },
-          Id: id,
-        }];
-
-        var sharedAccessPolicyJustId = {
-          Id: id,
+          }
         };
 
         queueService.setQueueAcl(queueName, sharedAccessPolicy, function (error, result, response) {
@@ -904,9 +1003,8 @@ describe('QueueServiceTests', function() {
           queueService.getQueueAcl(queueName, function(error, result, response) {
             assert.strictEqual(error, null);
             assert.equal(result.name, queueName);
-            assert.equal(result.signedIdentifiers[0].Id, id);
-            assert.equal(result.signedIdentifiers[0].AccessPolicy.Permissions, QueueUtilities.SharedAccessPermissions.PROCESS);
-            assert.equal(result.signedIdentifiers[0].AccessPolicy.Expiry.toISOString(), expiryDate.toISOString());
+            assert.equal(result.signedIdentifiers.sampleIDForQueuePolicy.Permissions, QueueUtilities.SharedAccessPermissions.PROCESS);
+            assert.equal(result.signedIdentifiers.sampleIDForQueuePolicy.Expiry.toISOString(), expiryDate.toISOString());
             done();
           });
         });
@@ -944,7 +1042,7 @@ describe('QueueServiceTests', function() {
             assert.strictEqual(response.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
             var message = messages[0];
-            assert.equal(message.messagetext, text);
+            assert.equal(message.messageText, text);
             done();
           });
         });
@@ -960,18 +1058,16 @@ describe('QueueServiceTests', function() {
           var startDate = new Date();
           var expiryDate = new Date(startDate);
           expiryDate.setMinutes(startDate.getMinutes() + 10);
-          var id = 'sampleIDForQueuePolicy';
 
-          var sharedAccessPolicy = [{
-            AccessPolicy: {
+          var sharedAccessPolicy = {
+            sampleIDForQueuePolicy: {
               Permissions: QueueUtilities.SharedAccessPermissions.PROCESS,
               Expiry: expiryDate
-            },
-            Id: id,
-          }];
+            }
+          };
 
           var sharedAccessPolicyJustId = {
-            Id: id,
+            Id: 'sampleIDForQueuePolicy',
           };
 
           queueService.getQueueAcl(queueName, function (error, result, response) {
@@ -989,7 +1085,7 @@ describe('QueueServiceTests', function() {
                   assert.strictEqual(response.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
                   var message = messages[0];
-                  assert.equal(message.messagetext, text);
+                  assert.equal(message.messageText, text);
                   done();
                 });
               }, 3000);

@@ -49,6 +49,12 @@ var StorageServiceClientConstants = Constants.StorageServiceClientConstants;
 var QueryStringConstants = Constants.QueryStringConstants;
 var CompatibleVersionConstants = Constants.CompatibleVersionConstants;
 
+var errors = testutil.libRequire('common/errors/errors');
+var ArgumentError = errors.ArgumentError;
+var ArgumentNullError = errors.ArgumentNullError;
+var TimeoutError = errors.TimeoutError;
+var StorageError = errors.StorageError;
+
 var blobNames = [];
 var blobNamesPrefix = 'blob';
 
@@ -517,9 +523,11 @@ describe('BlobService', function () {
 
       it('should delete a blob if it exists', function (done) {
         // does blob exists should return true
-        blobService.doesBlobExist(containerName, blobName, function (existsError, exists) {
+        blobService.doesBlobExist(containerName, blobName, function (existsError, existsResult) {
           assert.equal(existsError, null);
-          assert.strictEqual(exists, true);
+          assert.strictEqual(existsResult.exists, true);
+          assert.equal(existsResult.container, containerName);
+          assert.equal(existsResult.blob, blobName);
 
           // delete if exists should succeed
           blobService.deleteBlobIfExists(containerName, blobName, function(deleteError, deleted) {
@@ -527,9 +535,9 @@ describe('BlobService', function () {
             assert.strictEqual(deleted, true);
 
             // does blob exists should return false
-            blobService.doesBlobExist(containerName, blobName, function (existsError2, exists2) {
+            blobService.doesBlobExist(containerName, blobName, function (existsError2, existsResult2) {
               assert.equal(existsError2, null);
-              assert.strictEqual(exists2, false);
+              assert.strictEqual(existsResult2.exists, false);
 
               // delete if exists should succeed with a false status
               blobService.deleteBlobIfExists(containerName, blobName, function(deleteError2, deleted2) {
@@ -561,7 +569,7 @@ describe('BlobService', function () {
 
               // get the last bytes from the message
               assert.equal(content1, 'llo World!');
-              assert.ok(blob.contentType === 'image/bmp' || blob.contentType === 'image/x-ms-bmp');
+              assert.ok(blob.contentSettings.contentType === 'image/bmp' || blob.contentSettings.contentType === 'image/x-ms-bmp');
 
               try { fs.unlinkSync(fileNameSource); } catch (e) {};
               done();
@@ -571,27 +579,27 @@ describe('BlobService', function () {
       });
 
       it('should work with skip', function (done) {
-        var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
-        var fileNameSource = testutil.generateId('prefix') + '.bmp'; // fake bmp file with text...
-        var blobText = 'Hello World!';
+          var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+          var fileNameSource = testutil.generateId('prefix') + '.bmp'; // fake bmp file with text...
+          var blobText = 'Hello World!';
 
-        fs.writeFile(fileNameSource, blobText, function () {
-          // Create the empty page blob
-          blobService.createBlockBlobFromLocalFile(containerName, blobName, fileNameSource, { contentType: null, contentTypeHeader: null, blockIdPrefix : 'blockId' }, function (err) {
-            assert.equal(err, null);
+          fs.writeFile(fileNameSource, blobText, function () {
+            // Create the empty page blob
+            blobService.createBlockBlobFromLocalFile(containerName, blobName, fileNameSource, { contentSettings: { contentType: null }, contentTypeHeader: null, blockIdPrefix : 'blockId' }, function (err) {
+              assert.equal(err, null);
 
-            blobService.getBlobToText(containerName, blobName, { rangeStart: 2 }, function (err3, content1, blob) {
-              assert.equal(err3, null);
+              blobService.getBlobToText(containerName, blobName, { rangeStart: 2 }, function (err3, content1, blob) {
+                assert.equal(err3, null);
 
-              // get the last bytes from the message
-              assert.equal(content1, 'llo World!');
-              assert.equal(blob.contentType, 'application/octet-stream');
+                // get the last bytes from the message
+                assert.equal(content1, 'llo World!');
+                assert.equal(blob.contentSettings.contentType, 'application/octet-stream');
 
-              try { fs.unlinkSync(fileNameSource); } catch (e) {};
-              done();
+                try { fs.unlinkSync(fileNameSource); } catch (e) {};
+                done();
+              });
             });
           });
-        });
       });
     });
 
@@ -718,11 +726,11 @@ describe('BlobService', function () {
               assert.notEqual(blob, null);
               if (blob) {
                 assert.equal(text.length, blob.contentLength);
-                assert.equal(properties.contentType, blob.contentType);
-                assert.equal(properties.contentEncoding, blob.contentEncoding);
-                assert.equal(properties.contentLanguage, blob.contentLanguage);
-                assert.equal(properties.cacheControl, blob.cacheControl);
-                assert.equal(properties.contentDisposition, blob.contentDisposition);
+                assert.equal(properties.contentType, blob.contentSettings.contentType);
+                assert.equal(properties.contentEncoding, blob.contentSettings.contentEncoding);
+                assert.equal(properties.contentLanguage, blob.contentSettings.contentLanguage);
+                assert.equal(properties.cacheControl, blob.contentSettings.cacheControl);
+                assert.equal(properties.contentDisposition, blob.contentSettings.contentDisposition);
               }
 
               done();
@@ -762,42 +770,42 @@ describe('BlobService', function () {
                   }
 
                   assert.throws( function() { setPageSequenceNumber(containerName, blobName, BlobUtilities.SequenceNumberAction.UPDATE, null); },
-                    function (err) {return (err instanceof Error) && err.message === util.format(SR.ARGUMENT_NULL_OR_EMPTY, 'sequenceNumber')});
+                    function (err) {return (err instanceof ArgumentNullError) && err.message === util.format(SR.ARGUMENT_NULL_OR_EMPTY, 'sequenceNumber')});
                   assert.throws( function() { setPageSequenceNumber(containerName, blobName, BlobUtilities.SequenceNumberAction.MAX, null); },
-                     function (err) {return (err instanceof Error) && err.message === util.format(SR.ARGUMENT_NULL_OR_EMPTY, 'sequenceNumber')});
+                     function (err) {return (err instanceof ArgumentNullError) && err.message === util.format(SR.ARGUMENT_NULL_OR_EMPTY, 'sequenceNumber')});
                   assert.throws( function() { setPageSequenceNumber(containerName, blobName, BlobUtilities.SequenceNumberAction.INCREMENT, 1); },
-                    function (err) {return (err instanceof Error) && err.message === SR.BLOB_INVALID_SEQUENCE_NUMBER});
+                    function (err) {return (err instanceof ArgumentError) && err.message === SR.BLOB_INVALID_SEQUENCE_NUMBER});
 
                   fs.writeFile(fileNameSource, blobBuffer, function () {
-                    var options = { accessConditions: { 'x-ms-if-sequence-number-eq': 8} };
+                    var options = { accessConditions: { SequenceNumberEqual: 8} };
                     blobService.createPagesFromStream(containerName, blobName, rfs.createReadStream(fileNameSource), 0, 1023, options, function(createPagesErr) {
                       assert.equal(createPagesErr, null);
 
                       blobService.clearPageRange(containerName, blobName, 0, 1023, options, function(clearPagesErr) {
                         assert.equal(clearPagesErr, null);
 
-                        options = { accessConditions: { 'x-ms-if-sequence-number-le': 8} };
+                        options = { accessConditions: { SequenceNumberLessThanOrEqual: 8} };
                         blobService.createPagesFromStream(containerName, blobName, rfs.createReadStream(fileNameSource), 0, 1023, options, function(createPagesErr1) {
                           assert.equal(createPagesErr1, null);
 
                           blobService.clearPageRange(containerName, blobName, 0, 1023, options, function(clearPagesErr2) {
                             assert.equal(clearPagesErr2, null);
 
-                            options = { accessConditions: { 'x-ms-if-sequence-number-le': 9} };
+                            options = { accessConditions: { SequenceNumberLessThanOrEqual: 9} };
                             blobService.createPagesFromStream(containerName, blobName, rfs.createReadStream(fileNameSource), 0, 1023, options, function(createPagesErr2) {
                               assert.equal(createPagesErr2, null);
 
                               blobService.clearPageRange(containerName, blobName, 0, 1023, options, function(clearPagesErr2) {
                                 assert.equal(clearPagesErr2, null);
 
-                                options = { accessConditions: { 'x-ms-if-sequence-number-lt': 9} };
+                                options = { accessConditions: { SequenceNumberLessThan: 9} };
                                 blobService.createPagesFromStream(containerName, blobName, rfs.createReadStream(fileNameSource), 0, 1023, options, function(createPagesErr3) {
                                   assert.equal(createPagesErr3, null);
 
                                   blobService.clearPageRange(containerName, blobName, 0, 1023, options, function(clearPagesErr3) {
                                     assert.equal(clearPagesErr3, null);
 
-                                    options = { accessConditions: { 'x-ms-if-sequence-number-eq': 9} };
+                                    options = { accessConditions: { SequenceNumberEqual: 9} };
                                     blobService.createPagesFromStream(containerName, blobName, rfs.createReadStream(fileNameSource), 0, 1023, options, function(createPagesErr4, blobResult4, createPageResponse4) {
                                       assert.notEqual(createPagesErr4, null);
                                       assert.equal(createPageResponse4.statusCode, HttpConstants.HttpResponseCodes.PreconditionFailed);
@@ -806,7 +814,7 @@ describe('BlobService', function () {
                                         assert.notEqual(clearPagesErr5, null);
                                         assert.equal(clearPageResponse5.statusCode, HttpConstants.HttpResponseCodes.PreconditionFailed);
 
-                                        options = { accessConditions: { 'x-ms-if-sequence-number-le': 7} };
+                                        options = { accessConditions: { SequenceNumberLessThanOrEqual: 7} };
                                         blobService.createPagesFromStream(containerName, blobName, rfs.createReadStream(fileNameSource), 0, 1023, options, function(createPagesErr6, blobResult6, createPageResponse6) {
                                           assert.notEqual(createPagesErr6, null);
                                           assert.equal(createPageResponse6.statusCode, HttpConstants.HttpResponseCodes.PreconditionFailed);
@@ -815,7 +823,7 @@ describe('BlobService', function () {
                                             assert.notEqual(clearPagesErr7, null);
                                             assert.equal(clearPageResponse7.statusCode, HttpConstants.HttpResponseCodes.PreconditionFailed);
 
-                                            options = { accessConditions: { 'x-ms-if-sequence-number-lt': 8} };
+                                            options = { accessConditions: { SequenceNumberLessThan: 8} };
                                             blobService.createPagesFromStream(containerName, blobName, rfs.createReadStream(fileNameSource), 0, 1023, options, function(createPagesErr7, blobResult7, createPageResponse7) {
                                               assert.notEqual(createPagesErr7, null);
                                               assert.equal(createPageResponse7.statusCode, HttpConstants.HttpResponseCodes.PreconditionFailed);
@@ -1034,7 +1042,6 @@ describe('BlobService', function () {
 
               blobService.abortCopyBlob(targetContainerName, targetBlobName, copyRes.copyId, function (copyErr) {
                 assert.notEqual(copyErr, null);
-                assert.equal(copyErr.statusCode, 409);
               });
 
               blobService.getBlobToText(targetContainerName, targetBlobName, function (downloadErr, text) {
@@ -1186,13 +1193,12 @@ describe('BlobService', function () {
           assert.equal(error, null);
 
           var startTime = new Date('April 15, 2013 11:53:40 am GMT');
-          var readWriteSharedAccessPolicy = [{
-            Id: 'readwrite',
-            AccessPolicy: {
+          var readWriteSharedAccessPolicy = {
+            readwrite: {
               Start: startTime,
               Permissions: 'rwdl'
             }
-          }];
+          };
           
           blobService.setContainerAcl(containerName, readWriteSharedAccessPolicy, function (err) {
             assert.equal(err, null);
@@ -1337,11 +1343,11 @@ describe('BlobService', function () {
           sharedBlobService.getBlobProperties(containerName, blobName, function (error, result) {
             assert.equal(error, null);
             assert.notEqual(result, null);
-            assert.equal(headers.cacheControl, result.cacheControl);
-            assert.equal(headers.contentDisposition, result.contentDisposition);
-            assert.equal(headers.contentEncoding, result.contentEncoding);
-            assert.equal(headers.contentLanguage, result.contentLanguage);
-            assert.equal(headers.contentType, result.contentType);
+            assert.equal(headers.cacheControl, result.contentSettings.cacheControl);
+            assert.equal(headers.contentDisposition, result.contentSettings.contentDisposition);
+            assert.equal(headers.contentEncoding, result.contentSettings.contentEncoding);
+            assert.equal(headers.contentLanguage, result.contentSettings.contentLanguage);
+            assert.equal(headers.contentType, result.contentSettings.contentType);
 
             blobService.deleteContainer(containerName, function (deleteError) {
               assert.equal(deleteError, null);
@@ -1367,7 +1373,7 @@ describe('BlobService', function () {
       var sharedAccessBlobService = azure.createBlobServiceWithSas(blobService.host, token);
 
       assert.throws( function () { sharedAccessBlobService.getBlobProperties(containerName, blobName, function () {}); },
-        function (err) { return err.message === SR.INVALID_SAS_TOKEN; });
+        function (err) { return (err instanceof SyntaxError) && err.message === SR.INVALID_SAS_TOKEN; });
       done();
     });
 
@@ -1473,9 +1479,9 @@ describe('BlobService', function () {
         // This is testing the root container functionality, which we don't want to pollute with random blobs.
         // Thus, trying to delete blob both before and after the actual test.
         it('prepare the root container should work', function (done) {
-          blobService.doesContainerExist(containerName, function (error, exist) {
+          blobService.doesContainerExist(containerName, function (error, containerResult) {
             assert.equal(error, null);
-            if (exist) {
+            if (containerResult.exists) {
               blobService.deleteBlobIfExists(containerName, blobName, function () { done(); });
             } else {
               blobService.createContainer(containerName, function () { done(); });

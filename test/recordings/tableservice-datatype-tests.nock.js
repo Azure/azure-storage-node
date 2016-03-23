@@ -13,12 +13,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tabledatatypetestdata0\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '75287356-0002-001e-27da-754cea000000',
+  'x-ms-request-id': '3db65080-0002-0040-4520-83bfe9000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tabledatatypetestdata0\')',
-  date: 'Fri, 04 Mar 2016 05:53:15 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:49 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -30,12 +30,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tabledatatypetestdata0\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '75287356-0002-001e-27da-754cea000000',
+  'x-ms-request-id': '3db65080-0002-0040-4520-83bfe9000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tabledatatypetestdata0\')',
-  date: 'Fri, 04 Mar 2016 05:53:15 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:49 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -45,15 +45,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tabledatatypetestdata0', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-03-04T05%3A53%3A16.8730013Z\'"',
+  etag: 'W/"datetime\'2016-03-21T03%3A17%3A51.1663141Z\'"',
   location: 'https://xplat.table.core.windows.net/tabledatatypetestdata0(PartitionKey=\'1\',RowKey=\'3\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '088f30c3-0002-0014-08da-755563000000',
+  'x-ms-request-id': '86aa5b5f-0002-0031-7020-83cdd0000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tabledatatypetestdata0(PartitionKey=\'1\',RowKey=\'3\')',
-  date: 'Fri, 04 Mar 2016 05:53:16 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -63,675 +63,631 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tabledatatypetestdata0', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-03-04T05%3A53%3A16.8730013Z\'"',
+  etag: 'W/"datetime\'2016-03-21T03%3A17%3A51.1663141Z\'"',
   location: 'https://xplat.table.core.windows.net/tabledatatypetestdata0(PartitionKey=\'1\',RowKey=\'3\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '088f30c3-0002-0014-08da-755563000000',
+  'x-ms-request-id': '86aa5b5f-0002-0031-7020-83cdd0000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tabledatatypetestdata0(PartitionKey=\'1\',RowKey=\'3\')',
-  date: 'Fri, 04 Mar 2016 05:53:16 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:51 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=StringValue%20eq%20%27mystring%27')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '259bf2d3-0002-0032-46da-75ced7000000',
+  'x-ms-request-id': 'e7551a48-0002-0036-2420-833b55000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:17 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=StringValue%20eq%20%27mystring%27')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '259bf2d3-0002-0032-46da-75ced7000000',
+  'x-ms-request-id': 'e7551a48-0002-0036-2420-833b55000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:17 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:51 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=StringValue%20eq%20%27mystring%27')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b2487a64-0002-0000-7cda-759607000000',
+  'x-ms-request-id': '5f1cd1a1-0002-0013-2820-83a3e6000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:17 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=StringValue%20eq%20%27mystring%27')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b2487a64-0002-0000-7cda-759607000000',
+  'x-ms-request-id': '5f1cd1a1-0002-0013-2820-83a3e6000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:17 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:52 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=StringValue%20eq%20%27mystring%27')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7ac3ba96-0002-000a-1bda-758f8e000000',
+  'x-ms-request-id': '72aa1aeb-0002-0045-4b20-834b96000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:18 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:53 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=StringValue%20eq%20%27mystring%27')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7ac3ba96-0002-000a-1bda-758f8e000000',
+  'x-ms-request-id': '72aa1aeb-0002-0045-4b20-834b96000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:18 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:53 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=DateValue%20eq%20datetime%272012-11-10T03%3A04%3A05.200Z%27')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '454b7625-0002-0041-1ada-75be14000000',
+  'x-ms-request-id': '3a5ad800-0002-003b-1e20-83d459000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:19 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:53 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=DateValue%20eq%20datetime%272012-11-10T03%3A04%3A05.200Z%27')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '454b7625-0002-0041-1ada-75be14000000',
+  'x-ms-request-id': '3a5ad800-0002-003b-1e20-83d459000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:19 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:53 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=DateValue%20eq%20datetime%272012-11-10T03%3A04%3A05.200Z%27')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a8703e0c-0002-0022-1ada-75f831000000',
+  'x-ms-request-id': 'b48bf47d-0002-000d-5120-83790b000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:19 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:53 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=DateValue%20eq%20datetime%272012-11-10T03%3A04%3A05.200Z%27')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a8703e0c-0002-0022-1ada-75f831000000',
+  'x-ms-request-id': 'b48bf47d-0002-000d-5120-83790b000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:19 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:53 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=DateValue%20eq%20datetime%272012-11-10T03%3A04%3A05.200Z%27')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '42170f40-0002-0040-3bda-75bfe9000000',
+  'x-ms-request-id': 'eb366a26-0002-0012-3320-83a21b000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:19 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=DateValue%20eq%20datetime%272012-11-10T03%3A04%3A05.200Z%27')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '42170f40-0002-0040-3bda-75bfe9000000',
+  'x-ms-request-id': 'eb366a26-0002-0012-3320-83a21b000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:19 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:54 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=BoolValue%20eq%20false')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4a3084c7-0002-0036-41da-753b55000000',
+  'x-ms-request-id': 'ae1b9e35-0002-003f-3920-8321db000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:20 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:55 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=BoolValue%20eq%20false')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4a3084c7-0002-0036-41da-753b55000000',
+  'x-ms-request-id': 'ae1b9e35-0002-003f-3920-8321db000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:20 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:55 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=BoolValue%20eq%20false')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '51cb47e1-0002-0018-2ada-75bb92000000',
+  'x-ms-request-id': 'b0ddb305-0002-0030-2620-83cc2d000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:20 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=BoolValue%20eq%20false')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '51cb47e1-0002-0018-2ada-75bb92000000',
+  'x-ms-request-id': 'b0ddb305-0002-0030-2620-83cc2d000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:20 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:56 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=BoolValue%20eq%20false')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ab3bc0ee-0002-000e-28da-757a0c000000',
+  'x-ms-request-id': '834f927d-0002-002b-6120-83e2bf000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:21 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=BoolValue%20eq%20false')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ab3bc0ee-0002-000e-28da-757a0c000000',
+  'x-ms-request-id': '834f927d-0002-002b-6120-83e2bf000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:21 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:56 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=Int32Value%20eq%20123')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b8dafb7f-0002-002c-4dda-75143a000000',
+  'x-ms-request-id': '7f726bb4-0002-0044-4520-834a6b000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:21 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:57 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=Int32Value%20eq%20123')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b8dafb7f-0002-002c-4dda-75143a000000',
+  'x-ms-request-id': '7f726bb4-0002-0044-4520-834a6b000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:21 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:57 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=Int32Value%20eq%20123')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'aca66737-0002-000d-01da-75790b000000',
+  'x-ms-request-id': '3bf12f73-0002-0021-6920-83fb36000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:22 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=Int32Value%20eq%20123')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'aca66737-0002-000d-01da-75790b000000',
+  'x-ms-request-id': '3bf12f73-0002-0021-6920-83fb36000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:22 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:58 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=Int32Value%20eq%20123')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9026b1c3-0002-0004-3eda-756385000000',
+  'x-ms-request-id': '82538808-0002-0025-6f20-830eb4000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:23 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:57 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=Int32Value%20eq%20123')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9026b1c3-0002-0004-3eda-756385000000',
+  'x-ms-request-id': '82538808-0002-0025-6f20-830eb4000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:23 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:57 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=DoubleValue%20eq%20123.45')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '48588be0-0002-0049-51da-75a567000000',
+  'x-ms-request-id': 'f5ae7b7d-0002-0017-1620-835664000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:24 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=DoubleValue%20eq%20123.45')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '48588be0-0002-0049-51da-75a567000000',
+  'x-ms-request-id': 'f5ae7b7d-0002-0017-1620-835664000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:24 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:59 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=DoubleValue%20eq%20123.45')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7ff462a5-0002-003f-01da-7521db000000',
+  'x-ms-request-id': '3090710b-0002-0008-4a20-838d74000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:24 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=DoubleValue%20eq%20123.45')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7ff462a5-0002-003f-01da-7521db000000',
+  'x-ms-request-id': '3090710b-0002-0008-4a20-838d74000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:24 GMT',
+  date: 'Mon, 21 Mar 2016 03:17:59 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=DoubleValue%20eq%20123.45')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'db532a69-0002-0021-51da-75fb36000000',
+  'x-ms-request-id': '8e09d95b-0002-0035-3f20-833852000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:25 GMT',
+  date: 'Mon, 21 Mar 2016 03:18:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=DoubleValue%20eq%20123.45')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'db532a69-0002-0021-51da-75fb36000000',
+  'x-ms-request-id': '8e09d95b-0002-0035-3f20-833852000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:25 GMT',
+  date: 'Mon, 21 Mar 2016 03:18:00 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=Int64Value%20eq%204294967296L')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '17edd43a-0002-002b-7cda-75e2bf000000',
+  'x-ms-request-id': '26c0e821-0002-0011-4320-83a11c000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:26 GMT',
+  date: 'Mon, 21 Mar 2016 03:18:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=Int64Value%20eq%204294967296L')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '17edd43a-0002-002b-7cda-75e2bf000000',
+  'x-ms-request-id': '26c0e821-0002-0011-4320-83a11c000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:26 GMT',
+  date: 'Mon, 21 Mar 2016 03:18:01 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=Int64Value%20eq%204294967296L')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '91840d94-0002-0035-3fda-753852000000',
+  'x-ms-request-id': 'dd816c72-0002-0016-6320-835799000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:27 GMT',
+  date: 'Mon, 21 Mar 2016 03:18:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=Int64Value%20eq%204294967296L')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '91840d94-0002-0035-3fda-753852000000',
+  'x-ms-request-id': 'dd816c72-0002-0016-6320-835799000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:27 GMT',
+  date: 'Mon, 21 Mar 2016 03:18:01 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=GuidValue%20eq%20guid%27debc44d5-04a9-42ea-ab2f-4e2cb49ff833%27')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '05399559-0002-0011-0dda-75a11c000000',
+  'x-ms-request-id': 'd6f32603-0002-001c-0c20-834e10000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:26 GMT',
+  date: 'Mon, 21 Mar 2016 03:18:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=GuidValue%20eq%20guid%27debc44d5-04a9-42ea-ab2f-4e2cb49ff833%27')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '05399559-0002-0011-0dda-75a11c000000',
+  'x-ms-request-id': 'd6f32603-0002-001c-0c20-834e10000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:26 GMT',
+  date: 'Mon, 21 Mar 2016 03:18:02 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=GuidValue%20eq%20guid%27debc44d5-04a9-42ea-ab2f-4e2cb49ff833%27')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ae3273dc-0002-0043-5fda-75bcee000000',
+  'x-ms-request-id': '5a3b6161-0002-0048-1520-83a49a000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:28 GMT',
+  date: 'Mon, 21 Mar 2016 03:18:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=GuidValue%20eq%20guid%27debc44d5-04a9-42ea-ab2f-4e2cb49ff833%27')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ae3273dc-0002-0043-5fda-75bcee000000',
+  'x-ms-request-id': '5a3b6161-0002-0048-1520-83a49a000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:28 GMT',
+  date: 'Mon, 21 Mar 2016 03:18:02 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=BinaryValue%20eq%20X%27010232%27')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9d71977b-0002-0039-01da-75d6a3000000',
+  'x-ms-request-id': 'd6777a14-0002-0039-5d20-83d6a3000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:29 GMT',
+  date: 'Mon, 21 Mar 2016 03:18:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=BinaryValue%20eq%20X%27010232%27')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9d71977b-0002-0039-01da-75d6a3000000',
+  'x-ms-request-id': 'd6777a14-0002-0039-5d20-83d6a3000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:29 GMT',
+  date: 'Mon, 21 Mar 2016 03:18:03 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=BinaryValue%20eq%20X%27010232%27')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '205b2901-0002-001b-73da-75b895000000',
+  'x-ms-request-id': '73d459f5-0002-002a-1f20-83e342000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:28 GMT',
+  date: 'Mon, 21 Mar 2016 03:18:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tabledatatypetestdata0?%24filter=BinaryValue%20eq%20X%27010232%27')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-04T05%3A53%3A16.8730013Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-04T05:53:16.8730013Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tabledatatypetestdata0\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-03-21T03%3A17%3A51.1663141Z'\\\"\",\"PartitionKey\":\"1\",\"RowKey\":\"3\",\"Timestamp\":\"2016-03-21T03:17:51.1663141Z\",\"Int32Value\":123,\"DoubleValue\":123.45,\"BoolValue\":false,\"StringValue\":\"mystring\",\"DateValue@odata.type\":\"Edm.DateTime\",\"DateValue\":\"2012-11-10T03:04:05.2Z\",\"GuidValue@odata.type\":\"Edm.Guid\",\"GuidValue\":\"debc44d5-04a9-42ea-ab2f-4e2cb49ff833\",\"Int64Value@odata.type\":\"Edm.Int64\",\"Int64Value\":\"4294967296\",\"BinaryValue@odata.type\":\"Edm.Binary\",\"BinaryValue\":\"AQIy\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '205b2901-0002-001b-73da-75b895000000',
+  'x-ms-request-id': '73d459f5-0002-002a-1f20-83e342000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:28 GMT',
+  date: 'Mon, 21 Mar 2016 03:18:04 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tabledatatypetestdata0%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tabledatatypetestdata0')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tabledatatypetestdata0')\" /><title /><updated>2016-03-04T05:53:30Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tabledatatypetestdata0</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tabledatatypetestdata0')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tabledatatypetestdata0')\" /><title /><updated>2016-03-21T03:18:04Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tabledatatypetestdata0</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'bfafd1f4-0002-004d-6dda-7550e5000000',
+  'x-ms-request-id': 'f376f45e-0002-0043-1620-83bcee000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:30 GMT',
+  date: 'Mon, 21 Mar 2016 03:18:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tabledatatypetestdata0%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tabledatatypetestdata0')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tabledatatypetestdata0')\" /><title /><updated>2016-03-04T05:53:30Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tabledatatypetestdata0</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tabledatatypetestdata0')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tabledatatypetestdata0')\" /><title /><updated>2016-03-21T03:18:04Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tabledatatypetestdata0</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'bfafd1f4-0002-004d-6dda-7550e5000000',
+  'x-ms-request-id': 'f376f45e-0002-0043-1620-83bcee000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:30 GMT',
+  date: 'Mon, 21 Mar 2016 03:18:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -741,10 +697,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5abe6402-0002-0007-3eda-756082000000',
+  'x-ms-request-id': '43d1896e-0002-000c-7a20-8378f6000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:30 GMT',
+  date: 'Mon, 21 Mar 2016 03:18:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -754,9 +710,9 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5abe6402-0002-0007-3eda-756082000000',
+  'x-ms-request-id': '43d1896e-0002-000c-7a20-8378f6000000',
   'x-ms-version': '2015-04-05',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 04 Mar 2016 05:53:30 GMT',
+  date: 'Mon, 21 Mar 2016 03:18:05 GMT',
   connection: 'close' });
  return result; }]];

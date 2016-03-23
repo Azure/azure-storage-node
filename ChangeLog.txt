@@ -1,5 +1,45 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
-be taken. This is a CTP v1 release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
+be taken. This is a GA preview release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
+
+2016.03 Version 0.10.0
+
+ALL
+* The `signedIdentifiers` parameter and result properties have been changed from array to hash map to avoid non unique signed identifier id.
+
+BLOB
+* Added 'COPY' to the BlobUtilities.BlobListingDetails to include copy information in the results.
+* Added 'bytesCopied' and 'totalBytes' to the blob result.
+* Added the blob result to the callback of BlobService.commitBlocks.
+* Moved the properties in the properties object of BlobResult and ContainerResult when listing blobs or containers to the result object.
+* Renamed the property names returned from listing blobs or containers to camelCase.
+* The `contentType`, `contentEncoding`, `contentLanguage`, `contentDisposition`, 'contentMD5' and `cacheControl` parameters and return values about the blob's content settings are grouped into a `contentSettings` sub property. 
+* The `contentMD5` parameter to verify the integrity of the data during the transport is changed to `transactionalContentMD5`
+* The `copy*` return values are grouped into a `copy` sub property.
+* The `lease*` return values are grouped into a `lease` sub property.
+* The options.accessConditions parameter is changed to AccessConditions type.
+
+QUEUE
+* Renamed QueueResult.approximatemessagecount to camelCase and change its type to 'number.
+* Renamed the property names of QueueMessageResult to camelCase.
+* Renamed the parameter options.messagettl of the createMessage API to options.messageTimeToLive.
+* Updated the callback of the createMessage API from errorOrResult to errorOrResponse.
+* Removed peekOnly option from the options parameter of the getMessages API. To peek messages, use peekMessages instead.
+* Added getMessage and peekMessage API.
+
+FILE
+* Moved the properties in the properties object of FileResult and ShareResult when listing files or shares to the result object.
+* Renamed the property names returned from listing files or shares to camelCase.
+* Renamed the property names returned from getting share stats to camelCase.
+* The `contentType`, `contentEncoding`, `contentLanguage`, `contentDisposition`, 'contentMD5' and `cacheControl` parameters and return values about the blob's content settings are grouped into a `contentSettings` sub property. 
+* The `contentMD5` parameter to verify the integrity of the data during the transport is changed to `transactionalContentMD5`
+* The `copy*` return values are grouped into a `copy` sub property.
+* Fixed the issue that SAS tokens created from table names with upper-case letters do not work.
+* The options.accessConditions parameter is changed to AccessConditions type.
+
+TABLE
+* Fixed the issue that getTableAcl returns empty array with signedIdentifier property.
+* Renamed the function updateEntity to replaceEntity.
+* Renamed TableUtilities.entityGenerator.Entity to EntityProperty.
 
 2016.03 Version 0.9.0
 
@@ -16,7 +56,6 @@ BLOB
 
 FILE
 * Added support for metrics setting for service properties.
-
 
 2016.01 Version 0.8.0
 
@@ -42,13 +81,13 @@ BLOB
 * Fixed the issue that it doesn't callback when loses the internet connection during uploading/uploading.
 * Fixed the issue that the local file cannot be removed in the callback when uploading a blob from a local file.
 * Fixed the issue that the stream length doesn't work when it is larger than 32MB in the createBlockBlobFromStream, createPageBlobFromStream, createAppendBlobFromStream and appendFromStream functions.
-* Fixed the issue that it doesn't return error in the page range validation when the size exceeds the limit. 
+* Fixed the issue that it doesn't return error in the page range validation when the size exceeds the limit.
 * Renamed the function AppendFromLocalFile to appendFromLocalFile.
 * Renamed the function AppendFromStream to appendFromStream.
 * Renamed the function AppendFromText to appendFromText.
 
 TABLE
-* Fixed the issue that listTablesSegmentedWithPrefix with maxResult option throws exception. 
+* Fixed the issue that listTablesSegmentedWithPrefix with maxResult option throws exception.
 
 2015.09 Version 0.6.0
 
