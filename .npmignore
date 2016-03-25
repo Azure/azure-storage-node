@@ -5,4 +5,8 @@
 node_modules/
 
 # Examples #
-examples/blobuploader/
+examples/
+
+jsdoc/
+test/
+typings/
