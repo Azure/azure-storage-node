@@ -656,23 +656,6 @@ describe('FileShare', function () {
       readWriteExpiryDate.setMinutes(readWriteStartDate.getMinutes() + 10);
       readWriteExpiryDate.setMilliseconds(999);
       
-      var readWriteSharedAccessPolicy = {
-        Id: 'readwrite',
-        AccessPolicy: {
-          Start: readWriteStartDate,
-          Expiry: readWriteExpiryDate,
-          Permissions: 'rw'
-        }
-      };
-      
-      var readSharedAccessPolicy = {
-        Id: 'read',
-        AccessPolicy: {
-          Expiry: readWriteStartDate,
-          Permissions: 'r'
-        }
-      };
-      
       var signedIdentifiers = {
         readwrite: {
           Start: readWriteStartDate,
@@ -687,8 +670,6 @@ describe('FileShare', function () {
       
       fileService.createShareIfNotExists(shareName, function () {
         var directoryName = suite.getName('dir-');
-        var fileName = suite.getName('file-');
-        var fileText = 'Hello World!';
         
         fileService.createDirectoryIfNotExists(shareName, directoryName, function (directoryError, directoryResult, directoryResponse) {
           assert.equal(directoryError, null);
@@ -707,7 +688,7 @@ describe('FileShare', function () {
                 assert.equal(getAclShare1.signedIdentifiers.readwrite.Expiry.getTime(), readWriteExpiryDate.getTime());
                 assert.ok(getResponse1.isSuccessful);
                 
-                fileService.setShareAcl(shareName, [], function (setAclError2, setAclShare2, setResponse2) {
+                fileService.setShareAcl(shareName, {}, function (setAclError2, setAclShare2, setResponse2) {
                   assert.equal(setAclError2, null);
                   assert.notEqual(setAclShare2, null);
                   assert.ok(setResponse2.isSuccessful);
