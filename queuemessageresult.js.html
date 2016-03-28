@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Microsoft Azure Storage Client Library for node.js Source: services/queue/queueutilities.js</title>
+	<title>Microsoft Azure Storage Client Library for node.js Source: services/queue/models/queuemessageresult.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -200,12 +200,12 @@
 					
 
 
-		<h1 class="page-title">Source: services/queue/queueutilities.js</h1>
+		<h1 class="page-title">Source: services/queue/models/queuemessageresult.js</h1>
     
 <section>
 	<article>
 		<pre
-			class="sunlight-highlight-javascript linenums">// 
+			class="sunlight-highlight-javascript linenums">﻿// 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -221,29 +221,107 @@
 // limitations under the License.
 // 
 
-// Expose 'QueueUtilities'.
-exports = module.exports;
+// Module dependencies.
+var azureCommon = require('./../../../common/common');
+var azureutil = azureCommon.util;
+var xmlbuilder = azureCommon.xmlbuilder;
+var Constants = azureCommon.Constants;
+
+var HeaderConstants = Constants.HeaderConstants;
 
 /**
-* Defines enums for use with the Queue service.
-* @namespace QueueUtilities
+* Creates a new QueueMessageResult object.
+* @class
+* The QueueMessageResult class is used to store the queue message information.
+* 
+* @property   {string}                      queue                           The queue name.
+* @property   {string}                      messageId                       The message id.
+* @property   {string}                      popReceipt                      The pop receipt.
+* @property   {string}                      messageText                     The message text.
+* @property   {string}                      timeNextVisible                 The time next visible.
+* @property   {string}                      insertionTime                   The insertion time.
+* @property   {string}                      expirationTime                  The expiration time.
+* @property   {string}                      dequeueCount                    The dequeue count.
+ * 
+* @constructor
+* @param {string} [queue]                   The queue name.
+* @param {string} [messageId]               The message id.
+* @param {string} [popReceipt]              The pop receipt.
 */
-var QueueUtilities = {
-	/**
-  * Permission types.
-  *
-  * @const
-  * @enum {string}
-  */
-  SharedAccessPermissions: {
-    READ: 'r',
-    ADD: 'a',
-    UPDATE: 'u',
-    PROCESS: 'p'
+function QueueMessageResult(queue, messageId, popReceipt) {
+  if (queue) {
+    this.queue = queue;
   }
+
+  if (messageId) {
+    this.messageId = messageId;
+  }
+
+  if (popReceipt) {
+    this.popReceipt = popReceipt;
+  }
+}
+
+/**
+* Builds an XML representation for a queue message
+*
+* @param  {string}  messageJs The queue message.
+* @return {string} The XML queue message.
+*/
+QueueMessageResult.serialize = function (messageJs, encode) {
+  var doc = xmlbuilder.create();
+  doc = doc.begin(Constants.QueueConstants.QUEUE_MESSAGE_ELEMENT, { version: '1.0', encoding: 'utf-8' });
+
+  if (messageJs) {
+    var message;
+    if (encode) {
+      message = new Buffer(messageJs).toString('base64');
+    } else {
+      message = messageJs;
+    }
+    
+    doc.ele(Constants.QueueConstants.MESSAGE_TEXT_ELEMENT)
+        .txt(message)
+      .up();
+  } else {
+    doc.ele(Constants.QueueConstants.MESSAGE_TEXT_ELEMENT).up();
+  }
+
+  return doc.doc().toString();
 };
 
-module.exports = QueueUtilities;</pre>
+QueueMessageResult.parse = function (messageXml, encode) {
+  var queueMessageResult = new QueueMessageResult();
+  for (var property in messageXml) {
+    if (property === Constants.QueueConstants.MESSAGE_TEXT_ELEMENT) {
+      if (encode) {
+        queueMessageResult.messageText = new Buffer(messageXml[property], 'base64').toString();
+      } else {
+        queueMessageResult.messageText = messageXml[property];
+      }
+    } else {
+      var resultPropertyName = azureutil.normalizePropertyNameFromXML(property);
+      queueMessageResult[resultPropertyName] = messageXml[property];
+    }
+  }
+
+  return queueMessageResult;
+};
+
+QueueMessageResult.prototype.getPropertiesFromHeaders = function (headers) {
+  var self = this;
+
+  var setmessagePropertyFromHeaders = function (messageProperty, headerProperty) {
+    if (!self[messageProperty] && headers[headerProperty.toLowerCase()]) {
+      self[messageProperty] = headers[headerProperty.toLowerCase()];
+    }
+  };
+
+  setmessagePropertyFromHeaders('popReceipt', HeaderConstants.POP_RECEIPT);
+  setmessagePropertyFromHeaders('timeNextVisible', HeaderConstants.TIME_NEXT_VISIBLE);
+};
+
+module.exports = QueueMessageResult;</pre>
 	</article>
 </section>
 

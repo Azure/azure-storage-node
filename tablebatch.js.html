@@ -54,7 +54,19 @@
 					<ul class="dropdown-menu ">
 						
 						<li>
+							<a href="BlobResult.html">BlobResult</a>
+						</li>
+						
+						<li>
 							<a href="BlobService.html">BlobService</a>
+						</li>
+						
+						<li>
+							<a href="ContainerResult.html">ContainerResult</a>
+						</li>
+						
+						<li>
+							<a href="DirectoryResult.html">DirectoryResult</a>
 						</li>
 						
 						<li>
@@ -62,11 +74,31 @@
 						</li>
 						
 						<li>
+							<a href="FileResult.html">FileResult</a>
+						</li>
+						
+						<li>
 							<a href="FileService.html">FileService</a>
 						</li>
 						
 						<li>
+							<a href="LeaseResult.html">LeaseResult</a>
+						</li>
+						
+						<li>
 							<a href="LinearRetryPolicyFilter.html">LinearRetryPolicyFilter</a>
+						</li>
+						
+						<li>
+							<a href="Logger.html">Logger</a>
+						</li>
+						
+						<li>
+							<a href="QueueMessageResult.html">QueueMessageResult</a>
+						</li>
+						
+						<li>
+							<a href="QueueResult.html">QueueResult</a>
 						</li>
 						
 						<li>
@@ -75,6 +107,14 @@
 						
 						<li>
 							<a href="RetryPolicyFilter.html">RetryPolicyFilter</a>
+						</li>
+						
+						<li>
+							<a href="ShareResult.html">ShareResult</a>
+						</li>
+						
+						<li>
+							<a href="StorageServiceClient.html">StorageServiceClient</a>
 						</li>
 						
 						<li>
@@ -203,8 +243,6 @@ function TableBatch() {
 
 /**
 * Removes all of the operations from the batch.
-*
-* @return {undefined}
 */
 TableBatch.prototype.clear = function () {
   this.operations = [];
@@ -238,7 +276,6 @@ TableBatch.prototype.size = function () {
 * @param {TableService~propertyResolver}  [options.propertyResolver]  The property resolver. Given the partition key, row key, property name, property value,
 *                                                                             and the property Edm type if given by the service, returns the Edm type of the property.
 * @param {Function(entity)} [options.entityResolver]                          The entity resolver. Given the single entity returned by the query, returns a modified object.
-* @return {undefined}
 */
 TableBatch.prototype.retrieveEntity = function (partitionKey, rowKey, options) {
   var entity = { PartitionKey: {_: partitionKey, $: 'Edm.String'},
@@ -258,7 +295,6 @@ TableBatch.prototype.retrieveEntity = function (partitionKey, rowKey, options) {
 *                                                                             property value, and the property Edm type if given by the service, returns the Edm type of the property.
 * @param {Function(entity)} [options.entityResolver]                          The entity resolver. Only applied if echoContent is true. Given the single entity returned by the insert, returns 
 *                                                                             a modified object.
-* @return {undefined}
 */
 TableBatch.prototype.insertEntity = function (entity, options) {
   this.addOperation(TableConstants.Operations.INSERT, entity, options);
@@ -268,7 +304,6 @@ TableBatch.prototype.insertEntity = function (entity, options) {
 * Adds a delete operation to the batch.
 *
 * @param {object}             entity              The entity.
-* @return {undefined}
 */
 TableBatch.prototype.deleteEntity = function (entity) {
   this.addOperation(TableConstants.Operations.DELETE, entity);
@@ -278,27 +313,24 @@ TableBatch.prototype.deleteEntity = function (entity) {
 * Adds a merge operation to the batch.
 *
 * @param {object}             entity              The entity.
-* @return {undefined}
 */
 TableBatch.prototype.mergeEntity = function (entity) {
   this.addOperation(TableConstants.Operations.MERGE, entity);
 };
 
 /**
-* Adds an update operation to the batch.
+* Adds an replace operation to the batch.
 *
 * @param {object}             entity              The entity.
-* @return {undefined}
 */
-TableBatch.prototype.updateEntity = function (entity) {
-  this.addOperation(TableConstants.Operations.UPDATE, entity);
+TableBatch.prototype.replaceEntity = function (entity) {
+  this.addOperation(TableConstants.Operations.REPLACE, entity);
 };
 
 /**
 * Adds an insert or replace operation to the batch.
 *
 * @param {object}             entity              The entity.
-* @return {undefined}
 */
 TableBatch.prototype.insertOrReplaceEntity = function (entity) {
   this.addOperation(TableConstants.Operations.INSERT_OR_REPLACE, entity);
@@ -308,7 +340,6 @@ TableBatch.prototype.insertOrReplaceEntity = function (entity) {
 * Adds an insert or merge operation to the batch.
 *
 * @param {object}             entity              The entity.
-* @return {undefined}
 */
 TableBatch.prototype.insertOrMergeEntity = function (entity) {
   this.addOperation(TableConstants.Operations.INSERT_OR_MERGE, entity);
@@ -320,7 +351,6 @@ TableBatch.prototype.insertOrMergeEntity = function (entity) {
 * @param {string}             operationType       The type of operation to perform. See Constants.TableConstants.Operations
 * @param {object}             entity              The entity.
 * @param {object}             [options]                                       The request options.
-* @return {undefined}
 */
 TableBatch.prototype.addOperation = function (operationType, entity, options) {
   validate.validateArgs('addOperation', function (v) {
@@ -400,7 +430,7 @@ module.exports = TableBatch;
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Wed Mar 9th 2016 using the <a
+		on Mon Mar 28th 2016 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>

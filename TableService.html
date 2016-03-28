@@ -54,7 +54,19 @@
 					<ul class="dropdown-menu ">
 						
 						<li>
+							<a href="BlobResult.html">BlobResult</a>
+						</li>
+						
+						<li>
 							<a href="BlobService.html">BlobService</a>
+						</li>
+						
+						<li>
+							<a href="ContainerResult.html">ContainerResult</a>
+						</li>
+						
+						<li>
+							<a href="DirectoryResult.html">DirectoryResult</a>
 						</li>
 						
 						<li>
@@ -62,11 +74,31 @@
 						</li>
 						
 						<li>
+							<a href="FileResult.html">FileResult</a>
+						</li>
+						
+						<li>
 							<a href="FileService.html">FileService</a>
 						</li>
 						
 						<li>
+							<a href="LeaseResult.html">LeaseResult</a>
+						</li>
+						
+						<li>
 							<a href="LinearRetryPolicyFilter.html">LinearRetryPolicyFilter</a>
+						</li>
+						
+						<li>
+							<a href="Logger.html">Logger</a>
+						</li>
+						
+						<li>
+							<a href="QueueMessageResult.html">QueueMessageResult</a>
+						</li>
+						
+						<li>
+							<a href="QueueResult.html">QueueResult</a>
 						</li>
 						
 						<li>
@@ -75,6 +107,14 @@
 						
 						<li>
 							<a href="RetryPolicyFilter.html">RetryPolicyFilter</a>
+						</li>
+						
+						<li>
+							<a href="ShareResult.html">ShareResult</a>
+						</li>
+						
+						<li>
+							<a href="StorageServiceClient.html">StorageServiceClient</a>
 						</li>
 						
 						<li>
@@ -435,7 +475,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
         <h3 class="subsection-title">Extends</h3>
 
         <ul>
-            <li>StorageServiceClient</li>
+            <li><a href="StorageServiceClient.html">StorageServiceClient</a></li>
         </ul>
     
 
@@ -448,6 +488,90 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
     
 
     
+        <h3 class="subsection-title">Members</h3>
+
+        <dl>
+            
+<dt class="name" id="logger">
+    <h4><span class="type-signature"></span>logger<span class="type-signature"> :<a href="Logger.html">Logger</a></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The logger of the service. To change the log level of the services, set the <code><a href="Logger.html#level">logger.level</a></code>.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type"><a href="Logger.html">Logger</a></span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#logger">StorageServiceClient#logger</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-101">line 101</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        </dl>
+    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -455,7 +579,518 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
         <dl>
             
 <dt>
-    <h4 class="name" id="createTable"><span class="type-signature"></span>createTable<span class="signature">(table, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+    <h4 class="name" id="_initializeLocation"><span class="type-signature"></span>_initializeLocation<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Initializes the location to which the operation is being sent to.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#_initializeLocation">StorageServiceClient#_initializeLocation</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-1101">line 1101</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="_invalidLocationMode"><span class="type-signature"></span>_invalidLocationMode<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Checks whether we have the relevant host information based on the locationMode.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#_invalidLocationMode">StorageServiceClient#_invalidLocationMode</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-1156">line 1156</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="_maximumExecutionTimeExceeded"><span class="type-signature"></span>_maximumExecutionTimeExceeded<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Checks to see if the maximum execution timeout provided has been exceeded.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#_maximumExecutionTimeExceeded">StorageServiceClient#_maximumExecutionTimeExceeded</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-1170">line 1170</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="_setDefaultProxy"><span class="type-signature"></span>_setDefaultProxy<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sets the service host default proxy from the environment.
+Can be overridden by calling _setProxyUrl or _setProxy</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#_setDefaultProxy">StorageServiceClient#_setDefaultProxy</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-1062">line 1062</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="_setOperationExpiryTime"><span class="type-signature"></span>_setOperationExpiryTime<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sets the operation expiry time.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#_setOperationExpiryTime">StorageServiceClient#_setOperationExpiryTime</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-1181">line 1181</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="_validateLocation"><span class="type-signature"></span>_validateLocation<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Validates the location to which the operation is being sent to.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#_validateLocation">StorageServiceClient#_validateLocation</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-1124">line 1124</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="createTable"><span class="type-signature"></span>createTable<span class="signature">(table, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -826,7 +1461,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="tableservice.js.html">services/table/tableservice.js</a>,
-				 <a href="tableservice.js.html#sunlight-1-line-509">line 509</a>
+				 <a href="tableservice.js.html#sunlight-1-line-504">line 504</a>
 			</li>
 		</ul>
 	</dd>
@@ -849,25 +1484,6 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
     
     
     
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">undefined</span>
-
-
-	</dd>
-</dl>
-
-
-        
     
     
 </dd>
@@ -875,7 +1491,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
         
             
 <dt>
-    <h4 class="name" id="createTableIfNotExists"><span class="type-signature"></span>createTableIfNotExists<span class="signature">(table, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+    <h4 class="name" id="createTableIfNotExists"><span class="type-signature"></span>createTableIfNotExists<span class="signature">(table, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -1208,7 +1824,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
             
 
             <td class="description last"><p><code>error</code> will contain information if an error occurs; 
-                                                                    <code>result</code> will be <code>true</code> if table was created, false otherwise
+                                                                    <code>result</code> will contain the table information including <code>created</code> boolean member
                                                                     <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -1246,7 +1862,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="tableservice.js.html">services/table/tableservice.js</a>,
-				 <a href="tableservice.js.html#sunlight-1-line-575">line 575</a>
+				 <a href="tableservice.js.html#sunlight-1-line-569">line 569</a>
 			</li>
 		</ul>
 	</dd>
@@ -1269,25 +1885,6 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
     
     
     
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">undefined</span>
-
-
-	</dd>
-</dl>
-
-
-        
     
     
         <h5>Example</h5>
@@ -1301,7 +1898,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
         
             
 <dt>
-    <h4 class="name" id="deleteEntity"><span class="type-signature"></span>deleteEntity<span class="signature">(table, entityDescriptor, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+    <h4 class="name" id="deleteEntity"><span class="type-signature"></span>deleteEntity<span class="signature">(table, entityDescriptor, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -1702,7 +2299,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="tableservice.js.html">services/table/tableservice.js</a>,
-				 <a href="tableservice.js.html#sunlight-1-line-1075">line 1075</a>
+				 <a href="tableservice.js.html#sunlight-1-line-1096">line 1096</a>
 			</li>
 		</ul>
 	</dd>
@@ -1725,25 +2322,6 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
     
     
     
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">undefined</span>
-
-
-	</dd>
-</dl>
-
-
-        
     
     
 </dd>
@@ -1751,7 +2329,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
         
             
 <dt>
-    <h4 class="name" id="deleteTable"><span class="type-signature"></span>deleteTable<span class="signature">(table, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+    <h4 class="name" id="deleteTable"><span class="type-signature"></span>deleteTable<span class="signature">(table, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -2121,7 +2699,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="tableservice.js.html">services/table/tableservice.js</a>,
-				 <a href="tableservice.js.html#sunlight-1-line-629">line 629</a>
+				 <a href="tableservice.js.html#sunlight-1-line-626">line 626</a>
 			</li>
 		</ul>
 	</dd>
@@ -2144,25 +2722,6 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
     
     
     
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">undefined</span>
-
-
-	</dd>
-</dl>
-
-
-        
     
     
 </dd>
@@ -2170,7 +2729,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
         
             
 <dt>
-    <h4 class="name" id="deleteTableIfExists"><span class="type-signature"></span>deleteTableIfExists<span class="signature">(table, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+    <h4 class="name" id="deleteTableIfExists"><span class="type-signature"></span>deleteTableIfExists<span class="signature">(table, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -2541,7 +3100,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="tableservice.js.html">services/table/tableservice.js</a>,
-				 <a href="tableservice.js.html#sunlight-1-line-675">line 675</a>
+				 <a href="tableservice.js.html#sunlight-1-line-671">line 671</a>
 			</li>
 		</ul>
 	</dd>
@@ -2564,25 +3123,6 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
     
     
     
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">undefined</span>
-
-
-	</dd>
-</dl>
-
-
-        
     
     
 </dd>
@@ -2923,7 +3463,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
             
 
             <td class="description last"><p><code>error</code> will contain information if an error occurs; 
-                                                                    otherwise <code>result</code> will contain be true if the table exists, or false if the table does not exist. 
+                                                                    otherwise <code>result</code> will contain the table information including <code>exists</code> boolean member. 
                                                                     <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -2961,7 +3501,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="tableservice.js.html">services/table/tableservice.js</a>,
-				 <a href="tableservice.js.html#sunlight-1-line-485">line 485</a>
+				 <a href="tableservice.js.html#sunlight-1-line-481">line 481</a>
 			</li>
 		</ul>
 	</dd>
@@ -2991,7 +3531,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
         
             
 <dt>
-    <h4 class="name" id="executeBatch"><span class="type-signature"></span>executeBatch<span class="signature">(table, batch, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+    <h4 class="name" id="executeBatch"><span class="type-signature"></span>executeBatch<span class="signature">(table, batch, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -3395,7 +3935,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="tableservice.js.html">services/table/tableservice.js</a>,
-				 <a href="tableservice.js.html#sunlight-1-line-1102">line 1102</a>
+				 <a href="tableservice.js.html#sunlight-1-line-1122">line 1122</a>
 			</li>
 		</ul>
 	</dd>
@@ -3418,25 +3958,6 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
     
     
     
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">undefined</span>
-
-
-	</dd>
-</dl>
-
-
-        
     
     
 </dd>
@@ -3930,7 +4451,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="tableservice.js.html">services/table/tableservice.js</a>,
-				 <a href="tableservice.js.html#sunlight-1-line-451">line 451</a>
+				 <a href="tableservice.js.html#sunlight-1-line-446">line 446</a>
 			</li>
 		</ul>
 	</dd>
@@ -3983,7 +4504,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
         
             
 <dt>
-    <h4 class="name" id="getServiceProperties"><span class="type-signature"></span>getServiceProperties<span class="signature">(<span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+    <h4 class="name" id="getServiceProperties"><span class="type-signature"></span>getServiceProperties<span class="signature">(<span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -4285,7 +4806,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
             
 
             <td class="description last"><p><code>error</code> will contain information if an error occurs; 
-                                                                         otherwise <code>result</code> will contain the properties.
+                                                                         otherwise <code><a href="global.html#ServiceProperties">result</a></code> will contain the properties.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -4323,7 +4844,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="tableservice.js.html">services/table/tableservice.js</a>,
-				 <a href="tableservice.js.html#sunlight-1-line-167">line 167</a>
+				 <a href="tableservice.js.html#sunlight-1-line-166">line 166</a>
 			</li>
 		</ul>
 	</dd>
@@ -4346,25 +4867,6 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
     
     
     
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">undefined</span>
-
-
-	</dd>
-</dl>
-
-
-        
     
     
 </dd>
@@ -4674,7 +5176,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
             
 
             <td class="description last"><p><code>error</code> will contain information if an error occurs; 
-                                                                        otherwise <code>result</code> will contain the properties.
+                                                                        otherwise <code><a href="global.html#ServiceStats">result</a></code> will contain the stats.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -5075,7 +5577,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
             
 
             <td class="description last"><p><code>error</code> will contain information if an error occurs; 
-                                                                         otherwise <code>result</code> will contain the ACL information for the table.
+                                                                         otherwise <code>result</code> will contain the ACL information for the table. See <code><a href="global.html#AccessPolicy">AccessPolicy</a></code> for detailed information.
                                                                          <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -5113,7 +5615,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="tableservice.js.html">services/table/tableservice.js</a>,
-				 <a href="tableservice.js.html#sunlight-1-line-332">line 332</a>
+				 <a href="tableservice.js.html#sunlight-1-line-328">line 328</a>
 			</li>
 		</ul>
 	</dd>
@@ -5143,7 +5645,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
         
             
 <dt>
-    <h4 class="name" id="insertEntity"><span class="type-signature"></span>insertEntity<span class="signature">(table, entityDescriptor, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+    <h4 class="name" id="insertEntity"><span class="type-signature"></span>insertEntity<span class="signature">(table, entityDescriptor, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -5679,7 +6181,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="tableservice.js.html">services/table/tableservice.js</a>,
-				 <a href="tableservice.js.html#sunlight-1-line-951">line 951</a>
+				 <a href="tableservice.js.html#sunlight-1-line-977">line 977</a>
 			</li>
 		</ul>
 	</dd>
@@ -5702,25 +6204,6 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
     
     
     
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">undefined</span>
-
-
-	</dd>
-</dl>
-
-
-        
     
     
         <h5>Example</h5>
@@ -5734,7 +6217,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
         
             
 <dt>
-    <h4 class="name" id="insertOrMergeEntity"><span class="type-signature"></span>insertOrMergeEntity<span class="signature">(table, entityDescriptor, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+    <h4 class="name" id="insertOrMergeEntity"><span class="type-signature"></span>insertOrMergeEntity<span class="signature">(table, entityDescriptor, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -6136,7 +6619,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="tableservice.js.html">services/table/tableservice.js</a>,
-				 <a href="tableservice.js.html#sunlight-1-line-1051">line 1051</a>
+				 <a href="tableservice.js.html#sunlight-1-line-1073">line 1073</a>
 			</li>
 		</ul>
 	</dd>
@@ -6159,25 +6642,6 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
     
     
     
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">undefined</span>
-
-
-	</dd>
-</dl>
-
-
-        
     
     
 </dd>
@@ -6185,7 +6649,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
         
             
 <dt>
-    <h4 class="name" id="insertOrReplaceEntity"><span class="type-signature"></span>insertOrReplaceEntity<span class="signature">(table, entityDescriptor, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+    <h4 class="name" id="insertOrReplaceEntity"><span class="type-signature"></span>insertOrReplaceEntity<span class="signature">(table, entityDescriptor, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -6587,7 +7051,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="tableservice.js.html">services/table/tableservice.js</a>,
-				 <a href="tableservice.js.html#sunlight-1-line-976">line 976</a>
+				 <a href="tableservice.js.html#sunlight-1-line-1001">line 1001</a>
 			</li>
 		</ul>
 	</dd>
@@ -6610,25 +7074,6 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
     
     
     
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">undefined</span>
-
-
-	</dd>
-</dl>
-
-
-        
     
     
 </dd>
@@ -6636,7 +7081,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
         
             
 <dt>
-    <h4 class="name" id="listTablesSegmented"><span class="type-signature"></span>listTablesSegmented<span class="signature">(currentToken, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+    <h4 class="name" id="listTablesSegmented"><span class="type-signature"></span>listTablesSegmented<span class="signature">(currentToken, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -7074,7 +7519,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="tableservice.js.html">services/table/tableservice.js</a>,
-				 <a href="tableservice.js.html#sunlight-1-line-218">line 218</a>
+				 <a href="tableservice.js.html#sunlight-1-line-215">line 215</a>
 			</li>
 		</ul>
 	</dd>
@@ -7097,25 +7542,6 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
     
     
     
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">undefined</span>
-
-
-	</dd>
-</dl>
-
-
-        
     
     
 </dd>
@@ -7123,7 +7549,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
         
             
 <dt>
-    <h4 class="name" id="listTablesSegmentedWithPrefix"><span class="type-signature"></span>listTablesSegmentedWithPrefix<span class="signature">(prefix, currentToken, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+    <h4 class="name" id="listTablesSegmentedWithPrefix"><span class="type-signature"></span>listTablesSegmentedWithPrefix<span class="signature">(prefix, currentToken, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -7592,7 +8018,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="tableservice.js.html">services/table/tableservice.js</a>,
-				 <a href="tableservice.js.html#sunlight-1-line-246">line 246</a>
+				 <a href="tableservice.js.html#sunlight-1-line-242">line 242</a>
 			</li>
 		</ul>
 	</dd>
@@ -7615,25 +8041,6 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
     
     
     
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">undefined</span>
-
-
-	</dd>
-</dl>
-
-
-        
     
     
 </dd>
@@ -7641,7 +8048,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
         
             
 <dt>
-    <h4 class="name" id="mergeEntity"><span class="type-signature"></span>mergeEntity<span class="signature">(table, entityDescriptor, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+    <h4 class="name" id="mergeEntity"><span class="type-signature"></span>mergeEntity<span class="signature">(table, entityDescriptor, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -8043,7 +8450,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="tableservice.js.html">services/table/tableservice.js</a>,
-				 <a href="tableservice.js.html#sunlight-1-line-1026">line 1026</a>
+				 <a href="tableservice.js.html#sunlight-1-line-1049">line 1049</a>
 			</li>
 		</ul>
 	</dd>
@@ -8066,25 +8473,6 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
     
     
     
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">undefined</span>
-
-
-	</dd>
-</dl>
-
-
-        
     
     
 </dd>
@@ -8092,7 +8480,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
         
             
 <dt>
-    <h4 class="name" id="queryEntities"><span class="type-signature"></span>queryEntities<span class="signature">(table, tableQuery, currentToken, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+    <h4 class="name" id="queryEntities"><span class="type-signature"></span>queryEntities<span class="signature">(table, tableQuery, currentToken, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -8626,71 +9014,8 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
                                                                                  If more matching entities exist, and could not be returned,
                                                                                  <code>queryResultContinuation</code> will contain a continuation token that can be used
                                                                                  to retrieve the next set of results.
-                                                                                 <code>response</code> will contain information related to this operation.</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="tableservice.js.html">services/table/tableservice.js</a>,
-				 <a href="tableservice.js.html#sunlight-1-line-799">line 799</a>
-			</li>
-		</ul>
-	</dd>
-	
-
-	
-
-	
-
-	
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>The logic for returning entity types can get complicated.  Here is the algorithm used:</p>
+                                                                                 <code>response</code> will contain information related to this operation.</p>
+<p>The logic for returning entity types can get complicated.  Here is the algorithm used:</p>
 <pre><code>var propertyType;
 
 if (propertyResovler) {                      // If the caller provides a propertyResolver in the options, use it
@@ -8721,25 +9046,66 @@ if (propertyType) {
    inability to distinguish between the two in certain cases.</li>
 </ul>
 </li>
-</ul>
-</div>
+</ul></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">undefined</span>
-
-
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="tableservice.js.html">services/table/tableservice.js</a>,
+				 <a href="tableservice.js.html#sunlight-1-line-794">line 794</a>
+			</li>
+		</ul>
 	</dd>
+	
+
+	
+
+	
+
+	
 </dl>
 
+    
+    
 
-        
+    
+
+    
+    
+    
+    
+    
     
     
         <h5>Example</h5>
@@ -8753,7 +9119,7 @@ if (propertyType) {
         
             
 <dt>
-    <h4 class="name" id="retrieveEntity"><span class="type-signature"></span>retrieveEntity<span class="signature">(table, partitionKey, rowKey, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+    <h4 class="name" id="replaceEntity"><span class="type-signature"></span>replaceEntity<span class="signature">(table, entityDescriptor, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -8761,1447 +9127,7 @@ if (propertyType) {
     
     
     <div class="description">
-        <p>Retrieves an entity from a table.</p>
-    </div>
-    
-
-    
-    
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-		<th>Argument</th>
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>table</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The table name.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>partitionKey</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The partition key.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>rowKey</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The row key.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The request options.</p>
-                <h6>Properties</h6>
-                
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-		<th>Argument</th>
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>locationMode</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">LocationMode</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
-                                                                            Please see StorageUtilities.LocationMode for the possible values.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>timeoutIntervalInMs</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The server timeout interval, in milliseconds, to use for the request.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>payloadFormat</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The payload format to use for the request.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>maximumExecutionTimeInMs</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-                                                                            The maximum execution time interval begins at the time that the client begins building the request. The maximum
-                                                                            execution time is checked intermittently while performing requests, and before executing retries.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>clientRequestId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>useNagleAlgorithm</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">bool</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-                                                                            The default value is false.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>propertyResolver</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="TableService.html#propertyResolver">TableService~propertyResolver</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The property resolver. Given the partition key, row key, property name, property value,
-                                                                            and the property Edm type if given by the service, returns the Edm type of the property.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>entityResolver</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The entity resolver. Given the single entity returned by the query, returns a modified object.</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-            </td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>callback</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#errorOrResult">errorOrResult</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p><code>error</code> will contain information if an error occurs; 
-                                                                            otherwise <code>result</code> will be the matching entity.
-                                                                            <code>response</code> will contain information related to this operation.</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="tableservice.js.html">services/table/tableservice.js</a>,
-				 <a href="tableservice.js.html#sunlight-1-line-896">line 896</a>
-			</li>
-		</ul>
-	</dd>
-	
-
-	
-
-	
-
-	
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">undefined</span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
-    
-        <h5>Example</h5>
-        
-    <pre class="sunlight-highlight-javascript">var azure = require(&#x27;azure-storage&#x27;);var tableService = azure.createTableService();tableService.retrieveEntity(&#x27;tasktable&#x27;, &#x27;tasksSeattle&#x27;, &#x27;1&#x27;, function(error, serverEntity) {  if(!error) {    &#x2F;&#x2F; Entity available in serverEntity variable  }}); </pre>
-
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="setServiceProperties"><span class="type-signature"></span>setServiceProperties<span class="signature">(serviceProperties, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Sets the properties of a storage account’s Table service, including Azure Storage Analytics.
-You can also use this operation to set the default request version for all incoming requests that do not have a version specified.</p>
-    </div>
-    
-
-    
-    
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-		<th>Argument</th>
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>serviceProperties</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The service properties.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The request options.</p>
-                <h6>Properties</h6>
-                
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-		<th>Argument</th>
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>locationMode</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">LocationMode</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
-                                                                         Please see StorageUtilities.LocationMode for the possible values.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>timeoutIntervalInMs</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The server timeout interval, in milliseconds, to use for the request.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>maximumExecutionTimeInMs</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-                                                                         execution time is checked intermittently while performing requests, and before executing retries.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>clientRequestId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>useNagleAlgorithm</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">bool</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-                                                                         The default value is false.</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-            </td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>callback</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#errorOrResponse">errorOrResponse</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p><code>error</code> will contain information if an error occurs; 
-                                                                         <code>response</code> will contain information related to this operation.</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="tableservice.js.html">services/table/tableservice.js</a>,
-				 <a href="tableservice.js.html#sunlight-1-line-191">line 191</a>
-			</li>
-		</ul>
-	</dd>
-	
-
-	
-
-	
-
-	
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">undefined</span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="setTableAcl"><span class="type-signature"></span>setTableAcl<span class="signature">(table, signedIdentifiers, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Updates the table's ACL.</p>
-    </div>
-    
-
-    
-    
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-		<th>Argument</th>
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>table</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The table name.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>signedIdentifiers</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The signed identifiers. Signed identifiers must be in an array.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The request options.</p>
-                <h6>Properties</h6>
-                
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-		<th>Argument</th>
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>locationMode</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">LocationMode</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
-                                                                         Please see StorageUtilities.LocationMode for the possible values.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>timeoutIntervalInMs</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The server timeout interval, in milliseconds, to use for the request.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>maximumExecutionTimeInMs</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-                                                                         execution time is checked intermittently while performing requests, and before executing retries.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>clientRequestId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>useNagleAlgorithm</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">bool</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-                                                                         The default value is false.</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-            </td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>callback</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#errorOrResult">errorOrResult</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p><code>error</code> will contain information if an error occurs; 
-                                                                         otherwise <code>result</code> will contain information for the table.
-                                                                         <code>response</code> will contain information related to this operation.</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="tableservice.js.html">services/table/tableservice.js</a>,
-				 <a href="tableservice.js.html#sunlight-1-line-385">line 385</a>
-			</li>
-		</ul>
-	</dd>
-	
-
-	
-
-	
-
-	
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="updateEntity"><span class="type-signature"></span>updateEntity<span class="signature">(table, entityDescriptor, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Updates an existing entity within a table by replacing it. To update conditionally based on etag, set entity['.metadata']['etag'].</p>
+        <p>Replaces an existing entity within a table. To replace conditionally based on etag, set entity['.metadata']['etag'].</p>
     </div>
     
 
@@ -10595,7 +9521,1997 @@ You can also use this operation to set the default request version for all incom
 		<ul class="dummy">
 			<li>
 				<a href="tableservice.js.html">services/table/tableservice.js</a>,
-				 <a href="tableservice.js.html#sunlight-1-line-1001">line 1001</a>
+				 <a href="tableservice.js.html#sunlight-1-line-1025">line 1025</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="retrieveEntity"><span class="type-signature"></span>retrieveEntity<span class="signature">(table, partitionKey, rowKey, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Retrieves an entity from a table.</p>
+    </div>
+    
+
+    
+    
+    
+        <h5>This:</h5>
+        <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>table</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The table name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>partitionKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The partition key.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>rowKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The row key.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>locationMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">LocationMode</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
+                                                                            Please see StorageUtilities.LocationMode for the possible values.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timeoutIntervalInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The server timeout interval, in milliseconds, to use for the request.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>payloadFormat</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The payload format to use for the request.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>autoResolveProperties</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>If true, guess at all property types.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>maximumExecutionTimeInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+                                                                            The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                            execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>clientRequestId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>useNagleAlgorithm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+                                                                            The default value is false.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>propertyResolver</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="TableService.html#propertyResolver">TableService~propertyResolver</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The property resolver. Given the partition key, row key, property name, property value,
+                                                                            and the property Edm type if given by the service, returns the Edm type of the property.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>entityResolver</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The entity resolver. Given the single entity returned by the query, returns a modified object.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#errorOrResult">errorOrResult</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information if an error occurs; 
+                                                                            otherwise <code>result</code> will be the matching entity.
+                                                                            <code>response</code> will contain information related to this operation.</p>
+<p>The logic for returning entity types can get complicated.  Here is the algorithm used:</p>
+<pre><code>var propertyType;
+
+if (propertyResovler) {                      // If the caller provides a propertyResolver in the options, use it
+  propertyType = propertyResolver(partitionKey, rowKey, propertyName, propertyValue, propertyTypeFromService);
+} else if (propertyTypeFromService) {        // If the service provides us a property type, use it.  See below for an explanation of when this will and won't occur.
+  propertyType = propertyTypeFromService;
+} else if (autoResolveProperties) {          // If options.autoResolveProperties is set to true
+  if (javascript type is string) {           // See below for an explanation of how and why autoResolveProperties works as it does.
+    propertyType = 'Edm.String';
+  } else if (javascript type is boolean) {
+    propertyType = 'Edm.Boolean';
+  }
+}
+
+if (propertyType) {
+  // Set the property type on the property.
+} else {
+  // Property gets no EdmType. 
+}</code></pre>
+<p>Notes:</p>
+<ul>
+<li>The service only provides a type if JsonFullMetadata or JsonMinimalMetadata is used, and if the type is Int64, Guid, Binary, or DateTime.</li>
+<li>Explanation of autoResolveProperties:<ul>
+<li>String gets correctly resolved to 'Edm.String'.</li>
+<li>Int64, Guid, Binary, and DateTime all get resolved to 'Edm.String.'  This only happens if JsonNoMetadata is used (otherwise the service will provide the propertyType in a prior step).</li>
+<li>Boolean gets correctly resolved to 'Edm.Boolean'.</li>
+<li>For both Int32 and Double, no type information is returned, even in the case of autoResolveProperties = true.  This is due to an
+   inability to distinguish between the two in certain cases.</li>
+</ul>
+</li>
+</ul></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="tableservice.js.html">services/table/tableservice.js</a>,
+				 <a href="tableservice.js.html#sunlight-1-line-923">line 923</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">var azure = require(&#x27;azure-storage&#x27;);var tableService = azure.createTableService();tableService.retrieveEntity(&#x27;tasktable&#x27;, &#x27;tasksSeattle&#x27;, &#x27;1&#x27;, function(error, serverEntity) {  if(!error) {    &#x2F;&#x2F; Entity available in serverEntity variable  }});</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="setAccountServiceProperties"><span class="type-signature"></span>setAccountServiceProperties<span class="signature">(serviceProperties, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sets the properties of a storage account’s service, including Azure Storage Analytics.
+You can also use this operation to set the default request version for all incoming requests that do not have a version specified.</p>
+    </div>
+    
+
+    
+    
+    
+        <h5>This:</h5>
+        <ul><li>{<a href="StorageServiceClient.html">StorageServiceClient</a>}</li></ul>
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>serviceProperties</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The service properties.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>locationMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">LocationMode</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
+                                                                     Please see StorageUtilities.LocationMode for the possible values.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timeoutIntervalInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The server timeout interval, in milliseconds, to use for the request.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>maximumExecutionTimeInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+                                                                     The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                     execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>useNagleAlgorithm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+                                                                     The default value is false.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#errorOrResponse">errorOrResponse</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information
+                                                                     if an error occurs; otherwise, <code>response</code>
+                                                                     will contain information related to this operation.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#setAccountServiceProperties">StorageServiceClient#setAccountServiceProperties</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-945">line 945</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="setServiceProperties"><span class="type-signature"></span>setServiceProperties<span class="signature">(serviceProperties, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sets the properties of a storage account’s Table service, including Azure Storage Analytics.
+You can also use this operation to set the default request version for all incoming requests that do not have a version specified.</p>
+    </div>
+    
+
+    
+    
+    
+        <h5>This:</h5>
+        <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>serviceProperties</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The service properties.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>locationMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">LocationMode</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
+                                                                         Please see StorageUtilities.LocationMode for the possible values.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timeoutIntervalInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The server timeout interval, in milliseconds, to use for the request.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>maximumExecutionTimeInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                         execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>clientRequestId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>useNagleAlgorithm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+                                                                         The default value is false.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#errorOrResponse">errorOrResponse</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information if an error occurs; 
+                                                                         <code>response</code> will contain information related to this operation.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="tableservice.js.html">services/table/tableservice.js</a>,
+				 <a href="tableservice.js.html#sunlight-1-line-189">line 189</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="setTableAcl"><span class="type-signature"></span>setTableAcl<span class="signature">(table, signedIdentifiers, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Updates the table's ACL.</p>
+    </div>
+    
+
+    
+    
+    
+        <h5>This:</h5>
+        <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>table</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The table name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>signedIdentifiers</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object.&lt;string, <a href="global.html#AccessPolicy">AccessPolicy</a>></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The table ACL settings. See <code><a href="global.html#AccessPolicy">AccessPolicy</a></code> for detailed information.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>locationMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">LocationMode</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
+                                                                                             Please see StorageUtilities.LocationMode for the possible values.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timeoutIntervalInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The server timeout interval, in milliseconds, to use for the request.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>maximumExecutionTimeInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+                                                                                             The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                                             execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>clientRequestId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>useNagleAlgorithm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+                                                                                             The default value is false.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#errorOrResult">errorOrResult</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information if an error occurs; 
+                                                                                             otherwise <code>result</code> will contain information for the table.
+                                                                                             <code>response</code> will contain information related to this operation.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="tableservice.js.html">services/table/tableservice.js</a>,
+				 <a href="tableservice.js.html#sunlight-1-line-381">line 381</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="withFilter"><span class="type-signature"></span>withFilter<span class="signature">(filter)</span><span class="type-signature"> &rarr; {<a href="StorageServiceClient.html">StorageServiceClient</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Associate a filtering operation with this StorageServiceClient. Filtering operations
+can include logging, automatically retrying, etc. Filter operations are objects
+that implement a method with the signature:</p>
+<pre><code>&quot;function handle (requestOptions, next)&quot;.</code></pre>
+<p>After doing its preprocessing on the request options, the method needs to call
+&quot;next&quot; passing a callback with the following signature:
+signature:</p>
+<pre><code>&quot;function (returnObject, finalCallback, next)&quot;</code></pre>
+<p>In this callback, and after processing the returnObject (the response from the
+request to the server), the callback needs to either invoke next if it exists to
+continue processing other filters or simply invoke finalCallback otherwise to end
+up the service invocation.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>filter</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The new filter object.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#withFilter">StorageServiceClient#withFilter</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-655">line 655</a>
 			</li>
 		</ul>
 	</dd>
@@ -10621,6 +11537,10 @@ You can also use this operation to set the default request version for all incom
     <h5>Returns:</h5>
     
             
+<div class="param-desc">
+    <p>A new service client with the filter applied.</p>
+</div>
+
 
 
 <dl>
@@ -10629,7 +11549,7 @@ You can also use this operation to set the default request version for all incom
 	</dt>
 	<dd>
 		
-<span class="param-type">undefined</span>
+<span class="param-type"><a href="StorageServiceClient.html">StorageServiceClient</a></span>
 
 
 	</dd>
@@ -10838,7 +11758,7 @@ and the property Edm type if given by the service, returns the Edm type of the p
 		<ul class="dummy">
 			<li>
 				<a href="tableservice.js.html">services/table/tableservice.js</a>,
-				 <a href="tableservice.js.html#sunlight-1-line-1275">line 1275</a>
+				 <a href="tableservice.js.html#sunlight-1-line-1300">line 1300</a>
 			</li>
 		</ul>
 	</dd>
@@ -11033,7 +11953,7 @@ and the property Edm type if given by the service, returns the Edm type of the p
 		<ul class="dummy">
 			<li>
 				<a href="tableservice.js.html">services/table/tableservice.js</a>,
-				 <a href="tableservice.js.html#sunlight-1-line-1277">line 1277</a>
+				 <a href="tableservice.js.html#sunlight-1-line-1302">line 1302</a>
 			</li>
 		</ul>
 	</dd>
@@ -11079,7 +11999,7 @@ and the property Edm type if given by the service, returns the Edm type of the p
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Wed Mar 9th 2016 using the <a
+		on Mon Mar 28th 2016 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>

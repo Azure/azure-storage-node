@@ -54,7 +54,19 @@
 					<ul class="dropdown-menu ">
 						
 						<li>
+							<a href="BlobResult.html">BlobResult</a>
+						</li>
+						
+						<li>
 							<a href="BlobService.html">BlobService</a>
+						</li>
+						
+						<li>
+							<a href="ContainerResult.html">ContainerResult</a>
+						</li>
+						
+						<li>
+							<a href="DirectoryResult.html">DirectoryResult</a>
 						</li>
 						
 						<li>
@@ -62,11 +74,31 @@
 						</li>
 						
 						<li>
+							<a href="FileResult.html">FileResult</a>
+						</li>
+						
+						<li>
 							<a href="FileService.html">FileService</a>
 						</li>
 						
 						<li>
+							<a href="LeaseResult.html">LeaseResult</a>
+						</li>
+						
+						<li>
 							<a href="LinearRetryPolicyFilter.html">LinearRetryPolicyFilter</a>
+						</li>
+						
+						<li>
+							<a href="Logger.html">Logger</a>
+						</li>
+						
+						<li>
+							<a href="QueueMessageResult.html">QueueMessageResult</a>
+						</li>
+						
+						<li>
+							<a href="QueueResult.html">QueueResult</a>
 						</li>
 						
 						<li>
@@ -75,6 +107,14 @@
 						
 						<li>
 							<a href="RetryPolicyFilter.html">RetryPolicyFilter</a>
+						</li>
+						
+						<li>
+							<a href="ShareResult.html">ShareResult</a>
+						</li>
+						
+						<li>
+							<a href="StorageServiceClient.html">StorageServiceClient</a>
 						</li>
 						
 						<li>
@@ -2569,6 +2609,940 @@ environment variables will be used.</p>
 
         <dl>
                 
+<dt class="name" id="AccessConditions">
+    <h4>AccessConditions</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Specifying conditional headers for blob service operations. See <a href="http://msdn.microsoft.com/en-us/library/dd179371.aspx">http://msdn.microsoft.com/en-us/library/dd179371.aspx</a> for more information.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>EtagMatch</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>If the ETag for the blob matches the specified ETag.
+                                                              Specify the wildcard character (*) to perform the operation only if the resource does exist, and fail the operation if it does not exist.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>EtagNonMatch</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>If the ETag for the blob does not match the specified ETag.
+                                                              Specify the wildcard character (*) to perform the operation only if the resource does not exist, and fail the operation if it does exist.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>DateModifedSince</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>If the blob has been modified since the specified date.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>DateUnModifiedSince</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>If the blob has not been modified since the specified date.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>SequenceNumberLessThanOrEqual</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>If the blob's sequence number is less than or equal to the specified value.
+                                                              For Put Page operation only. See <a href="https://msdn.microsoft.com/en-us/library/azure/ee691975.aspx">https://msdn.microsoft.com/en-us/library/azure/ee691975.aspx</a> for more information.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>SequenceNumberLessThan</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>If the blob's sequence number is less than the specified value.
+                                                              For Put Page operation only. See <a href="https://msdn.microsoft.com/en-us/library/azure/ee691975.aspx">https://msdn.microsoft.com/en-us/library/azure/ee691975.aspx</a> for more information.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>SequenceNumberEqual</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>If the blob's sequence number is equal to the specified value.
+                                                              For Put Page operation only. See <a href="https://msdn.microsoft.com/en-us/library/azure/ee691975.aspx">https://msdn.microsoft.com/en-us/library/azure/ee691975.aspx</a> for more information.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>MaxBlobSize</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>If the Append Block operation would cause the blob to exceed that limit or if the blob size is already greater than the specified value. 
+                                                              For Append Block operation only. See <a href="https://msdn.microsoft.com/en-us/library/mt427365.aspx">https://msdn.microsoft.com/en-us/library/mt427365.aspx</a> for more information.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>MaxAppendPosition</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>If the append position is equal to the specified value.
+                                                              For Append Block operation only. See <a href="https://msdn.microsoft.com/en-us/library/mt427365.aspx">https://msdn.microsoft.com/en-us/library/mt427365.aspx</a> for more information.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="azure-storage.js.html">azure-storage.js</a>,
+				 <a href="azure-storage.js.html#sunlight-1-line-236">line 236</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+            
+                
+<dt class="name" id="AccessPolicy">
+    <h4>AccessPolicy</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The access policy.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>Permissions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The permission type.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>Start</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The time at which the access policy becomes valid.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>Expiry</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The time at which the access policy becomes expired.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>IPAddressOrRange</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>An IP address or a range of IP addresses from which to accept requests. When specifying a range, note that the range is inclusive.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>Protocol</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The protocol permitted for a request made with the SAS.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>Services</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The services (blob, file, queue, table) for a shared access signature associated with this shared access policy.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>ResourceTypes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The resource type for a shared access signature associated with this shared access policy.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="azure-storage.js.html">azure-storage.js</a>,
+				 <a href="azure-storage.js.html#sunlight-1-line-248">line 248</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+            
+                
+<dt class="name" id="ContainerAclResult">
+    <h4>ContainerAclResult</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The container ACL settings.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>signedIdentifiers</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object.&lt;string, <a href="global.html#AccessPolicy">AccessPolicy</a>></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The container ACL settings. See <code><a href="global.html#AccessPolicy">AccessPolicy</a></code> for detailed information.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="containerresult.js.html">services/blob/models/containerresult.js</a>,
+				 <a href="containerresult.js.html#sunlight-1-line-105">line 105</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+            
+                
+<dt class="name" id="CorsRule">
+    <h4>CorsRule</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The CORS rule of a storage service.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>AllowedMethods</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string[]</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A list of HTTP methods that are allowed to be executed by the origin. For Azure Storage, permitted methods are DELETE, GET, HEAD, MERGE, POST, OPTIONS or PUT.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>AllowedOrigins</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string[]</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A list of origin domains that are allowed via CORS, or &quot;*&quot; if all domains are allowed.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>AllowedHeaders</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string[]</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A list of headers allowed to be part of the cross-origin request.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>ExposedHeaders</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string[]</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A list of response headers to expose to CORS clients.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>MaxAgeInSeconds</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The number of seconds that the client/browser should cache a preflight response.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="azure-storage.js.html">azure-storage.js</a>,
+				 <a href="azure-storage.js.html#sunlight-1-line-244">line 244</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+            
+                
 <dt>
     <h4 class="name" id="errorOrResponse"><span class="type-signature"></span>errorOrResponse<span class="signature">(error, response)</span><span class="type-signature"></span></h4>
     
@@ -2888,6 +3862,1287 @@ environment variables will be used.</p>
     
 </dd>
 
+            
+                
+<dt class="name" id="LoggingProperties">
+    <h4>LoggingProperties</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The Azure Analytics logging settings.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>Version</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The version of Storage Analytics currently in use for logging.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>Delete</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Indicates whether delete requests are being logged.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>Read</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Indicates whether read requests are being logged.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>Write</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Indicates whether write requests are being logged.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>RetentionPolicy</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#RetentionPolicy">RetentionPolicy</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The retention policy of the log data.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="azure-storage.js.html">azure-storage.js</a>,
+				 <a href="azure-storage.js.html#sunlight-1-line-240">line 240</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+            
+                
+<dt class="name" id="MetricsProperties">
+    <h4>MetricsProperties</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The setting of Azure Analytics summary of request stastics.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>Version</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The version of Storage Analytics currently in use for hour metrics.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>Enabled</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Indicates whether metrics are enabled</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>IncludeAPIs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Indicates whether metrics generate summary statistics for called API operations.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>RetentionPolicy</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#RetentionPolicy">RetentionPolicy</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The retention policy of the metrics data.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="azure-storage.js.html">azure-storage.js</a>,
+				 <a href="azure-storage.js.html#sunlight-1-line-242">line 242</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+            
+                
+<dt class="name" id="Range">
+    <h4>Range</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The range.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>start</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The start of the range.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>end</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The end of the range.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="azure-storage.js.html">azure-storage.js</a>,
+				 <a href="azure-storage.js.html#sunlight-1-line-252">line 252</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+            
+                
+<dt class="name" id="RetentionPolicy">
+    <h4>RetentionPolicy</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The Azure Analytics logging or metrics retention policy.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>Enabled</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Indicates whether a retention policy is enabled for the storage service.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>Days</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Indicates the number of days that logging data is retained. All data older than this value will be deleted.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="azure-storage.js.html">azure-storage.js</a>,
+				 <a href="azure-storage.js.html#sunlight-1-line-246">line 246</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+            
+                
+<dt class="name" id="ServiceProperties">
+    <h4>ServiceProperties</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The properties of a storage service, including properties of Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>DefaultServiceVersion</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The default version of Storage Analytics currently in use.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>Logging</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#LoggingProperties">LoggingProperties</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Logging settings.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>HourMetrics</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#MetricsProperties">MetricsProperties</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The HourMetrics settings provide a summary of request statistics grouped by API in hourly aggregates.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>MinuteMetrics</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#MetricsProperties">MetricsProperties</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The HourMetrics settings provide request statistics grouped by API for each minute.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>Cors</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Groups all CORS rules.</p>
+                <h6>Properties</h6>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>CorsRules</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">CorsRule[]</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Groups settings for a <code><a href="global.html#CorsRule">CORS rule</a></code>.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="azure-storage.js.html">azure-storage.js</a>,
+				 <a href="azure-storage.js.html#sunlight-1-line-238">line 238</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+            
+                
+<dt class="name" id="ServiceStats">
+    <h4>ServiceStats</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The service statistics.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>GeoReplication</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The geo replication stastics.</p>
+                <h6>Properties</h6>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>Status</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The status of the secondary location.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>LastSyncTime</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A GMT date/time value, to the second. 
+                                                              All primary writes preceding this value are guaranteed to be available for read operations at the secondary.
+                                                              Primary writes after this point in time may or may not be available for reads.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="azure-storage.js.html">azure-storage.js</a>,
+				 <a href="azure-storage.js.html#sunlight-1-line-250">line 250</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+            
+                
+<dt class="name" id="ShareAclResult">
+    <h4>ShareAclResult</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The share ACL settings.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>signedIdentifiers</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object.&lt;string, <a href="global.html#AccessPolicy">AccessPolicy</a>></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The container ACL settings. See <code><a href="global.html#AccessPolicy">AccessPolicy</a></code> for detailed information.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="shareresult.js.html">services/file/models/shareresult.js</a>,
+				 <a href="shareresult.js.html#sunlight-1-line-77">line 77</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
             </dl>
     
 
@@ -2907,7 +5162,7 @@ environment variables will be used.</p>
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Wed Mar 9th 2016 using the <a
+		on Mon Mar 28th 2016 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>

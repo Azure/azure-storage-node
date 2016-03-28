@@ -54,7 +54,19 @@
 					<ul class="dropdown-menu ">
 						
 						<li>
+							<a href="BlobResult.html">BlobResult</a>
+						</li>
+						
+						<li>
 							<a href="BlobService.html">BlobService</a>
+						</li>
+						
+						<li>
+							<a href="ContainerResult.html">ContainerResult</a>
+						</li>
+						
+						<li>
+							<a href="DirectoryResult.html">DirectoryResult</a>
 						</li>
 						
 						<li>
@@ -62,11 +74,31 @@
 						</li>
 						
 						<li>
+							<a href="FileResult.html">FileResult</a>
+						</li>
+						
+						<li>
 							<a href="FileService.html">FileService</a>
 						</li>
 						
 						<li>
+							<a href="LeaseResult.html">LeaseResult</a>
+						</li>
+						
+						<li>
 							<a href="LinearRetryPolicyFilter.html">LinearRetryPolicyFilter</a>
+						</li>
+						
+						<li>
+							<a href="Logger.html">Logger</a>
+						</li>
+						
+						<li>
+							<a href="QueueMessageResult.html">QueueMessageResult</a>
+						</li>
+						
+						<li>
+							<a href="QueueResult.html">QueueResult</a>
 						</li>
 						
 						<li>
@@ -75,6 +107,14 @@
 						
 						<li>
 							<a href="RetryPolicyFilter.html">RetryPolicyFilter</a>
+						</li>
+						
+						<li>
+							<a href="ShareResult.html">ShareResult</a>
+						</li>
+						
+						<li>
+							<a href="StorageServiceClient.html">StorageServiceClient</a>
 						</li>
 						
 						<li>
@@ -400,7 +440,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-83">line 83</a>
+				 <a href="fileservice.js.html#sunlight-1-line-87">line 87</a>
 			</li>
 		</ul>
 	</dd>
@@ -434,7 +474,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
         <h3 class="subsection-title">Extends</h3>
 
         <ul>
-            <li>StorageServiceClient</li>
+            <li><a href="StorageServiceClient.html">StorageServiceClient</a></li>
         </ul>
     
 
@@ -447,11 +487,606 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
     
 
     
+        <h3 class="subsection-title">Members</h3>
+
+        <dl>
+            
+<dt class="name" id="logger">
+    <h4><span class="type-signature"></span>logger<span class="type-signature"> :<a href="Logger.html">Logger</a></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The logger of the service. To change the log level of the services, set the <code><a href="Logger.html#level">logger.level</a></code>.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type"><a href="Logger.html">Logger</a></span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#logger">StorageServiceClient#logger</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-101">line 101</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        </dl>
+    
 
     
         <h3 class="subsection-title">Methods</h3>
 
         <dl>
+            
+<dt>
+    <h4 class="name" id="_initializeLocation"><span class="type-signature"></span>_initializeLocation<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Initializes the location to which the operation is being sent to.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#_initializeLocation">StorageServiceClient#_initializeLocation</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-1101">line 1101</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="_invalidLocationMode"><span class="type-signature"></span>_invalidLocationMode<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Checks whether we have the relevant host information based on the locationMode.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#_invalidLocationMode">StorageServiceClient#_invalidLocationMode</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-1156">line 1156</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="_maximumExecutionTimeExceeded"><span class="type-signature"></span>_maximumExecutionTimeExceeded<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Checks to see if the maximum execution timeout provided has been exceeded.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#_maximumExecutionTimeExceeded">StorageServiceClient#_maximumExecutionTimeExceeded</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-1170">line 1170</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="_setDefaultProxy"><span class="type-signature"></span>_setDefaultProxy<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sets the service host default proxy from the environment.
+Can be overridden by calling _setProxyUrl or _setProxy</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#_setDefaultProxy">StorageServiceClient#_setDefaultProxy</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-1062">line 1062</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="_setOperationExpiryTime"><span class="type-signature"></span>_setOperationExpiryTime<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sets the operation expiry time.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#_setOperationExpiryTime">StorageServiceClient#_setOperationExpiryTime</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-1181">line 1181</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="_validateLocation"><span class="type-signature"></span>_validateLocation<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Validates the location to which the operation is being sent to.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#_validateLocation">StorageServiceClient#_validateLocation</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-1124">line 1124</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
             
 <dt>
     <h4 class="name" id="abortCopyFile"><span class="type-signature"></span>abortCopyFile<span class="signature">(share, directory, file, copyId, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
@@ -879,9 +1514,8 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 
             
 
-            <td class="description last"><p><code>error</code> will contain information
-                                                                      if an error occurs; otherwise <code>result</code> will contain
-                                                                      the file information.
+            <td class="description last"><p><code>error</code> will contain information if an error occurs; 
+                                                                      otherwise <code><a href="FileResult.html">result</a></code> will contain the file information.
                                                                       <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -919,7 +1553,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-3027">line 3027</a>
+				 <a href="fileservice.js.html#sunlight-1-line-3058">line 3058</a>
 			</li>
 		</ul>
 	</dd>
@@ -1406,7 +2040,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                        if an error occurs; otherwise <code>result</code> will contain
+                                                                        if an error occurs; otherwise <code><a href="FileResult.html">result</a></code> will contain
                                                                         the directory information.
                                                                        <code>response</code> will contain information related to this operation.</p></td>
         </tr>
@@ -1445,7 +2079,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-2500">line 2500</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2519">line 2519</a>
 			</li>
 		</ul>
 	</dd>
@@ -1635,6 +2269,39 @@ If a directory with the same name already exists, the operation fails.</p>
 	</thead>
 
 	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>metadata</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The metadata key/value pairs.</p></td>
+        </tr>
+
 	
 
         <tr>
@@ -1840,7 +2507,7 @@ If a directory with the same name already exists, the operation fails.</p>
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                if an error occurs; otherwise <code>result</code> will contain
+                                                                if an error occurs; otherwise <code><a href="DirectoryResult.html">result</a></code> will contain
                                                                 the directory information.
                                                                 <code>response</code> will contain information related to this operation.</p></td>
         </tr>
@@ -1879,7 +2546,7 @@ If a directory with the same name already exists, the operation fails.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1013">line 1013</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1024">line 1024</a>
 			</li>
 		</ul>
 	</dd>
@@ -2068,6 +2735,39 @@ If a directory with the same name already exists, the operation fails.</p>
 	</thead>
 
 	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>metadata</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The metadata key/value pairs.</p></td>
+        </tr>
+
 	
 
         <tr>
@@ -2273,8 +2973,8 @@ If a directory with the same name already exists, the operation fails.</p>
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                      if an error occurs; otherwise <code>result</code> will
-                                                                      be true if the directory was created, or false if the directory
+                                                                      if an error occurs; otherwise <code><a href="DirectoryResult.html">result</a></code> will contain
+                                                                      the directory information including <code>created</code> boolean member.
                                                                       already exists.
                                                                       <code>response</code> will contain information related to this operation.</p></td>
         </tr>
@@ -2313,7 +3013,7 @@ If a directory with the same name already exists, the operation fails.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1078">line 1078</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1090">line 1090</a>
 			</li>
 		</ul>
 	</dd>
@@ -2574,7 +3274,7 @@ If a directory with the same name already exists, the operation fails.</p>
 
         <tr>
             
-                <td class="name"><code>metadata</code></td>
+                <td class="name"><code>contentSettings</code></td>
             
 
             <td class="type">
@@ -2600,9 +3300,30 @@ If a directory with the same name already exists, the operation fails.</p>
 
             
 
-            <td class="description last"><p>The metadata key/value pairs.</p></td>
-        </tr>
+            <td class="description last"><p>The file's content settings.</p>
+                <h6>Properties</h6>
+                
 
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
 	
 
         <tr>
@@ -2706,39 +3427,6 @@ If a directory with the same name already exists, the operation fails.</p>
 
         <tr>
             
-                <td class="name"><code>contentMD5</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The MD5 hash of the file content.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
                 <td class="name"><code>cacheControl</code></td>
             
 
@@ -2798,7 +3486,80 @@ If a directory with the same name already exists, the operation fails.</p>
 
             
 
-            <td class="description last"><p>The file's content disposition. (x-ms-File-content-disposition)</p></td>
+            <td class="description last"><p>The file's content disposition.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>contentMD5</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The file's MD5 hash.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>metadata</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The metadata key/value pairs.</p></td>
         </tr>
 
 	
@@ -2832,7 +3593,7 @@ If a directory with the same name already exists, the operation fails.</p>
             
 
             <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
-                                                                        Please see StorageUtilities.LocationMode for the possible values.</p></td>
+                                                                          Please see StorageUtilities.LocationMode for the possible values.</p></td>
         </tr>
 
 	
@@ -2899,8 +3660,8 @@ If a directory with the same name already exists, the operation fails.</p>
             
 
             <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-                                                                        The maximum execution time interval begins at the time that the client begins building the request. The maximum
-                                                                        execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+                                                                          The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                          execution time is checked intermittently while performing requests, and before executing retries.</p></td>
         </tr>
 
 	
@@ -2967,7 +3728,7 @@ If a directory with the same name already exists, the operation fails.</p>
             
 
             <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-                                                                        The default value is false.</p></td>
+                                                                          The default value is false.</p></td>
         </tr>
 
 	
@@ -3006,9 +3767,9 @@ If a directory with the same name already exists, the operation fails.</p>
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                        if an error occurs; otherwise <code>result</code> will contain
-                                                                        the directory information.
-                                                                       <code>response</code> will contain information related to this operation.</p></td>
+                                                                          if an error occurs; otherwise <code><a href="FileResult.html">result</a></code> will contain
+                                                                          the file information.
+                                                                          <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
 	
@@ -3045,7 +3806,7 @@ If a directory with the same name already exists, the operation fails.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1956">line 1956</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1975">line 1975</a>
 			</li>
 		</ul>
 	</dd>
@@ -3234,7 +3995,7 @@ If a directory with the same name already exists, the operation fails.</p>
 
             
 
-            <td class="description last"><p>localFileName                               The local path to the file to be uploaded.</p></td>
+            <td class="description last"><p>localFileName                                 The local path to the file to be uploaded.</p></td>
         </tr>
 
 	
@@ -3328,39 +4089,6 @@ If a directory with the same name already exists, the operation fails.</p>
 
         <tr>
             
-                <td class="name"><code>metadata</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The metadata key/value pairs.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
                 <td class="name"><code>storeFileContentMD5</code></td>
             
 
@@ -3388,7 +4116,7 @@ If a directory with the same name already exists, the operation fails.</p>
             
 
             <td class="description last"><p>Specifies whether the file's ContentMD5 header should be set on uploads. 
-                                                                        The default value is false for files.</p></td>
+                                                                          The default value is false for files.</p></td>
         </tr>
 
 	
@@ -3424,6 +4152,60 @@ If a directory with the same name already exists, the operation fails.</p>
             <td class="description last"><p>Calculate and send/validate content MD5 for transactions.</p></td>
         </tr>
 
+	
+
+        <tr>
+            
+                <td class="name"><code>contentSettings</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The file's content settings.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
 	
 
         <tr>
@@ -3527,39 +4309,6 @@ If a directory with the same name already exists, the operation fails.</p>
 
         <tr>
             
-                <td class="name"><code>contentMD5</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The MD5 hash of the file content.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
                 <td class="name"><code>cacheControl</code></td>
             
 
@@ -3619,7 +4368,80 @@ If a directory with the same name already exists, the operation fails.</p>
 
             
 
-            <td class="description last"><p>The file's content disposition. (x-ms-File-content-disposition)</p></td>
+            <td class="description last"><p>The file's content disposition.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>contentMD5</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The file's MD5 hash.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>metadata</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The metadata key/value pairs.</p></td>
         </tr>
 
 	
@@ -3653,7 +4475,7 @@ If a directory with the same name already exists, the operation fails.</p>
             
 
             <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
-                                                                        Please see StorageUtilities.LocationMode for the possible values.</p></td>
+                                                                          Please see StorageUtilities.LocationMode for the possible values.</p></td>
         </tr>
 
 	
@@ -3720,8 +4542,8 @@ If a directory with the same name already exists, the operation fails.</p>
             
 
             <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-                                                                        The maximum execution time interval begins at the time that the client begins building the request. The maximum
-                                                                        execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+                                                                          The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                          execution time is checked intermittently while performing requests, and before executing retries.</p></td>
         </tr>
 
 	
@@ -3788,7 +4610,7 @@ If a directory with the same name already exists, the operation fails.</p>
             
 
             <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-                                                                        The default value is false.</p></td>
+                                                                          The default value is false.</p></td>
         </tr>
 
 	
@@ -3826,7 +4648,9 @@ If a directory with the same name already exists, the operation fails.</p>
 
             
 
-            <td class="description last"><p>The callback function.</p></td>
+            <td class="description last"><p><code>error</code> will contain information if an error occurs; 
+                                                                          otherwise <code><a href="FileResult.html">result</a></code> will contain the file information.
+                                                                          <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
 	
@@ -3863,7 +4687,7 @@ If a directory with the same name already exists, the operation fails.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-2695">line 2695</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2719">line 2719</a>
 			</li>
 		</ul>
 	</dd>
@@ -4071,7 +4895,7 @@ If a directory with the same name already exists, the operation fails.</p>
 
             
 
-            <td class="description last"><p>stream                                      Stream to the data to store.</p></td>
+            <td class="description last"><p>stream                                        Stream to the data to store.</p></td>
         </tr>
 
 	
@@ -4196,39 +5020,6 @@ If a directory with the same name already exists, the operation fails.</p>
 
         <tr>
             
-                <td class="name"><code>metadata</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The metadata key/value pairs.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
                 <td class="name"><code>storeFileContentMD5</code></td>
             
 
@@ -4256,7 +5047,7 @@ If a directory with the same name already exists, the operation fails.</p>
             
 
             <td class="description last"><p>Specifies whether the file's ContentMD5 header should be set on uploads. 
-                                                                        The default value is false for files.</p></td>
+                                                                          The default value is false for files.</p></td>
         </tr>
 
 	
@@ -4292,6 +5083,60 @@ If a directory with the same name already exists, the operation fails.</p>
             <td class="description last"><p>Calculate and send/validate content MD5 for transactions.</p></td>
         </tr>
 
+	
+
+        <tr>
+            
+                <td class="name"><code>contentSettings</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The file's content settings.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
 	
 
         <tr>
@@ -4395,39 +5240,6 @@ If a directory with the same name already exists, the operation fails.</p>
 
         <tr>
             
-                <td class="name"><code>contentMD5</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The MD5 hash of the file content.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
                 <td class="name"><code>cacheControl</code></td>
             
 
@@ -4487,7 +5299,80 @@ If a directory with the same name already exists, the operation fails.</p>
 
             
 
-            <td class="description last"><p>The file's content disposition. (x-ms-File-content-disposition)</p></td>
+            <td class="description last"><p>The file's content disposition.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>contentMD5</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The file's MD5 hash.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>metadata</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The metadata key/value pairs.</p></td>
         </tr>
 
 	
@@ -4521,7 +5406,7 @@ If a directory with the same name already exists, the operation fails.</p>
             
 
             <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
-                                                                        Please see StorageUtilities.LocationMode for the possible values.</p></td>
+                                                                          Please see StorageUtilities.LocationMode for the possible values.</p></td>
         </tr>
 
 	
@@ -4588,8 +5473,8 @@ If a directory with the same name already exists, the operation fails.</p>
             
 
             <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-                                                                        The maximum execution time interval begins at the time that the client begins building the request. The maximum
-                                                                        execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+                                                                          The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                          execution time is checked intermittently while performing requests, and before executing retries.</p></td>
         </tr>
 
 	
@@ -4656,7 +5541,7 @@ If a directory with the same name already exists, the operation fails.</p>
             
 
             <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-                                                                        The default value is false.</p></td>
+                                                                          The default value is false.</p></td>
         </tr>
 
 	
@@ -4694,7 +5579,9 @@ If a directory with the same name already exists, the operation fails.</p>
 
             
 
-            <td class="description last"><p>The callback function.</p></td>
+            <td class="description last"><p><code>error</code> will contain information if an error occurs; 
+                                                                          otherwise <code><a href="FileResult.html">result</a></code> will contain the file information.
+                                                                          <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
 	
@@ -4731,7 +5618,7 @@ If a directory with the same name already exists, the operation fails.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-2763">line 2763</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2790">line 2790</a>
 			</li>
 		</ul>
 	</dd>
@@ -5041,39 +5928,6 @@ If a directory with the same name already exists, the operation fails.</p>
 
         <tr>
             
-                <td class="name"><code>metadata</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The metadata key/value pairs.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
                 <td class="name"><code>storeFileContentMD5</code></td>
             
 
@@ -5101,7 +5955,7 @@ If a directory with the same name already exists, the operation fails.</p>
             
 
             <td class="description last"><p>Specifies whether the file's ContentMD5 header should be set on uploads. 
-                                                                        The default value is false for files.</p></td>
+                                                                          The default value is false for files.</p></td>
         </tr>
 
 	
@@ -5137,6 +5991,60 @@ If a directory with the same name already exists, the operation fails.</p>
             <td class="description last"><p>Calculate and send/validate content MD5 for transactions.</p></td>
         </tr>
 
+	
+
+        <tr>
+            
+                <td class="name"><code>contentSettings</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The file's content settings.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
 	
 
         <tr>
@@ -5240,39 +6148,6 @@ If a directory with the same name already exists, the operation fails.</p>
 
         <tr>
             
-                <td class="name"><code>contentMD5</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The MD5 hash of the file content.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
                 <td class="name"><code>cacheControl</code></td>
             
 
@@ -5332,7 +6207,80 @@ If a directory with the same name already exists, the operation fails.</p>
 
             
 
-            <td class="description last"><p>The file's content disposition. (x-ms-File-content-disposition)</p></td>
+            <td class="description last"><p>The file's content disposition.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>contentMD5</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The file's MD5 hash.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>metadata</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The metadata key/value pairs.</p></td>
         </tr>
 
 	
@@ -5366,7 +6314,7 @@ If a directory with the same name already exists, the operation fails.</p>
             
 
             <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
-                                                                        Please see StorageUtilities.LocationMode for the possible values.</p></td>
+                                                                          Please see StorageUtilities.LocationMode for the possible values.</p></td>
         </tr>
 
 	
@@ -5433,8 +6381,8 @@ If a directory with the same name already exists, the operation fails.</p>
             
 
             <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-                                                                        The maximum execution time interval begins at the time that the client begins building the request. The maximum
-                                                                        execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+                                                                          The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                          execution time is checked intermittently while performing requests, and before executing retries.</p></td>
         </tr>
 
 	
@@ -5501,7 +6449,7 @@ If a directory with the same name already exists, the operation fails.</p>
             
 
             <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-                                                                        The default value is false.</p></td>
+                                                                          The default value is false.</p></td>
         </tr>
 
 	
@@ -5540,9 +6488,9 @@ If a directory with the same name already exists, the operation fails.</p>
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                        if an error occurs; otherwise <code>text</code> will contain the file contents,
-                                                                        and <code>file</code> will contain the file information.
-                                                                        <code>response</code> will contain information related to this operation.</p></td>
+                                                                          if an error occurs; otherwise <code>text</code> will contain the file contents,
+                                                                          and <code><a href="FileResult.html">file</a></code> will contain the file information.
+                                                                          <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
 	
@@ -5579,7 +6527,7 @@ If a directory with the same name already exists, the operation fails.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-2628">line 2628</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2649">line 2649</a>
 			</li>
 		</ul>
 	</dd>
@@ -5929,7 +6877,7 @@ If a directory with the same name already exists, the operation fails.</p>
 
         <tr>
             
-                <td class="name"><code>contentMD5</code></td>
+                <td class="name"><code>transactionalContentMD5</code></td>
             
 
             <td class="type">
@@ -6163,7 +7111,7 @@ If a directory with the same name already exists, the operation fails.</p>
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                        if an error occurs; otherwise <code>result</code> will contain
+                                                                        if an error occurs; otherwise <code><a href="FileResult.html">result</a></code> will contain
                                                                         the file information.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
@@ -6202,7 +7150,7 @@ If a directory with the same name already exists, the operation fails.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-2561">line 2561</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2580">line 2580</a>
 			</li>
 		</ul>
 	</dd>
@@ -6759,7 +7707,7 @@ If a directory with the same name already exists, the operation fails.</p>
             
 
             <td class="description last"><p><code>error</code> will contain information if an error occurs; 
-                                                                        otherwise <code>result</code> will contain the file information.
+                                                                        otherwise <code><a href="FileResult.html">result</a></code> will contain the file information.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -6797,7 +7745,7 @@ If a directory with the same name already exists, the operation fails.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-2279">line 2279</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2298">line 2298</a>
 			</li>
 		</ul>
 	</dd>
@@ -7252,7 +8200,7 @@ If a share with the same name already exists, the operation fails.</p>
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                if an error occurs; otherwise <code>result</code> will contain
+                                                                if an error occurs; otherwise <code><a href="ShareResult.html">result</a></code> will contain
                                                                 the share information.
                                                                 <code>response</code> will contain information related to this operation.</p></td>
         </tr>
@@ -7291,7 +8239,7 @@ If a share with the same name already exists, the operation fails.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-357">line 357</a>
+				 <a href="fileservice.js.html#sunlight-1-line-363">line 363</a>
 			</li>
 		</ul>
 	</dd>
@@ -7687,9 +8635,8 @@ If a share with the same name already exists, the operation fails.</p>
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                      if an error occurs; otherwise <code>result</code> will
-                                                                      be true if the share was created, or false if the share
-                                                                      already exists.
+                                                                      if an error occurs; otherwise <code><a href="ShareResult.html">result</a></code> will contain
+                                                                      the share information including <code>created</code> boolean member.
                                                                       <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -7727,7 +8674,7 @@ If a share with the same name already exists, the operation fails.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-427">line 427</a>
+				 <a href="fileservice.js.html#sunlight-1-line-432">line 432</a>
 			</li>
 		</ul>
 	</dd>
@@ -7991,39 +8938,6 @@ If it does not, please create the file using createFile before calling this meth
 
         <tr>
             
-                <td class="name"><code>metadata</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The metadata key/value pairs.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
                 <td class="name"><code>storeFileContentMD5</code></td>
             
 
@@ -8051,7 +8965,7 @@ If it does not, please create the file using createFile before calling this meth
             
 
             <td class="description last"><p>Specifies whether the file's ContentMD5 header should be set on uploads. 
-                                                                        The default value is false for files.</p></td>
+                                                                          The default value is false for files.</p></td>
         </tr>
 
 	
@@ -8087,6 +9001,60 @@ If it does not, please create the file using createFile before calling this meth
             <td class="description last"><p>Calculate and send/validate content MD5 for transactions.</p></td>
         </tr>
 
+	
+
+        <tr>
+            
+                <td class="name"><code>contentSettings</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The file's content settings.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
 	
 
         <tr>
@@ -8190,39 +9158,6 @@ If it does not, please create the file using createFile before calling this meth
 
         <tr>
             
-                <td class="name"><code>contentMD5</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The MD5 hash of the file content.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
                 <td class="name"><code>cacheControl</code></td>
             
 
@@ -8282,7 +9217,80 @@ If it does not, please create the file using createFile before calling this meth
 
             
 
-            <td class="description last"><p>The file's content disposition. (x-ms-File-content-disposition)</p></td>
+            <td class="description last"><p>The file's content disposition.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>contentMD5</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The file's MD5 hash.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>metadata</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The metadata key/value pairs.</p></td>
         </tr>
 
 	
@@ -8316,7 +9324,7 @@ If it does not, please create the file using createFile before calling this meth
             
 
             <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
-                                                                        Please see StorageUtilities.LocationMode for the possible values.</p></td>
+                                                                          Please see StorageUtilities.LocationMode for the possible values.</p></td>
         </tr>
 
 	
@@ -8383,8 +9391,8 @@ If it does not, please create the file using createFile before calling this meth
             
 
             <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-                                                                        The maximum execution time interval begins at the time that the client begins building the request. The maximum
-                                                                        execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+                                                                          The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                          execution time is checked intermittently while performing requests, and before executing retries.</p></td>
         </tr>
 
 	
@@ -8451,7 +9459,7 @@ If it does not, please create the file using createFile before calling this meth
             
 
             <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-                                                                        The default value is false.</p></td>
+                                                                          The default value is false.</p></td>
         </tr>
 
 	
@@ -8489,7 +9497,9 @@ If it does not, please create the file using createFile before calling this meth
 
             
 
-            <td class="description last"><p>The callback function.</p></td>
+            <td class="description last"><p><code>error</code> will contain information if an error occurs; 
+                                                                          otherwise <code><a href="FileResult.html">result</a></code> will contain the file information.
+                                                                          <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
 	
@@ -8526,7 +9536,7 @@ If it does not, please create the file using createFile before calling this meth
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-2834">line 2834</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2864">line 2864</a>
 			</li>
 		</ul>
 	</dd>
@@ -8839,39 +9849,6 @@ If it does not, please create the file using createFile before calling this meth
 
         <tr>
             
-                <td class="name"><code>metadata</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The metadata key/value pairs.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
                 <td class="name"><code>storeFileContentMD5</code></td>
             
 
@@ -8899,7 +9876,7 @@ If it does not, please create the file using createFile before calling this meth
             
 
             <td class="description last"><p>Specifies whether the file's ContentMD5 header should be set on uploads. 
-                                                                        The default value is false for files.</p></td>
+                                                                          The default value is false for files.</p></td>
         </tr>
 
 	
@@ -8935,6 +9912,60 @@ If it does not, please create the file using createFile before calling this meth
             <td class="description last"><p>Calculate and send/validate content MD5 for transactions.</p></td>
         </tr>
 
+	
+
+        <tr>
+            
+                <td class="name"><code>contentSettings</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The file's content settings.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
 	
 
         <tr>
@@ -9038,39 +10069,6 @@ If it does not, please create the file using createFile before calling this meth
 
         <tr>
             
-                <td class="name"><code>contentMD5</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The MD5 hash of the file content.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
                 <td class="name"><code>cacheControl</code></td>
             
 
@@ -9130,7 +10128,80 @@ If it does not, please create the file using createFile before calling this meth
 
             
 
-            <td class="description last"><p>The file's content disposition. (x-ms-File-content-disposition)</p></td>
+            <td class="description last"><p>The file's content disposition.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>contentMD5</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The file's MD5 hash.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>metadata</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The metadata key/value pairs.</p></td>
         </tr>
 
 	
@@ -9164,7 +10235,7 @@ If it does not, please create the file using createFile before calling this meth
             
 
             <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
-                                                                        Please see StorageUtilities.LocationMode for the possible values.</p></td>
+                                                                          Please see StorageUtilities.LocationMode for the possible values.</p></td>
         </tr>
 
 	
@@ -9231,8 +10302,8 @@ If it does not, please create the file using createFile before calling this meth
             
 
             <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-                                                                        The maximum execution time interval begins at the time that the client begins building the request. The maximum
-                                                                        execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+                                                                          The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                          execution time is checked intermittently while performing requests, and before executing retries.</p></td>
         </tr>
 
 	
@@ -9299,7 +10370,7 @@ If it does not, please create the file using createFile before calling this meth
             
 
             <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-                                                                        The default value is false.</p></td>
+                                                                          The default value is false.</p></td>
         </tr>
 
 	
@@ -9337,7 +10408,9 @@ If it does not, please create the file using createFile before calling this meth
 
             
 
-            <td class="description last"><p>The callback function.</p></td>
+            <td class="description last"><p><code>error</code> will contain information if an error occurs; 
+                                                                          otherwise <code><a href="FileResult.html">result</a></code> will contain the file information.
+                                                                          <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
 	
@@ -9374,7 +10447,7 @@ If it does not, please create the file using createFile before calling this meth
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-2897">line 2897</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2930">line 2930</a>
 			</li>
 		</ul>
 	</dd>
@@ -9831,7 +10904,7 @@ If it does not, please create the file using createFile before calling this meth
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1191">line 1191</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1206">line 1206</a>
 			</li>
 		</ul>
 	</dd>
@@ -10265,7 +11338,7 @@ If it does not, please create the file using createFile before calling this meth
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1239">line 1239</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1254">line 1254</a>
 			</li>
 		</ul>
 	</dd>
@@ -10727,7 +11800,7 @@ If it does not, please create the file using createFile before calling this meth
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-2013">line 2013</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2032">line 2032</a>
 			</li>
 		</ul>
 	</dd>
@@ -11192,7 +12265,7 @@ If it does not, please create the file using createFile before calling this meth
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-2063">line 2063</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2082">line 2082</a>
 			</li>
 		</ul>
 	</dd>
@@ -11594,7 +12667,7 @@ The share and any files contained within it are later deleted during garbage col
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-881">line 881</a>
+				 <a href="fileservice.js.html#sunlight-1-line-891">line 891</a>
 			</li>
 		</ul>
 	</dd>
@@ -11998,7 +13071,7 @@ The share and any files contained within it are later deleted during garbage col
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-928">line 928</a>
+				 <a href="fileservice.js.html#sunlight-1-line-938">line 938</a>
 			</li>
 		</ul>
 	</dd>
@@ -12392,8 +13465,8 @@ The share and any files contained within it are later deleted during garbage col
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                    if an error occurs; otherwise <code>result</code> will
-                                                                    be true if the directory exists, or false if the directory does not exist. 
+                                                                    if an error occurs; otherwise <code><a href="DirectoryResult.html">result</a></code> will contain
+                                                                    the directory information including <code>exists</code> boolean member.
                                                                     <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -12431,7 +13504,7 @@ The share and any files contained within it are later deleted during garbage col
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-987">line 987</a>
+				 <a href="fileservice.js.html#sunlight-1-line-997">line 997</a>
 			</li>
 		</ul>
 	</dd>
@@ -12837,7 +13910,7 @@ The share and any files contained within it are later deleted during garbage col
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#errorOrResult">errorOrResult</a></span>
+<span class="param-type">function</span>
 
 
             
@@ -12856,8 +13929,8 @@ The share and any files contained within it are later deleted during garbage col
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                    if an error occurs; otherwise <code>errorOrResult</code> will 
-                                                                    be true if the file exists, or false if the file does not exist. 
+                                                                    if an error occurs; otherwise <code><a href="FileResult.html">result</a></code> will contain
+                                                                    the file information including the <code>exists</code> boolean member. 
                                                                     <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -12895,7 +13968,7 @@ The share and any files contained within it are later deleted during garbage col
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1922">line 1922</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1940">line 1940</a>
 			</li>
 		</ul>
 	</dd>
@@ -13258,8 +14331,8 @@ The share and any files contained within it are later deleted during garbage col
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                    if an error occurs; otherwise <code>result</code> will
-                                                                    be true if the share exists, or false if the share does not exist. 
+                                                                    if an error occurs; otherwise <code><a href="ShareResult.html">result</a></code> will contain
+                                                                    the share information including <code>exists</code> boolean member. 
                                                                     <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -13297,7 +14370,7 @@ The share and any files contained within it are later deleted during garbage col
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-330">line 330</a>
+				 <a href="fileservice.js.html#sunlight-1-line-336">line 336</a>
 			</li>
 		</ul>
 	</dd>
@@ -13991,7 +15064,7 @@ The share and any files contained within it are later deleted during garbage col
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1518">line 1518</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1534">line 1534</a>
 			</li>
 		</ul>
 	</dd>
@@ -14052,7 +15125,8 @@ The share and any files contained within it are later deleted during garbage col
     
     
     <div class="description">
-        <p>Returns all user-defined metadata for the specified directory.</p>
+        <p>Returns all user-defined metadata for the specified directory.
+<strong>Note</strong> that all metadata names returned from the server will be converted to lower case by NodeJS itself as metadata is set via HTTP headers and HTTP header names are case insensitive.</p>
     </div>
     
 
@@ -14313,8 +15387,8 @@ The share and any files contained within it are later deleted during garbage col
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                        if an error occurs; otherwise <code>result</code> will contain
-                                                                        information about the file.
+                                                                        if an error occurs; otherwise <code><a href="DirectoryResult.html">result</a></code> will contain
+                                                                        information about the directory.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -14352,7 +15426,7 @@ The share and any files contained within it are later deleted during garbage col
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1400">line 1400</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1416">line 1416</a>
 			</li>
 		</ul>
 	</dd>
@@ -14390,7 +15464,8 @@ The share and any files contained within it are later deleted during garbage col
     
     
     <div class="description">
-        <p>Retrieves a directory and its properties from a specified account.</p>
+        <p>Retrieves a directory and its properties from a specified account.
+<strong>Note</strong> that all metadata names returned from the server will be converted to lower case by NodeJS itself as metadata is set via HTTP headers and HTTP header names are case insensitive.</p>
     </div>
     
 
@@ -14746,7 +15821,7 @@ The share and any files contained within it are later deleted during garbage col
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                if an error occurs; otherwise <code>result</code> will contain
+                                                                if an error occurs; otherwise <code><a href="DirectoryResult.html">result</a></code> will contain
                                                                 information for the directory.
                                                                 <code>response</code> will contain information related to this operation.</p></td>
         </tr>
@@ -14785,7 +15860,7 @@ The share and any files contained within it are later deleted during garbage col
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1137">line 1137</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1152">line 1152</a>
 			</li>
 		</ul>
 	</dd>
@@ -14824,7 +15899,8 @@ The share and any files contained within it are later deleted during garbage col
     
     <div class="description">
         <p>Returns all user-defined metadata for the specified file.
-It does not modify or return the content of the file.</p>
+It does not modify or return the content of the file.
+<strong>Note</strong> that all metadata names returned from the server will be converted to lower case by NodeJS itself as metadata is set via HTTP headers and HTTP header names are case insensitive.</p>
     </div>
     
 
@@ -15150,7 +16226,7 @@ It does not modify or return the content of the file.</p>
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                        if an error occurs; otherwise <code>result</code> will contain
+                                                                        if an error occurs; otherwise <code><a href="FileResult.html">result</a></code> will contain
                                                                         information about the file.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
@@ -15189,7 +16265,7 @@ It does not modify or return the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1677">line 1677</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1695">line 1695</a>
 			</li>
 		</ul>
 	</dd>
@@ -15228,7 +16304,8 @@ It does not modify or return the content of the file.</p>
     
     <div class="description">
         <p>Returns all user-defined metadata, standard HTTP properties, and system properties for the file.
-It does not return or modify the content of the file.</p>
+It does not return or modify the content of the file.
+<strong>Note</strong> that all metadata names returned from the server will be converted to lower case by NodeJS itself as metadata is set via HTTP headers and HTTP header names are case insensitive.</p>
     </div>
     
 
@@ -15615,7 +16692,7 @@ It does not return or modify the content of the file.</p>
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                        if an error occurs; otherwise <code>result</code> will contain
+                                                                        if an error occurs; otherwise <code><a href="FileResult.html">result</a></code> will contain
                                                                         information about the file.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
@@ -15654,7 +16731,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1620">line 1620</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1637">line 1637</a>
 			</li>
 		</ul>
 	</dd>
@@ -16310,7 +17387,7 @@ It does not return or modify the content of the file.</p>
             
 
             <td class="description last"><p><code>error</code> will contain information if an error occurs; 
-                                                                        otherwise <code>result</code> will contain the file information.
+                                                                        otherwise <code><a href="FileResult.html">result</a></code> will contain the file information.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -16348,7 +17425,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-2209">line 2209</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2228">line 2228</a>
 			</li>
 		</ul>
 	</dd>
@@ -17029,7 +18106,7 @@ It does not return or modify the content of the file.</p>
             
 
             <td class="description last"><p><code>error</code> will contain information if an error occurs; 
-                                                                        otherwise <code>result</code> will contain the file information.
+                                                                        otherwise <code><a href="FileResult.html">result</a></code> will contain the file information.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -17067,7 +18144,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-2347">line 2347</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2366">line 2366</a>
 			</li>
 		</ul>
 	</dd>
@@ -17617,7 +18694,7 @@ It does not return or modify the content of the file.</p>
 
             <td class="description last"><p><code>error</code> will contain information
                                                                         if an error occurs; otherwise <code>text</code> will contain the file contents,
-                                                                        and <code>file</code> will contain the file information.
+                                                                        and <code><a href="FileResult.html">file</a></code> will contain the file information.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -17655,7 +18732,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-2126">line 2126</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2145">line 2145</a>
 			</li>
 		</ul>
 	</dd>
@@ -17986,7 +19063,7 @@ It does not return or modify the content of the file.</p>
 
             
 
-            <td class="description last"><p><code>error</code> will contain information if an error occurs; otherwise, <code>result</code> will contain the properties 
+            <td class="description last"><p><code>error</code> will contain information if an error occurs; otherwise, <code><a href="global.html#ServiceProperties">result</a></code> will contain the properties 
                                                               and <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -18024,7 +19101,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-163">line 163</a>
+				 <a href="fileservice.js.html#sunlight-1-line-167">line 167</a>
 			</li>
 		</ul>
 	</dd>
@@ -18387,7 +19464,7 @@ It does not return or modify the content of the file.</p>
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                if an error occurs; otherwise <code>result</code> will contain
+                                                                if an error occurs; otherwise <code><a href="global.html#ShareAclResult">result</a></code> will contain
                                                                 information for the share.
                                                                 <code>response</code> will contain information related to this operation.</p></td>
         </tr>
@@ -18426,7 +19503,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-760">line 760</a>
+				 <a href="fileservice.js.html#sunlight-1-line-771">line 771</a>
 			</li>
 		</ul>
 	</dd>
@@ -18464,7 +19541,8 @@ It does not return or modify the content of the file.</p>
     
     
     <div class="description">
-        <p>Returns all user-defined metadata for the share.</p>
+        <p>Returns all user-defined metadata for the share.
+<strong>Note</strong> that all metadata names returned from the server will be converted to lower case by NodeJS itself as metadata is set via HTTP headers and HTTP header names are case insensitive.</p>
     </div>
     
 
@@ -18789,7 +19867,7 @@ It does not return or modify the content of the file.</p>
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                      if an error occurs; otherwise <code>result</code> will contain
+                                                                      if an error occurs; otherwise <code><a href="ShareResult.html">result</a></code> will contain
                                                                       information for the share.
                                                                       <code>response</code> will contain information related to this operation.</p></td>
         </tr>
@@ -18828,7 +19906,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-648">line 648</a>
+				 <a href="fileservice.js.html#sunlight-1-line-659">line 659</a>
 			</li>
 		</ul>
 	</dd>
@@ -18866,7 +19944,8 @@ It does not return or modify the content of the file.</p>
     
     
     <div class="description">
-        <p>Retrieves a share and its properties from a specified account.</p>
+        <p>Retrieves a share and its properties from a specified account.
+<strong>Note</strong> that all metadata names returned from the server will be converted to lower case by NodeJS itself as metadata is set via HTTP headers and HTTP header names are case insensitive.</p>
     </div>
     
 
@@ -19191,7 +20270,7 @@ It does not return or modify the content of the file.</p>
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                if an error occurs; otherwise <code>result</code> will contain
+                                                                if an error occurs; otherwise <code><a href="ShareResult.html">result</a></code> will contain
                                                                 information for the share.
                                                                 <code>response</code> will contain information related to this operation.</p></td>
         </tr>
@@ -19230,7 +20309,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-484">line 484</a>
+				 <a href="fileservice.js.html#sunlight-1-line-494">line 494</a>
 			</li>
 		</ul>
 	</dd>
@@ -19592,7 +20671,7 @@ It does not return or modify the content of the file.</p>
 
             
 
-            <td class="description last"><p><code>error</code> will contain information if an error occurs; otherwise, <code>result</code> will contain the stats and 
+            <td class="description last"><p><code>error</code> will contain information if an error occurs; otherwise, <code><a href="global.html#ServiceStats">result</a></code> will contain the stats and 
                                                                   <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -19630,7 +20709,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-594">line 594</a>
+				 <a href="fileservice.js.html#sunlight-1-line-604">line 604</a>
 			</li>
 		</ul>
 	</dd>
@@ -19895,7 +20974,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1578">line 1578</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1594">line 1594</a>
 			</li>
 		</ul>
 	</dd>
@@ -20381,7 +21460,7 @@ It does not return or modify the content of the file.</p>
 
             <td class="description last"><p><code>error</code> will contain information
                                                               if an error occurs; otherwise <code>result</code> will contain
-                                                              entries.files, entries.directories and the continuationToken for the next listing operation.
+                                                              entries.files which contains a list of <code><a href="FileResult.html">files</a></code>, entries.directories which contains a list of <code><a href="DirectoryResult.html">directories</a></code> and the continuationToken for the next listing operation.
                                                               <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -20419,7 +21498,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1299">line 1299</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1314">line 1314</a>
 			</li>
 		</ul>
 	</dd>
@@ -20910,7 +21989,7 @@ It does not return or modify the content of the file.</p>
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                        if an error occurs; otherwise <code>result</code> will contain
+                                                                        if an error occurs; otherwise <code><a href="FileResult.html">result</a></code> will contain
                                                                         the range information.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
@@ -20949,7 +22028,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-2423">line 2423</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2442">line 2442</a>
 			</li>
 		</ul>
 	</dd>
@@ -21204,7 +22283,8 @@ It does not return or modify the content of the file.</p>
 
             
 
-            <td class="description last"><p>Include this parameter to specify that the share's metadata be returned as part of the response body. (allowed values: '', 'metadata')</p></td>
+            <td class="description last"><p>Include this parameter to specify that the share's metadata be returned as part of the response body. (allowed values: '', 'metadata')
+                                                                        <strong>Note</strong> that all metadata names returned from the server will be converted to lower case by NodeJS itself as metadata is set via HTTP headers and HTTP header names are case insensitive.</p></td>
         </tr>
 
 	
@@ -21379,7 +22459,7 @@ It does not return or modify the content of the file.</p>
 
             <td class="description last"><p><code>error</code> will contain information
                                                                         if an error occurs; otherwise <code>result</code> will contain <code>entries</code> and <code>continuationToken</code>. 
-                                                                        <code>entries</code>  gives a list of shares and the <code>continuationToken</code> is used for the next listing operation.
+                                                                        <code>entries</code>  gives a list of <code><a href="ShareResult.html">shares</a></code> and the <code>continuationToken</code> is used for the next listing operation.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -21417,7 +22497,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-215">line 215</a>
+				 <a href="fileservice.js.html#sunlight-1-line-220">line 220</a>
 			</li>
 		</ul>
 	</dd>
@@ -21736,7 +22816,8 @@ It does not return or modify the content of the file.</p>
 
             
 
-            <td class="description last"><p>Include this parameter to specify that the share's metadata be returned as part of the response body. (allowed values: '', 'metadata')</p></td>
+            <td class="description last"><p>Include this parameter to specify that the share's metadata be returned as part of the response body. (allowed values: '', 'metadata')
+                                                                        <strong>Note</strong> that all metadata names returned from the server will be converted to lower case by NodeJS itself as metadata is set via HTTP headers and HTTP header names are case insensitive.</p></td>
         </tr>
 
 	
@@ -21911,7 +22992,7 @@ It does not return or modify the content of the file.</p>
 
             <td class="description last"><p><code>error</code> will contain information
                                                                         if an error occurs; otherwise <code>result</code> will contain <code>entries</code> and <code>continuationToken</code>. 
-                                                                        <code>entries</code>  gives a list of shares and the <code>continuationToken</code> is used for the next listing operation.
+                                                                        <code>entries</code>  gives a list of <code><a href="ShareResult.html">shares</a></code> and the <code>continuationToken</code> is used for the next listing operation.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -21949,7 +23030,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-243">line 243</a>
+				 <a href="fileservice.js.html#sunlight-1-line-249">line 249</a>
 			</li>
 		</ul>
 	</dd>
@@ -22371,7 +23452,7 @@ It does not return or modify the content of the file.</p>
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                          if an error occurs; otherwise <code>result</code> will contain
+                                                                          if an error occurs; otherwise <code><a href="FileResult.html">result</a></code> will contain
                                                                           information about the file.
                                                                           <code>response</code> will contain information related to this operation.</p></td>
         </tr>
@@ -22410,7 +23491,385 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1863">line 1863</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1881">line 1881</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="setAccountServiceProperties"><span class="type-signature"></span>setAccountServiceProperties<span class="signature">(serviceProperties, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sets the properties of a storage account’s service, including Azure Storage Analytics.
+You can also use this operation to set the default request version for all incoming requests that do not have a version specified.</p>
+    </div>
+    
+
+    
+    
+    
+        <h5>This:</h5>
+        <ul><li>{<a href="StorageServiceClient.html">StorageServiceClient</a>}</li></ul>
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>serviceProperties</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The service properties.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>locationMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">LocationMode</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
+                                                                     Please see StorageUtilities.LocationMode for the possible values.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timeoutIntervalInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The server timeout interval, in milliseconds, to use for the request.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>maximumExecutionTimeInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+                                                                     The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                     execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>useNagleAlgorithm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+                                                                     The default value is false.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#errorOrResponse">errorOrResponse</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information
+                                                                     if an error occurs; otherwise, <code>response</code>
+                                                                     will contain information related to this operation.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#setAccountServiceProperties">StorageServiceClient#setAccountServiceProperties</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-945">line 945</a>
 			</li>
 		</ul>
 	</dd>
@@ -22801,8 +24260,8 @@ It does not return or modify the content of the file.</p>
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                        if an error occurs; otherwise <code>result</code> will contain
-                                                                        information on the file.
+                                                                        if an error occurs; otherwise <code><a href="DirectoryResult.html">result</a></code> will contain
+                                                                        information on the directory.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -22840,7 +24299,7 @@ It does not return or modify the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1456">line 1456</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1472">line 1472</a>
 			</li>
 		</ul>
 	</dd>
@@ -23297,7 +24756,7 @@ It does not modify or return the content of the file.</p>
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                        if an error occurs; otherwise <code>result</code> will contain
+                                                                        if an error occurs; otherwise <code><a href="FileResult.html">result</a></code> will contain
                                                                         information on the file.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
@@ -23336,7 +24795,7 @@ It does not modify or return the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1805">line 1805</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1823">line 1823</a>
 			</li>
 		</ul>
 	</dd>
@@ -23660,39 +25119,6 @@ It does not modify or return the content of the file.</p>
 
         <tr>
             
-                <td class="name"><code>contentMD5</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The MD5 hash of the file content.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
                 <td class="name"><code>cacheControl</code></td>
             
 
@@ -23787,6 +25213,39 @@ It does not modify or return the content of the file.</p>
 
             <td class="description last"><p>Resizes a file to the specified size. If the specified byte value is less than the current size of the file, 
                                                                         then all ranges above the specified byte value are cleared.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>contentMD5</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The file's MD5 hash.</p></td>
         </tr>
 
 	
@@ -24055,7 +25514,7 @@ It does not modify or return the content of the file.</p>
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                        if an error occurs; otherwise <code>result</code> will contain
+                                                                        if an error occurs; otherwise <code><a href="FileResult.html">result</a></code> will contain
                                                                         information about the file.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
@@ -24094,7 +25553,7 @@ It does not modify or return the content of the file.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-1745">line 1745</a>
+				 <a href="fileservice.js.html#sunlight-1-line-1763">line 1763</a>
 			</li>
 		</ul>
 	</dd>
@@ -24496,7 +25955,7 @@ You can also use this operation to set the default request version for all incom
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-187">line 187</a>
+				 <a href="fileservice.js.html#sunlight-1-line-191">line 191</a>
 			</li>
 		</ul>
 	</dd>
@@ -24610,7 +26069,7 @@ You can also use this operation to set the default request version for all incom
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type">Object.&lt;string, <a href="global.html#AccessPolicy">AccessPolicy</a>></span>
 
 
             
@@ -24628,7 +26087,7 @@ You can also use this operation to set the default request version for all incom
 
             
 
-            <td class="description last"><p>The signed identifiers. Signed identifiers must be in an array.</p></td>
+            <td class="description last"><p>The share ACL settings. See <code><a href="global.html#AccessPolicy">AccessPolicy</a></code> for detailed information.</p></td>
         </tr>
 
 	
@@ -24749,8 +26208,8 @@ You can also use this operation to set the default request version for all incom
             
 
             <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-                                                                The maximum execution time interval begins at the time that the client begins building the request. The maximum
-                                                                execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+                                                                            The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                            execution time is checked intermittently while performing requests, and before executing retries.</p></td>
         </tr>
 
 	
@@ -24817,7 +26276,7 @@ You can also use this operation to set the default request version for all incom
             
 
             <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-                                                                The default value is false.</p></td>
+                                                                            The default value is false.</p></td>
         </tr>
 
 	
@@ -24856,9 +26315,9 @@ You can also use this operation to set the default request version for all incom
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                if an error occurs; otherwise <code>result</code> will contain
-                                                                information for the share.
-                                                                <code>response</code> will contain information related to this operation.</p></td>
+                                                                            if an error occurs; otherwise <code><a href="global.html#ShareAclResult">result</a></code> will contain
+                                                                            information for the share.
+                                                                            <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
 	
@@ -24895,7 +26354,7 @@ You can also use this operation to set the default request version for all incom
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-814">line 814</a>
+				 <a href="fileservice.js.html#sunlight-1-line-825">line 825</a>
 			</li>
 		</ul>
 	</dd>
@@ -25329,7 +26788,7 @@ It's not possible to modify an individual name/value pair.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-705">line 705</a>
+				 <a href="fileservice.js.html#sunlight-1-line-716">line 716</a>
 			</li>
 		</ul>
 	</dd>
@@ -25755,8 +27214,8 @@ It's not possible to modify an individual name/value pair.</p>
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                        if an error occurs; otherwise <code>result</code> will contain
-                                                                        information about the file.
+                                                                        if an error occurs; otherwise <code><a href="ShareResult.html">share</a></code> will contain
+                                                                        information about the share.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -25794,7 +27253,7 @@ It's not possible to modify an individual name/value pair.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-539">line 539</a>
+				 <a href="fileservice.js.html#sunlight-1-line-549">line 549</a>
 			</li>
 		</ul>
 	</dd>
@@ -26088,7 +27547,7 @@ It's not possible to modify an individual name/value pair.</p>
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type"><a href="global.html#AccessConditions">AccessConditions</a></span>
 
 
             
@@ -26108,7 +27567,7 @@ It's not possible to modify an individual name/value pair.</p>
 
             
 
-            <td class="description last"><p>The access conditions. See <a href="http://msdn.microsoft.com/en-us/library/dd179371.aspx">http://msdn.microsoft.com/en-us/library/dd179371.aspx</a> for more information.</p></td>
+            <td class="description last"><p>The access conditions.</p></td>
         </tr>
 
 	
@@ -26121,7 +27580,7 @@ It's not possible to modify an individual name/value pair.</p>
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type"><a href="global.html#AccessConditions">AccessConditions</a></span>
 
 
             
@@ -26141,7 +27600,7 @@ It's not possible to modify an individual name/value pair.</p>
 
             
 
-            <td class="description last"><p>The access conditions. See <a href="http://msdn.microsoft.com/en-us/library/dd179371.aspx">http://msdn.microsoft.com/en-us/library/dd179371.aspx</a> for more information.</p></td>
+            <td class="description last"><p>The source access conditions.</p></td>
         </tr>
 
 	
@@ -26348,9 +27807,8 @@ It's not possible to modify an individual name/value pair.</p>
 
             
 
-            <td class="description last"><p><code>error</code> will contain information
-                                                                      if an error occurs; otherwise <code>result</code> will contain
-                                                                      the file information.
+            <td class="description last"><p><code>error</code> will contain information if an error occurs; 
+                                                                      otherwise <code><a href="FileResult.html">result</a></code> will contain the file information.
                                                                       <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -26388,7 +27846,7 @@ It's not possible to modify an individual name/value pair.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-2963">line 2963</a>
+				 <a href="fileservice.js.html#sunlight-1-line-2995">line 2995</a>
 			</li>
 		</ul>
 	</dd>
@@ -26411,6 +27869,174 @@ It's not possible to modify an individual name/value pair.</p>
     
     
     
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="withFilter"><span class="type-signature"></span>withFilter<span class="signature">(filter)</span><span class="type-signature"> &rarr; {<a href="StorageServiceClient.html">StorageServiceClient</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Associate a filtering operation with this StorageServiceClient. Filtering operations
+can include logging, automatically retrying, etc. Filter operations are objects
+that implement a method with the signature:</p>
+<pre><code>&quot;function handle (requestOptions, next)&quot;.</code></pre>
+<p>After doing its preprocessing on the request options, the method needs to call
+&quot;next&quot; passing a callback with the following signature:
+signature:</p>
+<pre><code>&quot;function (returnObject, finalCallback, next)&quot;</code></pre>
+<p>In this callback, and after processing the returnObject (the response from the
+request to the server), the callback needs to either invoke next if it exists to
+continue processing other filters or simply invoke finalCallback otherwise to end
+up the service invocation.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>filter</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The new filter object.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#withFilter">StorageServiceClient#withFilter</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-655">line 655</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>A new service client with the filter applied.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type"><a href="StorageServiceClient.html">StorageServiceClient</a></span>
+
+
+	</dd>
+</dl>
+
+
+        
     
     
 </dd>
@@ -26588,7 +28214,7 @@ It's not possible to modify an individual name/value pair.</p>
 		<ul class="dummy">
 			<li>
 				<a href="fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="fileservice.js.html#sunlight-1-line-3757">line 3757</a>
+				 <a href="fileservice.js.html#sunlight-1-line-3821">line 3821</a>
 			</li>
 		</ul>
 	</dd>
@@ -26634,7 +28260,7 @@ It's not possible to modify an individual name/value pair.</p>
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Wed Mar 9th 2016 using the <a
+		on Mon Mar 28th 2016 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>

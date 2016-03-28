@@ -54,7 +54,19 @@
 					<ul class="dropdown-menu ">
 						
 						<li>
+							<a href="BlobResult.html">BlobResult</a>
+						</li>
+						
+						<li>
 							<a href="BlobService.html">BlobService</a>
+						</li>
+						
+						<li>
+							<a href="ContainerResult.html">ContainerResult</a>
+						</li>
+						
+						<li>
+							<a href="DirectoryResult.html">DirectoryResult</a>
 						</li>
 						
 						<li>
@@ -62,11 +74,31 @@
 						</li>
 						
 						<li>
+							<a href="FileResult.html">FileResult</a>
+						</li>
+						
+						<li>
 							<a href="FileService.html">FileService</a>
 						</li>
 						
 						<li>
+							<a href="LeaseResult.html">LeaseResult</a>
+						</li>
+						
+						<li>
 							<a href="LinearRetryPolicyFilter.html">LinearRetryPolicyFilter</a>
+						</li>
+						
+						<li>
+							<a href="Logger.html">Logger</a>
+						</li>
+						
+						<li>
+							<a href="QueueMessageResult.html">QueueMessageResult</a>
+						</li>
+						
+						<li>
+							<a href="QueueResult.html">QueueResult</a>
 						</li>
 						
 						<li>
@@ -75,6 +107,14 @@
 						
 						<li>
 							<a href="RetryPolicyFilter.html">RetryPolicyFilter</a>
+						</li>
+						
+						<li>
+							<a href="ShareResult.html">ShareResult</a>
+						</li>
+						
+						<li>
+							<a href="StorageServiceClient.html">StorageServiceClient</a>
 						</li>
 						
 						<li>
@@ -263,7 +303,7 @@ util.inherits(QueueService, StorageServiceClient);
 * @param {bool}         [options.useNagleAlgorithm]                       Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
 * @param {errorOrResult}  callback                                        `error` will contain information
-*                                                                         if an error occurs; otherwise, `result`
+*                                                                         if an error occurs; otherwise, `[result]{@link ServiceStats}`
 *                                                                         will contain the stats and `response`
 *                                                                         will contain information related to this operation.
 */
@@ -315,7 +355,7 @@ QueueService.prototype.getServiceStats = function (optionsOrCallback, callback) 
 * @param {bool}               [options.useNagleAlgorithm]               Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                       The default value is false.
 * @param {errorOrResult}  callback                                      `error` will contain information
-*                                                                       if an error occurs; otherwise, `errorOrResult`
+*                                                                       if an error occurs; otherwise, `[result]{@link ServiceProperties}`
 *                                                                       will contain the properties and `response`
 *                                                                       will contain information related to this operation.
 */
@@ -355,6 +395,7 @@ QueueService.prototype.setServiceProperties = function (serviceProperties, optio
 * @param {object}             [options]                                   The request options.
 * @param {int}                [options.maxResults]                        Specifies the maximum number of queues to return per call to Azure storage. This does NOT affect list size returned by this function. (maximum: 5000)
 * @param {string}             [options.include]                           Include this parameter to specify that the queue's metadata be returned as part of the response body. (allowed values: '', 'metadata')
+*                                                                         **Note** that all metadata names returned from the server will be converted to lower case by NodeJS itself as metadata is set via HTTP headers and HTTP header names are case insensitive.
 * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
 *                                                                         Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
@@ -366,7 +407,7 @@ QueueService.prototype.setServiceProperties = function (serviceProperties, optio
 *                                                                         The default value is false.
 * @param {errorOrResult}  callback                                        `error` will contain information
 *                                                                         if an error occurs; otherwise `result` will contain `entries` and `continuationToken`. 
-*                                                                         `entries`  gives a list of queues and the `continuationToken` is used for the next listing operation.
+*                                                                         `entries`  gives a list of `[queues]{@link QueueResult}` and the `continuationToken` is used for the next listing operation.
 *                                                                         `response` will contain information related to this operation.
 */
 QueueService.prototype.listQueuesSegmented = function (currentToken, optionsOrCallback, callback) {
@@ -383,6 +424,7 @@ QueueService.prototype.listQueuesSegmented = function (currentToken, optionsOrCa
 * @param {string}             [options.marker]                            String value that identifies the portion of the list to be returned with the next list operation.
 * @param {int}                [options.maxResults]                        Specifies the maximum number of queues to return per call to Azure storage. This does NOT affect list size returned by this function. (maximum: 5000)
 * @param {string}             [options.include]                           Include this parameter to specify that the queue's metadata be returned as part of the response body. (allowed values: '', 'metadata')
+*                                                                         **Note** that all metadata names returned from the server will be converted to lower case by NodeJS itself as metadata is set via HTTP headers and HTTP header names are case insensitive.
 * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
 *                                                                         Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
@@ -394,7 +436,7 @@ QueueService.prototype.listQueuesSegmented = function (currentToken, optionsOrCa
 *                                                                         The default value is false.
 * @param {errorOrResult}  callback                                        `error` will contain information
 *                                                                         if an error occurs; otherwise `result` will contain `entries` and `continuationToken`. 
-*                                                                         `entries`  gives a list of queues and the `continuationToken` is used for the next listing operation.
+*                                                                         `entries`  gives a list of `[queues]{@link QueueResult}` and the `continuationToken` is used for the next listing operation.
 *                                                                         `response` will contain information related to this operation.
 */
 QueueService.prototype.listQueuesSegmentedWithPrefix = function (prefix, currentToken, optionsOrCallback, callback) {
@@ -478,10 +520,10 @@ QueueService.prototype.listQueuesSegmentedWithPrefix = function (prefix, current
 * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
-* @param {errorOrResult}                   callback                       `error` will contain information
-*                                                                         if an error occurs; otherwise, `result`
-*                                                                         will be true if the queue exists and false if not,
-*                                                                         and `response` will contain information related to this operation.
+* @param {Function(error, result, response)}  callback                    `error` will contain information
+*                                                                         if an error occurs; otherwise, `[result]{@link QueueResult}` will contain
+*                                                                         the queue information including `exists` boolean member.
+*                                                                         `response` will contain information related to this operation.
 */
 QueueService.prototype.doesQueueExist = function (queue, optionsOrCallback, callback) {
   this._doesQueueExist(queue, false, optionsOrCallback, callback);
@@ -504,7 +546,7 @@ QueueService.prototype.doesQueueExist = function (queue, optionsOrCallback, call
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
 * @param {errorOrResult}  callback                                        `error` will contain information
-*                                                                         if an error occurs; otherwise `result` will contain
+*                                                                         if an error occurs; otherwise `[result]{@link QueueResult}` will contain
 *                                                                         the queue information.
 *                                                                         `response` will contain information related to this operation.
 */
@@ -560,8 +602,8 @@ QueueService.prototype.createQueue = function (queue, optionsOrCallback, callbac
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
 * @param {errorOrResult}  callback                                       `error` will contain information
-*                                                                         if an error occurs; otherwise `result` will be true if the 
-*                                                                         queue was created by this operation and false if not, and 
+*                                                                         if an error occurs; otherwise `[result]{@link QueueResult}` will contain 
+*                                                                         the queue information including `created` boolean member and 
 *                                                                         `response` will contain information related to this operation.
 *
 * @example
@@ -585,25 +627,28 @@ QueueService.prototype.createQueueIfNotExists = function (queue, optionsOrCallba
 
   var options = extend(true, {}, userOptions);
   var self = this;
-  self._doesQueueExist(queue, true, options, function(error, exists, response) {
+  self._doesQueueExist(queue, true, options, function(error, result, response) {
+    var exists = result.exists;
+    result.created = false;
+    delete result.exists;
+    
     if (error) {
-      callback(error, exists, response);
+      callback(error, result, response);
     } else if (exists) {
       response.isSuccessful = true;
-      callback(error, false, response);
+      callback(error, result, response);
     } else {
       self.createQueue(queue, options, function(createError, responseQueue, createResponse) {
-        var created;
         if (!createError) {
-          created = true;
+          responseQueue.created = true;
         }
         else if (createError && createError.statusCode === Constants.HttpConstants.HttpResponseCodes.Conflict && createError.code === Constants.QueueErrorCodeStrings.QUEUE_ALREADY_EXISTS) {
           createError = null;
-          created = false;
+          responseQueue.created = false;
           createResponse.isSuccessful = true;
         }
 
-        callback(createError, created, createResponse);
+        callback(createError, responseQueue, createResponse);
       });
     }
   });
@@ -682,10 +727,10 @@ QueueService.prototype.deleteQueueIfExists = function (queue, optionsOrCallback,
 
   var options = extend(true, {}, userOptions);
   var self = this;
-  self._doesQueueExist(queue, true, options, function existsCallback(error, exists, response) {
+  self._doesQueueExist(queue, true, options, function existsCallback(error, existsResult, response) {
     if (error) {
-      callback(error, exists, response);
-    } else if (!exists) {
+      callback(error, existsResult.exists, response);
+    } else if (!existsResult.exists) {
       response.isSuccessful = true;
       callback(error, false, response);
     } else {
@@ -707,6 +752,7 @@ QueueService.prototype.deleteQueueIfExists = function (queue, optionsOrCallback,
 
 /**
 * Returns queue properties, including user-defined metadata.
+* **Note** that all metadata names returned from the server will be converted to lower case by NodeJS itself as metadata is set via HTTP headers and HTTP header names are case insensitive.
 *
 * @this {QueueService}
 * @param {string}             queue                                       The queue name.
@@ -721,7 +767,7 @@ QueueService.prototype.deleteQueueIfExists = function (queue, optionsOrCallback,
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
 * @param {errorOrResult}  callback                                        `error` will contain information
-*                                                                         if an error occurs; otherwise `result` will contain
+*                                                                         if an error occurs; otherwise `[result]{@link QueueResult}` will contain
 *                                                                         the queue information.
 *                                                                         `response` will contain information related to this operation.
 */
@@ -777,7 +823,7 @@ QueueService.prototype.getQueueMetadata = function (queue, optionsOrCallback, ca
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
 * @param {errorOrResult}  callback                                        `error` will contain information
-*                                                                         if an error occurs; otherwise `result` will contain
+*                                                                         if an error occurs; otherwise `[result]{@link QueueResult}` will contain
 *                                                                         the queue information.
 *                                                                         `response` will contain information related to this operation.
 */
@@ -823,7 +869,7 @@ QueueService.prototype.setQueueMetadata = function (queue, metadata, optionsOrCa
 * @param {string}             queue                                       The queue name.
 * @param {string|Buffer}      messageText                                 The message text.
 * @param {object}             [options]                                   The request options.
-* @param {int}                [options.messagettl]                        The time-to-live interval for the message, in seconds. The maximum time-to-live allowed is 7 days. If this parameter is omitted, the default time-to-live is 7 days
+* @param {int}                [options.messageTimeToLive]                 The time-to-live interval for the message, in seconds. The maximum time-to-live allowed is 7 days. If this parameter is omitted, the default time-to-live is 7 days
 * @param {int}                [options.visibilityTimeout]                 Specifies the new visibility timeout value, in seconds, relative to server time. The new value must be larger than or equal to 0, and cannot be larger than 7 days. The visibility timeout of a message cannot be set to a value later than the expiry time. visibilitytimeout should be set to a value smaller than the time-to-live value.
 * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
 *                                                                         Please see StorageUtilities.LocationMode for the possible values.
@@ -834,10 +880,8 @@ QueueService.prototype.setQueueMetadata = function (queue, metadata, optionsOrCa
 * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
-* @param {errorOrResult}  callback                                        `error` will contain information
-*                                                                         if an error occurs; otherwise `result` will contain
-*                                                                         the result.
-*                                                                         `response` will contain information related to this operation.
+* @param {errorOrResponse}  callback                                      `error` will contain information
+*                                                                         if an error occurs; otherwise `response` will contain information related to this operation.
 *
 * @example
 * var azure = require('azure-storage');
@@ -864,19 +908,13 @@ QueueService.prototype.createMessage = function (queue, messageText, optionsOrCa
   var webResource = WebResource.post(queue + '/messages')
     .withHeader(HeaderConstants.CONTENT_TYPE, 'application/atom+xml;charset="utf-8"')
     .withHeader(HeaderConstants.CONTENT_LENGTH, Buffer.byteLength(xmlMessageDescriptor, 'utf8'))
-    .withQueryOption(QueryStringConstants.MESSAGE_TTL, options.messagettl)
+    .withQueryOption(QueryStringConstants.MESSAGE_TTL, options.messageTimeToLive)
     .withQueryOption(QueryStringConstants.VISIBILITY_TIMEOUT, options.visibilityTimeout)
     .withBody(xmlMessageDescriptor);
 
   var processResponseCallback = function (responseObject, next) {
-    responseObject.queueMessageResult = null;
-    if (!responseObject.error) {
-      responseObject.queueMessageResult = new QueueMessageResult(queue);
-      responseObject.queueMessageResult.getPropertiesFromHeaders(responseObject.response.headers);
-    }
-
     var finalCallback = function (returnObject) {
-      callback(returnObject.error, returnObject.queueMessageResult, returnObject.response);
+      callback(returnObject.error, returnObject.response);
     };
 
     next(responseObject, finalCallback);
@@ -886,13 +924,12 @@ QueueService.prototype.createMessage = function (queue, messageText, optionsOrCa
 };
 
 /**
-* Retrieves a message from the queue and makes it invisible to other consumers.
+* Retrieve messages from the queue and makes them invisible to other consumers.
 *
 * @this {QueueService}
 * @param {string}             queue                                       The queue name.
 * @param {object}             [options]                                   The request options.
 * @param {int}                [options.numOfMessages]                     A nonzero integer value that specifies the number of messages to retrieve from the queue, up to a maximum of 32. By default, a single message is retrieved from the queue with this operation.
-* @param {bool}               [options.peekOnly]                          Boolean value indicating wether the visibility of the message should be changed or not.
 * @param {int}                [options.visibilityTimeout]                 Required if not peek only. Specifies the new visibility timeout value, in seconds, relative to server time. The new value must be larger than or equal to 0, and cannot be larger than 7 days. The visibility timeout of a message can be set to a value later than the expiry time.
 * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
 *                                                                         Please see StorageUtilities.LocationMode for the possible values.
@@ -905,10 +942,10 @@ QueueService.prototype.createMessage = function (queue, messageText, optionsOrCa
 *                                                                         The default value is false.
 * @param {errorOrResult}  callback                                        `error` will contain information
 *                                                                         if an error occurs; otherwise `result` will contain
-*                                                                         the message.
+*                                                                         a list of `[messages]{@link QueueMessageResult}`.
 *                                                                         `response` will contain information related to this operation.
 *
-* @example    
+* @example
 * var azure = require('azure-storage');
 * var queueService = azure.createQueueService();
 * var queueName = 'taskqueue';
@@ -916,7 +953,7 @@ QueueService.prototype.createMessage = function (queue, messageText, optionsOrCa
 *   if(!error) {
 *     // Process the message in less than 30 seconds, the message
 *     // text is available in serverMessages[0].messagetext
-*     queueService.deleteMessage(queueName, serverMessages[0].messageid, serverMessages[0].popreceipt, function(error) {
+*     queueService.deleteMessage(queueName, serverMessages[0].messageId, serverMessages[0].popReceipt, function(error) {
 *       if(!error){
 *           // Message deleted
 *       }
@@ -935,45 +972,75 @@ QueueService.prototype.getMessages = function (queue, optionsOrCallback, callbac
   });
 
   var options = extend(true, {}, userOptions);
-
-  var webResource = WebResource.get(queue + '/messages')
-    .withQueryOption(QueryStringConstants.NUM_OF_MESSAGES, options.numOfMessages)
-    .withQueryOption(QueryStringConstants.VISIBILITY_TIMEOUT, options.visibilityTimeout)
-    .withQueryOption(QueryStringConstants.PEEK_ONLY, options.peekOnly);
-
-  var encodeMessage = this.encodeMessage;
-  var processResponseCallback = function (responseObject, next) {
-    responseObject.queueMessageResults = null;
-
-    if (!responseObject.error) {
-      responseObject.queueMessageResults = [];
-
-      if (responseObject.response.body.QueueMessagesList && responseObject.response.body.QueueMessagesList.QueueMessage) {
-        var messages = responseObject.response.body.QueueMessagesList.QueueMessage;
-
-        if (!_.isArray(messages)) {
-          messages = [ messages ];
-        }
-
-        messages.forEach(function (message) {
-          var queueMessageResult = QueueMessageResult.parse(message, encodeMessage);
-          responseObject.queueMessageResults.push(queueMessageResult);
-        });
-      }
-    }
-
-    var finalCallback = function (returnObject) {
-      callback(returnObject.error, returnObject.queueMessageResults, returnObject.response);
-    };
-
-    next(responseObject, finalCallback);
-  };
-
-  this.performRequest(webResource, null, options, processResponseCallback);
+  delete options.peekOnly;
+  
+  this._getOrPeekMessages(queue, options, callback);
 };
 
 /**
-* Retrieves a message from the front of the queue, without changing the message visibility.
+* Retrieves a message from the queue and makes it invisible to other consumers.
+*
+* @this {QueueService}
+* @param {string}             queue                                       The queue name.
+* @param {object}             [options]                                   The request options.
+* @param {int}                [options.visibilityTimeout]                 Required if not peek only. Specifies the new visibility timeout value, in seconds, relative to server time. The new value must be larger than or equal to 0, and cannot be larger than 7 days. The visibility timeout of a message can be set to a value later than the expiry time.
+* @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+*                                                                         Please see StorageUtilities.LocationMode for the possible values.
+* @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
+* @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+*                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
+*                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
+* @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+*                                                                         The default value is false.
+* @param {errorOrResult}  callback                                        `error` will contain information
+*                                                                         if an error occurs; otherwise `[result]{@link QueueMessageResult}` will contain
+*                                                                         the message.
+*                                                                         `response` will contain information related to this operation.
+*
+* @example
+* var azure = require('azure-storage');
+* var queueService = azure.createQueueService();
+* var queueName = 'taskqueue';
+* queueService.getMessage(queueName, function(error, serverMessage) {
+*   if(!error) {
+*     // Process the message in less than 30 seconds, the message
+*     // text is available in serverMessage.messagetext
+*     queueService.deleteMessage(queueName, serverMessage.messageId, serverMessage.popReceipt, function(error) {
+*       if(!error){
+*           // Message deleted
+*       }
+*     });
+*   }
+* });
+*/
+QueueService.prototype.getMessage = function (queue, optionsOrCallback, callback) {
+  var userOptions;
+  azureutil.normalizeArgs(optionsOrCallback, callback, function (o, c) { userOptions = o; callback = c; });
+
+  validate.validateArgs('getMessage', function (v) {
+    v.string(queue, 'queue');
+    v.queueNameIsValid(queue);
+    v.callback(callback);
+  });
+
+  var options = extend(true, {}, userOptions);
+  options.numOfMessages = 1;
+  
+  var finalCallback = function(error, messages, response){
+    var message;
+    if(messages && messages.length > 0){
+      message = messages[0];
+    }
+    
+    callback(error, message, response);
+  };
+  
+  this.getMessages(queue, options, finalCallback);
+};
+
+/**
+* Retrieves messages from the front of the queue, without changing the messages visibility.
 *
 * @this {QueueService}
 * @param {string}             queue                                       The queue name.
@@ -990,7 +1057,7 @@ QueueService.prototype.getMessages = function (queue, optionsOrCallback, callbac
 *                                                                         The default value is false.
 * @param {errorOrResult}  callback                                        `error` will contain information
 *                                                                         if an error occurs; otherwise `result` will contain
-*                                                                         the message.
+*                                                                         `[messages]{@link QueueMessageResult}`.
 *                                                                         `response` will contain information related to this operation.
 */
 QueueService.prototype.peekMessages = function (queue, optionsOrCallback, callback) {
@@ -1004,13 +1071,55 @@ QueueService.prototype.peekMessages = function (queue, optionsOrCallback, callba
   });
 
   var options = extend(true, {}, userOptions);
-
-  if (!options.numOfMessages) {
-    options.numOfMessages = 1;
-  }
-
   options.peekOnly = true;
-  this.getMessages(queue, options, callback);
+  delete options.visibilityTimeout;
+  
+  this._getOrPeekMessages(queue, options, callback);
+};
+
+/**
+* Retrieves a message from the front of the queue, without changing the message visibility.
+*
+* @this {QueueService}
+* @param {string}             queue                                       The queue name.
+* @param {object}             [options]                                   The request options.
+* @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+*                                                                         Please see StorageUtilities.LocationMode for the possible values.
+* @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
+* @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+*                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
+*                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
+* @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+*                                                                         The default value is false.
+* @param {errorOrResult}  callback                                        `error` will contain information
+*                                                                         if an error occurs; otherwise `[result]{@link QueueMessageResult}` will contain
+*                                                                         the message.
+*                                                                         `response` will contain information related to this operation.
+*/
+QueueService.prototype.peekMessage = function (queue, optionsOrCallback, callback) {
+  var userOptions;
+  azureutil.normalizeArgs(optionsOrCallback, callback, function (o, c) { userOptions = o; callback = c; });
+
+  validate.validateArgs('peekMessage', function (v) {
+    v.string(queue, 'queue');
+    v.queueNameIsValid(queue);
+    v.callback(callback);
+  });
+
+  var options = extend(true, {}, userOptions);
+  options.numOfMessages = 1;
+  
+  var finalCallback = function(error, messages, response){
+    var message;
+    if(messages && messages.length > 0){
+      message = messages[0];
+    }
+    
+    callback(error, message, response);
+  };
+  
+  this.peekMessages(queue, options, finalCallback);
 };
 
 /**
@@ -1130,7 +1239,7 @@ QueueService.prototype.clearMessages = function (queue, optionsOrCallback, callb
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
 * @param {errorOrResult}  callback                                        `error` will contain information
-*                                                                         if an error occurs; otherwise `result` will contain
+*                                                                         if an error occurs; otherwise `[result]{@link QueueMessageResult}` will contain
 *                                                                         the message result information.
 *                                                                         `response` will contain information related to this operation.
 */
@@ -1200,7 +1309,7 @@ QueueService.prototype.updateMessage = function (queue, messageId, popReceipt, v
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
 * @param {errorOrResult}  callback                                        `error` will contain information
-*                                                                         if an error occurs; otherwise `result` will contain
+*                                                                         if an error occurs; otherwise `[result]{@link QueueResult}` will contain
 *                                                                         information for the queue.
 *                                                                         `response` will contain information related to this operation.
 */
@@ -1242,22 +1351,22 @@ QueueService.prototype.getQueueAcl = function (queue, optionsOrCallback, callbac
 * Updates the queue's ACL.
 *
 * @this {QueueService}
-* @param {string}             queue                                       The queue name.
-* @param {object}             signedIdentifiers                           The signed identifiers. Signed identifiers must be in an array.
-* @param {object}             [options]                                   The request options.
-* @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
-*                                                                         Please see StorageUtilities.LocationMode for the possible values.
-* @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-* @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-*                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-*                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
-* @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-*                                                                         The default value is false.
-* @param {errorOrResult}  callback                                        `error` will contain information
-*                                                                         if an error occurs; otherwise `result` will contain
-*                                                                         information for the queue.
-*                                                                         `response` will contain information related to this operation.
+* @param {string}                             queue                                       The queue name.
+* @property   {Object.&lt;string, AccessPolicy>}    signedIdentifiers                           The container ACL settings. See `[AccessPolicy]{@link AccessPolicy}` for detailed information.
+* @param {object}                             [options]                                   The request options.
+* @param {LocationMode}                       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+*                                                                                         Please see StorageUtilities.LocationMode for the possible values.
+* @param {int}                                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
+* @param {int}                                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+*                                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
+*                                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+* @param {string}                             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
+* @param {bool}                               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+*                                                                                         The default value is false.
+* @param {errorOrResult}  callback                                                        `error` will contain information
+*                                                                                         if an error occurs; otherwise `[result]{@link QueueResult}` will contain
+*                                                                                         information for the queue.
+*                                                                                         `response` will contain information related to this operation.
 * @example
 * var azure = require('azure-storage');
 * var SharedAccessPermissions = azure.QueueUtilities.SharedAccessPermissions;
@@ -1296,10 +1405,9 @@ QueueService.prototype.setQueueAcl = function (queue, signedIdentifiers, options
 
   var policies = null;
   if (signedIdentifiers) {
-    if (!_.isArray(signedIdentifiers)) {
-      throw new Error(SR.INVALID_SIGNED_IDENTIFIERS);
+    if(_.isArray(signedIdentifiers)) {
+      throw new TypeError(SR.INVALID_SIGNED_IDENTIFIERS);
     }
-
     policies = AclResult.serialize(signedIdentifiers);
   }
 
@@ -1376,8 +1484,8 @@ QueueService.prototype.generateSharedAccessSignature = function (queue, sharedAc
 * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
 * @param {Function(error, result, response)}         callback             `error` will contain information
-*                                                                         if an error occurs; otherwise, `result`
-*                                                                         will be true if the queue exists and false if not,
+*                                                                         if an error occurs; otherwise, `result` will contain
+*                                                                         the queue information including `exists` boolean member
 *                                                                         and `response` will contain information related to this operation.
 *
 */
@@ -1400,16 +1508,76 @@ QueueService.prototype._doesQueueExist = function (queue, primaryOnly, optionsOr
   }
 
   var processResponseCallback = function(responseObject, next) {
+    responseObject.queueResult = new QueueResult(queue);
+    responseObject.queueResult.exists = false;
+    
     if (!responseObject.error) {
-      responseObject.exists = true;
+      responseObject.queueResult.exists = true;
+      responseObject.queueResult.getPropertiesFromHeaders(responseObject.response.headers);
+      
     } else if (responseObject.error && responseObject.error.statusCode === Constants.HttpConstants.HttpResponseCodes.NotFound) {
       responseObject.error = null;
-      responseObject.exists = false;
+      responseObject.queueResult.exists = false;
       responseObject.response.isSuccessful = true;
     }
 
     var finalCallback = function (returnObject) {
-      callback(returnObject.error, returnObject.exists, returnObject.response);
+      callback(returnObject.error, returnObject.queueResult, returnObject.response);
+    };
+
+    next(responseObject, finalCallback);
+  };
+
+  this.performRequest(webResource, null, options, processResponseCallback);
+};
+
+/**
+ * @ignore
+ */
+QueueService.prototype._getOrPeekMessages = function (queue, optionsOrCallback, callback) {
+  var userOptions;
+  azureutil.normalizeArgs(optionsOrCallback, callback, function (o, c) { userOptions = o; callback = c; });
+
+  validate.validateArgs('_getOrPeekMessages', function (v) {
+    v.string(queue, 'queue');
+    v.queueNameIsValid(queue);
+    v.callback(callback);
+  });
+
+  var options = extend(true, {}, userOptions);
+
+  if (!options.numOfMessages) {
+    options.numOfMessages = 1;
+  }
+
+  var webResource = WebResource.get(queue + '/messages')
+    .withQueryOption(QueryStringConstants.NUM_OF_MESSAGES, options.numOfMessages)
+    .withQueryOption(QueryStringConstants.VISIBILITY_TIMEOUT, options.visibilityTimeout)
+    .withQueryOption(QueryStringConstants.PEEK_ONLY, options.peekOnly);
+
+  var encodeMessage = this.encodeMessage;
+  var processResponseCallback = function (responseObject, next) {
+    responseObject.queueMessageResults = null;
+
+    if (!responseObject.error) {
+      responseObject.queueMessageResults = [];
+
+      if (responseObject.response.body.QueueMessagesList && responseObject.response.body.QueueMessagesList.QueueMessage) {
+        var messages = responseObject.response.body.QueueMessagesList.QueueMessage;
+
+        if (!_.isArray(messages)) {
+          messages = [ messages ];
+        }
+
+        messages.forEach(function (message) {
+          var queueMessageResult = QueueMessageResult.parse(message, encodeMessage);
+          responseObject.queueMessageResults.push(queueMessageResult);
+        });
+      }
+    }
+
+    var finalCallback = function (returnObject) {
+      callback(returnObject.error, returnObject.queueMessageResults, returnObject.response);
     };
 
     next(responseObject, finalCallback);
@@ -1435,7 +1603,7 @@ module.exports = QueueService;
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Wed Mar 9th 2016 using the <a
+		on Mon Mar 28th 2016 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>

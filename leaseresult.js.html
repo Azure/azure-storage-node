@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Microsoft Azure Storage Client Library for node.js Source: services/queue/queueutilities.js</title>
+	<title>Microsoft Azure Storage Client Library for node.js Source: services/blob/models/leaseresult.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -200,12 +200,12 @@
 					
 
 
-		<h1 class="page-title">Source: services/queue/queueutilities.js</h1>
+		<h1 class="page-title">Source: services/blob/models/leaseresult.js</h1>
     
 <section>
 	<article>
 		<pre
-			class="sunlight-highlight-javascript linenums">// 
+			class="sunlight-highlight-javascript linenums">﻿// 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -221,29 +221,63 @@
 // limitations under the License.
 // 
 
-// Expose 'QueueUtilities'.
-exports = module.exports;
+// Module dependencies.
+var Constants = require('./../../../common/common').Constants;
+var HeaderConstants = Constants.HeaderConstants;
+
 
 /**
-* Defines enums for use with the Queue service.
-* @namespace QueueUtilities
+* Creates a new LeaseResult object.
+* @class
+* The LeaseResult class is used to store the lease information.
+* 
+ * @property  {string}                      container                         The container name.
+ * @property  {string}                      blob                              The blob name.
+ * @property  {string}                      id                                The lease id.
+ * @property  {string}                      time                              Approximate time remaining in the lease period, in seconds.
+ * @property  {string}                      etag                              The etag.
+ * @property  {string}                      lastModified                      The date/time that the lease was last modified.
+ * 
+* @constructor
+* @param {string} [container]               The container name.
+* @param {string} [blob]                    The blob name.
+* @param {string} [id]                      The lease id.
+* @param {string} [time]                    Approximate time remaining in the lease period, in seconds.
 */
-var QueueUtilities = {
-	/**
-  * Permission types.
-  *
-  * @const
-  * @enum {string}
-  */
-  SharedAccessPermissions: {
-    READ: 'r',
-    ADD: 'a',
-    UPDATE: 'u',
-    PROCESS: 'p'
+function LeaseResult(container, blob, id, time) {
+  if (container) {
+    this.container = container;
   }
+
+  if (blob) {
+    this.blob = blob;
+  }
+
+  if (id) {
+    this.id = id;
+  }
+
+  if (time) {
+    this.time = time;
+  }
+}
+
+LeaseResult.prototype.getPropertiesFromHeaders = function (headers) {
+  var self = this;
+
+  if (!self['id'] && headers[HeaderConstants.LEASE_ID]) {
+    self['id'] = headers[HeaderConstants.LEASE_ID];
+  }
+
+  if (!self['time'] && headers[HeaderConstants.LEASE_TIME]) {
+    self['time'] = parseInt(headers[HeaderConstants.LEASE_TIME], 10);
+  }
+
+  self['etag'] = headers[HeaderConstants.ETAG];
+  self['lastModified'] = headers[HeaderConstants.LAST_MODIFIED.toLowerCase()];
 };
 
-module.exports = QueueUtilities;</pre>
+module.exports = LeaseResult;</pre>
 	</article>
 </section>
 
