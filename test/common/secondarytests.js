@@ -25,6 +25,8 @@ var Constants = azure.Constants;
 var StorageUtilities = azure.StorageUtilities;
 var SR = testutil.libRequire('common/util/sr');
 var RetryPolicyFilter = azure.RetryPolicyFilter;
+var errors = testutil.libRequire('common/errors/errors');
+var ArgumentNullError = errors.ArgumentNullError;
 
 var hostName = process.env['AZURE_STORAGE_ACCOUNT'];
 var testPrimaryHost = 'http://'+ hostName + '.blob.core.windows.net';
@@ -70,15 +72,15 @@ describe('SecondaryTests', function () {
       };
 
       assert.throws(function () { blobService.getContainerProperties(container, options, function () { }); },
-        function (err) {return (err instanceof Error) && err.message === SR.STORAGE_HOST_MISSING_LOCATION});
+        function (err) {return (err instanceof ArgumentNullError) && err.message === SR.STORAGE_HOST_MISSING_LOCATION});
 
       options.locationMode = StorageUtilities.LocationMode.SECONDARY_THEN_PRIMARY;
       assert.throws(function () { blobService.getContainerProperties(container, options, function () { }); },
-        function (err) {return (err instanceof Error) && err.message === SR.STORAGE_HOST_MISSING_LOCATION});
+        function (err) {return (err instanceof ArgumentNullError) && err.message === SR.STORAGE_HOST_MISSING_LOCATION});
 
       options.locationMode = StorageUtilities.LocationMode.PRIMARY_THEN_SECONDARY;
       assert.throws(function () { blobService.getContainerProperties(container, options, function () { }); },
-        function (err) {return (err instanceof Error) && err.message === SR.STORAGE_HOST_MISSING_LOCATION});
+        function (err) {return (err instanceof ArgumentNullError) && err.message === SR.STORAGE_HOST_MISSING_LOCATION});
 
       done();
     });

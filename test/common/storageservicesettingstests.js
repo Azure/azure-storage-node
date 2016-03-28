@@ -24,6 +24,9 @@ var Constants = azure.Constants;
 var StorageServiceClientConstants = Constants.StorageServiceClientConstants;
 var ConnectionStringKeys = Constants.ConnectionStringKeys;
 var StorageServiceSettings = testutil.libRequire('common/services/storageservicesettings');
+var NoMatchError = testutil.libRequire('common/services/servicesettings').NoMatchError;
+var errors = testutil.libRequire('common/errors/errors');
+var ArgumentNullError = errors.ArgumentNullError;
 
 describe('StorageServiceSettingsTests', function(done) {
 
@@ -77,21 +80,21 @@ describe('StorageServiceSettingsTests', function(done) {
   it('testCreateWithBadHost', function(done) {
     assert.throws(
       function () {var blobServiceUsingExplicitHost = azure.createBlobService('xyz','abc=', {});}, 
-      function (err) {return err.message === 'The host for the storage service must be specified.';}
+      function (err) {return (err instanceof ArgumentNullError) && err.message === 'The host for the storage service must be specified.';}
     );
 
     var blobServiceUsingExplicitHost = azure.createBlobService('DefaultEndpointsProtocol=http;AccountName=xyz;AccountKey=abc=');
     assert.throws(
       function () {blobServiceUsingExplicitHost.setHost(null);}, 
-      function (err) {return err.message === 'The host for the storage service must be specified.';}
+      function (err) {return (err instanceof ArgumentNullError) && err.message === 'The host for the storage service must be specified.';}
     );
     assert.throws(
       function () {blobServiceUsingExplicitHost.setHost({});}, 
-      function (err) {return err.message === 'The host for the storage service must be specified.';}
+      function (err) {return (err instanceof ArgumentNullError) && err.message === 'The host for the storage service must be specified.';}
     );
     assert.throws(
       function () {blobServiceUsingExplicitHost.setHost('xyz');}, 
-      function (err) {return err.message === 'The provided URI "xyz" is invalid.';}
+      function (err) {return (err instanceof URIError) && err.message === 'The provided URI "xyz" is invalid.';}
     );
 
     done();
@@ -162,9 +165,14 @@ describe('StorageServiceSettingsTests', function(done) {
     var connectionString = 'UseDevelopmentStorage=' + invalidValue;
 
     // Test
-    (function() {
-      StorageServiceSettings.createFromConnectionString(connectionString);
-    }).should.throw('The provided config value ' + invalidValue + ' does not belong to the valid values subset:\n[true]');
+    assert.throws(
+      function() {
+        StorageServiceSettings.createFromConnectionString(connectionString);
+      },
+      function(err) {
+        return (err instanceof RangeError) && err.message === 'The provided config value ' + invalidValue + ' does not belong to the valid values subset:\n[true]' 
+      }
+    );
     done();
   });
 
@@ -173,9 +181,14 @@ describe('StorageServiceSettingsTests', function(done) {
     var connectionString = '';
 
     // Test
-    (function() {
+    assert.throws(
+      function() {
       StorageServiceSettings.createFromConnectionString(connectionString);
-    }).should.throw('The provided connection string "" does not have complete configuration settings.');
+      },
+      function(err) {
+        return (err instanceof NoMatchError) && err.message === 'The provided connection string "" does not have complete configuration settings.';
+      }
+    );
     done();
   });
 
@@ -185,9 +198,14 @@ describe('StorageServiceSettingsTests', function(done) {
     var connectionString  = 'AccountName=' + expectedName + ';AccountKey=' + expectedKey;
     
     // Test
-    (function() {
-      azure.createBlobService(connectionString);
-    }).should.throw('The provided connection string "' + connectionString + '" does not have complete configuration settings.');
+    assert.throws(
+      function() {
+        azure.createBlobService(connectionString);
+      },
+      function(err) {
+        return (err instanceof NoMatchError) && err.message === 'The provided connection string "' + connectionString + '" does not have complete configuration settings.';
+      }
+    );
 
     done();
   });
@@ -363,9 +381,14 @@ describe('StorageServiceSettingsTests', function(done) {
     var connectionString  = 'AccountName=' + expectedName + ';AccountKey=' + expectedKey;
 
     // Test
-    (function() {
-      StorageServiceSettings.createFromConnectionString(connectionString);
-    }).should.throw('The provided connection string "' + connectionString + '" does not have complete configuration settings.');
+    assert.throws(
+      function() {
+        StorageServiceSettings.createFromConnectionString(connectionString);
+      },
+      function(err) {
+        return (err instanceof NoMatchError) && err.message === 'The provided connection string "' + connectionString + '" does not have complete configuration settings.';
+      }
+    );
     done();
   });
 
@@ -375,9 +398,14 @@ describe('StorageServiceSettingsTests', function(done) {
     var connectionString  = 'DefaultEndpointsProtocol=http;AccountKey=' + expectedKey;
 
     // Test
-    (function() {
-      StorageServiceSettings.createFromConnectionString(connectionString);
-    }).should.throw('The provided connection string "' + connectionString + '" does not have complete configuration settings.');
+    assert.throws(
+      function() {
+        StorageServiceSettings.createFromConnectionString(connectionString);
+      },
+      function(err) {
+        return (err instanceof NoMatchError) && err.message === 'The provided connection string "' + connectionString + '" does not have complete configuration settings.';
+      }
+    );
     done();
   });
 
@@ -388,9 +416,14 @@ describe('StorageServiceSettingsTests', function(done) {
     var connectionString  = 'DefaultEndpointsProtocol=http;AccountName=' + expectedName + ';AccountKey=' + invalidKey;
 
     // Test
-    (function() {
-      StorageServiceSettings.createFromConnectionString(connectionString);
-    }).should.throw('The provided account key ' + invalidKey + ' is not a valid base64 string.');
+    assert.throws(
+      function() {
+        StorageServiceSettings.createFromConnectionString(connectionString);
+      },
+      function(err) {
+        return (err instanceof SyntaxError) && err.message == 'The provided account key ' + invalidKey + ' is not a valid base64 string.'
+      }
+    );
     done();
   });
 
@@ -431,9 +464,14 @@ describe('StorageServiceSettingsTests', function(done) {
     var connectionString  = 'BlobEndpoint=' + invalidUri + ';DefaultEndpointsProtocol=http;AccountName=' + expectedName + ';AccountKey=' + expectedKey;
 
     // Test
-    (function() {
-      StorageServiceSettings.createFromConnectionString(connectionString);
-    }).should.throw('The provided URI "' + invalidUri + '" is invalid.');
+    assert.throws(
+      function() {
+        StorageServiceSettings.createFromConnectionString(connectionString);
+      },
+      function(err) {
+        return (err instanceof URIError) && err.message === 'The provided URI "' + invalidUri + '" is invalid.' 
+      }
+    );
     done();
   });
 
@@ -445,9 +483,14 @@ describe('StorageServiceSettingsTests', function(done) {
     var connectionString  = 'DefaultEndpointsProtocol=http;' + invalidKey + '=MyValue;AccountName=' + expectedName + ';AccountKey=' + expectedKey;
 
     // Test
-    (function() {
-      StorageServiceSettings.createFromConnectionString(connectionString);
-    }).should.throw('Connection string contains unrecognized key: "' + invalidKey + '"');
+    assert.throws(
+      function() {
+        StorageServiceSettings.createFromConnectionString(connectionString);
+      },
+      function(err) {
+        return (err instanceof SyntaxError) && err.message == 'Connection string contains unrecognized key: "' + invalidKey + '"'; 
+      }
+    );
     done();
   });
 

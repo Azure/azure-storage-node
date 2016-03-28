@@ -31,7 +31,7 @@ describe('ServiceSettingsTests', function () {
         ServiceSettings.parseAndValidateKeys(connectionString, validKeys);
       },
       function(err) {
-        if ((err instanceof Error) && err.message === 'Connection string contains unrecognized key: "FakeKey"') {
+        if ((err instanceof SyntaxError) && err.message === 'Connection string contains unrecognized key: "FakeKey"') {
           return true;
         }
       },

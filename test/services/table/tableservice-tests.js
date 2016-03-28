@@ -16,6 +16,7 @@
 
 var assert = require('assert');
 var util = require('util');
+var extend = require('extend');
 
 // Test includes
 var testutil = require('../../framework/util');
@@ -25,6 +26,12 @@ var TestSuite = require('../../framework/test-suite');
 // Lib includes
 var azure = testutil.libRequire('azure-storage');
 var azureutil = testutil.libRequire('common/util/util');
+
+var errors = testutil.libRequire('common/errors/errors');
+var ArgumentError = errors.ArgumentError;
+var ArgumentNullError = errors.ArgumentNullError;
+var TimeoutError = errors.TimeoutError;
+var StorageError = errors.StorageError;
 
 var TableQuery = azure.TableQuery;
 var Constants = azure.Constants;
@@ -151,25 +158,39 @@ describe('tableservice-tests', function () {
   describe('CreateTable', function () {
     it('should detect incorrect table names', function (done) {
       assert.throws(function () { tableService.createTable(null, function () { }); },
-        /Required argument table for function createTable is not defined/);
+        function(err) {
+          return (err instanceof ArgumentNullError) && err.message === 'Required argument table for function createTable is not defined'; 
+        });
 
       assert.throws(function () { tableService.createTable('', function () { }); },
-        /Required argument table for function createTable is not defined/);
+        function(err) {
+          return (err instanceof ArgumentNullError) && err.message === 'Required argument table for function createTable is not defined'; 
+        });
 
       assert.throws(function () { tableService.createTable('as', function () { }); },
-        /Table name must be between 3 and 63 characters long./);
+       function(err) {
+        if ((err instanceof ArgumentError) && err.message === 'Table name must be between 3 and 63 characters long.') {
+          return true;
+        }
+      });
 
       assert.throws(function () { tableService.createTable('Tables', function () { }); },
         /Table name cannot be \'Tables\'./);
 
       assert.throws(function () { tableService.createTable('a--s', function () { }); },
-        /Table name format is incorrect./);
+        function(err){
+          return (err instanceof SyntaxError) && err.message === 'Table name format is incorrect.'; 
+        });
 
       assert.throws(function () { tableService.createTable('1table', function () { }); },
-        /Table name format is incorrect./);
+        function(err){
+          return (err instanceof SyntaxError) && err.message === 'Table name format is incorrect.'; 
+        });
 
       assert.throws(function () { tableService.createTable('$Metrics', function () { }); },
-        /Table name format is incorrect./);
+        function(err){
+          return (err instanceof SyntaxError) && err.message === 'Table name format is incorrect.'; 
+        });
       
       done();
     });
@@ -185,7 +206,8 @@ describe('tableservice-tests', function () {
         // check that the table exists
         tableService.doesTableExist(tableName1, function (existsError, tableResponse, existsResponse) {
           assert.equal(existsError, null);
-          assert.notEqual(tableResponse, null);
+          assert.strictEqual(tableResponse.exists, true);
+          assert.equal(tableResponse.TableName, tableName1);
           assert.ok(existsResponse.isSuccessful);
           assert.equal(existsResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
           done();
@@ -216,12 +238,13 @@ describe('tableservice-tests', function () {
       assert.notEqual(table, null);
       assert.ok(createResponse.isSuccessful);
       assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.NoContent);
-    assert.strictEqual(table.TableName, tableName1);
+      assert.strictEqual(table.TableName, tableName1);
 
       // trying to create again with if not exists should be fine
       tableService.createTableIfNotExists(tableName1, function (createError2, created2) {
         assert.equal(createError2, null);
-        assert.equal(created2, false);
+        assert.equal(created2.created, false);        
+        assert.equal(created2.TableName, tableName1);
 
         done();
       });
@@ -552,7 +575,7 @@ describe('tableservice-tests', function () {
     });
   });
 
-  describe('UpdateEntity', function () {
+  describe('replaceEntity', function () {
     it('WithoutEtag', function (done) {
       var newField = eg.String('value');
       tableService.createTable(tableName1, function (createError, table, createResponse) {
@@ -571,12 +594,12 @@ describe('tableservice-tests', function () {
           insertEntity['.metadata'] = undefined;
           insertEntity['otherfield'] = newField;
 
-          tableService.updateEntity(tableName1, insertEntity, function (updateError2, updateEntity2, updateResponse2) {
+          tableService.replaceEntity(tableName1, insertEntity, function (updateError2, replaceEntity2, updateResponse2) {
             assert.equal(updateError2, null);
-            assert.notEqual(updateEntity2, null);
+            assert.notEqual(replaceEntity2, null);
             assert.ok(updateResponse2.isSuccessful);
             assert.equal(updateResponse2.statusCode, HttpConstants.HttpResponseCodes.NoContent);
-            assert.notEqual(updateEntity2['.metadata'].etag, originalEtag);
+            assert.notEqual(replaceEntity2['.metadata'].etag, originalEtag);
 
             done();
           });
@@ -603,9 +626,9 @@ describe('tableservice-tests', function () {
           // Set a fake old etag
           insertEntity['.metadata'] = { etag: 'W/"datetime\'2009-05-27T12%3A15%3A15.3321531Z\'"' };
 
-          tableService.updateEntity(tableName1, insertEntity, function (updateError, updateEntity, updateResponse) {
+          tableService.replaceEntity(tableName1, insertEntity, function (updateError, replaceEntity, updateResponse) {
             assert.equal(updateError.code, StorageErrorCodeStrings.UPDATE_CONDITION_NOT_SATISFIED);
-            assert.equal(updateEntity, null);
+            assert.equal(replaceEntity, null);
             assert.equal(updateResponse.isSuccessful, false);
             assert.equal(updateResponse.statusCode, HttpConstants.HttpResponseCodes.PreconditionFailed);
 
@@ -845,25 +868,22 @@ describe('tableservice-tests', function () {
         expiryDate.setMinutes(startDate.getMinutes() + 10);
         var id = 'sampleIDForTablePolicy';
 
-        var sharedAccessPolicy = [{
-          AccessPolicy: {
+        var sharedAccessPolicy = {
+          sampleIDForTablePolicy: {
             Permissions: TableUtilities.SharedAccessPermissions.QUERY,
             Expiry: expiryDate
-          },
-          Id: id,
-        }];
-
-        var sharedAccessPolicyJustId = {
-          Id: id,
+          }
         };
 
         tableService.setTableAcl(tableName1, sharedAccessPolicy, function (error, result, response) {
           assert.strictEqual(error, null);
+          assert.equal(result.name, tableName1);
+          
           tableService.getTableAcl(tableName1, function(error, result, response) {
             assert.strictEqual(error, null);
-            assert.equal(result.signedIdentifiers[0].Id, id);
-            assert.equal(result.signedIdentifiers[0].AccessPolicy.Permissions, TableUtilities.SharedAccessPermissions.QUERY);
-            assert.equal(result.signedIdentifiers[0].AccessPolicy.Expiry.toISOString(), expiryDate.toISOString());
+            assert.equal(result.name, tableName1);
+            assert.equal(result.signedIdentifiers.sampleIDForTablePolicy.Permissions, TableUtilities.SharedAccessPermissions.QUERY);
+            assert.equal(result.signedIdentifiers.sampleIDForTablePolicy.Expiry.toISOString(), expiryDate.toISOString());
             done();
           });
         });
@@ -901,14 +921,13 @@ describe('tableservice-tests', function () {
         });
       });
     });
-
-    // Skip this case in nock because the signing key is different between live run and mocked run
-    runOrSkip('SASWithPolicy', function(done) {
-      tableService.createTable(tableName1, function (error1) {
+    
+    runOrSkip('SASNoPolicyWithUpperCaseTableName', function (done) {
+      var tableName = tableName1.toUpperCase();
+      tableService.createTable(tableName, function (error1) {
         assert.equal(error1, null);
-        insertManyEntities(function () {
+        insertManyEntities(function () {  
 
-          var id = '011ec48e-81e1-4dc8-a6ac-e246bc547bad';
           var startDate = new Date();
           var expiryDate = new Date(startDate);
           expiryDate.setMinutes(startDate.getMinutes() + 100);
@@ -919,8 +938,38 @@ describe('tableservice-tests', function () {
               Permissions: TableUtilities.SharedAccessPermissions.QUERY,
               Start: startDate,
               Expiry: expiryDate,
+              StartPk: '1',
+              EndPk: '3',
+              StartRk: '1',
+              EndRk: '3'
             },
-            Id: id
+          };
+
+          var tableSAS = tableService.generateSharedAccessSignature(tableName, sharedAccessPolicy);
+          var sharedTableService = azure.createTableServiceWithSas(tableService.host, tableSAS);
+
+          runTableTests(sharedTableService, done);
+        });
+      });
+    });
+
+    // Skip this case in nock because the signing key is different between live run and mocked run
+    runOrSkip('SASWithPolicy', function(done) {
+      tableService.createTable(tableName1, function (error1) {
+        assert.equal(error1, null);
+        insertManyEntities(function () {
+
+          var startDate = new Date();
+          var expiryDate = new Date(startDate);
+          expiryDate.setMinutes(startDate.getMinutes() + 100);
+          startDate.setMinutes(startDate.getMinutes() - 100);
+
+          var sharedAccessPolicy = {
+            '011ec48e-81e1-4dc8-a6ac-e246bc547bad': {
+              Permissions: TableUtilities.SharedAccessPermissions.QUERY,
+              Start: startDate,
+              Expiry: expiryDate,
+            }
           };
 
           var sharedAccessPolicyJustIdPkRkRange = {
@@ -930,13 +979,12 @@ describe('tableservice-tests', function () {
               StartRk: '1',
               EndRk: '3'
             },
-            Id: id,
+            Id: '011ec48e-81e1-4dc8-a6ac-e246bc547bad',
           };
 
           tableService.getTableAcl(tableName1, function(error, result, response) {
-            result.signedIdentifiers.push(sharedAccessPolicy);
-
-            tableService.setTableAcl(tableName1, result.signedIdentifiers, function() {
+            var newSignedIdentifiers = extend(true, result.signedIdentifiers, sharedAccessPolicy);
+            tableService.setTableAcl(tableName1, newSignedIdentifiers, function() {
 
               // Need a 30 second delay for the policy to take affect on the service.
               setTimeout(function() {

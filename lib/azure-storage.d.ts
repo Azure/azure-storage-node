@@ -428,7 +428,7 @@ declare module "azure-storage" {
             * @param {string}             [options.leaseId]                   The container lease identifier.
             * @param {LocationMode}       [options.locationMode]              Specifies the location mode used to decide which location the request should be sent to.
             *                                                                 Please see StorageUtilities.LocationMode for the possible values.
-            * @param {object}             [options.accessConditions]          See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {AccessConditions}   [options.accessConditions]          The access conditions.
             * @param {int}                [options.timeoutIntervalInMs]       The server timeout interval, in milliseconds, to use for the request.
             * @param {int}                [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
             *                                                                 The maximum execution time interval begins at the time that the client begins building the request. The maximum
@@ -479,23 +479,25 @@ declare module "azure-storage" {
             * Updates the container's ACL.
             *
             * @this {BlobService}
-            * @param {string}             container                           The container name.
-            * @param {object}             signedIdentifiers                   The signed identifiers. Signed identifiers must be in an array. 
-            * @param {object}             [options]                           The request options.
-            * @param {string}             [options.publicAccessLevel]         Specifies whether data in the container may be accessed publicly and the level of access.
-            * @param {string}             [options.leaseId]                   The container lease identifier.
-            * @param {int}                [options.timeoutIntervalInMs]       The server timeout interval, in milliseconds, to use for the request.
-            * @param {int}                [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-            *                                                                 The maximum execution time interval begins at the time that the client begins building the request. The maximum
-            *                                                                 execution time is checked intermittently while performing requests, and before executing retries.
-            * @param {bool}               [options.useNagleAlgorithm]         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-            *                                                                 The default value is false.
-            * @param {errorOrResult}  callback                                `error` will contain information
-            *                                                                 if an error occurs; otherwise `result` will contain
-            *                                                                 information for the container.
-            *                                                                 `response` will contain information related to this operation.
+            * @param {string}                         container                           The container name.
+            * @param {[key:string]: AccessPolicy}     signedIdentifiers                   The container ACL settings. See `[AccessPolicy]{@link AccessPolicy}` for detailed information.
+            * @param {object}                         [options]                           The request options.
+            * @param {AccessConditions}               [options.accessConditions]          The access conditions.
+            * @param {string}                         [options.publicAccessLevel]         Specifies whether data in the container may be accessed publicly and the level of access.
+            * @param {string}                         [options.leaseId]                   The container lease identifier.
+            * @param {int}                            [options.timeoutIntervalInMs]       The server timeout interval, in milliseconds, to use for the request.
+            * @param {int}                            [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+            *                                                                             The maximum execution time interval begins at the time that the client begins building the request. The maximum
+            *                                                                             execution time is checked intermittently while performing requests, and before executing retries.
+            * @param {string}                         [options.clientRequestId]           A string that represents the client request ID with a 1KB character limit.
+            * @param {bool}                           [options.useNagleAlgorithm]         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+            *                                                                             The default value is false.
+            * @param {errorOrResult}                  callback                            `error` will contain information
+            *                                                                             if an error occurs; otherwise `result` will contain
+            *                                                                             information for the container.
+            *                                                                             `response` will contain information related to this operation.
             */
-            setContainerAcl(container: string, signedIdentifiers: common.SignedIdentifier[], options: BlobService.ContainerAclOptions, callback: ErrorOrResult<BlobService.ContainerAclResult>): void;
+            setContainerAcl(container: string, signedIdentifiers: {[key:string]: common.AccessPolicy}, options: BlobService.ContainerAclOptions, callback: ErrorOrResult<BlobService.ContainerAclResult>): void;
 
             /**
             * Marks the specified container for deletion.
@@ -516,6 +518,7 @@ declare module "azure-storage" {
             * @this {BlobService}
             * @param {string}             container                           The container name.
             * @param {object}             [options]                           The request options.
+            * @param {AccessConditions}   [options.accessConditions]          The access conditions.
             * @param {string}             [options.leaseId]                   The container lease identifier.
             * @param {LocationMode}       [options.locationMode]              Specifies the location mode used to decide which location the request should be sent to.
             *                                                                 Please see StorageUtilities.LocationMode for the possible values.
@@ -552,6 +555,7 @@ declare module "azure-storage" {
             * @this {BlobService}
             * @param {string}             container                           The container name.
             * @param {object}             [options]                           The request options.
+            * @param {AccessConditions}   [options.accessConditions]          The access conditions.
             * @param {string}             [options.leaseId]                   The container lease identifier.
             * @param {LocationMode}       [options.locationMode]              Specifies the location mode used to decide which location the request should be sent to.
             *                                                                 Please see StorageUtilities.LocationMode for the possible values.
@@ -669,7 +673,7 @@ declare module "azure-storage" {
             * @param {object}             [options]                                   The request options.
             * @param {string}             [options.leaseDuration]                     The lease duration in seconds. A non-infinite lease can be between 15 and 60 seconds. Default is never to expire.
             * @param {string}             [options.proposedLeaseId]                   The proposed lease identifier. Must be a GUID.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {AccessConditions}   [options.accessConditions]                  The access conditions.
             * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
             *                                                                         Please see StorageUtilities.LocationMode for the possible values.
             * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
@@ -707,7 +711,7 @@ declare module "azure-storage" {
             * @param {string}             blob                                        The blob name.
             * @param {string}             leaseId                                     The lease identifier. Must be a GUID.
             * @param {object}             [options]                                   The request options.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {AccessConditions}   [options.accessConditions]                  The access conditions.
             * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
             *                                                                         Please see StorageUtilities.LocationMode for the possible values.
             * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
@@ -748,7 +752,7 @@ declare module "azure-storage" {
             * @param {string}             leaseId                                     The current lease identifier.
             * @param {string}             proposedLeaseId                             The proposed lease identifier. Must be a GUID.
             * @param {object}             [options]                                   The request options.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {AccessConditions}   [options.accessConditions]                  The access conditions.
             * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
             *                                                                         Please see StorageUtilities.LocationMode for the possible values.
             * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
@@ -785,7 +789,7 @@ declare module "azure-storage" {
             * @param {string}             blob                                        The blob name.
             * @param {string}             leaseId                                     The lease identifier.
             * @param {object}             [options]                                   The request options.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {AccessConditions}   [options.accessConditions]                  The access conditions.
             * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
             *                                                                         Please see StorageUtilities.LocationMode for the possible values.
             * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
@@ -825,7 +829,7 @@ declare module "azure-storage" {
             * @param {object}             [options]                                   The request options.
             * @param {int}                [options.leaseBreakPeriod]                  The lease break period, between 0 and 60 seconds. If unspecified, a fixed-duration lease breaks after
             *                                                                         the remaining lease period elapses, and an infinite lease breaks immediately.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {AccessConditions}   [options.accessConditions]                  The access conditions.
             * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
             *                                                                         Please see StorageUtilities.LocationMode for the possible values.
             * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
@@ -865,7 +869,7 @@ declare module "azure-storage" {
             * @param {object}             [options]                                   The request options.
             * @param {string}             [options.snapshotId]                        The snapshot identifier.
             * @param {string}             [options.leaseId]                           The lease identifier.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {AccessConditions}   [options.accessConditions]                  The access conditions.
             * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
             *                                                                         Please see StorageUtilities.LocationMode for the possible values.
             * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
@@ -891,7 +895,7 @@ declare module "azure-storage" {
             * @param {object}             [options]                                   The request options.
             * @param {string}             [options.snapshotId]                        The snapshot identifier.
             * @param {string}             [options.leaseId]                           The lease identifier.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {AccessConditions}   [options.accessConditions]                  The access conditions.
             * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
             *                                                                         Please see StorageUtilities.LocationMode for the possible values.
             * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
@@ -933,12 +937,12 @@ declare module "azure-storage" {
             * @param {string}             [options.contentType]                       The MIME content type of the blob. The default type is application/octet-stream.
             * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the blob.
             * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-            * @param {string}             [options.contentMD5]                        The MD5 hash of the blob content.
+            * @param {string}             [options.contentMD5]                        The blob's MD5 hash.
             * @param {string}             [options.cacheControl]                      The Blob service stores this value but does not use or modify it.
-            * @param {string}             [options.contentDisposition]                The blob's content disposition. (x-ms-blob-content-disposition)
+            * @param {string}             [options.contentDisposition]                The blob's content disposition.
             * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
             *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {AccessConditions}   [options.accessConditions]                  The access conditions.
             * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
             * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
             *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
@@ -978,7 +982,7 @@ declare module "azure-storage" {
             * @param {object}             [options]                                   The request options.
             * @param {string}             [options.snapshotId]                        The snapshot identifier.
             * @param {string}             [options.leaseId]                           The lease identifier.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {AccessConditions}   [options.accessConditions]                  The access conditions.
             * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
             *                                                                         Please see StorageUtilities.LocationMode for the possible values.
             * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
@@ -1008,7 +1012,7 @@ declare module "azure-storage" {
             * @param {string}             [options.leaseId]                           The lease identifier.
             * @param {string}             [options.rangeStart]                        Return only the bytes of the blob in the specified range.
             * @param {string}             [options.rangeEnd]                          Return only the bytes of the blob in the specified range.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {AccessConditions}   [options.accessConditions]                  The access conditions.
             * @param {boolean}            [options.useTransactionalMD5]               When set to true, Calculate and send/validate content MD5 for transactions.
             * @param {boolean}            [options.disableContentMD5Validation]       When set to true, MD5 validation will be disabled when downloading blobs.
             * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
@@ -1044,7 +1048,7 @@ declare module "azure-storage" {
             * @param {string}             [options.leaseId]                           The lease identifier.
             * @param {string}             [options.rangeStart]                        Return only the bytes of the blob in the specified range.
             * @param {string}             [options.rangeEnd]                          Return only the bytes of the blob in the specified range.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {AccessConditions}   [options.accessConditions]                  The access conditions.
             * @param {boolean}            [options.useTransactionalMD5]               When set to true, Calculate and send/validate content MD5 for transactions.
             * @param {boolean}            [options.disableContentMD5Validation]       When set to true, MD5 validation will be disabled when downloading blobs.
             * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
@@ -1104,7 +1108,7 @@ declare module "azure-storage" {
             * @param {string}             [options.rangeEnd]                          Return only the bytes of the blob in the specified range.
             * @param {boolean}            [options.useTransactionalMD5]               When set to true, Calculate and send/validate content MD5 for transactions.
             * @param {boolean}            [options.disableContentMD5Validation]       When set to true, MD5 validation will be disabled when downloading blobs.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {AccessConditions}   [options.accessConditions]                  The access conditions.
             * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
             *                                                                         Please see StorageUtilities.LocationMode for the possible values.
             * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
@@ -1140,7 +1144,7 @@ declare module "azure-storage" {
             * @param {string}             [options.rangeStart]                        Return only the bytes of the blob in the specified range.
             * @param {string}             [options.rangeEnd]                          Return only the bytes of the blob in the specified range.
             * @param {boolean}            [options.disableContentMD5Validation]       When set to true, MD5 validation will be disabled when downloading blobs.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {AccessConditions}   [options.accessConditions]                  The access conditions.
             * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
             *                                                                         Please see StorageUtilities.LocationMode for the possible values.
             * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
@@ -1186,7 +1190,7 @@ declare module "azure-storage" {
             * @param {string}             [options.deleteSnapshots]                   The snapshot delete option. See azure.BlobUtilities.SnapshotDeleteOptions.*.
             * @param {string}             [options.snapshotId]                        The snapshot identifier.
             * @param {string}             [options.leaseId]                           The lease identifier.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {AccessConditions}   [options.accessConditions]                  The access conditions.
             * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
             *                                                                         Please see StorageUtilities.LocationMode for the possible values.
             * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
@@ -1232,7 +1236,7 @@ declare module "azure-storage" {
             * @param {string}             [options.deleteSnapshots]           The snapshot delete option. See azure.BlobUtilities.SnapshotDeleteOptions.*.
             * @param {string}             [options.snapshotId]                The snapshot identifier.
             * @param {string}             [options.leaseId]                   The lease identifier.
-            * @param {object}             [options.accessConditions]          The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {AccessConditions}   [options.accessConditions]          The access conditions.
             * @param {LocationMode}       [options.locationMode]              Specifies the location mode used to decide which location the request should be sent to.
             *                                                                 Please see StorageUtilities.LocationMode for the possible values.
             * @param {int}                [options.timeoutIntervalInMs]       The server timeout interval, in milliseconds, to use for the request.
@@ -1294,7 +1298,7 @@ declare module "azure-storage" {
             * @param {string}             [options.snapshotId]                  The snapshot identifier.
             * @param {object}             [options.metadata]                    The metadata key/value pairs.
             * @param {string}             [options.leaseId]                     The lease identifier.
-            * @param {object}             [options.accessConditions]            The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {AccessConditions}   [options.accessConditions]            The access conditions.
             * @param {LocationMode}       [options.locationMode]                Specifies the location mode used to decide which location the request should be sent to.
             *                                                                   Please see StorageUtilities.LocationMode for the possible values.
             * @param {int}                [options.timeoutIntervalInMs]         The server timeout interval, in milliseconds, to use for the request.
@@ -1322,8 +1326,8 @@ declare module "azure-storage" {
             * @param {object}             [options.metadata]                        The target blob metadata key/value pairs.
             * @param {string}             [options.leaseId]                         The target blob lease identifier.
             * @param {string}             [options.sourceLeaseId]                   The source blob lease identifier.
-            * @param {object}             [options.accessConditions]                The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
-            * @param {object}             [options.sourceAccessConditions]          The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {AccessConditions}   [options.accessConditions]                The access conditions.
+            * @param {AccessConditions}   [options.sourceAccessConditions]          The source access conditions.
             * @param {LocationMode}       [options.locationMode]                    Specifies the location mode used to decide which location the request should be sent to.
             *                                                                       Please see StorageUtilities.LocationMode for the possible values.
             * @param {int}                [options.timeoutIntervalInMs]             The server timeout interval, in milliseconds, to use for the request.
@@ -1431,33 +1435,34 @@ declare module "azure-storage" {
             * Uploads a page blob from file.
             *
             * @this {BlobService}
-            * @param {string}             container                                   The container name.
-            * @param {string}             blob                                        The blob name.
-            * @param (string)             localFileName                               The local path to the file to be uploaded.
-            * @param {object}             [options]                                   The request options.
-            * @param {SpeedSummary}       [options.speedSummary]                      The upload tracker objects.
-            * @param {int}                [options.parallelOperationThreadCount]      Parallel operation thread count
-            * @param {string}             [options.leaseId]                           The lease identifier.
-            * @param {object}             [options.metadata]                          The metadata key/value pairs.
-            * @param {bool}               [options.storeBlobContentMD5]               Specifies whether the blob's ContentMD5 header should be set on uploads.
-            *                                                                         The default value is false for page blobs.
-            * @param {bool}               [options.useTransactionalMD5]               Calculate and send/validate content MD5 for transactions.
-            * @param {string}             [options.contentType]                       The MIME content type of the blob. The default type is application/octet-stream.
-            * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the blob.
-            * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-            * @param {string}             [options.contentMD5]                        The MD5 hash of the blob content.
-            * @param {string}             [options.cacheControl]                      The Blob service stores this value but does not use or modify it.
-            * @param {string}             [options.contentDisposition]                The blob's content disposition. (x-ms-blob-content-disposition)
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
-            * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
-            *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-            * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-            * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-            *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-            *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-            * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-            *                                                                         The default value is false.
-            * @param {errorOrResult}  callback                                        The callback function.
+            * @param {string}             container                                       The container name.
+            * @param {string}             blob                                            The blob name.
+            * @param (string)             localFileName                                   The local path to the file to be uploaded.
+            * @param {object}             [options]                                       The request options.
+            * @param {SpeedSummary}       [options.speedSummary]                          The upload tracker objects.
+            * @param {int}                [options.parallelOperationThreadCount]          Parallel operation thread count
+            * @param {string}             [options.leaseId]                               The lease identifier.
+            * @param {string}             [options.transactionalContentMD5]               An MD5 hash of the blob content. This hash is used to verify the integrity of the blob during transport.
+            * @param {object}             [options.metadata]                              The metadata key/value pairs.
+            * @param {bool}               [options.storeBlobContentMD5]                   Specifies whether the blob's ContentMD5 header should be set on uploads.
+            *                                                                             The default value is false for page blobs.
+            * @param {bool}               [options.useTransactionalMD5]                   Calculate and send/validate content MD5 for transactions.
+            * @param {string}             [options.contentSettings.contentType]           The MIME content type of the blob. The default type is application/octet-stream.
+            * @param {string}             [options.contentSettings.contentEncoding]       The content encodings that have been applied to the blob.
+            * @param {string}             [options.contentSettings.contentLanguage]       The natural languages used by this resource.
+            * @param {string}             [options.contentSettings.cacheControl]          The Blob service stores this value but does not use or modify it.
+            * @param {string}             [options.contentSettings.contentDisposition]    The blob's content disposition.
+            * @param {string}             [options.contentSettings.contentMD5]            The blob's MD5 hash.
+            * @param {AccessConditions}   [options.accessConditions]                      The access conditions.
+            * @param {LocationMode}       [options.locationMode]                          Specifies the location mode used to decide which location the request should be sent to.
+            *                                                                             Please see StorageUtilities.LocationMode for the possible values.
+            * @param {int}                [options.timeoutIntervalInMs]                   The server timeout interval, in milliseconds, to use for the request.
+            * @param {int}                [options.maximumExecutionTimeInMs]              The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+            *                                                                             The maximum execution time interval begins at the time that the client begins building the request. The maximum
+            *                                                                             execution time is checked intermittently while performing requests, and before executing retries.
+            * @param {bool}               [options.useNagleAlgorithm]                     Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+            *                                                                             The default value is false.
+            * @param {errorOrResult}  callback                                            The callback function.
             * @return {SpeedSummary}
             */
             createPageBlobFromLocalFile(container: string, blob: string, localFileName: any, optionsOrCallback: any, callback: any): any;
@@ -1466,34 +1471,35 @@ declare module "azure-storage" {
             * Uploads a page blob from a stream.
             *
             * @this {BlobService}
-            * @param {string}             container                                   The container name.
-            * @param {string}             blob                                        The blob name.
-            * @param (Stream)             stream                                      Stream to the data to store.
-            * @param {int}                streamLength                                The length of the stream to upload.
-            * @param {object}             [options]                                   The request options.
-            * @param {SpeedSummary}       [options.speedSummary]                      The download tracker objects;
-            * @param {int}                [options.parallelOperationThreadCount]      Parallel operation thread count
-            * @param {string}             [options.leaseId]                           The lease identifier.
-            * @param {object}             [options.metadata]                          The metadata key/value pairs.
-            * @param {bool}               [options.storeBlobContentMD5]               Specifies whether the blob's ContentMD5 header should be set on uploads.
-            *                                                                         The default value is false for page blobs.
-            * @param {bool}               [options.useTransactionalMD5]               Calculate and send/validate content MD5 for transactions.
-            * @param {string}             [options.contentType]                       The MIME content type of the blob. The default type is application/octet-stream.
-            * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the blob.
-            * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-            * @param {string}             [options.contentMD5]                        The MD5 hash of the blob content.
-            * @param {string}             [options.cacheControl]                      The Blob service stores this value but does not use or modify it.
-            * @param {string}             [options.contentDisposition]                The blob's content disposition. (x-ms-blob-content-disposition)
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
-            * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
-            *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-            * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-            * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-            *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-            *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-            * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-            *                                                                         The default value is false.
-            * @param {errorOrResult}  callback                                        The callback function.
+            * @param {string}             container                                       The container name.
+            * @param {string}             blob                                            The blob name.
+            * @param (Stream)             stream                                          Stream to the data to store.
+            * @param {int}                streamLength                                    The length of the stream to upload.
+            * @param {object}             [options]                                       The request options.
+            * @param {SpeedSummary}       [options.speedSummary]                          The download tracker objects;
+            * @param {int}                [options.parallelOperationThreadCount]          Parallel operation thread count
+            * @param {string}             [options.leaseId]                               The lease identifier.
+            * @param {string}             [options.transactionalContentMD5]               An MD5 hash of the blob content. This hash is used to verify the integrity of the blob during transport.
+            * @param {object}             [options.metadata]                              The metadata key/value pairs.
+            * @param {bool}               [options.storeBlobContentMD5]                   Specifies whether the blob's ContentMD5 header should be set on uploads.
+            *                                                                             The default value is false for page blobs.
+            * @param {bool}               [options.useTransactionalMD5]                   Calculate and send/validate content MD5 for transactions.
+            * @param {string}             [options.contentSettings.contentType]           The MIME content type of the blob. The default type is application/octet-stream.
+            * @param {string}             [options.contentSettings.contentEncoding]       The content encodings that have been applied to the blob.
+            * @param {string}             [options.contentSettings.contentLanguage]       The natural languages used by this resource.
+            * @param {string}             [options.contentSettings.cacheControl]          The Blob service stores this value but does not use or modify it.
+            * @param {string}             [options.contentSettings.contentDisposition]    The blob's content disposition.
+            * @param {string}             [options.contentSettings.contentMD5]            The blob's MD5 hash.
+            * @param {AccessConditions}   [options.accessConditions]                      The access conditions.
+            * @param {LocationMode}       [options.locationMode]                          Specifies the location mode used to decide which location the request should be sent to.
+            *                                                                             Please see StorageUtilities.LocationMode for the possible values.
+            * @param {int}                [options.timeoutIntervalInMs]                   The server timeout interval, in milliseconds, to use for the request.
+            * @param {int}                [options.maximumExecutionTimeInMs]              The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+            *                                                                             The maximum execution time interval begins at the time that the client begins building the request. The maximum
+            *                                                                             execution time is checked intermittently while performing requests, and before executing retries.
+            * @param {bool}               [options.useNagleAlgorithm]                     Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+            *                                                                             The default value is false.
+            * @param {errorOrResult}  callback                                            The callback function.
             * @return {SpeedSummary}
             */
             createPageBlobFromStream(container: string, blob: string, stream: any, streamLength: any, optionsOrCallback: any, callback: any): any;
@@ -1503,31 +1509,32 @@ declare module "azure-storage" {
             * If it does not, please create the blob using createPageBlob before calling this method or use createWriteStreamNewPageBlob.
             *
             * @this {BlobService}
-            * @param {string}             container                                   The container name.
-            * @param {string}             blob                                        The blob name.
-            * @param {object}             [options]                                   The request options.
-            * @param {string}             [options.leaseId]                           The lease identifier.
-            * @param {object}             [options.metadata]                          The metadata key/value pairs.
-            * @param {int}                [options.parallelOperationThreadCount]      Parallel operation thread count
-            * @param {bool}               [options.storeBlobContentMD5]               Specifies whether the blob's ContentMD5 header should be set on uploads.
-            *                                                                         The default value is false for page blobs and true for block blobs.
-            * @param {bool}               [options.useTransactionalMD5]               Calculate and send/validate content MD5 for transactions.
-            * @param {string}             [options.contentType]                       The MIME content type of the blob. The default type is application/octet-stream.
-            * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the blob.
-            * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-            * @param {string}             [options.contentMD5]                        The MD5 hash of the blob content.
-            * @param {string}             [options.cacheControl]                      The Blob service stores this value but does not use or modify it.
-            * @param {string}             [options.contentDisposition]                The blob's content disposition. (x-ms-blob-content-disposition)
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
-            * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
-            *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-            * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-            * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-            *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-            *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-            * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-            *                                                                         The default value is false.
-            * @param {errorOrResponse}  callback                                      The callback function.
+            * @param {string}             container                                       The container name.
+            * @param {string}             blob                                            The blob name.
+            * @param {object}             [options]                                       The request options.
+            * @param {string}             [options.leaseId]                               The lease identifier.
+            * @param {string}             [options.transactionalContentMD5]               The MD5 hash of the blob content. This hash is used to verify the integrity of the blob during transport.
+            * @param {object}             [options.metadata]                              The metadata key/value pairs.
+            * @param {int}                [options.parallelOperationThreadCount]          Parallel operation thread count
+            * @param {bool}               [options.storeBlobContentMD5]                   Specifies whether the blob's ContentMD5 header should be set on uploads.
+            *                                                                             The default value is false for page blobs and true for block blobs.
+            * @param {bool}               [options.useTransactionalMD5]                   Calculate and send/validate content MD5 for transactions.
+            * @param {string}             [options.contentSettings.contentType]           The MIME content type of the blob. The default type is application/octet-stream.
+            * @param {string}             [options.contentSettings.contentEncoding]       The content encodings that have been applied to the blob.
+            * @param {string}             [options.contentSettings.contentLanguage]       The natural languages used by this resource.
+            * @param {string}             [options.contentSettings.cacheControl]          The Blob service stores this value but does not use or modify it.
+            * @param {string}             [options.contentSettings.contentDisposition]    The blob's content disposition.
+            * @param {string}             [options.contentSettings.contentMD5]            The blob's MD5 hash.
+            * @param {AccessConditions}   [options.accessConditions]                      The access conditions.
+            * @param {LocationMode}       [options.locationMode]                          Specifies the location mode used to decide which location the request should be sent to.
+            *                                                                             Please see StorageUtilities.LocationMode for the possible values.
+            * @param {int}                [options.timeoutIntervalInMs]                   The server timeout interval, in milliseconds, to use for the request.
+            * @param {int}                [options.maximumExecutionTimeInMs]              The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+            *                                                                             The maximum execution time interval begins at the time that the client begins building the request. The maximum
+            *                                                                             execution time is checked intermittently while performing requests, and before executing retries.
+            * @param {bool}               [options.useNagleAlgorithm]                     Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+            *                                                                             The default value is false.
+            * @param {errorOrResponse}  callback                                          The callback function.
             * @return {Stream}
             * @example
             * var azure = require('azure-storage');
@@ -1543,32 +1550,33 @@ declare module "azure-storage" {
             * Provides a stream to write to a page blob. Creates the blob before writing data.
             *
             * @this {BlobService}
-            * @param {string}             container                                   The container name.
-            * @param {string}             blob                                        The blob name.
-            * @param {string}             length                                      The blob length.
-            * @param {object}             [options]                                   The request options.
-            * @param {string}             [options.leaseId]                           The lease identifier.
-            * @param {object}             [options.metadata]                          The metadata key/value pairs.
-            * @param {int}                [options.parallelOperationThreadCount]      Parallel operation thread count
-            * @param {bool}               [options.storeBlobContentMD5]               Specifies whether the blob's ContentMD5 header should be set on uploads.
-            *                                                                         The default value is false for page blobs and true for block blobs.
-            * @param {bool}               [options.useTransactionalMD5]               Calculate and send/validate content MD5 for transactions.
-            * @param {string}             [options.contentType]                       The MIME content type of the blob. The default type is application/octet-stream.
-            * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the blob.
-            * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-            * @param {string}             [options.contentMD5]                        The MD5 hash of the blob content.
-            * @param {string}             [options.cacheControl]                      The Blob service stores this value but does not use or modify it.
-            * @param {string}             [options.contentDisposition]                The blob's content disposition. (x-ms-blob-content-disposition)
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
-            * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
-            *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-            * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-            * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-            *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-            *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-            * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-            *                                                                         The default value is false.
-            * @param {errorOrResponse}  callback                                      The callback function.
+            * @param {string}             container                                       The container name.
+            * @param {string}             blob                                            The blob name.
+            * @param {string}             length                                          The blob length.
+            * @param {object}             [options]                                       The request options.
+            * @param {string}             [options.leaseId]                               The lease identifier.
+            * @param {string}             [options.transactionalContentMD5]               The MD5 hash of the blob content. This hash is used to verify the integrity of the blob during transport.
+            * @param {object}             [options.metadata]                              The metadata key/value pairs.
+            * @param {int}                [options.parallelOperationThreadCount]          Parallel operation thread count
+            * @param {bool}               [options.storeBlobContentMD5]                   Specifies whether the blob's ContentMD5 header should be set on uploads.
+            *                                                                             The default value is false for page blobs and true for block blobs.
+            * @param {bool}               [options.useTransactionalMD5]                   Calculate and send/validate content MD5 for transactions.
+            * @param {string}             [options.contentSettings.contentType]           The MIME content type of the blob. The default type is application/octet-stream.
+            * @param {string}             [options.contentSettings.contentEncoding]       The content encodings that have been applied to the blob.
+            * @param {string}             [options.contentSettings.contentLanguage]       The natural languages used by this resource.
+            * @param {string}             [options.contentSettings.cacheControl]          The Blob service stores this value but does not use or modify it.
+            * @param {string}             [options.contentSettings.contentDisposition]    The blob's content disposition.
+            * @param {string}             [options.contentSettings.contentMD5]            The blob's MD5 hash.
+            * @param {AccessConditions}   [options.accessConditions]                      The access conditions.
+            * @param {LocationMode}       [options.locationMode]                          Specifies the location mode used to decide which location the request should be sent to.
+            *                                                                             Please see StorageUtilities.LocationMode for the possible values.
+            * @param {int}                [options.timeoutIntervalInMs]                   The server timeout interval, in milliseconds, to use for the request.
+            * @param {int}                [options.maximumExecutionTimeInMs]              The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+            *                                                                             The maximum execution time interval begins at the time that the client begins building the request. The maximum
+            *                                                                             execution time is checked intermittently while performing requests, and before executing retries.
+            * @param {bool}               [options.useNagleAlgorithm]                     Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+            *                                                                             The default value is false.
+            * @param {errorOrResponse}  callback                                          The callback function.
             * @return {Stream}
             * @example
             * var azure = require('azure-storage');
@@ -1592,8 +1600,8 @@ declare module "azure-storage" {
             * @param {object}             [options]                                   The request options.
             * @param {string}             [options.leaseId]                           The target blob lease identifier.
             * @param {bool}               [options.useTransactionalMD5]               Calculate and send/validate content MD5 for transactions.
-            * @param {string}             [options.contentMD5]                        An optional hash value used to ensure transactional integrity for the page.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {string}             [options.transactionalContentMD5]           An optional hash value used to ensure transactional integrity for the page.
+            * @param {AccessConditions}   [options.accessConditions]                  The access conditions.
             * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
             *                                                                         Please see StorageUtilities.LocationMode for the possible values.
             * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
@@ -1616,6 +1624,7 @@ declare module "azure-storage" {
             * @param {string}             container                                   The container name.
             * @param {string}             blob                                        The blob name.
             * @param {object}             [options]                                   The request options.
+            * @param {AccessConditions}   [options.accessConditions]                  The access conditions.
             * @param {int}                [options.rangeStart]                        The range start.
             * @param {int}                [options.rangeEnd]                          The range end.
             * @param {string}             [options.snapshotId]                        The snapshot identifier.
@@ -1645,7 +1654,7 @@ declare module "azure-storage" {
             * @param {int}                rangeEnd                                    The range end.
             * @param {object}             [options]                                   The request options.
             * @param {string}             [options.leaseId]                           The target blob lease identifier.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {AccessConditions}   [options.accessConditions]                  The access conditions.
             * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
             *                                                                         Please see StorageUtilities.LocationMode for the possible values.
             * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
@@ -1669,7 +1678,7 @@ declare module "azure-storage" {
             * @param {String}               size                                        The size of the page blob, in bytes.
             * @param {object}               [options]                                   The request options.
             * @param {string}               [options.leaseId]                           The blob lease identifier.
-            * @param {object}               [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {AccessConditions}     [options.accessConditions]                  The access conditions.
             * @param {LocationMode}         [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
             *                                                                           Please see StorageUtilities.LocationMode for the possible values.
             * @param {int}                  [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
@@ -1696,7 +1705,7 @@ declare module "azure-storage" {
             * @param {string}               sequenceNumber                              The sequence number.  The value of the sequence number must be between 0 and 2^63 - 1.
             *                                                                           Set this parameter to null if this operation is an increment action.
             * @param {object}               [options]                                   The request options.
-            * @param {object}               [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {AccessConditions}     [options.accessConditions]                  The access conditions.
             * @param {LocationMode}         [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
             *                                                                           Please see StorageUtilities.LocationMode for the possible values.
             * @param {int}                  [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
@@ -1720,31 +1729,32 @@ declare module "azure-storage" {
             * Calling Put Blob to create a page blob only initializes the blob. To add content to a page blob, call the Put Page operation.
             *
             * @this {BlobService}
-            * @param {string}             container                                   The container name.
-            * @param {string}             blob                                        The blob name.
-            * @param {string}             localFileName                               The local path to the file to be uploaded.
-            * @param {object}             [options]                                   The request options.
-            * @param {string}             [options.blockIdPrefix]                     The prefix to be used to generate the block id.
-            * @param {string}             [options.leaseId]                           The lease identifier.
-            * @param {object}             [options.metadata]                          The metadata key/value pairs.
-            * @param {int}                [options.parallelOperationThreadCount]      Parallel operation thread count
-            * @param {bool}               [options.storeBlobContentMD5]               Specifies whether the blob's ContentMD5 header should be set on uploads. The default value is true for block blobs.
-            * @param {string}             [options.contentType]                       The MIME content type of the blob. The default type is application/octet-stream.
-            * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the blob.
-            * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-            * @param {string}             [options.contentMD5]                        The MD5 hash of the blob content.
-            * @param {string}             [options.cacheControl]                      The Blob service stores this value but does not use or modify it.
-            * @param {string}             [options.contentDisposition]                The blob's content disposition.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
-            * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
-            *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-            * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-            * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-            *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-            *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-            * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-            *                                                                         The default value is false.
-            * @param {errorOrResult}  callback                                        The callback function.
+            * @param {string}             container                                       The container name.
+            * @param {string}             blob                                            The blob name.
+            * @param {string}             localFileName                                   The local path to the file to be uploaded.
+            * @param {object}             [options]                                       The request options.
+            * @param {string}             [options.blockIdPrefix]                         The prefix to be used to generate the block id.
+            * @param {string}             [options.leaseId]                               The lease identifier.
+            * @param {string}             [options.transactionalContentMD5]               The MD5 hash of the blob content. This hash is used to verify the integrity of the blob during transport.
+            * @param {object}             [options.metadata]                              The metadata key/value pairs.
+            * @param {int}                [options.parallelOperationThreadCount]          Parallel operation thread count
+            * @param {bool}               [options.storeBlobContentMD5]                   Specifies whether the blob's ContentMD5 header should be set on uploads. The default value is true for block blobs.
+            * @param {string}             [options.contentSettings.contentType]           The MIME content type of the blob. The default type is application/octet-stream.
+            * @param {string}             [options.contentSettings.contentEncoding]       The content encodings that have been applied to the blob.
+            * @param {string}             [options.contentSettings.contentLanguage]       The natural languages used by this resource.
+            * @param {string}             [options.contentSettings.cacheControl]          The Blob service stores this value but does not use or modify it.
+            * @param {string}             [options.contentSettings.contentDisposition]    The blob's content disposition.
+            * @param {string}             [options.contentSettings.contentMD5]            The blob's MD5 hash.
+            * @param {AccessConditions}   [options.accessConditions]                      The access conditions.
+            * @param {LocationMode}       [options.locationMode]                          Specifies the location mode used to decide which location the request should be sent to.
+            *                                                                             Please see StorageUtilities.LocationMode for the possible values.
+            * @param {int}                [options.timeoutIntervalInMs]                   The server timeout interval, in milliseconds, to use for the request.
+            * @param {int}                [options.maximumExecutionTimeInMs]              The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+            *                                                                             The maximum execution time interval begins at the time that the client begins building the request. The maximum
+            *                                                                             execution time is checked intermittently while performing requests, and before executing retries.
+            * @param {bool}               [options.useNagleAlgorithm]                     Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+            *                                                                             The default value is false.
+            * @param {errorOrResult}  callback                                            The callback function.
             * @return {SpeedSummary}
             */
             createBlockBlobFromLocalFile(container: string, blob: string, localFileName: string, optionsOrCallback: any, callback: any): any;
@@ -1766,34 +1776,35 @@ declare module "azure-storage" {
             * Uploads a block blob from a stream.
             *
             * @this {BlobService}
-            * @param {string}             container                                   The container name.
-            * @param {string}             blob                                        The blob name.
-            * @param (Stream)             stream                                      Stream to the data to store.
-            * @param {int}                streamLength                                The length of the stream to upload.
-            * @param {object}             [options]                                   The request options.
-            * @param {SpeedSummary}       [options.speedSummary]                      The download tracker objects.
-            * @param {string}             [options.blockIdPrefix]                     The prefix to be used to generate the block id.
-            * @param {string}             [options.leaseId]                           The lease identifier.
-            * @param {object}             [options.metadata]                          The metadata key/value pairs.
-            * @param {int}                [options.parallelOperationThreadCount]      Parallel operation thread count
-            * @param {bool}               [options.storeBlobContentMD5]               Specifies whether the blob's ContentMD5 header should be set on uploads. The default value is true for block blobs.
-            * @param {bool}               [options.useTransactionalMD5]               Calculate and send/validate content MD5 for transactions.
-            * @param {string}             [options.contentType]                       The MIME content type of the blob. The default type is application/octet-stream.
-            * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the blob.
-            * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-            * @param {string}             [options.contentMD5]                        The MD5 hash of the blob content.
-            * @param {string}             [options.cacheControl]                      The Blob service stores this value but does not use or modify it.
-            * @param {string}             [options.contentDisposition]                The blob's content disposition.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
-            * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
-            *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-            * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-            * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-            *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-            *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-            * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-            *                                                                         The default value is false.
-            * @param {errorOrResult}  callback                                        The callback function.
+            * @param {string}             container                                       The container name.
+            * @param {string}             blob                                            The blob name.
+            * @param (Stream)             stream                                          Stream to the data to store.
+            * @param {int}                streamLength                                    The length of the stream to upload.
+            * @param {object}             [options]                                       The request options.
+            * @param {SpeedSummary}       [options.speedSummary]                          The download tracker objects.
+            * @param {string}             [options.blockIdPrefix]                         The prefix to be used to generate the block id.
+            * @param {string}             [options.leaseId]                               The lease identifier.
+            * @param {string}             [options.transactionalContentMD5]               The MD5 hash of the blob content. This hash is used to verify the integrity of the blob during transport.
+            * @param {object}             [options.metadata]                              The metadata key/value pairs.
+            * @param {int}                [options.parallelOperationThreadCount]          Parallel operation thread count
+            * @param {bool}               [options.storeBlobContentMD5]                   Specifies whether the blob's ContentMD5 header should be set on uploads. The default value is true for block blobs.
+            * @param {bool}               [options.useTransactionalMD5]                   Calculate and send/validate content MD5 for transactions.
+            * @param {string}             [options.contentSettings.contentType]           The MIME content type of the blob. The default type is application/octet-stream.
+            * @param {string}             [options.contentSettings.contentEncoding]       The content encodings that have been applied to the blob.
+            * @param {string}             [options.contentSettings.contentLanguage]       The natural languages used by this resource.
+            * @param {string}             [options.contentSettings.cacheControl]          The Blob service stores this value but does not use or modify it.
+            * @param {string}             [options.contentSettings.contentDisposition]    The blob's content disposition.
+            * @param {string}             [options.contentSettings.contentMD5]            The blob's MD5 hash.
+            * @param {AccessConditions}   [options.accessConditions]                      The access conditions.
+            * @param {LocationMode}       [options.locationMode]                          Specifies the location mode used to decide which location the request should be sent to.
+            *                                                                             Please see StorageUtilities.LocationMode for the possible values.
+            * @param {int}                [options.timeoutIntervalInMs]                   The server timeout interval, in milliseconds, to use for the request.
+            * @param {int}                [options.maximumExecutionTimeInMs]              The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+            *                                                                             The maximum execution time interval begins at the time that the client begins building the request. The maximum
+            *                                                                             execution time is checked intermittently while performing requests, and before executing retries.
+            * @param {bool}               [options.useNagleAlgorithm]                     Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+            *                                                                             The default value is false.
+            * @param {errorOrResult}  callback                                            The callback function.
             * @return {SpeedSummary}
             */
             createBlockBlobFromStream(container: string, blob: string, stream: stream.Readable, streamLength: number, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
@@ -1802,34 +1813,34 @@ declare module "azure-storage" {
             * Uploads a block blob from a text string.
             *
             * @this {BlobService}
-            * @param {string}             container                                   The container name.
-            * @param {string}             blob                                        The blob name.
-            * @param {string|object}      text                                        The blob text, as a string or in a Buffer.
-            * @param {object}             [options]                                   The request options.
-            * @param {string}             [options.leaseId]                           The lease identifier.
-            * @param {object}             [options.metadata]                          The metadata key/value pairs.
-            * @param {bool}               [options.storeBlobContentMD5]               Specifies whether the blob's ContentMD5 header should be set on uploads. The default value is true for block blobs.
-            * @param {bool}               [options.useTransactionalMD5]               Calculate and send/validate content MD5 for transactions.
-            * @param {string}             [options.contentType]                       The MIME content type of the blob. The default type is application/octet-stream.
-            * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the blob.
-            * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-            * @param {string}             [options.contentMD5]                        The MD5 hash of the blob content.
-            * @param {string}             [options.cacheControl]                      The Blob service stores this value but does not use or modify it.
-            * @param {string}             [options.contentDisposition]                The blob's content disposition.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
-            * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
-            *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-            * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-            * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-            *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-            *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-            * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-            *                                                                         The default value is false.
-            * @param {errorOrResult}  callback                                        `error` will contain information
-            *                                                                         if an error occurs; otherwise `result` will contain
-            *                                                                         information about the blob.
-            *                                                                         `response` will contain information related to this operation.
-            * @return {undefined}
+            * @param {string}             container                                       The container name.
+            * @param {string}             blob                                            The blob name.
+            * @param {string|object}      text                                            The blob text, as a string or in a Buffer.
+            * @param {object}             [options]                                       The request options.
+            * @param {string}             [options.leaseId]                               The lease identifier.
+            * @param {string}             [options.transactionalContentMD5]               The MD5 hash of the blob content. This hash is used to verify the integrity of the blob during transport.
+            * @param {object}             [options.metadata]                              The metadata key/value pairs.
+            * @param {bool}               [options.storeBlobContentMD5]                   Specifies whether the blob's ContentMD5 header should be set on uploads. The default value is true for block blobs.
+            * @param {bool}               [options.useTransactionalMD5]                   Calculate and send/validate content MD5 for transactions.
+            * @param {string}             [options.contentSettings.contentType]           The MIME content type of the blob. The default type is application/octet-stream.
+            * @param {string}             [options.contentSettings.contentEncoding]       The content encodings that have been applied to the blob.
+            * @param {string}             [options.contentSettings.contentLanguage]       The natural languages used by this resource.
+            * @param {string}             [options.contentSettings.cacheControl]          The Blob service stores this value but does not use or modify it.
+            * @param {string}             [options.contentSettings.contentDisposition]    The blob's content disposition.
+            * @param {string}             [options.contentSettings.contentMD5]            The blob's MD5 hash.
+            * @param {AccessConditions}   [options.accessConditions]                      The access conditions.
+            * @param {LocationMode}       [options.locationMode]                          Specifies the location mode used to decide which location the request should be sent to.
+            *                                                                             Please see StorageUtilities.LocationMode for the possible values.
+            * @param {int}                [options.timeoutIntervalInMs]                   The server timeout interval, in milliseconds, to use for the request.
+            * @param {int}                [options.maximumExecutionTimeInMs]              The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+            *                                                                             The maximum execution time interval begins at the time that the client begins building the request. The maximum
+            *                                                                             execution time is checked intermittently while performing requests, and before executing retries.
+            * @param {bool}               [options.useNagleAlgorithm]                     Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+            *                                                                             The default value is false.
+            * @param {errorOrResult}  callback                                            `error` will contain information
+            *                                                                             if an error occurs; otherwise `result` will contain
+            *                                                                             information about the blob.
+            *                                                                             `response` will contain information related to this operation.
             */
             createBlockBlobFromText(container: string, blob: string, text: string | Buffer, optionsOrCallback: any, callback: any): void;
 
@@ -1837,32 +1848,33 @@ declare module "azure-storage" {
             * Provides a stream to write to a block blob.
             *
             * @this {BlobService}
-            * @param {string}             container                                   The container name.
-            * @param {string}             blob                                        The blob name.
-            * @param {object}             [options]                                   The request options.
-            * @param {string}             [options.blockIdPrefix]                     The prefix to be used to generate the block id.
-            * @param {string}             [options.leaseId]                           The lease identifier.
-            * @param {object}             [options.metadata]                          The metadata key/value pairs.
-            * @param {int}                [options.parallelOperationThreadCount]      Parallel operation thread count
-            * @param {bool}               [options.storeBlobContentMD5]               Specifies whether the blob's ContentMD5 header should be set on uploads.
-            *                                                                         The default value is false for page blobs and true for block blobs.
-            * @param {bool}               [options.useTransactionalMD5]               Calculate and send/validate content MD5 for transactions.
-            * @param {string}             [options.contentType]                       The MIME content type of the blob. The default type is application/octet-stream.
-            * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the blob.
-            * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-            * @param {string}             [options.contentMD5]                        The MD5 hash of the blob content.
-            * @param {string}             [options.cacheControl]                      The Blob service stores this value but does not use or modify it.
-            * @param {string}             [options.position]                          The blob's content disposition. (x-ms-blob-content-disposition)
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
-            * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
-            *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-            * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-            * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-            *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-            *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-            * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-            *                                                                         The default value is false.
-            * @param {errorOrResponse}  callback                                      The callback function.
+            * @param {string}             container                                       The container name.
+            * @param {string}             blob                                            The blob name.
+            * @param {object}             [options]                                       The request options.
+            * @param {string}             [options.blockIdPrefix]                         The prefix to be used to generate the block id.
+            * @param {string}             [options.leaseId]                               The lease identifier.
+            * @param {string}             [options.transactionalContentMD5]               The MD5 hash of the blob content. This hash is used to verify the integrity of the blob during transport.
+            * @param {object}             [options.metadata]                              The metadata key/value pairs.
+            * @param {int}                [options.parallelOperationThreadCount]          Parallel operation thread count
+            * @param {bool}               [options.storeBlobContentMD5]                   Specifies whether the blob's ContentMD5 header should be set on uploads.
+            *                                                                             The default value is false for page blobs and true for block blobs.
+            * @param {bool}               [options.useTransactionalMD5]                   Calculate and send/validate content MD5 for transactions.
+            * @param {string}             [options.contentSettings.contentType]           The MIME content type of the blob. The default type is application/octet-stream.
+            * @param {string}             [options.contentSettings.contentEncoding]       The content encodings that have been applied to the blob.
+            * @param {string}             [options.contentSettings.contentLanguage]       The natural languages used by this resource.
+            * @param {string}             [options.contentSettings.cacheControl]          The Blob service stores this value but does not use or modify it.
+            * @param {string}             [options.contentSettings.contentDisposition]    The blob's content disposition.
+            * @param {string}             [options.contentSettings.contentMD5]            The blob's MD5 hash.
+            * @param {AccessConditions}   [options.accessConditions]                      The access conditions.
+            * @param {LocationMode}       [options.locationMode]                          Specifies the location mode used to decide which location the request should be sent to.
+            *                                                                             Please see StorageUtilities.LocationMode for the possible values.
+            * @param {int}                [options.timeoutIntervalInMs]                   The server timeout interval, in milliseconds, to use for the request.
+            * @param {int}                [options.maximumExecutionTimeInMs]              The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+            *                                                                             The maximum execution time interval begins at the time that the client begins building the request. The maximum
+            *                                                                             execution time is checked intermittently while performing requests, and before executing retries.
+            * @param {bool}               [options.useNagleAlgorithm]                     Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+            *                                                                             The default value is false.
+            * @param {errorOrResponse}  callback                                          The callback function.
             * @return {Stream}
             * @example
             * var azure = require('azure-storage');
@@ -1883,8 +1895,8 @@ declare module "azure-storage" {
             * @param {object}             [options]                                 The request options.
             * @param {bool}               [options.useTransactionalMD5]             Calculate and send/validate content MD5 for transactions.
             * @param {string}             [options.leaseId]                         The target blob lease identifier.
-            * @param {string}             [options.contentMD5]                      The blob’s MD5 hash.
-            * @param {object}             [options.accessConditions]                The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {string}             [options.transactionalContentMD5]         An MD5 hash of the block content. This hash is used to verify the integrity of the block during transport.
+            * @param {AccessConditions}   [options.accessConditions]                The access conditions.
             * @param {LocationMode}       [options.locationMode]                    Specifies the location mode used to decide which location the request should be sent to.
             *                                                                       Please see StorageUtilities.LocationMode for the possible values.
             * @param {int}                [options.timeoutIntervalInMs]             The server timeout interval, in milliseconds, to use for the request.
@@ -1910,8 +1922,8 @@ declare module "azure-storage" {
             * @param {object}             [options]                                 The request options.
             * @param {bool}               [options.useTransactionalMD5]             Calculate and send/validate content MD5 for transactions.
             * @param {string}             [options.leaseId]                         The target blob lease identifier.
-            * @param {string}             [options.contentMD5]                      The blob’s MD5 hash.
-            * @param {object}             [options.accessConditions]                The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {string}             [options.transactionalContentMD5]         An MD5 hash of the block content. This hash is used to verify the integrity of the block during transport.
+            * @param {AccessConditions}   [options.accessConditions]                The access conditions.
             * @param {LocationMode}       [options.locationMode]                    Specifies the location mode used to decide which location the request should be sent to.
             *                                                                       Please see StorageUtilities.LocationMode for the possible values.
             * @param {int}                [options.timeoutIntervalInMs]             The server timeout interval, in milliseconds, to use for the request.
@@ -1923,7 +1935,6 @@ declare module "azure-storage" {
             * @param {errorOrResponse}  callback                                    `error` will contain information
             *                                                                       if an error occurs; otherwise
             *                                                                       `response` will contain information related to this operation.
-            * @return {undefined}
             */
             createBlockFromText(blockId: any, container: string, blob: string, content: any, optionsOrCallback: any, callback: any): void;
 
@@ -1933,31 +1944,32 @@ declare module "azure-storage" {
             * createBlock operation.
             *
             * @this {BlobService}
-            * @param {string}             container                                   The container name.
-            * @param {string}             blob                                        The blob name.
-            * @param {object}             blockList                                   The block identifiers.
-            * @param {object}             [options]                                   The request options.
-            * @param {object}             [options.metadata]                          The metadata key/value pairs.
-            * @param {string}             [options.leaseId]                           The target blob lease identifier.
-            * @param {string}             [options.contentType]                       The MIME content type of the blob. The default type is application/octet-stream.
-            * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the blob.
-            * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-            * @param {string}             [options.contentMD5]                        The MD5 hash of the blob content.
-            * @param {string}             [options.cacheControl]                      The Blob service stores this value but does not use or modify it.
-            * @param {string}             [options.contentDisposition]                The blob's content disposition. (x-ms-blob-content-disposition)
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
-            * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
-            *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-            * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-            * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-            *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-            *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-            * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-            *                                                                         The default value is false.
-            * @param {errorOrResult}  callback                                        `error` will contain information
-            *                                                                         if an error occurs; otherwise `result` will contain
-            *                                                                         the blocklist information.
-            *                                                                         `response` will contain information related to this operation.
+            * @param {string}             container                                     The container name.
+            * @param {string}             blob                                          The blob name.
+            * @param {object}             blockList                                     The block identifiers.
+            * @param {object}             [options]                                     The request options.
+            * @param {object}             [options.metadata]                            The metadata key/value pairs.
+            * @param {string}             [options.leaseId]                             The target blob lease identifier.
+            * @param {object}             [options.contentSettings]                     The content settings of the blob.
+            * @param {string}             [options.contentSettings.contentType]         The MIME content type of the blob. The default type is application/octet-stream.
+            * @param {string}             [options.contentSettings.contentEncoding]     The content encodings that have been applied to the blob.
+            * @param {string}             [options.contentSettings.contentLanguage]     The natural languages used by this resource.
+            * @param {string}             [options.contentSettings.cacheControl]        The Blob service stores this value but does not use or modify it.
+            * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
+            * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 hash.
+            * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
+            * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to.
+            *                                                                           Please see StorageUtilities.LocationMode for the possible values.
+            * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
+            * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+            *                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
+            *                                                                           execution time is checked intermittently while performing requests, and before executing retries.
+            * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+            *                                                                           The default value is false.
+            * @param {errorOrResult}  callback                                          `error` will contain information
+            *                                                                           if an error occurs; otherwise `result` will contain
+            *                                                                           the blocklist information.
+            *                                                                           `response` will contain information related to this operation.
             */
             commitBlocks(container: string, blob: string, blockList: string[], optionsOrCallback: any, callback: any): void;
 
@@ -2001,32 +2013,32 @@ declare module "azure-storage" {
             * To avoid overwriting and instead throw an error if the blob exists, please pass in an accessConditions parameter in the options object.
             *
             * @this {BlobService}
-            * @param {string}             container                                   The container name.
-            * @param {string}             blob                                        The blob name.
-            * @param {object}             [options]                                   The request options.
-            * @param {object}             [options.metadata]                          The metadata key/value pairs.
-            * @param {string}             [options.leaseId]                           The target blob lease identifier.
-            * @param {string}             [options.contentType]                       The MIME content type of the blob. The default type is application/octet-stream.
-            * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the blob.
-            * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-            * @param {string}             [options.contentMD5]                        The MD5 hash of the blob content.
-            * @param {string}             [options.cacheControl]                      The Blob service stores this value but does not use or modify it.
-            * @param {string}             [options.contentDisposition]                The blob's content disposition. (x-ms-blob-content-disposition)
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
-            *                                                                         Use options.accessConditions = require('azure-storage').AccessCondition.generateIfNotExistsCondition() 
-            *                                                                         to avoid overwriting and instead throw an error if the blob exists.
-            * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
-            *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-            * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-            * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-            *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-            *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-            * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
-            * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-            *                                                                         The default value is false.
-            * @param {errorOrResponse}    callback                                    `error` will contain information
-            *                                                                         if an error occurs; otherwise 
-            *                                                                         `response` will contain information related to this operation.
+            * @param {string}             container                                     The container name.
+            * @param {string}             blob                                          The blob name.
+            * @param {object}             [options]                                     The request options.
+            * @param {object}             [options.metadata]                            The metadata key/value pairs.
+            * @param {string}             [options.leaseId]                             The target blob lease identifier.
+            * @param {string}             [options.leaseId]                             The target blob lease identifier.
+            * @param {object}             [options.contentSettings]                     The content settings of the blob.
+            * @param {string}             [options.contentSettings.contentType]         The MIME content type of the blob. The default type is application/octet-stream.
+            * @param {string}             [options.contentSettings.contentEncoding]     The content encodings that have been applied to the blob.
+            * @param {string}             [options.contentSettings.contentLanguage]     The natural languages used by this resource.
+            * @param {string}             [options.contentSettings.cacheControl]        The Blob service stores this value but does not use or modify it.
+            * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
+            * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 hash.
+            * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
+            * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+            *                                                                           Please see StorageUtilities.LocationMode for the possible values.
+            * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
+            * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+            *                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
+            *                                                                           execution time is checked intermittently while performing requests, and before executing retries.
+            * @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
+            * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+            *                                                                           The default value is false.
+            * @param {errorOrResponse}    callback                                      `error` will contain information
+            *                                                                           if an error occurs; otherwise 
+            *                                                                           `response` will contain information related to this operation.
             */
             createOrReplaceAppendBlob(container: string, blob: string, optionsOrCallback: any, callback: any): void;
 
@@ -2038,33 +2050,33 @@ declare module "azure-storage" {
             * If you want to append data to an already existing blob, please look at appendFromLocalFile.
             *
             * @this {BlobService}
-            * @param {string}             container                                   The container name.
-            * @param {string}             blob                                        The blob name.
-            * @param {string}             localFileName                               The local path to the file to be uploaded.
-            * @param {object}             [options]                                   The request options.
-            * @param {bool}               [options.absorbConditionalErrorsOnRetry]    Specifies whether to absorb the conditional error on retry.
-            * @param {string}             [options.leaseId]                           The lease identifier.
-            * @param {object}             [options.metadata]                          The metadata key/value pairs.
-            * @param {bool}               [options.storeBlobContentMD5]               Specifies whether the blob's ContentMD5 header should be set on uploads. The default value is true for block blobs.
-            * @param {string}             [options.contentType]                       The MIME content type of the blob. The default type is application/octet-stream.
-            * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the blob.
-            * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-            * @param {string}             [options.contentMD5]                        The MD5 hash of the blob content.
-            * @param {string}             [options.cacheControl]                      The Blob service stores this value but does not use or modify it.
-            * @param {string}             [options.contentDisposition]                The blob's content disposition.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
-            *                                                                         Use options.accessConditions = require('azure-storage').AccessCondition.generateIfNotExistsCondition() 
-            *                                                                         to avoid overwriting and instead throw an error if the blob exists.
-            * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
-            *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-            * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-            * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-            *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-            *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-            * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
-            * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-            *                                                                         The default value is false.
-            * @param {errorOrResult}      callback                                    The callback function.
+            * @param {string}             container                                     The container name.
+            * @param {string}             blob                                          The blob name.
+            * @param {string}             localFileName                                 The local path to the file to be uploaded.
+            * @param {object}             [options]                                     The request options.
+            * @param {bool}               [options.absorbConditionalErrorsOnRetry]      Specifies whether to absorb the conditional error on retry.
+            * @param {string}             [options.leaseId]                             The lease identifier.
+            * @param {object}             [options.metadata]                            The metadata key/value pairs.
+            * @param {bool}               [options.storeBlobContentMD5]                 Specifies whether the blob's ContentMD5 header should be set on uploads. The default value is true for block blobs.
+            * @param {string}             [options.leaseId]                             The target blob lease identifier.
+            * @param {object}             [options.contentSettings]                     The content settings of the blob.
+            * @param {string}             [options.contentSettings.contentType]         The MIME content type of the blob. The default type is application/octet-stream.
+            * @param {string}             [options.contentSettings.contentEncoding]     The content encodings that have been applied to the blob.
+            * @param {string}             [options.contentSettings.contentLanguage]     The natural languages used by this resource.
+            * @param {string}             [options.contentSettings.cacheControl]        The Blob service stores this value but does not use or modify it.
+            * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
+            * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 hash.
+            * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
+            * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+            *                                                                           Please see StorageUtilities.LocationMode for the possible values.
+            * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
+            * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+            *                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
+            *                                                                           execution time is checked intermittently while performing requests, and before executing retries.
+            * @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
+            * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+            *                                                                           The default value is false.
+            * @param {errorOrResult}      callback                                      The callback function.
             * @return {SpeedSummary}
             */
             createAppendBlobFromLocalFile(container: string, blob: string, localFileName: string, optionsOrCallback: any, callback: any): any;
@@ -2077,36 +2089,36 @@ declare module "azure-storage" {
             * If you want to append data to an already existing blob, please look at appendFromStream.
             *
             * @this {BlobService}
-            * @param {string}             container                                   The container name.
-            * @param {string}             blob                                        The blob name.
-            * @param (Stream)             stream                                      Stream to the data to store.
-            * @param {int}                streamLength                                The length of the stream to upload.
-            * @param {object}             [options]                                   The request options.
-            * @param {bool}               [options.absorbConditionalErrorsOnRetry]    Specifies whether to absorb the conditional error on retry.
-            * @param {SpeedSummary}       [options.speedSummary]                      The download tracker objects.
-            * @param {string}             [options.leaseId]                           The lease identifier.
-            * @param {object}             [options.metadata]                          The metadata key/value pairs.
-            * @param {bool}               [options.storeBlobContentMD5]               Specifies whether the blob's ContentMD5 header should be set on uploads. The default value is true for block blobs.
-            * @param {bool}               [options.useTransactionalMD5]               Calculate and send/validate content MD5 for transactions.
-            * @param {string}             [options.contentType]                       The MIME content type of the blob. The default type is application/octet-stream.
-            * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the blob.
-            * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-            * @param {string}             [options.contentMD5]                        The MD5 hash of the blob content.
-            * @param {string}             [options.cacheControl]                      The Blob service stores this value but does not use or modify it.
-            * @param {string}             [options.contentDisposition]                The blob's content disposition.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
-            *                                                                         Use options.accessConditions = require('azure-storage').AccessCondition.generateIfNotExistsCondition() 
-            *                                                                         to avoid overwriting and instead throw an error if the blob exists.
-            * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
-            *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-            * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-            * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-            *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-            *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-            * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
-            * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-            *                                                                         The default value is false.
-            * @param {errorOrResult}      callback                                    The callback function.
+            * @param {string}             container                                     The container name.
+            * @param {string}             blob                                          The blob name.
+            * @param (Stream)             stream                                        Stream to the data to store.
+            * @param {int}                streamLength                                  The length of the stream to upload.
+            * @param {object}             [options]                                     The request options.
+            * @param {bool}               [options.absorbConditionalErrorsOnRetry]      Specifies whether to absorb the conditional error on retry.
+            * @param {SpeedSummary}       [options.speedSummary]                        The download tracker objects.
+            * @param {string}             [options.leaseId]                             The lease identifier.
+            * @param {object}             [options.metadata]                            The metadata key/value pairs.
+            * @param {bool}               [options.storeBlobContentMD5]                 Specifies whether the blob's ContentMD5 header should be set on uploads. The default value is true for block blobs.
+            * @param {bool}               [options.useTransactionalMD5]                 Calculate and send/validate content MD5 for transactions.
+            * @param {string}             [options.leaseId]                             The target blob lease identifier.
+            * @param {object}             [options.contentSettings]                     The content settings of the blob.
+            * @param {string}             [options.contentSettings.contentType]         The MIME content type of the blob. The default type is application/octet-stream.
+            * @param {string}             [options.contentSettings.contentEncoding]     The content encodings that have been applied to the blob.
+            * @param {string}             [options.contentSettings.contentLanguage]     The natural languages used by this resource.
+            * @param {string}             [options.contentSettings.cacheControl]        The Blob service stores this value but does not use or modify it.
+            * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
+            * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 hash.
+            * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
+            * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+            *                                                                           Please see StorageUtilities.LocationMode for the possible values.
+            * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
+            * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+            *                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
+            *                                                                           execution time is checked intermittently while performing requests, and before executing retries.
+            * @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
+            * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+            *                                                                           The default value is false.
+            * @param {errorOrResult}      callback                                      The callback function.
             * @return {SpeedSummary}
             */
             createAppendBlobFromStream(container: string, blob: string, stream: any, streamLength: number, optionsOrCallback: any, callback: any): any;
@@ -2119,38 +2131,37 @@ declare module "azure-storage" {
             * If you want to append data to an already existing blob, please look at appendFromText.
             *
             * @this {BlobService}
-            * @param {string}             container                                   The container name.
-            * @param {string}             blob                                        The blob name.
-            * @param {string|object}      text                                        The blob text, as a string or in a Buffer.
-            * @param {object}             [options]                                   The request options.
-            * @param {bool}               [options.absorbConditionalErrorsOnRetry]    Specifies whether to absorb the conditional error on retry.
-            * @param {string}             [options.leaseId]                           The lease identifier.
-            * @param {object}             [options.metadata]                          The metadata key/value pairs.
-            * @param {bool}               [options.storeBlobContentMD5]               Specifies whether the blob's ContentMD5 header should be set on uploads. The default value is true for block blobs.
-            * @param {bool}               [options.useTransactionalMD5]               Calculate and send/validate content MD5 for transactions.
-            * @param {string}             [options.contentType]                       The MIME content type of the blob. The default type is application/octet-stream.
-            * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the blob.
-            * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-            * @param {string}             [options.contentMD5]                        The MD5 hash of the blob content.
-            * @param {string}             [options.cacheControl]                      The Blob service stores this value but does not use or modify it.
-            * @param {string}             [options.contentDisposition]                The blob's content disposition.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
-            *                                                                         Use options.accessConditions = require('azure-storage').AccessCondition.generateIfNotExistsCondition() 
-            *                                                                         to avoid overwriting and instead throw an error if the blob exists.
-            * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
-            *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-            * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-            * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-            *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-            *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-            * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
-            * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-            *                                                                         The default value is false.
-            * @param {errorOrResult}      callback                                    `error` will contain information
-            *                                                                         if an error occurs; otherwise `result` will contain
-            *                                                                         information about the blob.
-            *                                                                         `response` will contain information related to this operation.
-            * @return {undefined}
+            * @param {string}             container                                     The container name.
+            * @param {string}             blob                                          The blob name.
+            * @param {string|object}      text                                          The blob text, as a string or in a Buffer.
+            * @param {object}             [options]                                     The request options.
+            * @param {bool}               [options.absorbConditionalErrorsOnRetry]      Specifies whether to absorb the conditional error on retry.
+            * @param {string}             [options.leaseId]                             The lease identifier.
+            * @param {object}             [options.metadata]                            The metadata key/value pairs.
+            * @param {bool}               [options.storeBlobContentMD5]                 Specifies whether the blob's ContentMD5 header should be set on uploads. The default value is true for block blobs.
+            * @param {bool}               [options.useTransactionalMD5]                 Calculate and send/validate content MD5 for transactions.
+            * @param {string}             [options.leaseId]                             The target blob lease identifier.
+            * @param {object}             [options.contentSettings]                     The content settings of the blob.
+            * @param {string}             [options.contentSettings.contentType]         The MIME content type of the blob. The default type is application/octet-stream.
+            * @param {string}             [options.contentSettings.contentEncoding]     The content encodings that have been applied to the blob.
+            * @param {string}             [options.contentSettings.contentLanguage]     The natural languages used by this resource.
+            * @param {string}             [options.contentSettings.cacheControl]        The Blob service stores this value but does not use or modify it.
+            * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
+            * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 hash.
+            * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
+            * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+            *                                                                           Please see StorageUtilities.LocationMode for the possible values.
+            * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
+            * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+            *                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
+            *                                                                           execution time is checked intermittently while performing requests, and before executing retries.
+            * @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
+            * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+            *                                                                           The default value is false.
+            * @param {errorOrResult}      callback                                      `error` will contain information
+            *                                                                           if an error occurs; otherwise `result` will contain
+            *                                                                           information about the blob.
+            *                                                                           `response` will contain information related to this operation.
             */
             createAppendBlobFromText(container: string, blob: string, text: string | Buffer, optionsOrCallback: any, callback: any): void;
 
@@ -2161,34 +2172,33 @@ declare module "azure-storage" {
             * If you are guaranteed to have a single writer scenario, please look at options.absorbConditionalErrorsOnRetry and see if setting this flag to true is acceptable for you.
             *
             * @this {BlobService}
-            * @param {string}             container                                   The container name.
-            * @param {string}             blob                                        The blob name.
-            * @param {object}             [options]                                   The request options.
-            * @param {bool}               [options.absorbConditionalErrorsOnRetry]    Specifies whether to absorb the conditional error on retry.
-            * @param {string}             [options.leaseId]                           The lease identifier.
-            * @param {object}             [options.metadata]                          The metadata key/value pairs.
-            * @param {bool}               [options.storeBlobContentMD5]               Specifies whether the blob's ContentMD5 header should be set on uploads. 
-            *                                                                         The default value is false for page blobs and true for block blobs.
-            * @param {bool}               [options.useTransactionalMD5]               Calculate and send/validate content MD5 for transactions.
-            * @param {string}             [options.contentType]                       The MIME content type of the blob. The default type is application/octet-stream.
-            * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the blob.
-            * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-            * @param {string}             [options.contentMD5]                        The MD5 hash of the blob content.
-            * @param {string}             [options.cacheControl]                      The Blob service stores this value but does not use or modify it.
-            * @param {string}             [options.position]                          The blob's content disposition. (x-ms-blob-content-disposition)
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
-            *                                                                         Use options.accessConditions = require('azure-storage').AccessCondition.generateIfNotExistsCondition() 
-            *                                                                         to avoid overwriting and instead throw an error if the blob exists.
-            * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
-            *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-            * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-            * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-            *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-            *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-            * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
-            * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-            *                                                                         The default value is false.
-            * @param {errorOrResponse}    callback                                    The callback function.
+            * @param {string}             container                                     The container name.
+            * @param {string}             blob                                          The blob name.
+            * @param {object}             [options]                                     The request options.
+            * @param {bool}               [options.absorbConditionalErrorsOnRetry]      Specifies whether to absorb the conditional error on retry.
+            * @param {string}             [options.leaseId]                             The lease identifier.
+            * @param {object}             [options.metadata]                            The metadata key/value pairs.
+            * @param {bool}               [options.storeBlobContentMD5]                 Specifies whether the blob's ContentMD5 header should be set on uploads. 
+            *                                                                           The default value is false for page blobs and true for block blobs.
+            * @param {bool}               [options.useTransactionalMD5]                 Calculate and send/validate content MD5 for transactions.
+            * @param {object}             [options.contentSettings]                     The content settings of the blob.
+            * @param {string}             [options.contentSettings.contentType]         The MIME content type of the blob. The default type is application/octet-stream.
+            * @param {string}             [options.contentSettings.contentEncoding]     The content encodings that have been applied to the blob.
+            * @param {string}             [options.contentSettings.contentLanguage]     The natural languages used by this resource.
+            * @param {string}             [options.contentSettings.cacheControl]        The Blob service stores this value but does not use or modify it.
+            * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
+            * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 hash.
+            * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
+            * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+            *                                                                           Please see StorageUtilities.LocationMode for the possible values.
+            * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
+            * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+            *                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
+            *                                                                           execution time is checked intermittently while performing requests, and before executing retries.
+            * @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
+            * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+            *                                                                           The default value is false.
+            * @param {errorOrResponse}    callback                                      The callback function.
             * @return {Stream}
             * @example
             * var azure = require('azure-storage');
@@ -2204,32 +2214,33 @@ declare module "azure-storage" {
             * If you are guaranteed to have a single writer scenario, please look at options.absorbConditionalErrorsOnRetry and see if setting this flag to true is acceptable for you.
             *
             * @this {BlobService}
-            * @param {string}             container                                   The container name.
-            * @param {string}             blob                                        The blob name.
-            * @param {object}             [options]                                   The request options.
-            * @param {bool}               [options.absorbConditionalErrorsOnRetry]    Specifies whether to absorb the conditional error on retry.
-            * @param {string}             [options.leaseId]                           The lease identifier.
-            * @param {object}             [options.metadata]                          The metadata key/value pairs.
-            * @param {bool}               [options.storeBlobContentMD5]               Specifies whether the blob's ContentMD5 header should be set on uploads. 
-            *                                                                         The default value is false for page blobs and true for block blobs.
-            * @param {bool}               [options.useTransactionalMD5]               Calculate and send/validate content MD5 for transactions.
-            * @param {string}             [options.contentType]                       The MIME content type of the blob. The default type is application/octet-stream.
-            * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the blob.
-            * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-            * @param {string}             [options.contentMD5]                        The MD5 hash of the blob content.
-            * @param {string}             [options.cacheControl]                      The Blob service stores this value but does not use or modify it.
-            * @param {string}             [options.position]                          The blob's content disposition. (x-ms-blob-content-disposition)
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
-            * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
-            *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-            * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-            * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-            *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-            *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-            * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
-            * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-            *                                                                         The default value is false.
-            * @param {errorOrResponse}    callback                                    The callback function.
+            * @param {string}             container                                     The container name.
+            * @param {string}             blob                                          The blob name.
+            * @param {object}             [options]                                     The request options.
+            * @param {bool}               [options.absorbConditionalErrorsOnRetry]      Specifies whether to absorb the conditional error on retry.
+            * @param {string}             [options.leaseId]                             The lease identifier.
+            * @param {object}             [options.metadata]                            The metadata key/value pairs.
+            * @param {bool}               [options.storeBlobContentMD5]                 Specifies whether the blob's ContentMD5 header should be set on uploads. 
+            *                                                                           The default value is false for page blobs and true for block blobs.
+            * @param {bool}               [options.useTransactionalMD5]                 Calculate and send/validate content MD5 for transactions.
+            * @param {object}             [options.contentSettings]                     The content settings of the blob.
+            * @param {string}             [options.contentSettings.contentType]         The MIME content type of the blob. The default type is application/octet-stream.
+            * @param {string}             [options.contentSettings.contentEncoding]     The content encodings that have been applied to the blob.
+            * @param {string}             [options.contentSettings.contentLanguage]     The natural languages used by this resource.
+            * @param {string}             [options.contentSettings.cacheControl]        The Blob service stores this value but does not use or modify it.
+            * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
+            * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 hash.
+            * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
+            * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+            *                                                                           Please see StorageUtilities.LocationMode for the possible values.
+            * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
+            * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+            *                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
+            *                                                                           execution time is checked intermittently while performing requests, and before executing retries.
+            * @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
+            * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+            *                                                                           The default value is false.
+            * @param {errorOrResponse}    callback                                      The callback function.
             * @return {Stream}
             * @example
             * var azure = require('azure-storage');
@@ -2244,31 +2255,32 @@ declare module "azure-storage" {
             * If you are guaranteed to have a single writer scenario, please look at options.absorbConditionalErrorsOnRetry and see if setting this flag to true is acceptable for you.
             *
             * @this {BlobService}
-            * @param {string}             container                                   The container name.
-            * @param {string}             blob                                        The blob name.
-            * @param {string}             localFileName                               The local path to the file to be uploaded.
-            * @param {object}             [options]                                   The request options.
-            * @param {bool}               [options.absorbConditionalErrorsOnRetry]    Specifies whether to absorb the conditional error on retry.
-            * @param {string}             [options.leaseId]                           The lease identifier.
-            * @param {object}             [options.metadata]                          The metadata key/value pairs.
-            * @param {bool}               [options.storeBlobContentMD5]               Specifies whether the blob's ContentMD5 header should be set on uploads. The default value is true for block blobs.
-            * @param {string}             [options.contentType]                       The MIME content type of the blob. The default type is application/octet-stream.
-            * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the blob.
-            * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-            * @param {string}             [options.contentMD5]                        The MD5 hash of the blob content.
-            * @param {string}             [options.cacheControl]                      The Blob service stores this value but does not use or modify it.
-            * @param {string}             [options.contentDisposition]                The blob's content disposition.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
-            * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
-            *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-            * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-            * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-            *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-            *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-            * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
-            * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-            *                                                                         The default value is false.
-            * @param {errorOrResult}      callback                                    The callback function.
+            * @param {string}             container                                     The container name.
+            * @param {string}             blob                                          The blob name.
+            * @param {string}             localFileName                                 The local path to the file to be uploaded.
+            * @param {object}             [options]                                     The request options.
+            * @param {bool}               [options.absorbConditionalErrorsOnRetry]      Specifies whether to absorb the conditional error on retry.
+            * @param {string}             [options.leaseId]                             The lease identifier.
+            * @param {object}             [options.metadata]                            The metadata key/value pairs.
+            * @param {bool}               [options.storeBlobContentMD5]                 Specifies whether the blob's ContentMD5 header should be set on uploads. The default value is true for block blobs.
+            * @param {object}             [options.contentSettings]                     The content settings of the blob.
+            * @param {string}             [options.contentSettings.contentType]         The MIME content type of the blob. The default type is application/octet-stream.
+            * @param {string}             [options.contentSettings.contentEncoding]     The content encodings that have been applied to the blob.
+            * @param {string}             [options.contentSettings.contentLanguage]     The natural languages used by this resource.
+            * @param {string}             [options.contentSettings.cacheControl]        The Blob service stores this value but does not use or modify it.
+            * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
+            * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 hash.
+            * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
+            * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+            *                                                                           Please see StorageUtilities.LocationMode for the possible values.
+            * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
+            * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+            *                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
+            *                                                                           execution time is checked intermittently while performing requests, and before executing retries.
+            * @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
+            * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+            *                                                                           The default value is false.
+            * @param {errorOrResult}      callback                                      The callback function.
             * @return {SpeedSummary}
             */
             appendFromLocalFile(container: string, blob: string, localFileName: string, optionsOrCallback: any, callback: any): any;
@@ -2279,34 +2291,35 @@ declare module "azure-storage" {
             * If you are guaranteed to have a single writer scenario, please look at options.absorbConditionalErrorsOnRetry and see if setting this flag to true is acceptable for you.
             *
             * @this {BlobService}
-            * @param {string}             container                                   The container name.
-            * @param {string}             blob                                        The blob name.
-            * @param (Stream)             stream                                      Stream to the data to store.
-            * @param {int}                streamLength                                The length of the stream to upload.
-            * @param {object}             [options]                                   The request options.
-            * @param {bool}               [options.absorbConditionalErrorsOnRetry]    Specifies whether to absorb the conditional error on retry.
-            * @param {SpeedSummary}       [options.speedSummary]                      The download tracker objects.
-            * @param {string}             [options.leaseId]                           The lease identifier.
-            * @param {object}             [options.metadata]                          The metadata key/value pairs.
-            * @param {bool}               [options.storeBlobContentMD5]               Specifies whether the blob's ContentMD5 header should be set on uploads. The default value is true for block blobs.
-            * @param {bool}               [options.useTransactionalMD5]               Calculate and send/validate content MD5 for transactions.
-            * @param {string}             [options.contentType]                       The MIME content type of the blob. The default type is application/octet-stream.
-            * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the blob.
-            * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-            * @param {string}             [options.contentMD5]                        The MD5 hash of the blob content.
-            * @param {string}             [options.cacheControl]                      The Blob service stores this value but does not use or modify it.
-            * @param {string}             [options.contentDisposition]                The blob's content disposition.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
-            * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
-            *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-            * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-            * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-            *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-            *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-            * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
-            * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-            *                                                                         The default value is false.
-            * @param {errorOrResult}      callback                                    The callback function.
+            * @param {string}             container                                     The container name.
+            * @param {string}             blob                                          The blob name.
+            * @param (Stream)             stream                                        Stream to the data to store.
+            * @param {int}                streamLength                                  The length of the stream to upload.
+            * @param {object}             [options]                                     The request options.
+            * @param {bool}               [options.absorbConditionalErrorsOnRetry]      Specifies whether to absorb the conditional error on retry.
+            * @param {SpeedSummary}       [options.speedSummary]                        The download tracker objects.
+            * @param {string}             [options.leaseId]                             The lease identifier.
+            * @param {object}             [options.metadata]                            The metadata key/value pairs.
+            * @param {bool}               [options.storeBlobContentMD5]                 Specifies whether the blob's ContentMD5 header should be set on uploads. The default value is true for block blobs.
+            * @param {bool}               [options.useTransactionalMD5]                 Calculate and send/validate content MD5 for transactions.
+            * @param {object}             [options.contentSettings]                     The content settings of the blob.
+            * @param {string}             [options.contentSettings.contentType]         The MIME content type of the blob. The default type is application/octet-stream.
+            * @param {string}             [options.contentSettings.contentEncoding]     The content encodings that have been applied to the blob.
+            * @param {string}             [options.contentSettings.contentLanguage]     The natural languages used by this resource.
+            * @param {string}             [options.contentSettings.cacheControl]        The Blob service stores this value but does not use or modify it.
+            * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
+            * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 hash.
+            * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
+            * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+            *                                                                           Please see StorageUtilities.LocationMode for the possible values.
+            * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
+            * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+            *                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
+            *                                                                           execution time is checked intermittently while performing requests, and before executing retries.
+            * @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
+            * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+            *                                                                           The default value is false.
+            * @param {errorOrResult}      callback                                      The callback function.
             * @return {SpeedSummary}
             */
             appendFromStream(container: string, blob: string, stream: any, streamLength: number, optionsOrCallback: any, callback: any): any;
@@ -2317,38 +2330,36 @@ declare module "azure-storage" {
             * If you are guaranteed to have a single writer scenario, please look at options.absorbConditionalErrorsOnRetry and see if setting this flag to true is acceptable for you.
             *
             * @this {BlobService}
-            * @param {string}             container                                   The container name.
-            * @param {string}             blob                                        The blob name.
-            * @param {string|object}      text                                        The blob text, as a string or in a Buffer.
-            * @param {object}             [options]                                   The request options.
-            * @param {bool}               [options.absorbConditionalErrorsOnRetry]    Specifies whether to absorb the conditional error on retry.
-            * @param {string}             [options.leaseId]                           The lease identifier.
-            * @param {object}             [options.metadata]                          The metadata key/value pairs.
-            * @param {bool}               [options.storeBlobContentMD5]               Specifies whether the blob's ContentMD5 header should be set on uploads. The default value is true for block blobs.
-            * @param {bool}               [options.useTransactionalMD5]               Calculate and send/validate content MD5 for transactions.
-            * @param {string}             [options.contentType]                       The MIME content type of the blob. The default type is application/octet-stream.
-            * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the blob.
-            * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-            * @param {string}             [options.contentMD5]                        The MD5 hash of the blob content.
-            * @param {string}             [options.cacheControl]                      The Blob service stores this value but does not use or modify it.
-            * @param {string}             [options.contentDisposition]                The blob's content disposition.
-            * @param {object}             [options.accessConditions]                  The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
-            *                                                                         Use options.accessConditions = require('azure-storage').AccessCondition.generateIfNotExistsCondition() 
-            *                                                                         to avoid overwriting and instead throw an error if the blob exists.
-            * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
-            *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-            * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-            * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-            *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-            *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-            * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
-            * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-            *                                                                         The default value is false.
-            * @param {errorOrResult}      callback                                    `error` will contain information
-            *                                                                         if an error occurs; otherwise `result` will contain
-            *                                                                         information about the blob.
-            *                                                                         `response` will contain information related to this operation.
-            * @return {undefined}
+            * @param {string}             container                                     The container name.
+            * @param {string}             blob                                          The blob name.
+            * @param {string|object}      text                                          The blob text, as a string or in a Buffer.
+            * @param {object}             [options]                                     The request options.
+            * @param {bool}               [options.absorbConditionalErrorsOnRetry]      Specifies whether to absorb the conditional error on retry.
+            * @param {string}             [options.leaseId]                             The lease identifier.
+            * @param {object}             [options.metadata]                            The metadata key/value pairs.
+            * @param {bool}               [options.storeBlobContentMD5]                 Specifies whether the blob's ContentMD5 header should be set on uploads. The default value is true for block blobs.
+            * @param {bool}               [options.useTransactionalMD5]                 Calculate and send/validate content MD5 for transactions.
+            * @param {object}             [options.contentSettings]                     The content settings of the blob.
+            * @param {string}             [options.contentSettings.contentType]         The MIME content type of the blob. The default type is application/octet-stream.
+            * @param {string}             [options.contentSettings.contentEncoding]     The content encodings that have been applied to the blob.
+            * @param {string}             [options.contentSettings.contentLanguage]     The natural languages used by this resource.
+            * @param {string}             [options.contentSettings.cacheControl]        The Blob service stores this value but does not use or modify it.
+            * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
+            * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 hash.
+            * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
+            * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+            *                                                                           Please see StorageUtilities.LocationMode for the possible values.
+            * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
+            * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+            *                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
+            *                                                                           execution time is checked intermittently while performing requests, and before executing retries.
+            * @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
+            * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+            *                                                                           The default value is false.
+            * @param {errorOrResult}      callback                                      `error` will contain information
+            *                                                                           if an error occurs; otherwise `result` will contain
+            *                                                                           information about the blob.
+            *                                                                           `response` will contain information related to this operation.
             */
             appendFromText(container: string, blob: string, text: string, optionsOrCallback: any, callback: any): void;
 
@@ -2367,8 +2378,8 @@ declare module "azure-storage" {
             * @param {int}                [options.maxBlobSize]                     The max length in bytes allowed for the append blob to grow to.
             * @param {int}                [options.appendPosition]                  The number indicating the byte offset to check for. The append will succeed only if the end position of the blob is equal to this number.
             * @param {string}             [options.leaseId]                         The target blob lease identifier.
-            * @param {string}             [options.contentMD5]                      The blob’s MD5 hash.
-            * @param {object}             [options.accessConditions]                The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {string}             [options.transactionalContentMD5]         An MD5 hash of the block content. This hash is used to verify the integrity of the block during transport.
+            * @param {AccessConditions}   [options.accessConditions]                The access conditions.
             * @param {LocationMode}       [options.locationMode]                    Specifies the location mode used to decide which location the request should be sent to. 
             *                                                                       Please see StorageUtilities.LocationMode for the possible values.
             * @param {int}                [options.timeoutIntervalInMs]             The server timeout interval, in milliseconds, to use for the request.
@@ -2398,8 +2409,8 @@ declare module "azure-storage" {
             * @param {int}                [options.maxBlobSize]                     The max length in bytes allowed for the append blob to grow to.
             * @param {int}                [options.appendPosition]                  The number indicating the byte offset to check for. The append will succeed only if the end position of the blob is equal to this number.
             * @param {string}             [options.leaseId]                         The target blob lease identifier.
-            * @param {string}             [options.contentMD5]                      The blob’s MD5 hash.
-            * @param {object}             [options.accessConditions]                The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+            * @param {string}             [options.transactionalContentMD5]         An MD5 hash of the block content. This hash is used to verify the integrity of the block during transport.
+            * @param {AccessConditions}   [options.accessConditions]                The access conditions.
             * @param {LocationMode}       [options.locationMode]                    Specifies the location mode used to decide which location the request should be sent to. 
             *                                                                       Please see StorageUtilities.LocationMode for the possible values.
             * @param {int}                [options.timeoutIntervalInMs]             The server timeout interval, in milliseconds, to use for the request.
@@ -2432,7 +2443,7 @@ declare module "azure-storage" {
             }
 
             export interface ConditionalRequestOption {
-              accessConditions?: { [key: string]: string };
+              accessConditions?: AccessConditions;
             }
 
             export interface ContainerOptions extends common.RequestOptions, ConditionalRequestOption {
@@ -2481,31 +2492,12 @@ declare module "azure-storage" {
             }
 
             export interface ListBlobsResult {
-              entries: ListBlobItem[];
+              entries: BlobResult[];
               continuationToken?: common.ContinuationToken;
             }
 
-            export interface ListBlobItem {
-              name: string;
-              properties?: {
-                'last-modified': string;
-                etag: string;
-                'content-length': string;
-                'content-type': string;
-                'content-encoding': string;
-                'content-language': string;
-                'content-md5': string;
-                'cache-control': string;
-                'content-disposition': string;
-                blobtype: string;
-                leasestatus: string;
-                leasestate: string;
-              }
-              metadata?: Map<string>;
-            }
-
             export interface ContainerAclResult extends ContainerResult {
-              signedIdentifiers: common.SignedIdentifier[]
+              signedIdentifiers: {[key:string]: common.AccessPolicy}
             }
 
             export interface ContainerResult {
@@ -2515,53 +2507,62 @@ declare module "azure-storage" {
               lastModified: string;
               metadata?: { [key: string]: string; };
               requestId?: string;
-              leaseDuration?: string;
-              leaseStatus?: string;
-              leaseState?: string;
+              lease?: {
+                duration?: string;
+                status: string;
+                state: string;
+              }
             }
 
             export interface BlobResult {
-              name: string;
-              containerName: string;
+              blob: string;
+              container: string;
               metadata?: { [key: string]: string; };
               etag: string;
               lastModified: string;
-              contentType: string;
-              contentMD5: string;
               contentLength: string;
               blobType: string;
               requestId: string;
-              leaseStatus: string;
-              leaseState: string;
-              leaseDuration?: string;
-              leaseId?: string;
-              contentEncoding?: string;
-              contentLanguage?: string;
-              cacheControl?: string;
-              contentDisposition?: string;
               sequenceNumber?: string;
               contentRange?: string;
-              copyStatus?: string;
-              copyCompletionTime?: string;
-              copyStatusDescription?: string;
-              copyId?: string;
-              copyProgress?: string;
-
-              // TODO: not yet implemented
-              copySource?: string;
+              contentSettings?: {
+                contentType: string;
+                contentEncoding?: string;
+                contentLanguage?: string;
+                cacheControl?: string;
+                contentDisposition?: string;
+                contentMD5: string;
+              }
+              lease?: {
+                id?: string;
+                status: string;
+                state: string;
+                duration?: string;
+              }
+              copy?: {
+                id?: string;
+                status?: string;
+                completionTime?: string;
+                statusDescription?: string;
+                progress?: string;
+                source?: string;
+              }
             }
 
             export interface CreatePageBlobOptions {
               metadata?: Object;
               leaseId?: string;
-              contentType?: string;
-              contentEncoding?: string;
-              contentLanguage?: string;
-              contentMD5?: string;
-              cacheControl?: string;
-              contentDisposition?: string;
+              transactionalContentMD5?: string;
+              contentSettings?: {
+                contentType?: string;
+                contentEncoding?: string;
+                contentLanguage?: string;
+                cacheControl?: string;
+                contentDisposition?: string;
+                contentMD5?: string;
+              }
               sequenceNumber?: string;
-              accessConditions?: Object;
+              accessConditions?: AccessConditions;
               locationMode?: StorageUtilities.LocationMode;
               timeoutIntervalInMs?: number;
               maximumExecutionTimeInMs?: number;
@@ -2608,12 +2609,15 @@ declare module "azure-storage" {
               blockIdPrefix?: string;
               metadata?: {[k: string]: string};
               storeBlobContentMD5?: boolean;
-              contentType?: string;
-              contentEncoding?: string;
-              contentLanguage?: string;
-              contentMD5?: string;
-              cacheControl?: string;
-              contentDisposition?: string;
+              transactionalContentMD5?: string;
+              contentSettings?: {
+                contentType?: string;
+                contentEncoding?: string;
+                contentLanguage?: string;
+                cacheControl?: string;
+                contentDisposition?: string;
+                contentMD5?: string;
+              }
             }
 
             export interface ListPageRangesRequestOptions extends common.RequestOptions {
@@ -2633,12 +2637,6 @@ declare module "azure-storage" {
               WRITE: string;
               DELETE: string;
               LIST: string;
-            };
-            AccessConditions: {
-              DATE_MODIFIED_SINCE: string;
-              DATE_UNMODIFIED_SINCE: string;
-              ETAG_MATCH: string;
-              ETAG_NONE_MATCH: string;
             };
             BlobListingDetails: {
               SNAPSHOTS: string;
@@ -3171,7 +3169,7 @@ declare module "azure-storage" {
           * @param {string}             queue                                       The queue name.
           * @param {string|Buffer}      messageText                                 The message text.
           * @param {object}             [options]                                   The request options.
-          * @param {int}                [options.messagettl]                        The time-to-live interval for the message, in seconds. The maximum time-to-live allowed is 7 days. If this parameter is omitted, the default time-to-live is 7 days
+          * @param {int}                [options.messageTimeToLive]                 The time-to-live interval for the message, in seconds. The maximum time-to-live allowed is 7 days. If this parameter is omitted, the default time-to-live is 7 days
           * @param {int}                [options.visibilityTimeout]                 Specifies the new visibility timeout value, in seconds, relative to server time. The new value must be larger than or equal to 0, and cannot be larger than 7 days. The visibility timeout of a message cannot be set to a value later than the expiry time. visibilitytimeout should be set to a value smaller than the time-to-live value.
           * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
           *                                                                         Please see StorageUtilities.LocationMode for the possible values.
@@ -3181,10 +3179,8 @@ declare module "azure-storage" {
           *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
           * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                         The default value is false.
-          * @param {errorOrResult}  callback                                        `error` will contain information
-          *                                                                         if an error occurs; otherwise `result` will contain
-          *                                                                         the result.
-          *                                                                         `response` will contain information related to this operation.
+          * @param {errorOrResponse}  callback                                      `error` will contain information
+          *                                                                         if an error occurs; otherwise `response` will contain information related to this operation.
           *
           * @example
           * var azure = require('azure-storage');
@@ -3195,7 +3191,7 @@ declare module "azure-storage" {
           *   }
           * });
           */
-          createMessage(queue: string, messageText: string|Buffer, options: QueueService.CreateMessageRequestOptions, callback?: ErrorOrResult<{ queue: string}>): void;
+          createMessage(queue: string, messageText: string|Buffer, options: QueueService.CreateMessageRequestOptions, callback?: ErrorOrResponse): void;
 
           /**
           * Adds a new message to the back of the message queue. 
@@ -3209,9 +3205,7 @@ declare module "azure-storage" {
           * @param {string}             queue                                       The queue name.
           * @param {string|Buffer}      messageText                                 The message text.
           * @param {errorOrResult}  callback                                        `error` will contain information
-          *                                                                         if an error occurs; otherwise `result` will contain
-          *                                                                         the result.
-          *                                                                         `response` will contain information related to this operation.
+          *                                                                         if an error occurs; otherwise `response` will contain information related to this operation.
           *
           * @example
           * var azure = require('azure-storage');
@@ -3222,7 +3216,78 @@ declare module "azure-storage" {
           *   }
           * });
           */
-          createMessage(queue: string, messageText: string|Buffer, callback?: ErrorOrResult<{ queue: string }>): void;
+          createMessage(queue: string, messageText: string|Buffer, callback?: ErrorOrResponse): void;
+
+          /**
+          * Retrieves messages from the queue and makes them invisible to other consumers.
+          *
+          * @function QueueService#getMessages
+          *
+          * @this {QueueService}
+          * @param {string}             queue                                       The queue name.
+          * @param {object}             [options]                                   The request options.
+          * @param {int}                [options.numOfMessages]                     A nonzero integer value that specifies the number of messages to retrieve from the queue, up to a maximum of 32. By default, a single message is retrieved from the queue with this operation.
+          * @param {int}                [options.visibilityTimeout]                 Required if not peek only. Specifies the new visibility timeout value, in seconds, relative to server time. The new value must be larger than or equal to 0, and cannot be larger than 7 days. The visibility timeout of a message can be set to a value later than the expiry time.
+          * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+          *                                                                         Please see StorageUtilities.LocationMode for the possible values.
+          * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
+          * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+          *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
+          *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+          *                                                                         The default value is false.
+          * @param {errorOrResult}  callback                                        `error` will contain information
+          *                                                                         if an error occurs; otherwise `result` will contain
+          *                                                                         the messages.
+          *                                                                         `response` will contain information related to this operation.
+          *
+          * @example
+          * var azure = require('azure-storage');
+          * var queueService = azure.createQueueService();
+          * var queueName = 'taskqueue';
+          * queueService.getMessages(queueName, function(error, serverMessages) {
+          *   if(!error) {
+          *     // Process the message in less than 30 seconds, the message
+          *     // text is available in serverMessages[0].messagetext
+          *     queueService.deleteMessage(queueName, serverMessages[0].messageId, serverMessages[0].popReceipt, function(error) {
+          *       if(!error){
+          *           // Message deleted
+          *       }
+          *     });
+          *   }
+          * });
+          */
+          getMessages(queue: string, options: QueueService.GetMessagesRequestOptions, callback?: ErrorOrResult<QueueService.QueueMessageResult[]>): void;
+
+          /**
+          * Retrieves messages from the queue and makes them invisible to other consumers.
+          *
+          * @function QueueService#getMessages
+          *
+          * @this {QueueService}
+          * @param {string}             queue                                       The queue name.
+          * @param {errorOrResult}  callback                                        `error` will contain information
+          *                                                                         if an error occurs; otherwise `result` will contain
+          *                                                                         the messages.
+          *                                                                         `response` will contain information related to this operation.
+          *
+          * @example
+          * var azure = require('azure-storage');
+          * var queueService = azure.createQueueService();
+          * var queueName = 'taskqueue';
+          * queueService.getMessages(queueName, function(error, serverMessages) {
+          *   if(!error) {
+          *     // Process the message in less than 30 seconds, the message
+          *     // text is available in serverMessages[0].messagetext
+          *     queueService.deleteMessage(queueName, serverMessages[0].messageId, serverMessages[0].popReceipt, function(error) {
+          *       if(!error){
+          *           // Message deleted
+          *       }
+          *     });
+          *   }
+          * });
+          */
+          getMessages(queue: string, callback?: ErrorOrResult<QueueService.QueueMessageResult[]>): void;
 
           /**
           * Retrieves a message from the queue and makes it invisible to other consumers.
@@ -3232,8 +3297,6 @@ declare module "azure-storage" {
           * @this {QueueService}
           * @param {string}             queue                                       The queue name.
           * @param {object}             [options]                                   The request options.
-          * @param {int}                [options.numOfMessages]                     A nonzero integer value that specifies the number of messages to retrieve from the queue, up to a maximum of 32. By default, a single message is retrieved from the queue with this operation.
-          * @param {bool}               [options.peekOnly]                          Boolean value indicating wether the visibility of the message should be changed or not.
           * @param {int}                [options.visibilityTimeout]                 Required if not peek only. Specifies the new visibility timeout value, in seconds, relative to server time. The new value must be larger than or equal to 0, and cannot be larger than 7 days. The visibility timeout of a message can be set to a value later than the expiry time.
           * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
           *                                                                         Please see StorageUtilities.LocationMode for the possible values.
@@ -3248,15 +3311,15 @@ declare module "azure-storage" {
           *                                                                         the message.
           *                                                                         `response` will contain information related to this operation.
           *
-          * @example    
+          * @example
           * var azure = require('azure-storage');
           * var queueService = azure.createQueueService();
           * var queueName = 'taskqueue';
-          * queueService.getMessages(queueName, function(error, serverMessages) {
+          * queueService.getMessage(queueName, function(error, serverMessage) {
           *   if(!error) {
           *     // Process the message in less than 30 seconds, the message
-          *     // text is available in serverMessages[0].messagetext
-          *     queueService.deleteMessage(queueName, serverMessages[0].messageid, serverMessages[0].popreceipt, function(error) {
+          *     // text is available in serverMessage.messagetext
+          *     queueService.deleteMessage(queueName, serverMessage.messageId, serverMessage.popReceipt, function(error) {
           *       if(!error){
           *           // Message deleted
           *       }
@@ -3264,7 +3327,7 @@ declare module "azure-storage" {
           *   }
           * });
           */
-          getMessages(queue: string, options: QueueService.GetMessagesRequestOptions, callback?: ErrorOrResult<QueueService.QueueMessageResult[]>): void;
+          getMessage(queue: string, options: QueueService.GetMessageRequestOptions, callback?: ErrorOrResult<QueueService.QueueMessageResult>): void;
 
           /**
           * Retrieves a message from the queue and makes it invisible to other consumers.
@@ -3278,15 +3341,15 @@ declare module "azure-storage" {
           *                                                                         the message.
           *                                                                         `response` will contain information related to this operation.
           *
-          * @example    
+          * @example
           * var azure = require('azure-storage');
           * var queueService = azure.createQueueService();
           * var queueName = 'taskqueue';
-          * queueService.getMessages(queueName, function(error, serverMessages) {
+          * queueService.getMessage(queueName, function(error, serverMessages) {
           *   if(!error) {
           *     // Process the message in less than 30 seconds, the message
-          *     // text is available in serverMessages[0].messagetext
-          *     queueService.deleteMessage(queueName, serverMessages[0].messageid, serverMessages[0].popreceipt, function(error) {
+          *     // text is available in serverMessages.messagetext
+          *     queueService.deleteMessage(queueName, serverMessages.messageId, serverMessages.popReceipt, function(error) {
           *       if(!error){
           *           // Message deleted
           *       }
@@ -3294,10 +3357,10 @@ declare module "azure-storage" {
           *   }
           * });
           */
-          getMessages(queue: string, callback?: ErrorOrResult<QueueService.QueueMessageResult[]>): void;
+          getMessage(queue: string, callback?: ErrorOrResult<QueueService.QueueMessageResult>): void;
 
           /**
-          * Retrieves a message from the front of the queue, without changing the message visibility.
+          * Retrieves messages from the front of the queue, without changing the messages visibility.
           *
           * @function QueueService#peekMessages
           *
@@ -3315,10 +3378,47 @@ declare module "azure-storage" {
           *                                                                         The default value is false.
           * @param {errorOrResult}  callback                                        `error` will contain information
           *                                                                         if an error occurs; otherwise `result` will contain
-          *                                                                         the message.
+          *                                                                         the messages.
           *                                                                         `response` will contain information related to this operation.
           */
           peekMessages(queue: string, options: QueueService.PeekMessagesRequestOptions, callback?: ErrorOrResult<QueueService.QueueMessageResult[]>): void;
+
+          /**
+          * Retrieves messages from the front of the queue, without changing the messages visibility.
+          *
+          * @function QueueService#peekMessages
+          *
+          * @this {QueueService}
+          * @param {string}             queue                                       The queue name.
+          * @param {errorOrResult}  callback                                        `error` will contain information
+          *                                                                         if an error occurs; otherwise `result` will contain
+          *                                                                         the messages.
+          *                                                                         `response` will contain information related to this operation.
+          */
+          peekMessages(queue: string, callback?: ErrorOrResult<QueueService.QueueMessageResult[]>): void;
+
+          /**
+          * Retrieves a message from the front of the queue, without changing the message visibility.
+          *
+          * @function QueueService#peekMessages
+          *
+          * @this {QueueService}
+          * @param {string}             queue                                       The queue name.
+          * @param {object}             [options]                                   The request options.
+          * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+          *                                                                         Please see StorageUtilities.LocationMode for the possible values.
+          * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
+          * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+          *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
+          *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+          *                                                                         The default value is false.
+          * @param {errorOrResult}  callback                                        `error` will contain information
+          *                                                                         if an error occurs; otherwise `result` will contain
+          *                                                                         the message.
+          *                                                                         `response` will contain information related to this operation.
+          */
+          peekMessage(queue: string, options: common.RequestOptions, callback?: ErrorOrResult<QueueService.QueueMessageResult>): void;
 
           /**
           * Retrieves a message from the front of the queue, without changing the message visibility.
@@ -3332,7 +3432,7 @@ declare module "azure-storage" {
           *                                                                         the message.
           *                                                                         `response` will contain information related to this operation.
           */
-          peekMessages(queue: string, callback?: ErrorOrResult<QueueService.QueueMessageResult[]>): void;
+          peekMessage(queue: string, callback?: ErrorOrResult<QueueService.QueueMessageResult>): void;
 
           /**
           * Deletes a specified message from the queue.
@@ -3534,7 +3634,7 @@ declare module "azure-storage" {
           *     // do whatever
           * });
           */
-          setQueueAcl(queue: string, signedIdentifiers: common.SignedIdentifier[], options: common.RequestOptions, callback?: ErrorOrResult<QueueService.QueueResult>): void;
+          setQueueAcl(queue: string, signedIdentifiers: {[key:string]: common.AccessPolicy}, options: common.RequestOptions, callback?: ErrorOrResult<QueueService.QueueResult>): void;
 
           /**
           * Updates the queue's ACL.
@@ -3572,7 +3672,7 @@ declare module "azure-storage" {
           *     // do whatever
           * });
           */
-          setQueueAcl(queue: string, signedIdentifiers: common.SignedIdentifier[], callback?: ErrorOrResult<QueueService.QueueResult>): void;
+          setQueueAcl(queue: string, signedIdentifiers: {[key:string]: common.AccessPolicy}, callback?: ErrorOrResult<QueueService.QueueResult>): void;
 
           /**
           * Retrieves a shared access signature token.
@@ -3617,21 +3717,20 @@ declare module "azure-storage" {
 
           export interface QueueMessageResult {
             queue?: string;
-            messageid?: string;
-            popreceipt?: string;
-            metadata?: { [key: string]: string };
-            messagetext?: string;
-            timenextvisible?: string;
-            insertiontime?: string;
-            expirationtime?: string;
-            dequeuecount?: string;
+            messageId?: string;
+            popReceipt?: string;
+            messageText?: string;
+            timeNextVisible?: string;
+            insertionTime?: string;
+            expirationTime?: string;
+            dequeueCount?: string;
           }
 
           export interface QueueResult {
             name: string;
             metadata?: { [key: string]: string; };
-            approximatemessagecount?: string;
-            signedIdentifiers: common.SignedIdentifier[];
+            approximateMessageCount?: number;
+            signedIdentifiers: {[key:string]: common.AccessPolicy};
           }
 
           export interface CreateQueueRequestOptions extends common.RequestOptions {
@@ -3654,7 +3753,10 @@ declare module "azure-storage" {
 
           export interface GetMessagesRequestOptions extends common.RequestOptions {
             numOfMessages?: number;
-            peekOnly?: boolean;
+            visibilityTimeout?: number;
+          }
+
+          export interface GetMessageRequestOptions extends common.RequestOptions {
             visibilityTimeout?: number;
           }
 
@@ -3667,7 +3769,7 @@ declare module "azure-storage" {
             * {int}   The time-to-live interval for the message, in seconds. The maximum time-to-live allowed is 7 days. If this parameter
             *         is omitted, the default time-to-live is 7 days
             */
-            messagettl?: number;
+            messageTimeToLive?: number;
             /**
             * {int}   Specifies the new visibility timeout value, in seconds, relative to server time. The new value must be larger than or
             *         equal to 0, and cannot be larger than 7 days. The visibility timeout of a message cannot be set to a value later than
@@ -3748,7 +3850,6 @@ declare module "azure-storage" {
           * @param {errorOrResult}  callback                                         `error` will contain information if an error occurs;
           *                                                                          otherwise `result` will contain the properties.
           *                                                                         `response` will contain information related to this operation.
-          * @return {undefined}
           */
           getServiceProperties(options: common.RequestOptions, callback: ErrorOrResult<common.models.ServicePropertiesResult.ServiceProperties>): any;
 
@@ -3759,7 +3860,6 @@ declare module "azure-storage" {
           * @param {errorOrResult}  callback                                         `error` will contain information if an error occurs;
           *                                                                          otherwise `result` will contain the properties.
           *                                                                         `response` will contain information related to this operation.
-          * @return {undefined}
           */
           getServiceProperties(callback: ErrorOrResult<common.models.ServicePropertiesResult.ServiceProperties>): any;
 
@@ -3781,7 +3881,6 @@ declare module "azure-storage" {
           *                                                                          The default value is false.
           * @param {errorOrResponse}  callback                                       `error` will contain information if an error occurs;
           *                                                                          `response` will contain information related to this operation.
-          * @return {undefined}
           */
           setServiceProperties(serviceProperties: common.models.ServicePropertiesResult.ServiceProperties, options: common.RequestOptions, callback: ErrorOrResponse): any;
 
@@ -3793,7 +3892,6 @@ declare module "azure-storage" {
           * @param {object}             serviceProperties                            The service properties.
           * @param {errorOrResponse}  callback                                       `error` will contain information if an error occurs;
           *                                                                          `response` will contain information related to this operation.
-          * @return {undefined}
           */
           setServiceProperties(serviceProperties: common.models.ServicePropertiesResult.ServiceProperties, callback: ErrorOrResponse): any;
 
@@ -3818,7 +3916,6 @@ declare module "azure-storage" {
           *                                                                               otherwise `result` will contain `entries` and `continuationToken`.
           *                                                                               `entries`  gives a list of tables and the `continuationToken` is used for the next listing operation.
           *                                                                               `response` will contain information related to this operation.
-          * @return {undefined}
           */
           listTablesSegmented(currentToken: TableService.ListTablesContinuationToken, options: TableService.ListTablesRequestOptions, callback: ErrorOrResult<TableService.ListTablesResponse>): any;
 
@@ -3831,7 +3928,6 @@ declare module "azure-storage" {
           *                                                                               otherwise `result` will contain `entries` and `continuationToken`.
           *                                                                               `entries`  gives a list of tables and the `continuationToken` is used for the next listing operation.
           *                                                                               `response` will contain information related to this operation.
-          * @return {undefined}
           */
           listTablesSegmented(currentToken: TableService.ListTablesContinuationToken, callback: ErrorOrResult<TableService.ListTablesResponse>): any;
 
@@ -3857,7 +3953,6 @@ declare module "azure-storage" {
           *                                                                               otherwise `result` will contain `entries` and `continuationToken`.
           *                                                                               `entries`  gives a list of tables and the `continuationToken` is used for the next listing operation.
           *                                                                               `response` will contain information related to this operation.
-          * @return {undefined}
           */
           listTablesSegmentedWithPrefix(prefix: string, currentToken: TableService.ListTablesContinuationToken, options: TableService.ListTablesRequestOptions, callback: ErrorOrResult<TableService.ListTablesResponse>): any;
 
@@ -3871,7 +3966,6 @@ declare module "azure-storage" {
           *                                                                               otherwise `result` will contain `entries` and `continuationToken`.
           *                                                                               `entries`  gives a list of tables and the `continuationToken` is used for the next listing operation.
           *                                                                               `response` will contain information related to this operation.
-          * @return {undefined}
           */
           listTablesSegmentedWithPrefix(prefix: string, currentToken: TableService.ListTablesContinuationToken, callback: ErrorOrResult<TableService.ListTablesResponse>): any;
 
@@ -3927,9 +4021,9 @@ declare module "azure-storage" {
           *                                                                          otherwise `result` will contain information for the table.
           *                                                                          `response` will contain information related to this operation.
           */
-          setTableAcl(table: string, signedIdentifiers: common.SignedIdentifier[], options: common.RequestOptions, callback: ErrorOrResult<{
+          setTableAcl(table: string, signedIdentifiers: {[key:string]: common.AccessPolicy}, options: common.RequestOptions, callback: ErrorOrResult<{
             TableName: string;
-            signedIdentifiers: common.SignedIdentifier[];
+            signedIdentifiers: {[key:string]: common.AccessPolicy};
           }>): any;
 
           /**
@@ -3942,9 +4036,9 @@ declare module "azure-storage" {
           *                                                                          otherwise `result` will contain information for the table.
           *                                                                          `response` will contain information related to this operation.
           */
-          setTableAcl(table: string, signedIdentifiers: common.SignedIdentifier[], callback: ErrorOrResult<{
+          setTableAcl(table: string, signedIdentifiers: {[key:string]: common.AccessPolicy}, callback: ErrorOrResult<{
             TableName: string;
-            signedIdentifiers: common.SignedIdentifier[];
+            signedIdentifiers: {[key:string]: common.AccessPolicy};
           }>): any;
 
           /**
@@ -4034,7 +4128,6 @@ declare module "azure-storage" {
           * @param {errorOrResult}      callback                                `error` will contain information if an error occurs;
           *                                                                     otherwise `result` will contain the new table information.
           *                                                                     `response` will contain information related to this operation.
-          * @return {undefined}
           */
           createTable(table: string, options: common.RequestOptions, callback: ErrorOrResult<{
             TableName: string;
@@ -4049,7 +4142,6 @@ declare module "azure-storage" {
           * @param {errorOrResult}      callback                                `error` will contain information if an error occurs;
           *                                                                     otherwise `result` will contain the new table information.
           *                                                                     `response` will contain information related to this operation.
-          * @return {undefined}
           */
           createTable(table: string, callback: ErrorOrResult<{
             TableName: string;
@@ -4074,7 +4166,6 @@ declare module "azure-storage" {
           * @param {errorOrResult}  callback                                    `error` will contain information if an error occurs;
           *                                                                     `result` will be `true` if table was created, false otherwise
           *                                                                     `response` will contain information related to this operation.
-          * @return {undefined}
           *
           * @example
           * var azure = require('azure-storage');
@@ -4095,7 +4186,6 @@ declare module "azure-storage" {
           * @param {errorOrResult}  callback                                    `error` will contain information if an error occurs;
           *                                                                     `result` will be `true` if table was created, false otherwise
           *                                                                     `response` will contain information related to this operation.
-          * @return {undefined}
           *
           * @example
           * var azure = require('azure-storage');
@@ -4125,7 +4215,6 @@ declare module "azure-storage" {
           *                                                                     The default value is false.
           * @param {errorOrResponse}  callback                                  `error` will contain information if an error occurs;
           *                                                                     `response` will contain information related to this operation.
-          * @return {undefined}
           */
           deleteTable(table: string, options: common.RequestOptions, callback: ErrorOrResponse): any;
 
@@ -4136,7 +4225,6 @@ declare module "azure-storage" {
           * @param {string}             table                                   The table name.
           * @param {errorOrResponse}  callback                                  `error` will contain information if an error occurs;
           *                                                                     `response` will contain information related to this operation.
-          * @return {undefined}
           */
           deleteTable(table: string, callback: ErrorOrResponse): any;
 
@@ -4158,7 +4246,6 @@ declare module "azure-storage" {
           * @param {errorOrResult}  callback                                    `error` will contain information if an error occurs;
           *                                                                     `result` will be `true` if table was deleted, false otherwise
           *                                                                     `response` will contain information related to this operation.
-          * @return {undefined}
           */
           deleteTableIfExists(table: string, options: common.RequestOptions, callback: ErrorOrResult<boolean>): any;
 
@@ -4170,7 +4257,6 @@ declare module "azure-storage" {
           * @param {errorOrResult}  callback                                    `error` will contain information if an error occurs;
           *                                                                     `result` will be `true` if table was deleted, false otherwise
           *                                                                     `response` will contain information related to this operation.
-          * @return {undefined}
           */
           deleteTableIfExists(table: string, callback: ErrorOrResult<boolean>): any;
 
@@ -4204,7 +4290,6 @@ declare module "azure-storage" {
           *                                                                                  `queryResultContinuation` will contain a continuation token that can be used
           *                                                                                  to retrieve the next set of results.
           *                                                                                  `response` will contain information related to this operation.
-          * @return {undefined}
           *
           * The logic for returning entity types can get complicated.  Here is the algorithm used:
           * ```
@@ -4276,7 +4361,6 @@ declare module "azure-storage" {
           *                                                                                  `queryResultContinuation` will contain a continuation token that can be used
           *                                                                                  to retrieve the next set of results.
           *                                                                                  `response` will contain information related to this operation.
-          * @return {undefined}
           */
           queryEntities<T>(table: string, tableQuery: TableQuery, currentToken: TableService.TableContinuationToken, callback: ErrorOrResult<TableService.QueryEntitiesResult<T>>): any;
 
@@ -4292,6 +4376,7 @@ declare module "azure-storage" {
           *                                                                             Please see StorageUtilities.LocationMode for the possible values.
           * @param {int}                [options.timeoutIntervalInMs]                   The server timeout interval, in milliseconds, to use for the request.
           * @param {string}             [options.payloadFormat]                         The payload format to use for the request.
+          * @param {bool}               [options.autoResolveProperties]                 If true, guess at all property types.
           * @param {int}                [options.maximumExecutionTimeInMs]              The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                             The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                             execution time is checked intermittently while performing requests, and before executing retries.
@@ -4304,7 +4389,38 @@ declare module "azure-storage" {
           * @param {errorOrResult}  callback                                            `error` will contain information if an error occurs;
           *                                                                             otherwise `result` will be the matching entity.
           *                                                                             `response` will contain information related to this operation.
-          * @return {undefined}
+          *
+          * The logic for returning entity types can get complicated.  Here is the algorithm used:
+          * ```
+          * var propertyType;
+          *
+          * if (propertyResovler) {                      // If the caller provides a propertyResolver in the options, use it
+          *   propertyType = propertyResolver(partitionKey, rowKey, propertyName, propertyValue, propertyTypeFromService);
+          * } else if (propertyTypeFromService) {        // If the service provides us a property type, use it.  See below for an explanation of when this will and won't occur.
+          *   propertyType = propertyTypeFromService;
+          * } else if (autoResolveProperties) {          // If options.autoResolveProperties is set to true
+          *   if (javascript type is string) {           // See below for an explanation of how and why autoResolveProperties works as it does.
+          *     propertyType = 'Edm.String';
+          *   } else if (javascript type is boolean) {
+          *     propertyType = 'Edm.Boolean';
+          *   }
+          * }
+          *
+          * if (propertyType) {
+          *   // Set the property type on the property.
+          * } else {
+          *   // Property gets no EdmType.
+          * }
+          * ```
+          * Notes:
+          *
+          * * The service only provides a type if JsonFullMetadata or JsonMinimalMetadata is used, and if the type is Int64, Guid, Binary, or DateTime.
+          * * Explanation of autoResolveProperties:
+          *     * String gets correctly resolved to 'Edm.String'.
+          *     * Int64, Guid, Binary, and DateTime all get resolved to 'Edm.String.'  This only happens if JsonNoMetadata is used (otherwise the service will provide the propertyType in a prior step).
+          *     * Boolean gets correctly resolved to 'Edm.Boolean'.
+          *     * For both Int32 and Double, no type information is returned, even in the case of autoResolveProperties = true.  This is due to an
+          *          inability to distinguish between the two in certain cases.
           *
           * @example
           * var azure = require('azure-storage');
@@ -4329,6 +4445,7 @@ declare module "azure-storage" {
           *                                                                             Please see StorageUtilities.LocationMode for the possible values.
           * @param {int}                [options.timeoutIntervalInMs]                   The server timeout interval, in milliseconds, to use for the request.
           * @param {string}             [options.payloadFormat]                         The payload format to use for the request.
+          * @param {bool}               [options.autoResolveProperties]                 If true, guess at all property types.
           * @param {int}                [options.maximumExecutionTimeInMs]              The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                             The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                             execution time is checked intermittently while performing requests, and before executing retries.
@@ -4341,7 +4458,6 @@ declare module "azure-storage" {
           * @param {errorOrResult}  callback                                            `error` will contain information if an error occurs;
           *                                                                             otherwise `result` will be the matching entity.
           *                                                                             `response` will contain information related to this operation.
-          * @return {undefined}
           */
           retrieveEntity<T>(table: string, partitionKey: string, rowKey: string, callback: ErrorOrResult<T>): any;
 
@@ -4370,7 +4486,6 @@ declare module "azure-storage" {
           * @param {errorOrResult}  callback                                            `error` will contain information if an error occurs;
           *                                                                             otherwise `result` will contain the entity information.
           *                                                                             `response` will contain information related to this operation.
-          * @return {undefined}
           *
           * @example
           * var azure = require('azure-storage');
@@ -4408,7 +4523,6 @@ declare module "azure-storage" {
           * @param {errorOrResult}  callback                                            `error` will contain information if an error occurs;
           *                                                                             otherwise `result` will contain the entity information.
           *                                                                             `response` will contain information related to this operation.
-          * @return {undefined}
           */
           insertEntity<T>(table: string, entityDescriptor: T, options: common.RequestOptions, callback: ErrorOrResult<TableService.EntityMetadata>): any;
 
@@ -4421,7 +4535,6 @@ declare module "azure-storage" {
           * @param {errorOrResult}  callback                                            `error` will contain information if an error occurs;
           *                                                                             otherwise `result` will contain the entity information.
           *                                                                             `response` will contain information related to this operation.
-          * @return {undefined}
           */
           insertEntity<T>(table: string, entityDescriptor: T, callback: ErrorOrResult<TableService.EntityMetadata>): any;
 
@@ -4444,7 +4557,6 @@ declare module "azure-storage" {
           * @param {errorOrResult}  callback                                    `error` will contain information if an error occurs;
           *                                                                     otherwise `result` will contain the entity information.
           *                                                                     `response` will contain information related to this operation.
-          * @return {undefined}
           */
           insertOrReplaceEntity<T>(table: string, entityDescriptor: T, options: common.RequestOptions, callback: ErrorOrResult<TableService.EntityMetadata>): any;
 
@@ -4457,12 +4569,11 @@ declare module "azure-storage" {
           * @param {errorOrResult}  callback                                    `error` will contain information if an error occurs;
           *                                                                     otherwise `result` will contain the entity information.
           *                                                                     `response` will contain information related to this operation.
-          * @return {undefined}
           */
           insertOrReplaceEntity<T>(table: string, entityDescriptor: T, callback: ErrorOrResult<TableService.EntityMetadata>): any;
 
           /**
-          * Updates an existing entity within a table by replacing it. To update conditionally based on etag, set entity['.metadata']['etag'].
+          * Replaces an existing entity within a table. To replace conditionally based on etag, set entity['.metadata']['etag'].
           *
           * @this {TableService}
           * @param {string}             table                                   The table name.
@@ -4480,12 +4591,11 @@ declare module "azure-storage" {
           * @param {errorOrResult}  callback                                    `error` will contain information if an error occurs;
           *                                                                     otherwise `result` will contain the entity information.
           *                                                                     `response` will contain information related to this operation.
-          * @return {undefined}
           */
-          updateEntity<T>(table: string, entityDescriptor: T, options: common.RequestOptions, callback: ErrorOrResult<TableService.EntityMetadata>): any;
+          replaceEntity<T>(table: string, entityDescriptor: T, options: common.RequestOptions, callback: ErrorOrResult<TableService.EntityMetadata>): any;
 
           /**
-          * Updates an existing entity within a table by replacing it. To update conditionally based on etag, set entity['.metadata']['etag'].
+          * Replaces an existing entity within a table. To replace conditionally based on etag, set entity['.metadata']['etag'].
           *
           * @this {TableService}
           * @param {string}             table                                   The table name.
@@ -4503,9 +4613,8 @@ declare module "azure-storage" {
           * @param {errorOrResult}  callback                                    `error` will contain information if an error occurs;
           *                                                                     otherwise `result` will contain the entity information.
           *                                                                     `response` will contain information related to this operation.
-          * @return {undefined}
           */
-          updateEntity<T>(table: string, entityDescriptor: T, callback: ErrorOrResult<TableService.EntityMetadata>): any;
+          replaceEntity<T>(table: string, entityDescriptor: T, callback: ErrorOrResult<TableService.EntityMetadata>): any;
 
           /**
           * Updates an existing entity within a table by merging new property values into the entity. To merge conditionally based on etag, set entity['.metadata']['etag'].
@@ -4526,7 +4635,6 @@ declare module "azure-storage" {
           * @param {errorOrResult}  callback                                    `error` will contain information if an error occurs;
           *                                                                     otherwise `result` will contain the entity information.
           *                                                                     response` will contain information related to this operation.
-          * @return {undefined}
           */
           mergeEntity<T>(table: string, entityDescriptor: T, options: common.RequestOptions, callback: ErrorOrResult<TableService.EntityMetadata>): any;
 
@@ -4539,7 +4647,6 @@ declare module "azure-storage" {
           * @param {errorOrResult}  callback                                    `error` will contain information if an error occurs;
           *                                                                     otherwise `result` will contain the entity information.
           *                                                                     response` will contain information related to this operation.
-          * @return {undefined}
           */
           mergeEntity<T>(table: string, entityDescriptor: T, callback: ErrorOrResult<TableService.EntityMetadata>): any;
 
@@ -4562,7 +4669,6 @@ declare module "azure-storage" {
           * @param {errorOrResult}  callback                                    `error` will contain information if an error occurs;
           *                                                                     otherwise `result` will contain the entity information.
           *                                                                     `response` will contain information related to this operation.
-          * @return {undefined}
           */
           insertOrMergeEntity<T>(table: string, entityDescriptor: T, options: common.RequestOptions, callback: ErrorOrResult<TableService.EntityMetadata>): any;
 
@@ -4575,7 +4681,6 @@ declare module "azure-storage" {
           * @param {errorOrResult}  callback                                    `error` will contain information if an error occurs;
           *                                                                     otherwise `result` will contain the entity information.
           *                                                                     `response` will contain information related to this operation.
-          * @return {undefined}
           */
           insertOrMergeEntity<T>(table: string, entityDescriptor: T, callback: ErrorOrResult<TableService.EntityMetadata>): any;
 
@@ -4597,7 +4702,6 @@ declare module "azure-storage" {
           *                                                                     The default value is false.
           * @param {errorOrResponse}  callback                                  `error` will contain information if an error occurs;
           *                                                                     `response` will contain information related to this operation.
-          * @return {undefined}
           */
           deleteEntity<T>(table: string, entityDescriptor: T, options: common.RequestOptions, callback: ErrorOrResult<TableService.EntityMetadata>): any;
 
@@ -4609,7 +4713,6 @@ declare module "azure-storage" {
           * @param {object}             entityDescriptor                        The entity descriptor.
           * @param {errorOrResponse}  callback                                  `error` will contain information if an error occurs;
           *                                                                     `response` will contain information related to this operation.
-          * @return {undefined}
           */
           deleteEntity<T>(table: string, entityDescriptor: T, callback: ErrorOrResult<TableService.EntityMetadata>): any;
 
@@ -4634,7 +4737,6 @@ declare module "azure-storage" {
           *                                                                             `result.entity` will contain the entity information for each operation executed.
           *                                                                             `result.response` will contain the response for each operations executed.
           *                                                                             `response` will contain information related to this operation.
-          * @return {undefined}
           */
           executeBatch(table: string, batch: TableBatch, options: common.RequestOptions, callback: ErrorOrResult<TableService.BatchResult[]>): any;
 
@@ -4649,7 +4751,6 @@ declare module "azure-storage" {
           *                                                                             `result.entity` will contain the entity information for each operation executed.
           *                                                                             `result.response` will contain the response for each operations executed.
           *                                                                             `response` will contain information related to this operation.
-          * @return {undefined}
           */
           executeBatch(table: string, batch: TableBatch, callback: ErrorOrResult<TableService.BatchResult[]>): any;
         }
@@ -4677,7 +4778,7 @@ declare module "azure-storage" {
           }
 
           export interface GetTableAclResult {
-            signedIdentifiers: common.SignedIdentifier[];
+            signedIdentifiers: {[key:string]: common.AccessPolicy};
           }
 
           export interface QueryEntitiesResult<T> {
@@ -4837,19 +4938,19 @@ declare module "azure-storage" {
           *       };
           */
           module entityGenerator {
-            class Entity<T> {
+            class EntityProperty<T> {
               _: T;
               $: string;
               constructor(value: T, type?: string);
             }
-            function Int32(value: number|string): Entity<number>;
-            function Int64(value: number|string): Entity<number>;
-            function Binary(value: Buffer|string): Entity<Buffer>;
-            function Boolean(value: boolean|string): Entity<boolean>;
-            function String(value: string): Entity<string>;
-            function Guid(value: UUID|string|Buffer): Entity<UUID>;
-            function Double(value: number|string): Entity<number>;
-            function DateTime(value: Date|string): Entity<Date>;
+            function Int32(value: number|string): EntityProperty<number>;
+            function Int64(value: number|string): EntityProperty<number>;
+            function Binary(value: Buffer|string): EntityProperty<Buffer>;
+            function Boolean(value: boolean|string): EntityProperty<boolean>;
+            function String(value: string): EntityProperty<string>;
+            function Guid(value: UUID|string|Buffer): EntityProperty<UUID>;
+            function Double(value: number|string): EntityProperty<number>;
+            function DateTime(value: Date|string): EntityProperty<Date>;
           }
         }
 
@@ -5074,7 +5175,6 @@ declare module "azure-storage" {
           /**
           * Removes all of the operations from the batch.
           *
-          * @return {undefined}
           */
           clear(): void;
 
@@ -5102,7 +5202,6 @@ declare module "azure-storage" {
           * @param {TableService~propertyResolver}  [options.propertyResolver]  The property resolver. Given the partition key, row key, property name, property value,
           *                                                                             and the property Edm type if given by the service, returns the Edm type of the property.
           * @param {Function(entity)} [options.entityResolver]                          The entity resolver. Given the single entity returned by the query, returns a modified object.
-          * @return {undefined}
           */
           retrieveEntity(partitionKey: string, rowKey: string, options?: any): void;
 
@@ -5117,7 +5216,6 @@ declare module "azure-storage" {
           *                                                                             property value, and the property Edm type if given by the service, returns the Edm type of the property.
           * @param {Function(entity)} [options.entityResolver]                          The entity resolver. Only applied if echoContent is true. Given the single entity returned by the insert, returns
           *                                                                             a modified object.
-          * @return {undefined}
           */
           insertEntity(entity: Object, options: any): void;
 
@@ -5125,7 +5223,6 @@ declare module "azure-storage" {
           * Adds a delete operation to the batch.
           *
           * @param {object}             entity              The entity.
-          * @return {undefined}
           */
           deleteEntity(entity: Object): void;
 
@@ -5133,23 +5230,20 @@ declare module "azure-storage" {
           * Adds a merge operation to the batch.
           *
           * @param {object}             entity              The entity.
-          * @return {undefined}
           */
           mergeEntity(entity: Object): void;
 
           /**
-          * Adds an update operation to the batch.
+          * Adds an replace operation to the batch.
           *
           * @param {object}             entity              The entity.
-          * @return {undefined}
           */
-          updateEntity(entity: Object): void;
+          replaceEntity(entity: Object): void;
 
           /**
           * Adds an insert or replace operation to the batch.
           *
           * @param {object}             entity              The entity.
-          * @return {undefined}
           */
           insertOrReplaceEntity(entity: Object): void;
 
@@ -5157,7 +5251,6 @@ declare module "azure-storage" {
           * Adds an insert or merge operation to the batch.
           *
           * @param {object}             entity              The entity.
-          * @return {undefined}
           */
           insertOrMergeEntity(entity: Object): void;
 
@@ -5167,7 +5260,6 @@ declare module "azure-storage" {
           * @param {string}             operationType       The type of operation to perform. See Constants.TableConstants.Operations
           * @param {object}             entity              The entity.
           * @param {object}             [options]                                       The request options.
-          * @return {undefined}
           */
           addOperation(operationType: string, entity: any, options?: Object): void;
 
@@ -5521,7 +5613,7 @@ declare module "azure-storage" {
           *                                                                 information for the share.
           *                                                                 `response` will contain information related to this operation.
           */
-          setShareAcl(share: string, signedIdentifiers: any, optionsOrCallback: any, callback: any): void;
+          setShareAcl(share: string, signedIdentifiers: {[key:string]: common.AccessPolicy}, optionsOrCallback: any, callback: any): void;
 
           /**
           * Marks the specified share for deletion.
@@ -5907,7 +5999,7 @@ declare module "azure-storage" {
           * @param {string}             [options.contentType]                       The MIME content type of the file. The default type is application/octet-stream.
           * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the file.
           * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-          * @param {string}             [options.contentMD5]                        The MD5 hash of the file content.
+          * @param {string}             [options.contentMD5]                        The file's MD5 hash.
           * @param {string}             [options.cacheControl]                      The file service stores this value but does not use or modify it.
           * @param {string}             [options.contentDisposition]                The file's content disposition.
           * @param {string}             [options.contentLength]                     Resizes a file to the specified size. If the specified byte value is less than the current size of the file,
@@ -6005,31 +6097,32 @@ declare module "azure-storage" {
           * Creates a file of the specified length.
           *
           * @this {FileService}
-          * @param {string}             share                                       The share name.
-          * @param {string}             directory                                   The directory name. Use '' to refer to the base directory.
-          * @param {string}             file                                        The file name. File names may not start or end with the delimiter '/'.
-          * @param {int}                length                                      The length of the file in bytes.
-          * @param {object}             [options]                                   The request options.
-          * @param {object}             [options.metadata]                          The metadata key/value pairs.
-          * @param {string}             [options.contentType]                       The MIME content type of the file. The default type is application/octet-stream.
-          * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the file.
-          * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-          * @param {string}             [options.contentMD5]                        The MD5 hash of the file content.
-          * @param {string}             [options.cacheControl]                      The file service stores this value but does not use or modify it.
-          * @param {string}             [options.contentDisposition]                The file's content disposition. (x-ms-File-content-disposition)
-          * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
-          *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-          * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-          * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-          *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-          *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
-          * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-          *                                                                         The default value is false.
-          * @param {errorOrResult}      callback                                    `error` will contain information
-          *                                                                         if an error occurs; otherwise `result` will contain
-          *                                                                         the directory information.
-          *                                                                        `response` will contain information related to this operation.
+          * @param {string}             share                                         The share name.
+          * @param {string}             directory                                     The directory name. Use '' to refer to the base directory.
+          * @param {string}             file                                          The file name. File names may not start or end with the delimiter '/'.
+          * @param {int}                length                                        The length of the file in bytes.
+          * @param {object}             [options]                                     The request options.
+          * @param {object}             [options.metadata]                            The metadata key/value pairs.
+          * @param {object}             [options.contentSettings]                     The file's content settings.
+          * @param {string}             [options.contentSettings.contentType]         The MIME content type of the file. The default type is application/octet-stream.
+          * @param {string}             [options.contentSettings.contentEncoding]     The content encodings that have been applied to the file.
+          * @param {string}             [options.contentSettings.contentLanguage]     The natural languages used by this resource.
+          * @param {string}             [options.contentSettings.cacheControl]        The file service stores this value but does not use or modify it.
+          * @param {string}             [options.contentSettings.contentDisposition]  The file's content disposition.
+          * @param {string}             [options.contentSettings.contentMD5]          The file's MD5 hash.
+          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to.
+          *                                                                           Please see StorageUtilities.LocationMode for the possible values.
+          * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
+          * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+          *                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
+          *                                                                           execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
+          * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+          *                                                                           The default value is false.
+          * @param {errorOrResult}      callback                                      `error` will contain information
+          *                                                                           if an error occurs; otherwise `result` will contain
+          *                                                                           the directory information.
+          *                                                                           `response` will contain information related to this operation.
           */
           createFile(share: string, directory: string, file: string, length: number, optionsOrCallback: any, callback: any): void;
 
@@ -6276,7 +6369,7 @@ declare module "azure-storage" {
           * @param {int}                rangeEnd                                    The range end.
           * @param {object}             [options]                                   The request options.
           * @param {bool}               [options.useTransactionalMD5]               Calculate and send/validate content MD5 for transactions.
-          * @param {string}             [options.contentMD5]                        An optional hash value used to ensure transactional integrity for the page.
+          * @param {string}             [options.transactionalContentMD5]           An optional hash value used to ensure transactional integrity for the page.
           * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
           *                                                                         Please see StorageUtilities.LocationMode for the possible values.
           * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
@@ -6297,35 +6390,36 @@ declare module "azure-storage" {
           * Uploads a file from a text string.
           *
           * @this {FileService}
-          * @param {string}             share                                       The share name.
-          * @param {string}             directory                                   The directory name. Use '' to refer to the base directory.
-          * @param {string}             file                                        The file name. File names may not start or end with the delimiter '/'.
-          * @param {string|object}      text                                        The file text, as a string or in a Buffer.
-          * @param {object}             [options]                                   The request options.
-          * @param {SpeedSummary}       [options.speedSummary]                      The download tracker objects;
-          * @param {object}             [options.metadata]                          The metadata key/value pairs.
-          * @param {bool}               [options.storeFileContentMD5]                   Specifies whether the file's ContentMD5 header should be set on uploads.
-          *                                                                         The default value is false for files.
-          * @param {bool}               [options.useTransactionalMD5]               Calculate and send/validate content MD5 for transactions.
-          * @param {string}             [options.contentType]                       The MIME content type of the file. The default type is application/octet-stream.
-          * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the file.
-          * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-          * @param {string}             [options.contentMD5]                        The MD5 hash of the file content.
-          * @param {string}             [options.cacheControl]                      The file service stores this value but does not use or modify it.
-          * @param {string}             [options.contentDisposition]                The file's content disposition. (x-ms-File-content-disposition)
-          * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
-          *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-          * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-          * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-          *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-          *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
-          * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-          *                                                                         The default value is false.
-          * @param {FileService~FileToText}  callback                               `error` will contain information
-          *                                                                         if an error occurs; otherwise `text` will contain the file contents,
-          *                                                                         and `file` will contain the file information.
-          *                                                                         `response` will contain information related to this operation.
+          * @param {string}             share                                         The share name.
+          * @param {string}             directory                                     The directory name. Use '' to refer to the base directory.
+          * @param {string}             file                                          The file name. File names may not start or end with the delimiter '/'.
+          * @param {string|object}      text                                          The file text, as a string or in a Buffer.
+          * @param {object}             [options]                                     The request options.
+          * @param {SpeedSummary}       [options.speedSummary]                        The download tracker objects;
+          * @param {object}             [options.metadata]                            The metadata key/value pairs.
+          * @param {bool}               [options.storeFileContentMD5]                 Specifies whether the file's ContentMD5 header should be set on uploads.
+          *                                                                           The default value is false for files.
+          * @param {bool}               [options.useTransactionalMD5]                 Calculate and send/validate content MD5 for transactions.
+          * @param {object}             [options.contentSettings]                     The file's content settings.
+          * @param {string}             [options.contentSettings.contentType]         The MIME content type of the file. The default type is application/octet-stream.
+          * @param {string}             [options.contentSettings.contentEncoding]     The content encodings that have been applied to the file.
+          * @param {string}             [options.contentSettings.contentLanguage]     The natural languages used by this resource.
+          * @param {string}             [options.contentSettings.cacheControl]        The file service stores this value but does not use or modify it.
+          * @param {string}             [options.contentSettings.contentDisposition]  The file's content disposition.
+          * @param {string}             [options.contentSettings.contentMD5]          The file's MD5 hash.
+          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to.
+          *                                                                           Please see StorageUtilities.LocationMode for the possible values.
+          * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
+          * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+          *                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
+          *                                                                           execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
+          * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+          *                                                                           The default value is false.
+          * @param {FileService~FileToText}  callback                                 `error` will contain information
+          *                                                                           if an error occurs; otherwise `text` will contain the file contents,
+          *                                                                           and `file` will contain the file information.
+          *                                                                           `response` will contain information related to this operation.
           */
           createFileFromText(share: string, directory: string, file: string, text: any, optionsOrCallback: any, callback: any): void;
 
@@ -6333,32 +6427,33 @@ declare module "azure-storage" {
           * Uploads a file to storage from a local file.
           *
           * @this {FileService}
-          * @param {string}             share                                       The share name.
-          * @param {string}             directory                                   The directory name. Use '' to refer to the base directory.
-          * @param {string}             file                                        The file name. File names may not start or end with the delimiter '/'.
-          * @param (string)             localFileName                               The local path to the file to be uploaded.
-          * @param {object}             [options]                                   The request options.
-          * @param {SpeedSummary}       [options.speedSummary]                      The download tracker objects;
-          * @param {object}             [options.metadata]                          The metadata key/value pairs.
-          * @param {bool}               [options.storeFileContentMD5]               Specifies whether the file's ContentMD5 header should be set on uploads.
-          *                                                                         The default value is false for files.
-          * @param {bool}               [options.useTransactionalMD5]               Calculate and send/validate content MD5 for transactions.
-          * @param {string}             [options.contentType]                       The MIME content type of the file. The default type is application/octet-stream.
-          * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the file.
-          * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-          * @param {string}             [options.contentMD5]                        The MD5 hash of the file content.
-          * @param {string}             [options.cacheControl]                      The file service stores this value but does not use or modify it.
-          * @param {string}             [options.contentDisposition]                The file's content disposition. (x-ms-File-content-disposition)
-          * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
-          *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-          * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-          * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-          *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-          *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
-          * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-          *                                                                         The default value is false.
-          * @param {errorOrResult}      callback                                    The callback function.
+          * @param {string}             share                                         The share name.
+          * @param {string}             directory                                     The directory name. Use '' to refer to the base directory.
+          * @param {string}             file                                          The file name. File names may not start or end with the delimiter '/'.
+          * @param (string)             localFileName                                 The local path to the file to be uploaded.
+          * @param {object}             [options]                                     The request options.
+          * @param {SpeedSummary}       [options.speedSummary]                        The download tracker objects;
+          * @param {object}             [options.metadata]                            The metadata key/value pairs.
+          * @param {bool}               [options.storeFileContentMD5]                 Specifies whether the file's ContentMD5 header should be set on uploads.
+          *                                                                           The default value is false for files.
+          * @param {bool}               [options.useTransactionalMD5]                 Calculate and send/validate content MD5 for transactions.
+          * @param {object}             [options.contentSettings]                     The file's content settings.
+          * @param {string}             [options.contentSettings.contentType]         The MIME content type of the file. The default type is application/octet-stream.
+          * @param {string}             [options.contentSettings.contentEncoding]     The content encodings that have been applied to the file.
+          * @param {string}             [options.contentSettings.contentLanguage]     The natural languages used by this resource.
+          * @param {string}             [options.contentSettings.cacheControl]        The file service stores this value but does not use or modify it.
+          * @param {string}             [options.contentSettings.contentDisposition]  The file's content disposition.
+          * @param {string}             [options.contentSettings.contentMD5]          The file's MD5 hash.
+          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to.
+          *                                                                           Please see StorageUtilities.LocationMode for the possible values.
+          * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
+          * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+          *                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
+          *                                                                           execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
+          * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+          *                                                                           The default value is false.
+          * @param {errorOrResult}      callback                                      The callback function.
           * @return {SpeedSummary}
           */
           createFileFromLocalFile(share: string, directory: string, file: string, localFileName: any, optionsOrCallback: any, callback: any): any;
@@ -6367,33 +6462,34 @@ declare module "azure-storage" {
           * Uploads a file from a stream.
           *
           * @this {FileService}
-          * @param {string}             share                                       The share name.
-          * @param {string}             directory                                   The directory name. Use '' to refer to the base directory.
-          * @param {string}             file                                        The file name. File names may not start or end with the delimiter '/'.
-          * @param (Stream)             stream                                      Stream to the data to store.
-          * @param {int}                streamLength                                The length of the stream to upload.
-          * @param {object}             [options]                                   The request options.
-          * @param {SpeedSummary}       [options.speedSummary]                      The download tracker objects;
-          * @param {object}             [options.metadata]                          The metadata key/value pairs.
-          * @param {bool}               [options.storeFileContentMD5]               Specifies whether the file's ContentMD5 header should be set on uploads.
-          *                                                                         The default value is false for files.
-          * @param {bool}               [options.useTransactionalMD5]               Calculate and send/validate content MD5 for transactions.
-          * @param {string}             [options.contentType]                       The MIME content type of the file. The default type is application/octet-stream.
-          * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the file.
-          * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-          * @param {string}             [options.contentMD5]                        The MD5 hash of the file content.
-          * @param {string}             [options.cacheControl]                      The file service stores this value but does not use or modify it.
-          * @param {string}             [options.contentDisposition]                The file's content disposition. (x-ms-File-content-disposition)
-          * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
-          *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-          * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-          * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-          *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-          *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
-          * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-          *                                                                         The default value is false.
-          * @param {errorOrResult}      callback                                    The callback function.
+          * @param {string}             share                                         The share name.
+          * @param {string}             directory                                     The directory name. Use '' to refer to the base directory.
+          * @param {string}             file                                          The file name. File names may not start or end with the delimiter '/'.
+          * @param (Stream)             stream                                        Stream to the data to store.
+          * @param {int}                streamLength                                  The length of the stream to upload.
+          * @param {object}             [options]                                     The request options.
+          * @param {SpeedSummary}       [options.speedSummary]                        The download tracker objects;
+          * @param {object}             [options.metadata]                            The metadata key/value pairs.
+          * @param {bool}               [options.storeFileContentMD5]                 Specifies whether the file's ContentMD5 header should be set on uploads.
+          *                                                                           The default value is false for files.
+          * @param {bool}               [options.useTransactionalMD5]                 Calculate and send/validate content MD5 for transactions.
+          * @param {object}             [options.contentSettings]                     The file's content settings.
+          * @param {string}             [options.contentSettings.contentType]         The MIME content type of the file. The default type is application/octet-stream.
+          * @param {string}             [options.contentSettings.contentEncoding]     The content encodings that have been applied to the file.
+          * @param {string}             [options.contentSettings.contentLanguage]     The natural languages used by this resource.
+          * @param {string}             [options.contentSettings.cacheControl]        The file service stores this value but does not use or modify it.
+          * @param {string}             [options.contentSettings.contentDisposition]  The file's content disposition.
+          * @param {string}             [options.contentSettings.contentMD5]          The file's MD5 hash.
+          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to.
+          *                                                                           Please see StorageUtilities.LocationMode for the possible values.
+          * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
+          * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+          *                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
+          *                                                                           execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
+          * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+          *                                                                           The default value is false.
+          * @param {errorOrResult}      callback                                      The callback function.
           * @return {SpeedSummary}
           */
           createFileFromStream(share: string, directory: string, file: string, stream: any, streamLength: number, optionsOrCallback: any, callback: any): any;
@@ -6403,31 +6499,32 @@ declare module "azure-storage" {
           * If it does not, please create the file using createFile before calling this method or use createWriteStreamNewFile.
           *
           * @this {FileService}
-          * @param {string}             share                                       The share name.
-          * @param {string}             directory                                   The directory name. Use '' to refer to the base directory.
-          * @param {string}             file                                        The file name. File names may not start or end with the delimiter '/'.
-          * @param {object}             [options]                                   The request options.
-          * @param {SpeedSummary}       [options.speedSummary]                      The download tracker objects;
-          * @param {object}             [options.metadata]                          The metadata key/value pairs.
-          * @param {bool}               [options.storeFileContentMD5]               Specifies whether the file's ContentMD5 header should be set on uploads.
-          *                                                                         The default value is false for files.
-          * @param {bool}               [options.useTransactionalMD5]               Calculate and send/validate content MD5 for transactions.
-          * @param {string}             [options.contentType]                       The MIME content type of the file. The default type is application/octet-stream.
-          * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the file.
-          * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-          * @param {string}             [options.contentMD5]                        The MD5 hash of the file content.
-          * @param {string}             [options.cacheControl]                      The file service stores this value but does not use or modify it.
-          * @param {string}             [options.contentDisposition]                The file's content disposition. (x-ms-File-content-disposition)
-          * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
-          *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-          * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-          * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-          *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-          *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
-          * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-          *                                                                         The default value is false.
-          * @param {errorOrResult}      callback                                    The callback function.
+          * @param {string}             share                                         The share name.
+          * @param {string}             directory                                     The directory name. Use '' to refer to the base directory.
+          * @param {string}             file                                          The file name. File names may not start or end with the delimiter '/'.
+          * @param {object}             [options]                                     The request options.
+          * @param {SpeedSummary}       [options.speedSummary]                        The download tracker objects;
+          * @param {object}             [options.metadata]                            The metadata key/value pairs.
+          * @param {bool}               [options.storeFileContentMD5]                 Specifies whether the file's ContentMD5 header should be set on uploads.
+          *                                                                           The default value is false for files.
+          * @param {bool}               [options.useTransactionalMD5]                 Calculate and send/validate content MD5 for transactions.
+          * @param {object}             [options.contentSettings]                     The file's content settings.
+          * @param {string}             [options.contentSettings.contentType]         The MIME content type of the file. The default type is application/octet-stream.
+          * @param {string}             [options.contentSettings.contentEncoding]     The content encodings that have been applied to the file.
+          * @param {string}             [options.contentSettings.contentLanguage]     The natural languages used by this resource.
+          * @param {string}             [options.contentSettings.cacheControl]        The file service stores this value but does not use or modify it.
+          * @param {string}             [options.contentSettings.contentDisposition]  The file's content disposition.
+          * @param {string}             [options.contentSettings.contentMD5]          The file's MD5 hash.
+          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to.
+          *                                                                           Please see StorageUtilities.LocationMode for the possible values.
+          * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
+          * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+          *                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
+          *                                                                           execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
+          * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+          *                                                                           The default value is false.
+          * @param {errorOrResult}      callback                                      The callback function.
           * @return {Stream}
           * @example
           * var azure = require('azure-storage');
@@ -6443,32 +6540,33 @@ declare module "azure-storage" {
           * Provides a stream to write to a file. Creates the file before writing data.
           *
           * @this {FileService}
-          * @param {string}             share                                       The share name.
-          * @param {string}             directory                                   The directory name. Use '' to refer to the base directory.
-          * @param {string}             file                                        The file name. File names may not start or end with the delimiter '/'.
-          * @param {string}             length                                      The file length.
-          * @param {object}             [options]                                   The request options.
-          * @param {SpeedSummary}       [options.speedSummary]                      The download tracker objects;
-          * @param {object}             [options.metadata]                          The metadata key/value pairs.
-          * @param {bool}               [options.storeFileContentMD5]               Specifies whether the file's ContentMD5 header should be set on uploads.
-          *                                                                         The default value is false for files.
-          * @param {bool}               [options.useTransactionalMD5]               Calculate and send/validate content MD5 for transactions.
-          * @param {string}             [options.contentType]                       The MIME content type of the file. The default type is application/octet-stream.
-          * @param {string}             [options.contentEncoding]                   The content encodings that have been applied to the file.
-          * @param {string}             [options.contentLanguage]                   The natural languages used by this resource.
-          * @param {string}             [options.contentMD5]                        The MD5 hash of the file content.
-          * @param {string}             [options.cacheControl]                      The file service stores this value but does not use or modify it.
-          * @param {string}             [options.contentDisposition]                The file's content disposition. (x-ms-File-content-disposition)
-          * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
-          *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-          * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
-          * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-          *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
-          *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
-          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
-          * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-          *                                                                         The default value is false.
-          * @param {errorOrResult}      callback                                    The callback function.
+          * @param {string}             share                                         The share name.
+          * @param {string}             directory                                     The directory name. Use '' to refer to the base directory.
+          * @param {string}             file                                          The file name. File names may not start or end with the delimiter '/'.
+          * @param {string}             length                                        The file length.
+          * @param {object}             [options]                                     The request options.
+          * @param {SpeedSummary}       [options.speedSummary]                        The download tracker objects;
+          * @param {object}             [options.metadata]                            The metadata key/value pairs.
+          * @param {bool}               [options.storeFileContentMD5]                 Specifies whether the file's ContentMD5 header should be set on uploads.
+          *                                                                           The default value is false for files.
+          * @param {bool}               [options.useTransactionalMD5]                 Calculate and send/validate content MD5 for transactions.
+          * @param {object}             [options.contentSettings]                     The file's content settings.
+          * @param {string}             [options.contentSettings.contentType]         The MIME content type of the file. The default type is application/octet-stream.
+          * @param {string}             [options.contentSettings.contentEncoding]     The content encodings that have been applied to the file.
+          * @param {string}             [options.contentSettings.contentLanguage]     The natural languages used by this resource.
+          * @param {string}             [options.contentSettings.cacheControl]        The file service stores this value but does not use or modify it.
+          * @param {string}             [options.contentSettings.contentDisposition]  The file's content disposition.
+          * @param {string}             [options.contentSettings.contentMD5]          The file's MD5 hash.
+          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to.
+          *                                                                           Please see StorageUtilities.LocationMode for the possible values.
+          * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
+          * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+          *                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
+          *                                                                           execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
+          * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+          *                                                                           The default value is false.
+          * @param {errorOrResult}      callback                                      The callback function.
           * @return {Stream}
           * @example
           * var azure = require('azure-storage');
@@ -6487,8 +6585,8 @@ declare module "azure-storage" {
           * @param {string}             targetFile                                The target file name.
           * @param {object}             [options]                                 The request options.
           * @param {object}             [options.metadata]                        The target file metadata key/value pairs.
-          * @param {object}             [options.accessConditions]                The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
-          * @param {object}             [options.sourceAccessConditions]          The access conditions. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+          * @param {AccessConditions}   [options.accessConditions]                The access conditions.
+          * @param {AccessConditions}   [options.sourceAccessConditions]          The source access conditions.
           * @param {LocationMode}       [options.locationMode]                    Specifies the location mode used to decide which location the request should be sent to.
           *                                                                       Please see StorageUtilities.LocationMode for the possible values.
           * @param {int}                [options.timeoutIntervalInMs]             The server timeout interval, in milliseconds, to use for the request.
@@ -6561,27 +6659,32 @@ declare module "azure-storage" {
           }
 
           export interface FileResult {
+            share: string;
+            directory: string;
             name: string;
             etag: string;
             lastModified: string;
             requestId?: string;
-
             acceptRanges: string;
-            contentEncoding: string;
-            contentLanguage: string;
-            contentType: string;
-            contentMD5: string;
-            cacheControl: string;
             contentRange: string;
             contentLength: string;
-            contentDisposition: string;
-
-            copySource: string;
-            copyStatus: string;
-            copyCompletionTime: string;
-            copyStatusDescription: string;
-            copyId: string;
-            copyProgress: string;
+            metadata?: { [key: string]: string; };
+            contentSettings?:{
+              contentEncoding: string;
+              contentLanguage: string;
+              contentType: string;
+              cacheControl: string;
+              contentDisposition: string;
+              contentMD5: string;
+            }
+            copy?: {
+              id?: string;
+              source?: string;
+              status?: string;
+              completionTime?: string;
+              statusDescription?: string;
+              progress?: string;
+            }
           }
 
           export interface ShareProperties {
@@ -6691,7 +6794,6 @@ declare module "azure-storage" {
             *
             * @param {Object}   requestOptions The original request options.
             * @param {function} next           The next filter to be handled.
-            * @return {undefined}
             */
             handle(requestOptions: any, next: any): void;
             shouldRetry(statusCode: number, retryData: RetryPolicyFilter.IRetryContext): void;
@@ -6775,7 +6877,6 @@ declare module "azure-storage" {
             *
             * @param {Object}   requestOptions The original request options.
             * @param {function} next           The next filter to be handled.
-            * @return {undefined}
             */
             handle(requestOptions: any, next: any): void;
           }
@@ -6841,7 +6942,6 @@ declare module "azure-storage" {
             *
             * @param {Object}   requestOptions The original request options.
             * @param {function} next           The next filter to be handled.
-            * @return {undefined}
             */
             handle(requestOptions: any, next: any): void;
           }
@@ -7546,7 +7646,6 @@ declare module "azure-storage" {
           * Validates a container name.
           *
           * @param {string} containerName The container name.
-          * @return {undefined}
           */
           export function containerNameIsValid(containerName: string, callback?: Function): boolean;
           /**
@@ -7554,28 +7653,24 @@ declare module "azure-storage" {
           *
           * @param {string} containerName The container name.
           * @param {string} blobname      The blob name.
-          * @return {undefined}
           */
           export function blobNameIsValid(containerName: string, blobName: string, callback?: Function): any;
           /**
           * Validates a share name.
           *
           * @param {string} shareName The share name.
-          * @return {undefined}
           */
           export function shareNameIsValid(shareName: string, callback?: Function): boolean;
           /**
           * Validates a queue name.
           *
           * @param {string} queueName The queue name.
-          * @return {undefined}
           */
           export function queueNameIsValid(queueName: string, callback?: Function): boolean;
           /**
           * Validates a table name.
           *
           * @param {string} table  The table name.
-          * @return {undefined}
           */
           export function tableNameIsValid(table: string, callback?: Function): boolean;
           /**
@@ -7584,14 +7679,12 @@ declare module "azure-storage" {
           * @param {int} rangeStart             The range starting position.
           * @param {int} rangeEnd               The range ending position.
           * @param {int} writeBlockSizeInBytes  The block size.
-          * @return {undefined}
           */
           export function pageRangesAreValid(rangeStart: number, rangeEnd: number, writeBlockSizeInBytes: number, callback?: Function): boolean;
           /**
           * Validates a blob type.
           *
           * @param {string} type  The type name.
-          * @return {undefined}
           */
           export function blobTypeIsValid(type: string, callback?: Function): any;
           export class ArgumentValidator {
@@ -8064,12 +8157,14 @@ declare module "azure-storage" {
         Start?: Date | string;
         /** The time at which the Shared Access Signature becomes expired. */
         Expiry?: Date | string;
-      }
-
-      export interface SignedIdentifier {
-        /** The signed identifier */
-        Id: string;
-        AccessPolicy: AccessPolicy;
+        /** An IP address or a range of IP addresses from which to accept requests. When specifying a range, note that the range is inclusive. */
+        IPAddressOrRange?: string;
+        /** The protocol permitted for a request made with the SAS. */
+        Protocol?: string;
+        /** The services (blob, file, queue, table) for a shared access signature associated with this shared access policy. */
+        Services?: string;
+        /** The resource type for a shared access signature associated with this shared access policy. */
+        ResourceTypes?: string;
       }
 
       /**
@@ -8294,6 +8389,37 @@ declare module "azure-storage" {
     */
     interface ErrorOrResult<TResult> {
       (error: Error, result: TResult, response: ServiceResponse): void
+    }
+    /**
+    * Specifying conditional headers for blob service operations. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+    * @typedef    {object}          AccessConditions
+    * @property   {string}          EtagMatch                       If the ETag for the blob matches the specified ETag.
+    *                                                               Specify the wildcard character (*) to perform the operation only if the resource does exist, and fail the operation if it does not exist.
+    * @property   {string}          EtagNonMatch                    If the ETag for the blob does not match the specified ETag.
+    *                                                               Specify the wildcard character (*) to perform the operation only if the resource does not exist, and fail the operation if it does exist.
+    * @property   {Date|string}     DateModifedSince                If the blob has been modified since the specified date.
+    * @property   {Date|string}     DateUnModifiedSince             If the blob has not been modified since the specified date.
+    * @property   {Number|string}   SequenceNumberLessThanOrEqual   If the blob’s sequence number is less than or equal to the specified value.
+    *                                                               For Put Page operation only. See https://msdn.microsoft.com/en-us/library/azure/ee691975.aspx for more information.
+    * @property   {Number|string}   SequenceNumberLessThan          If the blob’s sequence number is less than the specified value.
+    *                                                               For Put Page operation only. See https://msdn.microsoft.com/en-us/library/azure/ee691975.aspx for more information.
+    * @property   {Number|string}   SequenceNumberEqual             If the blob’s sequence number is equal to the specified value.
+    *                                                               For Put Page operation only. See https://msdn.microsoft.com/en-us/library/azure/ee691975.aspx for more information.
+    * @property   {Number|string}   MaxBlobSize                     If the Append Block operation would cause the blob to exceed that limit or if the blob size is already greater than the specified value. 
+    *                                                               For Append Block operation only. See https://msdn.microsoft.com/en-us/library/mt427365.aspx for more information.
+    * @property   {Number|string}   MaxAppendPosition               If the append position is equal to the specified value.
+    *                                                               For Append Block operation only. See https://msdn.microsoft.com/en-us/library/mt427365.aspx for more information.
+    */
+    interface AccessConditions {
+      EtagMatch?: string;
+      EtagNonMatch?: string;
+      DateModifedSince?: Date | string;
+      DateUnModifiedSince?: Date | string;
+      SequenceNumberLessThanOrEqual?: Number | string;
+      SequenceNumberLessThan?: Number | string;
+      SequenceNumberEqual?: Number | string;
+      MaxBlobSize?: Number | string;
+      MaxAppendPosition?: Number | string;
     }
 
     export import Constants = common.util.constants;

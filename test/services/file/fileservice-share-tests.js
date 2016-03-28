@@ -20,6 +20,11 @@ var url = require('url');
 var testutil = require('../../framework/util');
 var SR = testutil.libRequire('common/util/sr');
 var TestSuite = require('../../framework/test-suite');
+var errors = testutil.libRequire('common/errors/errors');
+var ArgumentError = errors.ArgumentError;
+var ArgumentNullError = errors.ArgumentNullError;
+var TimeoutError = errors.TimeoutError;
+var StorageError = errors.StorageError;
 
 var azure = testutil.libRequire('azure-storage');
 
@@ -66,18 +71,21 @@ describe('FileShare', function () {
 
   describe('doesShareExist', function () {
     it('should work', function (done) {
-      fileService.doesShareExist(shareName, function (existsError, exists) {
+      fileService.doesShareExist(shareName, function (existsError, existsResult) {
         assert.equal(existsError, null);
-        assert.strictEqual(exists, false);
+        assert.strictEqual(existsResult.exists, false);
 
         fileService.createShare(shareName, function (createError, share1, createShareResponse) {
           assert.equal(createError, null);
           assert.notEqual(share1, null);
           assert.equal(createShareResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
-          fileService.doesShareExist(shareName, function (existsError, exists) {
+          fileService.doesShareExist(shareName, function (existsError, existsResult2) {
             assert.equal(existsError, null);
-            assert.strictEqual(exists, true);
+            assert.strictEqual(existsResult2.exists, true);
+            assert.notEqual(existsResult2.name, null);
+            assert.notEqual(existsResult2.etag, null);
+            assert.notEqual(existsResult2.lastModified, null);
             done();
           });
         });
@@ -88,22 +96,36 @@ describe('FileShare', function () {
   describe('createShare', function () {
     it('should detect incorrect share names', function (done) {
       assert.throws(function () { fileService.createShare(null, function () { }); },
-        /Required argument share for function createShare is not defined/);
+        function(err) {
+          return (err instanceof ArgumentNullError) && err.message === 'Required argument share for function createShare is not defined'; 
+        });
 
       assert.throws(function () { fileService.createShare('', function () { }); },
-        /Required argument share for function createShare is not defined/);
+        function(err) {
+          return (err instanceof ArgumentNullError) && err.message === 'Required argument share for function createShare is not defined'; 
+        });
 
       assert.throws(function () { fileService.createShare('as', function () { }); },
-        /Share name must be between 3 and 63 characters long./);
+       function(err) {
+        if ((err instanceof ArgumentError) && err.message === 'Share name must be between 3 and 63 characters long.') {
+          return true;
+        }
+      });
 
       assert.throws(function () { fileService.createShare('a--s', function () { }); },
-        /Share name format is incorrect./);
+        function(err){
+          return (err instanceof SyntaxError) && err.message === 'Share name format is incorrect.'; 
+        });
 
       assert.throws(function () { fileService.createShare('cont-', function () { }); },
-        /Share name format is incorrect./);
+        function(err){
+          return (err instanceof SyntaxError) && err.message === 'Share name format is incorrect.'; 
+        });
 
       assert.throws(function () { fileService.createShare('conTain', function () { }); },
-        /Share name format is incorrect./);
+        function(err){
+          return (err instanceof SyntaxError) && err.message === 'Share name format is incorrect.'; 
+        });
 
       done();
     });
@@ -148,17 +170,22 @@ describe('FileShare', function () {
 
   describe('createShareIfNotExists', function() {
     it('should create a share if not exists', function (done) {
-      fileService.createShareIfNotExists(shareName, function (createError, created) {
+      fileService.createShareIfNotExists(shareName, function (createError, createResult) {
         assert.equal(createError, null);
-        assert.equal(created, true);
+        assert.equal(createResult.created, true);
 
-        fileService.doesShareExist(shareName, function (existsError, exists) {
+        fileService.doesShareExist(shareName, function (existsError, existsResult) {
           assert.equal(existsError, null);
-          assert.equal(exists, true);
+          assert.equal(existsResult.exists, true);
+          assert.notEqual(existsResult.etag, null);
+          assert.notEqual(existsResult.lastModified, null);
 
-          fileService.createShareIfNotExists(shareName, function (createError2, created2) {
+          fileService.createShareIfNotExists(shareName, function (createError2, createdResult2) {
             assert.equal(createError2, null);
-            assert.equal(created2, false);
+            assert.equal(createdResult2.created, false);
+            assert.notEqual(createdResult2.name, null);
+            assert.notEqual(createdResult2.etag, null);
+            assert.notEqual(createdResult2.lastModified, null);
 
             fileService.deleteShare(shareName, function (deleteError) {
               assert.equal(deleteError, null);
@@ -175,7 +202,7 @@ describe('FileShare', function () {
 
     it('should throw if called without a callback', function (done) {
       assert.throws(function () { fileService.createShareIfNotExists('name'); },
-        Error
+        ArgumentNullError
       );
 
       done();
@@ -184,9 +211,9 @@ describe('FileShare', function () {
 
   describe('deleteShareIfExists', function() {
     it('should delete a share if exists', function (done) {
-      fileService.doesShareExist(shareName, function(existsError, exists){
+      fileService.doesShareExist(shareName, function(existsError, existsResult){
         assert.equal(existsError, null);
-        assert.strictEqual(exists, false);
+        assert.strictEqual(existsResult.exists, false);
 
         fileService.deleteShareIfExists(shareName, function (deleteError, deleted) {
           assert.equal(deleteError, null);
@@ -206,9 +233,9 @@ describe('FileShare', function () {
               assert.equal(deleteError2, null);
               assert.strictEqual(deleted2, true);
 
-              fileService.doesShareExist(shareName, function(existsError, exists){
+              fileService.doesShareExist(shareName, function(existsError, existsResult){
                 assert.equal(existsError, null);
-                assert.strictEqual(exists, false);
+                assert.strictEqual(existsResult.exists, false);
                 done();
               });
             });
@@ -219,7 +246,7 @@ describe('FileShare', function () {
 
     it('should throw if called without a callback', function (done) {
       assert.throws(function () { fileService.deleteShareIfExists('name'); },
-        Error
+        ArgumentNullError
       );
       done();
     });
@@ -227,9 +254,9 @@ describe('FileShare', function () {
   
   describe('setShareProperties', function () {
     it('should work', function (done) {
-      fileService.createShareIfNotExists(shareName, function (createError, created) {
+      fileService.createShareIfNotExists(shareName, function (createError, createResult) {
         assert.equal(createError, null);
-        assert.equal(created, true);
+        assert.equal(createResult.created, true);
         
         var quotaValue = 30;
         var properties = { quota: quotaValue };
@@ -258,9 +285,9 @@ describe('FileShare', function () {
 
   describe('getShareProperties', function () {
     it('should work', function (done) {
-      fileService.createShareIfNotExists(shareName, function (createError, created) {
+      fileService.createShareIfNotExists(shareName, function (createError, createResult) {
         assert.equal(createError, null);
-        assert.equal(created, true);
+        assert.equal(createResult.created, true);
 
         var metadata = { 'Color': 'Blue' };
         fileService.setShareMetadata(shareName, metadata, function (setMetadataError, setMetadataResult, setMetadataResponse) {
@@ -288,9 +315,9 @@ describe('FileShare', function () {
 
   describe('setShareMetadata', function () {
     it('should work', function (done) {
-      fileService.createShareIfNotExists(shareName, function (createError, created) {
+      fileService.createShareIfNotExists(shareName, function (createError, createResult) {
         assert.equal(createError, null);
-        assert.equal(created, true);
+        assert.equal(createResult.created, true);
 
         var metadata = { 'class': 'test' };
         fileService.setShareMetadata(shareName, metadata, function (setMetadataError, setMetadataResult, setMetadataResponse) {
@@ -314,9 +341,9 @@ describe('FileShare', function () {
     });
 
     it('should merge the metadata', function (done) {
-      fileService.createShareIfNotExists(shareName, function (createError, created) {
+      fileService.createShareIfNotExists(shareName, function (createError, createResult) {
         assert.equal(createError, null);
-        assert.equal(created, true);
+        assert.equal(createResult.created, true);
 
         var metadata = { color: 'blue', Color: 'Orange', COLOR: 'Red' };
         fileService.setShareMetadata(shareName, metadata, function (setMetadataError, setMetadataResult, setMetadataResponse) {
@@ -340,9 +367,9 @@ describe('FileShare', function () {
     });
 
     it('should ignore the metadata in the options', function (done) {
-      fileService.createShareIfNotExists(shareName, function (createError, created) {
+      fileService.createShareIfNotExists(shareName, function (createError, createResult) {
         assert.equal(createError, null);
-        assert.equal(created, true);
+        assert.equal(createResult.created, true);
 
         var metadata = { color: 'blue', Color: 'Orange', COLOR: 'Red' };
         var options = { metadata: { color: 'White', Color: 'Black', COLOR: 'yellow' } };
@@ -374,20 +401,20 @@ describe('FileShare', function () {
       }
 
       assert.throws( function() { setShareMetadata(shareName, {'' : 'value1'}); },
-        function (err) {return (err instanceof Error) && err.message === SR.METADATA_KEY_INVALID});
+        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_KEY_INVALID});
       assert.throws( function() { setShareMetadata(shareName, {' ' : 'value1'}); },
-        function (err) {return (err instanceof Error) && err.message === SR.METADATA_KEY_INVALID});
+        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_KEY_INVALID});
       assert.throws( function() { setShareMetadata(shareName, {'\n\t' : 'value1'}); },
-        function (err) {return (err instanceof Error) && err.message === SR.METADATA_KEY_INVALID});
+        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_KEY_INVALID});
 
       assert.throws( function() { setShareMetadata(shareName, {'key1' : null}); },
-        function (err) {return (err instanceof Error) && err.message === SR.METADATA_VALUE_INVALID});
+        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_VALUE_INVALID});
       assert.throws( function() { setShareMetadata(shareName, {'key1' : ''}); },
-        function (err) {return (err instanceof Error) && err.message === SR.METADATA_VALUE_INVALID});
+        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_VALUE_INVALID});
       assert.throws( function() { setShareMetadata(shareName, {'key1' : '\n\t'}); },
-        function (err) {return (err instanceof Error) && err.message === SR.METADATA_VALUE_INVALID});
+        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_VALUE_INVALID});
       assert.throws( function() { setShareMetadata(shareName, {'key1' : ' '}); },
-        function (err) {return (err instanceof Error) && err.message === SR.METADATA_VALUE_INVALID});
+        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_VALUE_INVALID});
 
       done();
     });
@@ -629,18 +656,13 @@ describe('FileShare', function () {
       readWriteExpiryDate.setMinutes(readWriteStartDate.getMinutes() + 10);
       readWriteExpiryDate.setMilliseconds(999);
       
-      var readWriteSharedAccessPolicy = {
-        Id: 'readwrite',
-        AccessPolicy: {
+      var signedIdentifiers = {
+        readwrite: {
           Start: readWriteStartDate,
           Expiry: readWriteExpiryDate,
           Permissions: 'rw'
-        }
-      };
-      
-      var readSharedAccessPolicy = {
-        Id: 'read',
-        AccessPolicy: {
+        },
+        read: {
           Expiry: readWriteStartDate,
           Permissions: 'r'
         }
@@ -648,14 +670,11 @@ describe('FileShare', function () {
       
       fileService.createShareIfNotExists(shareName, function () {
         var directoryName = suite.getName('dir-');
-        var fileName = suite.getName('file-');
-        var fileText = 'Hello World!';
         
         fileService.createDirectoryIfNotExists(shareName, directoryName, function (directoryError, directoryResult, directoryResponse) {
           assert.equal(directoryError, null);
           assert.notEqual(directoryResult, null);
           
-          var signedIdentifiers = [readWriteSharedAccessPolicy, readSharedAccessPolicy];
           fileService.setShareAcl(shareName, signedIdentifiers, function (setAclError, setAclShare1, setResponse1) {
             assert.equal(setAclError, null);
             assert.notEqual(setAclShare1, null);
@@ -666,10 +685,10 @@ describe('FileShare', function () {
                 assert.equal(getAclError, null);
                 assert.notEqual(getAclShare1, null);
                 assert.equal(getAclShare1.publicAccessLevel, FileUtilities.SharePublicAccessType.OFF);
-                assert.equal(getAclShare1.signedIdentifiers[0].AccessPolicy.Expiry.getTime(), readWriteExpiryDate.getTime());
+                assert.equal(getAclShare1.signedIdentifiers.readwrite.Expiry.getTime(), readWriteExpiryDate.getTime());
                 assert.ok(getResponse1.isSuccessful);
                 
-                fileService.setShareAcl(shareName, [], function (setAclError2, setAclShare2, setResponse2) {
+                fileService.setShareAcl(shareName, {}, function (setAclError2, setAclShare2, setResponse2) {
                   assert.equal(setAclError2, null);
                   assert.notEqual(setAclShare2, null);
                   assert.ok(setResponse2.isSuccessful);
@@ -692,23 +711,18 @@ describe('FileShare', function () {
     });
     
     it('should work with signed identifiers', function (done) {
-      var signedIdentifiers = [
-        {
-          Id: 'id1',
-          AccessPolicy: {
-            Start: '2009-10-10T00:00:00.123Z',
-            Expiry: '2009-10-11T00:00:00.456Z',
-            Permissions: 'r'
-          }
+      var signedIdentifiers = {
+        id1: {
+          Start: '2009-10-10T00:00:00.123Z',
+          Expiry: '2009-10-11T00:00:00.456Z',
+          Permissions: 'r'
         },
-        {
-          Id: 'id2',
-          AccessPolicy: {
-            Start: '2009-11-10T00:00:00.006Z',
-            Expiry: '2009-11-11T00:00:00.4Z',
-            Permissions: 'w'
-          }
-        }];
+        id2: {
+          Start: '2009-11-10T00:00:00.006Z',
+          Expiry: '2009-11-11T00:00:00.4Z',
+          Permissions: 'w'
+        }
+      };
       
       fileService.createShareIfNotExists(shareName, function () {
         var directoryName = suite.getName('dir-');
@@ -732,23 +746,15 @@ describe('FileShare', function () {
                   assert.equal(getAclResponse.isSuccessful, true);
                 }
                 
-                var entries = 0;
-                shareAcl.signedIdentifiers.forEach(function (identifier) {
-                  if (identifier.Id === 'id1') {
-                    assert.equal(identifier.AccessPolicy.Start.getTime(), new Date('2009-10-10T00:00:00.123Z').getTime());
-                    assert.equal(identifier.AccessPolicy.Expiry.getTime(), new Date('2009-10-11T00:00:00.456Z').getTime());
-                    assert.equal(identifier.AccessPolicy.Permissions, 'r');
-                    entries += 1;
-                  } else if (identifier.Id === 'id2') {
-                    assert.equal(identifier.AccessPolicy.Start.getTime(), new Date('2009-11-10T00:00:00.006Z').getTime());
-                    assert.equal(identifier.AccessPolicy.Start.getMilliseconds(), 6);
-                    assert.equal(identifier.AccessPolicy.Expiry.getTime(), new Date('2009-11-11T00:00:00.4Z').getTime());
-                    assert.equal(identifier.AccessPolicy.Expiry.getMilliseconds(), 400);
-                    assert.equal(identifier.AccessPolicy.Permissions, 'w');
-                    entries += 2;
-                  }
-                });
-                assert.equal(entries, 3);
+                assert.equal(shareAcl.signedIdentifiers.id1.Start.getTime(), new Date('2009-10-10T00:00:00.123Z').getTime());
+                assert.equal(shareAcl.signedIdentifiers.id1.Expiry.getTime(), new Date('2009-10-11T00:00:00.456Z').getTime());
+                assert.equal(shareAcl.signedIdentifiers.id1.Permissions, 'r');
+                assert.equal(shareAcl.signedIdentifiers.id2.Start.getTime(), new Date('2009-11-10T00:00:00.006Z').getTime());
+                assert.equal(shareAcl.signedIdentifiers.id2.Start.getMilliseconds(), 6);
+                assert.equal(shareAcl.signedIdentifiers.id2.Expiry.getTime(), new Date('2009-11-11T00:00:00.4Z').getTime());
+                assert.equal(shareAcl.signedIdentifiers.id2.Expiry.getMilliseconds(), 400);
+                assert.equal(shareAcl.signedIdentifiers.id2.Permissions, 'w');
+                
                 done();
               });
             }, timeout);
@@ -760,13 +766,13 @@ describe('FileShare', function () {
   
   describe('getShareStats', function () {
     it('should work', function (done) {
-      fileService.createShareIfNotExists(shareName, function (createError, created) {
+      fileService.createShareIfNotExists(shareName, function (createError, createResult) {
         assert.equal(createError, null);
-        assert.equal(created, true);
+        assert.equal(createResult.created, true);
         
         fileService.getShareStats(shareName, function (getError, stats, getResponse) {
           assert.equal(getError, null);
-          assert.equal(stats.sharestats.shareusage, 0);
+          assert.equal(stats.shareStats.shareUsage, 0);
           
           var fileText = 'hi there';
           var fileName = suite.getName("file-");
@@ -775,7 +781,7 @@ describe('FileShare', function () {
             
             fileService.getShareStats(shareName, function (getError, stats, getResponse) {
               assert.equal(getError, null);
-              assert.equal(stats.sharestats.shareusage, 1);
+              assert.equal(stats.shareStats.shareUsage, 1);
 
               fileService.deleteShare(shareName, function (deleteError) {
                 assert.equal(deleteError, null);

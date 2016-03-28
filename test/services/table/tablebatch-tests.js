@@ -475,9 +475,9 @@ describe('batchserviceclient-tests', function () {
 
         batch.insertEntity(entity);
 
-        // Doing an update on the same entity within the same batch should make the batch fail
+        // Doing an replace on the same entity within the same batch should make the batch fail
         entity.MyField = eg.String('othervalue');
-        batch.updateEntity(entity);
+        batch.replaceEntity(entity);
 
         tableService.executeBatch(tableName1, batch, function (error, operationResponses, response) {
           assert.notEqual(error, null);
@@ -554,8 +554,8 @@ describe('batchserviceclient-tests', function () {
         var mergeEntity = entities[0];
         mergeEntity.StringProperty._ = 'newProperty';
         
-        var updateEntity = entities[1];
-        delete updateEntity.BooleanProperty;
+        var replaceEntity = entities[1];
+        delete replaceEntity.BooleanProperty;
 
         var deleteEntity = entities[2];
 
@@ -565,7 +565,7 @@ describe('batchserviceclient-tests', function () {
         batch.insertEntity(insertEntity);
         batch.deleteEntity(deleteEntity);
         batch.mergeEntity(mergeEntity);
-        batch.updateEntity(updateEntity);
+        batch.replaceEntity(replaceEntity);
         batch.insertOrMergeEntity(insertOrMergeEntity);
         batch.insertOrReplaceEntity(insertOrReplaceEntity);
 
@@ -590,7 +590,7 @@ describe('batchserviceclient-tests', function () {
             compareEntities(entities1.entries[1], insertOrMergeEntity);
             compareEntities(entities1.entries[2], insertOrReplaceEntity);
             compareEntities(entities1.entries[3], mergeEntity);
-            compareEntities(entities1.entries[4], updateEntity);    
+            compareEntities(entities1.entries[4], replaceEntity);    
 
             done();
           });

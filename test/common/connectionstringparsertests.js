@@ -106,7 +106,7 @@ describe('ConnectionString', function () {
         var parsedConnectionString = ServiceSettings.parseAndValidateKeys('BlobEndpoint', validKeys);
       },
       function(err) {
-        if ((err instanceof Error) && err.message === SR.INVALID_CONNECTION_STRING) {
+        if ((err instanceof SyntaxError) && err.message === SR.INVALID_CONNECTION_STRING) {
           return true;
         }
       },
@@ -122,7 +122,7 @@ describe('ConnectionString', function () {
         var parsedConnectionString = ServiceSettings.parseAndValidateKeys('=value', validKeys);
       },
       function(err) {
-        if ((err instanceof Error) && err.message === SR.INVALID_CONNECTION_STRING_EMPTY_KEY) {
+        if ((err instanceof SyntaxError) && err.message === SR.INVALID_CONNECTION_STRING_EMPTY_KEY) {
           return true;
         }
       },
@@ -134,7 +134,7 @@ describe('ConnectionString', function () {
         var parsedConnectionString = ServiceSettings.parseAndValidateKeys('bla=value', validKeys);
       },
       function(err) {
-        if ((err instanceof Error) && err.message === util.format(SR.INVALID_CONNECTION_STRING_BAD_KEY, 'bla')) {
+        if ((err instanceof SyntaxError) && err.message === util.format(SR.INVALID_CONNECTION_STRING_BAD_KEY, 'bla')) {
           return true;
         }
       },
@@ -146,7 +146,7 @@ describe('ConnectionString', function () {
         var parsedConnectionString = ServiceSettings.parseAndValidateKeys('AccountKey=value1;AccountKey=value2', validKeys);
       },
       function(err) {
-        if ((err instanceof Error) && err.message === util.format(SR.INVALID_CONNECTION_STRING_DUPLICATE_KEY, 'AccountKey')) {
+        if ((err instanceof SyntaxError) && err.message === util.format(SR.INVALID_CONNECTION_STRING_DUPLICATE_KEY, 'AccountKey')) {
           return true;
         }
       },

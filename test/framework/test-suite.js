@@ -273,5 +273,13 @@ _.extend(TestSuite.prototype, {
   	} else {
       return prefix + guid.v1().toLowerCase();
   	}
+  },
+
+  getShortName: function (prefix) {
+  	if (this.isMocked) {
+      return prefix + 'testdata' + (this.nameIndex++);
+  	} else {
+      return prefix + new Date().getTime().toString().toLowerCase();
+  	}
   }
 });

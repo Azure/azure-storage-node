@@ -692,10 +692,10 @@ var runQueuesPermissionTests = function(sharedAccessPolicy, next){
         assert.notEqual(queueMessages, null);
         var queueMessage = queueMessages[0];
         assert.ok(queueMessage);
-        assert.ok(queueMessage['messageid']);
-        assert.ok(queueMessage['insertiontime']);
-        assert.ok(queueMessage['expirationtime']);
-        assert.equal(queueMessage.messagetext, 'msg1');
+        assert.ok(queueMessage['messageId']);
+        assert.ok(queueMessage['insertionTime']);
+        assert.ok(queueMessage['expirationTime']);
+        assert.equal(queueMessage.messageText, 'msg1');
         next();
       });
     } else {
@@ -707,10 +707,10 @@ var runQueuesPermissionTests = function(sharedAccessPolicy, next){
           assert.notEqual(queueMessages, null);
           var queueMessage = queueMessages[0];
           assert.ok(queueMessage);
-          assert.ok(queueMessage['messageid']);
-          assert.ok(queueMessage['insertiontime']);
-          assert.ok(queueMessage['expirationtime']);
-          assert.equal(queueMessage.messagetext, 'msg1');
+          assert.ok(queueMessage['messageId']);
+          assert.ok(queueMessage['insertionTime']);
+          assert.ok(queueMessage['expirationTime']);
+          assert.equal(queueMessage.messageText, 'msg1');
           next();
         });
       });
@@ -725,10 +725,10 @@ var runQueuesPermissionTests = function(sharedAccessPolicy, next){
         assert.notEqual(queueMessages, null);
         var queueMessage = queueMessages[0];
         assert.ok(queueMessage);
-        assert.ok(queueMessage['messageid']);
-        assert.ok(queueMessage['insertiontime']);
-        assert.ok(queueMessage['expirationtime']);
-        assert.equal(queueMessage.messagetext, 'msg1');
+        assert.ok(queueMessage['messageId']);
+        assert.ok(queueMessage['insertionTime']);
+        assert.ok(queueMessage['expirationTime']);
+        assert.equal(queueMessage.messageText, 'msg1');
         
         next(queueMessage);
       });
@@ -741,10 +741,10 @@ var runQueuesPermissionTests = function(sharedAccessPolicy, next){
           assert.notEqual(queueMessages, null);
           var queueMessage = queueMessages[0];
           assert.ok(queueMessage);
-          assert.ok(queueMessage['messageid']);
-          assert.ok(queueMessage['insertiontime']);
-          assert.ok(queueMessage['expirationtime']);
-          assert.equal(queueMessage.messagetext, 'msg1');
+          assert.ok(queueMessage['messageId']);
+          assert.ok(queueMessage['insertionTime']);
+          assert.ok(queueMessage['expirationTime']);
+          assert.equal(queueMessage.messageText, 'msg1');
           
           next(queueMessage);
         });
@@ -755,15 +755,15 @@ var runQueuesPermissionTests = function(sharedAccessPolicy, next){
   var testUpdateMessage = function(queueMessage, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.UPDATE) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.OBJECT) > -1){
-      sharedQueueService.updateMessage(queueName, queueMessage.messageid, queueMessage.popreceipt, 0, { messagetext: 'msg1-updated' }, function(error){
+      sharedQueueService.updateMessage(queueName, queueMessage.messageId, queueMessage.popReceipt, 0, { messageText: 'msg1-updated' }, function(error){
         assert.equal(error, null);
         next();
       });
     } else {
-      sharedQueueService.updateMessage(queueName, queueMessage.messageid, queueMessage.popreceipt, 0, { messagetext: 'msg1-updated' }, function(error){
+      sharedQueueService.updateMessage(queueName, queueMessage.messageId, queueMessage.popReceipt, 0, { messageText: 'msg1-updated' }, function(error){
         assert.notEqual(error, null, 'Updating a message should fail with SAS without Update and Object-level permissions.');
         
-        queueService.updateMessage(queueName, queueMessage.messageid, queueMessage.popreceipt, 0, { messagetext: 'msg1-updated' }, function(error){
+        queueService.updateMessage(queueName, queueMessage.messageId, queueMessage.popReceipt, 0, { messageText: 'msg1-updated' }, function(error){
           assert.equal(error, null);
           next();
         });

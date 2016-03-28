@@ -31,8 +31,6 @@ if (fs.existsSync('absolute path to azure-storage.js')) {
   azure = require('azure-storage');
 }
 
-var AccessConditions = azure.BlobUtilities.AccessConditions;
-
 var container = 'updownsample3';
 var blob = 'updownsample';
 var blobAccess = 'updownaccesssample';
@@ -191,7 +189,7 @@ function useAccessCondition(containerName, callback) {
       // to have been modified in order to complete the request. In this
       // sample no other client is accessing the blob, so this will fail as
       // expected.
-      var options = { accessConditions: { 'if-none-match': blobAccess.etag} };
+      var options = { accessConditions: { EtagNonMatch: blobAccess.etag} };
       blobService.createBlockBlobFromText(containerName, blobAccess.blob, 'new hello', options, function (error2) {
         if (error2 && error2.statusCode === 412 && error2.code === 'ConditionNotMet') {
           console.log('Attempted to recreate the blob with the if-none-match access condition and got the expected exception.');

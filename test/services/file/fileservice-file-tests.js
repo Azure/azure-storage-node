@@ -21,6 +21,12 @@ var testutil = require('../../framework/util');
 var SR = testutil.libRequire('common/util/sr');
 var TestSuite = require('../../framework/test-suite');
 
+var errors = testutil.libRequire('common/errors/errors');
+var ArgumentError = errors.ArgumentError;
+var ArgumentNullError = errors.ArgumentNullError;
+var TimeoutError = errors.TimeoutError;
+var StorageError = errors.StorageError;
+
 var azure = testutil.libRequire('azure-storage');
 
 var FileUtilities = azure.FileUtilities;
@@ -202,18 +208,21 @@ describe('File', function () {
 
   describe('doesFileExist', function () {
     it('should work', function (done) {
-      fileService.doesFileExist(shareName, directoryName, fileName, function (existsError, exists) {
+      fileService.doesFileExist(shareName, directoryName, fileName, function (existsError, existsResult) {
         assert.equal(existsError, null);
-        assert.strictEqual(exists, false);
+        assert.strictEqual(existsResult.exists, false);
 
         fileService.createFile(shareName, directoryName, fileName, 0, function (createError, file, createDirectoryResponse) {
           assert.equal(createError, null);
           assert.notEqual(file, null);
           assert.equal(createDirectoryResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
-          fileService.doesFileExist(shareName, directoryName, fileName, function (existsError, exists) {
+          fileService.doesFileExist(shareName, directoryName, fileName, function (existsError, existsResult2) {
             assert.equal(existsError, null);
-            assert.strictEqual(exists, true);
+            assert.strictEqual(existsResult2.exists, true);
+            assert.equal(existsResult2.name, fileName);
+            assert.notEqual(existsResult2.etag, null);
+            assert.notEqual(existsResult2.lastModified, null);
             done();
           });
         });
@@ -224,10 +233,14 @@ describe('File', function () {
   describe('createFile', function () {
     it('should detect incorrect directory names', function (done) {
       assert.throws(function () { fileService.createFile(shareName, directoryName, null, function () { }); },
-        /Required argument file for function createFile is not defined/);
+        function(err) {
+          return (err instanceof ArgumentNullError) && err.message === 'Required argument file for function createFile is not defined'; 
+        });
 
       assert.throws(function () { fileService.createFile(shareName, directoryName, '', function () { }); },
-        /Required argument file for function createFile is not defined/);
+        function(err) {
+          return (err instanceof ArgumentNullError) && err.message === 'Required argument file for function createFile is not defined'; 
+        });
 
       done();
     });
@@ -271,7 +284,7 @@ describe('File', function () {
         assert.notEqual(file1.lastModified, null);
 
         // creating again is fine
-        fileService.createFile(shareName, directoryName, fileName, 5, properties, function (createError2, file2, createResponse2) {
+        fileService.createFile(shareName, directoryName, fileName, 5, { contentSettings: properties, contentLength: properties.contentLength }, function (createError2, file2, createResponse2) {
           assert.equal(createError2, null);
           assert.notEqual(file2, null);
           assert.equal(createResponse2.statusCode, HttpConstants.HttpResponseCodes.Created);
@@ -286,19 +299,18 @@ describe('File', function () {
             assert.notEqual(file3, null);
             assert.notEqual(getResponse, null);
             assert.equal(getResponse.isSuccessful, true);
-
             assert.equal(file3.name, fileName);
             assert.equal(file3.contentLength , '5');
             assert.notEqual(file3.etag, null);
             assert.notEqual(file3.lastModified, null);
             assert.notEqual(file3.requestId, null);
 
-            assert.equal(file3.contentType, 'text/html');
-            assert.equal(file3.contentEncoding, 'gzip');
-            assert.equal(file3.contentLanguage, 'tr,en');
-            assert.equal(file3.contentDisposition , 'attachment');
-            assert.equal(file3.contentMD5, 'MDAwMDAwMDA=');
-            assert.equal(file3.cacheControl, 'no-transform');
+            assert.equal(file3.contentSettings.contentMD5, 'MDAwMDAwMDA=');
+            assert.equal(file3.contentSettings.contentType, 'text/html');
+            assert.equal(file3.contentSettings.contentEncoding, 'gzip');
+            assert.equal(file3.contentSettings.contentLanguage, 'tr,en');
+            assert.equal(file3.contentSettings.contentDisposition , 'attachment');
+            assert.equal(file3.contentSettings.cacheControl, 'no-transform');
 
             done();
           });
@@ -309,9 +321,9 @@ describe('File', function () {
 
   describe('deleteFileIfExists', function() {
     it('should delete a file if exists', function (done) {
-      fileService.doesFileExist(shareName, directoryName, fileName, function(existsError, exists){
+      fileService.doesFileExist(shareName, directoryName, fileName, function(existsError, existsResult){
         assert.equal(existsError, null);
-        assert.strictEqual(exists, false);
+        assert.strictEqual(existsResult.exists, false);
 
         fileService.deleteFileIfExists(shareName, directoryName, fileName, function (deleteError, deleted) {
           assert.equal(deleteError, null);
@@ -327,9 +339,9 @@ describe('File', function () {
               assert.equal(deleteError2, null);
               assert.strictEqual(deleted2, true);
 
-              fileService.doesFileExist(shareName, directoryName, fileName, function(existsError, exists){
+              fileService.doesFileExist(shareName, directoryName, fileName, function(existsError, existsResult2){
                 assert.equal(existsError, null);
-                assert.strictEqual(exists, false);
+                assert.strictEqual(existsResult2.exists, false);
                 done();
               });
             });
@@ -340,7 +352,7 @@ describe('File', function () {
 
     it('should throw if called without a callback', function (done) {
       assert.throws(function () { fileService.deleteFileIfExists(shareName, directoryName, fileName); },
-        Error
+        ArgumentNullError
       );
       done();
     });
@@ -348,9 +360,9 @@ describe('File', function () {
 
   describe('deleteFile', function() {
     it('should delete a file', function (done) {
-      fileService.doesFileExist(shareName, directoryName, fileName, function(existsError, exists){
+      fileService.doesFileExist(shareName, directoryName, fileName, function(existsError, existsResult){
         assert.equal(existsError, null);
-        assert.strictEqual(exists, false);
+        assert.strictEqual(existsResult.exists, false);
 
         fileService.deleteFile(shareName, directoryName, fileName, function (deleteError) {
           assert.notEqual(deleteError, null);
@@ -364,9 +376,9 @@ describe('File', function () {
             fileService.deleteFile(shareName, directoryName, fileName, function (deleteError2, deleted2) {
               assert.equal(deleteError2, null);
 
-              fileService.doesFileExist(shareName, directoryName, fileName, function(existsError, exists){
+              fileService.doesFileExist(shareName, directoryName, fileName, function(existsError, existsResult2){
                 assert.equal(existsError, null);
-                assert.strictEqual(exists, false);
+                assert.strictEqual(existsResult2.exists, false);
                 done();
               });
             });
@@ -377,7 +389,7 @@ describe('File', function () {
 
     it('should throw if called without a callback', function (done) {
       assert.throws(function () { fileService.deleteFile(shareName, directoryName, fileName); },
-        Error
+        ArgumentNullError
       );
       done();
     });
@@ -433,12 +445,12 @@ describe('File', function () {
             assert.notEqual(file.lastModified, null);
             assert.notEqual(file.requestId, null);
 
-            assert.equal(file.contentType, 'text/html');
-            assert.equal(file.contentEncoding, 'gzip');
-            assert.equal(file.contentLanguage, 'tr,en');
-            assert.equal(file.contentDisposition , 'attachment');
-            assert.equal(file.contentMD5, 'MDAwMDAwMDA=');
-            assert.equal(file.cacheControl, 'no-transform');
+            assert.equal(file.contentSettings.contentMD5, 'MDAwMDAwMDA=');
+            assert.equal(file.contentSettings.contentType, 'text/html');
+            assert.equal(file.contentSettings.contentEncoding, 'gzip');
+            assert.equal(file.contentSettings.contentLanguage, 'tr,en');
+            assert.equal(file.contentSettings.contentDisposition , 'attachment');
+            assert.equal(file.contentSettings.cacheControl, 'no-transform');
 
             done();
           });
@@ -447,7 +459,7 @@ describe('File', function () {
     });
 
     it('setAndGetAllOnCreate', function (done) {
-      fileService.createFile(shareName, directoryName, fileName, 0, properties, function (createError) {
+      fileService.createFile(shareName, directoryName, fileName, 0, { contentSettings: properties, contentLength: properties.contentLength }, function (createError) {
         assert.equal(createError, null);
 
         fileService.getFileProperties(shareName, directoryName, fileName, function (getError, file, getResponse) {
@@ -462,12 +474,12 @@ describe('File', function () {
           assert.notEqual(file.lastModified, null);
           assert.notEqual(file.requestId, null);
 
-          assert.equal(file.contentType, 'text/html');
-          assert.equal(file.contentEncoding, 'gzip');
-          assert.equal(file.contentLanguage, 'tr,en');
-          assert.equal(file.contentDisposition , 'attachment');
-          assert.equal(file.contentMD5, 'MDAwMDAwMDA=');
-          assert.equal(file.cacheControl, 'no-transform');
+          assert.equal(file.contentSettings.contentMD5, 'MDAwMDAwMDA=');
+          assert.equal(file.contentSettings.contentType, 'text/html');
+          assert.equal(file.contentSettings.contentEncoding, 'gzip');
+          assert.equal(file.contentSettings.contentLanguage, 'tr,en');
+          assert.equal(file.contentSettings.contentDisposition , 'attachment');
+          assert.equal(file.contentSettings.cacheControl, 'no-transform');
 
           done();
         });
@@ -665,12 +677,12 @@ describe('File', function () {
             assert.notEqual(file.lastModified, null);
             assert.notEqual(file.requestId, null);
 
-            assert.equal(file.contentType, 'text/html');
-            assert.equal(file.contentEncoding, 'gzip');
-            assert.equal(file.contentLanguage, 'tr,en');
-            assert.equal(file.contentDisposition , 'attachment');
-            assert.equal(file.contentMD5, 'MDAwMDAwMDA=');
-            assert.equal(file.cacheControl, 'no-transform');
+            assert.equal(file.contentSettings.contentMD5, 'MDAwMDAwMDA=');
+            assert.equal(file.contentSettings.contentType, 'text/html');
+            assert.equal(file.contentSettings.contentEncoding, 'gzip');
+            assert.equal(file.contentSettings.contentLanguage, 'tr,en');
+            assert.equal(file.contentSettings.contentDisposition , 'attachment');
+            assert.equal(file.contentSettings.cacheControl, 'no-transform');
 
             done();
           });
@@ -742,7 +754,7 @@ describe('File', function () {
                     assert.equal(file.metadata.sourcecolor, undefined);
                     assert.equal(file.metadata.destcolor, 'White');
 
-                    fileService.abortCopyFile(targetShareName, targetDirectoryName, targetFileName, copyRes.copyId, function (copyErr) {
+                    fileService.abortCopyFile(targetShareName, targetDirectoryName, targetFileName, copyRes.copy.id, function (copyErr) {
                       assert.notEqual(copyErr, null);
                       assert.equal(copyErr.statusCode, 409);
 
@@ -815,7 +827,7 @@ describe('File', function () {
                 fileServiceTarget.startCopyFile(fileUrl, targetShareName, targetDirectoryName, targetFileName, function (copyErr, copyRes) {
                   assert.equal(copyErr, null);
                   
-                  fileServiceTarget.abortCopyFile(targetShareName, targetDirectoryName, targetFileName, copyRes.copyId, function (copyErr) {
+                  fileServiceTarget.abortCopyFile(targetShareName, targetDirectoryName, targetFileName, copyRes.copy.id, function (copyErr) {
                     // Only account owner can abort the operation
                     assert.notEqual(copyErr, null);
 
@@ -824,18 +836,17 @@ describe('File', function () {
                       assert.notEqual(copyErr, null);
                       assert.equal(copyErr.statusCode, 409);
 
-                      fileService.abortCopyFile(targetShareName, targetDirectoryName, targetFileName, copyRes.copyId, function (copyErr) {
+                      fileService.abortCopyFile(targetShareName, targetDirectoryName, targetFileName, copyRes.copy.id, function (copyErr) {
                         // Aborting completed file will result in 409
                         assert.notEqual(copyErr, null);
-                        assert.equal(copyErr.statusCode, 409);
 
                         fileService.getFileProperties(targetShareName, targetDirectoryName, targetFileName, function (getError, file, getResponse) {
                           assert.equal(getError, null);
-                          assert.equal(file.copySource, fileUrl);
-                          assert.equal(file.copyStatus, 'success');
-                          assert.equal(file.copyStatusDescription, undefined);
-                          assert.equal(file.copyId, copyRes.copyId);
-                          assert.equal(file.copyProgress, util.format('%s/%s', file.contentLength, file.contentLength));
+                          assert.equal(file.copy.source, fileUrl);
+                          assert.equal(file.copy.status, 'success');
+                          assert.equal(file.copy.statusDescription, undefined);
+                          assert.equal(file.copy.id, copyRes.copy.id);
+                          assert.equal(file.copy.progress, util.format('%s/%s', file.contentLength, file.contentLength));
                           
                           fileService.getFileToText(targetShareName, targetDirectoryName, targetFileName, function (downloadErr, text) {
                             assert.equal(downloadErr, null);

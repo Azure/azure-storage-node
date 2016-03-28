@@ -8,75 +8,73 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://xplat-secondary.blob.core.windows.net:443')
   .get('/?comp=stats&restype=service')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Fri, 04 Mar 2016 05:26:48 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Mon, 21 Mar 2016 02:52:41 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '35318049-0001-0030-52d6-75ac9c000000',
+  'x-ms-request-id': '1f5c5647-0001-0026-2e1d-836d02000000',
   'x-ms-version': '2015-04-05',
-  date: 'Fri, 04 Mar 2016 05:30:37 GMT',
+  date: 'Mon, 21 Mar 2016 02:55:45 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat-secondary.blob.core.windows.net:443')
   .get('/?comp=stats&restype=service')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Fri, 04 Mar 2016 05:26:48 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Mon, 21 Mar 2016 02:52:41 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '35318049-0001-0030-52d6-75ac9c000000',
+  'x-ms-request-id': '1f5c5647-0001-0026-2e1d-836d02000000',
   'x-ms-version': '2015-04-05',
-  date: 'Fri, 04 Mar 2016 05:30:37 GMT',
+  date: 'Mon, 21 Mar 2016 02:55:45 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat-secondary.queue.core.windows.net:443')
   .get('/?comp=stats&restype=service')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Fri, 04 Mar 2016 05:27:24 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'cache-control': 'no-cache',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Mon, 21 Mar 2016 02:53:53 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9712e7b5-0003-002f-50d6-75778c000000',
+  'x-ms-request-id': '3c2a263f-0003-003c-511d-83426d000000',
   'x-ms-version': '2015-04-05',
-  date: 'Fri, 04 Mar 2016 05:30:39 GMT',
+  date: 'Mon, 21 Mar 2016 02:55:46 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat-secondary.queue.core.windows.net:443')
   .get('/?comp=stats&restype=service')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Fri, 04 Mar 2016 05:27:24 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'cache-control': 'no-cache',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Mon, 21 Mar 2016 02:53:53 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9712e7b5-0003-002f-50d6-75778c000000',
+  'x-ms-request-id': '3c2a263f-0003-003c-511d-83426d000000',
   'x-ms-version': '2015-04-05',
-  date: 'Fri, 04 Mar 2016 05:30:39 GMT',
+  date: 'Mon, 21 Mar 2016 02:55:46 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat-secondary.table.core.windows.net:443')
   .get('/?comp=stats&restype=service')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Fri, 04 Mar 2016 05:27:42 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Mon, 21 Mar 2016 02:52:57 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fa4e4fb5-0002-0007-39d6-750033000000',
+  'x-ms-request-id': '61ece0f6-0002-0018-631d-83db23000000',
   'x-ms-version': '2015-04-05',
-  date: 'Fri, 04 Mar 2016 05:30:43 GMT',
+  date: 'Mon, 21 Mar 2016 02:55:47 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat-secondary.table.core.windows.net:443')
   .get('/?comp=stats&restype=service')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Fri, 04 Mar 2016 05:27:42 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Mon, 21 Mar 2016 02:52:57 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
-  vary: 'Origin',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fa4e4fb5-0002-0007-39d6-750033000000',
+  'x-ms-request-id': '61ece0f6-0002-0018-631d-83db23000000',
   'x-ms-version': '2015-04-05',
-  date: 'Fri, 04 Mar 2016 05:30:43 GMT',
+  date: 'Mon, 21 Mar 2016 02:55:47 GMT',
   connection: 'close' });
  return result; }]];

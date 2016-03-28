@@ -144,25 +144,18 @@ function createPolicies (callback) {
   var readWriteStartDate = new Date();
   var readWriteExpiryDate = new Date(readWriteStartDate);
   readWriteExpiryDate.setMinutes(readWriteStartDate.getMinutes() + 10);
-
-  var readWriteSharedAccessPolicy = {
-    Id: 'readwrite',
-    AccessPolicy: {
+  
+  var signedIdentifiers = {
+    readwrite: {
       Start: readWriteStartDate,
       Expiry: readWriteExpiryDate,
       Permissions: 'rw'
-    }
-  };
-
-  var readSharedAccessPolicy = {
-    Id: 'read',
-    AccessPolicy: {
+    },
+    read: {
       Expiry: readWriteStartDate,
       Permissions: 'r'
     }
   };
-
-  var signedIdentifiers = [readWriteSharedAccessPolicy, readSharedAccessPolicy];
 
   // Wait 30 seconds for the container acl to be processed
   var func = function () {

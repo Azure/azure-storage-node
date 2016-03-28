@@ -20,6 +20,12 @@ var testutil = require('../../framework/util');
 var SR = testutil.libRequire('common/util/sr');
 var TestSuite = require('../../framework/test-suite');
 
+var errors = testutil.libRequire('common/errors/errors');
+var ArgumentError = errors.ArgumentError;
+var ArgumentNullError = errors.ArgumentNullError;
+var TimeoutError = errors.TimeoutError;
+var StorageError = errors.StorageError;
+
 var azure = testutil.libRequire('azure-storage');
 
 var Constants = azure.Constants;
@@ -71,18 +77,22 @@ describe('FileDirectory', function () {
 
   describe('doesDirectoryExist', function () {
     it('should work', function (done) {
-      fileService.doesDirectoryExist(shareName, directoryName, function (existsError, exists) {
+      fileService.doesDirectoryExist(shareName, directoryName, function (existsError, existsResult) {
         assert.equal(existsError, null);
-        assert.strictEqual(exists, false);
+        assert.strictEqual(existsResult.exists, false);
 
         fileService.createDirectory(shareName, directoryName, function (createError, directory1, createDirectoryResponse) {
           assert.equal(createError, null);
           assert.notEqual(directory1, null);
           assert.equal(createDirectoryResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
-          fileService.doesDirectoryExist(shareName, directoryName, function (existsError, exists) {
+          fileService.doesDirectoryExist(shareName, directoryName, function (existsError, existsResult) {
             assert.equal(existsError, null);
-            assert.strictEqual(exists, true);
+            assert.strictEqual(existsResult.exists, true);
+            assert.notEqual(existsResult.name, null);
+            assert.notEqual(existsResult.etag, null);
+            assert.notEqual(existsResult.lastModified, null);
+            assert.notEqual(existsResult.requestId, null);
             done();
           });
         });
@@ -90,9 +100,13 @@ describe('FileDirectory', function () {
     });
 
     it('base directory', function (done) {
-      fileService.doesDirectoryExist(shareName, '', function (existsError, exists) {
+      fileService.doesDirectoryExist(shareName, '', function (existsError, existsResult) {
         assert.equal(existsError, null);
-        assert.strictEqual(exists, true);
+        assert.strictEqual(existsResult.exists, true);
+        assert.notEqual(existsResult.name, null);
+        assert.notEqual(existsResult.etag, null);
+        assert.notEqual(existsResult.lastModified, null);
+        assert.notEqual(existsResult.requestId, null);
         done();
       });
     });
@@ -101,9 +115,13 @@ describe('FileDirectory', function () {
   describe('createDirectory', function () {
     it('should detect incorrect directory names', function (done) {
       assert.throws(function () { fileService.createDirectory(shareName, null, function () { }); },
-        /Required argument directory for function createDirectory is not defined/);
+        function(err) {
+          return (err instanceof ArgumentNullError) && err.message === 'Required argument directory for function createDirectory is not defined'; 
+        });
       assert.throws(function () { fileService.createDirectory(shareName, '', function () { }); },
-        /Required argument directory for function createDirectory is not defined/);
+        function(err) {
+          return (err instanceof ArgumentNullError) && err.message === 'Required argument directory for function createDirectory is not defined'; 
+        });
       done();
     });
 
@@ -161,24 +179,36 @@ describe('FileDirectory', function () {
 
   describe('createDirectoryIfNotExists', function() {
     it('should create a directory if not exists', function (done) {
-      fileService.createDirectoryIfNotExists(shareName, directoryName, function (createError, created) {
+      fileService.createDirectoryIfNotExists(shareName, directoryName, function (createError, createResult) {
         assert.equal(createError, null);
-        assert.equal(created, true);
+        assert.equal(createResult.created, true);
+        assert.notEqual(createResult.name, null);
+        assert.notEqual(createResult.etag, null);
+        assert.notEqual(createResult.lastModified, null);
+        assert.notEqual(createResult.requestId, null);
 
-        fileService.doesDirectoryExist(shareName, directoryName, function (existsError, exists) {
+        fileService.doesDirectoryExist(shareName, directoryName, function (existsError, existsResult) {
           assert.equal(existsError, null);
-          assert.equal(exists, true);
+          assert.equal(existsResult.exists, true);
+          assert.notEqual(existsResult.name, null);
+          assert.notEqual(existsResult.etag, null);
+          assert.notEqual(existsResult.lastModified, null);
+          assert.notEqual(existsResult.requestId, null);
 
-          fileService.createDirectoryIfNotExists(shareName, directoryName, function (createError2, created2) {
+          fileService.createDirectoryIfNotExists(shareName, directoryName, function (createError2, createdResult2) {
             assert.equal(createError2, null);
-            assert.equal(created2, false);
+            assert.equal(createdResult2.created, false);
+            assert.notEqual(createdResult2.name, null);
+            assert.notEqual(createdResult2.etag, null);
+            assert.notEqual(createdResult2.lastModified, null);
+            assert.notEqual(createdResult2.requestId, null);
 
             fileService.deleteDirectory(shareName, directoryName, function (deleteError) {
               assert.equal(deleteError, null);
 
-              fileService.doesDirectoryExist(shareName, directoryName, function (existsError, exists) {
+              fileService.doesDirectoryExist(shareName, directoryName, function (existsError, existsResult) {
                 assert.equal(existsError, null);
-                assert.strictEqual(exists, false);
+                assert.strictEqual(existsResult.exists, false);
                 done();
               });
             });
@@ -189,7 +219,7 @@ describe('FileDirectory', function () {
 
     it('should throw if called without a callback', function (done) {
       assert.throws(function () { fileService.createDirectoryIfNotExists('name'); },
-        Error
+        ArgumentNullError
       );
 
       done();
@@ -198,9 +228,9 @@ describe('FileDirectory', function () {
 
   describe('deleteDirectoryIfExists', function() {
     it('should delete a directory if exists', function (done) {
-      fileService.doesDirectoryExist(shareName, directoryName, function(existsError, exists){
+      fileService.doesDirectoryExist(shareName, directoryName, function(existsError, existsResult){
         assert.equal(existsError, null);
-        assert.strictEqual(exists, false);
+        assert.strictEqual(existsResult.exists, false);
 
         fileService.deleteDirectoryIfExists(shareName, directoryName, function (deleteError, deleted) {
           assert.equal(deleteError, null);
@@ -220,9 +250,9 @@ describe('FileDirectory', function () {
               assert.equal(deleteError2, null);
               assert.strictEqual(deleted2, true);
 
-              fileService.doesDirectoryExist(shareName, directoryName, function(existsError, exists){
+              fileService.doesDirectoryExist(shareName, directoryName, function(existsError, existsResult){
                 assert.equal(existsError, null);
-                assert.strictEqual(exists, false);
+                assert.strictEqual(existsResult.exists, false);
                 done();
               });
             });
@@ -233,7 +263,7 @@ describe('FileDirectory', function () {
 
     it('should throw if called without a callback', function (done) {
       assert.throws(function () { fileService.deleteDirectoryIfExists('name'); },
-        Error
+        ArgumentNullError
       );
       done();
     });
@@ -241,9 +271,13 @@ describe('FileDirectory', function () {
 
   describe('getDirectoryProperties', function () {
     it('should work', function (done) {
-      fileService.createDirectoryIfNotExists(shareName, directoryName, function (createError, created) {
+      fileService.createDirectoryIfNotExists(shareName, directoryName, function (createError, createResult) {
         assert.equal(createError, null);
-        assert.equal(created, true);
+        assert.equal(createResult.created, true);
+        assert.notEqual(createResult.name, null);
+        assert.notEqual(createResult.etag, null);
+        assert.notEqual(createResult.lastModified, null);
+        assert.notEqual(createResult.requestId, null);
 
         fileService.getDirectoryProperties(shareName, directoryName, function (getError, directory2, getResponse) {
           assert.equal(getError, null);
@@ -320,9 +354,13 @@ describe('FileDirectory', function () {
       files = [];
       directories = [];
 
-      fileService.createDirectoryIfNotExists(shareName, directoryName, function (createError, created) {
+      fileService.createDirectoryIfNotExists(shareName, directoryName, function (createError, createResult) {
         assert.equal(createError, null);
-        assert.equal(created, true);
+        assert.equal(createResult.created, true);
+        assert.notEqual(createResult.name, null);
+        assert.notEqual(createResult.etag, null);
+        assert.notEqual(createResult.lastModified, null);
+        assert.notEqual(createResult.requestId, null);
         done();
       });
     });
