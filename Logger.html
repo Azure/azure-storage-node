@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Microsoft Azure Storage Client Library for node.js Namespace: QueueUtilities</title>
+	<title>Microsoft Azure Storage Client Library for node.js Class: Logger</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -200,13 +200,15 @@
 					
 
 
-	<h1 class="page-title">Namespace: QueueUtilities</h1>
+	<h1 class="page-title">Class: Logger</h1>
 <section>
 
 <header>
     <h2>
-    QueueUtilities
+    Logger
     </h2>
+    
+        <div class="class-description"><p>The Logger class is used to write log information.</p></div>
     
 </header>
 
@@ -216,10 +218,120 @@
 
     
         
-            <div class="description"><p>Defines enums for use with the Queue service.</p></div>
+<dt>
+    <h4 class="name" id="Logger"><span class="type-signature"></span>new Logger<span class="signature">(<span class="optional">level</span>, <span class="optional">loggerFunction</span>)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Creates a new Logger object</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
         
 
-        
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>level</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The log level. Refer to Logger.LogLevels.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>loggerFunction</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The function to write log information.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
 <dl class="details">
 	
 
@@ -246,8 +358,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="queueutilities.js.html">services/queue/queueutilities.js</a>,
-				 <a href="queueutilities.js.html#sunlight-1-line-20">line 20</a>
+				<a href="logger.js.html">common/diagnostics/logger.js</a>,
+				 <a href="logger.js.html#sunlight-1-line-27">line 27</a>
 			</li>
 		</ul>
 	</dd>
@@ -260,8 +372,20 @@
 	
 </dl>
 
+    
+    
 
-        
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
     
     </div>
 
@@ -280,15 +404,15 @@
 
         <dl>
             
-<dt class="name" id="SharedAccessPermissions">
-    <h4><span class="type-signature">&lt;static> </span>SharedAccessPermissions<span class="type-signature"> :string</span></h4>
+<dt class="name" id="LogLevels">
+    <h4><span class="type-signature">&lt;static> </span>LogLevels<span class="type-signature"> :string</span></h4>
 
     
 </dt>
 <dd>
     
     <div class="description">
-        <p>Permission types.</p>
+        <p>The available log levels.</p>
     </div>
     
 
@@ -336,7 +460,7 @@
 
         <tr>
             
-                <td class="name"><code>READ</code></td>
+                <td class="name"><code>EMERGENCY</code></td>
             
 
             <td class="type">
@@ -353,19 +477,19 @@
             
                 <td class="default">
                 
-                    r
+                    emergency
                 
                 </td>
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>System is unusable.</p></td>
         </tr>
 
 	
 
         <tr>
             
-                <td class="name"><code>ADD</code></td>
+                <td class="name"><code>ALERT</code></td>
             
 
             <td class="type">
@@ -382,19 +506,19 @@
             
                 <td class="default">
                 
-                    a
+                    alert
                 
                 </td>
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Action must be taken immediately.</p></td>
         </tr>
 
 	
 
         <tr>
             
-                <td class="name"><code>UPDATE</code></td>
+                <td class="name"><code>CRITICAL</code></td>
             
 
             <td class="type">
@@ -411,19 +535,19 @@
             
                 <td class="default">
                 
-                    u
+                    critical
                 
                 </td>
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Critical condition.</p></td>
         </tr>
 
 	
 
         <tr>
             
-                <td class="name"><code>PROCESS</code></td>
+                <td class="name"><code>ERROR</code></td>
             
 
             <td class="type">
@@ -440,12 +564,128 @@
             
                 <td class="default">
                 
-                    p
+                    error
                 
                 </td>
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Error condition.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>WARNING</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    warning
+                
+                </td>
+            
+
+            <td class="description last"><p>Warning condition.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>NOTICE</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    notice
+                
+                </td>
+            
+
+            <td class="description last"><p>Normal but significant condition.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>INFO</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    info
+                
+                </td>
+            
+
+            <td class="description last"><p>Purely informational message.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>DEBUG</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    debug
+                
+                </td>
+            
+
+            <td class="description last"><p>Application debug messages.</p></td>
         </tr>
 
 	
@@ -478,8 +718,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="queueutilities.js.html">services/queue/queueutilities.js</a>,
-				 <a href="queueutilities.js.html#sunlight-1-line-31">line 31</a>
+				<a href="logger.js.html">common/diagnostics/logger.js</a>,
+				 <a href="logger.js.html#sunlight-1-line-49">line 49</a>
 			</li>
 		</ul>
 	</dd>
@@ -487,6 +727,84 @@
 
 	
 
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<dt class="name" id="level">
+    <h4><span class="type-signature"></span>level<span class="type-signature"> :string</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The log level. Refer to the Logger.LogLevels for available log levels.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="logger.js.html">common/diagnostics/logger.js</a>,
+				 <a href="logger.js.html#sunlight-1-line-28">line 28</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+	<dt class="tag-see">See:</dt>
+	<dd class="tag-see">
+		<ul>
+			<li><a href="Logger.html#LogLevels">Logger.LogLevels</a></li>
+			</ul>
+	</dd>
 	
 
 	

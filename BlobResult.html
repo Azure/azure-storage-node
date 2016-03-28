@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Microsoft Azure Storage Client Library for node.js Namespace: BlobUtilities</title>
+	<title>Microsoft Azure Storage Client Library for node.js Class: BlobResult</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -200,13 +200,15 @@
 					
 
 
-	<h1 class="page-title">Namespace: BlobUtilities</h1>
+	<h1 class="page-title">Class: BlobResult</h1>
 <section>
 
 <header>
     <h2>
-    BlobUtilities
+    BlobResult
     </h2>
+    
+        <div class="class-description"><p>The BlobResult class is used to store the blob information.</p></div>
     
 </header>
 
@@ -216,94 +218,119 @@
 
     
         
-            <div class="description"><p>Defines constants, enums, and utility functions for use with the Blob service.</p></div>
-        
-
-        
-<dl class="details">
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="blobutilities.js.html">services/blob/blobutilities.js</a>,
-				 <a href="blobutilities.js.html#sunlight-1-line-20">line 20</a>
-			</li>
-		</ul>
-	</dd>
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-        
+<dt>
+    <h4 class="name" id="BlobResult"><span class="type-signature"></span>new BlobResult<span class="signature">(<span class="optional">container</span>, <span class="optional">blob</span>)</span><span class="type-signature"></span></h4>
     
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
-
-        <dl>
-            
-<dt class="name" id="BlobContainerPublicAccessType">
-    <h4><span class="type-signature">&lt;static> </span>BlobContainerPublicAccessType<span class="type-signature"> :string</span></h4>
-
     
 </dt>
 <dd>
     
+    
     <div class="description">
-        <p>Blobs and container public access types.</p>
+        <p>Creates a new BlobResult object.</p>
     </div>
     
 
     
-        <h5>Type:</h5>
-        <ul>
-            <li>
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>container</code></td>
+            
+
+            <td class="type">
+            
                 
 <span class="param-type">string</span>
 
 
-            </li>
-        </ul>
-    
+            
+            </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The container name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>blob</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The blob name.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
     
 <dl class="details">
 	
@@ -324,7 +351,276 @@
 		
 
 		
-		<th>Default</th>
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>container</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The container name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>blob</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The blob name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>metadata</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The metadata key/value pair.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>etag</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The etag.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>lastModified</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The date/time that the blob was last modified.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>contentLength</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The size of the blob in bytes.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>blobType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The blob type.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>requestId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The request id.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>sequenceNumber</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The current sequence number for a page blob.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>contentRange</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The content range</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>contentSettings</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The content settings.</p>
+                <h6>Properties</h6>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
 		
 
 		<th class="last">Description</th>
@@ -336,7 +632,7 @@
 
         <tr>
             
-                <td class="name"><code>OFF</code></td>
+                <td class="name"><code>contentType</code></td>
             
 
             <td class="type">
@@ -351,21 +647,15 @@
             
 
             
-                <td class="default">
-                
-                    NULL
-                
-                </td>
-            
 
-            <td class="description last"></td>
+            <td class="description last"><p>The content type.</p></td>
         </tr>
 
 	
 
         <tr>
             
-                <td class="name"><code>CONTAINER</code></td>
+                <td class="name"><code>contentEncoding</code></td>
             
 
             <td class="type">
@@ -380,21 +670,15 @@
             
 
             
-                <td class="default">
-                
-                    container
-                
-                </td>
-            
 
-            <td class="description last"></td>
+            <td class="description last"><p>The content encoding.</p></td>
         </tr>
 
 	
 
         <tr>
             
-                <td class="name"><code>BLOB</code></td>
+                <td class="name"><code>contentLanguage</code></td>
             
 
             <td class="type">
@@ -409,14 +693,410 @@
             
 
             
-                <td class="default">
-                
-                    blob
-                
-                </td>
+
+            <td class="description last"><p>The content language.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>cacheControl</code></td>
             
 
-            <td class="description last"></td>
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The cache control.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>contentDisposition</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The content disposition.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>contentMD5</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The content MD5 hash.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>lease</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The lease information.</p>
+                <h6>Properties</h6>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The lease id.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>status</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The lease status.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>state</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The lease state.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>duration</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The lease duration.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>copy</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The copy information.</p>
+                <h6>Properties</h6>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The copy id.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>status</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The copy status.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>completionTime</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The copy completion time.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>statusDescription</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The copy status description.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>progress</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The copy progress.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>source</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The copy source.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
         </tr>
 
 	
@@ -449,8 +1129,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="blobutilities.js.html">services/blob/blobutilities.js</a>,
-				 <a href="blobutilities.js.html#sunlight-1-line-81">line 81</a>
+				<a href="blobresult.js.html">services/blob/models/blobresult.js</a>,
+				 <a href="blobresult.js.html#sunlight-1-line-64">line 64</a>
 			</li>
 		</ul>
 	</dd>
@@ -463,989 +1143,33 @@
 	
 </dl>
 
+    
+    
 
+    
+
+    
+    
+    
+    
+    
+    
     
 </dd>
 
-        
-            
-<dt class="name" id="BlobListingDetails">
-    <h4><span class="type-signature">&lt;static> </span>BlobListingDetails<span class="type-signature"> :string</span></h4>
-
     
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>Blob listing details.</p>
     </div>
-    
 
     
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">string</span>
 
-
-            </li>
-        </ul>
-    
-
-    
-<dl class="details">
-	
-
-	<h5 class="subsection-title">Properties:</h5>
-
-	<dl>
-
-<table class="props table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-		<th>Default</th>
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>SNAPSHOTS</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    snapshots
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>METADATA</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    metadata
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>UNCOMMITTED_BLOBS</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    uncommittedblobs
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>COPY</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    copy
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-</dl>
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="blobutilities.js.html">services/blob/blobutilities.js</a>,
-				 <a href="blobutilities.js.html#sunlight-1-line-45">line 45</a>
-			</li>
-		</ul>
-	</dd>
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-</dd>
-
-        
-            
-<dt class="name" id="BlockListFilter">
-    <h4><span class="type-signature">&lt;static> </span>BlockListFilter<span class="type-signature"> :string</span></h4>
-
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>Type of block list to retrieve</p>
-    </div>
-    
-
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">string</span>
-
-
-            </li>
-        </ul>
-    
-
-    
-<dl class="details">
-	
-
-	<h5 class="subsection-title">Properties:</h5>
-
-	<dl>
-
-<table class="props table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-		<th>Default</th>
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>ALL</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    all
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>COMMITTED</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    committed
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>UNCOMMITTED</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    uncommitted
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-</dl>
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="blobutilities.js.html">services/blob/blobutilities.js</a>,
-				 <a href="blobutilities.js.html#sunlight-1-line-69">line 69</a>
-			</li>
-		</ul>
-	</dd>
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-</dd>
-
-        
-            
-<dt class="name" id="SequenceNumberAction">
-    <h4><span class="type-signature">&lt;static> </span>SequenceNumberAction<span class="type-signature"></span></h4>
-
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>Describes actions that can be performed on a page blob sequence number.</p>
-    </div>
     
 
     
 
     
-<dl class="details">
-	
-
-	<h5 class="subsection-title">Properties:</h5>
-
-	<dl>
-
-<table class="props table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-		<th>Default</th>
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>MAX</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    max
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>UPDATE</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    update
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>INCREMENT</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    increment
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-</dl>
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="blobutilities.js.html">services/blob/blobutilities.js</a>,
-				 <a href="blobutilities.js.html#sunlight-1-line-92">line 92</a>
-			</li>
-		</ul>
-	</dd>
-	
-
-	
-
-	
-
-	
-</dl>
-
 
     
-</dd>
 
-        
-            
-<dt class="name" id="SharedAccessPermissions">
-    <h4><span class="type-signature">&lt;static> </span>SharedAccessPermissions<span class="type-signature"> :string</span></h4>
-
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>Permission types</p>
-    </div>
-    
-
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">string</span>
-
-
-            </li>
-        </ul>
-    
-
-    
-<dl class="details">
-	
-
-	<h5 class="subsection-title">Properties:</h5>
-
-	<dl>
-
-<table class="props table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-		<th>Default</th>
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>ADD</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    a
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>READ</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    r
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>WRITE</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    w
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>DELETE</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    d
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>LIST</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    l
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-</dl>
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="blobutilities.js.html">services/blob/blobutilities.js</a>,
-				 <a href="blobutilities.js.html#sunlight-1-line-31">line 31</a>
-			</li>
-		</ul>
-	</dd>
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-</dd>
-
-        
-            
-<dt class="name" id="SnapshotDeleteOptions">
-    <h4><span class="type-signature">&lt;static> </span>SnapshotDeleteOptions<span class="type-signature"> :string</span></h4>
-
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>Deletion options for blob snapshots</p>
-    </div>
-    
-
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">string</span>
-
-
-            </li>
-        </ul>
-    
-
-    
-<dl class="details">
-	
-
-	<h5 class="subsection-title">Properties:</h5>
-
-	<dl>
-
-<table class="props table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-		<th>Default</th>
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>SNAPSHOTS_ONLY</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    only
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>BLOB_AND_SNAPSHOTS</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    include
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-</dl>
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="blobutilities.js.html">services/blob/blobutilities.js</a>,
-				 <a href="blobutilities.js.html#sunlight-1-line-58">line 58</a>
-			</li>
-		</ul>
-	</dd>
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-</dd>
-
-        </dl>
     
 
     

@@ -54,7 +54,19 @@
 					<ul class="dropdown-menu ">
 						
 						<li>
+							<a href="BlobResult.html">BlobResult</a>
+						</li>
+						
+						<li>
 							<a href="BlobService.html">BlobService</a>
+						</li>
+						
+						<li>
+							<a href="ContainerResult.html">ContainerResult</a>
+						</li>
+						
+						<li>
+							<a href="DirectoryResult.html">DirectoryResult</a>
 						</li>
 						
 						<li>
@@ -62,11 +74,31 @@
 						</li>
 						
 						<li>
+							<a href="FileResult.html">FileResult</a>
+						</li>
+						
+						<li>
 							<a href="FileService.html">FileService</a>
 						</li>
 						
 						<li>
+							<a href="LeaseResult.html">LeaseResult</a>
+						</li>
+						
+						<li>
 							<a href="LinearRetryPolicyFilter.html">LinearRetryPolicyFilter</a>
+						</li>
+						
+						<li>
+							<a href="Logger.html">Logger</a>
+						</li>
+						
+						<li>
+							<a href="QueueMessageResult.html">QueueMessageResult</a>
+						</li>
+						
+						<li>
+							<a href="QueueResult.html">QueueResult</a>
 						</li>
 						
 						<li>
@@ -75,6 +107,14 @@
 						
 						<li>
 							<a href="RetryPolicyFilter.html">RetryPolicyFilter</a>
+						</li>
+						
+						<li>
+							<a href="ShareResult.html">ShareResult</a>
+						</li>
+						
+						<li>
+							<a href="StorageServiceClient.html">StorageServiceClient</a>
 						</li>
 						
 						<li>
@@ -433,7 +473,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
         <h3 class="subsection-title">Extends</h3>
 
         <ul>
-            <li>StorageServiceClient</li>
+            <li><a href="StorageServiceClient.html">StorageServiceClient</a></li>
         </ul>
     
 
@@ -446,11 +486,606 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
     
 
     
+        <h3 class="subsection-title">Members</h3>
+
+        <dl>
+            
+<dt class="name" id="logger">
+    <h4><span class="type-signature"></span>logger<span class="type-signature"> :<a href="Logger.html">Logger</a></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The logger of the service. To change the log level of the services, set the <code><a href="Logger.html#level">logger.level</a></code>.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type"><a href="Logger.html">Logger</a></span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#logger">StorageServiceClient#logger</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-101">line 101</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        </dl>
+    
 
     
         <h3 class="subsection-title">Methods</h3>
 
         <dl>
+            
+<dt>
+    <h4 class="name" id="_initializeLocation"><span class="type-signature"></span>_initializeLocation<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Initializes the location to which the operation is being sent to.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#_initializeLocation">StorageServiceClient#_initializeLocation</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-1101">line 1101</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="_invalidLocationMode"><span class="type-signature"></span>_invalidLocationMode<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Checks whether we have the relevant host information based on the locationMode.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#_invalidLocationMode">StorageServiceClient#_invalidLocationMode</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-1156">line 1156</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="_maximumExecutionTimeExceeded"><span class="type-signature"></span>_maximumExecutionTimeExceeded<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Checks to see if the maximum execution timeout provided has been exceeded.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#_maximumExecutionTimeExceeded">StorageServiceClient#_maximumExecutionTimeExceeded</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-1170">line 1170</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="_setDefaultProxy"><span class="type-signature"></span>_setDefaultProxy<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sets the service host default proxy from the environment.
+Can be overridden by calling _setProxyUrl or _setProxy</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#_setDefaultProxy">StorageServiceClient#_setDefaultProxy</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-1062">line 1062</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="_setOperationExpiryTime"><span class="type-signature"></span>_setOperationExpiryTime<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sets the operation expiry time.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#_setOperationExpiryTime">StorageServiceClient#_setOperationExpiryTime</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-1181">line 1181</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="_validateLocation"><span class="type-signature"></span>_validateLocation<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Validates the location to which the operation is being sent to.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#_validateLocation">StorageServiceClient#_validateLocation</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-1124">line 1124</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
             
 <dt>
     <h4 class="name" id="clearMessages"><span class="type-signature"></span>clearMessages<span class="signature">(queue, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
@@ -824,7 +1459,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-921">line 921</a>
+				 <a href="queueservice.js.html#sunlight-1-line-990">line 990</a>
 			</li>
 		</ul>
 	</dd>
@@ -1023,7 +1658,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 
         <tr>
             
-                <td class="name"><code>messagettl</code></td>
+                <td class="name"><code>messageTimeToLive</code></td>
             
 
             <td class="type">
@@ -1271,7 +1906,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#errorOrResult">errorOrResult</a></span>
+<span class="param-type"><a href="global.html#errorOrResponse">errorOrResponse</a></span>
 
 
             
@@ -1290,9 +1925,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                        if an error occurs; otherwise <code>result</code> will contain
-                                                                        the result.
-                                                                        <code>response</code> will contain information related to this operation.</p></td>
+                                                                        if an error occurs; otherwise <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
 	
@@ -1329,7 +1962,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-684">line 684</a>
+				 <a href="queueservice.js.html#sunlight-1-line-688">line 688</a>
 			</li>
 		</ul>
 	</dd>
@@ -1731,7 +2364,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                        if an error occurs; otherwise <code>result</code> will contain
+                                                                        if an error occurs; otherwise <code><a href="QueueResult.html">result</a></code> will contain
                                                                         the queue information.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
@@ -1770,7 +2403,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-344">line 344</a>
+				 <a href="queueservice.js.html#sunlight-1-line-346">line 346</a>
 			</li>
 		</ul>
 	</dd>
@@ -2166,8 +2799,8 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                        if an error occurs; otherwise <code>result</code> will be true if the 
-                                                                        queue was created by this operation and false if not, and 
+                                                                        if an error occurs; otherwise <code><a href="QueueResult.html">result</a></code> will contain 
+                                                                        the queue information including <code>created</code> boolean member and 
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -2205,7 +2838,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-409">line 409</a>
+				 <a href="queueservice.js.html#sunlight-1-line-411">line 411</a>
 			</li>
 		</ul>
 	</dd>
@@ -2673,7 +3306,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-869">line 869</a>
+				 <a href="queueservice.js.html#sunlight-1-line-938">line 938</a>
 			</li>
 		</ul>
 	</dd>
@@ -3073,7 +3706,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-463">line 463</a>
+				 <a href="queueservice.js.html#sunlight-1-line-468">line 468</a>
 			</li>
 		</ul>
 	</dd>
@@ -3475,7 +4108,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-506">line 506</a>
+				 <a href="queueservice.js.html#sunlight-1-line-511">line 511</a>
 			</li>
 		</ul>
 	</dd>
@@ -3819,7 +4452,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#errorOrResult">errorOrResult</a></span>
+<span class="param-type">function</span>
 
 
             
@@ -3838,9 +4471,9 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                        if an error occurs; otherwise, <code>result</code>
-                                                                        will be true if the queue exists and false if not,
-                                                                        and <code>response</code> will contain information related to this operation.</p></td>
+                                                                        if an error occurs; otherwise, <code><a href="QueueResult.html">result</a></code> will contain
+                                                                        the queue information including <code>exists</code> boolean member.
+                                                                        <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
 	
@@ -3877,7 +4510,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-319">line 319</a>
+				 <a href="queueservice.js.html#sunlight-1-line-321">line 321</a>
 			</li>
 		</ul>
 	</dd>
@@ -4259,7 +4892,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-1179">line 1179</a>
+				 <a href="queueservice.js.html#sunlight-1-line-1247">line 1247</a>
 			</li>
 		</ul>
 	</dd>
@@ -4312,7 +4945,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
         
             
 <dt>
-    <h4 class="name" id="getMessages"><span class="type-signature"></span>getMessages<span class="signature">(queue, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getMessage"><span class="type-signature"></span>getMessage<span class="signature">(queue, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -4321,6 +4954,447 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
     
     <div class="description">
         <p>Retrieves a message from the queue and makes it invisible to other consumers.</p>
+    </div>
+    
+
+    
+    
+    
+        <h5>This:</h5>
+        <ul><li>{<a href="QueueService.html">QueueService</a>}</li></ul>
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>queue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The queue name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>visibilityTimeout</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Required if not peek only. Specifies the new visibility timeout value, in seconds, relative to server time. The new value must be larger than or equal to 0, and cannot be larger than 7 days. The visibility timeout of a message can be set to a value later than the expiry time.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>locationMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">LocationMode</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
+                                                                        Please see StorageUtilities.LocationMode for the possible values.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timeoutIntervalInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The server timeout interval, in milliseconds, to use for the request.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>maximumExecutionTimeInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+                                                                        The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                        execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>clientRequestId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>useNagleAlgorithm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+                                                                        The default value is false.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#errorOrResult">errorOrResult</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information
+                                                                        if an error occurs; otherwise <code><a href="QueueMessageResult.html">result</a></code> will contain
+                                                                        the message.
+                                                                        <code>response</code> will contain information related to this operation.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
+				 <a href="queueservice.js.html#sunlight-1-line-810">line 810</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">var azure = require(&#x27;azure-storage&#x27;);var queueService = azure.createQueueService();var queueName = &#x27;taskqueue&#x27;;queueService.getMessage(queueName, function(error, serverMessage) {  if(!error) {    &#x2F;&#x2F; Process the message in less than 30 seconds, the message    &#x2F;&#x2F; text is available in serverMessage.messagetext    queueService.deleteMessage(queueName, serverMessage.messageId, serverMessage.popReceipt, function(error) {      if(!error){          &#x2F;&#x2F; Message deleted      }    });  }});</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getMessages"><span class="type-signature"></span>getMessages<span class="signature">(queue, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Retrieve messages from the queue and makes them invisible to other consumers.</p>
     </div>
     
 
@@ -4471,39 +5545,6 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
             
 
             <td class="description last"><p>A nonzero integer value that specifies the number of messages to retrieve from the queue, up to a maximum of 32. By default, a single message is retrieved from the queue with this operation.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>peekOnly</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">bool</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Boolean value indicating wether the visibility of the message should be changed or not.</p></td>
         </tr>
 
 	
@@ -4745,7 +5786,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 
             <td class="description last"><p><code>error</code> will contain information
                                                                         if an error occurs; otherwise <code>result</code> will contain
-                                                                        the message.
+                                                                        a list of <code><a href="QueueMessageResult.html">messages</a></code>.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -4783,7 +5824,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-760">line 760</a>
+				 <a href="queueservice.js.html#sunlight-1-line-757">line 757</a>
 			</li>
 		</ul>
 	</dd>
@@ -4810,7 +5851,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">    var azure = require(&#x27;azure-storage&#x27;);var queueService = azure.createQueueService();var queueName = &#x27;taskqueue&#x27;;queueService.getMessages(queueName, function(error, serverMessages) {  if(!error) {    &#x2F;&#x2F; Process the message in less than 30 seconds, the message    &#x2F;&#x2F; text is available in serverMessages[0].messagetext    queueService.deleteMessage(queueName, serverMessages[0].messageid, serverMessages[0].popreceipt, function(error) {      if(!error){          &#x2F;&#x2F; Message deleted      }    });  }});</pre>
+    <pre class="sunlight-highlight-javascript">var azure = require(&#x27;azure-storage&#x27;);var queueService = azure.createQueueService();var queueName = &#x27;taskqueue&#x27;;queueService.getMessages(queueName, function(error, serverMessages) {  if(!error) {    &#x2F;&#x2F; Process the message in less than 30 seconds, the message    &#x2F;&#x2F; text is available in serverMessages[0].messagetext    queueService.deleteMessage(queueName, serverMessages[0].messageId, serverMessages[0].popReceipt, function(error) {      if(!error){          &#x2F;&#x2F; Message deleted      }    });  }});</pre>
 
 
     
@@ -5152,7 +6193,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                        if an error occurs; otherwise <code>result</code> will contain
+                                                                        if an error occurs; otherwise <code><a href="QueueResult.html">result</a></code> will contain
                                                                         information for the queue.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
@@ -5191,7 +6232,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-1040">line 1040</a>
+				 <a href="queueservice.js.html#sunlight-1-line-1109">line 1109</a>
 			</li>
 		</ul>
 	</dd>
@@ -5229,7 +6270,8 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
     
     
     <div class="description">
-        <p>Returns queue properties, including user-defined metadata.</p>
+        <p>Returns queue properties, including user-defined metadata.
+<strong>Note</strong> that all metadata names returned from the server will be converted to lower case by NodeJS itself as metadata is set via HTTP headers and HTTP header names are case insensitive.</p>
     </div>
     
 
@@ -5554,7 +6596,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                        if an error occurs; otherwise <code>result</code> will contain
+                                                                        if an error occurs; otherwise <code><a href="QueueResult.html">result</a></code> will contain
                                                                         the queue information.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
@@ -5593,7 +6635,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-561">line 561</a>
+				 <a href="queueservice.js.html#sunlight-1-line-567">line 567</a>
 			</li>
 		</ul>
 	</dd>
@@ -5925,7 +6967,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                      if an error occurs; otherwise, <code>errorOrResult</code>
+                                                                      if an error occurs; otherwise, <code><a href="global.html#ServiceProperties">result</a></code>
                                                                       will contain the properties and <code>response</code>
                                                                       will contain information related to this operation.</p></td>
         </tr>
@@ -6296,7 +7338,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                        if an error occurs; otherwise, <code>result</code>
+                                                                        if an error occurs; otherwise, <code><a href="global.html#ServiceStats">result</a></code>
                                                                         will contain the stats and <code>response</code>
                                                                         will contain information related to this operation.</p></td>
         </tr>
@@ -6556,7 +7598,8 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 
             
 
-            <td class="description last"><p>Include this parameter to specify that the queue's metadata be returned as part of the response body. (allowed values: '', 'metadata')</p></td>
+            <td class="description last"><p>Include this parameter to specify that the queue's metadata be returned as part of the response body. (allowed values: '', 'metadata')
+                                                                        <strong>Note</strong> that all metadata names returned from the server will be converted to lower case by NodeJS itself as metadata is set via HTTP headers and HTTP header names are case insensitive.</p></td>
         </tr>
 
 	
@@ -6765,7 +7808,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 
             <td class="description last"><p><code>error</code> will contain information
                                                                         if an error occurs; otherwise <code>result</code> will contain <code>entries</code> and <code>continuationToken</code>. 
-                                                                        <code>entries</code>  gives a list of queues and the <code>continuationToken</code> is used for the next listing operation.
+                                                                        <code>entries</code>  gives a list of <code><a href="QueueResult.html">queues</a></code> and the <code>continuationToken</code> is used for the next listing operation.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -6803,7 +7846,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-205">line 205</a>
+				 <a href="queueservice.js.html#sunlight-1-line-206">line 206</a>
 			</li>
 		</ul>
 	</dd>
@@ -7088,7 +8131,8 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 
             
 
-            <td class="description last"><p>Include this parameter to specify that the queue's metadata be returned as part of the response body. (allowed values: '', 'metadata')</p></td>
+            <td class="description last"><p>Include this parameter to specify that the queue's metadata be returned as part of the response body. (allowed values: '', 'metadata')
+                                                                        <strong>Note</strong> that all metadata names returned from the server will be converted to lower case by NodeJS itself as metadata is set via HTTP headers and HTTP header names are case insensitive.</p></td>
         </tr>
 
 	
@@ -7297,7 +8341,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 
             <td class="description last"><p><code>error</code> will contain information
                                                                         if an error occurs; otherwise <code>result</code> will contain <code>entries</code> and <code>continuationToken</code>. 
-                                                                        <code>entries</code>  gives a list of queues and the <code>continuationToken</code> is used for the next listing operation.
+                                                                        <code>entries</code>  gives a list of <code><a href="QueueResult.html">queues</a></code> and the <code>continuationToken</code> is used for the next listing operation.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -7335,7 +8379,409 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-233">line 233</a>
+				 <a href="queueservice.js.html#sunlight-1-line-235">line 235</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="peekMessage"><span class="type-signature"></span>peekMessage<span class="signature">(queue, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Retrieves a message from the front of the queue, without changing the message visibility.</p>
+    </div>
+    
+
+    
+    
+    
+        <h5>This:</h5>
+        <ul><li>{<a href="QueueService.html">QueueService</a>}</li></ul>
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>queue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The queue name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>locationMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">LocationMode</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
+                                                                        Please see StorageUtilities.LocationMode for the possible values.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timeoutIntervalInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The server timeout interval, in milliseconds, to use for the request.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>maximumExecutionTimeInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+                                                                        The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                        execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>clientRequestId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A string that represents the client request ID with a 1KB character limit.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>useNagleAlgorithm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+                                                                        The default value is false.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#errorOrResult">errorOrResult</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information
+                                                                        if an error occurs; otherwise <code><a href="QueueMessageResult.html">result</a></code> will contain
+                                                                        the message.
+                                                                        <code>response</code> will contain information related to this operation.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
+				 <a href="queueservice.js.html#sunlight-1-line-893">line 893</a>
 			</li>
 		</ul>
 	</dd>
@@ -7373,7 +8819,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
     
     
     <div class="description">
-        <p>Retrieves a message from the front of the queue, without changing the message visibility.</p>
+        <p>Retrieves messages from the front of the queue, without changing the messages visibility.</p>
     </div>
     
 
@@ -7732,7 +9178,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 
             <td class="description last"><p><code>error</code> will contain information
                                                                         if an error occurs; otherwise <code>result</code> will contain
-                                                                        the message.
+                                                                        <code><a href="QueueMessageResult.html">messages</a></code>.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
@@ -7770,7 +9216,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-829">line 829</a>
+				 <a href="queueservice.js.html#sunlight-1-line-856">line 856</a>
 			</li>
 		</ul>
 	</dd>
@@ -7800,7 +9246,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
         
             
 <dt>
-    <h4 class="name" id="setQueueAcl"><span class="type-signature"></span>setQueueAcl<span class="signature">(queue, signedIdentifiers, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="setAccountServiceProperties"><span class="type-signature"></span>setAccountServiceProperties<span class="signature">(serviceProperties, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -7808,7 +9254,8 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
     
     
     <div class="description">
-        <p>Updates the queue's ACL.</p>
+        <p>Sets the properties of a storage account’s service, including Azure Storage Analytics.
+You can also use this operation to set the default request version for all incoming requests that do not have a version specified.</p>
     </div>
     
 
@@ -7816,7 +9263,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
     
     
         <h5>This:</h5>
-        <ul><li>{<a href="QueueService.html">QueueService</a>}</li></ul>
+        <ul><li>{<a href="StorageServiceClient.html">StorageServiceClient</a>}</li></ul>
     
     
     
@@ -7847,38 +9294,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 
         <tr>
             
-                <td class="name"><code>queue</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The queue name.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>signedIdentifiers</code></td>
+                <td class="name"><code>serviceProperties</code></td>
             
 
             <td class="type">
@@ -7902,7 +9318,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 
             
 
-            <td class="description last"><p>The signed identifiers. Signed identifiers must be in an array.</p></td>
+            <td class="description last"><p>The service properties.</p></td>
         </tr>
 
 	
@@ -7990,7 +9406,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
             
 
             <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
-                                                                        Please see StorageUtilities.LocationMode for the possible values.</p></td>
+                                                                     Please see StorageUtilities.LocationMode for the possible values.</p></td>
         </tr>
 
 	
@@ -8057,8 +9473,385 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
             
 
             <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
-                                                                        The maximum execution time interval begins at the time that the client begins building the request. The maximum
-                                                                        execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+                                                                     The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                     execution time is checked intermittently while performing requests, and before executing retries.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>useNagleAlgorithm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+                                                                     The default value is false.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#errorOrResponse">errorOrResponse</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information
+                                                                     if an error occurs; otherwise, <code>response</code>
+                                                                     will contain information related to this operation.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#setAccountServiceProperties">StorageServiceClient#setAccountServiceProperties</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-945">line 945</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="setQueueAcl"><span class="type-signature"></span>setQueueAcl<span class="signature">(queue, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Updates the queue's ACL.</p>
+    </div>
+    
+
+    
+    
+    
+        <h5>This:</h5>
+        <ul><li>{<a href="QueueService.html">QueueService</a>}</li></ul>
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>queue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The queue name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>locationMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">LocationMode</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies the location mode used to decide which location the request should be sent to. 
+                                                                                        Please see StorageUtilities.LocationMode for the possible values.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timeoutIntervalInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The server timeout interval, in milliseconds, to use for the request.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>maximumExecutionTimeInMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+                                                                                        The maximum execution time interval begins at the time that the client begins building the request. The maximum
+                                                                                        execution time is checked intermittently while performing requests, and before executing retries.</p></td>
         </tr>
 
 	
@@ -8125,7 +9918,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
             
 
             <td class="description last"><p>Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
-                                                                        The default value is false.</p></td>
+                                                                                        The default value is false.</p></td>
         </tr>
 
 	
@@ -8164,9 +9957,9 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                        if an error occurs; otherwise <code>result</code> will contain
-                                                                        information for the queue.
-                                                                        <code>response</code> will contain information related to this operation.</p></td>
+                                                                                        if an error occurs; otherwise <code><a href="QueueResult.html">result</a></code> will contain
+                                                                                        information for the queue.
+                                                                                        <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
 	
@@ -8177,6 +9970,58 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
     
     
 <dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>signedIdentifiers</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object.&lt;string, <a href="global.html#AccessPolicy">AccessPolicy</a>></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The container ACL settings. See <code><a href="global.html#AccessPolicy">AccessPolicy</a></code> for detailed information.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
 	
 
 	
@@ -8203,7 +10048,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-1118">line 1118</a>
+				 <a href="queueservice.js.html#sunlight-1-line-1187">line 1187</a>
 			</li>
 		</ul>
 	</dd>
@@ -8603,7 +10448,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                        if an error occurs; otherwise <code>result</code> will contain
+                                                                        if an error occurs; otherwise <code><a href="QueueResult.html">result</a></code> will contain
                                                                         the queue information.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
@@ -8642,7 +10487,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-617">line 617</a>
+				 <a href="queueservice.js.html#sunlight-1-line-623">line 623</a>
 			</li>
 		</ul>
 	</dd>
@@ -9534,7 +11379,7 @@ A message must be in a format that can be included in an XML request with UTF-8 
             
 
             <td class="description last"><p><code>error</code> will contain information
-                                                                        if an error occurs; otherwise <code>result</code> will contain
+                                                                        if an error occurs; otherwise <code><a href="QueueMessageResult.html">result</a></code> will contain
                                                                         the message result information.
                                                                         <code>response</code> will contain information related to this operation.</p></td>
         </tr>
@@ -9573,7 +11418,7 @@ A message must be in a format that can be included in an XML request with UTF-8 
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-970">line 970</a>
+				 <a href="queueservice.js.html#sunlight-1-line-1039">line 1039</a>
 			</li>
 		</ul>
 	</dd>
@@ -9600,6 +11445,174 @@ A message must be in a format that can be included in an XML request with UTF-8 
     
 </dd>
 
+        
+            
+<dt>
+    <h4 class="name" id="withFilter"><span class="type-signature"></span>withFilter<span class="signature">(filter)</span><span class="type-signature"> &rarr; {<a href="StorageServiceClient.html">StorageServiceClient</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Associate a filtering operation with this StorageServiceClient. Filtering operations
+can include logging, automatically retrying, etc. Filter operations are objects
+that implement a method with the signature:</p>
+<pre><code>&quot;function handle (requestOptions, next)&quot;.</code></pre>
+<p>After doing its preprocessing on the request options, the method needs to call
+&quot;next&quot; passing a callback with the following signature:
+signature:</p>
+<pre><code>&quot;function (returnObject, finalCallback, next)&quot;</code></pre>
+<p>In this callback, and after processing the returnObject (the response from the
+request to the server), the callback needs to either invoke next if it exists to
+continue processing other filters or simply invoke finalCallback otherwise to end
+up the service invocation.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>filter</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The new filter object.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+	<dt class="inherited-from">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="StorageServiceClient.html#withFilter">StorageServiceClient#withFilter</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
+				 <a href="storageserviceclient.js.html#sunlight-1-line-655">line 655</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>A new service client with the filter applied.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type"><a href="StorageServiceClient.html">StorageServiceClient</a></span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
         </dl>
     
 
@@ -9621,7 +11634,7 @@ A message must be in a format that can be included in an XML request with UTF-8 
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Wed Mar 9th 2016 using the <a
+		on Mon Mar 28th 2016 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>

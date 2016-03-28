@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Microsoft Azure Storage Client Library for node.js Source: services/queue/queueutilities.js</title>
+	<title>Microsoft Azure Storage Client Library for node.js Class: QueueResult</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -194,59 +194,342 @@
 	<div class="row-fluid">
 
 		
-			<div class="span12">
-				
+		<div class="span8">
+			
 				<div id="main">
 					
 
 
-		<h1 class="page-title">Source: services/queue/queueutilities.js</h1>
-    
+	<h1 class="page-title">Class: QueueResult</h1>
 <section>
-	<article>
-		<pre
-			class="sunlight-highlight-javascript linenums">// 
-// Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//   http://www.apache.org/licenses/LICENSE-2.0
-// 
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
-// See the License for the specific language governing permissions and
-// limitations under the License.
-// 
 
-// Expose 'QueueUtilities'.
-exports = module.exports;
+<header>
+    <h2>
+    QueueResult
+    </h2>
+    
+        <div class="class-description"><p>The QueueResult class is used to store the queue information.</p></div>
+    
+</header>
 
-/**
-* Defines enums for use with the Queue service.
-* @namespace QueueUtilities
-*/
-var QueueUtilities = {
-	/**
-  * Permission types.
-  *
-  * @const
-  * @enum {string}
-  */
-  SharedAccessPermissions: {
-    READ: 'r',
-    ADD: 'a',
-    UPDATE: 'u',
-    PROCESS: 'p'
-  }
-};
+<article>
+    <div class="container-overview">
+    
 
-module.exports = QueueUtilities;</pre>
-	</article>
+    
+        
+<dt>
+    <h4 class="name" id="QueueResult"><span class="type-signature"></span>new QueueResult<span class="signature">(<span class="optional">name</span>, <span class="optional">metadata</span>)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Creates a new QueueResult object.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The queue name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>metadata</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The metadata key/value pair.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The queue name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>metadata</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The metadata key/value pair.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>approximateMessageCount</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The approximate number of messages in the queue. This number is not lower than the actual number of messages in the queue, but could be higher.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>signedIdentifiers</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object.&lt;string, <a href="global.html#AccessPolicy">AccessPolicy</a>></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The container ACL settings. See <code><a href="global.html#AccessPolicy">AccessPolicy</a></code> for detailed information.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="queueresult.js.html">services/queue/models/queueresult.js</a>,
+				 <a href="queueresult.js.html#sunlight-1-line-35">line 35</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
 </section>
-
 
 
 
@@ -265,6 +548,10 @@ module.exports = QueueUtilities;</pre>
 				</footer>
 			</div>
 
+			
+			<div class="span3">
+				<div id="toc"></div>
+			</div>
 			
 			<br clear="both">
 		</div>

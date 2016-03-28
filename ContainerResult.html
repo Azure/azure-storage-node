@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Microsoft Azure Storage Client Library for node.js Classes</title>
+	<title>Microsoft Azure Storage Client Library for node.js Class: ContainerResult</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -200,13 +200,15 @@
 					
 
 
-	<h1 class="page-title">Classes</h1>
+	<h1 class="page-title">Class: ContainerResult</h1>
 <section>
 
 <header>
     <h2>
-    
+    ContainerResult
     </h2>
+    
+        <div class="class-description"><p>The ContainerResult class is used to store the container information.</p></div>
     
 </header>
 
@@ -216,11 +218,405 @@
 
     
         
+<dt>
+    <h4 class="name" id="ContainerResult"><span class="type-signature"></span>new ContainerResult<span class="signature">(<span class="optional">container</span>, <span class="optional">publicAccessLevel</span>)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Creates a new ContainerResult object.</p>
+    </div>
+    
 
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
         
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>container</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The container name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>publicAccessLevel</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The public access level.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
 <dl class="details">
 	
 
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The container name.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>publicAccessLevel</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The public access level.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>metadata</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The metadata key/value pair.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>etag</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The etag.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>lastModified</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The date/time that the container was last modified.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>requestId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The request id.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>lease</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The lease information.</p>
+                <h6>Properties</h6>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>status</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The lease status.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>state</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The lease state.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>duration</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The lease duration.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
 	
 
 	
@@ -237,8 +633,20 @@
 
 	
 
+	
 
 
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="containerresult.js.html">services/blob/models/containerresult.js</a>,
+				 <a href="containerresult.js.html#sunlight-1-line-45">line 45</a>
+			</li>
+		</ul>
+	</dd>
 	
 
 	
@@ -248,8 +656,20 @@
 	
 </dl>
 
+    
+    
 
-        
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
     
     </div>
 
@@ -260,84 +680,7 @@
     
 
     
-        <h3 class="subsection-title">Classes</h3>
 
-        <dl>
-            <dt><a href="BlobResult.html">BlobResult</a></dt>
-            <dd></dd>
-        
-            <dt><a href="BlobService.html">BlobService</a></dt>
-            <dd></dd>
-        
-            <dt><a href="ContainerResult.html">ContainerResult</a></dt>
-            <dd></dd>
-        
-            <dt><a href="DirectoryResult.html">DirectoryResult</a></dt>
-            <dd></dd>
-        
-            <dt><a href="ExponentialRetryPolicyFilter.html">ExponentialRetryPolicyFilter</a></dt>
-            <dd></dd>
-        
-            <dt><a href="FileResult.html">FileResult</a></dt>
-            <dd></dd>
-        
-            <dt><a href="FileService.html">FileService</a></dt>
-            <dd></dd>
-        
-            <dt><a href="LeaseResult.html">LeaseResult</a></dt>
-            <dd></dd>
-        
-            <dt><a href="LinearRetryPolicyFilter.html">LinearRetryPolicyFilter</a></dt>
-            <dd></dd>
-        
-            <dt><a href="Logger.html">Logger</a></dt>
-            <dd></dd>
-        
-            <dt><a href="QueueMessageResult.html">QueueMessageResult</a></dt>
-            <dd></dd>
-        
-            <dt><a href="QueueResult.html">QueueResult</a></dt>
-            <dd></dd>
-        
-            <dt><a href="QueueService.html">QueueService</a></dt>
-            <dd></dd>
-        
-            <dt><a href="RetryPolicyFilter.html">RetryPolicyFilter</a></dt>
-            <dd></dd>
-        
-            <dt><a href="ShareResult.html">ShareResult</a></dt>
-            <dd></dd>
-        
-            <dt><a href="StorageServiceClient.html">StorageServiceClient</a></dt>
-            <dd></dd>
-        
-            <dt><a href="TableBatch.html">TableBatch</a></dt>
-            <dd></dd>
-        
-            <dt><a href="TableQuery.html">TableQuery</a></dt>
-            <dd></dd>
-        
-            <dt><a href="TableService.html">TableService</a></dt>
-            <dd></dd>
-        </dl>
-    
-
-    
-        <h3 class="subsection-title">Namespaces</h3>
-
-        <dl>
-            <dt><a href="namespaces.html#BlobUtilities"><a href="BlobUtilities.html">BlobUtilities</a></a></dt>
-            <dd></dd>
-        
-            <dt><a href="namespaces.html#FileUtilities"><a href="FileUtilities.html">FileUtilities</a></a></dt>
-            <dd></dd>
-        
-            <dt><a href="namespaces.html#QueueUtilities"><a href="QueueUtilities.html">QueueUtilities</a></a></dt>
-            <dd></dd>
-        
-            <dt><a href="namespaces.html#TableUtilities"><a href="TableUtilities.html">TableUtilities</a></a></dt>
-            <dd></dd>
-        </dl>
     
 
     

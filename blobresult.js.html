@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Microsoft Azure Storage Client Library for node.js Source: services/blob/models/blobresult.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+<div class="container-fluid">
+	<div class="navbar navbar-fixed-top navbar-inverse">
+		<div class="navbar-inner">
+			<a class="brand" href="index.html">Microsoft Azure Storage Client Library for node.js</a>
+			<ul class="nav">
+				
+				<li class="dropdown">
+					<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="BlobUtilities.html">BlobUtilities</a>
+						</li>
+						
+						<li>
+							<a href="FileUtilities.html">FileUtilities</a>
+						</li>
+						
+						<li>
+							<a href="QueueUtilities.html">QueueUtilities</a>
+						</li>
+						
+						<li>
+							<a href="TableUtilities.html">TableUtilities</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="BlobResult.html">BlobResult</a>
+						</li>
+						
+						<li>
+							<a href="BlobService.html">BlobService</a>
+						</li>
+						
+						<li>
+							<a href="ContainerResult.html">ContainerResult</a>
+						</li>
+						
+						<li>
+							<a href="DirectoryResult.html">DirectoryResult</a>
+						</li>
+						
+						<li>
+							<a href="ExponentialRetryPolicyFilter.html">ExponentialRetryPolicyFilter</a>
+						</li>
+						
+						<li>
+							<a href="FileResult.html">FileResult</a>
+						</li>
+						
+						<li>
+							<a href="FileService.html">FileService</a>
+						</li>
+						
+						<li>
+							<a href="LeaseResult.html">LeaseResult</a>
+						</li>
+						
+						<li>
+							<a href="LinearRetryPolicyFilter.html">LinearRetryPolicyFilter</a>
+						</li>
+						
+						<li>
+							<a href="Logger.html">Logger</a>
+						</li>
+						
+						<li>
+							<a href="QueueMessageResult.html">QueueMessageResult</a>
+						</li>
+						
+						<li>
+							<a href="QueueResult.html">QueueResult</a>
+						</li>
+						
+						<li>
+							<a href="QueueService.html">QueueService</a>
+						</li>
+						
+						<li>
+							<a href="RetryPolicyFilter.html">RetryPolicyFilter</a>
+						</li>
+						
+						<li>
+							<a href="ShareResult.html">ShareResult</a>
+						</li>
+						
+						<li>
+							<a href="StorageServiceClient.html">StorageServiceClient</a>
+						</li>
+						
+						<li>
+							<a href="TableBatch.html">TableBatch</a>
+						</li>
+						
+						<li>
+							<a href="TableQuery.html">TableQuery</a>
+						</li>
+						
+						<li>
+							<a href="TableService.html">TableService</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="global.html#createBlobService">createBlobService</a>
+						</li>
+						
+						<li>
+							<a href="global.html#createBlobServiceAnonymous">createBlobServiceAnonymous</a>
+						</li>
+						
+						<li>
+							<a href="global.html#createBlobServiceWithSas">createBlobServiceWithSas</a>
+						</li>
+						
+						<li>
+							<a href="global.html#createFileService">createFileService</a>
+						</li>
+						
+						<li>
+							<a href="global.html#createFileServiceWithSas">createFileServiceWithSas</a>
+						</li>
+						
+						<li>
+							<a href="global.html#createQueueService">createQueueService</a>
+						</li>
+						
+						<li>
+							<a href="global.html#createQueueServiceWithSas">createQueueServiceWithSas</a>
+						</li>
+						
+						<li>
+							<a href="global.html#createTableService">createTableService</a>
+						</li>
+						
+						<li>
+							<a href="global.html#createTableServiceWithSas">createTableServiceWithSas</a>
+						</li>
+						
+						<li>
+							<a href="global.html#generateAccountSharedAccessSignature">generateAccountSharedAccessSignature</a>
+						</li>
+						
+						<li>
+							<a href="global.html#generateDevelopmentStorageCredentials">generateDevelopmentStorageCredentials</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+
+		
+			<div class="span12">
+				
+				<div id="main">
+					
+
+
+		<h1 class="page-title">Source: services/blob/models/blobresult.js</h1>
+    
+<section>
+	<article>
+		<pre
+			class="sunlight-highlight-javascript linenums">﻿// 
+// Copyright (c) Microsoft and contributors.  All rights reserved.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// 
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+
+// Module dependencies.
+var _ = require('underscore');
+
+var azureCommon = require('./../../../common/common');
+var azureutil = azureCommon.util;
+var Constants = azureCommon.Constants;
+var HeaderConstants = Constants.HeaderConstants;
+
+/**
+* Creates a new BlobResult object.
+* @class
+* The BlobResult class is used to store the blob information.
+* 
+ * @property  {string}                      container                             The container name.
+ * @property  {string}                      blob                                  The blob name.
+ * @property  {object}                      metadata                              The metadata key/value pair.
+ * @property  {string}                      etag                                  The etag.
+ * @property  {string}                      lastModified                          The date/time that the blob was last modified.
+ * @property  {string}                      contentLength                         The size of the blob in bytes.
+ * @property  {string}                      blobType                              The blob type.
+ * @property  {string}                      requestId                             The request id.
+ * @property  {string}                      sequenceNumber                        The current sequence number for a page blob.
+ * @property  {string}                      contentRange                          The content range
+ * @property  {object}                      contentSettings                       The content settings.
+ * @property  {string}                      contentSettings.contentType           The content type.
+ * @property  {string}                      contentSettings.contentEncoding       The content encoding.
+ * @property  {string}                      contentSettings.contentLanguage       The content language.
+ * @property  {string}                      contentSettings.cacheControl          The cache control.
+ * @property  {string}                      contentSettings.contentDisposition    The content disposition.
+ * @property  {string}                      contentSettings.contentMD5            The content MD5 hash.
+ * @property  {object}                      lease                                 The lease information.
+ * @property  {string}                      lease.id                              The lease id.
+ * @property  {string}                      lease.status                          The lease status.
+ * @property  {string}                      lease.state                           The lease state.
+ * @property  {string}                      lease.duration                        The lease duration.
+ * @property  {object}                      copy                                  The copy information.
+ * @property  {string}                      copy.id                               The copy id.
+ * @property  {string}                      copy.status                           The copy status.
+ * @property  {string}                      copy.completionTime                   The copy completion time. 
+ * @property  {string}                      copy.statusDescription                The copy status description.
+ * @property  {string}                      copy.progress                         The copy progress.
+ * @property  {string}                      copy.source                           The copy source.
+ * 
+* @constructor
+* @param {string} [container]  The container name.
+* @param {string} [blob]       The blob name.
+*/
+function BlobResult(container, blob) {
+  if (container) {
+    this.container = container;
+  }
+
+  if (blob) {
+    this.blob = blob;
+  }
+}
+
+BlobResult.parse = function (blobXml) {
+  var blobResult = new BlobResult();
+  
+  for (var propertyName in blobXml) {
+    if (blobXml.hasOwnProperty(propertyName)) {
+      if (propertyName === 'Properties') {
+        //  Lift out the properties onto the main object to keep consistent across all APIs like: getBlobProperties
+        azureutil.setPropertyValueFromXML(blobResult, blobXml[propertyName], true);
+      } else if (propertyName === 'Metadata') {
+        var resultPropertyName = azureutil.normalizePropertyNameFromXML(propertyName);
+        blobResult[resultPropertyName] = {};
+        azureutil.setPropertyValueFromXML(blobResult[resultPropertyName], blobXml[propertyName], false);
+      } else {
+        blobResult[propertyName.toLowerCase()] = blobXml[propertyName];
+      }
+    }
+  }
+
+  return blobResult;
+};
+
+var headersForProperties = {
+  'lastModified': 'LAST_MODIFIED',
+  'etag': 'ETAG',
+  'sequenceNumber': 'SEQUENCE_NUMBER',
+  'blobType': 'BLOB_TYPE',
+  'contentLength': 'CONTENT_LENGTH',
+  'blobContentLength': 'BLOB_CONTENT_LENGTH',
+  'contentRange': 'CONTENT_RANGE',
+  'committedBlockCount': 'BLOB_COMMITTED_BLOCK_COUNT',
+  'requestId': 'REQUEST_ID',
+  
+  'range': 'RANGE',
+  'blobRange': 'STORAGE_RANGE',
+  'getContentMd5': 'RANGE_GET_CONTENT_MD5',
+  'acceptRanges': 'ACCEPT_RANGES',
+  'appendOffset': 'BLOB_APPEND_OFFSET',
+  
+  // ContentSettings
+  'contentSettings.contentType': 'CONTENT_TYPE',
+  'contentSettings.contentEncoding': 'CONTENT_ENCODING',
+  'contentSettings.contentLanguage': 'CONTENT_LANGUAGE',
+  'contentSettings.cacheControl': 'CACHE_CONTROL',
+  'contentSettings.contentDisposition': 'CONTENT_DISPOSITION',
+  'contentSettings.contentMD5': 'CONTENT_MD5',
+
+  // Lease
+  'lease.id': 'LEASE_ID',
+  'lease.status': 'LEASE_STATUS',
+  'lease.duration': 'LEASE_DURATION',
+  'lease.state': 'LEASE_STATE',
+
+  // Copy
+  'copy.id': 'COPY_ID',
+  'copy.status': 'COPY_STATUS',
+  'copy.source': 'COPY_SOURCE',
+  'copy.progress': 'COPY_PROGRESS',
+  'copy.completionTime': 'COPY_COMPLETION_TIME',
+  'copy.statusDescription': 'COPY_STATUS_DESCRIPTION'
+};
+
+BlobResult.prototype.getPropertiesFromHeaders = function (headers) {
+  var self = this;
+
+  var setBlobPropertyFromHeaders = function (blobProperty, headerProperty) {
+    if (!azureutil.tryGetValueChain(self, blobProperty.split('.'), null) && headers[headerProperty.toLowerCase()]) {
+      azureutil.setObjectInnerPropertyValue(self, blobProperty.split('.'), headers[headerProperty.toLowerCase()]);
+      
+      if (blobProperty === 'copy.progress') {
+        var info = azureutil.parseCopyProgress(self.copy.progress);
+        self.copy.bytesCopied = parseInt(info.bytesCopied);
+        self.copy.totalBytes = parseInt(info.totalBytes);
+      }
+    }
+  };
+
+  _.chain(headersForProperties).pairs().each(function (pair) {
+    var property = pair[0];
+    var header = HeaderConstants[pair[1]];
+    setBlobPropertyFromHeaders(property, header);
+  });
+};
+
+/**
+* This method sets the HTTP headers and is used by all methods except setBlobProperties and commitBlocks. Those 2 methods will set the x-ms-* headers using setPropertiesFromBlob.
+* @ignore
+*/
+BlobResult.setHeadersFromBlob = function (webResource, blob) {
+  var setHeaderPropertyFromBlob = function (headerProperty, blobProperty) {
+    var blobPropertyValue = azureutil.tryGetValueChain(blob, blobProperty.split('.'), null);
+    if (blobPropertyValue) {
+      webResource.withHeader(headerProperty, blobPropertyValue);
+    }
+  };
+
+  if (blob) {
+    // Content-Type
+    setHeaderPropertyFromBlob(HeaderConstants.BLOB_CONTENT_TYPE, 'contentSettings.contentType');
+
+    // Content-Encoding
+    setHeaderPropertyFromBlob(HeaderConstants.BLOB_CONTENT_ENCODING, 'contentSettings.contentEncoding');
+
+    // Content-Language
+    setHeaderPropertyFromBlob(HeaderConstants.BLOB_CONTENT_LANGUAGE, 'contentSettings.contentLanguage');
+
+    // Content-Disposition
+    setHeaderPropertyFromBlob(HeaderConstants.BLOB_CONTENT_DISPOSITION, 'contentSettings.contentDisposition');
+
+    // Cache-Control
+    setHeaderPropertyFromBlob(HeaderConstants.BLOB_CACHE_CONTROL, 'contentSettings.cacheControl');
+
+    // Blob's Content-MD5
+    setHeaderPropertyFromBlob(HeaderConstants.BLOB_CONTENT_MD5, 'contentSettings.contentMD5');
+
+    // Content-Length
+    setHeaderPropertyFromBlob(HeaderConstants.CONTENT_LENGTH, 'contentLength');
+
+    // transactional Content-MD5
+    setHeaderPropertyFromBlob(HeaderConstants.CONTENT_MD5, 'transactionalContentMD5');
+
+    // Range
+    if (!azureutil.objectIsNull(blob.rangeStart)) {
+      var range = 'bytes=' + blob.rangeStart + '-';
+
+      if (!azureutil.objectIsNull(blob.rangeEnd)) {
+        range += blob.rangeEnd;
+      }
+
+      webResource.withHeader(HeaderConstants.RANGE, range);
+    }
+
+    // Blob Type
+    setHeaderPropertyFromBlob(HeaderConstants.BLOB_TYPE, 'blobType');
+
+    // Lease id
+    setHeaderPropertyFromBlob(HeaderConstants.LEASE_ID, 'leaseId');
+
+    // Sequence number
+    setHeaderPropertyFromBlob(HeaderConstants.SEQUENCE_NUMBER, 'sequenceNumber');
+    setHeaderPropertyFromBlob(HeaderConstants.SEQUENCE_NUMBER_ACTION, 'sequenceNumberAction');
+
+    if (blob.metadata) {
+      webResource.addOptionalMetadataHeaders(blob.metadata);
+    }
+  }
+};
+
+/**
+* This method sets the x-ms-* headers and is used by setBlobProperties and commitBlocks. All other methods will set the regular HTTP headers using setHeadersFromBlob.
+* @ignore
+*/
+BlobResult.setPropertiesFromBlob = function (webResource, blob) {
+  var setHeaderPropertyFromBlob = function (headerProperty, blobProperty) {
+    var propertyValue = azureutil.tryGetValueChain(blob, blobProperty.split('.'), null);
+    if (propertyValue) {
+      webResource.withHeader(headerProperty, propertyValue);
+    }
+  };
+
+  if (blob) {
+    // Content-Type
+    setHeaderPropertyFromBlob(HeaderConstants.BLOB_CONTENT_TYPE, 'contentSettings.contentType');
+
+    // Content-Encoding
+    setHeaderPropertyFromBlob(HeaderConstants.BLOB_CONTENT_ENCODING, 'contentSettings.contentEncoding');
+
+    // Content-Language
+    setHeaderPropertyFromBlob(HeaderConstants.BLOB_CONTENT_LANGUAGE, 'contentSettings.contentLanguage');
+
+    // Content-Disposition
+    setHeaderPropertyFromBlob(HeaderConstants.BLOB_CONTENT_DISPOSITION, 'contentSettings.contentDisposition');
+
+    // Cache-Control
+    setHeaderPropertyFromBlob(HeaderConstants.BLOB_CACHE_CONTROL, 'contentSettings.cacheControl');
+
+    // Content-MD5
+    setHeaderPropertyFromBlob(HeaderConstants.BLOB_CONTENT_MD5, 'contentSettings.contentMD5');
+
+    // Lease id
+    setHeaderPropertyFromBlob(HeaderConstants.LEASE_ID, 'leaseId');
+
+    if (blob.metadata) {
+      webResource.addOptionalMetadataHeaders(blob.metadata);
+    }
+  }
+};
+
+module.exports = BlobResult;
+</pre>
+	</article>
+</section>
+
+
+
+
+
+				</div>
+
+				<div class="clearfix"></div>
+				<footer>
+					
+					
+		<span class="jsdoc-message">
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
+		on Mon Mar 28th 2016 using the <a
+			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		</span>
+				</footer>
+			</div>
+
+			
+			<br clear="both">
+		</div>
+
+	</div>
+	<!--<script src="scripts/sunlight.js"></script>-->
+	<script src="scripts/docstrap.lib.js"></script>
+	<script src="scripts/bootstrap-dropdown.js"></script>
+	<script src="scripts/toc.js"></script>
+
+	<script>
+		$( function () {
+			$( "[id*='$']" ).each( function () {
+				var $this = $( this );
+
+				$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+			} );
+
+			$( "#toc" ).toc( {
+				anchorName  : function ( i, heading, prefix ) {
+					return $( heading ).attr( "id" ) || ( prefix + i );
+				},
+				selectors   : "h1,h2,h3,h4",
+				showAndHide : false,
+				scrollTo    : "100px"
+			} );
+
+			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+			$( '.dropdown-toggle' ).dropdown();
+//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+			$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+				var $this = $( this );
+
+				var example = $this.find( "code" );
+				exampleText = example.html();
+				var lang = /{@lang (.*?)}/.exec( exampleText );
+				if ( lang && lang[1] ) {
+					exampleText = exampleText.replace( lang[0], "" );
+					example.html( exampleText );
+					lang = lang[1];
+				} else {
+					lang = "javascript";
+				}
+
+				if ( lang ) {
+
+					$this
+						.addClass( "sunlight-highlight-" + lang )
+						.addClass( "linenums" )
+						.html( example.html() );
+
+				}
+			} );
+
+			Sunlight.highlightAll( {
+				lineNumbers : true,
+				showMenu : true,
+				enableDoclinks : true
+			} );
+		} );
+	 </script>
+
+
+
+	<!--Navigation and Symbol Display-->
+	
+
+
+	<!--Google Analytics-->
+	
+
+</body>
+</html>
