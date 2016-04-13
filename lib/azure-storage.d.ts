@@ -105,6 +105,30 @@ declare module "azure-storage" {
             constructor(storageAccountOrConnectionString: string, storageAccessKey?: string, host?: string|StorageHost, sasToken?: string);
 
             /**
+            * Associate a filtering operation with this BlobService. Filtering operations
+            * can include logging, automatically retrying, etc. Filter operations are objects
+            * that implement a method with the signature:
+            *
+            *     "function handle (requestOptions, next)".
+            *
+            * After doing its preprocessing on the request options, the method needs to call
+            * "next" passing a callback with the following signature:
+            * signature:
+            *
+            *     "function (returnObject, finalCallback, next)"
+            *
+            * In this callback, and after processing the returnObject (the response from the
+            * request to the server), the callback needs to either invoke next if it exists to
+            * continue processing other filters or simply invoke finalCallback otherwise to end
+            * up the service invocation.
+            *
+            * @function BlobService#withFilter
+            * @param {Object} filter The new filter object.
+            * @return {BlobService} A new service client with the filter applied.
+            */
+            withFilter(newFilter: any): BlobService;
+
+            /**
             * Gets the service stats for a storage account’s Blob service.
             *
             * @this {BlobService}
@@ -2701,7 +2725,30 @@ declare module "azure-storage" {
           */
           constructor(storageAccountOrConnectionString?: string, storageAccessKey?: string, host?: string|StorageHost, sasToken?: string);
 
-          
+          /**
+          * Associate a filtering operation with this QueueService. Filtering operations
+          * can include logging, automatically retrying, etc. Filter operations are objects
+          * that implement a method with the signature:
+          *
+          *     "function handle (requestOptions, next)".
+          *
+          * After doing its preprocessing on the request options, the method needs to call
+          * "next" passing a callback with the following signature:
+          * signature:
+          *
+          *     "function (returnObject, finalCallback, next)"
+          *
+          * In this callback, and after processing the returnObject (the response from the
+          * request to the server), the callback needs to either invoke next if it exists to
+          * continue processing other filters or simply invoke finalCallback otherwise to end
+          * up the service invocation.
+          *
+          * @function QueueService#withFilter
+          * @param {Object} filter The new filter object.
+          * @return {QueueService} A new service client with the filter applied.
+          */
+          withFilter(newFilter: any): QueueService;
+            
           /**
           * Gets the service stats for a storage account’s Queue service.
           *
@@ -3803,6 +3850,30 @@ declare module "azure-storage" {
         export interface TableService extends StorageServiceClient {
           defaultPayloadFormat: string;
 
+          /**
+          * Associate a filtering operation with this TableService. Filtering operations
+          * can include logging, automatically retrying, etc. Filter operations are objects
+          * that implement a method with the signature:
+          *
+          *     "function handle (requestOptions, next)".
+          *
+          * After doing its preprocessing on the request options, the method needs to call
+          * "next" passing a callback with the following signature:
+          * signature:
+          *
+          *     "function (returnObject, finalCallback, next)"
+          *
+          * In this callback, and after processing the returnObject (the response from the
+          * request to the server), the callback needs to either invoke next if it exists to
+          * continue processing other filters or simply invoke finalCallback otherwise to end
+          * up the service invocation.
+          *
+          * @function TableService#withFilter
+          * @param {Object} filter The new filter object.
+          * @return {TableService} A new service client with the filter applied.
+          */
+          withFilter(newFilter: any): TableService;
+          
           /**
           * Gets the service stats for a storage account’s Table service.
           *
@@ -5289,6 +5360,30 @@ declare module "azure-storage" {
         export interface FileService extends StorageServiceClient {
           singleFileThresholdInBytes: number;
           parallelOperationThreadCount: number;
+
+          /**
+          * Associate a filtering operation with this FileService. Filtering operations
+          * can include logging, automatically retrying, etc. Filter operations are objects
+          * that implement a method with the signature:
+          *
+          *     "function handle (requestOptions, next)".
+          *
+          * After doing its preprocessing on the request options, the method needs to call
+          * "next" passing a callback with the following signature:
+          * signature:
+          *
+          *     "function (returnObject, finalCallback, next)"
+          *
+          * In this callback, and after processing the returnObject (the response from the
+          * request to the server), the callback needs to either invoke next if it exists to
+          * continue processing other filters or simply invoke finalCallback otherwise to end
+          * up the service invocation.
+          *
+          * @function FileService#withFilter
+          * @param {Object} filter The new filter object.
+          * @return {FileService} A new service client with the filter applied.
+          */
+          withFilter(newFilter: any): FileService;
 
           /**
           * Gets the properties of a storage account's File service, including Azure Storage Analytics.
