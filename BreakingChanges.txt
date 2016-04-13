@@ -1,3 +1,7 @@
+Tracking Breaking Changes in 1.0.0
+BLOB
+* The `blob` property of BlobResult has been renamed to `name` to keep consistent with other services API and the `listBlob` API.
+
 Tracking Breaking Changes in 0.10.0
 ALL
 * The `signedIdentifiers` parameter and result properties have been changed from array to hash map to avoid non unique signed identifier id.

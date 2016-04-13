@@ -206,7 +206,7 @@ describe('blob-uploaddownload-tests', function () {
       blobService.getBlobProperties(containerName, blobName, function (error, properties) {
         assert.equal(error, null);
         assert.equal(properties.container, containerName);
-        assert.equal(properties.blob, blobName);
+        assert.equal(properties.name, blobName);
 
         done();
       });
@@ -636,7 +636,7 @@ describe('blob-uploaddownload-tests', function () {
           blobService.commitBlocks(containerName, blobName, blockList, function (error4, blob) {
             assert.equal(error4, null);
             assert.equal(blob.container, containerName);
-            assert.equal(blob.blob, blobName);
+            assert.equal(blob.name, blobName);
             assert.deepEqual(blob.list, blockList);
             assert.notEqual(blob.etag, null);
             assert.notEqual(blob.lastModified, null);
@@ -676,7 +676,7 @@ describe('blob-uploaddownload-tests', function () {
           blobService.commitBlocks(containerName, blobName, blockList, function (error4, blob) {
             assert.equal(error4, null);
             assert.equal(blob.container, containerName);
-            assert.equal(blob.blob, blobName);
+            assert.equal(blob.name, blobName);
             assert.deepEqual(blob.list, blockList);
             assert.notEqual(blob.etag, null);
             assert.notEqual(blob.lastModified, null);

@@ -527,7 +527,7 @@ describe('BlobService', function () {
           assert.equal(existsError, null);
           assert.strictEqual(existsResult.exists, true);
           assert.equal(existsResult.container, containerName);
-          assert.equal(existsResult.blob, blobName);
+          assert.equal(existsResult.name, blobName);
 
           // delete if exists should succeed
           blobService.deleteBlobIfExists(containerName, blobName, function(deleteError, deleted) {

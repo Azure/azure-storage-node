@@ -2515,7 +2515,7 @@ declare module "azure-storage" {
             }
 
             export interface BlobResult {
-              blob: string;
+              name: string;
               container: string;
               metadata?: { [key: string]: string; };
               etag: string;
