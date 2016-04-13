@@ -1036,7 +1036,7 @@ declare module "azure-storage" {
             *     // Blob available in serverBlob.blob variable
             *   }
             */
-            getBlobToLocalFile(container: string, blob: string, localFileName: any, optionsOrCallback: any, callback: any): common.streams.speedsummary.SpeedSummary;;
+            getBlobToLocalFile(container: string, blob: string, localFileName: any, optionsOrCallback: any, callback: any): common.streams.speedsummary.SpeedSummary;
             /**
             * Provides a stream to read from a blob.
             *
