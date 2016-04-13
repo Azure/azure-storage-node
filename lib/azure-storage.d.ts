@@ -6783,7 +6783,7 @@ declare module "azure-storage" {
             * var retryPolicy = new azure.RetryPolicyFilter();
             * retryPolicy.retryCount = 3;
             * retryPolicy.retryInterval = 3000;
-            * retryPolicy.shouldRetry = function(statusCode, retryContext) {
+            * retryPolicy.shouldRetry = function(statusCode, retryRequestOption) {
             *
             * };
             * var blobService = azure.createBlobService().withFilter(retryPolicy);
@@ -6796,7 +6796,7 @@ declare module "azure-storage" {
             * @param {function} next           The next filter to be handled.
             */
             handle(requestOptions: any, next: any): void;
-            shouldRetry(statusCode: number, retryData: RetryPolicyFilter.IRetryContext): void;
+            shouldRetry(statusCode: number, retryData: RetryPolicyFilter.IRetryRequestOptions): void;
           }
           export module RetryPolicyFilter {
             /**
@@ -6823,7 +6823,7 @@ declare module "azure-storage" {
             }
             export interface IRetryPolicy {
               retryInterval: number;
-              shouldRetry(statusCode: number, retryData: IRetryContext): any;
+              shouldRetry(statusCode: number, retryData: IRetryRequestOptions): any;
               handle(requestOptions: any, next: any): any;
             }
           }
@@ -6868,7 +6868,7 @@ declare module "azure-storage" {
              * @param {object} retryData  The retry data.
              * @return {retryInfo} Information about whether the operation qualifies for a retry and the retryInterval.
             */
-            shouldRetry(statusCode: number, retryData: RetryPolicyFilter.IRetryContext): {
+            shouldRetry(statusCode: number, retryData: RetryPolicyFilter.IRetryRequestOptions): {
               retryInterval: number;
               retryable: boolean;
             };
@@ -6933,7 +6933,7 @@ declare module "azure-storage" {
              * @param {object} retryData  The retry data.
              * @return {retryInfo} Information about whether the operation qualifies for a retry and the retryInterval.
              */
-            shouldRetry(statusCode: number, retryData: RetryPolicyFilter.IRetryContext): {
+            shouldRetry(statusCode: number, retryData: RetryPolicyFilter.IRetryRequestOptions): {
               retryInterval: number;
               retryable: boolean;
             };
