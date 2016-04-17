@@ -4853,7 +4853,7 @@ declare module "azure-storage" {
           }
 
           export interface QueryEntitiesResult<T> {
-            entities: T[];
+            entries: T[];
             continuationToken?: TableContinuationToken;
           }
 
