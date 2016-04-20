@@ -2,6 +2,9 @@ Tracking Breaking Changes in 1.0.0
 BLOB
 * The `blob` property of BlobResult has been renamed to `name` to keep consistent with other services API and the `listBlob` API.
 
+QUEUE
+* When set `encodeMessage` of QueueService to `true`, the message text won't be decoded from base64 string anymore when getting/peeking messages as service doesn't know what's the target encoding. Instead, it will return the raw base64 string and callers will be responsbile to decode it. E.g. `new Buffer(message.messageText, 'base64').toString('utf8')` to decode to utf-8 string.
+
 Tracking Breaking Changes in 0.10.0
 ALL
 * The `signedIdentifiers` parameter and result properties have been changed from array to hash map to avoid non unique signed identifier id.
