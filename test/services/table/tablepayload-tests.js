@@ -198,6 +198,20 @@ describe('tableservice-payload-tests', function () {
       fnHelper(specialNumbersTest, options, done);
     });
   });
+  
+  describe('Data/Type Integrity', function () {
+    it('FullMetadata', function (done) {
+      var options = {};
+      options.payloadFormat = TableUtilities.PayloadFormat.FULL_METADATA;
+      fnHelper(dataTypeIntegrityTest, options, done);
+    });
+    
+    it('MinimalMetadata', function (done) {
+      var options = {};
+      options.payloadFormat = TableUtilities.PayloadFormat.MINIMAL_METADATA;
+      fnHelper(dataTypeIntegrityTest, options, done);
+    });
+  });
 
   describe('EntityResolver', function () {   
     it('FullMetadata', function (done) {
@@ -276,7 +290,11 @@ function compareProperties (propFromService, prop, expectTypeOnService) {
   // check type
   if (expectTypeOnService.val) {
     if (expectTypeOnService.stringOverride) {
-      assert.strictEqual(propFromService['$'], 'Edm.String');
+      if (prop['$'] === 'Edm.Double' && azureutil.objectIsInt(parseFloat(prop['_'])) ) {
+        assert.strictEqual(propFromService['$'], prop['$']);
+      } else {
+        assert.strictEqual(propFromService['$'], 'Edm.String');
+      }
     } else {
       assert.strictEqual(propFromService['$'], prop['$']);
     }
@@ -286,12 +304,18 @@ function compareProperties (propFromService, prop, expectTypeOnService) {
 
   // check value, make sure typeof is equal as Number.NaN should not equal 'Nan'
   if (propFromService.hasOwnProperty('$') && !expectTypeOnService.stringOverride) {
-    assert.strictEqual(typeof propFromService['_'], typeof prop['_']);
+    if (prop['$'] === 'Edm.Double' && azureutil.objectIsInt(parseFloat(prop['_'])) ) {
+      assert.strictEqual(typeof propFromService['_'], "number");
+    } else {
+      assert.strictEqual(typeof propFromService['_'], typeof prop['_']);
+    }
   }
   if (prop['$'] === 'Edm.Binary' && (!propFromService.hasOwnProperty('$') || propFromService['$'] === 'Edm.String')) {
     assert.strictEqual(new Buffer(propFromService['_'], 'base64').toString(), prop['_'].toString());
   } else if (prop['$'] === 'Edm.DateTime' && (!propFromService.hasOwnProperty('$') || propFromService['$'] === 'Edm.String')){
     assert.strictEqual((new Date(propFromService['_'])).toString(), prop['_'].toString());
+  } else if (prop['$'] === 'Edm.Double') {
+    assert.strictEqual(propFromService['_'].toString(), parseFloat(prop['_']).toString());
   } else {
     assert.strictEqual(propFromService['_'].toString(), prop['_'].toString());
   }
@@ -310,8 +334,13 @@ var expectPropType = function (options, property) {
   }
 
   if (property['$'] === 'Edm.Int32' || property['$'] === 'Edm.Double') {
-    if ((Number.isNaN(property['_']) || property['_'] === Number.POSITIVE_INFINITY || property['_'] === Number.NEGATIVE_INFINITY) && (options.payloadFormat !== TableUtilities.PayloadFormat.NO_METADATA || options.autoResolveProperties)) {
-      return {val: true, stringOverride: (options.autoResolveProperties && options.payloadFormat === TableUtilities.PayloadFormat.NO_METADATA)};
+    if ((Number.isNaN(property['_']) 
+        || property['_'] === Number.POSITIVE_INFINITY 
+        || property['_'] === Number.NEGATIVE_INFINITY
+        || (property['$'] === 'Edm.Double' && azureutil.objectIsInt(parseFloat(property['_'])) ) ) 
+      && (options.payloadFormat !== TableUtilities.PayloadFormat.NO_METADATA || options.autoResolveProperties)) {
+      var overrideDouble = (property['$'] === 'Edm.Double') && (parseFloat(property['_']).toString() !== property['_'].toString()); 
+      return {val: true, stringOverride: overrideDouble || (options.autoResolveProperties && options.payloadFormat === TableUtilities.PayloadFormat.NO_METADATA)};
     } else {
       return {val: false};
     }
@@ -379,7 +408,7 @@ function selectBaseCaseTest (options, done) {
       tableService.retrieveEntity(tableName, entityToTest.PartitionKey['_'], entityToTest.RowKey['_'], options, function (error3, entity) {
         assert.equal(error3, null);
         assert.notEqual(entity, null);
-
+      
         compareEntities(entity, entityToTest, options);
 
         done();
@@ -440,6 +469,39 @@ function specialNumbersTest (options, done) {
         assert.equal(error3, null);
         assert.notEqual(entity, null);
 
+        compareEntities(entity, entityToTest, options);
+
+        done();
+      });
+    });
+  });
+}
+
+function dataTypeIntegrityTest (options, done) {
+  tableService.createTable(tableName, function (error1) {
+    assert.equal(error1, null);
+
+    var entityToTest = {
+      PartitionKey: eg.String('partition1'),
+      RowKey: eg.String('row1'),
+      RegularDouble: eg.Double(4.81516423423),
+      NanDouble: eg.Double(Number.NaN),
+      DoubleInInt: eg.Double(10.0),
+      DoubleInIntString: eg.Double('10.0'),
+      PositiveInfinityDouble: eg.Double(Number.POSITIVE_INFINITY),
+      NegativeInfinityDouble: eg.Double(Number.NEGATIVE_INFINITY),
+      MinDouble: eg.Double(Number.MIN_VALUE),
+      MaxDouble: eg.Double(Number.MAX_VALUE),
+      MaxInt64: eg.Int64('9223372036854775807')
+    };
+
+    tableService.insertEntity(tableName, entityToTest, function (error2) {
+      assert.equal(error2, null);
+
+      tableService.retrieveEntity(tableName, entityToTest.PartitionKey['_'], entityToTest.RowKey['_'], options, function (error3, entity) {
+        assert.equal(error3, null);
+        assert.notEqual(entity, null);
+        
         compareEntities(entity, entityToTest, options);
 
         done();

@@ -1,6 +1,12 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
 be taken. This is a GA preview release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
 
+2016.05 Version 1.0.0
+
+TABLE
+* Fixed the issue that loses the data type for Edm.Double value like: 1.0.
+* Fixed the issue that loses the data precision for Edm.Int64 value when it is outisde of the range (2^53 - 1) to -(2^53 - 1).
+
 2016.03 Version 0.10.0
 
 ALL
