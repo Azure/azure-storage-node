@@ -14,7 +14,7 @@
 // limitations under the License.
 // 
 
-/// <reference path="../typings/node-uuid/node-uuid.d.ts" />
+/// <reference path="../node-uuid/node-uuid.d.ts" />
 
 declare module "azure-storage" {
   import * as events from 'events';
@@ -48,13 +48,6 @@ declare module "azure-storage" {
   interface SharedKeyGenerateQueryStringArgs extends SharedKeyGenerateSignatureArgs {
     /** The query string, if additional parameters are desired. */
     queryString?: string;
-  }
-
-  interface TableAccessPolicy extends azurestorage.common.AccessPolicy {
-    StartPk?: string;
-    EndPk?: string;
-    StartRk?: string;
-    EndRk?: string;
   }
 
   module azurestorage {
@@ -126,7 +119,7 @@ declare module "azure-storage" {
             * @param {Object} filter The new filter object.
             * @return {BlobService} A new service client with the filter applied.
             */
-            withFilter(newFilter: any): BlobService;
+            withFilter(newFilter: common.filters.IFilter): BlobService;
 
             /**
             * Gets the service stats for a storage account’s Blob service.
@@ -144,7 +137,9 @@ declare module "azure-storage" {
             * @param {errorOrResult}  callback                              `error` will contain information if an error occurs; otherwise, `result` will contain the stats and
             *                                                               `response` will contain information related to this operation.
             */
-            getServiceStats(optionsOrCallback: any, callback: any): void;
+            getServiceStats(options: common.RequestOptions, callback: ErrorOrResult<common.models.ServiceStats>): void;
+            getServiceStats(callback: ErrorOrResult<common.models.ServiceStats>): void;
+            
             /**
             * Gets the properties of a storage account’s Blob service, including Azure Storage Analytics.
             *
@@ -161,7 +156,8 @@ declare module "azure-storage" {
             * @param {errorOrResult}  callback                              `error` will contain information if an error occurs; otherwise, `result` will contain the properties
             *                                                               and `response` will contain information related to this operation.
             */
-            getServiceProperties(optionsOrCallback: any, callback: any): void;
+            getServiceProperties(options: common.RequestOptions, callback?: ErrorOrResult<common.models.ServicePropertiesResult.ServiceProperties>): void;
+            getServiceProperties(callback?: ErrorOrResult<common.models.ServicePropertiesResult.ServiceProperties>): void;
             /**
             * Sets the properties of a storage account’s Blob service, including Azure Storage Analytics.
             * You can also use this operation to set the default request version for all incoming requests that do not have a version specified.
@@ -181,7 +177,9 @@ declare module "azure-storage" {
             *                                                                      if an error occurs; otherwise, `response`
             *                                                                      will contain information related to this operation.
             */
-            setServiceProperties(serviceProperties: any, optionsOrCallback: any, callback: any): void;
+            setServiceProperties(serviceProperties: common.models.ServicePropertiesResult.ServiceProperties, options: common.RequestOptions, callback: ErrorOrResponse): void;
+            setServiceProperties(serviceProperties: common.models.ServicePropertiesResult.ServiceProperties, callback: ErrorOrResponse): void;
+            
             /**
             * Lists a segment containing a collection of container items under the specified account.
             *
@@ -203,7 +201,8 @@ declare module "azure-storage" {
             *                                                                         `entries`  gives a list of containers and the `continuationToken` is used for the next listing operation.
             *                                                                         `response` will contain information related to this operation.
             */
-            listContainersSegmented(currentToken: any, optionsOrCallback: any, callback: any): void;
+            listContainersSegmented(currentToken: common.ContinuationToken, options: BlobService.ListContainerOptions, callback: ErrorOrResult<BlobService.ListContainerResult>): void;
+            listContainersSegmented(currentToken: common.ContinuationToken, callback: ErrorOrResult<BlobService.ListContainerResult>): void;
             /**
             * Lists a segment containing a collection of container items whose names begin with the specified prefix under the specified account.
             *
@@ -213,7 +212,6 @@ declare module "azure-storage" {
             * @param {object}             [options]                                   The request options.
             * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
             *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-            * @param {string}             [options.prefix]                            Filters the results to return only containers whose name begins with the specified prefix.
             * @param {int}                [options.maxResults]                        Specifies the maximum number of containers to return per call to Azure storage.
             * @param {string}             [options.include]                           Include this parameter to specify that the container's metadata be returned as part of the response body. (allowed values: '', 'metadata')
             * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
@@ -227,7 +225,8 @@ declare module "azure-storage" {
             *                                                                         `entries`  gives a list of containers and the `continuationToken` is used for the next listing operation.
             *                                                                         `response` will contain information related to this operation.
             */
-            listContainersSegmentedWithPrefix(prefix: any, currentToken: any, optionsOrCallback: any, callback: any): void;
+            listContainersSegmentedWithPrefix(prefix: string, currentToken: common.ContinuationToken, options: BlobService.ListContainerOptions, callback: ErrorOrResult<BlobService.ListContainerResult>): void;
+            listContainersSegmentedWithPrefix(prefix: string, currentToken: common.ContinuationToken, callback: ErrorOrResult<BlobService.ListContainerResult>): void;
 
             /**
             * Checks whether or not a container exists on the service.
@@ -248,7 +247,7 @@ declare module "azure-storage" {
             *                                                                     be true if the container exists, or false if the container does not exist.
             *                                                                     `response` will contain information related to this operation.
             */
-            doesContainerExist(container: string, options: common.RequestOptions, callback: ErrorOrResult<boolean>): void;
+            doesContainerExist(container: string, options: common.RequestOptions, callback: ErrorOrResult<BlobService.ContainerResult>): void;
             
 
             /**
@@ -261,7 +260,7 @@ declare module "azure-storage" {
             *                                                                     be true if the container exists, or false if the container does not exist.
             *                                                                     `response` will contain information related to this operation.
             */
-            doesContainerExist(container: string, callback: ErrorOrResult<boolean>): void;
+            doesContainerExist(container: string, callback: ErrorOrResult<BlobService.ContainerResult>): void;
 
             /**
             * Creates a new container under the specified account.
@@ -321,7 +320,7 @@ declare module "azure-storage" {
             *   }
             * });
             */
-            createContainerIfNotExists(container: string, callback: ErrorOrResult<boolean>): void;
+            createContainerIfNotExists(container: string, callback: ErrorOrResult<BlobService.ContainerResult>): void;
             
             /**
             * Creates a new container under the specified account if the container does not exists.
@@ -354,7 +353,7 @@ declare module "azure-storage" {
             *   }
             * });
             */
-            createContainerIfNotExists(container: string, options: BlobService.CreateContainerOptions, callback: ErrorOrResult<boolean>): void;
+            createContainerIfNotExists(container: string, options: BlobService.CreateContainerOptions, callback: ErrorOrResult<BlobService.ContainerResult>): void;
 
             /**
             * Retrieves a container and its properties from a specified account.
@@ -522,6 +521,7 @@ declare module "azure-storage" {
             *                                                                             `response` will contain information related to this operation.
             */
             setContainerAcl(container: string, signedIdentifiers: {[key:string]: common.AccessPolicy}, options: BlobService.ContainerAclOptions, callback: ErrorOrResult<BlobService.ContainerAclResult>): void;
+            setContainerAcl(container: string, signedIdentifiers: {[key:string]: common.AccessPolicy}, callback: ErrorOrResult<BlobService.ContainerAclResult>): void;
 
             /**
             * Marks the specified container for deletion.
@@ -933,7 +933,8 @@ declare module "azure-storage" {
             *                                                                         information about the blob.
             *                                                                         `response` will contain information related to this operation.
             */
-            getBlobMetadata(container: string, blob: string, optionsOrCallback: any, callback: any): void;
+            getBlobMetadata(container: string, blob: string, options: BlobService.BlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): void;
+            getBlobMetadata(container: string, blob: string, callback: ErrorOrResult<BlobService.BlobResult>): void;
 
             /**
             * Clears user-defined properties for the specified blob or snapshot.
@@ -947,7 +948,7 @@ declare module "azure-storage" {
             *                                                                         information about the blob.
             *                                                                         `response` will contain information related to this operation.
             */
-            setBlobProperties(container: string, blob: string, callback: ErrorOrResult<{ container: string; blob: string; etag: string; lastModified: string; requestId: string; }>): void;
+            setBlobProperties(container: string, blob: string, callback: ErrorOrResult<BlobService.BlobResult>): void;
 
             /**
             * Sets user-defined properties for the specified blob or snapshot.
@@ -1060,7 +1061,8 @@ declare module "azure-storage" {
             *     // Blob available in serverBlob.blob variable
             *   }
             */
-            getBlobToLocalFile(container: string, blob: string, localFileName: any, optionsOrCallback: any, callback: any): common.streams.speedsummary.SpeedSummary;
+            getBlobToLocalFile(container: string, blob: string, localFileName: string, options: BlobService.GetBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
+            getBlobToLocalFile(container: string, blob: string, localFileName: string, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
             /**
             * Provides a stream to read from a blob.
             *
@@ -1093,7 +1095,8 @@ declare module "azure-storage" {
             * var writable = fs.createWriteStream(destinationFileNameTarget);
             *  blobService.createReadStream(containerName, blobName).pipe(writable);
             */
-            createReadStream(container: string, blob: string, optionsOrCallback: any, callback: any): any;
+            createReadStream(container: string, blob: string, options: BlobService.GetBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): stream.Readable;
+            createReadStream(container: string, blob: string, callback: ErrorOrResult<BlobService.BlobResult>): stream.Readable;
 
             /**
             * Downloads a blob into a stream.
@@ -1183,7 +1186,8 @@ declare module "azure-storage" {
             *                                                                         the blob information.
             *                                                                         `response` will contain information related to this operation.
             */
-            getBlobToText(container: string, blob: string, optionsOrCallback: any, callback: any): void;
+            getBlobToText(container: string, blob: string, options: BlobService.GetBlobRequestOptions, callback: BlobService.BlobToText): void;
+            getBlobToText(container: string, blob: string, callback: BlobService.BlobToText): void;
 
             /**
             * Marks the specified blob or snapshot for deletion. The blob is later deleted during garbage collection.
@@ -1288,7 +1292,7 @@ declare module "azure-storage" {
             *                                                                     be true if the blob exists, or false if the blob does not exist.
             *                                                                     `response` will contain information related to this operation.
             */
-            doesBlobExist(container: string, blob: string, callback: ErrorOrResult<boolean>): void;
+            doesBlobExist(container: string, blob: string, callback: ErrorOrResult<BlobService.BlobResult>): void;
 
             /**
             * Checks whether or not a blob exists on the service.
@@ -1310,7 +1314,7 @@ declare module "azure-storage" {
             *                                                                     be true if the blob exists, or false if the blob does not exist.
             *                                                                     `response` will contain information related to this operation.
             */
-            doesBlobExist(container: string, blob: string, options: common.RequestOptions, callback: ErrorOrResult<boolean>): void;
+            doesBlobExist(container: string, blob: string, options: common.RequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): void;
 
             /**
             * Creates a read-only snapshot of a blob.
@@ -1336,7 +1340,8 @@ declare module "azure-storage" {
             *                                                                   the ID of the snapshot.
             *                                                                   `response` will contain information related to this operation.
             */
-            createBlobSnapshot(container: string, blob: string, optionsOrCallback: any, callback: ErrorOrResult<string>): void;
+            createBlobSnapshot(container: string, blob: string, options: BlobService.BlobRequestOptions, callback: ErrorOrResult<string>): void;
+            createBlobSnapshot(container: string, blob: string, callback: ErrorOrResult<string>): void;
 
             /**
             * Starts to copy a blob to a destination within the storage account. The Copy Blob operation copies the entire committed blob.
@@ -1365,7 +1370,8 @@ declare module "azure-storage" {
             *                                                                       the blob information.
             *                                                                       `response` will contain information related to this operation.
             */
-            startCopyBlob(sourceUri: string, targetcontainer: string, targetblob: string, optionsOrCallback: any, callback: any): void;
+            startCopyBlob(sourceUri: string, targetcontainer: string, targetblob: string, options: BlobService.CopyBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): void;
+            startCopyBlob(sourceUri: string, targetcontainer: string, targetblob: string, callback: ErrorOrResult<BlobService.BlobResult>): void;
 
             /**
             * Abort a blob copy operation.
@@ -1384,12 +1390,11 @@ declare module "azure-storage" {
             *                                                                       execution time is checked intermittently while performing requests, and before executing retries.
             * @param {bool}               [options.useNagleAlgorithm]               Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
             *                                                                       The default value is false.
-            * @param {errorOrResult}  callback                                      `error` will contain information
-            *                                                                       if an error occurs; otherwise `result` will contain
-            *                                                                       the blob information.
+            * @param {ErrorOrResponse}  callback                                    `error` will contain information.
             *                                                                       `response` will contain information related to this operation.
             */
-            abortCopyBlob(container: string, blob: string, copyId: any, optionsOrCallback: any, callback: any): void;
+            abortCopyBlob(container: string, blob: string, copyId: string, options: BlobService.BlobRequestOptions, callback: ErrorOrResponse): void;
+            abortCopyBlob(container: string, blob: string, copyId: string, callback: ErrorOrResponse): void;
 
             /**
             * Retrieves a shared access signature token.
@@ -1410,7 +1415,7 @@ declare module "azure-storage" {
             * @param {string}                   [headers.contentDisposition]                  The optional value of the Content-Disposition response header to be returned when this SAS is used.
             * @return {string}                                                                The shared access signature. Note this does not contain the leading "?".
             */
-            generateSharedAccessSignature(container: string, blob: string, sharedAccessPolicy: any, headers: any): any;
+            generateSharedAccessSignature(container: string, blob: string, sharedAccessPolicy: common.SharedAccessPolicy, headers: common.ContentSettingsHeaders): string;
 
             /**
             * Retrieves a shared access signature token.
@@ -1432,7 +1437,7 @@ declare module "azure-storage" {
             * @param {string}                   [headers.contentDisposition]                  The optional value of the Content-Disposition response header to be returned when this SAS is used.
             * @return {string}                                                                The shared access signature query string. Note this string does not contain the leading "?".
             */
-            generateSharedAccessSignatureWithVersion(container: string, blob: string, sharedAccessPolicy: any, sasVersion: any, headers: any): any;
+            generateSharedAccessSignatureWithVersion(container: string, blob: string, sharedAccessPolicy: common.SharedAccessPolicy, sasVersion: string, headers: common.ContentSettingsHeaders): string;
 
             /**
             * Retrieves a blob or container URL.
@@ -1449,11 +1454,11 @@ declare module "azure-storage" {
             * var sasToken = blobService.generateSharedAccessSignature(containerName, blobName, { AccessPolicy: { Expiry: azure.date.minutesFromNow(60); } });
             * var sasUrl = blobService.getUrl(containerName, blobName, sasToken, true);
             */
-            getUrl(container: string, blob: string, sasToken: any, primary: any): url.Url;
+            getUrl(container: string, blob?: string, sasToken?: string, primary?: boolean): url.Url;
 
-            createPageBlob(container: string, blob: string, length: number, callback: Function): any;
+            createPageBlob(container: string, blob: string, length: number, callback: ErrorOrResponse): void;
 
-            createPageBlob(container: string, blob: string, length: number, options: BlobService.CreatePageBlobOptions, callback: Function): any;
+            createPageBlob(container: string, blob: string, length: number, options: BlobService.CreatePageBlobOptions, callback: ErrorOrResponse): void;
 
             /**
             * Uploads a page blob from file.
@@ -1489,7 +1494,8 @@ declare module "azure-storage" {
             * @param {errorOrResult}  callback                                            The callback function.
             * @return {SpeedSummary}
             */
-            createPageBlobFromLocalFile(container: string, blob: string, localFileName: any, optionsOrCallback: any, callback: any): any;
+            createPageBlobFromLocalFile(container: string, blob: string, localFileName: string, options: BlobService.CreatePageBlobOptions, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
+            createPageBlobFromLocalFile(container: string, blob: string, localFileName: string, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
 
             /**
             * Uploads a page blob from a stream.
@@ -1526,7 +1532,8 @@ declare module "azure-storage" {
             * @param {errorOrResult}  callback                                            The callback function.
             * @return {SpeedSummary}
             */
-            createPageBlobFromStream(container: string, blob: string, stream: any, streamLength: any, optionsOrCallback: any, callback: any): any;
+            createPageBlobFromStream(container: string, blob: string, stream: stream.Readable, streamLength: number, options: BlobService.CreatePageBlobOptions, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
+            createPageBlobFromStream(container: string, blob: string, stream: stream.Readable, streamLength: number, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
 
             /**
             * Provides a stream to write to a page blob. Assumes that the blob exists.
@@ -1558,7 +1565,10 @@ declare module "azure-storage" {
             *                                                                             execution time is checked intermittently while performing requests, and before executing retries.
             * @param {bool}               [options.useNagleAlgorithm]                     Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
             *                                                                             The default value is false.
-            * @param {errorOrResponse}  callback                                          The callback function.
+            * @param {errorOrResult}      callback                                        `error` will contain information
+            *                                                                             if an error occurs; otherwise `[result]{@link BlobResult}` will contain
+            *                                                                             the blob information.
+            *                                                                             `response` will contain information related to this operation.
             * @return {Stream}
             * @example
             * var azure = require('azure-storage');
@@ -1568,7 +1578,8 @@ declare module "azure-storage" {
             *   var stream = fs.createReadStream(fileNameTarget).pipe(blobService.createWriteStreamToExistingPageBlob(containerName, blobName));
             * });
             */
-            createWriteStreamToExistingPageBlob(container: string, blob: string, optionsOrCallback: any, callback: any): any;
+            createWriteStreamToExistingPageBlob(container: string, blob: string, options: BlobService.CreatePageBlobOptions, callback: ErrorOrResult<BlobService.BlobResult>): stream.Writable;
+            createWriteStreamToExistingPageBlob(container: string, blob: string, callback: ErrorOrResult<BlobService.BlobResult>): stream.Writable;
 
             /**
             * Provides a stream to write to a page blob. Creates the blob before writing data.
@@ -1600,7 +1611,10 @@ declare module "azure-storage" {
             *                                                                             execution time is checked intermittently while performing requests, and before executing retries.
             * @param {bool}               [options.useNagleAlgorithm]                     Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
             *                                                                             The default value is false.
-            * @param {errorOrResponse}  callback                                          The callback function.
+            * @param {errorOrResult}      callback                                        `error` will contain information
+            *                                                                             if an error occurs; otherwise `[result]{@link BlobResult}` will contain
+            *                                                                             the blob information.
+            *                                                                             `response` will contain information related to this operation.
             * @return {Stream}
             * @example
             * var azure = require('azure-storage');
@@ -1610,7 +1624,8 @@ declare module "azure-storage" {
             *   var stream = fs.createReadStream(fileNameTarget).pipe(blobService.createWriteStreamToNewPageBlob(containerName, blobName));
             * });
             */
-            createWriteStreamToNewPageBlob(container: string, blob: string, length: any, optionsOrCallback: any, callback: any): any;
+            createWriteStreamToNewPageBlob(container: string, blob: string, length: number, options: BlobService.CreatePageBlobOptions, callback: ErrorOrResult<BlobService.BlobResult>): stream.Writable;
+            createWriteStreamToNewPageBlob(container: string, blob: string, length: number, callback: ErrorOrResult<BlobService.BlobResult>): stream.Writable;
 
             /**
             * Updates a page blob from a stream.
@@ -1639,7 +1654,8 @@ declare module "azure-storage" {
             *                                                                         the blob information.
             *                                                                         `response` will contain information related to this operation.
             */
-            createPagesFromStream(container: string, blob: string, readStream: any, rangeStart: number, rangeEnd: number, optionsOrCallback: any, callback: any): void;
+            createPagesFromStream(container: string, blob: string, readStream: stream.Readable, rangeStart: number, rangeEnd: number, options: BlobService.BlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): void;
+            createPagesFromStream(container: string, blob: string, readStream: stream.Readable, rangeStart: number, rangeEnd: number, callback: ErrorOrResult<BlobService.BlobResult>): void;
 
             /**
             * Lists page ranges. Lists all of the page ranges by default, or only the page ranges over a specific range of bytes if rangeStart and rangeEnd are specified.
@@ -1666,7 +1682,8 @@ declare module "azure-storage" {
             *                                                                         the page range information.
             *                                                                         `response` will contain information related to this operation.
             */
-            listPageRanges(container: string, blob: string, optionsOrCallback: any, callback: ErrorOrResult<common.Range[]>): void;
+            listPageRanges(container: string, blob: string, options: BlobService.GetBlobRequestOptions, callback: ErrorOrResult<common.Range[]>): void;
+            listPageRanges(container: string, blob: string, callback: ErrorOrResult<common.Range[]>): void;
 
             /**
             * Clears a range of pages.
@@ -1691,7 +1708,8 @@ declare module "azure-storage" {
             *                                                                         if an error occurs; otherwise
             *                                                                         `response` will contain information related to this operation.
             */
-            clearPageRange(container: string, blob: string, rangeStart: number, rangeEnd: number, optionsOrCallback: any, callback: any): void;
+            clearPageRange(container: string, blob: string, rangeStart: number, rangeEnd: number, options: BlobService.BlobRequestOptions, callback: ErrorOrResponse): void;
+            clearPageRange(container: string, blob: string, rangeStart: number, rangeEnd: number, callback: ErrorOrResponse): void;
 
             /**
             * Resizes a page blob.
@@ -1716,7 +1734,8 @@ declare module "azure-storage" {
             *                                                                           information about the blob.
             *                                                                           `response` will contain information related to this operation.
             */
-            resizePageBlob(container: string, blob: string, size: number, optionsOrCallback: any, callback: any): void;
+            resizePageBlob(container: string, blob: string, size: number, options: BlobService.BlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): void;
+            resizePageBlob(container: string, blob: string, size: number, callback: ErrorOrResult<BlobService.BlobResult>): void;
 
             /**
             * Sets the page blob's sequence number.
@@ -1743,7 +1762,8 @@ declare module "azure-storage" {
             *                                                                           information about the blob.
             *                                                                           `response` will contain information related to this operation.
             */
-            setPageBlobSequenceNumber(container: string, blob: string, sequenceNumberAction: any, sequenceNumber: number, optionsOrCallback: any, callback: any): void;
+            setPageBlobSequenceNumber(container: string, blob: string, sequenceNumberAction: string, sequenceNumber: number, options: BlobService.BlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): void;
+            setPageBlobSequenceNumber(container: string, blob: string, sequenceNumberAction: string, sequenceNumber: number, callback: ErrorOrResult<BlobService.BlobResult>): void;
 
             /**
             * Creates a new block blob or updates the content of an existing block blob.
@@ -1778,10 +1798,14 @@ declare module "azure-storage" {
             *                                                                             execution time is checked intermittently while performing requests, and before executing retries.
             * @param {bool}               [options.useNagleAlgorithm]                     Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
             *                                                                             The default value is false.
-            * @param {errorOrResult}  callback                                            The callback function.
+            * @param {errorOrResult}      callback                                        `error` will contain information
+            *                                                                             if an error occurs; otherwise `[result]{@link BlobResult}` will contain
+            *                                                                             the blob information.
+            *                                                                             `response` will contain information related to this operation.
             * @return {SpeedSummary}
             */
-            createBlockBlobFromLocalFile(container: string, blob: string, localFileName: string, optionsOrCallback: any, callback: any): any;
+            createBlockBlobFromLocalFile(container: string, blob: string, localFileName: string, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
+            createBlockBlobFromLocalFile(container: string, blob: string, localFileName: string, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
 
             /**
             * Uploads a block blob from a stream.
@@ -1866,7 +1890,8 @@ declare module "azure-storage" {
             *                                                                             information about the blob.
             *                                                                             `response` will contain information related to this operation.
             */
-            createBlockBlobFromText(container: string, blob: string, text: string | Buffer, optionsOrCallback: any, callback: any): void;
+            createBlockBlobFromText(container: string, blob: string, text: string | Buffer, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): void;
+            createBlockBlobFromText(container: string, blob: string, text: string | Buffer, callback: ErrorOrResult<BlobService.BlobResult>): void;
 
             /**
             * Provides a stream to write to a block blob.
@@ -1898,14 +1923,18 @@ declare module "azure-storage" {
             *                                                                             execution time is checked intermittently while performing requests, and before executing retries.
             * @param {bool}               [options.useNagleAlgorithm]                     Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
             *                                                                             The default value is false.
-            * @param {errorOrResponse}  callback                                          The callback function.
+            * @param {errorOrResult}  callback                                            `error` will contain information
+            *                                                                             if an error occurs; otherwise `result` will contain
+            *                                                                             information about the blob.
+            *                                                                             `response` will contain information related to this operation.
             * @return {Stream}
             * @example
             * var azure = require('azure-storage');
             * var blobService = azure.createBlobService();
             * var stream = fs.createReadStream(fileNameTarget).pipe(blobService.createWriteStreamToBlockBlob(containerName, blobName, { blockIdPrefix: 'block' }));
             */
-            createWriteStreamToBlockBlob(container: string, blob: string, optionsOrCallback: any, callback: any): any;
+            createWriteStreamToBlockBlob(container: string, blob: string, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): void;
+            createWriteStreamToBlockBlob(container: string, blob: string, callback: ErrorOrResult<BlobService.BlobResult>): void;
 
             /**
             * Creates a new block to be committed as part of a blob.
@@ -1933,7 +1962,8 @@ declare module "azure-storage" {
             *                                                                       if an error occurs; otherwise
             *                                                                       `response` will contain information related to this operation.
             */
-            createBlockFromStream(blockId: any, container: string, blob: string, readStream: any, streamLength: any, optionsOrCallback: any, callback: any): void;
+            createBlockFromStream(blockId: string, container: string, blob: string, readStream: stream.Readable, streamLength: number, options: BlobService.BlobRequestOptions, callback: ErrorOrResponse): void;
+            createBlockFromStream(blockId: string, container: string, blob: string, readStream: stream.Readable, streamLength: number, callback: ErrorOrResponse): void;
 
             /**
             * Creates a new block to be committed as part of a blob.
@@ -1960,7 +1990,8 @@ declare module "azure-storage" {
             *                                                                       if an error occurs; otherwise
             *                                                                       `response` will contain information related to this operation.
             */
-            createBlockFromText(blockId: any, container: string, blob: string, content: any, optionsOrCallback: any, callback: any): void;
+            createBlockFromText(blockId: string, container: string, blob: string, content: string | Buffer, options: BlobService.BlobRequestOptions, callback: ErrorOrResponse): void;
+            createBlockFromText(blockId: string, container: string, blob: string, content: string | Buffer, callback: ErrorOrResponse): void;
 
             /**
             * Writes a blob by specifying the list of block IDs that make up the blob.
@@ -1995,7 +2026,8 @@ declare module "azure-storage" {
             *                                                                           the blocklist information.
             *                                                                           `response` will contain information related to this operation.
             */
-            commitBlocks(container: string, blob: string, blockList: string[], optionsOrCallback: any, callback: any): void;
+            commitBlocks(container: string, blob: string, blockList: BlobService.PutBlockListRequest, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): void;
+            commitBlocks(container: string, blob: string, blockList: BlobService.PutBlockListRequest, callback: ErrorOrResult<BlobService.BlobResult>): void;
 
             /**
             * Retrieves the list of blocks that have been uploaded as part of a block blob.
@@ -2020,17 +2052,18 @@ declare module "azure-storage" {
             *                                                                         the blocklist information.
             *                                                                         `response` will contain information related to this operation.
             */
-            listBlocks(container: string, blob: string, blocklisttype: any, optionsOrCallback: any, callback: any): void;
+            listBlocks(container: string, blob: string, blocklisttype: string, options: BlobService.BlobRequestOptions, callback: ErrorOrResult<BlobService.BlockListResult>): void;
+            listBlocks(container: string, blob: string, blocklisttype: string, callback: ErrorOrResult<BlobService.BlockListResult>): void;
 
             /**
             * Generate a random block id prefix
             */
-            generateBlockIdPrefix(): any;
+            generateBlockIdPrefix(): string;
 
             /**
             * Get a block id according to prefix and block number
             */
-            getBlockId(prefix: any, number: any): string;
+            getBlockId(prefix: string, number: number | string): string;
 
             /**
             * Creates an empty append blob. If the blob already exists on the service, it will be overwritten.
@@ -2041,7 +2074,6 @@ declare module "azure-storage" {
             * @param {string}             blob                                          The blob name.
             * @param {object}             [options]                                     The request options.
             * @param {object}             [options.metadata]                            The metadata key/value pairs.
-            * @param {string}             [options.leaseId]                             The target blob lease identifier.
             * @param {string}             [options.leaseId]                             The target blob lease identifier.
             * @param {object}             [options.contentSettings]                     The content settings of the blob.
             * @param {string}             [options.contentSettings.contentType]         The MIME content type of the blob. The default type is application/octet-stream.
@@ -2064,7 +2096,8 @@ declare module "azure-storage" {
             *                                                                           if an error occurs; otherwise 
             *                                                                           `response` will contain information related to this operation.
             */
-            createOrReplaceAppendBlob(container: string, blob: string, optionsOrCallback: any, callback: any): void;
+            createOrReplaceAppendBlob(container: string, blob: string, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResponse): void;
+            createOrReplaceAppendBlob(container: string, blob: string, callback: ErrorOrResponse): void;
 
             /**
             * Creates a new append blob from a local file. If the blob already exists on the service, it will be overwritten.
@@ -2103,7 +2136,8 @@ declare module "azure-storage" {
             * @param {errorOrResult}      callback                                      The callback function.
             * @return {SpeedSummary}
             */
-            createAppendBlobFromLocalFile(container: string, blob: string, localFileName: string, optionsOrCallback: any, callback: any): any;
+            createAppendBlobFromLocalFile(container: string, blob: string, localFileName: string, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
+            createAppendBlobFromLocalFile(container: string, blob: string, localFileName: string, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
             
             /**
             * Uploads an append blob from a stream. If the blob already exists on the service, it will be overwritten.
@@ -2145,7 +2179,8 @@ declare module "azure-storage" {
             * @param {errorOrResult}      callback                                      The callback function.
             * @return {SpeedSummary}
             */
-            createAppendBlobFromStream(container: string, blob: string, stream: any, streamLength: number, optionsOrCallback: any, callback: any): any;
+            createAppendBlobFromStream(container: string, blob: string, stream: stream.Readable, streamLength: number, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
+            createAppendBlobFromStream(container: string, blob: string, stream: stream.Readable, streamLength: number, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
 
             /**
             * Uploads an append blob from a text string. If the blob already exists on the service, it will be overwritten.
@@ -2187,7 +2222,8 @@ declare module "azure-storage" {
             *                                                                           information about the blob.
             *                                                                           `response` will contain information related to this operation.
             */
-            createAppendBlobFromText(container: string, blob: string, text: string | Buffer, optionsOrCallback: any, callback: any): void;
+            createAppendBlobFromText(container: string, blob: string, text: string | Buffer, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): void;
+            createAppendBlobFromText(container: string, blob: string, text: string | Buffer, callback: ErrorOrResult<BlobService.BlobResult>): void;
 
             /**
             * Provides a stream to write to a new append blob. If the blob already exists on the service, it will be overwritten.
@@ -2222,14 +2258,18 @@ declare module "azure-storage" {
             * @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
             * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
             *                                                                           The default value is false.
-            * @param {errorOrResponse}    callback                                      The callback function.
+            * @param {errorOrResult}      callback                                      `error` will contain information
+            *                                                                           if an error occurs; otherwise `result` will contain
+            *                                                                           information about the blob.
+            *                                                                           `response` will contain information related to this operation.
             * @return {Stream}
             * @example
             * var azure = require('azure-storage');
             * var blobService = azure.createBlobService();
             * var stream = fs.createReadStream(fileNameTarget).pipe(blobService.createWriteStreamToAppendBlob(containerName, blobName));
             */
-            createWriteStreamToNewAppendBlob(container: string, blob: string, optionsOrCallback: any, callback: any): any;
+            createWriteStreamToNewAppendBlob(container: string, blob: string, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): stream.Writable;
+            createWriteStreamToNewAppendBlob(container: string, blob: string, callback: ErrorOrResult<BlobService.BlobResult>): stream.Writable;
 
             /**
             * Provides a stream to write to an existing append blob. Assumes that the blob exists. 
@@ -2264,14 +2304,18 @@ declare module "azure-storage" {
             * @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
             * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
             *                                                                           The default value is false.
-            * @param {errorOrResponse}    callback                                      The callback function.
+            * @param {errorOrResult}      callback                                      `error` will contain information
+            *                                                                           if an error occurs; otherwise `result` will contain
+            *                                                                           information about the blob.
+            *                                                                           `response` will contain information related to this operation.
             * @return {Stream}
             * @example
             * var azure = require('azure-storage');
             * var blobService = azure.createBlobService();
             * var stream = fs.createReadStream(fileNameTarget).pipe(blobService.createWriteStreamToAppendBlob(containerName, blobName));
             */
-            createWriteStreamToExistingAppendBlob(container: string, blob: string, optionsOrCallback: any, callback: any): any;
+            createWriteStreamToExistingAppendBlob(container: string, blob: string, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): stream.Writable;
+            createWriteStreamToExistingAppendBlob(container: string, blob: string, callback: ErrorOrResult<BlobService.BlobResult>): stream.Writable;
 
             /**
             * Appends to an append blob from a local file. Assumes the blob already exists on the service.
@@ -2307,7 +2351,8 @@ declare module "azure-storage" {
             * @param {errorOrResult}      callback                                      The callback function.
             * @return {SpeedSummary}
             */
-            appendFromLocalFile(container: string, blob: string, localFileName: string, optionsOrCallback: any, callback: any): any;
+            appendFromLocalFile(container: string, blob: string, localFileName: string, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
+            appendFromLocalFile(container: string, blob: string, localFileName: string, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
 
             /**
             * Appends to an append blob from a stream. Assumes the blob already exists on the service.
@@ -2346,7 +2391,8 @@ declare module "azure-storage" {
             * @param {errorOrResult}      callback                                      The callback function.
             * @return {SpeedSummary}
             */
-            appendFromStream(container: string, blob: string, stream: any, streamLength: number, optionsOrCallback: any, callback: any): any;
+            appendFromStream(container: string, blob: string, stream: stream.Readable, streamLength: number, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;;
+            appendFromStream(container: string, blob: string, stream: stream.Readable, streamLength: number, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;;
 
             /**
             * Appends to an append blob from a text string. Assumes the blob already exists on the service.
@@ -2385,7 +2431,8 @@ declare module "azure-storage" {
             *                                                                           information about the blob.
             *                                                                           `response` will contain information related to this operation.
             */
-            appendFromText(container: string, blob: string, text: string, optionsOrCallback: any, callback: any): void;
+            appendFromText(container: string, blob: string, text: string, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): void;
+            appendFromText(container: string, blob: string, text: string, callback: ErrorOrResult<BlobService.BlobResult>): void;
 
             /**
             * Creates a new block from a read stream to be appended to an append blob.
@@ -2413,11 +2460,13 @@ declare module "azure-storage" {
             * @param {string}             [options.clientRequestId]                 A string that represents the client request ID with a 1KB character limit.
             * @param {bool}               [options.useNagleAlgorithm]               Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
             *                                                                       The default value is false.
-            * @param {errorOrResponse}    callback                                  `error` will contain information
-            *                                                                       if an error occurs; otherwise 
+            * @param {errorOrResult}      callback                                  `error` will contain information
+            *                                                                       if an error occurs; otherwise `result` will contain
+            *                                                                       information about the blob.
             *                                                                       `response` will contain information related to this operation.
             */
-            appendBlockFromStream(container: string, blob: string, readStream: any, streamLength: number, optionsOrCallback: any, callback: any): void;
+            appendBlockFromStream(container: string, blob: string, readStream: stream.Readable, streamLength: number, options: BlobService.AppendBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): void;
+            appendBlockFromStream(container: string, blob: string, readStream: stream.Readable, streamLength: number, callback: ErrorOrResult<BlobService.BlobResult>): void;
 
             /**
             * Creates a new block from a text to be appended to an append blob.
@@ -2444,11 +2493,13 @@ declare module "azure-storage" {
             * @param {string}             [options.clientRequestId]                 A string that represents the client request ID with a 1KB character limit.
             * @param {bool}               [options.useNagleAlgorithm]               Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
             *                                                                       The default value is false.
-            * @param {errorOrResponse}    callback                                  `error` will contain information
-            *                                                                       if an error occurs; otherwise 
+            * @param {errorOrResult}      callback                                  `error` will contain information
+            *                                                                       if an error occurs; otherwise `result` will contain
+            *                                                                       information about the blob.
             *                                                                       `response` will contain information related to this operation.
             */
-            appendBlockFromText(container: string, blob: string, content: string | Buffer, optionsOrCallback: any, callback: any): void;
+            appendBlockFromText(container: string, blob: string, content: string | Buffer, options: BlobService.AppendBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): void;
+            appendBlockFromText(container: string, blob: string, content: string | Buffer, callback: ErrorOrResult<BlobService.BlobResult>): void;
 
             /**
             * The callback for {BlobService~getBlobToText}.
@@ -2465,12 +2516,17 @@ declare module "azure-storage" {
               metadata?: Map<string>;
               publicAccessLevel?: string;
             }
+            
+            export interface ListContainerOptions extends common.RequestOptions {
+              maxResults?: number;
+              include?: string;
+            }
 
-            export interface ConditionalRequestOption {
+            export interface ConditionalRequestOption extends common.RequestOptions {
               accessConditions?: AccessConditions;
             }
 
-            export interface ContainerOptions extends common.RequestOptions, ConditionalRequestOption {
+            export interface ContainerOptions extends ConditionalRequestOption {
               leaseId?: string;
             }
 
@@ -2478,7 +2534,7 @@ declare module "azure-storage" {
               publicAccessLevel?: string;
             }
 
-            export interface LeaseRequestOptions extends common.RequestOptions, ConditionalRequestOption {
+            export interface LeaseRequestOptions extends ConditionalRequestOption {
             }
 
             export interface AcquireLeaseRequestOptions extends LeaseRequestOptions {
@@ -2535,11 +2591,19 @@ declare module "azure-storage" {
                 duration?: string;
                 status: string;
                 state: string;
-              }
+              };
+              exists?: boolean;
+              created?: boolean;
+            }
+
+            export interface ListContainerResult {
+              continuationToken: common.ContinuationToken;
+              entries: ContainerResult[];
             }
 
             export interface BlobResult {
               name: string;
+              snapshot?: string;
               container: string;
               metadata?: { [key: string]: string; };
               etag: string;
@@ -2549,18 +2613,20 @@ declare module "azure-storage" {
               requestId: string;
               sequenceNumber?: string;
               contentRange?: string;
+              committedBlockCount?: string;
+              appendOffset? : string;
               contentSettings?: {
-                contentType: string;
+                contentType?: string;
                 contentEncoding?: string;
                 contentLanguage?: string;
                 cacheControl?: string;
                 contentDisposition?: string;
-                contentMD5: string;
+                contentMD5?: string;
               }
               lease?: {
                 id?: string;
-                status: string;
-                state: string;
+                status?: string;
+                state?: string;
                 duration?: string;
               }
               copy?: {
@@ -2570,7 +2636,9 @@ declare module "azure-storage" {
                 statusDescription?: string;
                 progress?: string;
                 source?: string;
-              }
+              },
+              exists?: boolean;
+              created?: boolean;
             }
 
             export interface CreatePageBlobOptions {
@@ -2593,12 +2661,12 @@ declare module "azure-storage" {
               useNagleAlgorithm?: boolean;
             }
 
-            export interface BlobRequestOptions extends common.RequestOptions, ConditionalRequestOption {
+            export interface BlobRequestOptions extends ConditionalRequestOption {
               snapshotId?: string; // TODO: Not valid for most write requests...
               leaseId?: string;
             }
 
-            export interface AppendBlobRequestOptions extends common.RequestOptions, ConditionalRequestOption {
+            export interface AppendBlobRequestOptions extends ConditionalRequestOption, BlobRequestOptions {
               absorbConditionalErrorsOnRetry?: boolean;
               maxBlobSize?: number;
               appendPosition?: number;
@@ -2622,6 +2690,13 @@ declare module "azure-storage" {
               disableContentMD5Validation?: boolean;
             }
 
+            export interface CopyBlobRequestOptions extends BlobRequestOptions {
+              metadata?: { [k: string]: string; };
+              sourceLeaseId?: string;
+              accessConditions?: AccessConditions;
+              sourceAccessConditions?: AccessConditions;
+            }
+
             export interface DeleteBlobRequestOptions extends BlobRequestOptions {
               deleteSnapshots?: string;
             }
@@ -2643,10 +2718,30 @@ declare module "azure-storage" {
                 contentMD5?: string;
               }
             }
+            
+            export interface BlobToText {
+              (error: Error, text: string, result: BlobResult, response: ServiceResponse): void
+            }
 
             export interface ListPageRangesRequestOptions extends common.RequestOptions {
               rangeStart?: number;
               rangeEnd?: number;
+            }
+            
+            export interface BlockListResult {
+              CommittedBlocks?: Block[];
+              UncommittedBlocks?: Block[];
+            }
+            
+            export interface PutBlockListRequest {
+              LatestBlocks?: string[];
+              CommittedBlocks?: string[];
+              UncommittedBlocks?: string[];
+            }
+            
+            export interface Block {
+              Name?: string;
+              Size?: string;
             }
           }
         }
@@ -2693,11 +2788,11 @@ declare module "azure-storage" {
       module queue {
         export class QueueService extends StorageServiceClient {
           /**
-           * @property {boolean} QueueService#encodeMessage
+           * @property {boolean} QueueService#queueMessagEncoder
            * @defaultvalue {boolean} true
            * A flag indicating whether the message should be base-64 encoded. Default is true.
            */
-          encodeMessage: boolean;
+          messageEncoder: QueueMessageEncoder;
 
           /**
           * Creates a new QueueService object.
@@ -2707,7 +2802,7 @@ declare module "azure-storage" {
           * For more information on using the Queue Service, as well as task focused information on using it from a Node.js application, see
           * [How to Use the Queue Service from Node.js](http://azure.microsoft.com/en-us/documentation/articles/storage-nodejs-how-to-use-queues/).
           * The following defaults can be set on the Queue service.
-          * encodeMessage                                       A flag indicating whether the message should be base-64 encoded. Default is true.
+          * messageEncoder                                      The message encoder to specify how QueueService encodes and decodes the queue message. Default is `[TextXmlQueueMessageEncoder]{@link TextXmlQueueMessageEncoder}`.
           * defaultTimeoutIntervalInMs                          The default timeout interval, in milliseconds, to use for request made via the Queue service.
           * defaultMaximumExecutionTimeInMs                     The default maximum execution time across all potential retries, for requests made via the Queue service.
           * defaultLocationMode                                 The default location mode for requests made via the Queue service.
@@ -2747,7 +2842,7 @@ declare module "azure-storage" {
           * @param {Object} filter The new filter object.
           * @return {QueueService} A new service client with the filter applied.
           */
-          withFilter(newFilter: any): QueueService;
+          withFilter(newFilter: common.filters.IFilter): QueueService;
             
           /**
           * Gets the service stats for a storage account’s Queue service.
@@ -2948,7 +3043,7 @@ declare module "azure-storage" {
           *                                                                         will be true if the queue exists and false if not,
           *                                                                         and `response` will contain information related to this operation.
           */
-          doesQueueExist(queue: string, options: common.RequestOptions, callback?: ErrorOrResult<boolean>): void;
+          doesQueueExist(queue: string, options: common.RequestOptions, callback?: ErrorOrResult<QueueService.QueueResult>): void;
 
           /**
           * Checks to see if a queue exists.
@@ -2962,7 +3057,7 @@ declare module "azure-storage" {
           *                                                                         will be true if the queue exists and false if not,
           *                                                                         and `response` will contain information related to this operation.
           */
-          doesQueueExist(queue: string, callback?: ErrorOrResult<boolean>): void;
+          doesQueueExist(queue: string, callback?: ErrorOrResult<QueueService.QueueResult>): void;
 
           /**
           * Creates a new queue under the given account.
@@ -3033,7 +3128,7 @@ declare module "azure-storage" {
           *   }
           * }); 
           */
-          createQueueIfNotExists(queue: string, optionsOrCallback: QueueService.CreateQueueRequestOptions, callback?: ErrorOrResult<boolean>): void;
+          createQueueIfNotExists(queue: string, optionsOrCallback: QueueService.CreateQueueRequestOptions, callback?: ErrorOrResult<QueueService.QueueResult>): void;
 
           /**
           * Creates a new queue under the given account if it doesn't exist.
@@ -3056,7 +3151,7 @@ declare module "azure-storage" {
           *   }
           * }); 
           */
-          createQueueIfNotExists(queue: string, callback?: ErrorOrResult<boolean>): void;
+          createQueueIfNotExists(queue: string, callback?: ErrorOrResult<QueueService.QueueResult>): void;
 
           /**
           * Permanently deletes the specified queue.
@@ -3208,7 +3303,7 @@ declare module "azure-storage" {
           * Adds a new message to the back of the message queue. 
           * The encoded message can be up to 64KB in size for versions 2011-08-18 and newer, or 8KB in size for previous versions. 
           * Unencoded messages must be in a format that can be included in an XML request with UTF-8 encoding. 
-          * Queue messages are encoded by default. See queueService.encodeMessage to set encoding defaults. 
+          * Queue messages are encoded by default. See queueService.messageEncoder to set encoding defaults. 
           *
           * @function QueueService#createMessage
           * 
@@ -3244,7 +3339,7 @@ declare module "azure-storage" {
           * Adds a new message to the back of the message queue. 
           * The encoded message can be up to 64KB in size for versions 2011-08-18 and newer, or 8KB in size for previous versions. 
           * Unencoded messages must be in a format that can be included in an XML request with UTF-8 encoding. 
-          * Queue messages are encoded by default. See queueService.encodeMessage to set encoding defaults. 
+          * Queue messages are encoded by default. See queueService.messageEncoder to set encoding defaults. 
           *
           * @function QueueService#createMessage
           * 
@@ -3735,7 +3830,7 @@ declare module "azure-storage" {
           * @param {date|string}              sharedAccessPolicy.AccessPolicy.Expiry        The time at which the Shared Access Signature becomes expired (The UTC value will be used).
           * @return {string}                                                                The shared access signature query string. Note this string does not contain the leading "?".
           */
-          generateSharedAccessSignature(queue: any, sharedAccessPolicy: any): any;
+          generateSharedAccessSignature(queue: string, sharedAccessPolicy: common.SharedAccessPolicy): string;
 
           /**
           * Retrieves a shared access signature token.
@@ -3752,7 +3847,7 @@ declare module "azure-storage" {
           * @param {string}                   [sasVersion]                                  An optional string indicating the desired SAS version to use. Value must be 2012-02-12 or later.
           * @return {string}                                                                The shared access signature query string. Note this string does not contain the leading "?".
           */
-          generateSharedAccessSignatureWithVersion(queue: any, sharedAccessPolicy: any, sasVersion: any): any;
+          generateSharedAccessSignatureWithVersion(queue: string, sharedAccessPolicy: common.SharedAccessPolicy, sasVersion: string): string;
         }
 
         module QueueService {
@@ -3778,6 +3873,8 @@ declare module "azure-storage" {
             metadata?: { [key: string]: string; };
             approximateMessageCount?: number;
             signedIdentifiers: {[key:string]: common.AccessPolicy};
+            exists?: boolean;
+            created?: boolean;
           }
 
           export interface CreateQueueRequestOptions extends common.RequestOptions {
@@ -3823,6 +3920,28 @@ declare module "azure-storage" {
             *         the expiry time. visibilitytimeout should be set to a value smaller than the time-to-live value.
             */
             visibilityTimeout?: number;
+          }
+        }
+        
+        export interface QueueMessageEncoder {
+          encode(input: any) : string;
+          decode(textToBeDecoded: string) : any;
+        }
+        
+        module QueueMessageEncoder{
+          export class TextBase64QueueMessageEncoder implements QueueMessageEncoder {
+            encode(input: string) : string;
+            decode(textToBeDecoded: string) : string;
+          }
+          
+          export class BinaryBase64QueueMessageEncoder implements QueueMessageEncoder {
+            encode(input: Buffer) : string;
+            decode(textToBeDecoded: string) : Buffer;
+          }
+          
+          export class TextXmlQueueMessageEncoder implements QueueMessageEncoder {
+            encode(input: string) : string;
+            decode(textToBeDecoded: string) : string;
           }
         }
 
@@ -3872,7 +3991,7 @@ declare module "azure-storage" {
           * @param {Object} filter The new filter object.
           * @return {TableService} A new service client with the filter applied.
           */
-          withFilter(newFilter: any): TableService;
+          withFilter(newFilter: common.filters.IFilter): TableService;
           
           /**
           * Gets the service stats for a storage account’s Table service.
@@ -3892,7 +4011,7 @@ declare module "azure-storage" {
           *                                                                         otherwise `result` will contain the properties.
           *                                                                         `response` will contain information related to this operation.
           */
-          getServiceStats(options: common.RequestOptions, callback: ErrorOrResult<common.models.ServiceStats>): any;
+          getServiceStats(options: common.RequestOptions, callback: ErrorOrResult<common.models.ServiceStats>): void;
 
           /**
           * Gets the service stats for a storage account’s Table service.
@@ -3902,7 +4021,7 @@ declare module "azure-storage" {
           *                                                                         otherwise `result` will contain the properties.
           *                                                                         `response` will contain information related to this operation.
           */
-          getServiceStats(callback: ErrorOrResult<common.models.ServiceStats>): any;
+          getServiceStats(callback: ErrorOrResult<common.models.ServiceStats>): void;
 
           /**
           * Gets the properties of a storage account’s Table service, including Azure Storage Analytics.
@@ -3922,7 +4041,7 @@ declare module "azure-storage" {
           *                                                                          otherwise `result` will contain the properties.
           *                                                                         `response` will contain information related to this operation.
           */
-          getServiceProperties(options: common.RequestOptions, callback: ErrorOrResult<common.models.ServicePropertiesResult.ServiceProperties>): any;
+          getServiceProperties(options: common.RequestOptions, callback: ErrorOrResult<common.models.ServicePropertiesResult.ServiceProperties>): void;
 
           /**
           * Gets the properties of a storage account’s Table service, including Azure Storage Analytics.
@@ -3932,7 +4051,7 @@ declare module "azure-storage" {
           *                                                                          otherwise `result` will contain the properties.
           *                                                                         `response` will contain information related to this operation.
           */
-          getServiceProperties(callback: ErrorOrResult<common.models.ServicePropertiesResult.ServiceProperties>): any;
+          getServiceProperties(callback: ErrorOrResult<common.models.ServicePropertiesResult.ServiceProperties>): void;
 
           /**
           * Sets the properties of a storage account’s Table service, including Azure Storage Analytics.
@@ -3953,7 +4072,7 @@ declare module "azure-storage" {
           * @param {errorOrResponse}  callback                                       `error` will contain information if an error occurs;
           *                                                                          `response` will contain information related to this operation.
           */
-          setServiceProperties(serviceProperties: common.models.ServicePropertiesResult.ServiceProperties, options: common.RequestOptions, callback: ErrorOrResponse): any;
+          setServiceProperties(serviceProperties: common.models.ServicePropertiesResult.ServiceProperties, options: common.RequestOptions, callback: ErrorOrResponse): void;
 
           /**
           * Sets the properties of a storage account’s Table service, including Azure Storage Analytics.
@@ -3964,7 +4083,7 @@ declare module "azure-storage" {
           * @param {errorOrResponse}  callback                                       `error` will contain information if an error occurs;
           *                                                                          `response` will contain information related to this operation.
           */
-          setServiceProperties(serviceProperties: common.models.ServicePropertiesResult.ServiceProperties, callback: ErrorOrResponse): any;
+          setServiceProperties(serviceProperties: common.models.ServicePropertiesResult.ServiceProperties, callback: ErrorOrResponse): void;
 
           /**
           * Lists a segment containing a collection of table items under the specified account.
@@ -3988,7 +4107,7 @@ declare module "azure-storage" {
           *                                                                               `entries`  gives a list of tables and the `continuationToken` is used for the next listing operation.
           *                                                                               `response` will contain information related to this operation.
           */
-          listTablesSegmented(currentToken: TableService.ListTablesContinuationToken, options: TableService.ListTablesRequestOptions, callback: ErrorOrResult<TableService.ListTablesResponse>): any;
+          listTablesSegmented(currentToken: TableService.ListTablesContinuationToken, options: TableService.ListTablesRequestOptions, callback: ErrorOrResult<TableService.ListTablesResponse>): void;
 
           /**
           * Lists a segment containing a collection of table items under the specified account.
@@ -4000,7 +4119,7 @@ declare module "azure-storage" {
           *                                                                               `entries`  gives a list of tables and the `continuationToken` is used for the next listing operation.
           *                                                                               `response` will contain information related to this operation.
           */
-          listTablesSegmented(currentToken: TableService.ListTablesContinuationToken, callback: ErrorOrResult<TableService.ListTablesResponse>): any;
+          listTablesSegmented(currentToken: TableService.ListTablesContinuationToken, callback: ErrorOrResult<TableService.ListTablesResponse>): void;
 
           /**
           * Lists a segment containing a collection of table items under the specified account.
@@ -4025,7 +4144,7 @@ declare module "azure-storage" {
           *                                                                               `entries`  gives a list of tables and the `continuationToken` is used for the next listing operation.
           *                                                                               `response` will contain information related to this operation.
           */
-          listTablesSegmentedWithPrefix(prefix: string, currentToken: TableService.ListTablesContinuationToken, options: TableService.ListTablesRequestOptions, callback: ErrorOrResult<TableService.ListTablesResponse>): any;
+          listTablesSegmentedWithPrefix(prefix: string, currentToken: TableService.ListTablesContinuationToken, options: TableService.ListTablesRequestOptions, callback: ErrorOrResult<TableService.ListTablesResponse>): void;
 
           /**
           * Lists a segment containing a collection of table items under the specified account.
@@ -4038,7 +4157,7 @@ declare module "azure-storage" {
           *                                                                               `entries`  gives a list of tables and the `continuationToken` is used for the next listing operation.
           *                                                                               `response` will contain information related to this operation.
           */
-          listTablesSegmentedWithPrefix(prefix: string, currentToken: TableService.ListTablesContinuationToken, callback: ErrorOrResult<TableService.ListTablesResponse>): any;
+          listTablesSegmentedWithPrefix(prefix: string, currentToken: TableService.ListTablesContinuationToken, callback: ErrorOrResult<TableService.ListTablesResponse>): void;
 
           /**
           * Gets the table's ACL.
@@ -4059,7 +4178,7 @@ declare module "azure-storage" {
           *                                                                          otherwise `result` will contain the ACL information for the table.
           *                                                                          `response` will contain information related to this operation.
           */
-          getTableAcl(table: string, options: common.RequestOptions, callback: ErrorOrResult<TableService.GetTableAclResult>): any;
+          getTableAcl(table: string, options: common.RequestOptions, callback: ErrorOrResult<TableService.GetTableAclResult>): void;
 
           /**
           * Gets the table's ACL.
@@ -4070,7 +4189,7 @@ declare module "azure-storage" {
           *                                                                          otherwise `result` will contain the ACL information for the table.
           *                                                                          `response` will contain information related to this operation.
           */
-          getTableAcl(table: string, callback: ErrorOrResult<TableService.GetTableAclResult>): any;
+          getTableAcl(table: string, callback: ErrorOrResult<TableService.GetTableAclResult>): void;
 
           /**
           * Updates the table's ACL.
@@ -4095,7 +4214,7 @@ declare module "azure-storage" {
           setTableAcl(table: string, signedIdentifiers: {[key:string]: common.AccessPolicy}, options: common.RequestOptions, callback: ErrorOrResult<{
             TableName: string;
             signedIdentifiers: {[key:string]: common.AccessPolicy};
-          }>): any;
+          }>): void;
 
           /**
           * Updates the table's ACL.
@@ -4110,7 +4229,7 @@ declare module "azure-storage" {
           setTableAcl(table: string, signedIdentifiers: {[key:string]: common.AccessPolicy}, callback: ErrorOrResult<{
             TableName: string;
             signedIdentifiers: {[key:string]: common.AccessPolicy};
-          }>): any;
+          }>): void;
 
           /**
           * Retrieves a shared access signature token.
@@ -4128,7 +4247,7 @@ declare module "azure-storage" {
           * @param {string}                   [sharedAccessPolicy.AccessPolicy.EndRk]       The ending Row Key for which the SAS will be valid.
           * @return {object}                                                                An object with the shared access signature.
           */
-          generateSharedAccessSignature(table: string, sharedAccessPolicy: TableAccessPolicy): string;
+          generateSharedAccessSignature(table: string, sharedAccessPolicy: TableService.TableSharedAccessPolicy): string;
 
           /**
           * Retrieves a shared access signature token.
@@ -4147,7 +4266,7 @@ declare module "azure-storage" {
           * @param {string}                   [sasVersion]                                  An optional string indicating the desired SAS version to use. Value must be 2012-02-12 or later.
           * @return {object}                                                                An object with the shared access signature.
           */
-          generateSharedAccessSignatureWithVersion(table: string, sharedAccessPolicy: TableAccessPolicy, sasVersion: string): string;
+          generateSharedAccessSignatureWithVersion(table: string, sharedAccessPolicy: TableService.TableSharedAccessPolicy, sasVersion: string): string;
 
           /**
           * Checks whether or not a table exists on the service.
@@ -4168,7 +4287,7 @@ declare module "azure-storage" {
           *                                                                     otherwise `result` will contain be true if the table exists, or false if the table does not exist.
           *                                                                     `response` will contain information related to this operation.
           */
-          doesTableExist(table: string, options: common.RequestOptions, callback: ErrorOrResult<boolean>): any;
+          doesTableExist(table: string, options: common.RequestOptions, callback: ErrorOrResult<TableService.TableResult>): void;
 
           /**
           * Checks whether or not a table exists on the service.
@@ -4179,7 +4298,7 @@ declare module "azure-storage" {
           *                                                                     otherwise `result` will contain be true if the table exists, or false if the table does not exist.
           *                                                                     `response` will contain information related to this operation.
           */
-          doesTableExist(table: string, callback: ErrorOrResult<boolean>): any;
+          doesTableExist(table: string, callback: ErrorOrResult<TableService.TableResult>): void;
 
           /**
           * Creates a new table within a storage account.
@@ -4200,10 +4319,7 @@ declare module "azure-storage" {
           *                                                                     otherwise `result` will contain the new table information.
           *                                                                     `response` will contain information related to this operation.
           */
-          createTable(table: string, options: common.RequestOptions, callback: ErrorOrResult<{
-            TableName: string;
-            isSuccessful?: boolean;
-          }>): any;
+          createTable(table: string, options: common.RequestOptions, callback: ErrorOrResult<TableService.TableResult>): void;
 
           /**
           * Creates a new table within a storage account.
@@ -4214,10 +4330,7 @@ declare module "azure-storage" {
           *                                                                     otherwise `result` will contain the new table information.
           *                                                                     `response` will contain information related to this operation.
           */
-          createTable(table: string, callback: ErrorOrResult<{
-            TableName: string;
-            isSuccessful?: boolean;
-          }>): any;
+          createTable(table: string, callback: ErrorOrResult<TableService.TableResult>): void;
 
           /**
           * Creates a new table within a storage account if it does not exists.
@@ -4247,7 +4360,7 @@ declare module "azure-storage" {
           *   }
           * });
           */
-          createTableIfNotExists(table: string, options: common.RequestOptions, callback: ErrorOrResult<boolean>): any;
+          createTableIfNotExists(table: string, options: common.RequestOptions, callback: ErrorOrResult<TableService.TableResult>): void;
 
           /**
           * Creates a new table within a storage account if it does not exists.
@@ -4267,7 +4380,7 @@ declare module "azure-storage" {
           *   }
           * });
           */
-          createTableIfNotExists(table: string, callback: ErrorOrResult<boolean>): any;
+          createTableIfNotExists(table: string, callback: ErrorOrResult<TableService.TableResult>): void;
 
           /**
           * Deletes a table from a storage account.
@@ -4287,7 +4400,7 @@ declare module "azure-storage" {
           * @param {errorOrResponse}  callback                                  `error` will contain information if an error occurs;
           *                                                                     `response` will contain information related to this operation.
           */
-          deleteTable(table: string, options: common.RequestOptions, callback: ErrorOrResponse): any;
+          deleteTable(table: string, options: common.RequestOptions, callback: ErrorOrResponse): void;
 
           /**
           * Deletes a table from a storage account.
@@ -4297,7 +4410,7 @@ declare module "azure-storage" {
           * @param {errorOrResponse}  callback                                  `error` will contain information if an error occurs;
           *                                                                     `response` will contain information related to this operation.
           */
-          deleteTable(table: string, callback: ErrorOrResponse): any;
+          deleteTable(table: string, callback: ErrorOrResponse): void;
 
           /**
           * Deletes a table from a storage account, if it exists.
@@ -4318,7 +4431,7 @@ declare module "azure-storage" {
           *                                                                     `result` will be `true` if table was deleted, false otherwise
           *                                                                     `response` will contain information related to this operation.
           */
-          deleteTableIfExists(table: string, options: common.RequestOptions, callback: ErrorOrResult<boolean>): any;
+          deleteTableIfExists(table: string, options: common.RequestOptions, callback: ErrorOrResult<boolean>): void;
 
           /**
           * Deletes a table from a storage account, if it exists.
@@ -4329,7 +4442,7 @@ declare module "azure-storage" {
           *                                                                     `result` will be `true` if table was deleted, false otherwise
           *                                                                     `response` will contain information related to this operation.
           */
-          deleteTableIfExists(table: string, callback: ErrorOrResult<boolean>): any;
+          deleteTableIfExists(table: string, callback: ErrorOrResult<boolean>): void;
 
           /**
           * Queries data in a table. To retrieve a single entity by partition key and row key, use retrieve entity.
@@ -4416,7 +4529,7 @@ declare module "azure-storage" {
           *   }
           * });
           */
-          queryEntities<T>(table: string, tableQuery: TableQuery, currentToken: TableService.TableContinuationToken, options: TableService.TableEntityRequestOptions, callback: ErrorOrResult<TableService.QueryEntitiesResult<T>>): any;
+          queryEntities<T>(table: string, tableQuery: TableQuery, currentToken: TableService.TableContinuationToken, options: TableService.TableEntityRequestOptions, callback: ErrorOrResult<TableService.QueryEntitiesResult<T>>): void;
 
           /**
           * Queries data in a table. To retrieve a single entity by partition key and row key, use retrieve entity.
@@ -4433,7 +4546,7 @@ declare module "azure-storage" {
           *                                                                                  to retrieve the next set of results.
           *                                                                                  `response` will contain information related to this operation.
           */
-          queryEntities<T>(table: string, tableQuery: TableQuery, currentToken: TableService.TableContinuationToken, callback: ErrorOrResult<TableService.QueryEntitiesResult<T>>): any;
+          queryEntities<T>(table: string, tableQuery: TableQuery, currentToken: TableService.TableContinuationToken, callback: ErrorOrResult<TableService.QueryEntitiesResult<T>>): void;
 
           /**
           * Retrieves an entity from a table.
@@ -4502,7 +4615,7 @@ declare module "azure-storage" {
           *   }
           * });
           */
-          retrieveEntity<T>(table: string, partitionKey: string, rowKey: string, options: TableService.TableEntityRequestOptions, callback: ErrorOrResult<T>): any;
+          retrieveEntity<T>(table: string, partitionKey: string, rowKey: string, options: TableService.TableEntityRequestOptions, callback: ErrorOrResult<T>): void;
 
           /**
           * Retrieves an entity from a table.
@@ -4530,7 +4643,7 @@ declare module "azure-storage" {
           *                                                                             otherwise `result` will be the matching entity.
           *                                                                             `response` will contain information related to this operation.
           */
-          retrieveEntity<T>(table: string, partitionKey: string, rowKey: string, callback: ErrorOrResult<T>): any;
+          retrieveEntity<T>(table: string, partitionKey: string, rowKey: string, callback: ErrorOrResult<T>): void;
 
           /**
           * Inserts a new entity into a table.
@@ -4573,7 +4686,7 @@ declare module "azure-storage" {
           *   }
           * });
           */
-          insertEntity<T>(table: string, entityDescriptor: T, options: TableService.InsertEntityRequestOptions, callback: ErrorOrResult<T | TableService.EntityMetadata>): any;
+          insertEntity<T>(table: string, entityDescriptor: T, options: TableService.InsertEntityRequestOptions, callback: ErrorOrResult<T | TableService.EntityMetadata>): void;
 
           /**
           * Inserts a new entity into a table.
@@ -4595,7 +4708,7 @@ declare module "azure-storage" {
           *                                                                             otherwise `result` will contain the entity information.
           *                                                                             `response` will contain information related to this operation.
           */
-          insertEntity<T>(table: string, entityDescriptor: T, options: common.RequestOptions, callback: ErrorOrResult<TableService.EntityMetadata>): any;
+          insertEntity<T>(table: string, entityDescriptor: T, options: common.RequestOptions, callback: ErrorOrResult<TableService.EntityMetadata>): void;
 
           /**
           * Inserts a new entity into a table.
@@ -4607,7 +4720,7 @@ declare module "azure-storage" {
           *                                                                             otherwise `result` will contain the entity information.
           *                                                                             `response` will contain information related to this operation.
           */
-          insertEntity<T>(table: string, entityDescriptor: T, callback: ErrorOrResult<TableService.EntityMetadata>): any;
+          insertEntity<T>(table: string, entityDescriptor: T, callback: ErrorOrResult<TableService.EntityMetadata>): void;
 
           /**
           * Inserts or updates a new entity into a table.
@@ -4629,7 +4742,7 @@ declare module "azure-storage" {
           *                                                                     otherwise `result` will contain the entity information.
           *                                                                     `response` will contain information related to this operation.
           */
-          insertOrReplaceEntity<T>(table: string, entityDescriptor: T, options: common.RequestOptions, callback: ErrorOrResult<TableService.EntityMetadata>): any;
+          insertOrReplaceEntity<T>(table: string, entityDescriptor: T, options: common.RequestOptions, callback: ErrorOrResult<TableService.EntityMetadata>): void;
 
           /**
           * Inserts or updates a new entity into a table.
@@ -4641,7 +4754,7 @@ declare module "azure-storage" {
           *                                                                     otherwise `result` will contain the entity information.
           *                                                                     `response` will contain information related to this operation.
           */
-          insertOrReplaceEntity<T>(table: string, entityDescriptor: T, callback: ErrorOrResult<TableService.EntityMetadata>): any;
+          insertOrReplaceEntity<T>(table: string, entityDescriptor: T, callback: ErrorOrResult<TableService.EntityMetadata>): void;
 
           /**
           * Replaces an existing entity within a table. To replace conditionally based on etag, set entity['.metadata']['etag'].
@@ -4663,7 +4776,7 @@ declare module "azure-storage" {
           *                                                                     otherwise `result` will contain the entity information.
           *                                                                     `response` will contain information related to this operation.
           */
-          replaceEntity<T>(table: string, entityDescriptor: T, options: common.RequestOptions, callback: ErrorOrResult<TableService.EntityMetadata>): any;
+          replaceEntity<T>(table: string, entityDescriptor: T, options: common.RequestOptions, callback: ErrorOrResult<TableService.EntityMetadata>): void;
 
           /**
           * Replaces an existing entity within a table. To replace conditionally based on etag, set entity['.metadata']['etag'].
@@ -4685,7 +4798,7 @@ declare module "azure-storage" {
           *                                                                     otherwise `result` will contain the entity information.
           *                                                                     `response` will contain information related to this operation.
           */
-          replaceEntity<T>(table: string, entityDescriptor: T, callback: ErrorOrResult<TableService.EntityMetadata>): any;
+          replaceEntity<T>(table: string, entityDescriptor: T, callback: ErrorOrResult<TableService.EntityMetadata>): void;
 
           /**
           * Updates an existing entity within a table by merging new property values into the entity. To merge conditionally based on etag, set entity['.metadata']['etag'].
@@ -4707,7 +4820,7 @@ declare module "azure-storage" {
           *                                                                     otherwise `result` will contain the entity information.
           *                                                                     response` will contain information related to this operation.
           */
-          mergeEntity<T>(table: string, entityDescriptor: T, options: common.RequestOptions, callback: ErrorOrResult<TableService.EntityMetadata>): any;
+          mergeEntity<T>(table: string, entityDescriptor: T, options: common.RequestOptions, callback: ErrorOrResult<TableService.EntityMetadata>): void;
 
           /**
           * Updates an existing entity within a table by merging new property values into the entity. To merge conditionally based on etag, set entity['.metadata']['etag'].
@@ -4719,7 +4832,7 @@ declare module "azure-storage" {
           *                                                                     otherwise `result` will contain the entity information.
           *                                                                     response` will contain information related to this operation.
           */
-          mergeEntity<T>(table: string, entityDescriptor: T, callback: ErrorOrResult<TableService.EntityMetadata>): any;
+          mergeEntity<T>(table: string, entityDescriptor: T, callback: ErrorOrResult<TableService.EntityMetadata>): void;
 
           /**
           * Inserts or updates an existing entity within a table by merging new property values into the entity.
@@ -4741,7 +4854,7 @@ declare module "azure-storage" {
           *                                                                     otherwise `result` will contain the entity information.
           *                                                                     `response` will contain information related to this operation.
           */
-          insertOrMergeEntity<T>(table: string, entityDescriptor: T, options: common.RequestOptions, callback: ErrorOrResult<TableService.EntityMetadata>): any;
+          insertOrMergeEntity<T>(table: string, entityDescriptor: T, options: common.RequestOptions, callback: ErrorOrResult<TableService.EntityMetadata>): void;
 
           /**
           * Inserts or updates an existing entity within a table by merging new property values into the entity.
@@ -4753,7 +4866,7 @@ declare module "azure-storage" {
           *                                                                     otherwise `result` will contain the entity information.
           *                                                                     `response` will contain information related to this operation.
           */
-          insertOrMergeEntity<T>(table: string, entityDescriptor: T, callback: ErrorOrResult<TableService.EntityMetadata>): any;
+          insertOrMergeEntity<T>(table: string, entityDescriptor: T, callback: ErrorOrResult<TableService.EntityMetadata>): void;
 
           /**
           * Deletes an entity within a table. To delete conditionally based on etag, set entity['.metadata']['etag'].
@@ -4774,7 +4887,7 @@ declare module "azure-storage" {
           * @param {errorOrResponse}  callback                                  `error` will contain information if an error occurs;
           *                                                                     `response` will contain information related to this operation.
           */
-          deleteEntity<T>(table: string, entityDescriptor: T, options: common.RequestOptions, callback: ErrorOrResult<TableService.EntityMetadata>): any;
+          deleteEntity<T>(table: string, entityDescriptor: T, options: common.RequestOptions, callback: ErrorOrResponse): void;
 
           /**
           * Deletes an entity within a table. To delete conditionally based on etag, set entity['.metadata']['etag'].
@@ -4785,7 +4898,7 @@ declare module "azure-storage" {
           * @param {errorOrResponse}  callback                                  `error` will contain information if an error occurs;
           *                                                                     `response` will contain information related to this operation.
           */
-          deleteEntity<T>(table: string, entityDescriptor: T, callback: ErrorOrResult<TableService.EntityMetadata>): any;
+          deleteEntity<T>(table: string, entityDescriptor: T, callback: ErrorOrResponse): void;
 
           /**
           * Executes the operations in the batch.
@@ -4809,7 +4922,7 @@ declare module "azure-storage" {
           *                                                                             `result.response` will contain the response for each operations executed.
           *                                                                             `response` will contain information related to this operation.
           */
-          executeBatch(table: string, batch: TableBatch, options: common.RequestOptions, callback: ErrorOrResult<TableService.BatchResult[]>): any;
+          executeBatch(table: string, batch: TableBatch, options: common.RequestOptions, callback: ErrorOrResult<TableService.BatchResult[]>): void;
 
           /**
           * Executes the operations in the batch.
@@ -4823,10 +4936,33 @@ declare module "azure-storage" {
           *                                                                             `result.response` will contain the response for each operations executed.
           *                                                                             `response` will contain information related to this operation.
           */
-          executeBatch(table: string, batch: TableBatch, callback: ErrorOrResult<TableService.BatchResult[]>): any;
+          executeBatch(table: string, batch: TableBatch, callback: ErrorOrResult<TableService.BatchResult[]>): void;
         }
 
         export module TableService {
+          
+          export interface TableResult {
+            isSuccessful?: boolean;
+            statusCode?: string | number;
+            TableName?: string;
+            exists?: boolean;
+            created?: boolean;
+          }
+
+          export interface TableAccessPolicy extends common.AccessPolicy {
+            StartPk?: string;
+            EndPk?: string;
+            StartRk?: string;
+            EndRk?: string;
+          }
+          
+          export interface TableSharedAccessPolicy {
+            /** The signed identifier. */
+            Id?: string;
+            /** The Table Access Policy information */
+            AccessPolicy: TableAccessPolicy;
+          }
+          
           export interface ListTablesRequestOptions extends common.RequestOptions {
             maxResults?: number;
             payloadFormat?: string;
@@ -4870,6 +5006,7 @@ declare module "azure-storage" {
             autoResolveProperties?: boolean;
             propertyResolver?: PropertyResolver;
             entityResolver?: (entityResult: Object) => Object;
+            echoContent?: boolean;
           }
 
           export interface InsertEntityRequestOptions extends TableEntityRequestOptions {
@@ -4889,7 +5026,7 @@ declare module "azure-storage" {
             response: BatchResponse;
           }
 
-          export interface Entity<T> {
+          export interface EntityProperty<T> {
             _: T;
             $: string;
           }
@@ -5238,8 +5375,14 @@ declare module "azure-storage" {
           combineFilters(filterA: string, operatorString: string, filterB: string): string;
         };
 
+        export interface TableOperation{
+          type: string;
+          entity: Object;
+          options: common.RequestOptions;
+        }
+
         export interface TableBatch {
-          operations: any[];
+          operations: TableOperation[];
           pk: string;
           retrieve: boolean;
 
@@ -5274,7 +5417,7 @@ declare module "azure-storage" {
           *                                                                             and the property Edm type if given by the service, returns the Edm type of the property.
           * @param {Function(entity)} [options.entityResolver]                          The entity resolver. Given the single entity returned by the query, returns a modified object.
           */
-          retrieveEntity(partitionKey: string, rowKey: string, options?: any): void;
+          retrieveEntity(partitionKey: string, rowKey: string, options?: TableService.TableEntityRequestOptions): void;
 
           /**
           * Adds an insert operation to the batch.
@@ -5288,7 +5431,7 @@ declare module "azure-storage" {
           * @param {Function(entity)} [options.entityResolver]                          The entity resolver. Only applied if echoContent is true. Given the single entity returned by the insert, returns
           *                                                                             a modified object.
           */
-          insertEntity(entity: Object, options: any): void;
+          insertEntity(entity: Object, options: TableService.TableEntityRequestOptions): void;
 
           /**
           * Adds a delete operation to the batch.
@@ -5332,7 +5475,7 @@ declare module "azure-storage" {
           * @param {object}             entity              The entity.
           * @param {object}             [options]                                       The request options.
           */
-          addOperation(operationType: string, entity: any, options?: Object): void;
+          addOperation(operationType: string, entity: Object, options?: TableService.TableEntityRequestOptions): void;
 
           /**
           * Gets an operation from the batch. Returns null if the index does not exist.
@@ -5340,7 +5483,7 @@ declare module "azure-storage" {
           * @param {number}             index           The index in the operations array at which to remove an element.
           * @return {object}                            The removed operation.
           */
-          getOperation(index: any): any;
+          getOperation(index: number): TableOperation;
 
           /**
           * Removes an operation from the batch. Returns null if the index does not exist.
@@ -5383,7 +5526,7 @@ declare module "azure-storage" {
           * @param {Object} filter The new filter object.
           * @return {FileService} A new service client with the filter applied.
           */
-          withFilter(newFilter: any): FileService;
+          withFilter(newFilter: common.filters.IFilter): FileService;
 
           /**
           * Gets the properties of a storage account's File service, including Azure Storage Analytics.
@@ -5402,7 +5545,8 @@ declare module "azure-storage" {
           * @param {errorOrResult}  callback                              `error` will contain information if an error occurs; otherwise, `result` will contain the properties
           *                                                               and `response` will contain information related to this operation.
           */
-          getServiceProperties(optionsOrCallback: any, callback: any): void;
+          getServiceProperties(options: common.RequestOptions, callback: ErrorOrResult<common.models.ServicePropertiesResult.ServiceProperties>): void;
+          getServiceProperties(callback: ErrorOrResult<common.models.ServicePropertiesResult.ServiceProperties>): void;
 
           /**
           * Sets the properties of a storage account's File service, including Azure Storage Analytics.
@@ -5424,7 +5568,8 @@ declare module "azure-storage" {
           *                                                                      if an error occurs; otherwise, `response`
           *                                                                      will contain information related to this operation.
           */
-          setServiceProperties(serviceProperties: any, optionsOrCallback: any, callback: any): void;
+          setServiceProperties(serviceProperties: common.models.ServicePropertiesResult.ServiceProperties, options: common.RequestOptions, callback: ErrorOrResponse): void;
+          setServiceProperties(serviceProperties: common.models.ServicePropertiesResult.ServiceProperties, callback: ErrorOrResponse): void;
 
           /**
           * Lists a segment containing a collection of share items under the specified account.
@@ -5448,7 +5593,8 @@ declare module "azure-storage" {
           *                                                                         `entries`  gives a list of shares and the `continuationToken` is used for the next listing operation.
           *                                                                         `response` will contain information related to this operation.
           */
-          listSharesSegmented(currentToken: any, optionsOrCallback: any, callback: any): void;
+          listSharesSegmented(currentToken: common.ContinuationToken, options: FileService.ListRequestOptions, callback: ErrorOrResult<FileService.ListSharesResult>): void;
+          listSharesSegmented(currentToken: common.ContinuationToken, callback: ErrorOrResult<FileService.ListSharesResult>): void;
 
           /**
           * Lists a segment containing a collection of share items whose names begin with the specified prefix under the specified account.
@@ -5474,7 +5620,8 @@ declare module "azure-storage" {
           *                                                                         `entries`  gives a list of shares and the `continuationToken` is used for the next listing operation.
           *                                                                         `response` will contain information related to this operation.
           */
-          listSharesSegmentedWithPrefix(prefix: any, currentToken: any, optionsOrCallback: any, callback: any): void;
+          listSharesSegmentedWithPrefix(prefix: string, currentToken: common.ContinuationToken, options: FileService.ListRequestOptions, callback: ErrorOrResult<FileService.ListSharesResult>): void;
+          listSharesSegmentedWithPrefix(prefix: string, currentToken: common.ContinuationToken, callback: ErrorOrResult<FileService.ListSharesResult>): void;
 
           /**
           * Checks whether or not a share exists on the service.
@@ -5496,7 +5643,8 @@ declare module "azure-storage" {
           *                                                                     be true if the share exists, or false if the share does not exist.
           *                                                                     `response` will contain information related to this operation.
           */
-          doesShareExist(share: string, optionsOrCallback: any, callback: any): void;
+          doesShareExist(share: string, options: common.RequestOptions, callback: ErrorOrResult<FileService.ShareResult>): void;
+          doesShareExist(share: string, callback: ErrorOrResult<FileService.ShareResult>): void;
 
           /**
           * Creates a new share under the specified account.
@@ -5521,7 +5669,8 @@ declare module "azure-storage" {
           *                                                                 the share information.
           *                                                                 `response` will contain information related to this operation.
           */
-          createShare(share: string, optionsOrCallback: any, callback: any): void;
+          createShare(share: string, options: FileService.CreateShareRequestOptions, callback: ErrorOrResult<FileService.ShareResult>): void;
+          createShare(share: string, callback: ErrorOrResult<FileService.ShareResult>): void;
 
           /**
           * Creates a new share under the specified account if the share does not exists.
@@ -5529,6 +5678,7 @@ declare module "azure-storage" {
           * @this {FileService}
           * @param {string}             share                                     The share name.
           * @param {object}             [options]                                 The request options.
+          * @param {int}                [options.quota]                     Specifies the maximum size of the share, in gigabytes. Must be greater than 0, and less than or equal to 5TB (5120).
           * @param {LocationMode}       [options.locationMode]                    Specifies the location mode used to decide which location the request should be sent to.
           *                                                                       Please see StorageUtilities.LocationMode for the possible values.
           * @param {object}             [options.metadata]                        The metadata key/value pairs.
@@ -5554,7 +5704,8 @@ declare module "azure-storage" {
           *   }
           * });
           */
-          createShareIfNotExists(share: string, optionsOrCallback: any, callback: any): void;
+          createShareIfNotExists(share: string, options: FileService.CreateShareRequestOptions, callback: ErrorOrResult<FileService.ShareResult>): void;
+          createShareIfNotExists(share: string, callback: ErrorOrResult<FileService.ShareResult>): void;
 
           /**
           * Retrieves a share and its properties from a specified account.
@@ -5576,7 +5727,8 @@ declare module "azure-storage" {
           *                                                                 information for the share.
           *                                                                 `response` will contain information related to this operation.
           */
-          getShareProperties(share: string, optionsOrCallback: any, callback: any): void;
+          getShareProperties(share: string, options: common.RequestOptions, callback: ErrorOrResult<FileService.ShareResult>): void;
+          getShareProperties(share: string, callback: ErrorOrResult<FileService.ShareResult>): void;
 
           /**
           * Sets the properties for the specified share.
@@ -5595,10 +5747,11 @@ declare module "azure-storage" {
           *                                                                         The default value is false.
           * @param {errorOrResult}      callback                                    `error` will contain information
           *                                                                         if an error occurs; otherwise `result` will contain
-          *                                                                         information about the file.
+          *                                                                         information about the share.
           *                                                                         `response` will contain information related to this operation.
           */
-          setShareProperties(share: string, properties: FileService.ShareProperties, optionsOrCallback: any, callback: any): void;
+          setShareProperties(share: string, properties: FileService.ShareProperties, options: common.RequestOptions, callback: ErrorOrResult<FileService.ShareResult>): void;
+          setShareProperties(share: string, properties: FileService.ShareProperties, callback: ErrorOrResult<FileService.ShareResult>): void;
 
           /**
           * Gets the share statistics for a share.
@@ -5618,7 +5771,8 @@ declare module "azure-storage" {
           * @param {errorOrResult}    callback                                `error` will contain information if an error occurs; otherwise, `result` will contain the stats and
           *                                                                   `response` will contain information related to this operation.
           */
-          getShareStats(share: string, optionsOrCallback: any, callback: any): void;
+          getShareStats(share: string, options: common.RequestOptions, callback: ErrorOrResult<FileService.ShareResult>): void;
+          getShareStats(share: string, callback: ErrorOrResult<FileService.ShareResult>): void;
 
           /**
           * Returns all user-defined metadata for the share.
@@ -5640,7 +5794,8 @@ declare module "azure-storage" {
           *                                                                       information for the share.
           *                                                                       `response` will contain information related to this operation.
           */
-          getShareMetadata(share: string, optionsOrCallback: any, callback: any): void;
+          getShareMetadata(share: string, options: common.RequestOptions, callback: ErrorOrResult<FileService.ShareResult>): void;
+          getShareMetadata(share: string, callback: ErrorOrResult<FileService.ShareResult>): void;
 
           /**
           * Sets the share's metadata.
@@ -5665,7 +5820,8 @@ declare module "azure-storage" {
           *                                                                 if an error occurs; otherwise
           *                                                                 `response` will contain information related to this operation.
           */
-          setShareMetadata(share: string, metadata: any, optionsOrCallback: any, callback: any): void;
+          setShareMetadata(share: string, metadata: Map<string>, options: common.RequestOptions, callback: ErrorOrResult<FileService.ShareResult>): void;
+          setShareMetadata(share: string, metadata: Map<string>, callback: ErrorOrResult<FileService.ShareResult>): void;
 
           /**
           * Gets the share's ACL.
@@ -5687,7 +5843,8 @@ declare module "azure-storage" {
           *                                                                 information for the share.
           *                                                                 `response` will contain information related to this operation.
           */
-          getShareAcl(share: string, optionsOrCallback: any, callback: any): void;
+          getShareAcl(share: string, options: common.RequestOptions, callback: ErrorOrResult<FileService.ShareAclResult>): void;
+          getShareAcl(share: string, callback: ErrorOrResult<FileService.ShareAclResult>): void;
 
           /**
           * Updates the share's ACL.
@@ -5708,7 +5865,8 @@ declare module "azure-storage" {
           *                                                                 information for the share.
           *                                                                 `response` will contain information related to this operation.
           */
-          setShareAcl(share: string, signedIdentifiers: {[key:string]: common.AccessPolicy}, optionsOrCallback: any, callback: any): void;
+          setShareAcl(share: string, signedIdentifiers: {[key:string]: common.AccessPolicy}, options: common.RequestOptions, callback: ErrorOrResult<FileService.ShareAclResult>): void;
+          setShareAcl(share: string, signedIdentifiers: {[key:string]: common.AccessPolicy}, callback: ErrorOrResult<FileService.ShareAclResult>): void;
 
           /**
           * Marks the specified share for deletion.
@@ -5730,7 +5888,8 @@ declare module "azure-storage" {
           *                                                                 if an error occurs; otherwise
           *                                                                 `response` will contain information related to this operation.
           */
-          deleteShare(share: string, optionsOrCallback: any, callback: any): void;
+          deleteShare(share: string, options: common.RequestOptions, callback: ErrorOrResponse): void;
+          deleteShare(share: string, callback: ErrorOrResponse): void;
 
           /**
           * Marks the specified share for deletion if it exists.
@@ -5754,7 +5913,8 @@ declare module "azure-storage" {
           *                                                                 did not exist.
           *                                                                 `response` will contain information related to this operation.
           */
-          deleteShareIfExists(share: string, optionsOrCallback: any, callback: any): void;
+          deleteShareIfExists(share: string, options: common.RequestOptions, callback: ErrorOrResult<boolean>): void;
+          deleteShareIfExists(share: string, callback: ErrorOrResult<boolean>): void;
 
           /**
           * Checks whether or not a directory exists on the service.
@@ -5777,7 +5937,8 @@ declare module "azure-storage" {
           *                                                                     be true if the directory exists, or false if the directory does not exist.
           *                                                                     `response` will contain information related to this operation.
           */
-          doesDirectoryExist(share: string, directory: string, optionsOrCallback: any, callback: any): void;
+          doesDirectoryExist(share: string, directory: string, options: common.RequestOptions, callback: ErrorOrResult<FileService.DirectoryResult>): void;
+          doesDirectoryExist(share: string, directory: string, callback: ErrorOrResult<FileService.DirectoryResult>): void;
 
           /**
           * Creates a new directory under the specified account.
@@ -5801,7 +5962,8 @@ declare module "azure-storage" {
           *                                                                 the directory information.
           *                                                                 `response` will contain information related to this operation.
           */
-          createDirectory(share: string, directory: string, optionsOrCallback: any, callback: any): void;
+          createDirectory(share: string, directory: string, options: FileService.CreateDirectoryRequestOptions, callback: ErrorOrResult<FileService.DirectoryResult>): void;
+          createDirectory(share: string, directory: string, callback: ErrorOrResult<FileService.DirectoryResult>): void;
 
           /**
           * Creates a new directory under the specified account if the directory does not exists.
@@ -5834,7 +5996,8 @@ declare module "azure-storage" {
           *   }
           * });
           */
-          createDirectoryIfNotExists(share: string, directory: string, optionsOrCallback: any, callback: any): void;
+          createDirectoryIfNotExists(share: string, directory: string, options: FileService.CreateDirectoryRequestOptions, callback: ErrorOrResult<FileService.DirectoryResult>): void;
+          createDirectoryIfNotExists(share: string, directory: string, callback: ErrorOrResult<FileService.DirectoryResult>): void;
 
           /**
           * Retrieves a directory and its properties from a specified account.
@@ -5857,7 +6020,8 @@ declare module "azure-storage" {
           *                                                                 information for the directory.
           *                                                                 `response` will contain information related to this operation.
           */
-          getDirectoryProperties(share: string, directory: string, optionsOrCallback: any, callback: any): void;
+          getDirectoryProperties(share: string, directory: string, options: common.RequestOptions, callback: ErrorOrResult<FileService.DirectoryResult>): void;
+          getDirectoryProperties(share: string, directory: string, callback: ErrorOrResult<FileService.DirectoryResult>): void;
 
           /**
           * Marks the specified directory for deletion. The directory must be empty before it can be deleted.
@@ -5879,7 +6043,8 @@ declare module "azure-storage" {
           *                                                                 if an error occurs; otherwise
           *                                                                 `response` will contain information related to this operation.
           */
-          deleteDirectory(share: string, directory: string, optionsOrCallback: any, callback: any): void;
+          deleteDirectory(share: string, directory: string, options: common.RequestOptions, callback: ErrorOrResponse): void;
+          deleteDirectory(share: string, directory: string, callback: ErrorOrResponse): void;
 
           /**
           * Marks the specified directory for deletion if it exists. The directory must be empty before it can be deleted.
@@ -5903,7 +6068,8 @@ declare module "azure-storage" {
           *                                                                 did not exist.
           *                                                                 `response` will contain information related to this operation.
           */
-          deleteDirectoryIfExists(share: string, directory: string, optionsOrCallback: any, callback: any): void;
+          deleteDirectoryIfExists(share: string, directory: string, options: common.RequestOptions, callback: ErrorOrResult<boolean>): void;
+          deleteDirectoryIfExists(share: string, directory: string, callback: ErrorOrResult<boolean>): void;
 
           /**
           * Lists a segment containing a collection of file items in the directory.
@@ -5928,7 +6094,8 @@ declare module "azure-storage" {
           *                                                               entries.files, entries.directories and the continuationToken for the next listing operation.
           *                                                               `response` will contain information related to this operation.
           */
-          listFilesAndDirectoriesSegmented(share: string, directory: string, currentToken: any, optionsOrCallback: any, callback: any): void;
+          listFilesAndDirectoriesSegmented(share: string, directory: string, currentToken: common.ContinuationToken, options: FileService.ListRequestOptions, callback: ErrorOrResult<FileService.ListFilesAndDirectoriesResult>): void;
+          listFilesAndDirectoriesSegmented(share: string, directory: string, currentToken: common.ContinuationToken, callback: ErrorOrResult<FileService.ListFilesAndDirectoriesResult>): void;
 
           /**
           * Returns all user-defined metadata for the specified directory.
@@ -5948,7 +6115,8 @@ declare module "azure-storage" {
           *                                                                         information about the file.
           *                                                                         `response` will contain information related to this operation.
           */
-          getDirectoryMetadata(share: string, directory: string, optionsOrCallback: any, callback: any): void;
+          getDirectoryMetadata(share: string, directory: string, options: common.RequestOptions, callback: ErrorOrResult<FileService.DirectoryResult>): void;
+          getDirectoryMetadata(share: string, directory: string, callback: ErrorOrResult<FileService.DirectoryResult>): void;
 
           /**
           * Sets user-defined metadata for the specified directory as one or more name-value pairs
@@ -5970,7 +6138,8 @@ declare module "azure-storage" {
           *                                                                         information on the file.
           *                                                                         `response` will contain information related to this operation.
           */
-          setDirectoryMetadata(share: string, directory: string, metadata: any, optionsOrCallback: any, callback: any): void;
+          setDirectoryMetadata(share: string, directory: string, metadata: Map<string>, options: common.RequestOptions, callback: ErrorOrResult<FileService.DirectoryResult>): void;
+          setDirectoryMetadata(share: string, directory: string, metadata: Map<string>, callback: ErrorOrResult<FileService.DirectoryResult>): void;
 
           /**
           * Retrieves a shared access signature token.
@@ -5992,7 +6161,7 @@ declare module "azure-storage" {
           * @param {string}                   [headers.contentDisposition]                  The optional value of the Content-Disposition response header to be returned when this SAS is used.
           * @return {string}                                                                The shared access signature. Note this does not contain the leading "?".
           */
-          generateSharedAccessSignature(share: string, directory: string, file: string, sharedAccessPolicy: any, headers: any): any;
+          generateSharedAccessSignature(share: string, directory: string, file: string, sharedAccessPolicy: common.SharedAccessPolicy, headers?: common.ContentSettingsHeaders): string;
 
           /**
           * Retrieves a shared access signature token.
@@ -6015,7 +6184,7 @@ declare module "azure-storage" {
           * @param {string}                   [headers.contentDisposition]                  The optional value of the Content-Disposition response header to be returned when this SAS is used.
           * @return {string}                                                                The shared access signature query string. Note this string does not contain the leading "?".
           */
-          generateSharedAccessSignatureWithVersion(share: string, directory: string, file: string, sharedAccessPolicy: any, sasVersion: any, headers: any): any;
+          generateSharedAccessSignatureWithVersion(share: string, directory: string, file: string, sharedAccessPolicy: common.SharedAccessPolicy, sasVersion: string, headers?: common.ContentSettingsHeaders): string;
 
           /**
           * Retrieves a file or directory URL.
@@ -6031,7 +6200,7 @@ declare module "azure-storage" {
           * var FileService = azure.createFileService();
           * var url = FileService.getUrl(shareName, directoryName, fileName, sasToken, true);
           */
-          getUrl(share: string, directory: string, file: string, sasToken: any, primary: any): string;
+          getUrl(share: string, directory: string, file?: string, sasToken?: string, primary?: boolean): string;
 
           /**
           * Returns all user-defined metadata, standard HTTP properties, and system properties for the file.
@@ -6056,7 +6225,8 @@ declare module "azure-storage" {
           *                                                                         information about the file.
           *                                                                         `response` will contain information related to this operation.
           */
-          getFileProperties(share: string, directory: string, file: string, optionsOrCallback: any, callback: any): void;
+          getFileProperties(share: string, directory: string, file: string, options: common.RequestOptions, callback: ErrorOrResult<FileService.FileResult>): void;
+          getFileProperties(share: string, directory: string, file: string, callback: ErrorOrResult<FileService.FileResult>): void;
 
           /**
           * Returns all user-defined metadata for the specified file.
@@ -6080,7 +6250,8 @@ declare module "azure-storage" {
           *                                                                         information about the file.
           *                                                                         `response` will contain information related to this operation.
           */
-          getFileMetadata(share: string, directory: string, file: string, optionsOrCallback: any, callback: any): void;
+          getFileMetadata(share: string, directory: string, file: string, options: common.RequestOptions, callback: ErrorOrResult<FileService.FileResult>): void;
+          getFileMetadata(share: string, directory: string, file: string, callback: ErrorOrResult<FileService.FileResult>): void;
 
           /**
           * Sets user-defined properties for the specified file.
@@ -6113,7 +6284,8 @@ declare module "azure-storage" {
           *                                                                         information about the file.
           *                                                                         `response` will contain information related to this operation.
           */
-          setFileProperties(share: string, directory: string, file: string, optionsOrCallback: any, callback: any): void;
+          setFileProperties(share: string, directory: string, file: string, options: FileService.SetFilePropertiesRequestOptions, callback: ErrorOrResult<FileService.FileResult>): void;
+          setFileProperties(share: string, directory: string, file: string, callback: ErrorOrResult<FileService.FileResult>): void;
 
           /**
           * Sets user-defined metadata for the specified file as one or more name-value pairs
@@ -6139,7 +6311,8 @@ declare module "azure-storage" {
           *                                                                         information on the file.
           *                                                                         `response` will contain information related to this operation.
           */
-          setFileMetadata(share: string, directory: string, file: string, metadata: any, optionsOrCallback: any, callback: any): void;
+          setFileMetadata(share: string, directory: string, file: string, metadata: Map<string>, options: common.RequestOptions, callback: ErrorOrResult<FileService.FileResult>): void;
+          setFileMetadata(share: string, directory: string, file: string, metadata: Map<string>, callback: ErrorOrResult<FileService.FileResult>): void;
 
           /**
           * Resizes a file.
@@ -6162,7 +6335,8 @@ declare module "azure-storage" {
           *                                                                           information about the file.
           *                                                                           `response` will contain information related to this operation.
           */
-          resizeFile(share: string, directory: string, file: string, size: number, optionsOrCallback: any, callback: any): void;
+          resizeFile(share: string, directory: string, file: string, size: number, options: common.RequestOptions, callback: ErrorOrResult<FileService.FileResult>): void;
+          resizeFile(share: string, directory: string, file: string, size: number, callback: ErrorOrResult<FileService.FileResult>): void;
 
           /**
           * Checks whether or not a file exists on the service.
@@ -6186,7 +6360,8 @@ declare module "azure-storage" {
           *                                                                     be true if the file exists, or false if the file does not exist.
           *                                                                     `response` will contain information related to this operation.
           */
-          doesFileExist(share: string, directory: string, file: string, optionsOrCallback: any, callback: any): void;
+          doesFileExist(share: string, directory: string, file: string, options: common.RequestOptions, callback: ErrorOrResult<FileService.FileResult>): void;
+          doesFileExist(share: string, directory: string, file: string, callback: ErrorOrResult<FileService.FileResult>): void;
 
           /**
           * Creates a file of the specified length.
@@ -6219,7 +6394,8 @@ declare module "azure-storage" {
           *                                                                           the directory information.
           *                                                                           `response` will contain information related to this operation.
           */
-          createFile(share: string, directory: string, file: string, length: number, optionsOrCallback: any, callback: any): void;
+          createFile(share: string, directory: string, file: string, length: number, options: FileService.CreateFileRequestOptions, callback: ErrorOrResult<FileService.FileResult>): void;
+          createFile(share: string, directory: string, file: string, length: number, callback: ErrorOrResult<FileService.FileResult>): void;
 
           /**
           * Marks the specified file for deletion. The file is later deleted during garbage collection.
@@ -6241,7 +6417,8 @@ declare module "azure-storage" {
           * @param {errorOrResponse}  callback                                      `error` will contain information
           *                                                                         if an error occurs; `response` will contain information related to this operation.
           */
-          deleteFile(share: string, directory: string, file: string, optionsOrCallback: any, callback: any): void;
+          deleteFile(share: string, directory: string, file: string, options: common.RequestOptions, callback: ErrorOrResponse): void;
+          deleteFile(share: string, directory: string, file: string, callback: ErrorOrResponse): void;
 
           /**
           * Marks the specified file for deletion if it exists. The file is later deleted during garbage collection.
@@ -6266,7 +6443,8 @@ declare module "azure-storage" {
           *                                                                 does not exist.
           *                                                                 `response` will contain information related to this operation.
           */
-          deleteFileIfExists(share: string, directory: string, file: string, optionsOrCallback: any, callback: any): void;
+          deleteFileIfExists(share: string, directory: string, file: string, options: common.RequestOptions, callback: ErrorOrResult<boolean>): void;
+          deleteFileIfExists(share: string, directory: string, file: string, callback: ErrorOrResult<boolean>): void;
 
           /**
           * Downloads a file into a text string.
@@ -6293,7 +6471,8 @@ declare module "azure-storage" {
           *                                                                         and `file` will contain the file information.
           *                                                                         `response` will contain information related to this operation.
           */
-          getFileToText(share: string, directory: string, file: string, optionsOrCallback: any, callback: any): void;
+          getFileToText(share: string, directory: string, file: string, options: FileService.GetFileRequestOptions, callback: FileService.FileToText): void;
+          getFileToText(share: string, directory: string, file: string, callback: FileService.FileToText): void;
 
           /**
           * Downloads an Azure file into a file.
@@ -6328,7 +6507,8 @@ declare module "azure-storage" {
           *     // file available in serverFile.file variable
           *   }
           */
-          getFileToLocalFile(share: string, directory: string, file: string, localFileName: any, optionsOrCallback: any, callback: any): void;
+          getFileToLocalFile(share: string, directory: string, file: string, localFileName: string, options: FileService.GetFileRequestOptions, callback: ErrorOrResult<FileService.FileResult>): void;
+          getFileToLocalFile(share: string, directory: string, file: string, localFileName: string, callback: ErrorOrResult<FileService.FileResult>): void;
 
           /**
           * Provides a stream to read from a file.
@@ -6361,7 +6541,8 @@ declare module "azure-storage" {
           * var writable = fs.createWriteStream(destinationFileNameTarget);
           * fileService.createReadStream(shareName, directoryName, fileName).pipe(writable);
           */
-          createReadStream(share: string, directory: string, file: string, optionsOrCallback: any, callback: any): any;
+          createReadStream(share: string, directory: string, file: string, options: FileService.GetFileRequestOptions, callback: ErrorOrResult<FileService.FileResult>): stream.Readable;
+          createReadStream(share: string, directory: string, file: string, callback: ErrorOrResult<FileService.FileResult>): stream.Readable;
 
           /**
           * Downloads a file into a stream.
@@ -6398,7 +6579,8 @@ declare module "azure-storage" {
           *   }
           * });
           */
-          getFileToStream(share: string, directory: string, file: string, writeStream: any, optionsOrCallback: any, callback: any): any;
+          getFileToStream(share: string, directory: string, file: string, writeStream: stream.Writable, options: FileService.GetFileRequestOptions, callback: ErrorOrResult<FileService.FileResult>): common.streams.speedsummary.SpeedSummary;
+          getFileToStream(share: string, directory: string, file: string, writeStream: stream.Writable, callback: ErrorOrResult<FileService.FileResult>): common.streams.speedsummary.SpeedSummary;
 
           /**
           * Lists file ranges. Lists all of the ranges by default, or only the ranges over a specific range of bytes if rangeStart and rangeEnd are specified.
@@ -6424,7 +6606,8 @@ declare module "azure-storage" {
           *                                                                         the range information.
           *                                                                         `response` will contain information related to this operation.
           */
-          listRanges(share: string, directory: string, file: string, optionsOrCallback: any, callback: ErrorOrResult<common.Range[]>): void;
+          listRanges(share: string, directory: string, file: string, options: FileService.ListRangeRequestOptions, callback: ErrorOrResult<common.Range[]>): void;
+          listRanges(share: string, directory: string, file: string, callback: ErrorOrResult<common.Range[]>): void;
 
           /**
           * Clears a range. Clears all of the ranges by default, or only the ranges over a specific range of bytes if rangeStart and rangeEnd are specified.
@@ -6450,7 +6633,8 @@ declare module "azure-storage" {
           *                                                                         the directory information.
           *                                                                        `response` will contain information related to this operation.
           */
-          clearRange(share: string, directory: string, file: string, rangeStart: number, rangeEnd: number, optionsOrCallback: any, callback: any): void;
+          clearRange(share: string, directory: string, file: string, rangeStart: number, rangeEnd: number, options: common.RequestOptions, callback: ErrorOrResult<FileService.FileResult>): void;
+          clearRange(share: string, directory: string, file: string, rangeStart: number, rangeEnd: number, callback: ErrorOrResult<FileService.FileResult>): void;
 
           /**
           * Updates a range from a stream.
@@ -6479,7 +6663,8 @@ declare module "azure-storage" {
           *                                                                         the file information.
           *                                                                         `response` will contain information related to this operation.
           */
-          createRangesFromStream(share: string, directory: string, file: string, readStream: any, rangeStart: any, rangeEnd: any, optionsOrCallback: any, callback: any): void;
+          createRangesFromStream(share: string, directory: string, file: string, readStream: stream.Readable, rangeStart: number, rangeEnd: number, options: FileService.CreateRangeRequestOptions, callback: ErrorOrResult<FileService.FileResult>): void;
+          createRangesFromStream(share: string, directory: string, file: string, readStream: stream.Readable, rangeStart: number, rangeEnd: number, callback: ErrorOrResult<FileService.FileResult>): void;
 
           /**
           * Uploads a file from a text string.
@@ -6511,12 +6696,12 @@ declare module "azure-storage" {
           * @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                           The default value is false.
-          * @param {FileService~FileToText}  callback                                 `error` will contain information
-          *                                                                           if an error occurs; otherwise `text` will contain the file contents,
-          *                                                                           and `file` will contain the file information.
+          * @param {ErrorOrResult}  callback                                          `error` will contain information
+          *                                                                           if an error occurs; `result` will contain the file information.
           *                                                                           `response` will contain information related to this operation.
           */
-          createFileFromText(share: string, directory: string, file: string, text: any, optionsOrCallback: any, callback: any): void;
+          createFileFromText(share: string, directory: string, file: string, text: string | Buffer, options: FileService.CreateFileRequestOptions, callback: ErrorOrResult<FileService.FileResult>): void;
+          createFileFromText(share: string, directory: string, file: string, text: string | Buffer, callback: ErrorOrResult<FileService.FileResult>): void;
 
           /**
           * Uploads a file to storage from a local file.
@@ -6551,7 +6736,8 @@ declare module "azure-storage" {
           * @param {errorOrResult}      callback                                      The callback function.
           * @return {SpeedSummary}
           */
-          createFileFromLocalFile(share: string, directory: string, file: string, localFileName: any, optionsOrCallback: any, callback: any): any;
+          createFileFromLocalFile(share: string, directory: string, file: string, localFileName: string, options: FileService.CreateFileRequestOptions, callback: ErrorOrResult<FileService.FileResult>): common.streams.speedsummary.SpeedSummary;
+          createFileFromLocalFile(share: string, directory: string, file: string, localFileName: string, callback: ErrorOrResult<FileService.FileResult>): common.streams.speedsummary.SpeedSummary;
 
           /**
           * Uploads a file from a stream.
@@ -6587,7 +6773,8 @@ declare module "azure-storage" {
           * @param {errorOrResult}      callback                                      The callback function.
           * @return {SpeedSummary}
           */
-          createFileFromStream(share: string, directory: string, file: string, stream: any, streamLength: number, optionsOrCallback: any, callback: any): any;
+          createFileFromStream(share: string, directory: string, file: string, stream: stream.Readable, streamLength: number, options: FileService.CreateFileRequestOptions, callback: ErrorOrResult<FileService.FileResult>): common.streams.speedsummary.SpeedSummary;
+          createFileFromStream(share: string, directory: string, file: string, stream: stream.Readable, streamLength: number, callback: ErrorOrResult<FileService.FileResult>): common.streams.speedsummary.SpeedSummary;
 
           /**
           * Provides a stream to write to a file. Assumes that the file exists.
@@ -6629,7 +6816,8 @@ declare module "azure-storage" {
           *   var stream = fs.createReadStream(fileNameTarget).pipe(FileService.createWriteStreamToExistingFile(shareName, directoryName, fileName));
           * });
           */
-          createWriteStreamToExistingFile(share: string, directory: string, file: string, optionsOrCallback: any, callback: any): any;
+          createWriteStreamToExistingFile(share: string, directory: string, file: string, options: FileService.CreateFileRequestOptions, callback: ErrorOrResult<FileService.FileResult>): stream.Writable;
+          createWriteStreamToExistingFile(share: string, directory: string, file: string, callback: ErrorOrResult<FileService.FileResult>): stream.Writable;
 
           /**
           * Provides a stream to write to a file. Creates the file before writing data.
@@ -6668,7 +6856,8 @@ declare module "azure-storage" {
           * var FileService = azure.createFileService();
           * var stream = fs.createReadStream(fileNameTarget).pipe(FileService.createWriteStreamToNewFile(shareName, directoryName, fileName));
           */
-          createWriteStreamToNewFile(share: string, directory: string, file: string, length: any, optionsOrCallback: any, callback: any): any;
+          createWriteStreamToNewFile(share: string, directory: string, file: string, length: number, options: FileService.CreateFileRequestOptions, callback: ErrorOrResult<FileService.FileResult>): stream.Writable;
+          createWriteStreamToNewFile(share: string, directory: string, file: string, length: number, callback: ErrorOrResult<FileService.FileResult>): stream.Writable;
 
           /**
           * Starts to copy a file to a destination within the storage account.
@@ -6696,7 +6885,8 @@ declare module "azure-storage" {
           *                                                                       the file information.
           *                                                                       `response` will contain information related to this operation.
           */
-          startCopyFile(sourceUri: string, targetshare: string, targetdirectory: string, targetfile: string, optionsOrCallback: any, callback: any): void;
+          startCopyFile(sourceUri: string, targetshare: string, targetdirectory: string, targetfile: string, options: FileService.CopyFileRequestOptions, callback: ErrorOrResult<FileService.FileResult>): void;
+          startCopyFile(sourceUri: string, targetshare: string, targetdirectory: string, targetfile: string, callback: ErrorOrResult<FileService.FileResult>): void;
 
           /**
           * Abort a file copy operation.
@@ -6716,12 +6906,11 @@ declare module "azure-storage" {
           * @param {string}             [options.clientRequestId]                 A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]               Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                       The default value is false.
-          * @param {errorOrResult}      callback                                  `error` will contain information
-          *                                                                       if an error occurs; otherwise `result` will contain
-          *                                                                       the file information.
+          * @param {errorOrResponse}    callback                                  `error` will contain information if an error occurs.
           *                                                                       `response` will contain information related to this operation.
           */
-          abortCopyFile(share: string, directory: string, file: string, copyId: any, optionsOrCallback: any, callback: any): void;
+          abortCopyFile(share: string, directory: string, file: string, copyId: string, options: common.RequestOptions, callback: ErrorOrResponse): void;
+          abortCopyFile(share: string, directory: string, file: string, copyId: string, callback: ErrorOrResponse): void;
         }
 
         export module FileService {
@@ -6743,6 +6932,15 @@ declare module "azure-storage" {
             metadata?: { [key: string]: string; };
             requestId?: string;
             quota?: string;
+            shareStats? : {
+              shareUsage?: string;
+            }
+            exists?: boolean;
+            created?: boolean;
+          }
+          
+          export interface ShareAclResult extends ShareResult {
+            signedIdentifiers?: Map<common.AccessPolicy>
           }
 
           export interface DirectoryResult {
@@ -6751,6 +6949,8 @@ declare module "azure-storage" {
             lastModified: string;
             requestId?: string;
             metadata?: { [key: string]: string; };
+            exists?: boolean;
+            created?: boolean;
           }
 
           export interface FileResult {
@@ -6779,7 +6979,9 @@ declare module "azure-storage" {
               completionTime?: string;
               statusDescription?: string;
               progress?: string;
-            }
+            };
+            exists?: boolean;
+            created?: boolean;
           }
 
           export interface ShareProperties {
@@ -6799,9 +7001,56 @@ declare module "azure-storage" {
             disableContentMD5Validation?: boolean;
           }
 
-          export interface ListSharesOptions extends common.RequestOptions {
+          export interface ListRequestOptions extends common.RequestOptions {
             maxResults?: number;
             include?: string;
+          }
+          
+          export interface CreateShareRequestOptions extends common.RequestOptions {
+            quota?: string | number;
+          }
+          
+          export interface CreateFileRequestOptions extends common.RequestOptions {
+            speedsummary?: common.streams.speedsummary.SpeedSummary;
+            metadata?: { [key: string]: string; };
+            contentSettings?: {
+              contentType?: string;
+              contentEncoding?: string;
+              contentLanguage?: string;
+              contentMD5?: string;
+              cacheControl?: string;
+              contentDisposition?: string;
+            };
+            useTransactionalMD5?: boolean;
+            storeFileContentMD5?: boolean;
+          }
+          
+          export interface CopyFileRequestOptions extends common.RequestOptions {
+            metadata?: { [key: string]: string; };
+            accessConditions?: AccessConditions;
+            sourceAccessConditions?: AccessConditions;
+          }
+          
+          export interface CreateRangeRequestOptions extends common.RequestOptions {
+            useTransactionalMD5?: boolean;
+            transactionalContentMD5?: string;
+          }
+          
+          export interface CreateDirectoryRequestOptions extends common.RequestOptions {
+            metadata?: { [key: string]: string; };
+          }
+          
+          export interface SetFilePropertiesRequestOptions extends common.RequestOptions {
+            contentType?: string;
+            contentEncoding?: string;
+            contentLanguage?: string;
+            contentMD5?: string;
+            cacheControl?: string;
+            contentDisposition?: string;
+          }
+            
+          export interface FileToText {
+            (error: Error, text: string, result: FileResult, response: ServiceResponse): void
           }
         }
 
@@ -6854,6 +7103,19 @@ declare module "azure-storage" {
 
     module common {
       module filters {
+        
+        export interface IFilter {
+          handle(requestOptions: common.RequestOptions, next: Next) : void
+        }
+        
+        export interface Next {
+          (returnedObject: any, finalCallback: Post, nextPostCallback: Post) : void;
+        }
+        
+        export interface Post {
+          (returnedObject: any) : void;
+        }
+        
         // ###########################
         // ./common/filters/retrypolicyfilter
         // ###########################
@@ -6884,14 +7146,11 @@ declare module "azure-storage" {
             * var blobService = azure.createBlobService().withFilter(retryPolicy);
             */
             constructor(retryCount?: number, retryInterval?: number);
-            /**
-            * Handles an operation with a retry policy.
-            *
-            * @param {Object}   requestOptions The original request options.
-            * @param {function} next           The next filter to be handled.
-            */
-            handle(requestOptions: any, next: any): void;
-            shouldRetry(statusCode: number, retryData: RetryPolicyFilter.IRetryRequestOptions): void;
+            
+            shouldRetry(statusCode: number, retryData: RetryPolicyFilter.IRetryRequestOptions): {
+              retryInterval: number;
+              retryable: boolean;
+            };
           }
           export module RetryPolicyFilter {
             /**
@@ -6916,10 +7175,12 @@ declare module "azure-storage" {
               locationMode: StorageUtilities.LocationMode;
               currentLocation: Constants.StorageLocation;
             }
-            export interface IRetryPolicy {
+            export interface IRetryPolicy extends IFilter {
               retryInterval: number;
-              shouldRetry(statusCode: number, retryData: IRetryRequestOptions): any;
-              handle(requestOptions: any, next: any): any;
+              shouldRetry(statusCode: number, retryData: IRetryRequestOptions): {
+                retryInterval: number;
+                retryable: boolean;
+              };
             }
           }
         }
@@ -6967,13 +7228,7 @@ declare module "azure-storage" {
               retryInterval: number;
               retryable: boolean;
             };
-            /**
-            * Handles an operation with a linear retry policy.
-            *
-            * @param {Object}   requestOptions The original request options.
-            * @param {function} next           The next filter to be handled.
-            */
-            handle(requestOptions: any, next: any): void;
+            handle(requestOptions: common.RequestOptions, next: Next) : void
           }
         }
 
@@ -7004,7 +7259,7 @@ declare module "azure-storage" {
             * var retryOperations = new azure.ExponentialRetryPolicyFilter();
             * var blobService = azure.createBlobService().withFilter(retryOperations)
             */
-            constructor(retryCount: any, retryInterval: any, minRetryInterval: any, maxRetryInterval: any);
+            constructor(retryCount: number, retryInterval: number, minRetryInterval: number, maxRetryInterval: number);
             /**
             * Represents the default client retry interval, in milliseconds.
             */
@@ -7032,13 +7287,7 @@ declare module "azure-storage" {
               retryInterval: number;
               retryable: boolean;
             };
-            /**
-            * Handles an operation with an exponential retry policy.
-            *
-            * @param {Object}   requestOptions The original request options.
-            * @param {function} next           The next filter to be handled.
-            */
-            handle(requestOptions: any, next: any): void;
+            handle(requestOptions: common.RequestOptions, next: Next) : void
           }
         }
       }
@@ -7700,43 +7949,43 @@ declare module "azure-storage" {
           * @param {object} list      The enumeration values.
           * @return {boolean}
           */
-          export function isValidEnumValue<T>(value: string, list: string[], callback: Function): any;
+          export function isValidEnumValue<T>(value: string, list: string[], callback: Function): boolean;
           /**
           * Creates a anonymous function that check if the given uri is valid or not.
           *
           * @param {string} uri     The uri to validate.
           * @return {boolean}
           */
-          export function isValidUri(uri: any): boolean;
+          export function isValidUri(uri: string): boolean;
           /**
           * Checks if the given host is valid or not.
           *
           * @param {string|object} host     The host to validate.
           * @return {boolean}
           */
-          export function isValidHost(host: string): any;
-          export function isValidHost(host: StorageHost): any;
+          export function isValidHost(host: string): boolean;
+          export function isValidHost(host: StorageHost): boolean;
           /**
           * Checks if the given value is a valid UUID or not.
           *
           * @param {string|object} uuid     The uuid to validate.
           * @return {boolean}
           */
-          export function isValidUuid(uuid: string, callback?: Function): any;
+          export function isValidUuid(uuid: string, callback?: Function): boolean;
           /**
           * Creates a anonymous function that check if a given key is base 64 encoded.
           *
           * @param {string} key The key to validate.
-          * @return {function}
+          * @return {boolean}
           */
-          export function isBase64Encoded(key: any): boolean;
+          export function isBase64Encoded(key: string): boolean;
           /**
           * Validates a function.
           *
           * @param {object} function The function to validate.
-          * @return {function}
+          * @return {boolean}
           */
-          export function isValidFunction(functionObject: any, functionName: any): void;
+          export function isValidFunction(functionObject: any, functionName: string): boolean;
           /**
           * Validates a container name.
           *
@@ -7749,7 +7998,7 @@ declare module "azure-storage" {
           * @param {string} containerName The container name.
           * @param {string} blobname      The blob name.
           */
-          export function blobNameIsValid(containerName: string, blobName: string, callback?: Function): any;
+          export function blobNameIsValid(containerName: string, blobName: string, callback?: Function): boolean;
           /**
           * Validates a share name.
           *
@@ -7781,7 +8030,7 @@ declare module "azure-storage" {
           *
           * @param {string} type  The type name.
           */
-          export function blobTypeIsValid(type: string, callback?: Function): any;
+          export function blobTypeIsValid(type: string, callback?: Function): boolean;
           export class ArgumentValidator {
             func: string;
             tableNameIsValid: (tableName: string, callback?: Function) => boolean;
@@ -8063,36 +8312,36 @@ declare module "azure-storage" {
             /**
             * Get running seconds
             */
-            getElapsedSeconds(humanReadable: boolean): any;
+            getElapsedSeconds(humanReadable: boolean): number;
             /**
             * Get complete percentage
             * @param {int} len The number of digits after the decimal point.
             */
-            getCompletePercent(len: number): any;
+            getCompletePercent(len: number): number;
             /**
             * Get average upload/download speed
             */
-            getAverageSpeed(humanReadable: boolean): any;
+            getAverageSpeed(humanReadable: boolean): string;
             /**
             * Get instant speed
             */
-            getSpeed(humanReadable: any): any;
+            getSpeed(humanReadable: boolean): string | number;
             /**
             * Increment the complete data size
             */
-            increment(len: any): number;
+            increment(len: number): number;
             /**
             * Get auto increment function
             */
-            getAutoIncrementFunction(size: any): (error: any, retValue: any) => void;
+            getAutoIncrementFunction(size: number): (error: any, retValue: number) => void;
             /**
             * Get total size
             */
-            getTotalSize(humanReadable: any): any;
+            getTotalSize(humanReadable: boolean): string | number;
             /**
             * Get completed data size
             */
-            getCompleteSize(humanReadable: any): any;
+            getCompleteSize(humanReadable: boolean): string | number;
           }
         }
       }
@@ -8139,7 +8388,7 @@ declare module "azure-storage" {
               CorsRule: CorsRule[];
             };
           }
-          export function serialize(servicePropertiesJs: ServiceProperties): any;
+          export function serialize(servicePropertiesJs: ServiceProperties): string;
           export function parse(servicePropertiesXml: any): ServiceProperties;
         }
       }
@@ -8223,7 +8472,7 @@ declare module "azure-storage" {
             * @param {Object} filter The new filter object.
             * @return {StorageServiceClient} A new service client with the filter applied.
             */
-            withFilter(newFilter: any): StorageServiceClient;
+            withFilter(newFilter: common.filters.IFilter): StorageServiceClient;
             /**
             * Sets proxy object specified by caller.
             *
@@ -8240,7 +8489,7 @@ declare module "azure-storage" {
             *                                        }
             *                                        if null or undefined, clears proxy
             */
-            setProxy(proxy: any): void;
+            setProxy(proxy: Proxy): void;
           }
         }
       }
@@ -8260,6 +8509,21 @@ declare module "azure-storage" {
         Services?: string;
         /** The resource type for a shared access signature associated with this shared access policy. */
         ResourceTypes?: string;
+      }
+      
+      export interface SharedAccessPolicy {
+        /** The signed identifier. */
+        Id?: string;
+        /** The Access Policy information */
+        AccessPolicy: AccessPolicy;
+      }
+      
+      export interface ContentSettingsHeaders {
+        cacheControl?: string;
+        contentType?: string;
+        contentEncoding?: string;
+        contentLanguage?: string;
+        contentDisposition?: string;
       }
 
       /**
@@ -8302,10 +8566,10 @@ declare module "azure-storage" {
     * @return {string}                              A connection string representing the development storage credentials.
     * @example
     * var azure = require('azure-storage');
-    * var devStoreCreds = azure.generateDevelopmentStorageCredendentials();
+    * var devStoreCreds = azure.generateDevelopmentStorageCredentials();
     * var blobService = azure.createBlobService(devStoreCreds);
     */
-    export function generateDevelopmentStorageCredendentials(proxyUri: any): string;
+    export function generateDevelopmentStorageCredentials(proxyUri?: string): string;
 
     /**
      * Table client exports
@@ -8328,7 +8592,7 @@ declare module "azure-storage" {
     * @return {TableService}                              A new TableService object.
     *
     */
-    export function createTableService(storageAccountOrConnectionString: any, storageAccessKey: any, host: any): TableService;
+    export function createTableService(storageAccountOrConnectionString: string, storageAccessKey: string, host: StorageHost): TableService;
 
     /**
     * Creates a new {@link TableService} object using the host Uri and the SAS credentials provided.
@@ -8338,7 +8602,7 @@ declare module "azure-storage" {
     * @param {string} sasToken                            The Shared Access Signature token.
     * @return {TableService}                              A new TableService object with the SAS credentials.
     */
-    export function createTableServiceWithSas(hostUri: any, sasToken: any): TableService;
+    export function createTableServiceWithSas(hostUri: string | StorageHost, sasToken: string): TableService;
 
     /**
      * Blob client exports
@@ -8398,7 +8662,9 @@ declare module "azure-storage" {
     //*                                                     Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.
     //* @return {FileService}                               A new FileService object.
     //*/
-    export function createFileService(storageAccountOrConnectionString: any, storageAccessKey: any, host: any): FileService;
+    export function createFileService(storageAccount: string, storageAccessKey: string, host?: string | StorageHost): FileService;
+    export function createFileService(connectionString: string): FileService;
+    export function createFileService(): FileService;
 
     /**
     * Creates a new {@link FileService} object using the host Uri and the SAS credentials provided.
@@ -8408,13 +8674,14 @@ declare module "azure-storage" {
     * @param {string} sasToken                            The Shared Access Signature token.
     * @return {FileService}                               A new FileService object with the SAS credentials.
     */
-    export function createFileServiceWithSas(hostUri: any, sasToken: any): FileService;
+    export function createFileServiceWithSas(hostUri: string | StorageHost, sasToken: string): FileService;
 
     /**
      * Queue client exports
      * @ignore
      */
     export import QueueService = services.queue.QueueService;
+    export import QueueMessageEncoder = services.queue.QueueMessageEncoder;
     export import QueueUtilities = services.queue.QueueUtilities;
 
     /**
@@ -8428,7 +8695,9 @@ declare module "azure-storage" {
     *                                                     Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.
     * @return {QueueService}                              A new QueueService object.
     */
-    export function createQueueService(storageAccountOrConnectionString: any, storageAccessKey: any, host: any): QueueService;
+    export function createQueueService(storageAccount: string, storageAccessKey: string, host: string | StorageHost): QueueService;
+    export function createQueueService(connectionString: string): QueueService;
+    export function createQueueService(): QueueService;
 
     /**
     * Creates a new {@link QueueService} object using the host Uri and the SAS credentials provided.
@@ -8438,7 +8707,7 @@ declare module "azure-storage" {
     * @param {string} sasToken                            The Shared Access Signature token.
     * @return {QueueService}                              A new QueueService object with the SAS credentials.
     */
-    export function createQueueServiceWithSas(hostUri: any, sasToken: any): QueueService;
+    export function createQueueServiceWithSas(hostUri: string | StorageHost, sasToken: string): QueueService;
 
     interface StorageError extends Error {
       statusCode?: number;
