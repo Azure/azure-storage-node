@@ -1,6 +1,7 @@
 Tracking Breaking Changes in 1.0.0
 BLOB
 * The `blob` property of BlobResult has been renamed to `name` to keep consistent with other services API and the `listBlob` API.
+* Decoded the block name of LockListResult from base64 string to utf-8 string.
 
 QUEUE
 * The `encodeMessage` flag of QueueService has been replaced by `messageEncoder` which support `TextBase64QueueMessageEncoder`, `BinaryBase64QueueMessageEncoder`, `TextXmlQueueMessageEncoder` and custom implementation of QueueMessageEncoder.
