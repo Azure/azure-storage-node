@@ -19,6 +19,7 @@ var assert = require('assert');
 var testutil = require('../../framework/util');
 var TestSuite = require('../../framework/test-suite');
 var azure = testutil.libRequire('azure-storage');
+var queueMessageEncoder = testutil.libRequire('services/queue/queuemessageencoder');
 
 var errors = testutil.libRequire('common/errors/errors');
 var ArgumentError = errors.ArgumentError;
@@ -78,7 +79,8 @@ describe('QueueServiceTests', function() {
   });
 
   afterEach(function (done) {
-    queueService.encodeMessage = true;
+    // Reset the encoder to default encoder after each cases
+    queueService.messageEncoder = new queueMessageEncoder.TextXmlQueueMessageEncoder();
     queueService.deleteQueueIfExists(queueName, function(error) {
       assert.equal(error, null);
       queueService.deleteQueueIfExists(queueName2, function(error) {
@@ -432,6 +434,7 @@ describe('QueueServiceTests', function() {
       var messageText1 = 'hi there';
       var messageText2 = 'bye there';
 
+      queueService.messageEncoder = new queueMessageEncoder.BinaryBase64QueueMessageEncoder();
       // Create Queue
       queueService.createQueue(queueName, function (createError1, queue1, createResponse1) {
         assert.equal(createError1, null);
@@ -461,7 +464,7 @@ describe('QueueServiceTests', function() {
               assert.ok(queueMessage['messageId']);
               assert.ok(queueMessage['insertionTime']);
               assert.ok(queueMessage['expirationTime']);
-              assert.equal(new Buffer(queueMessage.messageText, 'base64').toString(), messageText1);
+              assert.equal(queueMessage.messageText.toString(), messageText1);
 
               assert.ok(peekResponse.isSuccessful);
               assert.equal(peekResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
@@ -475,7 +478,7 @@ describe('QueueServiceTests', function() {
                 assert.equal(getResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
                 var getQueueMessage = getQueueMessages[0];
-              assert.equal(new Buffer(getQueueMessage.messageText, 'base64').toString(), messageText1);
+                assert.equal(getQueueMessage.messageText.toString(), messageText1);
 
                 // Delete message
                 queueService.deleteMessage(queueName, getQueueMessage.messageId, getQueueMessage.popReceipt, function (deleteError, deleteResponse) {
@@ -491,7 +494,7 @@ describe('QueueServiceTests', function() {
                     assert.equal(getResponse2.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
                     var getQueueMessage2 = getQueueMessages2[0];
-                    assert.equal(new Buffer(getQueueMessage2.messageText, 'base64').toString(), messageText2);
+                    assert.equal(getQueueMessage2.messageText.toString(), messageText2);
 
                     // Clear messages
                     queueService.clearMessages(queueName, function (clearError, clearResponse) {
@@ -523,7 +526,7 @@ describe('QueueServiceTests', function() {
       var messageText1 = 'hi there';
       var messageText2 = 'bye there';
 
-      queueService.encodeMessage = false;
+      queueService.messageEncoder = null;
 
       // Create Queue
       queueService.createQueue(queueName, function (createError1, queue1, createResponse1) {
@@ -617,7 +620,7 @@ describe('QueueServiceTests', function() {
       var messageText1 = 'hi there';
       var messageText2 = 'bye there';
 
-      queueService.encodeMessage = false;
+      queueService.messageEncoder = null;
 
       // Create Queue
       queueService.createQueue(queueName, function (createError1, queue1, createResponse1) {

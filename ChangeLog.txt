@@ -7,7 +7,7 @@ BLOB
 * The `blob` property of BlobResult has been renamed to `name` to keep consistent with other services API and the `listBlob` API.
 
 QUEUE
-* When set `encodeMessage` of QueueService to `true`, the message text won't be decoded from base64 string anymore when getting/peeking messages as service doesn't know what's the target encoding. Instead, it will return the raw base64 string and callers will be responsbile to decode it. E.g. `new Buffer(message.messageText, 'base64').toString('utf8')` to decode to utf-8 string.
+* The `encodeMessage` flag of QueueService has been replaced by `messageEncoder` which support `TextBase64QueueMessageEncoder`, `BinaryBase64QueueMessageEncoder`, `TextXmlQueueMessageEncoder` and custom implementation of QueueMessageEncoder.
 
 TABLE
 * Fixed the issue that loses the data type for Edm.Double value like: 1.0.
