@@ -48,6 +48,7 @@ module.exports = function(grunt) {
           'lib/services/blob/models/leaseresult.js',
           'lib/services/blob/blobutilities.js',
           'lib/services/queue/queueservice.js',
+          'lib/services/queue/queuemessageencoder.js',
           'lib/services/queue/queueutilities.js',
           'lib/services/queue/models/queueresult.js',
           'lib/services/queue/models/queuemessageresult.js',
