@@ -198,14 +198,14 @@ describe('tableservice-payload-tests', function () {
       fnHelper(specialNumbersTest, options, done);
     });
   });
-  
+
   describe('Data/Type Integrity', function () {
     it('FullMetadata', function (done) {
       var options = {};
       options.payloadFormat = TableUtilities.PayloadFormat.FULL_METADATA;
       fnHelper(dataTypeIntegrityTest, options, done);
     });
-    
+
     it('MinimalMetadata', function (done) {
       var options = {};
       options.payloadFormat = TableUtilities.PayloadFormat.MINIMAL_METADATA;
@@ -304,8 +304,8 @@ function compareProperties (propFromService, prop, expectTypeOnService) {
 
   // check value, make sure typeof is equal as Number.NaN should not equal 'Nan'
   if (propFromService.hasOwnProperty('$') && !expectTypeOnService.stringOverride) {
-    if (prop['$'] === 'Edm.Double' && azureutil.objectIsInt(parseFloat(prop['_'])) ) {
-      assert.strictEqual(typeof propFromService['_'], "number");
+    if (prop['$'] === 'Edm.Double') {
+      assert.strictEqual(typeof propFromService['_'], 'number');
     } else {
       assert.strictEqual(typeof propFromService['_'], typeof prop['_']);
     }
@@ -488,16 +488,19 @@ function dataTypeIntegrityTest (options, done) {
       NanDouble: eg.Double(Number.NaN),
       DoubleInInt: eg.Double(10.0),
       DoubleInIntString: eg.Double('10.0'),
+      LargeDoubleInString: eg.Double('123456789012345.12'),
+      LargeDouble: eg.Double(123456789012345.12),
       PositiveInfinityDouble: eg.Double(Number.POSITIVE_INFINITY),
       NegativeInfinityDouble: eg.Double(Number.NEGATIVE_INFINITY),
       MinDouble: eg.Double(Number.MIN_VALUE),
       MaxDouble: eg.Double(Number.MAX_VALUE),
-      MaxInt64: eg.Int64('9223372036854775807')
+      MaxInt64: eg.Int64('9223372036854775807'),
+      MinInt64: eg.Int64('-9223372036854775808'),
     };
 
     tableService.insertEntity(tableName, entityToTest, function (error2) {
       assert.equal(error2, null);
-
+      
       tableService.retrieveEntity(tableName, entityToTest.PartitionKey['_'], entityToTest.RowKey['_'], options, function (error3, entity) {
         assert.equal(error3, null);
         assert.notEqual(entity, null);

@@ -21,7 +21,7 @@
   "dependencies": {
     "extend": "~1.2.1",
     "browserify-mime": "~1.2.9",
-    "json-edm-parser": "0.1.1",
+    "json-edm-parser": "0.1.2",
     "node-uuid": "~1.4.0",
     "readable-stream": "~2.0.0",
     "request": "~2.69.0",
