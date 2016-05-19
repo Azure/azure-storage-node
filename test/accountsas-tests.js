@@ -18,6 +18,7 @@ var assert = require('assert');
 var qs = require('querystring');
 var fs = require('fs');
 var crypto = require('crypto');
+var batch = require('batchflow');
 
 // Test includes
 var testutil = require('./framework/util');
@@ -168,9 +169,9 @@ var runBlobsPermissionTests = function(sharedAccessPolicy, next){
   // Append a block to append blob (Add / Write perms, Object RT)
   // Delete the blob (Delete perms, Object RT)
   
-  var blobService = azure.createBlobService();
+  var blobService = azure.createBlobService().withFilter(new azure.ExponentialRetryPolicyFilter());  
   var token = azure.generateAccountSharedAccessSignature(null, null, sharedAccessPolicy);
-  var sharedBlobService = azure.createBlobServiceWithSas(blobService.host, token); 
+  var sharedBlobService = azure.createBlobServiceWithSas(blobService.host, token).withFilter(new azure.ExponentialRetryPolicyFilter());; 
   
   var containerNames = [];
   var blobLength = 10000;
@@ -346,9 +347,9 @@ var runTablesPermissionTests = function(sharedAccessPolicy, next){
   // Delete the entity (Delete perms, Object RT)
   // Delete the table (Delete perms, Container RT)
 
-  var tableService = azure.createTableService();
+  var tableService = azure.createTableService().withFilter(new azure.ExponentialRetryPolicyFilter());;
   var token = azure.generateAccountSharedAccessSignature(null, null, sharedAccessPolicy);
-  var sharedTableService = azure.createTableServiceWithSas(tableService.host, token);
+  var sharedTableService = azure.createTableServiceWithSas(tableService.host, token).withFilter(new azure.ExponentialRetryPolicyFilter());;
   var tablePrefix = 'tableservice';
   var tableName = suite.getName(tablePrefix).replace(/-/g,'');
   var entity1 = { PartitionKey: eg.String('part1'),
@@ -602,9 +603,9 @@ var runQueuesPermissionTests = function(sharedAccessPolicy, next){
   // Clear all messages (Delete perms, Object RT)
   // Delete the queue (Delete perms, Container RT)
   
-  var queueService = azure.createQueueService();
+  var queueService = azure.createQueueService().withFilter(new azure.ExponentialRetryPolicyFilter());;
   var token = azure.generateAccountSharedAccessSignature(null, null, sharedAccessPolicy);
-  var sharedQueueService = azure.createQueueServiceWithSas(queueService.host, token);
+  var sharedQueueService = azure.createQueueServiceWithSas(queueService.host, token).withFilter(new azure.ExponentialRetryPolicyFilter());;
   var queuePrefix = 'queueservice';
   var queueName = suite.getName(queuePrefix);
   
@@ -843,9 +844,9 @@ var runFilesPermissionTests = function(sharedAccessPolicy, next){
   // Delete the file (Delete perms, Object RT)
   // Delete the share (Delete perms, Container RT)
   
-  var fileService = azure.createFileService();
+  var fileService = azure.createFileService().withFilter(new azure.ExponentialRetryPolicyFilter());;
   var token = azure.generateAccountSharedAccessSignature(null, null, sharedAccessPolicy);
-  var sharedFileService = azure.createFileServiceWithSas(fileService.host, token);
+  var sharedFileService = azure.createFileServiceWithSas(fileService.host, token).withFilter(new azure.ExponentialRetryPolicyFilter());;
   var sharePrefix = 'fileservice-testshare';
   var shareName = suite.getName(sharePrefix);
   var fileName = suite.getName("file-");
@@ -926,10 +927,7 @@ var runFilesPermissionTests = function(sharedAccessPolicy, next){
     } else {
       sharedFileService.createRangesFromStream(shareName, '', fileName, rfs.createReadStream(localTempFileName), 0, fileSize, function(error){
         assert.notEqual(error, null, 'Writing to a file with SAS should fail without Write and Object-level perms.');
-        
-        fileService.createRangesFromStream(shareName, '', fileName, rfs.createReadStream(localTempFileName), 0, fileSize, function(error){
-          next();
-        });
+        next();
       });
     }
   };
@@ -994,13 +992,13 @@ var runFilesPermissionTests = function(sharedAccessPolicy, next){
               testDeleteShare(function(){
                 fs.unlink(localTempFileName, function(error){
                   next();
-                })
-              })
-            })
-          })
-        })
-      })
-    })
+                });
+              });
+            });
+          });
+        });
+      });
+    });
   });
 };
 
@@ -1008,14 +1006,14 @@ var runBlobsSanityTest = function(sharedAccessPolicy, next, useHttp){
   
   // Simply create an append blob and upload some test text to make sure the blob service works fine with the provided account SAS
   
-  var blobService = azure.createBlobService();
+  var blobService = azure.createBlobService().withFilter(new azure.ExponentialRetryPolicyFilter());;
   if(useHttp){
     blobService.host.primaryHost = blobService.host.primaryHost.replace('https://', 'http://').replace(':443', ':80');
     blobService.host.secondaryHost = blobService.host.primaryHost.replace('https://', 'http://').replace(':443', ':80');
   }
   
   var token = azure.generateAccountSharedAccessSignature(null, null, sharedAccessPolicy);
-  var sharedBlobService = azure.createBlobServiceWithSas(blobService.host, token); 
+  var sharedBlobService = azure.createBlobServiceWithSas(blobService.host, token).withFilter(new azure.ExponentialRetryPolicyFilter());; 
   
   var containerNames = [];
   var blobLength = 10000;
@@ -1041,14 +1039,14 @@ var runTablesSanityTest = function(sharedAccessPolicy, next, useHttp){
   
   // Simply create an table and insert an entity to make sure the table service works fine with the provided account SAS
   
-  var tableService = azure.createTableService();
+  var tableService = azure.createTableService().withFilter(new azure.ExponentialRetryPolicyFilter());;
   if(useHttp){
     tableService.host.primaryHost = tableService.host.primaryHost.replace('https://', 'http://').replace(':443', ':80');
     tableService.host.secondaryHost = tableService.host.primaryHost.replace('https://', 'http://').replace(':443', ':80');
   }
   
   var token = azure.generateAccountSharedAccessSignature(null, null, sharedAccessPolicy);
-  var sharedTableService = azure.createTableServiceWithSas(tableService.host, token);
+  var sharedTableService = azure.createTableServiceWithSas(tableService.host, token).withFilter(new azure.ExponentialRetryPolicyFilter());;
   var tablePrefix = 'tableservice';
   var tableName = suite.getName(tablePrefix).replace(/-/g,'');
   var entity1 = { PartitionKey: eg.String('part1'),
@@ -1073,14 +1071,14 @@ var runQueuesSanityTest = function(sharedAccessPolicy, next, useHttp){
   
   // Simply create an queue and create a message to make sure the queue service works fine with the provided account SAS
   
-  var queueService = azure.createQueueService();
+  var queueService = azure.createQueueService().withFilter(new azure.ExponentialRetryPolicyFilter());;
   if(useHttp){
     queueService.host.primaryHost = queueService.host.primaryHost.replace('https://', 'http://').replace(':443', ':80');
     queueService.host.secondaryHost = queueService.host.primaryHost.replace('https://', 'http://').replace(':443', ':80');
   }
   
   var token = azure.generateAccountSharedAccessSignature(null, null, sharedAccessPolicy);
-  var sharedQueueService = azure.createQueueServiceWithSas(queueService.host, token);
+  var sharedQueueService = azure.createQueueServiceWithSas(queueService.host, token).withFilter(new azure.ExponentialRetryPolicyFilter());;
   var queuePrefix = 'queueservice';
   var queueName = suite.getName(queuePrefix);
   
@@ -1101,7 +1099,7 @@ var runFilesSanityTest = function(sharedAccessPolicy, next, useHttp){
   
   // Simply create an share and upload a file to make sure the queue service works fine with the provided account SAS
   
-  var fileService = azure.createFileService();
+  var fileService = azure.createFileService().withFilter(new azure.ExponentialRetryPolicyFilter());;
   
   if(useHttp){
     fileService.host.primaryHost = fileService.host.primaryHost.replace('https://', 'http://').replace(':443', ':80');
@@ -1109,7 +1107,7 @@ var runFilesSanityTest = function(sharedAccessPolicy, next, useHttp){
   }
   
   var token = azure.generateAccountSharedAccessSignature(null, null, sharedAccessPolicy);  
-  var sharedFileService = azure.createFileServiceWithSas(fileService.host, token);
+  var sharedFileService = azure.createFileServiceWithSas(fileService.host, token).withFilter(new azure.ExponentialRetryPolicyFilter());;
   var sharePrefix = 'fileservice-testshare';
   var shareName = suite.getName(sharePrefix);
   
@@ -1129,22 +1127,22 @@ var runFilesSanityTest = function(sharedAccessPolicy, next, useHttp){
 
 
 
-var runAllTestsInSequence = function(allPolicies, cb){
-  if(allPolicies.length == 0){
-    cb();
-  } else{
-    var policy = allPolicies[0];
+var runAllTestsInParallel = function(allPolicies, cb){
+  batch(allPolicies).parallel(4)
+  .each(function(index, policy, next){
     runBlobsPermissionTests(policy, function(){
       runTablesPermissionTests(policy, function(){
         runQueuesPermissionTests(policy, function(){
           runFilesPermissionTests(policy, function(){
-            allPolicies.splice(0, 1);
-            runAllTestsInSequence(allPolicies, cb);
+            next();
           })
         })
       })
     });
-  }
+  })
+  .end(function(){
+    cb();
+  });
 };
 
 var runAllSanityTestForServicesInSequence = function(allPolicies, cb){  
@@ -1406,7 +1404,7 @@ describe('azure', function () {
       done();
     });
     
-    runOrSkip('Various combinations of permissions should work fine for account SAS', function(done){
+    it.only('Various combinations of permissions should work fine for account SAS', function(done){
       var policies = [];
       
       var allPossibleCombinationsOfPermissions = getAllPossibleFlagsStringEnum(AccountSasConstants.Permissions);
@@ -1416,7 +1414,7 @@ describe('azure', function () {
         policies.push(policy);
       });
       
-      runAllTestsInSequence(policies, done);
+      runAllTestsInParallel(policies, done);
     });
     
     runOrSkip('Various combinations of resource types should work fine for account SAS', function(done){
@@ -1428,7 +1426,7 @@ describe('azure', function () {
         policy.AccessPolicy.ResourceTypes = resourceType;
         policies.push(policy);
       });
-      runAllTestsInSequence(policies, done);
+      runAllTestsInParallel(policies, done);
     });
     
     runOrSkip('Various combinations of services should work fine for account SAS', function(done){
