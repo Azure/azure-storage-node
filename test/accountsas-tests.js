@@ -58,8 +58,9 @@ var runOrSkip = suite.isMocked ? it.skip : it;
 
 var getPolicyWithFullPermissions = function(){
   var startDate = new Date();
-  var expiryDate = new Date(startDate);
-  expiryDate.setTime(startDate.getTime() + 24*60*60*1000);
+  var expiryDate = new Date();
+  startDate.setTime(startDate.getTime() - 1000);
+  expiryDate.setTime(expiryDate.getTime() + 24*60*60*1000);
   
   var sharedAccessPolicy = {
     AccessPolicy: {
@@ -1515,7 +1516,7 @@ describe('azure', function () {
     });
 
     runOrSkip('Start and expiry time should work fine for account SAS', function(done){
-      var startOffsetsInMinutes = [0, -5, 5];
+      var startOffsetsInMinutes = [-1, -5, 5];
       var expiryOffsetsInMinutes = [-5, 5];
       
       var policies = [];
