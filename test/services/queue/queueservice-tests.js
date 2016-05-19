@@ -284,7 +284,7 @@ describe('QueueServiceTests', function() {
               assert.ok(queueMessage['messageId']);
               assert.ok(queueMessage['insertionTime']);
               assert.ok(queueMessage['expirationTime']);
-              assert.equal(new Buffer(queueMessage.messageText, 'base64').toString(), messageText1);
+              assert.equal(queueMessage.messageText, messageText1);
 
               assert.ok(peekResponse.isSuccessful);
               assert.equal(peekResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
@@ -295,7 +295,7 @@ describe('QueueServiceTests', function() {
                 assert.ok(getResponse.isSuccessful);
                 assert.equal(getResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
-                assert.equal(new Buffer(getQueueMessage.messageText, 'base64').toString(), messageText1);
+                assert.equal(getQueueMessage.messageText, messageText1);
 
                 // Delete the message
                 queueService.deleteMessage(queueName, getQueueMessage.messageId, getQueueMessage.popReceipt, function (deleteError, deleteResponse) {
@@ -309,7 +309,7 @@ describe('QueueServiceTests', function() {
                     assert.ok(getResponse2.isSuccessful);
                     assert.equal(getResponse2.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
-                    assert.equal(new Buffer(getQueueMessage2.messageText, 'base64').toString(), messageText2);
+                    assert.equal(getQueueMessage2.messageText, messageText2);
 
                     // Clear messages
                     queueService.clearMessages(queueName, function (clearError, clearResponse) {
@@ -372,7 +372,7 @@ describe('QueueServiceTests', function() {
               assert.ok(queueMessage['messageId']);
               assert.ok(queueMessage['insertionTime']);
               assert.ok(queueMessage['expirationTime']);
-              assert.equal(new Buffer(queueMessage.messageText, 'base64').toString(), messageText1);
+              assert.equal(queueMessage.messageText, messageText1);
 
               assert.ok(peekResponse.isSuccessful);
               assert.equal(peekResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
@@ -386,7 +386,7 @@ describe('QueueServiceTests', function() {
                 assert.equal(getResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
                 var getQueueMessage = getQueueMessages[0];
-                assert.equal(new Buffer(getQueueMessage.messageText, 'base64').toString(), messageText1);
+                assert.equal(getQueueMessage.messageText, messageText1);
 
                 // Delete message
                 queueService.deleteMessage(queueName, getQueueMessage.messageId, getQueueMessage.popReceipt, function (deleteError, deleteResponse) {
@@ -402,7 +402,7 @@ describe('QueueServiceTests', function() {
                     assert.equal(getResponse2.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
                     var getQueueMessage2 = getQueueMessages2[0];
-                    assert.equal(new Buffer(getQueueMessage2.messageText, 'base64').toString(), messageText2);
+                    assert.equal(getQueueMessage2.messageText, messageText2);
 
                     // Clear messages
                     queueService.clearMessages(queueName, function (clearError, clearResponse) {
@@ -816,7 +816,7 @@ describe('QueueServiceTests', function() {
 
                 // By default only one is returned
                 assert.equal(messages.length, 1);
-                assert.equal(new Buffer(messages[0].messageText, 'base64').toString(), 'msg1');
+                assert.equal(messages[0].messageText, 'msg1');
 
                 queueService.getMessages(queueName, { numOfMessages: 2 }, function (error4, messages2) {
                   assert.equal(error4, null);
@@ -1045,7 +1045,7 @@ describe('QueueServiceTests', function() {
             assert.strictEqual(response.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
             var message = messages[0];
-            assert.equal(new Buffer(message.messageText, 'base64').toString(), text);
+            assert.equal(message.messageText, text);
             done();
           });
         });
@@ -1088,7 +1088,7 @@ describe('QueueServiceTests', function() {
                   assert.strictEqual(response.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
                   var message = messages[0];
-                  assert.equal(new Buffer(message.messageText, 'base64').toString(), text);
+                  assert.equal(message.messageText, text);
                   done();
                 });
               }, 3000);
