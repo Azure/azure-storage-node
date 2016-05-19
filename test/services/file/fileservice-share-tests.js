@@ -32,7 +32,6 @@ var Constants = azure.Constants;
 var FileUtilities = azure.FileUtilities;
 var HttpConstants = Constants.HttpConstants;
 
-var shares = [];
 var shareNamesPrefix = 'share-test-share-';
 
 var fileService;
@@ -450,60 +449,45 @@ describe('FileShare', function () {
         somemetadataname: 'SomeMetadataValue'
       };
 
-      var validateAndDeleteShares = function (shares, entries, callback) {
-        var count = shares.length;
+      var validateAndDeleteShares = function (shares, callback) {
+        var entries = [];
         shares.forEach(function (share) {
           if (share.name == shareName1) {
             assert.equal(share.metadata.color, metadata1.color);
             assert.equal(share.metadata.sharenumber, metadata1.sharenumber);
             assert.equal(share.metadata.somemetadataname, metadata1.somemetadataname);
             entries.push(share.name);
-            
-            fileService.deleteShare(share.name, function (deleteError1) {
-              count--;
-              assert.equal(null, deleteError1);
-            });
           } else if (share.name == shareName2) {
             assert.equal(share.metadata.color, metadata2.color);
             assert.equal(share.metadata.sharenumber, metadata2.sharenumber);
             assert.equal(share.metadata.somemetadataname, metadata2.somemetadataname);
             entries.push(share.name);
-            fileService.deleteShare(share.name, function (deleteError2) {
-              count--;
-              assert.equal(null, deleteError2);
-            });
           } else if (share.name == shareName3) {
             assert.equal(share.metadata.color, metadata3.color);
             assert.equal(share.metadata.sharenumber, metadata3.sharenumber);
             assert.equal(share.metadata.somemetadataname, metadata3.somemetadataname);
             entries.push(share.name);
-            fileService.deleteShare(share.name, function (deleteError3) {
-              count--;
-              assert.equal(null, deleteError3);
-            });
           } else if (share.name == shareName4) {
             assert.equal(share.metadata.color, metadata4.color);
             assert.equal(share.metadata.sharenumber, metadata4.sharenumber);
             assert.equal(share.metadata.somemetadataname, metadata4.somemetadataname);
             entries.push(share.name);
-            fileService.deleteShare(share.name, function (deleteError4) {
-              count--;
-              assert.equal(null, deleteError4);
-            });
           }
         });
         
-        var wait = function () {
-          if (count > 0) {
-            setTimeout(wait, 1000);
-          } else {
-            callback();
-          }
-        };
-        
-        wait();
-
-        return entries;
+        fileService.deleteShare(shareName1, function (err) {
+          assert.equal(null, err);
+          fileService.deleteShare(shareName2, function (err) {
+            assert.equal(null, err);
+            fileService.deleteShare(shareName3, function (err) {
+              assert.equal(null, err);
+              fileService.deleteShare(shareName4, function (err) {
+                assert.equal(null, err);
+                callback(entries);
+              });
+            });
+          });
+        });
       };
 
       fileService.createShare(shareName1, { metadata: metadata1 }, function (createError1, createShare1, createResponse1) {
@@ -531,11 +515,11 @@ describe('FileShare', function () {
                 'include': 'metadata',
               };
 
-              shares.length = 0;
-              listShares(shareNamesPrefix, options, null, function () {
-                var entries = [];
-                validateAndDeleteShares(shares, entries, done);
-                assert.equal(entries.length, 4);
+              listShares(shareNamesPrefix, options, null, function (shares) {
+                validateAndDeleteShares(shares, function(entries){
+                  assert.equal(entries.length, 4);
+                  done();
+                });
               });
             });
           });
@@ -547,7 +531,6 @@ describe('FileShare', function () {
       var listSharesWithoutPrefix = function (options, token, callback) {
         fileService.listSharesSegmented(token, options, function(error, result) {
           assert.equal(error, null);
-          shares.push.apply(shares, result.entries);
           var token = result.continuationToken;
           if(token) {
             listSharesWithoutPrefix(options, token, callback);
@@ -563,8 +546,7 @@ describe('FileShare', function () {
     });
 
     it('strangePrefix', function (done) {
-      shares.length = 0;
-      listShares('中文', null, null, function () {
+      listShares('中文', null, null, function (shares) {
         assert.equal(shares.length, 0);
         done();
       });
@@ -797,14 +779,23 @@ describe('FileShare', function () {
 });
 
 function listShares (prefix, options, token, callback) {
-  fileService.listSharesSegmentedWithPrefix(prefix, token, options, function(error, result) {
-    assert.equal(error, null);
-    shares.push.apply(shares, result.entries);
-    var token = result.continuationToken;
-    if(token) {
-      listShares(prefix, options, token, callback);
+  var entries = [];
+  // Helper function that allows us to do a full listing.
+  var recursionHelper = (err, result) => {
+    assert.equal(err, null);
+    entries.push.apply(entries, result.entries);
+
+    if (result.continuationToken) {
+      // call list shares again with the new continuation token
+      fileService.listSharesSegmentedWithPrefix(
+        prefix,
+        result.continuationToken,
+        options,
+        recursionHelper);
     } else {
-      callback();
+      callback(entries);
     }
-  });
+  };
+  
+  fileService.listSharesSegmentedWithPrefix(prefix, token, options, recursionHelper);
 }
