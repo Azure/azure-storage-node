@@ -185,7 +185,9 @@ var runBlobsPermissionTests = function(sharedAccessPolicy, next){
     sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.WRITE) > -1) &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.CONTAINER) > -1){
       sharedBlobService.createContainer(containerName, function(error, result){
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         assert.notEqual(result, null);
         assert.equal(result.name, containerName);
         next();
@@ -208,7 +210,9 @@ var runBlobsPermissionTests = function(sharedAccessPolicy, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.LIST) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.SERVICE) > -1){
       sharedBlobService.listContainersSegmentedWithPrefix(containerNamesPrefix, null, function(error, result){
-        assert.equal(error, null, error + '\npermission is ' + sharedAccessPolicy.AccessPolicy.Permissions);
+        if(error) {
+          throw error;
+        }
         assert.notEqual(result, null);
         next();
       });
@@ -225,7 +229,9 @@ var runBlobsPermissionTests = function(sharedAccessPolicy, next){
       sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.WRITE) > -1) &&
       sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.OBJECT) > -1){
       sharedBlobService.createOrReplaceAppendBlob(containerName, blobName, function(error, result){
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         next();
       });
     } else {
@@ -245,7 +251,9 @@ var runBlobsPermissionTests = function(sharedAccessPolicy, next){
     sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.WRITE) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.OBJECT) > -1){
       sharedBlobService.appendFromText(containerName, blobName, blobText, function(error, result){
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         assert.notEqual(result, null);
         next();
       });
@@ -266,7 +274,9 @@ var runBlobsPermissionTests = function(sharedAccessPolicy, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.READ) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.OBJECT) > -1){
       sharedBlobService.getBlobToText(containerName, blobName, function(error, blobTextResponse){
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         assert.notEqual(blobTextResponse, null);
         next();
       });
@@ -282,7 +292,9 @@ var runBlobsPermissionTests = function(sharedAccessPolicy, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.DELETE) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.OBJECT) > -1){
       sharedBlobService.deleteBlob(containerName, blobName, function(error){
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         next();
       });
     } else {
@@ -300,7 +312,9 @@ var runBlobsPermissionTests = function(sharedAccessPolicy, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.DELETE) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.CONTAINER) > -1){
       sharedBlobService.deleteContainer(containerName, function(error){
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         next();
       });
     } else {
@@ -366,7 +380,9 @@ var runTablesPermissionTests = function(sharedAccessPolicy, next){
     sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.WRITE) > -1) &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.CONTAINER) > -1){
       sharedTableService.createTable(tableName, function(error, result){
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         assert.notEqual(result, null);
         assert.equal(result.TableName, tableName);
         next();
@@ -389,7 +405,9 @@ var runTablesPermissionTests = function(sharedAccessPolicy, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.LIST) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.CONTAINER) > -1){
       sharedTableService.listTablesSegmentedWithPrefix(tablePrefix, null, function(error, result){
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         assert.notEqual(result, null);
         next();
       });
@@ -407,7 +425,9 @@ var runTablesPermissionTests = function(sharedAccessPolicy, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.WRITE) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.SERVICE) > -1){
       sharedTableService.setServiceProperties(serviceProperties, function (error) {
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         next();
       });
     } else {
@@ -415,7 +435,9 @@ var runTablesPermissionTests = function(sharedAccessPolicy, next){
         assert.notEqual(error, null, 'Setting table service properites should fail with SAS without Write and Service-level permissions.');
         
         tableService.setServiceProperties(serviceProperties, function (error) {
-          assert.equal(error, null);
+          if(error) {
+            throw error;
+          }
           next();
         });
       });
@@ -426,7 +448,9 @@ var runTablesPermissionTests = function(sharedAccessPolicy, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.ADD) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.OBJECT) > -1){
       sharedTableService.insertEntity(tableName, entity1, function (error) {
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         next();
       });
     } else {
@@ -450,7 +474,9 @@ var runTablesPermissionTests = function(sharedAccessPolicy, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.UPDATE) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.OBJECT) > -1){
       sharedTableService.mergeEntity(tableName, entity1Changed, function (error) {
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         next();
       });
     } else {
@@ -471,7 +497,9 @@ var runTablesPermissionTests = function(sharedAccessPolicy, next){
     sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.UPDATE) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.OBJECT) > -1){
       sharedTableService.insertOrMergeEntity(tableName, entity2, function (error) {
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         next();
       });
     } else {
@@ -496,7 +524,9 @@ var runTablesPermissionTests = function(sharedAccessPolicy, next){
     sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.UPDATE) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.OBJECT) > -1){
       sharedTableService.insertOrMergeEntity(tableName, entity2Changed, function (error) {
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         next();
       });
     } else {
@@ -515,7 +545,9 @@ var runTablesPermissionTests = function(sharedAccessPolicy, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.READ) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.OBJECT) > -1){
       sharedTableService.retrieveEntity(tableName, 'part1', 'row1', function (error, result) {
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         assert.notEqual(result, null);
         next();
       });
@@ -531,7 +563,9 @@ var runTablesPermissionTests = function(sharedAccessPolicy, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.DELETE) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.OBJECT) > -1){
       sharedTableService.deleteEntity(tableName, entity1, function (error, response) {
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         assert.ok(response.isSuccessful);
         next();
       });
@@ -550,7 +584,9 @@ var runTablesPermissionTests = function(sharedAccessPolicy, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.DELETE) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.CONTAINER) > -1){
       sharedTableService.deleteTable(tableName, function (error, response) {
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         assert.ok(response.isSuccessful);
         next();
       });
@@ -614,7 +650,9 @@ var runQueuesPermissionTests = function(sharedAccessPolicy, next){
     sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.WRITE) > -1) &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.CONTAINER) > -1){
       sharedQueueService.createQueue(queueName, function(error, result){
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         assert.notEqual(result, null);
         assert.equal(result.name, queueName);
         next();
@@ -624,7 +662,9 @@ var runQueuesPermissionTests = function(sharedAccessPolicy, next){
         assert.notEqual(error, null, 'Creating a queue with SAS should fail without Add and Container-level permissions.');
         
         queueService.createQueue(queueName, function(error, result){
-          assert.equal(error, null);
+          if(error) {
+            throw error;
+          }
           assert.notEqual(result, null);
           assert.equal(result.name, queueName);
           next();
@@ -637,7 +677,9 @@ var runQueuesPermissionTests = function(sharedAccessPolicy, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.LIST) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.SERVICE) > -1){
       sharedQueueService.listQueuesSegmentedWithPrefix(queuePrefix, null, function(error, result){
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         assert.notEqual(result, null);
         next();
       });
@@ -655,7 +697,9 @@ var runQueuesPermissionTests = function(sharedAccessPolicy, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.WRITE) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.CONTAINER) > -1){
       sharedQueueService.setQueueMetadata(queueName, metadata, function(error){
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         next();
       });
     } else {
@@ -670,7 +714,9 @@ var runQueuesPermissionTests = function(sharedAccessPolicy, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.ADD) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.OBJECT) > -1){
       sharedQueueService.createMessage(queueName, 'msg1', function(error){
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         next();
       });
     } else {
@@ -689,7 +735,9 @@ var runQueuesPermissionTests = function(sharedAccessPolicy, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.READ) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.OBJECT) > -1){
       sharedQueueService.peekMessages(queueName, function(error, queueMessages){
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         assert.notEqual(queueMessages, null);
         var queueMessage = queueMessages[0];
         assert.ok(queueMessage);
@@ -722,7 +770,9 @@ var runQueuesPermissionTests = function(sharedAccessPolicy, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.PROCESS) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.OBJECT) > -1){
       sharedQueueService.getMessages(queueName, function(error, queueMessages){
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         assert.notEqual(queueMessages, null);
         var queueMessage = queueMessages[0];
         assert.ok(queueMessage);
@@ -757,7 +807,9 @@ var runQueuesPermissionTests = function(sharedAccessPolicy, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.UPDATE) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.OBJECT) > -1){
       sharedQueueService.updateMessage(queueName, queueMessage.messageId, queueMessage.popReceipt, 0, { messageText: 'msg1-updated' }, function(error){
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         next();
       });
     } else {
@@ -776,7 +828,9 @@ var runQueuesPermissionTests = function(sharedAccessPolicy, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.DELETE) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.OBJECT) > -1){
       sharedQueueService.clearMessages(queueName, function(error){
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         next();
       });
     } else {
@@ -795,7 +849,9 @@ var runQueuesPermissionTests = function(sharedAccessPolicy, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.DELETE) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.CONTAINER) > -1){
       sharedQueueService.deleteQueue(queueName, function(error){
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         next();
       });
     } else {
@@ -861,7 +917,9 @@ var runFilesPermissionTests = function(sharedAccessPolicy, next){
     sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.WRITE) > -1) &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.CONTAINER) > -1){
       sharedFileService.createShare(shareName, function(error, result){
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         assert.notEqual(result, null);
         assert.equal(result.name, shareName);
         next();
@@ -884,7 +942,9 @@ var runFilesPermissionTests = function(sharedAccessPolicy, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.LIST) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.SERVICE) > -1){
       sharedFileService.listSharesSegmentedWithPrefix(sharePrefix, null, function(error){
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         next();
       });
     } else {
@@ -900,7 +960,9 @@ var runFilesPermissionTests = function(sharedAccessPolicy, next){
     sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.WRITE) > -1) &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.OBJECT) > -1){
       sharedFileService.createFile(shareName, '', fileName, fileSize, function (error) {
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         next();
       });
     } else {
@@ -920,7 +982,9 @@ var runFilesPermissionTests = function(sharedAccessPolicy, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.WRITE) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.OBJECT) > -1){
       writableStream = sharedFileService.createWriteStreamToExistingFile(shareName, '', fileName, function(error){
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         next();
       });
       rfs.createReadStream(localTempFileName).pipe(writableStream);
@@ -936,7 +1000,9 @@ var runFilesPermissionTests = function(sharedAccessPolicy, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.READ) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.OBJECT) > -1){
       sharedFileService.getFileToText(shareName, '', fileName, function(error){
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         next();
       });
     } else {
@@ -951,7 +1017,9 @@ var runFilesPermissionTests = function(sharedAccessPolicy, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.DELETE) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.OBJECT) > -1){
       sharedFileService.deleteFile(shareName, '', fileName, function(error){
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         next();
       });
     } else {
@@ -969,7 +1037,9 @@ var runFilesPermissionTests = function(sharedAccessPolicy, next){
     if(sharedAccessPolicy.AccessPolicy.Permissions.indexOf(AccountSasConstants.Permissions.DELETE) > -1 &&
     sharedAccessPolicy.AccessPolicy.ResourceTypes.indexOf(AccountSasConstants.Resources.CONTAINER) > -1){
       sharedFileService.deleteShare(shareName, function(error){
-        assert.equal(error, null);
+        if(error) {
+          throw error;
+        }
         next();
       });
     } else {
