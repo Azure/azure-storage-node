@@ -1404,7 +1404,7 @@ describe('azure', function () {
       done();
     });
     
-    it.only('Various combinations of permissions should work fine for account SAS', function(done){
+    runOrSkip('Various combinations of permissions should work fine for account SAS', function(done){
       var policies = [];
       
       var allPossibleCombinationsOfPermissions = getAllPossibleFlagsStringEnum(AccountSasConstants.Permissions);
