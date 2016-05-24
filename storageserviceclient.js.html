@@ -54,6 +54,10 @@
 					<ul class="dropdown-menu ">
 						
 						<li>
+							<a href="BinaryBase64QueueMessageEncoder.html">BinaryBase64QueueMessageEncoder</a>
+						</li>
+						
+						<li>
 							<a href="BlobResult.html">BlobResult</a>
 						</li>
 						
@@ -94,6 +98,10 @@
 						</li>
 						
 						<li>
+							<a href="QueueMessageEncoder.html">QueueMessageEncoder</a>
+						</li>
+						
+						<li>
 							<a href="QueueMessageResult.html">QueueMessageResult</a>
 						</li>
 						
@@ -127,6 +135,14 @@
 						
 						<li>
 							<a href="TableService.html">TableService</a>
+						</li>
+						
+						<li>
+							<a href="TextBase64QueueMessageEncoder.html">TextBase64QueueMessageEncoder</a>
+						</li>
+						
+						<li>
+							<a href="TextXmlQueueMessageEncoder.html">TextXmlQueueMessageEncoder</a>
 						</li>
 						
 
@@ -232,6 +248,7 @@ var guid = require('node-uuid');
 var os = require('os');
 var crypto = require('crypto');
 var extend = require('extend');
+var Parser = require('json-edm-parser');
 
 var azureutil = require('../util/util');
 var validate = require('../util/validate');
@@ -243,6 +260,7 @@ var StorageServiceSettings = require('./storageservicesettings');
 var Constants = require('../util/constants');
 var StorageUtilities = require('../util/storageutilities');
 var ServicePropertiesResult = require('../models/servicepropertiesresult');
+var TableUtilities = require('../../services/table/tableutilities');
 
 var SharedKey = require('../signing/sharedkey');
 var SharedAccessSignature = require('../signing/sharedaccesssignature');
@@ -496,7 +514,7 @@ StorageServiceClient.prototype._performRequest = function (webResource, body, op
             if (error) {
               responseObject = { error: error, response: null };
             } else {
-              responseObject = self._processResponse(webResource, response);
+              responseObject = self._processResponse(webResource, response, options);
               responseObject.contentMD5 = response.contentMD5;
               responseObject.length = response.length;
             }
@@ -783,11 +801,13 @@ StorageServiceClient.prototype._buildRequestOptions = function (webResource, bod
 * Process the response.
 * @ignore
 *
-* @param {WebResource} webResource  The web resource that made the request.
-* @param {Response}    response     The response object.
+* @param {WebResource} webResource                The web resource that made the request.
+* @param {Response}    response                   The response object.
+* @param {Options}     options                    The response parsing options.
+* @param {String}      options.payloadFormat      The payload format.
 * @return The normalized responseObject.
 */
-StorageServiceClient.prototype._processResponse = function (webResource, response) {
+StorageServiceClient.prototype._processResponse = function (webResource, response, options) {
   var self = this;
 
   var validResponse = WebResource.validResponse(response.statusCode);
@@ -798,7 +818,7 @@ StorageServiceClient.prototype._processResponse = function (webResource, respons
     responseObject = { error: null, response: rsp };
   } else {
     // attempt to parse the response body, errors will be returned in rsp.error without modifying the body
-    rsp = StorageServiceClient._parseResponse(rsp, self.xml2jsSettings);
+    rsp = StorageServiceClient._parseResponse(rsp, self.xml2jsSettings, options);
 
     if (validResponse && !rsp.error) {
         responseObject = { error: null, response: rsp };
@@ -919,10 +939,13 @@ StorageServiceClient._buildResponse = function (isSuccessful, body, headers, sta
 * This is done using the xml2js library.
 * @ignore
 *
-* @param {object} response The response object with a property "body" with a XML or JSON string content.
+* @param {object}     response                   The response object with a property "body" with a XML or JSON string content.
+* @param {object}     xml2jsSettings             The XML to json settings.
+* @param {Options}    options                    The response parsing options.
+* @param {String}     options.payloadFormat      The payload format.
 * @return {object} The same response object with the body part as a JS object instead of a XML or JSON string.
 */
-StorageServiceClient._parseResponse = function (response, xml2jsSettings) {
+StorageServiceClient._parseResponse = function (response, xml2jsSettings, options) {
   function parseXml(body) {
     var parsed;
     var parser = new xml2js.Parser(xml2jsSettings);
@@ -945,7 +968,15 @@ StorageServiceClient._parseResponse = function (response, xml2jsSettings) {
 
     try {
       if (contentType.indexOf('application/json') !== -1) {
-        response.body = JSON.parse(response.body);
+        if (options && options.payloadFormat && options.payloadFormat !== TableUtilities.PayloadFormat.NO_METADATA) {
+          var parser = new Parser();
+          parser.onValue = function (value) {
+            response.body = value;
+          };
+          parser.write(response.body);
+        } else {
+          response.body = JSON.parse(response.body);
+        }
       } else if (contentType.indexOf('application/xml') !== -1 || contentType.indexOf('application/atom+xml') !== -1) {
         response.body = parseXml(response.body);
       } else {
@@ -1202,12 +1233,16 @@ StorageServiceClient._normalizeError = function (error, response) {
     var normalizedError = {};
 
     // blob/queue errors should have error.Error, table errors should have error['odata.error']
-    var errorProperties = error.Error || error.error || error['odata.error'] || error;
+    var errorProperties = error.Error || error.error || error['odata.error'] || error['m:error'] || error;
     normalizedError.code = errorProperties.message; // The message exists when there is error.Error.
     
     for (var property in errorProperties) {
       if (errorProperties.hasOwnProperty(property)) {
         var key = property.toLowerCase();
+        if(key.startsWith('m:')) {
+          key = key.substring(2);
+        }
+        
         normalizedError[key] = errorProperties[property];
 
         // if this is a table error, message is an object - flatten it to normalize with blob/queue errors
@@ -1412,7 +1447,7 @@ module.exports = StorageServiceClient;
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Mon Mar 28th 2016 using the <a
+		on Tue May 24th 2016 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>

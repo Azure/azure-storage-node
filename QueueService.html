@@ -54,6 +54,10 @@
 					<ul class="dropdown-menu ">
 						
 						<li>
+							<a href="BinaryBase64QueueMessageEncoder.html">BinaryBase64QueueMessageEncoder</a>
+						</li>
+						
+						<li>
 							<a href="BlobResult.html">BlobResult</a>
 						</li>
 						
@@ -94,6 +98,10 @@
 						</li>
 						
 						<li>
+							<a href="QueueMessageEncoder.html">QueueMessageEncoder</a>
+						</li>
+						
+						<li>
 							<a href="QueueMessageResult.html">QueueMessageResult</a>
 						</li>
 						
@@ -127,6 +135,14 @@
 						
 						<li>
 							<a href="TableService.html">TableService</a>
+						</li>
+						
+						<li>
+							<a href="TextBase64QueueMessageEncoder.html">TextBase64QueueMessageEncoder</a>
+						</li>
+						
+						<li>
+							<a href="TextXmlQueueMessageEncoder.html">TextXmlQueueMessageEncoder</a>
 						</li>
 						
 
@@ -212,7 +228,7 @@
 <p>For more information on using the Queue Service, as well as task focused information on using it from a Node.js application, see
 <a href="http://azure.microsoft.com/en-us/documentation/articles/storage-nodejs-how-to-use-queues/">How to Use the Queue Service from Node.js</a>.
 The following defaults can be set on the Queue service.
-encodeMessage                                       A flag indicating whether the message should be base-64 encoded. Default is true.
+messageEncoder                                      The message encoder to specify how QueueService encodes and decodes the queue message. Default is <code><a href="TextXmlQueueMessageEncoder.html">TextXmlQueueMessageEncoder</a></code>.
 defaultTimeoutIntervalInMs                          The default timeout interval, in milliseconds, to use for request made via the Queue service.
 defaultMaximumExecutionTimeInMs                     The default maximum execution time across all potential retries, for requests made via the Queue service.
 defaultLocationMode                                 The default location mode for requests made via the Queue service.
@@ -439,7 +455,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-65">line 65</a>
+				 <a href="queueservice.js.html#sunlight-1-line-66">line 66</a>
 			</li>
 		</ul>
 	</dd>
@@ -551,7 +567,123 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="storageserviceclient.js.html#sunlight-1-line-101">line 101</a>
+				 <a href="storageserviceclient.js.html#sunlight-1-line-103">line 103</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<dt class="name" id="messageEncoder">
+    <h4><span class="type-signature"></span>messageEncoder<span class="type-signature"></span></h4>
+
+    
+</dt>
+<dd>
+    
+
+    
+
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>QueueService#messageEncoder</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+	<dt class="tag-default">Default Value:</dt>
+	<dd class="tag-default">
+		<ul class="dummy">
+			<li>{QueueMessageEncoder}     `<a href="TextXmlQueueMessageEncoder.html">TextXmlQueueMessageEncoder</a>`.The message encoder to specify how QueueService encodes and decodes the queue message. Default is `<a href="TextXmlQueueMessageEncoder.html">TextXmlQueueMessageEncoder</a>`.</li>
+		</ul>
+	</dd>
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
+				 <a href="queueservice.js.html#sunlight-1-line-85">line 85</a>
 			</li>
 		</ul>
 	</dd>
@@ -632,7 +764,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="storageserviceclient.js.html#sunlight-1-line-1101">line 1101</a>
+				 <a href="storageserviceclient.js.html#sunlight-1-line-1120">line 1120</a>
 			</li>
 		</ul>
 	</dd>
@@ -717,7 +849,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="storageserviceclient.js.html#sunlight-1-line-1156">line 1156</a>
+				 <a href="storageserviceclient.js.html#sunlight-1-line-1175">line 1175</a>
 			</li>
 		</ul>
 	</dd>
@@ -802,7 +934,7 @@ the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_A
 		<ul class="dummy">
 			<li>
 				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="storageserviceclient.js.html#sunlight-1-line-1170">line 1170</a>
+				 <a href="storageserviceclient.js.html#sunlight-1-line-1189">line 1189</a>
 			</li>
 		</ul>
 	</dd>
@@ -888,7 +1020,7 @@ Can be overridden by calling _setProxyUrl or _setProxy</p>
 		<ul class="dummy">
 			<li>
 				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="storageserviceclient.js.html#sunlight-1-line-1062">line 1062</a>
+				 <a href="storageserviceclient.js.html#sunlight-1-line-1081">line 1081</a>
 			</li>
 		</ul>
 	</dd>
@@ -973,7 +1105,7 @@ Can be overridden by calling _setProxyUrl or _setProxy</p>
 		<ul class="dummy">
 			<li>
 				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="storageserviceclient.js.html#sunlight-1-line-1181">line 1181</a>
+				 <a href="storageserviceclient.js.html#sunlight-1-line-1200">line 1200</a>
 			</li>
 		</ul>
 	</dd>
@@ -1058,7 +1190,7 @@ Can be overridden by calling _setProxyUrl or _setProxy</p>
 		<ul class="dummy">
 			<li>
 				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="storageserviceclient.js.html#sunlight-1-line-1124">line 1124</a>
+				 <a href="storageserviceclient.js.html#sunlight-1-line-1143">line 1143</a>
 			</li>
 		</ul>
 	</dd>
@@ -1459,7 +1591,7 @@ Can be overridden by calling _setProxyUrl or _setProxy</p>
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-990">line 990</a>
+				 <a href="queueservice.js.html#sunlight-1-line-996">line 996</a>
 			</li>
 		</ul>
 	</dd>
@@ -1500,7 +1632,7 @@ Can be overridden by calling _setProxyUrl or _setProxy</p>
         <p>Adds a new message to the back of the message queue. 
 The encoded message can be up to 64KB in size for versions 2011-08-18 and newer, or 8KB in size for previous versions. 
 Unencoded messages must be in a format that can be included in an XML request with UTF-8 encoding. 
-Queue messages are encoded by default. See queueService.encodeMessage to set encoding defaults.</p>
+Queue messages are encoded using the <code><a href="TextXmlQueueMessageEncoder.html">TextXmlQueueMessageEncoder</a></code>. See queueService.messageEncoder to set encoder defaults.</p>
     </div>
     
 
@@ -1962,7 +2094,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-688">line 688</a>
+				 <a href="queueservice.js.html#sunlight-1-line-694">line 694</a>
 			</li>
 		</ul>
 	</dd>
@@ -2403,7 +2535,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-346">line 346</a>
+				 <a href="queueservice.js.html#sunlight-1-line-352">line 352</a>
 			</li>
 		</ul>
 	</dd>
@@ -2838,7 +2970,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-411">line 411</a>
+				 <a href="queueservice.js.html#sunlight-1-line-417">line 417</a>
 			</li>
 		</ul>
 	</dd>
@@ -3306,7 +3438,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-938">line 938</a>
+				 <a href="queueservice.js.html#sunlight-1-line-944">line 944</a>
 			</li>
 		</ul>
 	</dd>
@@ -3706,7 +3838,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-468">line 468</a>
+				 <a href="queueservice.js.html#sunlight-1-line-474">line 474</a>
 			</li>
 		</ul>
 	</dd>
@@ -4108,7 +4240,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-511">line 511</a>
+				 <a href="queueservice.js.html#sunlight-1-line-517">line 517</a>
 			</li>
 		</ul>
 	</dd>
@@ -4510,7 +4642,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-321">line 321</a>
+				 <a href="queueservice.js.html#sunlight-1-line-327">line 327</a>
 			</li>
 		</ul>
 	</dd>
@@ -4892,7 +5024,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-1247">line 1247</a>
+				 <a href="queueservice.js.html#sunlight-1-line-1253">line 1253</a>
 			</li>
 		</ul>
 	</dd>
@@ -5350,7 +5482,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-810">line 810</a>
+				 <a href="queueservice.js.html#sunlight-1-line-816">line 816</a>
 			</li>
 		</ul>
 	</dd>
@@ -5824,7 +5956,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-757">line 757</a>
+				 <a href="queueservice.js.html#sunlight-1-line-763">line 763</a>
 			</li>
 		</ul>
 	</dd>
@@ -6232,7 +6364,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-1109">line 1109</a>
+				 <a href="queueservice.js.html#sunlight-1-line-1115">line 1115</a>
 			</li>
 		</ul>
 	</dd>
@@ -6635,7 +6767,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-567">line 567</a>
+				 <a href="queueservice.js.html#sunlight-1-line-573">line 573</a>
 			</li>
 		</ul>
 	</dd>
@@ -7006,7 +7138,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-155">line 155</a>
+				 <a href="queueservice.js.html#sunlight-1-line-161">line 161</a>
 			</li>
 		</ul>
 	</dd>
@@ -7377,7 +7509,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-103">line 103</a>
+				 <a href="queueservice.js.html#sunlight-1-line-109">line 109</a>
 			</li>
 		</ul>
 	</dd>
@@ -7846,7 +7978,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-206">line 206</a>
+				 <a href="queueservice.js.html#sunlight-1-line-212">line 212</a>
 			</li>
 		</ul>
 	</dd>
@@ -8379,7 +8511,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-235">line 235</a>
+				 <a href="queueservice.js.html#sunlight-1-line-241">line 241</a>
 			</li>
 		</ul>
 	</dd>
@@ -8781,7 +8913,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-893">line 893</a>
+				 <a href="queueservice.js.html#sunlight-1-line-899">line 899</a>
 			</li>
 		</ul>
 	</dd>
@@ -9216,7 +9348,7 @@ Queue messages are encoded by default. See queueService.encodeMessage to set enc
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-856">line 856</a>
+				 <a href="queueservice.js.html#sunlight-1-line-862">line 862</a>
 			</li>
 		</ul>
 	</dd>
@@ -9594,7 +9726,7 @@ You can also use this operation to set the default request version for all incom
 		<ul class="dummy">
 			<li>
 				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="storageserviceclient.js.html#sunlight-1-line-945">line 945</a>
+				 <a href="storageserviceclient.js.html#sunlight-1-line-960">line 960</a>
 			</li>
 		</ul>
 	</dd>
@@ -10048,7 +10180,7 @@ You can also use this operation to set the default request version for all incom
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-1187">line 1187</a>
+				 <a href="queueservice.js.html#sunlight-1-line-1193">line 1193</a>
 			</li>
 		</ul>
 	</dd>
@@ -10487,7 +10619,7 @@ You can also use this operation to set the default request version for all incom
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-623">line 623</a>
+				 <a href="queueservice.js.html#sunlight-1-line-629">line 629</a>
 			</li>
 		</ul>
 	</dd>
@@ -10889,7 +11021,7 @@ You can also use this operation to set the default request version for all incom
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-179">line 179</a>
+				 <a href="queueservice.js.html#sunlight-1-line-185">line 185</a>
 			</li>
 		</ul>
 	</dd>
@@ -11418,7 +11550,7 @@ A message must be in a format that can be included in an XML request with UTF-8 
 		<ul class="dummy">
 			<li>
 				<a href="queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="queueservice.js.html#sunlight-1-line-1039">line 1039</a>
+				 <a href="queueservice.js.html#sunlight-1-line-1045">line 1045</a>
 			</li>
 		</ul>
 	</dd>
@@ -11563,7 +11695,7 @@ up the service invocation.</p>
 		<ul class="dummy">
 			<li>
 				<a href="storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="storageserviceclient.js.html#sunlight-1-line-655">line 655</a>
+				 <a href="storageserviceclient.js.html#sunlight-1-line-659">line 659</a>
 			</li>
 		</ul>
 	</dd>
@@ -11634,7 +11766,7 @@ up the service invocation.</p>
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Mon Mar 28th 2016 using the <a
+		on Tue May 24th 2016 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>

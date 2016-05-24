@@ -54,6 +54,10 @@
 					<ul class="dropdown-menu ">
 						
 						<li>
+							<a href="BinaryBase64QueueMessageEncoder.html">BinaryBase64QueueMessageEncoder</a>
+						</li>
+						
+						<li>
 							<a href="BlobResult.html">BlobResult</a>
 						</li>
 						
@@ -94,6 +98,10 @@
 						</li>
 						
 						<li>
+							<a href="QueueMessageEncoder.html">QueueMessageEncoder</a>
+						</li>
+						
+						<li>
 							<a href="QueueMessageResult.html">QueueMessageResult</a>
 						</li>
 						
@@ -127,6 +135,14 @@
 						
 						<li>
 							<a href="TableService.html">TableService</a>
+						</li>
+						
+						<li>
+							<a href="TextBase64QueueMessageEncoder.html">TextBase64QueueMessageEncoder</a>
+						</li>
+						
+						<li>
+							<a href="TextXmlQueueMessageEncoder.html">TextXmlQueueMessageEncoder</a>
 						</li>
 						
 
@@ -477,7 +493,6 @@ BlobService.prototype.listContainersSegmented = function (currentToken, optionsO
 * @param {object}             [options]                                   The request options.
 * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
 *                                                                         Please see StorageUtilities.LocationMode for the possible values.
-* @param {string}             [options.prefix]                            Filters the results to return only containers whose name begins with the specified prefix.
 * @param {int}                [options.maxResults]                        Specifies the maximum number of containers to return per call to Azure storage.
 * @param {string}             [options.include]                           Include this parameter to specify that the container's metadata be returned as part of the response body. (allowed values: '', 'metadata')
 *                                                                         **Note** that all metadata names returned from the server will be converted to lower case by NodeJS itself as metadata is set via HTTP headers and HTTP header names are case insensitive.
@@ -2274,7 +2289,15 @@ BlobService.prototype.startCopyBlob = function (sourceUri, targetContainer, targ
   var options = extend(true, {}, userOptions);
 
   if (options.snapshotId) {
-    sourceUri += '?snapshot=' + options.snapshotId;
+    var uri = url.parse(sourceUri, true);
+    if(uri.query['snapshot']) {
+      throw new ArgumentError('options.snapshotId', 'Duplicate snapshot supplied in both the source uri and option.');
+    }
+    
+    uri.search = undefined;
+    uri.query['snapshot'] = options.snapshotId;
+    
+    sourceUri = url.format(uri);
   }
 
   var webResource = WebResource.put(targetResourceName)
@@ -2323,9 +2346,7 @@ BlobService.prototype.startCopyBlob = function (sourceUri, targetContainer, targ
 * @param {string}             [options.clientRequestId]                 A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]               Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                       The default value is false.
-* @param {errorOrResult}      callback                                  `error` will contain information
-*                                                                       if an error occurs; otherwise `[result]{@link BlobResult}` will contain
-*                                                                       the blob information.
+* @param {errorOrResponse}    callback                                  `error` will contain information  if an error occurs; 
 *                                                                       `response` will contain information related to this operation.
 */
 BlobService.prototype.abortCopyBlob = function (container, blob, copyId, optionsOrCallback, callback) {
@@ -4022,9 +4043,10 @@ BlobService.prototype.appendFromText = function (container, blob, text, optionsO
 * @param {string}             [options.clientRequestId]                 A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]               Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                       The default value is false.
-* @param {errorOrResponse}    callback                                  `error` will contain information
-*                                                                       if an error occurs; otherwise 
-*                                                                       `response` will contain information related to this operation.
+* @param {errorOrResult}      callback                                  `error` will contain information
+*                                                                      if an error occurs; otherwise `[result]{@link BlobResult}` will contain
+*                                                                      the blob information.
+*                                                                      `response` will contain information related to this operation.
 */
 BlobService.prototype.appendBlockFromStream = function (container, blob, readStream, streamLength, optionsOrCallback, callback) {
   var userOptions;
@@ -4484,7 +4506,7 @@ BlobService.prototype._uploadBlobFromStream = function (isNewBlob, container, bl
         if (error) {
           callback(error, result, response);
         } else {
-          callback(error, blob, response);
+          callback(error, result, response);
         }
       };
 
@@ -4779,7 +4801,7 @@ BlobService.prototype._appendBlock = function (container, blob, content, stream,
       .withQueryOption(QueryStringConstants.COMP, 'appendblock')
       .withHeader(HeaderConstants.CONTENT_LENGTH, length)
       .withHeader(HeaderConstants.BLOB_CONDITION_MAX_SIZE, options.maxBlobSize)
-      .withHeader(HeaderConstants.BLOB_CONDITION_APPEND_POSITION, options.appendPosition || 0);
+      .withHeader(HeaderConstants.BLOB_CONDITION_APPEND_POSITION, options.appendPosition);
 
     BlobResult.setHeadersFromBlob(webResource, options);
 
@@ -5940,7 +5962,7 @@ module.exports = BlobService;
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Mon Mar 28th 2016 using the <a
+		on Tue May 24th 2016 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
