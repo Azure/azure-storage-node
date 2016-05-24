@@ -781,7 +781,7 @@ describe('FileShare', function () {
 function listShares (prefix, options, token, callback) {
   var entries = [];
   // Helper function that allows us to do a full listing.
-  var recursionHelper = (err, result) => {
+  var recursionHelper = function(err, result) {
     assert.equal(err, null);
     entries.push.apply(entries, result.entries);
 
