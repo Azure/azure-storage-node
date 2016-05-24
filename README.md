@@ -119,7 +119,7 @@ var query = new azure.TableQuery()
   .top(5)
   .where('PartitionKey eq ?', 'part2');
 
-tableSvc.queryEntities('mytable', query, null, function(error, result, response) {
+tableService.queryEntities('mytable', query, null, function(error, result, response) {
   if (!error) {
     // result.entries contains entities matching the query
   }
