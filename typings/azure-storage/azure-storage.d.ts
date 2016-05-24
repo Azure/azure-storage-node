@@ -7380,6 +7380,56 @@ declare module "azure-storage" {
             PRIMARY = 0,
             SECONDARY = 1,
           }
+          
+          export var AccountSasConstants: {
+            /**
+            * Permission types
+            *
+            * @const
+            * @enum {string}
+            */
+            Permissions: {
+              READ: string,
+              ADD: string,
+              CREATE: string,
+              UPDATE: string,
+              PROCESS: string,
+              WRITE: string,
+              DELETE: string,
+              LIST: string
+            },
+            
+            /**
+            * Services types
+            *
+            * @const
+            * @enum {string}
+            */
+            Services: {
+              BLOB: string,
+              FILE: string,
+              QUEUE: string,
+              TABLE: string,
+            },
+            
+            /**
+            * Resources types
+            *
+            * @const
+            * @enum {string}
+            */
+            Resources: {
+              SERVICE: string,
+              CONTAINER: string,
+              OBJECT: string
+            },
+            
+            Protocols: {
+              HTTPSONLY: string,
+              HTTPSORHTTP: string
+            },
+          };
+          
           /**
           * Defines constants for use with shared access policies.
           */
@@ -8711,6 +8761,8 @@ declare module "azure-storage" {
     * @return {QueueService}                              A new QueueService object with the SAS credentials.
     */
     export function createQueueServiceWithSas(hostUri: string | StorageHost, sasToken: string): QueueService;
+    
+    export function generateAccountSharedAccessSignature(storageAccountOrConnectionString: string, storageAccessKey: string, sharedAccessAccountPolicy: common.SharedAccessPolicy);
 
     interface StorageError extends Error {
       statusCode?: number;
