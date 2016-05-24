@@ -4922,7 +4922,7 @@ declare module "azure-storage" {
           *                                                                             `result.response` will contain the response for each operations executed.
           *                                                                             `response` will contain information related to this operation.
           */
-          executeBatch(table: string, batch: TableBatch, options: common.RequestOptions, callback: ErrorOrResult<TableService.BatchResult[]>): void;
+          executeBatch(table: string, batch: TableBatch, options: TableService.TableEntityRequestOptions, callback: ErrorOrResult<TableService.BatchResult[]>): void;
 
           /**
           * Executes the operations in the batch.
@@ -4998,7 +4998,7 @@ declare module "azure-storage" {
           }
 
           export interface PropertyResolver {
-            (partitionKey: string, rowKey: string, propertyName: string, propertyValue: Object): string;
+            (partitionKey: string, rowKey: string, propertyName: string, propertyValue: Object, entityPropertyType: string): string;
           }
 
           export interface TableEntityRequestOptions extends common.RequestOptions {
