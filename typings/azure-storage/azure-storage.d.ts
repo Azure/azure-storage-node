@@ -1454,7 +1454,7 @@ declare module "azure-storage" {
             * var sasToken = blobService.generateSharedAccessSignature(containerName, blobName, { AccessPolicy: { Expiry: azure.date.minutesFromNow(60); } });
             * var sasUrl = blobService.getUrl(containerName, blobName, sasToken, true);
             */
-            getUrl(container: string, blob?: string, sasToken?: string, primary?: boolean): url.Url;
+            getUrl(container: string, blob?: string, sasToken?: string, primary?: boolean): string
 
             createPageBlob(container: string, blob: string, length: number, callback: ErrorOrResponse): void;
 
@@ -5172,6 +5172,7 @@ declare module "azure-storage" {
           * var tableQuery = new TableQuery().select('field1', 'field2');
           */
           select(...args: string[]): TableQuery;
+          select(args: string[]): TableQuery;
 
           /**
            * Specifies the top clause.
@@ -6920,8 +6921,10 @@ declare module "azure-storage" {
           }
 
           export interface ListFilesAndDirectoriesResult {
-            directories: DirectoryResult[];
-            files: FileResult[];
+            entries: {
+              directories: DirectoryResult[];
+              files: FileResult[];
+            }
             continuationToken?: common.ContinuationToken;
           }
 
