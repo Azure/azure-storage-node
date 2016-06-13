@@ -8557,7 +8557,7 @@ declare module "azure-storage" {
         /** An IP address or a range of IP addresses from which to accept requests. When specifying a range, note that the range is inclusive. */
         IPAddressOrRange?: string;
         /** The protocol permitted for a request made with the SAS. */
-        Protocol?: string;
+        Protocols?: string;
         /** The services (blob, file, queue, table) for a shared access signature associated with this shared access policy. */
         Services?: string;
         /** The resource type for a shared access signature associated with this shared access policy. */

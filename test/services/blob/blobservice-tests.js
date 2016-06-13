@@ -1166,7 +1166,8 @@ describe('BlobService', function () {
 
         var sharedAccessPolicy = {
           AccessPolicy: {
-            Expiry: new Date('October 12, 2011 11:53:40 am GMT')
+            Expiry: new Date('October 12, 2011 11:53:40 am GMT'),
+            Protocols: 'https'
           }
         };
 
@@ -1177,7 +1178,7 @@ describe('BlobService', function () {
         assert.strictEqual(parsedUrl.port, '80');
         assert.strictEqual(parsedUrl.hostname, 'host.com');
         assert.strictEqual(parsedUrl.pathname, '/' + containerName + '/' + blobName);
-        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&sv=2015-04-05&sr=b&sig=YMxhCsDBmWz%2F1eOEHLy1uEVDI33KfWZGqgPgIXAipEY%3D');
+        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&spr=https&sv=2015-04-05&sr=b&sig=wrbAp%2BxDtX5rwkAk8IkxspEHid2DiwE3JqVr%2BNDA2Bk%3D');
 
         done();
       });
@@ -1196,7 +1197,9 @@ describe('BlobService', function () {
           var readWriteSharedAccessPolicy = {
             readwrite: {
               Start: startTime,
-              Permissions: 'rwdl'
+              Permissions: 'rwdl',
+              Protocols: 'https',
+              IPAddressOrRange: '0.0.0.0-255.255.255.255'
             }
           };
           
@@ -1242,7 +1245,8 @@ describe('BlobService', function () {
         AccessPolicy: {
           Permissions: BlobUtilities.SharedAccessPermissions.READ,
           Start: new Date('October 11, 2011 11:03:40 am GMT'),
-          Expiry: new Date('October 12, 2011 11:53:40 am GMT')
+          Expiry: new Date('October 12, 2011 11:53:40 am GMT'),
+          Protocols: 'https'
         }
       };
 
@@ -1253,8 +1257,9 @@ describe('BlobService', function () {
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_EXPIRY], '2011-10-12T11:53:40Z');
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_RESOURCE], Constants.BlobConstants.ResourceTypes.BLOB);
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_PERMISSIONS], BlobUtilities.SharedAccessPermissions.READ);
+      assert.equal(sasQueryString[QueryStringConstants.SIGNED_PROTOCOL], 'https');
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_VERSION], HeaderConstants.TARGET_STORAGE_VERSION);
-      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'bdwnvfDl7PHJLJObd1uhUnKYNSu0CZQP28/3yW1hXy4=');
+      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'zlo0dNrtoECXTXJW7dfOlJz1bpaZ4zucrycMzQ/mpTM=');
 
       done();
     });

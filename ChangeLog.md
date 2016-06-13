@@ -6,6 +6,7 @@ be taken. This is a GA release and the changes described below indicate the chan
 ALL
 
 * Fixed the issue that the SAS doesn't work against storage emulator.
+* Fixed the issue that the service SAS signature is incorrect when protocol parameter is specified.
 
 2016.05 Version 1.0.1
 
