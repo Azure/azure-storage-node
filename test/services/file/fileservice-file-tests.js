@@ -133,6 +133,22 @@ describe('File', function () {
       fileServiceForUrl.setHost({ secondaryHost: 'https://host-secondary.com:88' });
       url = fileServiceForUrl.getUrl(share, directory, file, null, false);
       assert.strictEqual(url, 'https://host-secondary.com:88/' + share + '/' + directory + '/' + file);
+      
+      fileServiceForUrl.setHost({ secondaryHost: 'https://host-secondary.com:88/account' });
+      url = fileServiceForUrl.getUrl(share, directory, file, null, false);
+      assert.strictEqual(url, 'https://host-secondary.com:88/account/' + share + '/' + directory + '/' + file);
+
+      var sharedAccessPolicy = {
+        AccessPolicy: {
+          Expiry: new Date('October 12, 2011 11:53:40 am GMT'),
+          Permissions: 'r',
+          Protocols: 'https'
+        }
+      };
+      var sasToken = fileServiceForUrl.generateSharedAccessSignature(share, directory, file, sharedAccessPolicy);
+      fileServiceForUrl.setHost({ secondaryHost: 'https://host-secondary.com:88/account' });
+      url = fileServiceForUrl.getUrl(share, directory, file, sasToken, false);
+      assert.strictEqual(url, 'https://host-secondary.com:88/account/' + share + '/' + directory + '/' + file + '?se=2011-10-12T11%3A53%3A40Z&sp=r&spr=https&sv=2015-04-05&sr=f&sig=w5w5gZ9tuSDvB%2FSSv417AN1iL7oTJcPLJIgEWdfIXxw%3D');
 
       done();
     });
@@ -167,6 +183,12 @@ describe('File', function () {
       assert.strictEqual(url, 'https://host.com:88/' + share + '/' + directory);
       url = fileServiceForUrl.getUrl(share, directory, '', null, true);
       assert.strictEqual(url, 'https://host.com:88/' + share + '/' + directory);
+      
+      fileServiceForUrl.setHost({ primaryHost: 'https://host.com:88/account' });
+      url = fileServiceForUrl.getUrl(share, directory, null, null, true);
+      assert.strictEqual(url, 'https://host.com:88/account/' + share + '/' + directory);
+      url = fileServiceForUrl.getUrl(share, directory, '', null, true);
+      assert.strictEqual(url, 'https://host.com:88/account/' + share + '/' + directory);
 
       done();
     });
@@ -201,6 +223,12 @@ describe('File', function () {
       assert.strictEqual(url, 'https://host.com:88/' + share);
       url = fileServiceForUrl.getUrl(share, '', file, null, true);
       assert.strictEqual(url, 'https://host.com:88/' + share + '/' + file);
+      
+      fileServiceForUrl.setHost({ primaryHost: 'https://host.com:88/account' });
+      url = fileServiceForUrl.getUrl(share, '', null, null, true);
+      assert.strictEqual(url, 'https://host.com:88/account/' + share);
+      url = fileServiceForUrl.getUrl(share, '', file, null, true);
+      assert.strictEqual(url, 'https://host.com:88/account/' + share + '/' + file);
 
       done();
     });

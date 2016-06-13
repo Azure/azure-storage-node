@@ -8,6 +8,13 @@ ALL
 * Fixed the issue that the SAS doesn't work against storage emulator.
 * Fixed the issue that the service SAS signature is incorrect when protocol parameter is specified.
 
+BLOB
+* Added parameter snapshotId to BlobService.getUrl function to support getting url of a specified snapshot.
+* Fixed the issue that the getUrl doesn't work against storage emulator.
+
+FILE
+* Fixed the issue that the getUrl doesn't work against storage emulator.
+
 2016.05 Version 1.0.1
 
 ALL
