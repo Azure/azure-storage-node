@@ -11,6 +11,7 @@ ALL
 BLOB
 * Added parameter snapshotId to BlobService.getUrl function to support getting url of a specified snapshot.
 * Fixed the issue that the getUrl doesn't work against storage emulator.
+* Fixed the race issue that the _rangeList may be deleted before using it in the BlockRangeStream._getTypeList function.
 
 FILE
 * Fixed the issue that the getUrl doesn't work against storage emulator.
