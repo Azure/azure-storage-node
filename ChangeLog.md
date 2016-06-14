@@ -7,6 +7,7 @@ ALL
 
 * Fixed the issue that the SAS doesn't work against storage emulator.
 * Fixed the issue that the service SAS signature is incorrect when protocol parameter is specified.
+* Fixed the issue that the timeout query string should be in seconds instead of milliseconds.
 
 BLOB
 * Added parameter snapshotId to BlobService.getUrl function to support getting url of a specified snapshot.

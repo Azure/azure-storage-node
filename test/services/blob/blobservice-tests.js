@@ -114,17 +114,17 @@ describe('BlobService', function () {
         assert.equal(timeout, null);
         blobService.getServiceProperties({timeoutIntervalInMs: 10000}, function(error2) {
           assert.equal(error2, null);
-          assert.equal(timeout, 10000);
+          assert.equal(timeout, 10);
           blobService.defaultTimeoutIntervalInMs = 9000;
           blobService.getServiceProperties(function(error3) {
             assert.equal(error3, null);
-            assert.equal(timeout, 9000);
+            assert.equal(timeout, 9);
             blobService.getServiceProperties({timeoutIntervalInMs: 10000}, function(error4) {
               assert.equal(error4, null);
-              assert.equal(timeout, 10000);
+              assert.equal(timeout, 10);
               blobService.getServiceProperties({timeoutIntervalInMs: null}, function(error5) {
                 assert.equal(error5, null);
-                assert.equal(timeout, 9000);
+                assert.equal(timeout, 9);
                 blobService.getServiceProperties({timeoutIntervalInMs: 0}, function(error6) {
                   assert.equal(error6, null);
                   assert.equal(timeout, null);
