@@ -48,8 +48,9 @@ var entity1 = { PartitionKey: eg.String('part1'),
   otherprops: eg.String('my properties')
 };
 
-var entity2 = { PartitionKey: eg.String('part2'),
-  RowKey: eg.String('row1'),
+// PartitionKey and RowKey are string type value for entity2 to verify that the string type value are also supported for PartitionKey and RowKey
+var entity2 = { PartitionKey: 'part2',
+  RowKey: 'row1',
   boolValueTrue: eg.Boolean(true),
   boolValueFalse: eg.Boolean(false),
   intValue: eg.Int32(42),
@@ -402,7 +403,7 @@ describe('tableservice-tests', function () {
                   assert.equal(currentEntry['otherfield']['_'], entity1['otherfield']['_']);
                   assert.equal(currentEntry['otherprops']['_'], entity1['otherprops']['_']);
                 }
-                else if (currentEntry['PartitionKey']['_'] === entity2['PartitionKey']['_'] && currentEntry['RowKey']['_'] === entity2['RowKey']['_']) {
+                else if (currentEntry['PartitionKey']['_'] === entity2['PartitionKey'] && currentEntry['RowKey']['_'] === entity2['RowKey']) {
                   entities += 2;
 
                   assert.ok(currentEntry['.metadata']['etag']);

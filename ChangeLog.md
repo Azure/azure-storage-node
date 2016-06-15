@@ -14,6 +14,9 @@ BLOB
 * Fixed the issue that the getUrl doesn't work against storage emulator.
 * Fixed the race issue that the _rangeList may be deleted before using it in the BlockRangeStream._getTypeList function.
 
+TABLE
+* Supported string type value for entity PartionKey and RowKey.
+
 FILE
 * Fixed the issue that the getUrl doesn't work against storage emulator.
 
