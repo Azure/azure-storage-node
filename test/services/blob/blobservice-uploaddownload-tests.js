@@ -2645,6 +2645,41 @@ describe('blob-uploaddownload-tests', function () {
         });
       });
     });
+    
+    runOrSkip('should download a block blob to a local file in chunks with anonymous credential', function (done) {
+      containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
+      var options = {
+        publicAccessLevel: 'container'
+      };
+      
+      blobService.createContainerIfNotExists(containerName, options, function (error) {
+        assert.equal(error, null);
+
+        var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+        var fileNameSource = testutil.generateId('getBlockBlobRangeStreamLocal', [], suite.isMocked) + '.test';
+        var buffer = new Buffer(4 * 1024 * 1024 + 512); // Don't be a multiple of 4MB to cover more scenarios
+        var originLimit = blobService.singleBlobPutThresholdInBytes;
+        buffer.fill(0);
+        writeFile(fileNameSource, buffer);
+        blobService.singleBlobPutThresholdInBytes = 1024 * 1024;
+        blobService.createBlockBlobFromLocalFile(containerName, blobName, fileNameSource, uploadOptions, function (error) {
+          try { fs.unlinkSync(fileNameSource); } catch (e) { }
+          assert.equal(error, null);
+
+          var anonymousBlobService = azure.createBlobServiceAnonymous(blobService.host).withFilter(new azure.ExponentialRetryPolicyFilter());
+          anonymousBlobService.singleBlobPutThresholdInBytes = 1024 * 1024;
+          
+          var downloadOptions = { parallelOperationThreadCount : 2 };
+          var downloadedFileName = testutil.generateId('getBlockBlobRangeStream', [], suite.isMocked) + '.test';
+          anonymousBlobService.getBlobToLocalFile(containerName, blobName, downloadedFileName, downloadOptions, function (error) {
+            try { fs.unlinkSync(downloadedFileName); } catch (e) { }
+            assert.equal(error, null);
+            blobService.singleBlobPutThresholdInBytes = originLimit;
+            done();
+          });
+        });
+      });
+    });
   });
 
   describe('getPageBlobToFile', function() {

@@ -13,6 +13,7 @@ BLOB
 * Added parameter snapshotId to BlobService.getUrl function to support getting url of a specified snapshot.
 * Fixed the issue that the getUrl doesn't work against storage emulator.
 * Fixed the race issue that the _rangeList may be deleted before using it in the BlockRangeStream._getTypeList function.
+* Fixed the issue that downloading block blob with size bigger than 32MB will fail when using anonymous credential.
 
 TABLE
 * Supported string type value for entity PartionKey and RowKey.
