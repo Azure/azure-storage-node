@@ -14,12 +14,14 @@ BLOB
 * Fixed the issue that the getUrl doesn't work against storage emulator.
 * Fixed the race issue that the _rangeList may be deleted before using it in the BlockRangeStream._getTypeList function.
 * Fixed the issue that downloading block blob with size bigger than 32MB will fail when using anonymous credential.
+* Added `CREATE` to `BlobUtilities.SharedAccessPermissions`.
 
 TABLE
 * Supported string type value for entity PartionKey and RowKey.
 
 FILE
 * Fixed the issue that the getUrl doesn't work against storage emulator.
+* Added `CREATE` to `FileUtilities.SharedAccessPermissions`.
 
 2016.05 Version 1.0.1
 

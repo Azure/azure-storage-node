@@ -1308,6 +1308,7 @@ describe('BlobService', function () {
             AccessPolicy: {
               Permissions: BlobUtilities.SharedAccessPermissions.READ + 
                            BlobUtilities.SharedAccessPermissions.ADD + 
+                           BlobUtilities.SharedAccessPermissions.CREATE + 
                            BlobUtilities.SharedAccessPermissions.WRITE,
               Expiry: expiryDate
             }

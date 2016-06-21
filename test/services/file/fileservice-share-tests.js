@@ -578,9 +578,16 @@ describe('FileShare', function () {
 
     // Skip this case in nock because the signing key is different between live run and mocked run
     runOrSkip('should work with share and file policies', function (done) {
-      var sharePolicy = {
+      var readWriteSharePolicy = {
         AccessPolicy: {
           Permissions: 'rw',
+          Expiry: new Date('2016-10-01')
+        }
+      };
+      
+      var readCreateSharePolicy = {
+        AccessPolicy: {
+          Permissions: 'rc',
           Expiry: new Date('2016-10-01')
         }
       };
@@ -595,7 +602,7 @@ describe('FileShare', function () {
       fileService.createShareIfNotExists(shareName, function (createError, share, createResponse) {
         var fileName = suite.getName("file-");
         var directoryName = '.';
-        var shareSas = fileService.generateSharedAccessSignature(shareName, directoryName, null, sharePolicy);
+        var shareSas = fileService.generateSharedAccessSignature(shareName, directoryName, null, readWriteSharePolicy);
         var fileServiceShareSas = azure.createFileServiceWithSas(fileService.host, shareSas);
         fileServiceShareSas.createFile(shareName, directoryName, fileName, 5, function (createError, file, createResponse) {
           assert.equal(createError, null);
@@ -607,11 +614,23 @@ describe('FileShare', function () {
           fileServiceFileSas.deleteFile(shareName, directoryName, fileName, function (deleteError) {
             assert.equal(deleteError, null);
 
-            done();
+            shareSas = fileService.generateSharedAccessSignature(shareName, directoryName, null, readCreateSharePolicy);
+            fileServiceShareSas = azure.createFileServiceWithSas(fileService.host, shareSas);
+            fileServiceShareSas.createFile(shareName, directoryName, fileName, 5, function (createError, file, createResponse) {
+              assert.equal(createError, null);
+              assert.strictEqual(file.share, shareName);
+              assert.strictEqual(file.directory, directoryName);
+              assert.strictEqual(file.name, fileName);
+
+              fileServiceFileSas.deleteFile(shareName, directoryName, fileName, function (deleteError) {
+                assert.equal(deleteError, null);
+
+                done();
+              });
+            });
           });
         });
       });
-
     });
   });
 
