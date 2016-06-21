@@ -451,6 +451,7 @@ set AZURE_NOCK_RECORD=true
 In order to be able to use a proxy like fiddler, an additional environment variable should be set up:
 
 ```Batchfile
+set NODE_TLS_REJECT_UNAUTHORIZED=0
 set HTTP_PROXY=http://127.0.0.1:8888
 ```
 
