@@ -18,6 +18,7 @@ BLOB
 
 TABLE
 * Supported string type value for entity PartionKey and RowKey.
+* Supported implicit Edm type value for entity properties. The supported implicit Edm types including Int32, Double, Bool, DateTime and String.
 
 FILE
 * Fixed the issue that the getUrl doesn't work against storage emulator.
