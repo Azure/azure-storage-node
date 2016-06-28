@@ -33,8 +33,8 @@ var fs = require('fs');
 var assert = require('assert');
 
 var azure;
-if (fs.existsSync('absolute path to azure-storage.js')) {
-  azure = require('absolute path to azure-storage');
+if (fs.existsSync('../../lib/azure-storage.js')) {
+  azure = require('../../lib/azure-storage');
 } else {
   azure = require('azure-storage');
 }
@@ -196,11 +196,7 @@ function usePermissions (callback) {
       console.log(error);
     } else {
       console.log('Downloaded the blob ' + blob + ' by using the shared access signature URL: \n ' + sharedBlobService.getUrl(container, blob, sharedAccessSignatureToken));
-      assert.equal(headers.cacheControl, result.cacheControl);
-      assert.equal(headers.contentDisposition, result.contentDisposition);
-      assert.equal(headers.contentEncoding, result.contentEncoding);
-      assert.equal(headers.contentLanguage, result.contentLanguage);
-      assert.equal(headers.contentType, result.contentType);
+
     }
 
     callback();

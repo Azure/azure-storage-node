@@ -1,7 +1,9 @@
 # Microsoft Azure Storage SDK for Node.js 
 
-[![NPM version](https://badge.fury.io/js/azure-storage.svg)](http://badge.fury.io/js/azure-storage) [![Build Status](https://travis-ci.org/Azure/azure-storage-node.svg?branch=master)](https://travis-ci.org/Azure/azure-storage-node)
-[![Coverage Status](https://coveralls.io/repos/Azure/azure-storage-node/badge.svg?branch=master&service=github)](https://coveralls.io/github/Azure/azure-storage-node?branch=master)
+[![NPM version](https://badge.fury.io/js/azure-storage.svg)](http://badge.fury.io/js/azure-storage) 
+
+* Master [![Build Status](https://travis-ci.org/Azure/azure-storage-node.svg?branch=master)](https://travis-ci.org/Azure/azure-storage-node/branches) [![Coverage Status](https://coveralls.io/repos/Azure/azure-storage-node/badge.svg?branch=master&service=github)](https://coveralls.io/github/Azure/azure-storage-node?branch=master)
+* Dev [![Build Status](https://travis-ci.org/Azure/azure-storage-node.svg?branch=dev)](https://travis-ci.org/Azure/azure-storage-node/branches) [![Coverage Status](https://coveralls.io/repos/Azure/azure-storage-node/badge.svg?branch=dev&service=github)](https://coveralls.io/github/Azure/azure-storage-node?branch=dev)
 
 This project provides a Node.js package that makes it easy to consume and manage Microsoft Azure Storage Services.
 
@@ -449,6 +451,7 @@ set AZURE_NOCK_RECORD=true
 In order to be able to use a proxy like fiddler, an additional environment variable should be set up:
 
 ```Batchfile
+set NODE_TLS_REJECT_UNAUTHORIZED=0
 set HTTP_PROXY=http://127.0.0.1:8888
 ```
 
@@ -475,6 +478,8 @@ We gladly accept community contributions.
 
 - Issues: Please report bugs using the Issues section of GitHub
 - Forums: Interact with the development teams on StackOverflow or the Microsoft Azure Forums
-- Source Code Contributions: If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://azure.github.com/guidelines.html).
+- Source Code Contributions: If you would like to become an active contributor to this project please follow the instructions provided in [Contributing.md](CONTRIBUTING.md).
+
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 For general suggestions about Microsoft Azure please use our [UserVoice forum](http://feedback.azure.com/forums/34192--general-feedback).

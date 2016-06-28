@@ -114,17 +114,17 @@ describe('BlobService', function () {
         assert.equal(timeout, null);
         blobService.getServiceProperties({timeoutIntervalInMs: 10000}, function(error2) {
           assert.equal(error2, null);
-          assert.equal(timeout, 10000);
+          assert.equal(timeout, 10);
           blobService.defaultTimeoutIntervalInMs = 9000;
           blobService.getServiceProperties(function(error3) {
             assert.equal(error3, null);
-            assert.equal(timeout, 9000);
+            assert.equal(timeout, 9);
             blobService.getServiceProperties({timeoutIntervalInMs: 10000}, function(error4) {
               assert.equal(error4, null);
-              assert.equal(timeout, 10000);
+              assert.equal(timeout, 10);
               blobService.getServiceProperties({timeoutIntervalInMs: null}, function(error5) {
                 assert.equal(error5, null);
-                assert.equal(timeout, 9000);
+                assert.equal(timeout, 9);
                 blobService.getServiceProperties({timeoutIntervalInMs: 0}, function(error6) {
                   assert.equal(error6, null);
                   assert.equal(timeout, null);
@@ -1155,6 +1155,20 @@ describe('BlobService', function () {
         blobUrl = blobServiceassert.getUrl(containerName, blobName);
         assert.equal(blobUrl, 'https://host.com:88/' + containerName + '/' + blobName);
 
+        blobServiceassert = azure.createBlobService('storageAccount', 'storageAccessKey');
+        blobServiceassert.setHost({primaryHost: 'host.com:88/account'});
+        blobUrl = blobServiceassert.getUrl(containerName);
+        assert.equal(blobUrl, 'https://host.com:88/account/' + containerName);
+        blobUrl = blobServiceassert.getUrl(containerName, blobName);
+        assert.equal(blobUrl, 'https://host.com:88/account/' + containerName + '/' + blobName);
+
+        blobServiceassert = azure.createBlobService('storageAccount', 'storageAccessKey');
+        blobServiceassert.setHost({primaryHost: 'host.com:88/account'});
+        blobUrl = blobServiceassert.getUrl(containerName);
+        assert.equal(blobUrl, 'https://host.com:88/account/' + containerName);
+        blobUrl = blobServiceassert.getUrl(containerName, blobName, null, true, '2016-10-11T11:03:40Z');
+        assert.equal(blobUrl, 'https://host.com:88/account/' + containerName + '/' + blobName + '?snapshot=2016-10-11T11%3A03%3A40Z');
+
         done();
       });
 
@@ -1162,22 +1176,33 @@ describe('BlobService', function () {
         var containerName = 'container';
         var blobName = 'blob';
 
-        var blobServiceassert = azure.createBlobService('storageAccount', 'storageAccessKey', 'host.com:80');
+        var blobServiceassert = azure.createBlobService('storageAccount', 'storageAccessKey', {primaryHost: 'https://host.com:80/', secondaryHost: 'https://host-secondary.com:80/'});
 
         var sharedAccessPolicy = {
           AccessPolicy: {
-            Expiry: new Date('October 12, 2011 11:53:40 am GMT')
+            Expiry: new Date('October 12, 2011 11:53:40 am GMT'),
+            Protocols: 'https'
           }
         };
 
-        var blobUrl = blobServiceassert.getUrl(containerName, blobName, blobServiceassert.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy));
+        var sasToken = blobServiceassert.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
+        var blobUrl = blobServiceassert.getUrl(containerName, blobName, sasToken);
 
         var parsedUrl = url.parse(blobUrl);
         assert.strictEqual(parsedUrl.protocol, 'https:');
         assert.strictEqual(parsedUrl.port, '80');
         assert.strictEqual(parsedUrl.hostname, 'host.com');
         assert.strictEqual(parsedUrl.pathname, '/' + containerName + '/' + blobName);
-        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&sv=2015-04-05&sr=b&sig=YMxhCsDBmWz%2F1eOEHLy1uEVDI33KfWZGqgPgIXAipEY%3D');
+        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&spr=https&sv=2015-04-05&sr=b&sig=wrbAp%2BxDtX5rwkAk8IkxspEHid2DiwE3JqVr%2BNDA2Bk%3D');
+
+        blobUrl = blobServiceassert.getUrl(containerName, blobName, sasToken, false, '2016-10-11T11:03:40Z');
+
+        var parsedUrl = url.parse(blobUrl);
+        assert.strictEqual(parsedUrl.protocol, 'https:');
+        assert.strictEqual(parsedUrl.port, '80');
+        assert.strictEqual(parsedUrl.hostname, 'host-secondary.com');
+        assert.strictEqual(parsedUrl.pathname, '/' + containerName + '/' + blobName);
+        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&spr=https&sv=2015-04-05&sr=b&sig=wrbAp%2BxDtX5rwkAk8IkxspEHid2DiwE3JqVr%2BNDA2Bk%3D&snapshot=2016-10-11T11%3A03%3A40Z');
 
         done();
       });
@@ -1196,7 +1221,9 @@ describe('BlobService', function () {
           var readWriteSharedAccessPolicy = {
             readwrite: {
               Start: startTime,
-              Permissions: 'rwdl'
+              Permissions: 'rwdl',
+              Protocols: 'https',
+              IPAddressOrRange: '0.0.0.0-255.255.255.255'
             }
           };
           
@@ -1242,7 +1269,8 @@ describe('BlobService', function () {
         AccessPolicy: {
           Permissions: BlobUtilities.SharedAccessPermissions.READ,
           Start: new Date('October 11, 2011 11:03:40 am GMT'),
-          Expiry: new Date('October 12, 2011 11:53:40 am GMT')
+          Expiry: new Date('October 12, 2011 11:53:40 am GMT'),
+          Protocols: 'https'
         }
       };
 
@@ -1253,8 +1281,9 @@ describe('BlobService', function () {
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_EXPIRY], '2011-10-12T11:53:40Z');
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_RESOURCE], Constants.BlobConstants.ResourceTypes.BLOB);
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_PERMISSIONS], BlobUtilities.SharedAccessPermissions.READ);
+      assert.equal(sasQueryString[QueryStringConstants.SIGNED_PROTOCOL], 'https');
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_VERSION], HeaderConstants.TARGET_STORAGE_VERSION);
-      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'bdwnvfDl7PHJLJObd1uhUnKYNSu0CZQP28/3yW1hXy4=');
+      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'zlo0dNrtoECXTXJW7dfOlJz1bpaZ4zucrycMzQ/mpTM=');
 
       done();
     });
@@ -1279,6 +1308,7 @@ describe('BlobService', function () {
             AccessPolicy: {
               Permissions: BlobUtilities.SharedAccessPermissions.READ + 
                            BlobUtilities.SharedAccessPermissions.ADD + 
+                           BlobUtilities.SharedAccessPermissions.CREATE + 
                            BlobUtilities.SharedAccessPermissions.WRITE,
               Expiry: expiryDate
             }

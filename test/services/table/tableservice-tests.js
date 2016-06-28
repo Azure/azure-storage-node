@@ -48,13 +48,20 @@ var entity1 = { PartitionKey: eg.String('part1'),
   otherprops: eg.String('my properties')
 };
 
-var entity2 = { PartitionKey: eg.String('part2'),
-  RowKey: eg.String('row1'),
+// PartitionKey and RowKey are string type value for entity2 to verify that the string type value are also supported for PartitionKey and RowKey
+var entity2 = { PartitionKey: 'part2',
+  RowKey: 'row1',
   boolValueTrue: eg.Boolean(true),
   boolValueFalse: eg.Boolean(false),
   intValue: eg.Int32(42),
   dateValue: eg.DateTime(new Date(Date.UTC(2011, 10, 25))),
-  complexDateValue: eg.DateTime(new Date(Date.UTC(2013, 02, 16, 01, 46, 20)))
+  complexDateValue: eg.DateTime(new Date(Date.UTC(2013, 02, 16, 01, 46, 20))),
+  // Implicit Edm type
+  implicitBoolValue: true,
+  implicitDateValue: new Date(Date.UTC(2013, 02, 16, 01, 46, 20)),
+  implicitInt32Value: 1,
+  implicitDoubleValue: 1.1,
+  implicitStringValue: 'test'
 };
 
 var tableService;
@@ -402,13 +409,16 @@ describe('tableservice-tests', function () {
                   assert.equal(currentEntry['otherfield']['_'], entity1['otherfield']['_']);
                   assert.equal(currentEntry['otherprops']['_'], entity1['otherprops']['_']);
                 }
-                else if (currentEntry['PartitionKey']['_'] === entity2['PartitionKey']['_'] && currentEntry['RowKey']['_'] === entity2['RowKey']['_']) {
+                else if (currentEntry['PartitionKey']['_'] === entity2['PartitionKey'] && currentEntry['RowKey']['_'] === entity2['RowKey']) {
                   entities += 2;
 
                   assert.ok(currentEntry['.metadata']['etag']);
                   assert.equal(currentEntry['boolValueTrue']['_'], entity2['boolValueTrue']['_']);
                   assert.equal(currentEntry['boolValueFalse']['_'], entity2['boolValueFalse']['_']);
-                  assert.equal(currentEntry['intValue']['_'], entity2['intValue']['_']);
+                  assert.equal(currentEntry['implicitBoolValue']['_'], entity2['implicitBoolValue']);
+                  assert.equal(currentEntry['implicitInt32Value']['_'], entity2['implicitInt32Value']);
+                  assert.equal(currentEntry['implicitDoubleValue']['_'], entity2['implicitDoubleValue']);
+                  assert.equal(currentEntry['implicitStringValue']['_'], entity2['implicitStringValue']);
 
                   var date1 = currentEntry['dateValue']['_'];
                   var date2 = entity2['dateValue']['_'];
@@ -417,6 +427,10 @@ describe('tableservice-tests', function () {
                   var date3 = currentEntry['complexDateValue']['_'];
                   var date4 = entity2['complexDateValue']['_'];
                   assert.equal(date3.getTime(), date4.getTime());
+
+                  var date5 = currentEntry['implicitDateValue']['_'];
+                  var date6 = entity2['implicitDateValue'];
+                  assert.equal(date5.getTime(), date6.getTime());
                 }
               });
 

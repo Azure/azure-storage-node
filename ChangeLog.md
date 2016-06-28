@@ -1,6 +1,29 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
 be taken. This is a GA release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
 
+2016.06 Version 1.1.0
+
+ALL
+
+* Fixed the issue that using SAS doesn't work against storage emulator.
+* Fixed the issue that the service SAS signature is incorrect when protocol parameter is specified.
+* Fixed the issue that the timeout query string should be in seconds instead of milliseconds.
+
+BLOB
+* Added parameter snapshotId to BlobService.getUrl function to support getting url of a specified snapshot.
+* Fixed the issue that the getUrl doesn't work against storage emulator.
+* Fixed the race issue that the _rangeList may be deleted before using it in the BlockRangeStream._getTypeList function.
+* Fixed the issue that downloading block blob with size bigger than 32MB will fail when using anonymous credential.
+* Added `CREATE` to `BlobUtilities.SharedAccessPermissions`.
+
+TABLE
+* Supported string type value for entity PartionKey and RowKey.
+* Supported implicit Edm type value for entity properties. The supported implicit Edm types including Int32, Double, Bool, DateTime and String.
+
+FILE
+* Fixed the issue that the getUrl doesn't work against storage emulator.
+* Added `CREATE` to `FileUtilities.SharedAccessPermissions`.
+
 2016.05 Version 1.0.1
 
 ALL
