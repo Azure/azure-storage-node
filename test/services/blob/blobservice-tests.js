@@ -999,9 +999,16 @@ describe('BlobService', function () {
               if (blob) {
                 assert.notEqual(blob.metadata, null);
                 if (blob.metadata) {
-                  assert.strictEqual(blob.metadata.color1, 'blue,blAck');
-                  assert.strictEqual(blob.metadata.color2, 'Orange,greEN');
-                  assert.strictEqual(blob.metadata.color3, 'Red,puRPle');
+                    if(suite.metadataCaseSensitive) {
+                      assert.strictEqual(blob.metadata.color1, 'blue,blAck');
+                      assert.strictEqual(blob.metadata.ColoR2, 'Orange,greEN');
+                      assert.strictEqual(blob.metadata.cOLOr3, 'Red,puRPle');
+                    } else {
+                      assert.strictEqual(blob.metadata.color1, 'blue,blAck');
+                      assert.strictEqual(blob.metadata.color2, 'Orange,greEN');
+                      assert.strictEqual(blob.metadata.color3, 'Red,puRPle');
+                    }
+
                 }
               }
               done();

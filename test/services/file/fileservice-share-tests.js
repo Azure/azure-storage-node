@@ -297,7 +297,11 @@ describe('FileShare', function () {
             assert.equal(getError, null);
             assert.notEqual(share2, null);
             assert.notEqual(null, share2.requestId);
-            assert.strictEqual(share2.metadata.color, metadata.Color);
+            if (suite.metadataCaseSensitive) {
+              assert.strictEqual(share2.metadata.Color, metadata.Color);
+            } else {
+              assert.strictEqual(share2.metadata.color, metadata.Color);
+            }
 
             assert.notEqual(getResponse, null);
             assert.equal(getResponse.isSuccessful, true);

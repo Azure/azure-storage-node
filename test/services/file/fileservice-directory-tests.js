@@ -472,7 +472,11 @@ describe('FileDirectory', function () {
             assert.equal(getMetadataError, null);
             assert.notEqual(file, null);
             assert.notEqual(file.metadata, null);
-            assert.equal(file.metadata.class, 'Test');
+            if (suite.metadataCaseSensitive) {
+              assert.equal(file.metadata.Class, 'Test');
+            } else {
+              assert.equal(file.metadata.class, 'Test');
+            }
             assert.ok(getMetadataResponse.isSuccessful);
             
             done();
@@ -490,7 +494,11 @@ describe('FileDirectory', function () {
           assert.equal(getMetadataError, null);
           assert.notEqual(file, null);
           assert.notEqual(file.metadata, null);
-          assert.equal(file.metadata.class, 'Test');
+          if (suite.metadataCaseSensitive) {
+            assert.equal(file.metadata.Class, 'Test');
+          } else {
+            assert.equal(file.metadata.class, 'Test');
+          }
           assert.ok(getMetadataResponse.isSuccessful);
           
           done();
@@ -511,7 +519,11 @@ describe('FileDirectory', function () {
             assert.equal(getError, null);
             assert.notEqual(directory, null);
             assert.notEqual(directory.requestId, null);
+            if (suite.metadataCaseSensitive) {
+            assert.strictEqual(directory.metadata.Color, metadata.Color);
+            } else {
             assert.strictEqual(directory.metadata.color, metadata.Color);
+            }
             
             assert.notEqual(getResponse, null);
             assert.equal(getResponse.isSuccessful, true);
@@ -536,7 +548,11 @@ describe('FileDirectory', function () {
             assert.equal(getMetadataError, null);
             assert.notEqual(file, null);
             assert.notEqual(file.metadata, null);
-            assert.equal(file.metadata.class, 'Test');
+            if (suite.metadataCaseSensitive) {
+              assert.equal(file.metadata.Class, 'Test');
+            } else {
+              assert.equal(file.metadata.class, 'Test');
+            }
             assert.ok(getMetadataResponse.isSuccessful);
             
             done();

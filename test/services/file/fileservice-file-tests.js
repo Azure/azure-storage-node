@@ -557,7 +557,11 @@ describe('File', function () {
             assert.equal(getMetadataError, null);
             assert.notEqual(file, null);
             assert.notEqual(file.metadata, null);
-            assert.equal(file.metadata.class, 'Test');
+            if (suite.metadataCaseSensitive) {
+              assert.equal(file.metadata.Class, 'Test');
+            } else {
+              assert.equal(file.metadata.class, 'Test');
+            }
             assert.ok(getMetadataResponse.isSuccessful);
 
             done();
@@ -575,7 +579,11 @@ describe('File', function () {
           assert.equal(getMetadataError, null);
           assert.notEqual(file, null);
           assert.notEqual(file.metadata, null);
-          assert.equal(file.metadata.class, 'Test');
+          if (suite.metadataCaseSensitive) {
+            assert.equal(file.metadata.Class, 'Test');
+          } else {
+            assert.equal(file.metadata.class, 'Test');
+          }
           assert.ok(getMetadataResponse.isSuccessful);
 
           done();
@@ -596,7 +604,11 @@ describe('File', function () {
             assert.equal(getError, null);
             assert.notEqual(file, null);
             assert.notEqual(null, file.requestId);
-            assert.strictEqual(file.metadata.color, metadata.Color);
+            if (suite.metadataCaseSensitive) {
+              assert.strictEqual(file.metadata.Color, metadata.Color);
+            } else {
+              assert.strictEqual(file.metadata.color, metadata.Color);
+            }
 
             assert.notEqual(getResponse, null);
             assert.equal(getResponse.isSuccessful, true);
@@ -621,7 +633,11 @@ describe('File', function () {
             assert.equal(getMetadataError, null);
             assert.notEqual(file, null);
             assert.notEqual(file.metadata, null);
-            assert.equal(file.metadata.class, 'Test');
+            if (suite.metadataCaseSensitive) {
+              assert.equal(file.metadata.Class, 'Test');
+            } else {
+              assert.equal(file.metadata.class, 'Test');
+            }
             assert.ok(getMetadataResponse.isSuccessful);
 
             done();
@@ -778,9 +794,15 @@ describe('File', function () {
                   
                   fileService.getFileProperties(targetShareName, targetDirectoryName, targetFileName, function (getError, file, getResponse) {
                     assert.equal(getError, null);
-                    assert.equal(file.metadata.class, 'destFile');
-                    assert.equal(file.metadata.sourcecolor, undefined);
-                    assert.equal(file.metadata.destcolor, 'White');
+                    if (suite.metadataCaseSensitive) {
+                      assert.equal(file.metadata.Class, 'destFile');
+                      assert.equal(file.metadata.SourceColor, undefined);
+                      assert.equal(file.metadata.DestColor, 'White');
+                    } else {
+                      assert.equal(file.metadata.class, 'destFile');
+                      assert.equal(file.metadata.sourcecolor, undefined);
+                      assert.equal(file.metadata.destcolor, 'White');
+                    }
 
                     fileService.abortCopyFile(targetShareName, targetDirectoryName, targetFileName, copyRes.copy.id, function (copyErr) {
                       assert.notEqual(copyErr, null);

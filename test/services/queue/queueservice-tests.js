@@ -758,8 +758,11 @@ describe('QueueServiceTests', function() {
             assert.notEqual(queue, null);
             if (queue) {
               assert.notEqual(queue.metadata, null);
-
-              assert.equal(queue.metadata.class, 'Test');
+              if (suite.metadataCaseSensitive) {
+                assert.equal(queue.metadata.Class, 'Test');
+              } else {
+                assert.equal(queue.metadata.class, 'Test');
+              }
 
               done();
             }
