@@ -433,6 +433,17 @@ describe('blob-uploaddownload-tests', function () {
 
       stream.pipe(fs.createWriteStream(fileNameTarget));
     });
+
+    runOrSkip('error message should NOT be written to the piped stream when downloading blob', function (done) {
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+      var downloadedFileName = testutil.generateId('getBlobToStream', [], suite.isMocked) + '.test';
+      var stream = fs.createWriteStream(downloadedFileName);
+      blobService.getBlobToStream(containerName, blobName, stream, {skipSizeCheck: true}, function (error) {
+        var content = fs.readFileSync(downloadedFileName);
+        assert.equal(content.length, 0);
+        done();
+      });
+    });
   });
   
   describe('blob-rangedownload-tests', function() {

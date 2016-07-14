@@ -4,13 +4,14 @@ be taken. This is a GA release and the changes described below indicate the chan
 2016.07 Version 1.2.0
 
 ALL
-
 * Fixed the issue that metadata name will be converted to lower-case after retrieving back from the server. **Note** that this fix is only applicable for Node 0.12 or higher version.
+
+BLOB
+* Fixed the issue that the service error message will be written to the destination stream if getting error when downloading the blob to a stream/file.
 
 2016.06 Version 1.1.0
 
 ALL
-
 * Fixed the issue that using SAS doesn't work against storage emulator.
 * Fixed the issue that the service SAS signature is incorrect when protocol parameter is specified.
 * Fixed the issue that the timeout query string should be in seconds instead of milliseconds.
@@ -33,7 +34,6 @@ FILE
 2016.05 Version 1.0.1
 
 ALL
-
 * Fixed the issue that StorageServiceClient._normalizeError will throw exception on Node below v4 because string.startsWith is not available on Node below v4.
 
 2016.05 Version 1.0.0
