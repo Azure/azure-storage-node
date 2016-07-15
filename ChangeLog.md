@@ -9,6 +9,9 @@ ALL
 BLOB
 * Fixed the issue that the service error message will be written to the destination stream if getting error when downloading the blob to a stream/file.
 
+FILE
+* Fixed the issue that the service error message will be written to the destination stream if getting error when downloading the file to a stream/file.
+
 2016.06 Version 1.1.0
 
 ALL

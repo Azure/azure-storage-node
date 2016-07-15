@@ -763,6 +763,17 @@ describe('FileUploadDownload', function () {
       });
     });
 
+    runOrSkip('should NOT write error message to destination stream', function (done) {
+      var downloadFileName = testutil.generateId('getFileToStream', [], suite.isMocked) + '.test';
+      try { fs.unlinkSync(downloadFileName); } catch (e) {}
+      fileService.getFileToStream(shareName, '', fileName, fs.createWriteStream(downloadFileName), {skipSizeCheck: true}, function (downloadErr, file, downloadResponse) {
+        var content = fs.readFileSync(downloadFileName);
+        assert.equal(content.length, 0);
+        try { fs.unlinkSync(downloadFileName); } catch (e) {}
+        done();
+      });
+    });
+
     runOrSkip('should work with range', function (done) {
       var size = 99*1024*1024; // Do not use a multiple of 4MB size
       var rangeStart = 100;
