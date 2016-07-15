@@ -990,7 +990,7 @@ var runFilesPermissionTests = function(sharedAccessPolicy, next){
       });
       rfs.createReadStream(localTempFileName).pipe(writableStream);
     } else {
-      sharedFileService.createRangesFromStream(shareName, '', fileName, rfs.createReadStream(localTempFileName), 0, fileSize, function(error){
+      sharedFileService.createRangesFromStream(shareName, '', fileName, rfs.createReadStream(localTempFileName), 0, fileSize - 1, function(error){
         assert.notEqual(error, null, 'Writing to a file with SAS should fail without Write and Object-level perms.');
         next();
       });
