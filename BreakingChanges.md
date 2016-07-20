@@ -1,3 +1,7 @@
+Tracking Breaking Changes in 1.2.0
+TABLE
+* Beginning with version 2015-12-11, the Atom feed is no longer supported as a payload format for Table service operations. Version 2015-12-11 and later versions support only JSON for the payload format.
+
 Tracking Breaking Changes in 1.0.0
 BLOB
 * The `blob` property of BlobResult has been renamed to `name` to keep consistent with other services API and the `listBlob` API.

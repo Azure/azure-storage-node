@@ -47,11 +47,11 @@ function TestSuite(testPrefix, env, forceMocked) {
     this.isMocked = testPrefix && !process.env.NOCK_OFF;
   }
 
-  var nodeVersion = Number(process.version.match(/^v(\d+\.\d+)/)[1]);
-  this.metadataCaseSensitive = !this.isMocked && nodeVersion >= 0.12;
-
   this.isRecording = process.env.AZURE_NOCK_RECORD;
   this.skipSubscription = true;
+
+  var nodeVersion = Number(process.version.match(/^v(\d+\.\d+)/)[1]);
+  this.metadataCaseSensitive = (!this.isMocked || this.isRecording) && nodeVersion >= 0.12;
 
   // Normalize environment
   this.normalizeEnvironment(env);

@@ -2615,6 +2615,7 @@ declare module "azure-storage" {
               sequenceNumber?: string;
               contentRange?: string;
               committedBlockCount?: string;
+              serverEncrypted?: string;
               appendOffset? : string;
               contentSettings?: {
                 contentType?: string;

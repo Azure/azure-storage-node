@@ -652,6 +652,7 @@ describe('BlobService', function () {
             assert.equal(getErr, null);
 
             assert.notEqual(blob, null);
+            assert.notEqual(blob.serverEncrypted, false);
 
             if (blob) {
               assert.notEqual(blob.metadata, null);
@@ -1200,7 +1201,7 @@ describe('BlobService', function () {
         assert.strictEqual(parsedUrl.port, '80');
         assert.strictEqual(parsedUrl.hostname, 'host.com');
         assert.strictEqual(parsedUrl.pathname, '/' + containerName + '/' + blobName);
-        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&spr=https&sv=2015-04-05&sr=b&sig=wrbAp%2BxDtX5rwkAk8IkxspEHid2DiwE3JqVr%2BNDA2Bk%3D');
+        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&spr=https&sv=2015-12-11&sr=b&sig=wn7RS7MUpp5efc0UWLPRdis8nQkSo3l6COFnm8Tu8mc%3D');
 
         blobUrl = blobServiceassert.getUrl(containerName, blobName, sasToken, false, '2016-10-11T11:03:40Z');
 
@@ -1209,7 +1210,7 @@ describe('BlobService', function () {
         assert.strictEqual(parsedUrl.port, '80');
         assert.strictEqual(parsedUrl.hostname, 'host-secondary.com');
         assert.strictEqual(parsedUrl.pathname, '/' + containerName + '/' + blobName);
-        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&spr=https&sv=2015-04-05&sr=b&sig=wrbAp%2BxDtX5rwkAk8IkxspEHid2DiwE3JqVr%2BNDA2Bk%3D&snapshot=2016-10-11T11%3A03%3A40Z');
+        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&spr=https&sv=2015-12-11&sr=b&sig=wn7RS7MUpp5efc0UWLPRdis8nQkSo3l6COFnm8Tu8mc%3D&snapshot=2016-10-11T11%3A03%3A40Z');
 
         done();
       });
@@ -1290,7 +1291,7 @@ describe('BlobService', function () {
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_PERMISSIONS], BlobUtilities.SharedAccessPermissions.READ);
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_PROTOCOL], 'https');
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_VERSION], HeaderConstants.TARGET_STORAGE_VERSION);
-      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'zlo0dNrtoECXTXJW7dfOlJz1bpaZ4zucrycMzQ/mpTM=');
+      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'ye2zuuezafXqhgvgMC3ij/53P5APN1NAuBW/o+pOFok=');
 
       done();
     });

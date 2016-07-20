@@ -6,12 +6,17 @@ be taken. This is a GA release and the changes described below indicate the chan
 ALL
 * Fixed the issue that metadata name will be converted to lower-case after retrieving back from the server. **Note** that this fix is only applicable for Node 0.12 or higher version.
 * Added support for EndpointSuffix for all service constructors.
+* Updated storage service version to 2015-12-11. Fore more information, please see - https://msdn.microsoft.com/en-us/library/azure/dd894041.aspx
 
 BLOB
 * Fixed the issue that the service error message will be written to the destination stream if getting error when downloading the blob to a stream/file.
+* Added `serverEncryped` property to 'BlobResult' class which indicates if the blob data and application metadata are completely encrypted using the specified algorithm on the server.
 
 FILE
 * Fixed the issue that the service error message will be written to the destination stream if getting error when downloading the file to a stream/file.
+
+TABLE
+* The atom feed payload format is not supported anymore for table service APIs.
 
 2016.06 Version 1.1.0
 
