@@ -7,6 +7,7 @@ ALL
 * Fixed the issue that metadata name will be converted to lower-case after retrieving back from the server. **Note** that this fix is only applicable for Node 0.12 or higher version.
 * Added support for EndpointSuffix for all service constructors.
 * Updated storage service version to 2015-12-11. Fore more information, please see - https://msdn.microsoft.com/en-us/library/azure/dd894041.aspx
+* Updated the `request` package to version 2.74.0 to address the security vulnerability - https://nodesecurity.io/advisories/130
 
 BLOB
 * Fixed the issue that the service error message will be written to the destination stream if getting error when downloading the blob to a stream/file.
