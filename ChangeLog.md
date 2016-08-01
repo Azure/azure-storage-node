@@ -1,10 +1,27 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
 be taken. This is a GA release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
 
+2016.07 Version 1.2.0
+
+ALL
+* Fixed the issue that metadata name will be converted to lower-case after retrieving back from the server. **Note** that this fix is only applicable for Node 0.12 or higher version.
+* Added support for EndpointSuffix for all service constructors.
+* Updated storage service version to 2015-12-11. Fore more information, please see - https://msdn.microsoft.com/en-us/library/azure/dd894041.aspx
+* Updated the `request` package to version 2.74.0 to address the security vulnerability - https://nodesecurity.io/advisories/130
+
+BLOB
+* Fixed the issue that the service error message will be written to the destination stream if getting error when downloading the blob to a stream/file.
+* Added `serverEncryped` property to 'BlobResult' class which indicates if the blob data and application metadata are completely encrypted using the specified algorithm on the server.
+
+FILE
+* Fixed the issue that the service error message will be written to the destination stream if getting error when downloading the file to a stream/file.
+
+TABLE
+* The atom feed payload format is not supported anymore for table service APIs.
+
 2016.06 Version 1.1.0
 
 ALL
-
 * Fixed the issue that using SAS doesn't work against storage emulator.
 * Fixed the issue that the service SAS signature is incorrect when protocol parameter is specified.
 * Fixed the issue that the timeout query string should be in seconds instead of milliseconds.
@@ -27,7 +44,6 @@ FILE
 2016.05 Version 1.0.1
 
 ALL
-
 * Fixed the issue that StorageServiceClient._normalizeError will throw exception on Node below v4 because string.startsWith is not available on Node below v4.
 
 2016.05 Version 1.0.0

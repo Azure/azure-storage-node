@@ -297,7 +297,11 @@ describe('FileShare', function () {
             assert.equal(getError, null);
             assert.notEqual(share2, null);
             assert.notEqual(null, share2.requestId);
-            assert.strictEqual(share2.metadata.color, metadata.Color);
+            if (suite.metadataCaseSensitive) {
+              assert.strictEqual(share2.metadata.Color, metadata.Color);
+            } else {
+              assert.strictEqual(share2.metadata.color, metadata.Color);
+            }
 
             assert.notEqual(getResponse, null);
             assert.equal(getResponse.isSuccessful, true);
@@ -571,7 +575,7 @@ describe('FileShare', function () {
       assert.strictEqual(parsedUrl.port, '80');
       assert.strictEqual(parsedUrl.hostname, 'host.com');
       assert.strictEqual(parsedUrl.pathname, '/' + share + '/' + directoryName + '/' + fileName);
-      assert.strictEqual(parsedUrl.query, 'se=2015-02-12T11%3A03%3A40Z&sv=2015-04-05&sr=f&sig=5OSCfNVVRD6mBv3apBKKe3sWWrFQEhaq4om3xuxZVO4%3D');
+      assert.strictEqual(parsedUrl.query, 'se=2015-02-12T11%3A03%3A40Z&sv=2015-12-11&sr=f&sig=VTj%2FRWHNlt49DRYc770I7Qt74FQDPhxPLbNdAm3WXok%3D');
       
       done();
     });

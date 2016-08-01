@@ -990,7 +990,7 @@ var runFilesPermissionTests = function(sharedAccessPolicy, next){
       });
       rfs.createReadStream(localTempFileName).pipe(writableStream);
     } else {
-      sharedFileService.createRangesFromStream(shareName, '', fileName, rfs.createReadStream(localTempFileName), 0, fileSize, function(error){
+      sharedFileService.createRangesFromStream(shareName, '', fileName, rfs.createReadStream(localTempFileName), 0, fileSize - 1, function(error){
         assert.notEqual(error, null, 'Writing to a file with SAS should fail without Write and Object-level perms.');
         next();
       });
@@ -1438,7 +1438,7 @@ describe('azure', function () {
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_PROTOCOL], sharedAccessPolicy.AccessPolicy.Protocols);
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_IP], sharedAccessPolicy.AccessPolicy.IPAddressOrRange);
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_VERSION], HeaderConstants.TARGET_STORAGE_VERSION);
-      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'HBTxb91kD0h0+YDYk8i/kuJ3ZLQJjojoa7iesPp5n/8=');    
+      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'LA/19AtnWhKeEf9pxOQ9R/J7W83l6OfUvByvk31wNe0=');
 
       process.env[StorageServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_CONNECTION_STRING] = connString;
       done();
@@ -1470,7 +1470,7 @@ describe('azure', function () {
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_PROTOCOL], sharedAccessPolicy.AccessPolicy.Protocols);
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_IP], sharedAccessPolicy.AccessPolicy.IPAddressOrRange);
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_VERSION], HeaderConstants.TARGET_STORAGE_VERSION);
-      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'HBTxb91kD0h0+YDYk8i/kuJ3ZLQJjojoa7iesPp5n/8=');
+      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'LA/19AtnWhKeEf9pxOQ9R/J7W83l6OfUvByvk31wNe0=');
       
       done();
     });

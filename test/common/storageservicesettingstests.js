@@ -316,6 +316,41 @@ describe('StorageServiceSettingsTests', function(done) {
     done();
   });
 
+  it('testCreateFromConnectionStringWithEndpointSuffixSpecified', function(done) {
+    // Setup
+    var protocol = 'https';
+    var endpointSuffix = 'core.chinacloudapi.cn';
+
+    var expectedName = 'mytestaccount';
+    var expectedKey = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
+    var expectedTableEndpoint = url.format({ protocol: protocol, host: expectedName + '.table.' + endpointSuffix });
+    var expectedBlobEndpoint = url.format({ protocol: protocol, host: expectedName + '.blob.' + endpointSuffix });
+    var expectedQueueEndpoint = url.format({ protocol: protocol, host: expectedName + '.queue.' + endpointSuffix });
+    var expectedFileEndpoint = url.format({ protocol: protocol, host: expectedName + '.file.' + endpointSuffix });
+    var expectedTableSecondaryEndpoint = url.format({ protocol: protocol, host: expectedName + '-secondary.table.' + endpointSuffix });
+    var expectedBlobSecondaryEndpoint = url.format({ protocol: protocol, host: expectedName + '-secondary.blob.' + endpointSuffix });
+    var expectedQueueSecondaryEndpoint = url.format({ protocol: protocol, host: expectedName + '-secondary.queue.' + endpointSuffix });
+    var expectedFileSecondaryEndpoint = url.format({ protocol: protocol, host: expectedName + '-secondary.file.' + endpointSuffix });
+    var connectionString  = 'DefaultEndpointsProtocol=' + protocol + ';AccountName=' + expectedName + ';AccountKey=' + expectedKey + ';EndpointSuffix=' + endpointSuffix;
+
+    // Test
+    var actual = StorageServiceSettings.createFromConnectionString(connectionString);
+
+    // Assert
+    assert.strictEqual(actual._name, expectedName);
+    assert.strictEqual(actual._key, expectedKey);
+    assert.strictEqual(actual._blobEndpoint.primaryHost, expectedBlobEndpoint);
+    assert.strictEqual(actual._queueEndpoint.primaryHost, expectedQueueEndpoint);
+    assert.strictEqual(actual._tableEndpoint.primaryHost, expectedTableEndpoint);
+    assert.strictEqual(actual._fileEndpoint.primaryHost, expectedFileEndpoint);
+    assert.strictEqual(actual._blobEndpoint.secondaryHost, expectedBlobSecondaryEndpoint);
+    assert.strictEqual(actual._queueEndpoint.secondaryHost, expectedQueueSecondaryEndpoint);
+    assert.strictEqual(actual._tableEndpoint.secondaryHost, expectedTableSecondaryEndpoint);
+    assert.strictEqual(actual._fileEndpoint.secondaryHost, expectedFileSecondaryEndpoint);
+    assert.strictEqual(actual._usePathStyleUri, false);
+    done();
+  });
+
   it('testCreateFromConnectionStringWithQueueEndpointSpecified', function(done) {
     // Setup
     var protocol = 'https';
