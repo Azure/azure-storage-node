@@ -94,8 +94,9 @@ declare module "azure-storage" {
             * @param {string|object} [host]                       The host address. To define primary only, pass a string.
             *                                                     Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.
             * @param {string} [sasToken]                          The Shared Access Signature token.
+            * @param {string} [endpointSuffix]                    The endpoint suffix.
             */
-            constructor(storageAccountOrConnectionString: string, storageAccessKey?: string, host?: string|StorageHost, sasToken?: string);
+            constructor(storageAccountOrConnectionString: string, storageAccessKey?: string, host?: string|StorageHost, sasToken?: string, endpointSuffix?: string);
 
             /**
             * Associate a filtering operation with this BlobService. Filtering operations
@@ -2614,6 +2615,7 @@ declare module "azure-storage" {
               sequenceNumber?: string;
               contentRange?: string;
               committedBlockCount?: string;
+              serverEncrypted?: string;
               appendOffset? : string;
               contentSettings?: {
                 contentType?: string;
@@ -2817,8 +2819,9 @@ declare module "azure-storage" {
           * @param {string|object} [host]                       The host address. To define primary only, pass a string. 
           *                                                     Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.
           * @param {string} [sasToken]                          The Shared Access Signature token.
+            * @param {string} [endpointSuffix]                    The endpoint suffix.
           */
-          constructor(storageAccountOrConnectionString?: string, storageAccessKey?: string, host?: string|StorageHost, sasToken?: string);
+          constructor(storageAccountOrConnectionString?: string, storageAccessKey?: string, host?: string|StorageHost, sasToken?: string, endpointSuffix?: string);
 
           /**
           * Associate a filtering operation with this QueueService. Filtering operations
@@ -5059,8 +5062,9 @@ declare module "azure-storage" {
           * @param {string|object} [host]                       The host address. To define primary only, pass a string.
           *                                                     Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.
           * @param {string} [sasToken]                          The Shared Access Signature token.
+          * @param {string} [endpointSuffix]                    The endpoint suffix.
           */
-          new (storageAccountOrConnectionString?: string, storageAccessKey?: string, host?: string|StorageHost, sasToken?: string): TableService;
+          new (storageAccountOrConnectionString?: string, storageAccessKey?: string, host?: string|StorageHost, sasToken?: string, endpointSuffix?: string): TableService;
         }
 
         export module TableUtilities {
@@ -7083,8 +7087,9 @@ declare module "azure-storage" {
           * @param {string|object} [host]                       The host address. To define primary only, pass a string. 
           *                                                     Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.
           * @param {string} [sasToken]                          The Shared Access Signature token.
+          * @param {string} [endpointSuffix]                    The endpoint suffix.
           */
-          new (storageAccountOrConnectionString?: string, storageAccessKey?: string, host?: string|StorageHost, sasToken?: string): FileService;
+          new (storageAccountOrConnectionString?: string, storageAccessKey?: string, host?: string|StorageHost, sasToken?: string, endpointSuffix?: string): FileService;
         }
 
         // ###########################

@@ -48,7 +48,7 @@ describe('sharedkey-tests', function () {
     webResource.withHeader(HeaderConstants.MS_DATE, 'Fri, 23 Sep 2011 01:37:34 GMT');
 
     sharedkey.signRequest(webResource, function () {
-      assert.equal(webResource.headers[HeaderConstants.AUTHORIZATION], 'SharedKey devstoreaccount1:3PhbC2d3D2e0wPNhjaFxNqF1wTGu0Su5lZ8fCCCqIvg=');
+      assert.equal(webResource.headers[HeaderConstants.AUTHORIZATION], 'SharedKey devstoreaccount1:NcwivCxw8cocF574jVXvZhhRw63VtDIAF2IUobuj52k=');
 
       done();
     });
@@ -80,7 +80,7 @@ describe('sharedkey-tests', function () {
     assert.equal(sasQueryString[QueryStringConstants.SIGNED_PROTOCOL], sharedAccessPolicy.AccessPolicy.Protocols);
     assert.equal(sasQueryString[QueryStringConstants.SIGNED_IP], sharedAccessPolicy.AccessPolicy.IPAddressOrRange);
     assert.equal(sasQueryString[QueryStringConstants.SIGNED_VERSION], HeaderConstants.TARGET_STORAGE_VERSION);
-    assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'VtoJt2HAMEek04cXAzh+fGqoBEPlg+izg2bROBVuC5Y=');
+    assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'xMcdT/JPym5WsE9aE2YBcN2tfcjJXa0YzPdg2wchBmc=');
 
     done();
   });

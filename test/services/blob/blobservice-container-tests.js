@@ -315,7 +315,12 @@ describe('BlobContainer', function () {
             assert.equal('available', container2.lease.state);
             assert.equal(null, container2.lease.duration);
             assert.notEqual(null, container2.requestId);
-            assert.strictEqual(container2.metadata.color, metadata.Color);
+
+            if(suite.metadataCaseSensitive) {
+              assert.strictEqual(container2.metadata.Color, metadata.Color);
+            } else {
+              assert.strictEqual(container2.metadata.color, metadata.Color);
+            }
           }
 
           assert.notEqual(getResponse, null);
@@ -342,7 +347,12 @@ describe('BlobContainer', function () {
           assert.notEqual(containerMetadata, null);
           assert.notEqual(containerMetadata.metadata, null);
           if (containerMetadata.metadata) {
-            assert.equal(containerMetadata.metadata.class, 'Test');
+            
+            if(suite.metadataCaseSensitive) {
+              assert.equal(containerMetadata.metadata.Class, 'Test');
+            } else {
+              assert.equal(containerMetadata.metadata.class, 'Test');
+            }
           }
 
           assert.ok(getMetadataResponse.isSuccessful);
