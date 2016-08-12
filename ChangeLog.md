@@ -6,6 +6,7 @@ be taken. This is a GA release and the changes described below indicate the chan
 ALL
 
 * Fixed the issue that retry filter will fail against storage emulator.
+* Fixed a hang issue of `StorageServiceClient` with retry policy filter set when retrying sending the request, the stream is not readable anymore.
 
 2016.07 Version 1.2.0
 

@@ -15,10 +15,12 @@
 // 
 
 var assert = require('assert');
+var fs = require('fs');
 
 // Test includes
 var testutil = require('../../framework/util');
 var TestSuite = require('../../framework/test-suite');
+var rfs = testutil.libRequire('common/streams/readablefs');
 
 // Lib includes
 var azure = testutil.libRequire('azure-storage');
@@ -31,10 +33,20 @@ var exponentialRetryPolicyFilter;
 var tableNames = [];
 var tablePrefix = 'expretry';
 
+var shareNames = [];
+var sharePrefix = 'expretry';
+
+var fileNames = [];
+var filePrefix = 'expretry';
+
 var tableService;
 var tableName;
 
+var fileService;
+var shareName;
+
 var suite = new TestSuite('exponentialretrypolicyfilter-tests');
+var runOrSkip = suite.isMocked ? it.skip : it;
 
 describe('exponentialretrypolicyfilter-tests', function () {
   before(function (done) {
@@ -57,10 +69,21 @@ describe('exponentialretrypolicyfilter-tests', function () {
   });
 
   afterEach(function (done) {
-    tableService.deleteTableIfExists(tableName, function (deleteError) {
-      assert.equal(deleteError, null);
+    if (tableName) {
+      tableService.deleteTableIfExists(tableName, function (deleteError) {
+        assert.equal(deleteError, null);
+        if (shareName) {
+          fileService.deleteShareIfExists(shareName, function (deleteError) {
+            assert.equal(deleteError, null);
+            suite.teardownTest(done);
+          });
+        } else {
+          suite.teardownTest(done);
+        }
+      });
+    } else {
       suite.teardownTest(done);
-    });
+    }
   });
 
   it('should fail when the table already exists', function (done) {
@@ -140,6 +163,37 @@ describe('exponentialretrypolicyfilter-tests', function () {
       assert.equal(err.code, Constants.StorageErrorCodeStrings.RESOURCE_NOT_FOUND);
 
       done();
+    });
+  });
+
+  runOrSkip('should NOT retry when the output stream is already sent', function(done) {
+    fileService = azure.createFileService().withFilter(exponentialRetryPolicyFilter);
+    shareName = testutil.generateId(sharePrefix, shareNames, suite.isMocked);
+    var fileName = testutil.generateId(filePrefix, fileNames, suite.isMocked);
+    var localTempFileName = suite.getName('fileservice_test_retry');
+    var fileSize = 100;
+
+    // Real stream length is smaller than the expected data length to mock the client timeout error to trigger the retry
+    var fileBuffer = new Buffer( fileSize % 2 );
+    fileBuffer.fill(1);
+    fs.writeFileSync(localTempFileName, fileBuffer);
+    
+    fileService.createShare(shareName, function(err, result) {
+      assert.equal(err, null);
+      assert.notEqual(result, null);
+      assert.equal(result.name, shareName);
+
+      fileService.createFile(shareName, '', fileName, fileSize, function(err) {
+        assert.equal(err, null);
+
+        // Expect 100 bytes to sent but the stream only have 50 bytes.
+        // It'll result in ECONNRESET error and should NOT retry. If retry, it'll hang to wait for data from the stream but the stream is already closed as the data already sent out in the 1st failed request.
+        fileService.createRangesFromStream(shareName, '', fileName, rfs.createReadStream(localTempFileName), 0, fileSize - 1, function(err, result, response){
+          assert.notEqual(err, null);
+          assert.equal(err.code, 'ECONNRESET');
+          done();
+        });
+      });
     });
   });
 });
