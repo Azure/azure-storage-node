@@ -1686,6 +1686,9 @@ declare module "azure-storage" {
             listPageRanges(container: string, blob: string, options: BlobService.GetBlobRequestOptions, callback: ErrorOrResult<common.Range[]>): void;
             listPageRanges(container: string, blob: string, callback: ErrorOrResult<common.Range[]>): void;
 
+            getPageRangesDiff(container: string, blob: string, previousSnapshotTime: string, options: BlobService.GetBlobRequestOptions, callback: ErrorOrResult<common.RangeDiff[]>): void;
+            getPageRangesDiff(container: string, blob: string, previousSnapshotTime: string, callback: ErrorOrResult<common.RangeDiff[]>): void;
+
             /**
             * Clears a range of pages.
             *
@@ -8614,6 +8617,12 @@ declare module "azure-storage" {
       export interface Range {
         start?: number;
         end?: number;
+      }
+
+      export interface RangeDiff {
+        start?: number;
+        end?: number;
+        isCleared?: boolean
       }
     }
 
