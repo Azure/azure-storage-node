@@ -1416,7 +1416,7 @@ declare module "azure-storage" {
             * @param {string}                   [headers.contentDisposition]                  The optional value of the Content-Disposition response header to be returned when this SAS is used.
             * @return {string}                                                                The shared access signature. Note this does not contain the leading "?".
             */
-            generateSharedAccessSignature(container: string, blob: string, sharedAccessPolicy: common.SharedAccessPolicy, headers: common.ContentSettingsHeaders): string;
+            generateSharedAccessSignature(container: string, blob: string, sharedAccessPolicy: common.SharedAccessPolicy, headers?: common.ContentSettingsHeaders): string;
 
             /**
             * Retrieves a shared access signature token.
@@ -1438,7 +1438,7 @@ declare module "azure-storage" {
             * @param {string}                   [headers.contentDisposition]                  The optional value of the Content-Disposition response header to be returned when this SAS is used.
             * @return {string}                                                                The shared access signature query string. Note this string does not contain the leading "?".
             */
-            generateSharedAccessSignatureWithVersion(container: string, blob: string, sharedAccessPolicy: common.SharedAccessPolicy, sasVersion: string, headers: common.ContentSettingsHeaders): string;
+            generateSharedAccessSignatureWithVersion(container: string, blob: string, sharedAccessPolicy: common.SharedAccessPolicy, sasVersion: string, headers?: common.ContentSettingsHeaders): string;
 
             /**
             * Retrieves a blob or container URL.
@@ -1934,8 +1934,8 @@ declare module "azure-storage" {
             * var blobService = azure.createBlobService();
             * var stream = fs.createReadStream(fileNameTarget).pipe(blobService.createWriteStreamToBlockBlob(containerName, blobName, { blockIdPrefix: 'block' }));
             */
-            createWriteStreamToBlockBlob(container: string, blob: string, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): void;
-            createWriteStreamToBlockBlob(container: string, blob: string, callback: ErrorOrResult<BlobService.BlobResult>): void;
+            createWriteStreamToBlockBlob(container: string, blob: string, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): stream.Writable;
+            createWriteStreamToBlockBlob(container: string, blob: string, callback: ErrorOrResult<BlobService.BlobResult>): stream.Writable;
 
             /**
             * Creates a new block to be committed as part of a blob.
