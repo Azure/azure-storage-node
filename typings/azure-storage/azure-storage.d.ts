@@ -3871,7 +3871,7 @@ declare module "azure-storage" {
             timeNextVisible?: string;
             insertionTime?: string;
             expirationTime?: string;
-            dequeueCount?: string;
+            dequeueCount?: number;
           }
 
           export interface QueueResult {

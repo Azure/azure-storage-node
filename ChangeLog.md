@@ -9,7 +9,10 @@ ALL
 * Fixed a hang issue of `StorageServiceClient` with retry policy filter set when retrying sending the request, the stream is not readable anymore.
 
 BLOB
-* Added the API `BlobService.getPageRangesDiff` for getting the page ranges difference. Refer to https://msdn.microsoft.com/en-us/library/azure/mt736912.aspx for more detailed information. 
+* Added the API `BlobService.getPageRangesDiff` for getting the page ranges difference. Refer to https://msdn.microsoft.com/en-us/library/azure/mt736912.aspx for more detailed information.
+
+QUEUE
+* Updated the `QueueMessageResult.dequeueCount` from `string` to `number`.
 
 2016.07 Version 1.2.0
 
