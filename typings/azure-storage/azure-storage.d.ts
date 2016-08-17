@@ -3854,6 +3854,8 @@ declare module "azure-storage" {
           * @return {string}                                                                The shared access signature query string. Note this string does not contain the leading "?".
           */
           generateSharedAccessSignatureWithVersion(queue: string, sharedAccessPolicy: common.SharedAccessPolicy, sasVersion: string): string;
+
+          getUrl(queue: string, sasToken?: string, primary?: boolean): string;
         }
 
         module QueueService {
@@ -4943,6 +4945,8 @@ declare module "azure-storage" {
           *                                                                             `response` will contain information related to this operation.
           */
           executeBatch(table: string, batch: TableBatch, callback: ErrorOrResult<TableService.BatchResult[]>): void;
+
+          getUrl(table: string, sasToken?: string, primary?: boolean): string;
         }
 
         export module TableService {

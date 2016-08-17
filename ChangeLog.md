@@ -13,6 +13,10 @@ BLOB
 
 QUEUE
 * Updated the `QueueMessageResult.dequeueCount` from `string` to `number`.
+* Added the API `QueueService.getUrl` for getting the queue url.
+
+TABLE
+* Added the API `TableService.getUrl` for getting the table url.
 
 2016.07 Version 1.2.0
 

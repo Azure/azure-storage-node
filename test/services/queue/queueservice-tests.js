@@ -1101,4 +1101,55 @@ describe('QueueServiceTests', function() {
       });
     });
   });
+  
+  describe('getUrl', function(){
+    it('should work', function(done) {
+      
+        var queueName = 'queue1';
+        var queueService = azure.createQueueService('storageAccount', 'storageAccessKey', {primaryHost: 'https://host.com:80/', secondaryHost: 'https://host-secondary.com:80/'});
+
+        var sharedAccessPolicy = {
+          AccessPolicy: {
+            Permissions: azure.QueueUtilities.SharedAccessPermissions.READ,
+            Expiry: new Date('October 12, 2016 11:53:40 am GMT'),
+            Protocols: 'https'
+          }
+        };
+
+        var sasToken = queueService.generateSharedAccessSignature(queueName, sharedAccessPolicy);
+        var queueUrl = queueService.getUrl(queueName, sasToken);
+
+        var parsedUrl = url.parse(queueUrl);
+        assert.strictEqual(parsedUrl.protocol, 'https:');
+        assert.strictEqual(parsedUrl.port, '80');
+        assert.strictEqual(parsedUrl.hostname, 'host.com');
+        assert.strictEqual(parsedUrl.pathname, '/' + queueName);
+        assert.strictEqual(parsedUrl.query, 'se=2016-10-12T11%3A53%3A40Z&sp=r&spr=https&sv=2015-12-11&sig=fCV5zuQHgmyIUB0OEFU1lJEUP97ErJQv671DgVpOH7A%3D');
+        done();
+    });
+
+    it('should work against storage emulator', function(done) {
+        var queueName = 'queue1';
+        var queueService = azure.createQueueService('storageAccount', 'storageAccessKey', {primaryHost: 'https://host.com:80/account1', secondaryHost: 'https://host-secondary.com:80/account1'});
+
+        var sharedAccessPolicy = {
+          AccessPolicy: {
+            Permissions: azure.QueueUtilities.SharedAccessPermissions.READ,
+            Expiry: new Date('October 12, 2016 11:53:40 am GMT'),
+            Protocols: 'https'
+          }
+        };
+
+        var sasToken = queueService.generateSharedAccessSignature(queueName, sharedAccessPolicy);
+        var queueUrl = queueService.getUrl(queueName, sasToken);
+
+        var parsedUrl = url.parse(queueUrl);
+        assert.strictEqual(parsedUrl.protocol, 'https:');
+        assert.strictEqual(parsedUrl.port, '80');
+        assert.strictEqual(parsedUrl.hostname, 'host.com');
+        assert.strictEqual(parsedUrl.pathname, '/account1/' + queueName);
+        assert.strictEqual(parsedUrl.query, 'se=2016-10-12T11%3A53%3A40Z&sp=r&spr=https&sv=2015-12-11&sig=fCV5zuQHgmyIUB0OEFU1lJEUP97ErJQv671DgVpOH7A%3D');
+        done();
+    });
+  });
 });
