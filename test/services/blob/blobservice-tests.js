@@ -1355,7 +1355,7 @@ describe('BlobService', function () {
 
         blobService.createBlockBlobFromText(containerName, blobName, 'id1', function (error2) {
           assert.equal(error2, null);
-   
+
           var startDate = new Date();
           var expiryDate = new Date(startDate);
           expiryDate.setMinutes(startDate.getMinutes() + 5);
@@ -1363,7 +1363,8 @@ describe('BlobService', function () {
           var sharedAccessPolicy = {
             AccessPolicy: {
               Permissions: BlobUtilities.SharedAccessPermissions.READ,
-              Expiry: expiryDate
+              Expiry: expiryDate,
+              Protocols: 'https'
             }
           };
 

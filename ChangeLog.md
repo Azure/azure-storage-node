@@ -8,6 +8,7 @@ ALL
 * Fixed the issue that retry filter will fail against storage emulator.
 * Fixed a hang issue of `StorageServiceClient` with retry policy filter set when retrying sending the request, the stream is not readable anymore.
 * Updated the default value of `CorsRule.ExposedHeaders`, `CorsRule.AllowedHeaders` to empty and `CorsRule.MaxAgeInSeconds` to `0` for `setServiceProperties` APIs of all services.
+* Fixed the issue that service SAS doesn't work if specifying the `AccessPolicy.Protocols`.
 
 BLOB
 * Added the API `BlobService.getPageRangesDiff` for getting the page ranges difference. Refer to https://msdn.microsoft.com/en-us/library/azure/mt736912.aspx for more detailed information.
