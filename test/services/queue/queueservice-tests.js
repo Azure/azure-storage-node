@@ -1124,7 +1124,7 @@ describe('QueueServiceTests', function() {
         assert.strictEqual(parsedUrl.port, '80');
         assert.strictEqual(parsedUrl.hostname, 'host.com');
         assert.strictEqual(parsedUrl.pathname, '/' + queueName);
-        assert.strictEqual(parsedUrl.query, 'se=2016-10-12T11%3A53%3A40Z&sp=r&spr=https&sv=2015-12-11&sig=fCV5zuQHgmyIUB0OEFU1lJEUP97ErJQv671DgVpOH7A%3D');
+        assert.strictEqual(parsedUrl.query, 'se=2016-10-12T11%3A53%3A40Z&sp=r&spr=https&sv=2015-12-11&sig=nm9AgRS1ciJ%2F%2FLG2LGFgjz9mItp8NhzcAwO6ygIQCJo%3D');
         done();
     });
 
@@ -1148,7 +1148,7 @@ describe('QueueServiceTests', function() {
         assert.strictEqual(parsedUrl.port, '80');
         assert.strictEqual(parsedUrl.hostname, 'host.com');
         assert.strictEqual(parsedUrl.pathname, '/account1/' + queueName);
-        assert.strictEqual(parsedUrl.query, 'se=2016-10-12T11%3A53%3A40Z&sp=r&spr=https&sv=2015-12-11&sig=fCV5zuQHgmyIUB0OEFU1lJEUP97ErJQv671DgVpOH7A%3D');
+        assert.strictEqual(parsedUrl.query, 'se=2016-10-12T11%3A53%3A40Z&sp=r&spr=https&sv=2015-12-11&sig=nm9AgRS1ciJ%2F%2FLG2LGFgjz9mItp8NhzcAwO6ygIQCJo%3D');
         done();
     });
   });
