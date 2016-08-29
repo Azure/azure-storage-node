@@ -17,6 +17,7 @@
 var assert = require('assert');
 var util = require('util');
 var extend = require('extend');
+var url = require('url');
 
 // Test includes
 var testutil = require('../../framework/util');
@@ -1030,6 +1031,57 @@ describe('tableservice-tests', function () {
 
         insertManyEntities(callback, {useNagleAlgorithm : true});
       });
+    });
+  });
+  
+  describe('getUrl', function(){
+    it('should work', function(done) {
+      
+        var tableName = 'table1';
+        var tableService = azure.createTableService('storageAccount', 'storageAccessKey', {primaryHost: 'https://host.com:80/', secondaryHost: 'https://host-secondary.com:80/'});
+
+        var sharedAccessPolicy = {
+          AccessPolicy: {
+            Permissions: azure.TableUtilities.SharedAccessPermissions.QUERY,
+            Expiry: new Date('October 12, 2016 11:53:40 am GMT'),
+            Protocols: 'https'
+          }
+        };
+
+        var sasToken = tableService.generateSharedAccessSignature(tableName, sharedAccessPolicy);
+        var tableUrl = tableService.getUrl(tableName, sasToken);
+
+        var parsedUrl = url.parse(tableUrl);
+        assert.strictEqual(parsedUrl.protocol, 'https:');
+        assert.strictEqual(parsedUrl.port, '80');
+        assert.strictEqual(parsedUrl.hostname, 'host.com');
+        assert.strictEqual(parsedUrl.pathname, '/' + tableName);
+        assert.strictEqual(parsedUrl.query, 'se=2016-10-12T11%3A53%3A40Z&sp=r&spr=https&sv=2015-12-11&tn=table1&sig=3gbxIP7r6q0L5gKZ%2FGOyX80gZgv9WTbCMITAUV7cSQ8%3D');
+        done();
+    });
+
+    it('should work against storage emulator', function(done) {
+        var tableName = 'table1';
+        var tableService = azure.createTableService('storageAccount', 'storageAccessKey', {primaryHost: 'https://host.com:80/account1', secondaryHost: 'https://host-secondary.com:80/account1'});
+
+        var sharedAccessPolicy = {
+          AccessPolicy: {
+            Permissions: azure.TableUtilities.SharedAccessPermissions.QUERY,
+            Expiry: new Date('October 12, 2016 11:53:40 am GMT'),
+            Protocols: 'https'
+          }
+        };
+
+        var sasToken = tableService.generateSharedAccessSignature(tableName, sharedAccessPolicy);
+        var tableUrl = tableService.getUrl(tableName, sasToken);
+
+        var parsedUrl = url.parse(tableUrl);
+        assert.strictEqual(parsedUrl.protocol, 'https:');
+        assert.strictEqual(parsedUrl.port, '80');
+        assert.strictEqual(parsedUrl.hostname, 'host.com');
+        assert.strictEqual(parsedUrl.pathname, '/account1/' + tableName);
+        assert.strictEqual(parsedUrl.query, 'se=2016-10-12T11%3A53%3A40Z&sp=r&spr=https&sv=2015-12-11&tn=table1&sig=3gbxIP7r6q0L5gKZ%2FGOyX80gZgv9WTbCMITAUV7cSQ8%3D');
+        done();
     });
   });
 });

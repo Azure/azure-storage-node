@@ -1,6 +1,25 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
 be taken. This is a GA release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
 
+2016.08 Version 1.3.0
+
+ALL
+
+* Fixed the issue that retry filter will fail against storage emulator.
+* Fixed a hang issue of `StorageServiceClient` with retry policy filter set when retrying sending the request, the stream is not readable anymore.
+* Updated the default value of `CorsRule.ExposedHeaders`, `CorsRule.AllowedHeaders` to empty and `CorsRule.MaxAgeInSeconds` to `0` for `setServiceProperties` APIs of all services.
+* Fixed the issue that service SAS doesn't work if specifying the `AccessPolicy.Protocols`.
+
+BLOB
+* Added the API `BlobService.getPageRangesDiff` for getting the page ranges difference. Refer to https://msdn.microsoft.com/en-us/library/azure/mt736912.aspx for more detailed information.
+
+QUEUE
+* Updated the `QueueMessageResult.dequeueCount` from `string` to `number`.
+* Added the API `QueueService.getUrl` for getting the queue url.
+
+TABLE
+* Added the API `TableService.getUrl` for getting the table url.
+
 2016.07 Version 1.2.0
 
 ALL
