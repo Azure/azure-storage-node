@@ -569,6 +569,76 @@ describe('blob-uploaddownload-tests', function () {
       });
     });
 
+    it('getPageRangesDiff should works', function(done) {
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+      var fileNameSource = testutil.generateId('getPageRangesDiff', [], suite.isMocked) + '.test';
+      var fileNameSourceUpdated = testutil.generateId('getPageRangesDiffUpdated', [], suite.isMocked) + '.test';
+
+      var blobBuffer = new Buffer(512);
+      blobBuffer.fill(0);
+      blobBuffer[0] = '1';
+      blobBuffer[1] = '1';
+
+      var blobBufferUpdated = new Buffer(512);
+      blobBufferUpdated.fill(0);
+      blobBufferUpdated[0] = '1';
+      blobBufferUpdated[1] = '1';
+      blobBufferUpdated[3] = '1';
+
+      // Upload contents in 2 parts
+      blobService.createPageBlob(containerName, blobName, 1024 * 1024 * 1024, function (err) {
+        assert.equal(err, null);
+
+        fs.writeFile(fileNameSource, blobBuffer, function () {
+          // Create 1st range
+          blobService.createPagesFromStream(containerName, blobName, rfs.createReadStream(fileNameSource), 0, 511, {useTransactionalMD5: true}, function(err) {
+            assert.equal(err, null);
+            // Create 2nd range
+            blobService.createPagesFromStream(containerName, blobName, rfs.createReadStream(fileNameSource), 1048576, 1049087, {transactionalContentMD5: azureutil.getContentMd5(blobBuffer)}, function (err) {
+              assert.equal(err, null);
+              // Snapshot the page blob
+              blobService.createBlobSnapshot(containerName, blobName, function(err, snapshotTime) {
+                assert.equal(err, null);
+                var prevSnapshot = snapshotTime;
+
+                // After the snapshot, update 1 range and clear 1 range
+                fs.writeFile(fileNameSourceUpdated, blobBuffer, function () {
+                  // Update the 1st range
+                  blobService.createPagesFromStream(containerName, blobName, rfs.createReadStream(fileNameSourceUpdated), 0, 511, {useTransactionalMD5: true}, function(err) {
+                    assert.equal(err, null);
+                    // Clear the 2nd range
+                    blobService.clearPageRange(containerName, blobName, 1048576, 1049087, function(err) {
+
+                      assert.equal(err, null);
+                      // Get the ranges diff
+                      blobService.getPageRangesDiff(containerName, blobName, prevSnapshot, function(err, rangesDiff) {
+                        assert.equal(err, null);
+                        assert.equal(rangesDiff.length, 2);
+
+                        rangesDiff.forEach(function (rangeDiff) {
+                          if (rangeDiff.start === 0) {
+                            assert.equal(rangeDiff.end, 511);
+                            assert.equal(rangeDiff.isCleared, false);
+                          } else if (rangeDiff.start === 1048576) {
+                            assert.equal(rangeDiff.end, 1049087);
+                            assert.equal(rangeDiff.isCleared, true);
+                          }
+                        });
+
+                        try { fs.unlinkSync(fileNameSource); } catch (e) { }
+                        try { fs.unlinkSync(fileNameSourceUpdated); } catch (e) { }
+                        done();
+                      });
+                    })
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+
     runOrSkip('should download a range of block blob to stream', function (done) {
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var fileNameSource = testutil.generateId('getBlockBlobRangeStreamLocal', [], suite.isMocked) + '.test';

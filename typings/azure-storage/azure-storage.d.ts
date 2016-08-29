@@ -1416,7 +1416,7 @@ declare module "azure-storage" {
             * @param {string}                   [headers.contentDisposition]                  The optional value of the Content-Disposition response header to be returned when this SAS is used.
             * @return {string}                                                                The shared access signature. Note this does not contain the leading "?".
             */
-            generateSharedAccessSignature(container: string, blob: string, sharedAccessPolicy: common.SharedAccessPolicy, headers: common.ContentSettingsHeaders): string;
+            generateSharedAccessSignature(container: string, blob: string, sharedAccessPolicy: common.SharedAccessPolicy, headers?: common.ContentSettingsHeaders): string;
 
             /**
             * Retrieves a shared access signature token.
@@ -1438,7 +1438,7 @@ declare module "azure-storage" {
             * @param {string}                   [headers.contentDisposition]                  The optional value of the Content-Disposition response header to be returned when this SAS is used.
             * @return {string}                                                                The shared access signature query string. Note this string does not contain the leading "?".
             */
-            generateSharedAccessSignatureWithVersion(container: string, blob: string, sharedAccessPolicy: common.SharedAccessPolicy, sasVersion: string, headers: common.ContentSettingsHeaders): string;
+            generateSharedAccessSignatureWithVersion(container: string, blob: string, sharedAccessPolicy: common.SharedAccessPolicy, sasVersion: string, headers?: common.ContentSettingsHeaders): string;
 
             /**
             * Retrieves a blob or container URL.
@@ -1685,6 +1685,9 @@ declare module "azure-storage" {
             */
             listPageRanges(container: string, blob: string, options: BlobService.GetBlobRequestOptions, callback: ErrorOrResult<common.Range[]>): void;
             listPageRanges(container: string, blob: string, callback: ErrorOrResult<common.Range[]>): void;
+
+            getPageRangesDiff(container: string, blob: string, previousSnapshotTime: string, options: BlobService.GetBlobRequestOptions, callback: ErrorOrResult<common.RangeDiff[]>): void;
+            getPageRangesDiff(container: string, blob: string, previousSnapshotTime: string, callback: ErrorOrResult<common.RangeDiff[]>): void;
 
             /**
             * Clears a range of pages.
@@ -1934,8 +1937,8 @@ declare module "azure-storage" {
             * var blobService = azure.createBlobService();
             * var stream = fs.createReadStream(fileNameTarget).pipe(blobService.createWriteStreamToBlockBlob(containerName, blobName, { blockIdPrefix: 'block' }));
             */
-            createWriteStreamToBlockBlob(container: string, blob: string, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): void;
-            createWriteStreamToBlockBlob(container: string, blob: string, callback: ErrorOrResult<BlobService.BlobResult>): void;
+            createWriteStreamToBlockBlob(container: string, blob: string, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): stream.Writable;
+            createWriteStreamToBlockBlob(container: string, blob: string, callback: ErrorOrResult<BlobService.BlobResult>): stream.Writable;
 
             /**
             * Creates a new block to be committed as part of a blob.
@@ -3851,6 +3854,8 @@ declare module "azure-storage" {
           * @return {string}                                                                The shared access signature query string. Note this string does not contain the leading "?".
           */
           generateSharedAccessSignatureWithVersion(queue: string, sharedAccessPolicy: common.SharedAccessPolicy, sasVersion: string): string;
+
+          getUrl(queue: string, sasToken?: string, primary?: boolean): string;
         }
 
         module QueueService {
@@ -3868,7 +3873,7 @@ declare module "azure-storage" {
             timeNextVisible?: string;
             insertionTime?: string;
             expirationTime?: string;
-            dequeueCount?: string;
+            dequeueCount?: number;
           }
 
           export interface QueueResult {
@@ -4940,6 +4945,8 @@ declare module "azure-storage" {
           *                                                                             `response` will contain information related to this operation.
           */
           executeBatch(table: string, batch: TableBatch, callback: ErrorOrResult<TableService.BatchResult[]>): void;
+
+          getUrl(table: string, sasToken?: string, primary?: boolean): string;
         }
 
         export module TableService {
@@ -8614,6 +8621,12 @@ declare module "azure-storage" {
       export interface Range {
         start?: number;
         end?: number;
+      }
+
+      export interface RangeDiff {
+        start?: number;
+        end?: number;
+        isCleared?: boolean
       }
     }
 
