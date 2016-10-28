@@ -5163,7 +5163,7 @@ declare module azurestorage {
           function Binary(value: Buffer|string): EntityProperty<Buffer>;
           function Boolean(value: boolean|string): EntityProperty<boolean>;
           function String(value: string): EntityProperty<string>;
-          function Guid(value: UUID|string|Buffer): EntityProperty<UUID>;
+          function Guid(value: string|Buffer|any): EntityProperty<any>;
           function Double(value: number|string): EntityProperty<number>;
           function DateTime(value: Date|string): EntityProperty<Date>;
         }
@@ -5340,7 +5340,7 @@ declare module azurestorage {
          * @example
          * var query = TableQuery.guidFilter('GuidField', QueryComparisons.EQUAL, guid.v1());
          */
-        guidFilter(propertyName: string, operation: string, value: UUID | string): string;
+        guidFilter(propertyName: string, operation: string, value: string | any): string;
 
         /**
          * Generates a property filter condition string for a 'binary' value.
