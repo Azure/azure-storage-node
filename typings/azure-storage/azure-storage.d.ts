@@ -7156,7 +7156,7 @@ declare module azurestorage {
           * };
           * var blobService = azure.createBlobService().withFilter(retryPolicy);
           */
-          constructor(retryCount?: number, retryInterval?: number);
+          constructor(retryCount?: number, retryInterval?: number): RetryPolicyFilter;
           
           shouldRetry(statusCode: number, retryData: RetryPolicyFilter.IRetryRequestOptions): {
             retryInterval: number;
@@ -8776,7 +8776,7 @@ declare module azurestorage {
   */
   export function createQueueServiceWithSas(hostUri: string | StorageHost, sasToken: string): QueueService;
   
-  export function generateAccountSharedAccessSignature(storageAccountOrConnectionString: string, storageAccessKey: string, sharedAccessAccountPolicy: common.SharedAccessPolicy);
+  export function generateAccountSharedAccessSignature(storageAccountOrConnectionString: string, storageAccessKey: string, sharedAccessAccountPolicy: common.SharedAccessPolicy): string;
 
   interface StorageError extends Error {
     statusCode?: number;
