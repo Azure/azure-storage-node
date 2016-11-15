@@ -1,6 +1,14 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
 be taken. This is a GA release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
 
+2016.11 Version 1.4.0
+
+BLOB
+* Fixed the issue that the ChunkAllocator maxCount is aligned with parallelOperationThreadCount.
+
+FILE
+* Fixed the issue that the ChunkAllocator maxCount is aligned with parallelOperationThreadCount.
+
 2016.10 Version 1.3.2
 
 BLOB
