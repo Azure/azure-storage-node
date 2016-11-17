@@ -228,6 +228,30 @@ describe('blob-uploaddownload-tests', function () {
       });
     });
   });
+
+  it('createBlockBlobFromText with specified content type', function (done) {
+    var blobName = 'blobs/' + testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+    var blobText = '<html><h1>THIS IS HTML</h1></html>';
+    var contentType = 'text/html';
+    var options = {
+      contentSettings: {
+        contentType: contentType
+      }
+    };
+
+    blobService.createBlockBlobFromText(containerName, blobName, blobText, options, function (err) {
+      assert.equal(err, null);
+
+      blobService.getBlobProperties(containerName, blobName, function (error, properties) {
+        assert.equal(error, null);
+        assert.equal(properties.container, containerName);
+        assert.equal(properties.name, blobName);
+        assert.equal(properties.contentSettings.contentType, contentType);
+
+        done();
+      });
+    });
+  });
   
   // This test ensures that blocks can be created from files correctly
   // and was created to ensure that the request module does not magically add

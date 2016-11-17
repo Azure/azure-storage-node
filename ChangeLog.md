@@ -7,6 +7,7 @@ BLOB
 * Fixed the issue that the ChunkAllocator maxCount is aligned with parallelOperationThreadCount.
 * Changed `/S` of SpeedSummary to `/s`.
 * Fixed the issue that `BlobService.createBlockBlobFromText` will hang when passed `null` or `undefined` `text` argument. 
+* Fixed the issue that `BlobService.createBlockBlobFromText` will always set `content-type` to `text/plain`.
 
 FILE
 * Fixed the issue that the ChunkAllocator maxCount is aligned with parallelOperationThreadCount.
