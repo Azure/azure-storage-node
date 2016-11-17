@@ -1,3 +1,10 @@
+Tracking Breaking Changes in 1.4.0
+BLOB
+* Changed `/S` of SpeedSummary to `/s`.
+
+FILE
+* Changed `/S` of SpeedSummary to `/s`.
+
 Tracking Breaking Changes in 1.3.0
 QUEUE
 * Updated the `QueueMessageResult.dequeueCount` from `string` to `number`.

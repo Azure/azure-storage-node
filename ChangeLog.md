@@ -5,9 +5,11 @@ be taken. This is a GA release and the changes described below indicate the chan
 
 BLOB
 * Fixed the issue that the ChunkAllocator maxCount is aligned with parallelOperationThreadCount.
+* Changed `/S` of SpeedSummary to `/s`.
 
 FILE
 * Fixed the issue that the ChunkAllocator maxCount is aligned with parallelOperationThreadCount.
+* Changed `/S` of SpeedSummary to `/s`.
 
 2016.10 Version 1.3.2
 
