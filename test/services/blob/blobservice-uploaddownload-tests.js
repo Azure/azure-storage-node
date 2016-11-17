@@ -199,8 +199,24 @@ describe('blob-uploaddownload-tests', function () {
     var blobName = 'blobs/' + testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
     var blobText = 'Hello World!';
 
-    // Create the empty page blob
     blobService.createBlockBlobFromText(containerName, blobName, blobText, function (err) {
+      assert.equal(err, null);
+
+      blobService.getBlobProperties(containerName, blobName, function (error, properties) {
+        assert.equal(error, null);
+        assert.equal(properties.container, containerName);
+        assert.equal(properties.name, blobName);
+
+        done();
+      });
+    });
+  });
+
+  it('CreateEmptyBlob', function (done) {
+    var blobName = 'blobs/' + testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+
+    // Create the empty block blob
+    blobService.createBlockBlobFromText(containerName, blobName, null, function (err) {
       assert.equal(err, null);
 
       blobService.getBlobProperties(containerName, blobName, function (error, properties) {
