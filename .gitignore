@@ -37,3 +37,7 @@ coverage
 
 # Editor configuration
 .vscode/*
+
+# Tests artefacts
+fileservice_test_*
+blobservice_test.tmp
