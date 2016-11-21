@@ -3,6 +3,9 @@ be taken. This is a GA release and the changes described below indicate the chan
 
 2016.11 Version 1.4.0
 
+ALL
+* Added `ENOTFOUND` for secondary endpoint and `ECONNREFUSED` to `RetryPolicyFilter`.
+
 BLOB
 * Fixed the issue that the ChunkAllocator maxCount is aligned with parallelOperationThreadCount.
 * Changed `/S` of SpeedSummary to `/s`.
