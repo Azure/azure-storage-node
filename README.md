@@ -431,15 +431,10 @@ By default the unit tests are ran with Nock recording data. To run tests against
 set NOCK_OFF=true
 ```
 
-and set up the following environment variables for storage account credentials by 
+and set up the following environment variable for storage account credentials by 
 
 ```Batchfile
 set AZURE_STORAGE_CONNECTION_STRING="valid storage connection string"
-```
-or 
-```Batchfile
-set AZURE_STORAGE_ACCOUNT="valid storage account name"
-set AZURE_STORAGE_ACCESS_KEY="valid storage account key"
 ```
 
 To record the data in a test pass against real storage account for future Nock usage:
