@@ -14,71 +14,50 @@
 // limitations under the License.
 // 
 
-var fs = require('fs');
-if (!fs.existsSync) {
-  fs.existsSync = require('path').existsSync;
-}
-
-var azure;
-if (fs.existsSync('absolute path to azure-storage.js')) {
-  azure = require('absolute path to azure-storage');
-} else {
-  azure = require('azure-storage');
-}
-
 var express = require('express');
+var expressLayouts = require('express-ejs-layouts');
+var path = require('path');
+var azure = require('azure-storage');
 var formidable = require('formidable');
 var helpers = require('./helpers.js');
 
-var app = module.exports = express.createServer();
+var app = express();
+
 // Global request options, set the retryPolicy
 var blobClient = azure.createBlobService('UseDevelopmentStorage=true').withFilter(new azure.ExponentialRetryPolicyFilter());
 var containerName = 'webpi';
 
 //Configuration
-app.configure(function () {
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'ejs');
-  app.use(express.methodOverride());
-  // app.use(express.logger());
-  app.use(app.router);
-  app.use(express.static(__dirname + '/public'));
-});
+app.set('views', path.join(__dirname + '/views'));
+app.set('view engine', 'ejs');
+app.set('layout', 'layout');
+app.use(express.static(path.join(__dirname + '/public')));
+app.use(expressLayouts);
 
-app.configure('development', function () {
+app.set('development', function(){
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
-app.configure('production', function () {
+app.set('production', function(){
   app.use(express.errorHandler());
 });
 
-app.param(':id', function (req, res, next) {
+app.param('id', function (req, res, next) {
   next();
 });
 
 //Routes
 app.get('/', function (req, res) {
-  res.render('index.ejs', { locals: {
-    title: 'Welcome'
-  }
-  });
+  res.render('index.ejs', { title: 'Welcome' });
 });
 
 app.get('/Upload', function (req, res) {
-  res.render('upload.ejs', { locals: {
-    title: 'Upload File'
-  }
-  });
+  res.render('upload.ejs', { title: 'Upload File' });
 });
 
 app.get('/Display', function (req, res) {
-  blobClient.listBlobs(containerName, function (error, blobs) {
-    res.render('display.ejs', { locals: {
-      title: 'List of Blobs',
-      serverBlobs: blobs
-    }
-    });
+  blobClient.listBlobsSegmented(containerName, null, function (error, blobs, result) {
+    res.render('display.ejs', { title: 'List of Blobs', serverBlobs: blobs.entries });
   });
 });
 
@@ -117,7 +96,6 @@ app.post('/uploadhandler', function (req, res) {
         if (error != null) {
           helpers.renderError(res);
         } else {
-          setSAS(containerName, fields.itemName);
           res.redirect('/Display');
         }
       });
@@ -145,25 +123,13 @@ blobClient.createContainerIfNotExists(containerName, function (error) {
   }
 });
 
-function setSAS(containerName, blobName) {
-    var sharedAccessPolicy = {
-        AccessPolicy: {
-            Expiry: azure.date.minutesFromNow(3)
-        }
-    };   
-    
-    var blobUrl = blobClient.getBlobUrl(containerName, blobName, sharedAccessPolicy);
-    console.log("access the blob at ", blobUrl);
-}
-
 function setPermissions() {
   var options = { publicAccessLevel: azure.BlobUtilities.BlobContainerPublicAccessType.BLOB };
   blobClient.setContainerAcl(containerName, null, options, function (error) {
     if (error) {
       console.log(error);
-    } else {
-      app.listen(process.env.port || 1337);
-      console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
-    }
+    } 
   });
 }
+
+module.exports = app;
