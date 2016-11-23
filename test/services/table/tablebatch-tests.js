@@ -15,7 +15,7 @@
 // 
 // Module Includes
 var assert = require('assert');
-var guid = require('node-uuid');
+var guid = require('uuid');
 
 // Test includes
 var testutil = require('../../framework/util');
