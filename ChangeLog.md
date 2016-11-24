@@ -5,6 +5,7 @@ be taken. This is a GA release and the changes described below indicate the chan
 
 ALL
 * Added `ENOTFOUND` for secondary endpoint and `ECONNREFUSED` to `RetryPolicyFilter`.
+* Added support for `text/html` error response body.
 
 BLOB
 * Fixed the issue that the ChunkAllocator maxCount is aligned with parallelOperationThreadCount.
