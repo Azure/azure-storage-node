@@ -273,6 +273,13 @@ describe('blob-uploaddownload-tests', function () {
     });
   });
   
+  it('returns correct error when specifying invalid content-length', function (done) {
+    blobService.createBlockFromStream('test', containerName, blockBlobName, rfs.createReadStream(blockFileName), 'invalidlength', function (error) {
+      assert.ok(error.message.indexOf('invalid content length') !== -1);
+      done();
+    });
+  });
+  
   describe('blob-piping-tests', function() {
     runOrSkip('should be able to upload block blob from piped stream', function (done) { 
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
