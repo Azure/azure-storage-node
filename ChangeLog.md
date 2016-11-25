@@ -13,6 +13,9 @@ BLOB
 * Fixed the issue that `BlobService.createBlockBlobFromText` will hang when passed `null` or `undefined` `text` argument. 
 * Fixed the issue that `BlobService.createBlockBlobFromText` will always set `content-type` to `text/plain`.
 
+QUEUE
+* Allowed `QueueService.peekMessages` against secondary endpoint.
+
 FILE
 * Fixed the issue that the ChunkAllocator maxCount is aligned with parallelOperationThreadCount.
 * Changed `/S` of SpeedSummary to `/s`.
