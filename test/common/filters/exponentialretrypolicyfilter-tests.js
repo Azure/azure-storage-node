@@ -174,7 +174,7 @@ describe('exponentialretrypolicyfilter-tests', function () {
     var fileSize = 100;
 
     // Real stream length is smaller than the expected data length to mock the client timeout error to trigger the retry
-    var fileBuffer = new Buffer( fileSize % 2 );
+    var fileBuffer = new Buffer( fileSize / 2 );
     fileBuffer.fill(1);
     fs.writeFileSync(localTempFileName, fileBuffer);
     
@@ -185,7 +185,7 @@ describe('exponentialretrypolicyfilter-tests', function () {
 
       fileService.createFile(shareName, '', fileName, fileSize, function(err) {
         assert.equal(err, null);
-
+        
         // Expect 100 bytes to sent but the stream only have 50 bytes.
         // It'll result in ECONNRESET error and should NOT retry. If retry, it'll hang to wait for data from the stream but the stream is already closed as the data already sent out in the 1st failed request.
         fileService.createRangesFromStream(shareName, '', fileName, rfs.createReadStream(localTempFileName), 0, fileSize - 1, function(err, result, response){
