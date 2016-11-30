@@ -18,7 +18,9 @@ module.exports = function(grunt) {
   //init stuff
   grunt.initConfig({
 
-    pkg: grunt.file.readJSON('package.json'),
+    nsp: {
+      package: grunt.file.readJSON('package.json')
+    },
 
     mochaTest: {
       test: {
@@ -66,7 +68,7 @@ module.exports = function(grunt) {
         ],
         options: {
           destination: 'docs',
-          template: 'node_modules/grunt-jsdoc/node_modules/ink-docstrap/template',
+          template: 'node_modules/ink-docstrap/template',
           configure: 'jsdoc/jsdoc.json'
         }
       }
@@ -91,10 +93,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-jsdoc');
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-devserver');
-  grunt.loadNpmTasks('grunt-nsp-package');
+  grunt.loadNpmTasks('grunt-nsp');
   grunt.loadNpmTasks('grunt-contrib-jshint');
 
   grunt.registerTask('doc', ['jsdoc', 'devserver']);
-  grunt.registerTask('validate', ['jshint', 'validate-package']);
+  grunt.registerTask('validate', ['jshint', 'nsp']);
   grunt.registerTask('default', ['validate', 'mochaTest']);
 };

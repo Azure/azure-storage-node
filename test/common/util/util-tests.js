@@ -133,7 +133,7 @@ describe('speed-summary-tests', function() {
     summary.totalSize = 100;
     summary.completeSize = 10;
     console.log(summary.getAverageSpeed(false));
-    assert.equal(summary.getAverageSpeed(true), '10.00B/S');
+    assert.equal(summary.getAverageSpeed(true), '10.00B/s');
     assert.equal(summary.getAverageSpeed(false).toString(), '10');
     done();
   });
@@ -142,7 +142,7 @@ describe('speed-summary-tests', function() {
     var summary = new speedSummary('test');
     summary.totalSize = 100;
     summary.completeSize = 15;
-    assert.equal(summary.getSpeed(true), '0B/S');
+    assert.equal(summary.getSpeed(true), '0B/s');
     assert.equal(summary.getSpeed(false).toString(), '0');
     done();
   });

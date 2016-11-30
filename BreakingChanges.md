@@ -1,12 +1,23 @@
+Tracking Breaking Changes in 1.4.0
+
+BLOB
+* Changed `/S` of SpeedSummary to `/s`.
+
+FILE
+* Changed `/S` of SpeedSummary to `/s`.
+
 Tracking Breaking Changes in 1.3.0
+
 QUEUE
 * Updated the `QueueMessageResult.dequeueCount` from `string` to `number`.
 
 Tracking Breaking Changes in 1.2.0
+
 TABLE
 * Beginning with version 2015-12-11, the Atom feed is no longer supported as a payload format for Table service operations. Version 2015-12-11 and later versions support only JSON for the payload format.
 
 Tracking Breaking Changes in 1.0.0
+
 BLOB
 * The `blob` property of BlobResult has been renamed to `name` to keep consistent with other services API and the `listBlob` API.
 * Decoded the block name of LockListResult from base64 string to utf-8 string.
@@ -15,6 +26,7 @@ QUEUE
 * The `encodeMessage` flag of QueueService has been replaced by `messageEncoder` which support `TextBase64QueueMessageEncoder`, `BinaryBase64QueueMessageEncoder`, `TextXmlQueueMessageEncoder` and custom implementation of QueueMessageEncoder.
 
 Tracking Breaking Changes in 0.10.0
+
 ALL
 * The `signedIdentifiers` parameter and result properties have been changed from array to hash map to avoid non unique signed identifier id.
 
@@ -43,6 +55,7 @@ TABLE
 * Renamed TableUtilities.entityGenerator.Entity to EntityProperty.
 
 Tracking Breaking Changes in 0.7.0
+
 ALL
 * The generateDevelopmentStorageCredendentials function in the azure-storage.js is renamed to generateDevelopmentStorageCredentials.
 
@@ -60,6 +73,7 @@ FILE
 * The property names returned from getting share stats are changed to camelCase.
 
 Tracking Breaking Changes in 0.5.0
+
 ALL
 * The suffix "_HEADER" is removed from all the http header constants.
 * The generateSharedAccessSignatureWithVersion function in each service is deprecated.
