@@ -199,7 +199,6 @@ describe('blob-uploaddownload-tests', function () {
     var blobName = 'blobs/' + testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
     var blobText = 'Hello World!';
 
-    // Create the empty page blob
     blobService.createBlockBlobFromText(containerName, blobName, blobText, function (err) {
       assert.equal(err, null);
 
@@ -207,6 +206,47 @@ describe('blob-uploaddownload-tests', function () {
         assert.equal(error, null);
         assert.equal(properties.container, containerName);
         assert.equal(properties.name, blobName);
+
+        done();
+      });
+    });
+  });
+
+  it('CreateEmptyBlob', function (done) {
+    var blobName = 'blobs/' + testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+
+    // Create the empty block blob
+    blobService.createBlockBlobFromText(containerName, blobName, null, function (err) {
+      assert.equal(err, null);
+
+      blobService.getBlobProperties(containerName, blobName, function (error, properties) {
+        assert.equal(error, null);
+        assert.equal(properties.container, containerName);
+        assert.equal(properties.name, blobName);
+
+        done();
+      });
+    });
+  });
+
+  it('createBlockBlobFromText with specified content type', function (done) {
+    var blobName = 'blobs/' + testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+    var blobText = '<html><h1>THIS IS HTML</h1></html>';
+    var contentType = 'text/html';
+    var options = {
+      contentSettings: {
+        contentType: contentType
+      }
+    };
+
+    blobService.createBlockBlobFromText(containerName, blobName, blobText, options, function (err) {
+      assert.equal(err, null);
+
+      blobService.getBlobProperties(containerName, blobName, function (error, properties) {
+        assert.equal(error, null);
+        assert.equal(properties.container, containerName);
+        assert.equal(properties.name, blobName);
+        assert.equal(properties.contentSettings.contentType, contentType);
 
         done();
       });
@@ -229,6 +269,13 @@ describe('blob-uploaddownload-tests', function () {
       assert.equal(error, null);
       blobService.removeAllListeners('sendingRequestEvent');
 
+      done();
+    });
+  });
+  
+  it('returns correct error when specifying invalid content-length', function (done) {
+    blobService.createBlockFromStream('test', containerName, blockBlobName, rfs.createReadStream(blockFileName), 'invalidlength', function (error) {
+      assert.ok(error.message.indexOf('invalid content length') !== -1);
       done();
     });
   });

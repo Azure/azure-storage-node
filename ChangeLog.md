@@ -1,6 +1,25 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
 be taken. This is a GA release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
 
+2016.11 Version 1.4.0
+
+ALL
+* Added `ENOTFOUND` for secondary endpoint and `ECONNREFUSED` to `RetryPolicyFilter`.
+* Added support for `text/html` error response body.
+
+BLOB
+* Fixed the issue that the ChunkAllocator maxCount is aligned with parallelOperationThreadCount.
+* Changed `/S` of SpeedSummary to `/s`.
+* Fixed the issue that `BlobService.createBlockBlobFromText` will hang when passed `null` or `undefined` `text` argument. 
+* Fixed the issue that `BlobService.createBlockBlobFromText` will always set `content-type` to `text/plain`.
+
+QUEUE
+* Allowed `QueueService.peekMessages` against secondary endpoint.
+
+FILE
+* Fixed the issue that the ChunkAllocator maxCount is aligned with parallelOperationThreadCount.
+* Changed `/S` of SpeedSummary to `/s`.
+
 2016.10 Version 1.3.2
 
 BLOB
