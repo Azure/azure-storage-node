@@ -22,6 +22,7 @@ var util = require('util');
 var testutil = require('../../framework/util');
 var TestSuite = require('../../framework/test-suite');
 var azure = testutil.libRequire('azure-storage');
+var BlobUtilities = azure.BlobUtilities;
 
 var suite = new TestSuite('blobservice-uploaddownload-scale-tests');
 var runOrSkip = suite.isMocked ? it.skip : it;
@@ -129,6 +130,57 @@ describe('BlobServiceUploadDownloadScale', function () {
         });
       }
     }
+  });
+
+  describe('LBB test', function(){
+    runOrSkip('LBB upload should work', function(done) {
+      var localFileName = 'lbbtest.tmp';
+      var blobName = 'lbbtest.tmp';
+      generateTempFile(localFileName, 148 * 1024 * 1024 + 512, function(error, fileInfo){
+        assert.equal(error, null);
+
+        var uploadOptions = { 
+          storeBlobContentMD5: true,
+          parallelOperationThreadCount: 5,
+          blockSize: 100 * 1024 * 1024, // 100MB
+          useTransactionalMD5: true
+        };
+        blobService.createBlockBlobFromLocalFile(containerName, blobName, fileInfo.name, uploadOptions, function(error, result) {
+          assert.equal(error, null);
+          blobService.getBlobProperties(containerName, blobName, function (error, blob) {
+            assert.equal(blob.contentSettings.contentMD5, fileInfo.contentMD5);
+
+            blobService.listBlocks(containerName, blobName, BlobUtilities.BlockListFilter.COMMITTED, function (error, list) {
+              assert.equal(error, null);
+              assert.equal(list.CommittedBlocks.length, 2);
+              assert.equal(list.CommittedBlocks[0].Size, 100 * 1024 * 1024);
+              assert.equal(list.CommittedBlocks[1].Size, 48 * 1024 * 1024 + 512);
+              try { fs.unlinkSync(localFileName); } catch (e) { }
+              done();
+            });
+          });
+        });
+      });
+    });
+
+    runOrSkip('Will get error when passing too small blockSize', function(done) {
+      var localFileName = 'lbbtest2.tmp';
+      var blobName = 'lbbtest2.tmp';
+      generateTempFile(localFileName, 148 * 1024 * 1024 + 512, function(error, fileInfo){
+        assert.equal(error, null);
+
+        var uploadOptions = { 
+          storeBlobContentMD5: true,
+          parallelOperationThreadCount: 5,
+          blockSize: 1, // 1B
+          useTransactionalMD5: true
+        };
+        blobService.createBlockBlobFromLocalFile(containerName, blobName, fileInfo.name, uploadOptions, function(error, result) {
+          assert.notEqual(error, null);
+          done();
+        });
+      });
+    });
   });
 
   describe('cleanup blob scale test', function () {
