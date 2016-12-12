@@ -5,6 +5,8 @@ be taken. This is a GA release and the changes described below indicate the chan
 
 ALL
 * Updated storage service version to 2016-05-31. Fore more information, please see - https://msdn.microsoft.com/en-us/library/azure/dd894041.aspx
+* Fixed the issue that `BatchOperation` doesn't support socket reuse for some node versions.
+* Fixed the issue that `BatchOperation` request pool size is too big when the socket reuse is supported.
 
 BLOB
 * Added support for large block blob.
