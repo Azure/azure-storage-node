@@ -178,6 +178,7 @@ describe('BlobService', function () {
         var entries = [];
         containers.forEach(function (container) {
           if (container.name == containerName1) {
+            assert.equal(container.publicAccessLevel, 'container');
             assert.equal(container.metadata.color, metadata1.COLOR);
             assert.equal(container.metadata.containernumber, metadata1.containernumber);
             assert.equal(container.metadata.somemetadataname, metadata1.somemetadataname);
@@ -190,6 +191,7 @@ describe('BlobService', function () {
               }
             });
           } else if (container.name == containerName2) {
+            assert.equal(container.publicAccessLevel, 'blob');
             assert.equal(container.metadata.color, metadata2.Color);
             assert.equal(container.metadata.containernumber, metadata2.containerNumber);
             assert.equal(container.metadata.somemetadataname, metadata2.somemetadataname);
@@ -202,6 +204,7 @@ describe('BlobService', function () {
               }
             });
           } else if (container.name == containerName3) {
+            assert.equal(container.publicAccessLevel, null);
             assert.equal(container.metadata.color, metadata3.color);
             assert.equal(container.metadata.containernumber, metadata3.containernumber);
             assert.equal(container.metadata.somemetadataname, metadata3.somemetadataname);
@@ -214,6 +217,7 @@ describe('BlobService', function () {
               }
             });
           } else if (container.name == containerName4) {
+            assert.equal(container.publicAccessLevel, 'container');
             assert.equal(container.metadata.color, metadata4.color);
             assert.equal(container.metadata.containernumber, metadata4.containernumber);
             assert.equal(container.metadata.somemetadataname, metadata4.somemetadataname);
@@ -229,12 +233,12 @@ describe('BlobService', function () {
         });
       };
 
-      blobService.createContainer(containerName1, { metadata: metadata1 }, function (createError1, createContainer1, createResponse1) {
+      blobService.createContainer(containerName1, { publicAccessLevel: 'container', metadata: metadata1 }, function (createError1, createContainer1, createResponse1) {
         assert.equal(createError1, null);
         assert.notEqual(createContainer1, null);
         assert.ok(createResponse1.isSuccessful);
 
-        blobService.createContainer(containerName2, { metadata: metadata2 }, function (createError2, createContainer2, createResponse2) {
+        blobService.createContainer(containerName2, { publicAccessLevel: 'blob', metadata: metadata2 }, function (createError2, createContainer2, createResponse2) {
           assert.equal(createError2, null);
           assert.notEqual(createContainer2, null);
           assert.ok(createResponse2.isSuccessful);
@@ -244,7 +248,7 @@ describe('BlobService', function () {
             assert.notEqual(createContainer3, null);
             assert.ok(createResponse3.isSuccessful);
 
-            blobService.createContainer(containerName4, { metadata: metadata4 }, function (createError4, createContainer4, createResponse4) {
+            blobService.createContainer(containerName4, { publicAccessLevel: 'container', metadata: metadata4 }, function (createError4, createContainer4, createResponse4) {
               assert.equal(createError4, null);
               assert.notEqual(createContainer4, null);
               assert.ok(createResponse4.isSuccessful);

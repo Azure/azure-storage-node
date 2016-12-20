@@ -11,6 +11,7 @@ ALL
 
 BLOB
 * Added support for large block blob. 
+* Added `publicAccessLevel` to `ContainerResult` for the APIs `listContainersSegmented` and `listContainersSegmentedWithPrefix`.
 
 2016.11 Version 1.4.0
 
