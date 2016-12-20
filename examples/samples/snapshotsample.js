@@ -190,7 +190,7 @@ function listSnapshots (callback) {
       callback();
     }
   });
-};
+}
 
 function deleteSnapshots (callback) {
   // Delete the snapshot.
@@ -202,7 +202,7 @@ function deleteSnapshots (callback) {
       callback();
     }
   });
-};
+}
 
 function deleteContainer (callback) {
   // Delete the container.

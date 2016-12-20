@@ -58,14 +58,14 @@ function setRetryPolicy() {
     retryInfo = {};
 
     // retries on any bad status code other than 409 
-    if (statusCode >= 300 && statusCode != 409 && statusCode != 500) {
+    if (statusCode >= 300 && statusCode !== 409 && statusCode !== 500) {
       retryInfo.retryable = false;
     } else {
       var currentCount = (retryData && retryData.retryCount) ? retryData.retryCount : 0;
 
       var retryInfo = {
         retryInterval: this.retryInterval + 2000 * currentCount,
-        retryable: currentCount < this.retryCount,
+        retryable: currentCount < this.retryCount
       };
     }
 
