@@ -1,3 +1,8 @@
+Tracking Breaking Changes in 1.5.0
+
+QUEUE
+* `createMessage` callback has been changed from `errorOrResponse` to `errorOrResult<QueueMessageResult>` which contains `messageId`, `popReceipt`, `timeNextVisible`, `insertionTime` and `expirationTime`. It can be passed to `updateMessage` and `deleteMessage` APIs.
+
 Tracking Breaking Changes in 1.4.0
 
 BLOB

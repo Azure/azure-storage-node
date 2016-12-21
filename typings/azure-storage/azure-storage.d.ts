@@ -3323,8 +3323,10 @@ declare module azurestorage {
         *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
-        * @param {errorOrResponse}  callback                                      `error` will contain information
-        *                                                                         if an error occurs; otherwise `response` will contain information related to this operation.
+        * @param {errorOrResult}      callback                                    `error` will contain information
+        *                                                                         if an error occurs; otherwise `[result]{@link QueueMessageResult}` will contain
+        *                                                                         the message.
+        *                                                                         `response` will contain information related to this operation.
         *
         * @example
         * var azure = require('azure-storage');
@@ -3335,7 +3337,7 @@ declare module azurestorage {
         *   }
         * });
         */
-        createMessage(queue: string, messageText: string|Buffer, options: QueueService.CreateMessageRequestOptions, callback?: ErrorOrResponse): void;
+        createMessage(queue: string, messageText: string|Buffer, options: QueueService.CreateMessageRequestOptions, callback?: ErrorOrResult<QueueService.QueueMessageResult>): void;
 
         /**
         * Adds a new message to the back of the message queue. 
@@ -3360,7 +3362,7 @@ declare module azurestorage {
         *   }
         * });
         */
-        createMessage(queue: string, messageText: string|Buffer, callback?: ErrorOrResponse): void;
+        createMessage(queue: string, messageText: string|Buffer, callback?: ErrorOrResult<QueueService.QueueMessageResult>): void;
 
         /**
         * Retrieves messages from the queue and makes them invisible to other consumers.
