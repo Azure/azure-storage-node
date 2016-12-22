@@ -13,9 +13,11 @@ ALL
 BLOB
 * Added support for large block blob. 
 * Added `publicAccessLevel` to `ContainerResult` for the APIs `listContainersSegmented` and `listContainersSegmentedWithPrefix`.
+* When specifiying access condition `If-None-Match: *` for reading, it will always fail.
 
 QUEUE
 * `createMessage` callback has been changed from `errorOrResponse` to `errorOrResult<QueueMessageResult>` which contains `messageId`, `popReceipt`, `timeNextVisible`, `insertionTime` and `expirationTime`. It can be passed to updateMessage and deleteMessage APIs.
+
 
 2016.11 Version 1.4.0
 

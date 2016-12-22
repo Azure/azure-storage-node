@@ -304,6 +304,30 @@ describe('blob-uploaddownload-tests', function () {
         });
       });
     });
+
+    runOrSkip('should be able to upload block blob from piped stream with IfNoneMatch:*', function (done) { 
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+      var fileNameTarget = testutil.generateId('uploadBlockBlobPiping', [], suite.isMocked) + '.blocktest';
+      var blobBuffer = new Buffer( 6 * 1024 * 1024);
+      blobBuffer.fill(1);
+
+      // Write file so that it can be piped
+      fs.writeFileSync(fileNameTarget, blobBuffer);
+      
+      // Pipe file to a blob
+      var stream = rfs.createReadStream(fileNameTarget).pipe(blobService.createWriteStreamToBlockBlob(containerName, blobName, { blockIdPrefix: 'block', accessConditions: azure.AccessCondition.generateIfNotExistsCondition() }));
+      stream.on('close', function () {
+        blobService.getBlobToText(containerName, blobName, function (err, text) {
+          assert.equal(err, null);
+
+          assert.equal(text, blobBuffer);
+
+          try { fs.unlinkSync(fileNameTarget); } catch (e) {}
+
+          done();
+        });
+      });
+    });
   
     runOrSkip('should be able to upload pageblob from piped stream', function (done) {
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
