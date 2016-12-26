@@ -8649,6 +8649,15 @@ declare module azurestorage {
 
   /**
   * Creates a new {@link TableService} object.
+  * Because no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_CONNECTION_STRING and then the AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_ACCESS_KEY
+  * environment variables will be used.
+  * @return {TableService}                              A new TableService object.
+  *
+  */
+  export function createTableService(): TableService;
+
+  /**
+  * Creates a new {@link TableService} object.
   * If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_CONNECTION_STRING and then the AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_ACCESS_KEY
   * environment variables will be used.
   *
