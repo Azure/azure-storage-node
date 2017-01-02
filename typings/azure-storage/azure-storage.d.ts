@@ -8655,6 +8655,14 @@ declare module azurestorage {
   *
   */
   export function createTableService(): TableService;
+ 
+  /**
+  * Creates a new {@link TableService} object for given connection string.
+  * @param {string} connectionString
+  * @return {TableService}                              A new TableService object.
+  *
+  */
+  export function createTableService(connectionString: string): TableService;
 
   /**
   * Creates a new {@link TableService} object.
@@ -8668,7 +8676,9 @@ declare module azurestorage {
   * @return {TableService}                              A new TableService object.
   *
   */
-  export function createTableService(storageAccountOrConnectionString: string, storageAccessKey: string, host: StorageHost): TableService;
+  export function createTableService(): TableService;
+  export function createTableService(connectionString: string): TableService;
+  export function createTableService(storageAccountOrConnectionString: string, storageAccessKey: string, host?: StorageHost): TableService;
 
   /**
   * Creates a new {@link TableService} object using the host Uri and the SAS credentials provided.
