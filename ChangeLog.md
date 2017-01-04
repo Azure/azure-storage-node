@@ -18,6 +18,9 @@ BLOB
 QUEUE
 * `createMessage` callback has been changed from `errorOrResponse` to `errorOrResult<QueueMessageResult>` which contains `messageId`, `popReceipt`, `timeNextVisible`, `insertionTime` and `expirationTime`. It can be passed to updateMessage and deleteMessage APIs.
 
+FILE
+* Returned content MD5 for range gets Files.
+* Fixed the issue that `useTransactionalMD5` didn't take effect for downloading a big file.
 
 2016.11 Version 1.4.0
 
