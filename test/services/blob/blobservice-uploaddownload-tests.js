@@ -526,8 +526,9 @@ describe('blob-uploaddownload-tests', function () {
       blobService.createBlockBlobFromText(containerName, blobName, data1, function (err) {
         assert.equal(err, null);
 
-        blobService.getBlobToText(containerName, blobName, { rangeStart: 2, rangeEnd: 3 }, function (err3, content1) {
+        blobService.getBlobToText(containerName, blobName, { rangeStart: 2, rangeEnd: 3, useTransactionalMD5: true }, function (err3, content1, result) {
           assert.equal(err3, null);
+          assert.notEqual(result.contentSettings.contentMD5, null);
 
           // get the double ll's in the hello
           assert.equal(content1, 'll');
@@ -545,8 +546,9 @@ describe('blob-uploaddownload-tests', function () {
       blobService.createBlockBlobFromText(containerName, blobName, data1, function (err) {
         assert.equal(err, null);
 
-        blobService.getBlobToText(containerName, blobName, { rangeStart: 2 }, function (err3, content1) {
+        blobService.getBlobToText(containerName, blobName, { rangeStart: 2 }, function (err3, content1, result) {
           assert.equal(err3, null);
+          assert.notEqual(result.contentSettings.contentMD5, null);
 
           // get the last bytes from the message
           assert.equal(content1, 'llo, World!');
@@ -710,21 +712,23 @@ describe('blob-uploaddownload-tests', function () {
       });
     });
 
-    runOrSkip('should download a range of block blob to stream', function (done) {
+    it('should download a range of block blob to stream', function (done) {
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var fileNameSource = testutil.generateId('getBlockBlobRangeStreamLocal', [], suite.isMocked) + '.test';
       var fileSize = 97 * 1024 * 1024;  // Don't be a multiple of 4MB to cover more scenarios
       generateTempFile(fileNameSource, fileSize, false, function (fileInfo) {
         uploadOptions.parallelOperationThreadCount = 5;
+        uploadOptions.storeBlobContentMD5 = true;
         blobService.createBlockBlobFromLocalFile(containerName, blobName, fileNameSource, uploadOptions, function (error) {
           assert.equal(error, null);
           try { fs.unlinkSync(fileNameSource); } catch (e) { }
           
-          var downloadOptions = { parallelOperationThreadCount : 5, rangeStart: 100, rangeEnd: 70000000 };
+          var downloadOptions = { parallelOperationThreadCount : 5, rangeStart: 100, rangeEnd: 70000000, useTransactionalMD5: true };
           var downloadedFileName = testutil.generateId('getBlockBlobRangeStream', [], suite.isMocked) + '.test';
           var stream = fs.createWriteStream(downloadedFileName);
-          blobService.getBlobToStream(containerName, blobName, stream, downloadOptions, function (error) {
+          blobService.getBlobToStream(containerName, blobName, stream, downloadOptions, function (error, result) {
             assert.equal(error, null);
+            assert.notEqual(result.contentSettings.contentMD5, null);
             
             var content = fs.readFileSync(downloadedFileName);
             assert.equal(content.length, downloadOptions.rangeEnd - downloadOptions.rangeStart + 1);
@@ -1109,14 +1113,16 @@ describe('blob-uploaddownload-tests', function () {
       blobBuffer[0] = '1';
 
       fs.writeFile(fileNameSource, blobBuffer, function () {
-        var blobOptions = { contentType: 'text', blockIdPrefix : 'blockId'};
+        var blobOptions = { contentType: 'text', blockIdPrefix : 'blockId', storeBlobContentMD5: true};
         blobService.createBlockBlobFromLocalFile(containerName, blobName, fileNameSource, blobOptions, function (uploadError, blobResponse, uploadResponse) {
           assert.equal(uploadError, null);
           assert.notEqual(blobResponse, null);
           assert.ok(uploadResponse.isSuccessful);
 
-          blobService.getBlobToStream(containerName, blobName, fs.createWriteStream('task1-download.txt'), { rangeStart: 512, rangeEnd: 1023 }, function (downloadErr, downloadResult) {
+          blobService.getBlobToStream(containerName, blobName, fs.createWriteStream('task1-download.txt'), { rangeStart: 512, rangeEnd: 1023, useTransactionalMD5: true }, function (downloadErr, downloadResult) {
             assert.equal(downloadErr, null);
+            assert.notEqual(downloadResult.contentSettings.contentMD5, null);
+
             assert.strictEqual(parseInt(downloadResult.contentLength, 10), 512);
             blobService.getBlobToStream(containerName, blobName, fs.createWriteStream('task1-download.txt'), { rangeStart: 512, rangeEnd: 1023, useTransactionalMD5: true }, function (downloadErr, downloadResult) {
               assert.equal(downloadErr, null);
@@ -1140,7 +1146,7 @@ describe('blob-uploaddownload-tests', function () {
       blobBuffer[0] = '1';
 
       fs.writeFile(fileNameSource, blobBuffer, function () {
-        var blobOptions = { contentType: 'text', blockIdPrefix : 'blockId'};
+        var blobOptions = { contentType: 'text', blockIdPrefix : 'blockId', storeBlobContentMD5: true};
         blobService.createPageBlobFromLocalFile(containerName, blobName, fileNameSource, blobOptions, function (uploadError, blobResponse, uploadResponse) {
           assert.equal(uploadError, null);
           assert.notEqual(blobResponse, null);
@@ -1148,9 +1154,12 @@ describe('blob-uploaddownload-tests', function () {
 
           blobService.getBlobToStream(containerName, blobName, fs.createWriteStream('task1-download.txt'), { rangeStart: 0, rangeEnd: 511, useTransactionalMD5: true }, function (downloadErr, downloadResult) {
             assert.equal(downloadErr, null);
+            assert.notEqual(downloadResult.contentSettings.contentMD5, null);
+
             assert.strictEqual(parseInt(downloadResult.contentLength, 10), 512);
             blobService.getBlobToStream(containerName, blobName, fs.createWriteStream('task1-download.txt'), { rangeStart: 512, rangeEnd: 1023, useTransactionalMD5: true }, function (downloadErr, downloadResult) {
               assert.equal(downloadErr, null);
+              assert.notEqual(downloadResult.contentSettings.contentMD5, null);
               assert.strictEqual(parseInt(downloadResult.contentLength, 10), 512);
               assert.strictEqual(downloadResult.contentSettings.contentMD5, 'v2GerAzfP2jUluqTRBN+iw==');
 
@@ -1971,15 +1980,17 @@ describe('blob-uploaddownload-tests', function () {
       var fileSize = 97 * 1024 * 1024;  // Don't be a multiple of 4MB to cover more scenarios
       generateTempFile(fileNameSource, fileSize, true, function (fileInfo) {
         uploadOptions.parallelOperationThreadCount = 5;
+        uploadOptions.storeBlobContentMD5 = true;
         blobService.createPageBlobFromLocalFile(containerName, blobName, fileNameSource, uploadOptions, function (error) {
           assert.equal(error, null);
           try { fs.unlinkSync(fileNameSource); } catch (e) { }
           
-          var downloadOptions = { parallelOperationThreadCount : 5 , rangeStart: 512, rangeEnd: 51199999 };
+          var downloadOptions = { parallelOperationThreadCount : 5 , rangeStart: 512, rangeEnd: 51199999, useTransactionalMD5: true };
           var downloadedFileName = testutil.generateId('getPageBlobRangeStream', [], suite.isMocked) + '.test';
           var stream = fs.createWriteStream(downloadedFileName);
-          blobService.getBlobToStream(containerName, blobName, stream, downloadOptions, function (error) {
+          blobService.getBlobToStream(containerName, blobName, stream, downloadOptions, function (error, downloadResult) {
             assert.equal(error, null);
+            assert.notEqual(downloadResult.contentSettings.contentMD5, null);
             
             var content = fs.readFileSync(downloadedFileName);
             assert.equal(content.length, downloadOptions.rangeEnd - downloadOptions.rangeStart + 1);
