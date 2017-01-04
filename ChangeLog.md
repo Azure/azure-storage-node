@@ -24,6 +24,9 @@ FILE
 * Returned content MD5 for range gets Files.
 * Fixed the issue that `useTransactionalMD5` didn't take effect for downloading a big file.
 
+TABLE
+* Fixed the issue that response in incorrect for table batch operation when the error response item is not the first item in the responses. 
+
 2016.11 Version 1.4.0
 
 ALL
