@@ -1127,7 +1127,7 @@ describe('blob-uploaddownload-tests', function () {
             blobService.getBlobToStream(containerName, blobName, fs.createWriteStream('task1-download.txt'), { rangeStart: 512, rangeEnd: 1023, useTransactionalMD5: true }, function (downloadErr, downloadResult) {
               assert.equal(downloadErr, null);
               assert.strictEqual(parseInt(downloadResult.contentLength, 10), 512);
-              assert.strictEqual(downloadResult.contentSettings.contentMD5, 'v2GerAzfP2jUluqTRBN+iw==');
+              assert.strictEqual(downloadResult.contentSettings.contentMD5, 'ndpxhuSh0PPmMvK74fkYvg==');
               try { fs.unlinkSync(fileNameSource); } catch (e) {}
 
               done();
@@ -1161,7 +1161,7 @@ describe('blob-uploaddownload-tests', function () {
               assert.equal(downloadErr, null);
               assert.notEqual(downloadResult.contentSettings.contentMD5, null);
               assert.strictEqual(parseInt(downloadResult.contentLength, 10), 512);
-              assert.strictEqual(downloadResult.contentSettings.contentMD5, 'v2GerAzfP2jUluqTRBN+iw==');
+              assert.strictEqual(downloadResult.contentSettings.contentMD5, 'ndpxhuSh0PPmMvK74fkYvg==');
 
               try { fs.unlinkSync(fileNameSource); } catch (e) {}
               try { fs.unlinkSync('task1-download.txt'); } catch (e) {}
