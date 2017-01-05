@@ -10,9 +10,9 @@ nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1?restype=share')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '44743009-001a-0028-4f1f-83e1b8000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:20 GMT',
+  'x-ms-request-id': 'b6773d37-001a-0040-4d02-67bfe9000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -21,9 +21,9 @@ nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1?restype=share')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '44743009-001a-0028-4f1f-83e1b8000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:20 GMT',
+  'x-ms-request-id': 'b6773d37-001a-0040-4d02-67bfe9000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -31,12 +31,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1?restype=share')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:22 GMT',
-  etag: '"0x8D3513633861736"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:40 GMT',
+  etag: '"0x8D435198C004392"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '21b94f07-001a-0006-791f-83617f000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:22 GMT',
+  'x-ms-request-id': 'c58e8800-001a-0049-3202-67a567000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -44,12 +44,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1?restype=share')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:22 GMT',
-  etag: '"0x8D3513633861736"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:40 GMT',
+  etag: '"0x8D435198C004392"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '21b94f07-001a-0006-791f-83617f000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:22 GMT',
+  'x-ms-request-id': 'c58e8800-001a-0049-3202-67a567000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:39 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -58,9 +58,9 @@ nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata2?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '03e56f44-001a-004b-661f-83a79d000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:22 GMT',
+  'x-ms-request-id': 'da75efbc-001a-0016-4602-675799000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:40 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -69,9 +69,9 @@ nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata2?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '03e56f44-001a-004b-661f-83a79d000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:22 GMT',
+  'x-ms-request-id': 'da75efbc-001a-0016-4602-675799000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:40 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -79,12 +79,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata2?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:24 GMT',
-  etag: '"0x8D351363495C935"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:41 GMT',
+  etag: '"0x8D435198C9F39E4"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c32d3f76-001a-0014-571f-835563000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:24 GMT',
+  'x-ms-request-id': '4d0a8dbc-001a-000b-5602-678e73000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:40 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -92,12 +92,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata2?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:24 GMT',
-  etag: '"0x8D351363495C935"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:41 GMT',
+  etag: '"0x8D435198C9F39E4"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c32d3f76-001a-0014-571f-835563000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:24 GMT',
+  'x-ms-request-id': '4d0a8dbc-001a-000b-5602-678e73000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:40 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -105,12 +105,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata2?restype=directory')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:24 GMT',
-  etag: '"0x8D351363495C935"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:41 GMT',
+  etag: '"0x8D435198C9F39E4"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1ce88381-001a-0019-0f1f-83ba6f000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:24 GMT',
+  'x-ms-request-id': 'ae70ed5d-001a-0028-0402-67e1b8000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:41 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -118,12 +118,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata2?restype=directory')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:24 GMT',
-  etag: '"0x8D351363495C935"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:41 GMT',
+  etag: '"0x8D435198C9F39E4"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1ce88381-001a-0019-0f1f-83ba6f000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:24 GMT',
+  'x-ms-request-id': 'ae70ed5d-001a-0028-0402-67e1b8000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:41 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -131,12 +131,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1?restype=directory')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:25 GMT',
-  etag: '"0x8D35136357582B6"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:42 GMT',
+  etag: '"0x8D435198D25A997"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f77eb02f-001a-0032-641f-83ced7000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:24 GMT',
+  'x-ms-request-id': '3a3703e2-001a-0031-5802-67cdd0000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:41 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -144,12 +144,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1?restype=directory')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:25 GMT',
-  etag: '"0x8D35136357582B6"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:42 GMT',
+  etag: '"0x8D435198D25A997"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f77eb02f-001a-0032-641f-83ced7000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:24 GMT',
+  'x-ms-request-id': '3a3703e2-001a-0031-5802-67cdd0000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:41 GMT',
   connection: 'close' });
  return result; }],
 [],
@@ -158,12 +158,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata5?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:26 GMT',
-  etag: '"0x8D3513635D66AA4"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:42 GMT',
+  etag: '"0x8D435198D6E4C52"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '670df3e9-001a-0023-151f-83f9cc000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:25 GMT',
+  'x-ms-request-id': '4b857e37-001a-0012-6702-67a21b000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:41 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -171,36 +171,36 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata5?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:26 GMT',
-  etag: '"0x8D3513635D66AA4"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:42 GMT',
+  etag: '"0x8D435198D6E4C52"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '670df3e9-001a-0023-151f-83f9cc000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:25 GMT',
+  'x-ms-request-id': '4b857e37-001a-0012-6702-67a21b000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:41 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata5?restype=directory')
-  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>ResourceAlreadyExists</Code><Message>The specified resource already exists.\nRequestId:d48b6e72-001a-0000-341f-839607000000\nTime:2016-03-21T03:09:27.3699984Z</Message></Error>", { 'content-length': '228',
+  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>ResourceAlreadyExists</Code><Message>The specified resource already exists.\nRequestId:1e672da1-001a-001b-5902-67b895000000\nTime:2017-01-05T03:18:43.0654621Z</Message></Error>", { 'content-length': '228',
   'content-type': 'application/xml',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd48b6e72-001a-0000-341f-839607000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:27 GMT',
+  'x-ms-request-id': '1e672da1-001a-001b-5902-67b895000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:42 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata5?restype=directory')
-  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>ResourceAlreadyExists</Code><Message>The specified resource already exists.\nRequestId:d48b6e72-001a-0000-341f-839607000000\nTime:2016-03-21T03:09:27.3699984Z</Message></Error>", { 'content-length': '228',
+  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>ResourceAlreadyExists</Code><Message>The specified resource already exists.\nRequestId:1e672da1-001a-001b-5902-67b895000000\nTime:2017-01-05T03:18:43.0654621Z</Message></Error>", { 'content-length': '228',
   'content-type': 'application/xml',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd48b6e72-001a-0000-341f-839607000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:27 GMT',
+  'x-ms-request-id': '1e672da1-001a-001b-5902-67b895000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:42 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -209,9 +209,9 @@ nock('http://xplat.file.core.windows.net:443')
   .delete('/directory-test-share-testdata1/dir-testdata5?restype=directory')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '21d36d91-001a-002d-4d1f-8315c7000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:27 GMT',
+  'x-ms-request-id': 'd3adc70a-001a-004c-7902-675118000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:42 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -220,9 +220,9 @@ nock('https://xplat.file.core.windows.net:443')
   .delete('/directory-test-share-testdata1/dir-testdata5?restype=directory')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '21d36d91-001a-002d-4d1f-8315c7000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:27 GMT',
+  'x-ms-request-id': 'd3adc70a-001a-004c-7902-675118000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:42 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -230,12 +230,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata7/?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:28 GMT',
-  etag: '"0x8D3513637699BB3"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:44 GMT',
+  etag: '"0x8D435198E387CCB"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '536379b6-001a-000a-261f-838f8e000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:27 GMT',
+  'x-ms-request-id': '62550a5a-001a-002d-7002-6715c7000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:43 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -243,36 +243,36 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata7/?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:28 GMT',
-  etag: '"0x8D3513637699BB3"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:44 GMT',
+  etag: '"0x8D435198E387CCB"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '536379b6-001a-000a-261f-838f8e000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:27 GMT',
+  'x-ms-request-id': '62550a5a-001a-002d-7002-6715c7000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:43 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata7/?restype=directory')
-  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>ResourceAlreadyExists</Code><Message>The specified resource already exists.\nRequestId:ee034817-001a-004a-571f-83a660000000\nTime:2016-03-21T03:09:29.1541145Z</Message></Error>", { 'content-length': '228',
+  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>ResourceAlreadyExists</Code><Message>The specified resource already exists.\nRequestId:7f8833d1-001a-0036-7902-673b55000000\nTime:2017-01-05T03:18:44.6938604Z</Message></Error>", { 'content-length': '228',
   'content-type': 'application/xml',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ee034817-001a-004a-571f-83a660000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:28 GMT',
+  'x-ms-request-id': '7f8833d1-001a-0036-7902-673b55000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata7/?restype=directory')
-  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>ResourceAlreadyExists</Code><Message>The specified resource already exists.\nRequestId:ee034817-001a-004a-571f-83a660000000\nTime:2016-03-21T03:09:29.1541145Z</Message></Error>", { 'content-length': '228',
+  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>ResourceAlreadyExists</Code><Message>The specified resource already exists.\nRequestId:7f8833d1-001a-0036-7902-673b55000000\nTime:2017-01-05T03:18:44.6938604Z</Message></Error>", { 'content-length': '228',
   'content-type': 'application/xml',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ee034817-001a-004a-571f-83a660000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:28 GMT',
+  'x-ms-request-id': '7f8833d1-001a-0036-7902-673b55000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -281,9 +281,9 @@ nock('http://xplat.file.core.windows.net:443')
   .delete('/directory-test-share-testdata1/dir-testdata7/?restype=directory')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '45991b54-001a-003c-411f-8322dc000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:29 GMT',
+  'x-ms-request-id': '2101b4bb-001a-002b-2002-67e2bf000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -292,9 +292,9 @@ nock('https://xplat.file.core.windows.net:443')
   .delete('/directory-test-share-testdata1/dir-testdata7/?restype=directory')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '45991b54-001a-003c-411f-8322dc000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:29 GMT',
+  'x-ms-request-id': '2101b4bb-001a-002b-2002-67e2bf000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:44 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -303,9 +303,9 @@ nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata8?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a2480038-001a-0041-0f1f-83be14000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:29 GMT',
+  'x-ms-request-id': '17b42d7e-001a-0020-5e02-67facb000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:45 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -314,9 +314,9 @@ nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata8?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a2480038-001a-0041-0f1f-83be14000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:29 GMT',
+  'x-ms-request-id': '17b42d7e-001a-0020-5e02-67facb000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:45 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -324,12 +324,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata8?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:31 GMT',
-  etag: '"0x8D3513638D6CCDA"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:46 GMT',
+  etag: '"0x8D435198F4890A2"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f687bd85-001a-0009-401f-838c89000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:30 GMT',
+  'x-ms-request-id': '7087899e-001a-0001-5902-6797fa000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:45 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -337,12 +337,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata8?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:31 GMT',
-  etag: '"0x8D3513638D6CCDA"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:46 GMT',
+  etag: '"0x8D435198F4890A2"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f687bd85-001a-0009-401f-838c89000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:30 GMT',
+  'x-ms-request-id': '7087899e-001a-0001-5902-6797fa000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:45 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -350,12 +350,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata8?restype=directory')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:31 GMT',
-  etag: '"0x8D3513638D6CCDA"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:46 GMT',
+  etag: '"0x8D435198F4890A2"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'eb0ea442-001a-0022-5a1f-83f831000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:31 GMT',
+  'x-ms-request-id': '1f9f7858-001a-0032-5002-67ced7000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:45 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -363,12 +363,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata8?restype=directory')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:31 GMT',
-  etag: '"0x8D3513638D6CCDA"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:46 GMT',
+  etag: '"0x8D435198F4890A2"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'eb0ea442-001a-0022-5a1f-83f831000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:31 GMT',
+  'x-ms-request-id': '1f9f7858-001a-0032-5002-67ced7000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:45 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -376,12 +376,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata8?restype=directory')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:31 GMT',
-  etag: '"0x8D3513638D6CCDA"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:46 GMT',
+  etag: '"0x8D435198F4890A2"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fb66ca1b-001a-0027-4c1f-830c4e000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:30 GMT',
+  'x-ms-request-id': '50682ac6-001a-0013-6202-67a3e6000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:46 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -389,12 +389,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata8?restype=directory')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:31 GMT',
-  etag: '"0x8D3513638D6CCDA"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:46 GMT',
+  etag: '"0x8D435198F4890A2"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fb66ca1b-001a-0027-4c1f-830c4e000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:30 GMT',
+  'x-ms-request-id': '50682ac6-001a-0013-6202-67a3e6000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:46 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -403,9 +403,9 @@ nock('http://xplat.file.core.windows.net:443')
   .delete('/directory-test-share-testdata1/dir-testdata8?restype=directory')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a1851346-001a-0040-131f-83bfe9000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:32 GMT',
+  'x-ms-request-id': '48202f9d-001a-0008-4002-678d74000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:46 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -414,9 +414,9 @@ nock('https://xplat.file.core.windows.net:443')
   .delete('/directory-test-share-testdata1/dir-testdata8?restype=directory')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a1851346-001a-0040-131f-83bfe9000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:32 GMT',
+  'x-ms-request-id': '48202f9d-001a-0008-4002-678d74000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:46 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -425,9 +425,9 @@ nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata8?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'dc5957d7-001a-0031-741f-83cdd0000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:32 GMT',
+  'x-ms-request-id': '509f92df-001a-004d-2402-6750e5000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:46 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -436,9 +436,9 @@ nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata8?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'dc5957d7-001a-0031-741f-83cdd0000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:32 GMT',
+  'x-ms-request-id': '509f92df-001a-004d-2402-6750e5000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:46 GMT',
   connection: 'close' });
  return result; }],
 [],
@@ -448,9 +448,9 @@ nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata10?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c3d49574-001a-0036-601f-833b55000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:33 GMT',
+  'x-ms-request-id': '8cabfeb3-001a-0047-5802-67496c000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:47 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -459,9 +459,9 @@ nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata10?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c3d49574-001a-0036-601f-833b55000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:33 GMT',
+  'x-ms-request-id': '8cabfeb3-001a-0047-5802-67496c000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:47 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -470,9 +470,9 @@ nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata10?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '632d017f-001a-0013-7b1f-83a3e6000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:34 GMT',
+  'x-ms-request-id': 'e48c8973-001a-0000-3402-679607000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:47 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -481,9 +481,9 @@ nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata10?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '632d017f-001a-0013-7b1f-83a3e6000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:34 GMT',
+  'x-ms-request-id': 'e48c8973-001a-0000-3402-679607000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:47 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -491,12 +491,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata10?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:35 GMT',
-  etag: '"0x8D351363B579A79"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:49 GMT',
+  etag: '"0x8D43519912238C6"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '76020be9-001a-002c-4c1f-83143a000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:34 GMT',
+  'x-ms-request-id': '62dffed7-001a-001d-4802-674fed000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:48 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -504,12 +504,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata10?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:35 GMT',
-  etag: '"0x8D351363B579A79"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:49 GMT',
+  etag: '"0x8D43519912238C6"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '76020be9-001a-002c-4c1f-83143a000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:34 GMT',
+  'x-ms-request-id': '62dffed7-001a-001d-4802-674fed000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:48 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -517,12 +517,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata10?restype=directory')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:35 GMT',
-  etag: '"0x8D351363B579A79"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:49 GMT',
+  etag: '"0x8D43519912238C6"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4cc052cb-001a-0004-061f-836385000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:35 GMT',
+  'x-ms-request-id': 'bcbc34c1-001a-0025-4702-670eb4000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:48 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -530,12 +530,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata10?restype=directory')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:35 GMT',
-  etag: '"0x8D351363B579A79"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:49 GMT',
+  etag: '"0x8D43519912238C6"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4cc052cb-001a-0004-061f-836385000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:35 GMT',
+  'x-ms-request-id': 'bcbc34c1-001a-0025-4702-670eb4000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:48 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -544,9 +544,9 @@ nock('http://xplat.file.core.windows.net:443')
   .delete('/directory-test-share-testdata1/dir-testdata10?restype=directory')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1d2f1bfe-001a-001d-021f-834fed000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:36 GMT',
+  'x-ms-request-id': '6cfd83d9-001a-002f-7302-67173d000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:48 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -555,9 +555,9 @@ nock('https://xplat.file.core.windows.net:443')
   .delete('/directory-test-share-testdata1/dir-testdata10?restype=directory')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1d2f1bfe-001a-001d-021f-834fed000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:36 GMT',
+  'x-ms-request-id': '6cfd83d9-001a-002f-7302-67173d000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:48 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -566,9 +566,9 @@ nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata10?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '012615a2-001a-000d-781f-83790b000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:36 GMT',
+  'x-ms-request-id': '0e3461e7-001a-000f-0202-677bf1000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:49 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -577,9 +577,9 @@ nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata10?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '012615a2-001a-000d-781f-83790b000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:36 GMT',
+  'x-ms-request-id': '0e3461e7-001a-000f-0202-677bf1000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:49 GMT',
   connection: 'close' });
  return result; }],
 [],
@@ -589,9 +589,9 @@ nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata12?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'be668d13-001a-0012-3c1f-83a21b000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:36 GMT',
+  'x-ms-request-id': '8584bac7-001a-0041-3702-67be14000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -600,9 +600,9 @@ nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata12?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'be668d13-001a-0012-3c1f-83a21b000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:36 GMT',
+  'x-ms-request-id': '8584bac7-001a-0041-3702-67be14000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -610,12 +610,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata12?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:38 GMT',
-  etag: '"0x8D351363D2D552C"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:51 GMT',
+  etag: '"0x8D4351992754A06"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '316b35d2-001a-003f-561f-8321db000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:38 GMT',
+  'x-ms-request-id': 'be13f620-001a-000d-7502-67790b000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -623,12 +623,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata12?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:38 GMT',
-  etag: '"0x8D351363D2D552C"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:51 GMT',
+  etag: '"0x8D4351992754A06"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '316b35d2-001a-003f-561f-8321db000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:38 GMT',
+  'x-ms-request-id': 'be13f620-001a-000d-7502-67790b000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -636,12 +636,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata12?restype=directory')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:38 GMT',
-  etag: '"0x8D351363D2D552C"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:51 GMT',
+  etag: '"0x8D4351992754A06"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '64c01030-001a-0030-0d1f-83cc2d000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:38 GMT',
+  'x-ms-request-id': 'c47e9da6-001a-0003-6c02-679500000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -649,12 +649,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata12?restype=directory')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:38 GMT',
-  etag: '"0x8D351363D2D552C"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:51 GMT',
+  etag: '"0x8D4351992754A06"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '64c01030-001a-0030-0d1f-83cc2d000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:38 GMT',
+  'x-ms-request-id': 'c47e9da6-001a-0003-6c02-679500000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -663,9 +663,9 @@ nock('http://xplat.file.core.windows.net:443')
   .delete('/directory-test-share-testdata1/dir-testdata12?restype=directory')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd9158618-001a-0049-321f-83a567000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:38 GMT',
+  'x-ms-request-id': '51b25f0a-001a-001f-3a02-674d17000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -674,9 +674,9 @@ nock('https://xplat.file.core.windows.net:443')
   .delete('/directory-test-share-testdata1/dir-testdata12?restype=directory')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd9158618-001a-0049-321f-83a567000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:38 GMT',
+  'x-ms-request-id': '51b25f0a-001a-001f-3a02-674d17000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:51 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -684,12 +684,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1?restype=directory')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:25 GMT',
-  etag: '"0x8D35136357582B6"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:42 GMT',
+  etag: '"0x8D435198D25A997"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a35f527b-001a-003a-5d1f-83d5a4000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:39 GMT',
+  'x-ms-request-id': 'fac24053-001a-0015-4602-67549e000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -697,12 +697,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1?restype=directory')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:25 GMT',
-  etag: '"0x8D35136357582B6"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:42 GMT',
+  etag: '"0x8D435198D25A997"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a35f527b-001a-003a-5d1f-83d5a4000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:39 GMT',
+  'x-ms-request-id': 'fac24053-001a-0015-4602-67549e000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:51 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -711,9 +711,9 @@ nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata18?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '603c29b8-001a-0021-741f-83fb36000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:39 GMT',
+  'x-ms-request-id': 'd13338c6-001a-0009-2f02-678c89000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -722,9 +722,9 @@ nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata18?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '603c29b8-001a-0021-741f-83fb36000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:39 GMT',
+  'x-ms-request-id': 'd13338c6-001a-0009-2f02-678c89000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -732,12 +732,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata18?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:41 GMT',
-  etag: '"0x8D351363EFC31BE"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:53 GMT',
+  etag: '"0x8D4351993C30418"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '153b450d-001a-0025-601f-830eb4000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:40 GMT',
+  'x-ms-request-id': '5d1c6b28-001a-0026-3002-670db3000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:53 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -745,12 +745,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata18?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:41 GMT',
-  etag: '"0x8D351363EFC31BE"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:53 GMT',
+  etag: '"0x8D4351993C30418"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '153b450d-001a-0025-601f-830eb4000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:40 GMT',
+  'x-ms-request-id': '5d1c6b28-001a-0026-3002-670db3000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:53 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -760,9 +760,9 @@ nock('http://xplat.file.core.windows.net:443')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"https://xplat.file.core.windows.net/\" ShareName=\"directory-test-share-testdata1\" DirectoryPath=\"dir-testdata18\"><Entries /><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e4dfb7d0-001a-0008-521f-838d74000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:41 GMT',
+  'x-ms-request-id': '57fa340f-001a-0043-2302-67bcee000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -772,9 +772,9 @@ nock('https://xplat.file.core.windows.net:443')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"https://xplat.file.core.windows.net/\" ShareName=\"directory-test-share-testdata1\" DirectoryPath=\"dir-testdata18\"><Entries /><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e4dfb7d0-001a-0008-521f-838d74000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:41 GMT',
+  'x-ms-request-id': '57fa340f-001a-0043-2302-67bcee000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:52 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -783,9 +783,9 @@ nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata19?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7556213b-001a-0035-521f-833852000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:42 GMT',
+  'x-ms-request-id': '3d2e296a-001a-0024-0e02-670f49000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -794,9 +794,9 @@ nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata19?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7556213b-001a-0035-521f-833852000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:42 GMT',
+  'x-ms-request-id': '3d2e296a-001a-0024-0e02-670f49000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -804,12 +804,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata19?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:43 GMT',
-  etag: '"0x8D35136400DF958"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:54 GMT',
+  etag: '"0x8D435199490DDFD"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'eb96a2f7-001a-0016-4c1f-835799000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:42 GMT',
+  'x-ms-request-id': 'ecce7ab8-001a-0022-4302-67f831000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -817,12 +817,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata19?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:43 GMT',
-  etag: '"0x8D35136400DF958"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:54 GMT',
+  etag: '"0x8D435199490DDFD"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'eb96a2f7-001a-0016-4c1f-835799000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:42 GMT',
+  'x-ms-request-id': 'ecce7ab8-001a-0022-4302-67f831000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -830,12 +830,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata19/dir-testdata14?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:43 GMT',
-  etag: '"0x8D3513640676719"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:55 GMT',
+  etag: '"0x8D4351994D2F10F"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '29c76890-001a-001c-551f-834e10000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:42 GMT',
+  'x-ms-request-id': '841de688-001a-003d-2602-672321000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -843,12 +843,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata19/dir-testdata14?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:43 GMT',
-  etag: '"0x8D3513640676719"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:55 GMT',
+  etag: '"0x8D4351994D2F10F"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '29c76890-001a-001c-551f-834e10000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:42 GMT',
+  'x-ms-request-id': '841de688-001a-003d-2602-672321000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -858,9 +858,9 @@ nock('http://xplat.file.core.windows.net:443')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"https://xplat.file.core.windows.net/\" ShareName=\"directory-test-share-testdata1\" DirectoryPath=\"dir-testdata19\"><Entries><Directory><Name>dir-testdata14</Name><Properties /></Directory></Entries><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6cbcb9aa-001a-0048-5a1f-83a49a000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:44 GMT',
+  'x-ms-request-id': '0ebac180-001a-001e-7a02-674cea000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:55 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -870,9 +870,9 @@ nock('https://xplat.file.core.windows.net:443')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"https://xplat.file.core.windows.net/\" ShareName=\"directory-test-share-testdata1\" DirectoryPath=\"dir-testdata19\"><Entries><Directory><Name>dir-testdata14</Name><Properties /></Directory></Entries><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6cbcb9aa-001a-0048-5a1f-83a49a000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:44 GMT',
+  'x-ms-request-id': '0ebac180-001a-001e-7a02-674cea000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:55 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -881,9 +881,9 @@ nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata20?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5a7ad168-001a-0039-0c1f-83d6a3000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:44 GMT',
+  'x-ms-request-id': '4f068247-001a-0044-6002-674a6b000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:55 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -892,9 +892,9 @@ nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata20?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5a7ad168-001a-0039-0c1f-83d6a3000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:44 GMT',
+  'x-ms-request-id': '4f068247-001a-0044-6002-674a6b000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:55 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -902,12 +902,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata20?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:45 GMT',
-  etag: '"0x8D3513641790798"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:56 GMT',
+  etag: '"0x8D4351995A07CDE"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f596c3e5-001a-002a-741f-83e342000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:45 GMT',
+  'x-ms-request-id': '07acf0dc-001a-0042-0c02-67bd13000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:55 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -915,12 +915,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata20?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:45 GMT',
-  etag: '"0x8D3513641790798"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:56 GMT',
+  etag: '"0x8D4351995A07CDE"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f596c3e5-001a-002a-741f-83e342000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:45 GMT',
+  'x-ms-request-id': '07acf0dc-001a-0042-0c02-67bd13000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:55 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -928,12 +928,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata20/file-testdata16')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:46 GMT',
-  etag: '"0x8D3513641D3FBFD"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:57 GMT',
+  etag: '"0x8D4351995E3EF54"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '07eea808-001a-0043-0d1f-83bcee000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:45 GMT',
+  'x-ms-request-id': '904d5278-001a-0018-4802-67bb92000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -941,12 +941,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata20/file-testdata16')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:46 GMT',
-  etag: '"0x8D3513641D3FBFD"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:57 GMT',
+  etag: '"0x8D4351995E3EF54"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '07eea808-001a-0043-0d1f-83bcee000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:45 GMT',
+  'x-ms-request-id': '904d5278-001a-0018-4802-67bb92000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -956,9 +956,9 @@ nock('http://xplat.file.core.windows.net:443')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"https://xplat.file.core.windows.net/\" ShareName=\"directory-test-share-testdata1\" DirectoryPath=\"dir-testdata20\"><Entries><File><Name>file-testdata16</Name><Properties><Content-Length>0</Content-Length></Properties></File></Entries><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2e4ea4dc-001a-000c-741f-8378f6000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:46 GMT',
+  'x-ms-request-id': '423dbb0d-001a-0021-2502-67fb36000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -968,9 +968,9 @@ nock('https://xplat.file.core.windows.net:443')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"https://xplat.file.core.windows.net/\" ShareName=\"directory-test-share-testdata1\" DirectoryPath=\"dir-testdata20\"><Entries><File><Name>file-testdata16</Name><Properties><Content-Length>0</Content-Length></Properties></File></Entries><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2e4ea4dc-001a-000c-741f-8378f6000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:46 GMT',
+  'x-ms-request-id': '423dbb0d-001a-0021-2502-67fb36000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:56 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -979,9 +979,9 @@ nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata21?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3c7f9ff0-001a-004d-571f-8350e5000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:47 GMT',
+  'x-ms-request-id': '0d4d8ee9-001a-0014-7a02-675563000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -990,9 +990,9 @@ nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata21?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3c7f9ff0-001a-004d-571f-8350e5000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:47 GMT',
+  'x-ms-request-id': '0d4d8ee9-001a-0014-7a02-675563000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1000,12 +1000,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata21?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:48 GMT',
-  etag: '"0x8D3513642E2B641"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:58 GMT',
+  etag: '"0x8D4351996B17B3A"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b93cc4ef-001a-0002-6d1f-8394fd000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:47 GMT',
+  'x-ms-request-id': '74d280b2-001a-0045-2302-674b96000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1013,12 +1013,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata21?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:48 GMT',
-  etag: '"0x8D3513642E2B641"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:58 GMT',
+  etag: '"0x8D4351996B17B3A"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b93cc4ef-001a-0002-6d1f-8394fd000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:47 GMT',
+  'x-ms-request-id': '74d280b2-001a-0045-2302-674b96000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1026,12 +1026,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata21/dir-testdata14?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:48 GMT',
-  etag: '"0x8D35136433EBC30"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:58 GMT',
+  etag: '"0x8D4351996F4C691"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3df7d19e-001a-001b-331f-83b895000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:47 GMT',
+  'x-ms-request-id': 'b618baab-001a-003a-2102-67d5a4000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1039,12 +1039,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata21/dir-testdata14?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:48 GMT',
-  etag: '"0x8D35136433EBC30"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:58 GMT',
+  etag: '"0x8D4351996F4C691"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3df7d19e-001a-001b-331f-83b895000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:47 GMT',
+  'x-ms-request-id': 'b618baab-001a-003a-2102-67d5a4000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1052,12 +1052,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata21/dir-testdata15?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:49 GMT',
-  etag: '"0x8D3513643991449"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:59 GMT',
+  etag: '"0x8D435199738391D"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '360e4f03-001a-0034-451f-8339af000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:48 GMT',
+  'x-ms-request-id': '49298d68-001a-0007-7702-676082000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1065,12 +1065,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata21/dir-testdata15?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:49 GMT',
-  etag: '"0x8D3513643991449"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:59 GMT',
+  etag: '"0x8D435199738391D"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '360e4f03-001a-0034-451f-8339af000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:48 GMT',
+  'x-ms-request-id': '49298d68-001a-0007-7702-676082000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1078,12 +1078,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata21/file-testdata16')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:49 GMT',
-  etag: '"0x8D3513643F36C59"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:59 GMT',
+  etag: '"0x8D43519977A2507"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e6ee8ecd-001a-0010-7b1f-83a0e1000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:49 GMT',
+  'x-ms-request-id': '5527b9f8-001a-0038-5f02-67d75e000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1091,12 +1091,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata21/file-testdata16')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:49 GMT',
-  etag: '"0x8D3513643F36C59"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:59 GMT',
+  etag: '"0x8D43519977A2507"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e6ee8ecd-001a-0010-7b1f-83a0e1000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:49 GMT',
+  'x-ms-request-id': '5527b9f8-001a-0038-5f02-67d75e000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1104,12 +1104,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata21/file-testdata17')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:50 GMT',
-  etag: '"0x8D35136444D0123"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:00 GMT',
+  etag: '"0x8D4351997BE81C7"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6befc294-001a-001f-1f1f-834d17000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:49 GMT',
+  'x-ms-request-id': 'db11f850-001a-0005-2802-676278000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1117,12 +1117,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata21/file-testdata17')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:50 GMT',
-  etag: '"0x8D35136444D0123"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:00 GMT',
+  etag: '"0x8D4351997BE81C7"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6befc294-001a-001f-1f1f-834d17000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:49 GMT',
+  'x-ms-request-id': 'db11f850-001a-0005-2802-676278000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1132,9 +1132,9 @@ nock('http://xplat.file.core.windows.net:443')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"https://xplat.file.core.windows.net/\" ShareName=\"directory-test-share-testdata1\" DirectoryPath=\"dir-testdata21\"><Entries><Directory><Name>dir-testdata14</Name><Properties /></Directory><Directory><Name>dir-testdata15</Name><Properties /></Directory><File><Name>file-testdata16</Name><Properties><Content-Length>0</Content-Length></Properties></File><File><Name>file-testdata17</Name><Properties><Content-Length>0</Content-Length></Properties></File></Entries><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '17d52fee-001a-0024-2b1f-830f49000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:50 GMT',
+  'x-ms-request-id': '302b22ae-001a-000e-3202-677a0c000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1144,9 +1144,9 @@ nock('https://xplat.file.core.windows.net:443')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"https://xplat.file.core.windows.net/\" ShareName=\"directory-test-share-testdata1\" DirectoryPath=\"dir-testdata21\"><Entries><Directory><Name>dir-testdata14</Name><Properties /></Directory><Directory><Name>dir-testdata15</Name><Properties /></Directory><File><Name>file-testdata16</Name><Properties><Content-Length>0</Content-Length></Properties></File><File><Name>file-testdata17</Name><Properties><Content-Length>0</Content-Length></Properties></File></Entries><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '17d52fee-001a-0024-2b1f-830f49000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:50 GMT',
+  'x-ms-request-id': '302b22ae-001a-000e-3202-677a0c000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:00 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -1155,9 +1155,9 @@ nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata22?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2a64abdb-001a-003d-3b1f-832321000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:51 GMT',
+  'x-ms-request-id': 'bd2dff03-001a-0017-6c02-675664000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1166,9 +1166,9 @@ nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata22?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2a64abdb-001a-003d-3b1f-832321000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:51 GMT',
+  'x-ms-request-id': 'bd2dff03-001a-0017-6c02-675664000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:18:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1176,12 +1176,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata22?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:52 GMT',
-  etag: '"0x8D35136456335BC"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:01 GMT',
+  etag: '"0x8D43519988B9873"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c98e241b-001a-002f-351f-83173d000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:51 GMT',
+  'x-ms-request-id': 'cb1df265-001a-0034-0502-6739af000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1189,12 +1189,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata22?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:52 GMT',
-  etag: '"0x8D35136456335BC"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:01 GMT',
+  etag: '"0x8D43519988B9873"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c98e241b-001a-002f-351f-83173d000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:51 GMT',
+  'x-ms-request-id': 'cb1df265-001a-0034-0502-6739af000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1202,12 +1202,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata22/file-testdata16')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:52 GMT',
-  etag: '"0x8D3513645BFB0CF"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:02 GMT',
+  etag: '"0x8D4351998CC99EA"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '78591b95-001a-000b-211f-838e73000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:52 GMT',
+  'x-ms-request-id': '10db2407-001a-0029-3a02-67e045000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1215,12 +1215,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata22/file-testdata16')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:52 GMT',
-  etag: '"0x8D3513645BFB0CF"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:02 GMT',
+  etag: '"0x8D4351998CC99EA"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '78591b95-001a-000b-211f-838e73000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:52 GMT',
+  'x-ms-request-id': '10db2407-001a-0029-3a02-67e045000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1230,9 +1230,9 @@ nock('http://xplat.file.core.windows.net:443')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"https://xplat.file.core.windows.net/\" ShareName=\"directory-test-share-testdata1\" DirectoryPath=\"dir-testdata22\"><Entries><File><Name>file-testdata16</Name><Properties><Content-Length>0</Content-Length></Properties></File></Entries><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '78c0266a-001a-0001-551f-8397fa000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:53 GMT',
+  'x-ms-request-id': '421fa608-001a-000a-0302-678f8e000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1242,9 +1242,9 @@ nock('https://xplat.file.core.windows.net:443')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"https://xplat.file.core.windows.net/\" ShareName=\"directory-test-share-testdata1\" DirectoryPath=\"dir-testdata22\"><Entries><File><Name>file-testdata16</Name><Properties><Content-Length>0</Content-Length></Properties></File></Entries><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '78c0266a-001a-0001-551f-8397fa000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:53 GMT',
+  'x-ms-request-id': '421fa608-001a-000a-0302-678f8e000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1252,12 +1252,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata22/next?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:54 GMT',
-  etag: '"0x8D35136467376B2"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:02 GMT',
+  etag: '"0x8D435199953A622"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0bdfc07e-001a-002e-141f-8316c0000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:53 GMT',
+  'x-ms-request-id': '2027f8aa-001a-003b-4902-67d459000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1265,12 +1265,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata22/next?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:54 GMT',
-  etag: '"0x8D35136467376B2"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:02 GMT',
+  etag: '"0x8D435199953A622"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0bdfc07e-001a-002e-141f-8316c0000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:53 GMT',
+  'x-ms-request-id': '2027f8aa-001a-003b-4902-67d459000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1280,9 +1280,9 @@ nock('http://xplat.file.core.windows.net:443')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"https://xplat.file.core.windows.net/\" ShareName=\"directory-test-share-testdata1\" DirectoryPath=\"dir-testdata22\"><Entries><File><Name>file-testdata16</Name><Properties><Content-Length>0</Content-Length></Properties></File><Directory><Name>next</Name><Properties /></Directory></Entries><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '86d09871-001a-0033-381f-83cf2a000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:53 GMT',
+  'x-ms-request-id': 'd36c3518-001a-001c-4202-674e10000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1292,9 +1292,9 @@ nock('https://xplat.file.core.windows.net:443')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"https://xplat.file.core.windows.net/\" ShareName=\"directory-test-share-testdata1\" DirectoryPath=\"dir-testdata22\"><Entries><File><Name>file-testdata16</Name><Properties><Content-Length>0</Content-Length></Properties></File><Directory><Name>next</Name><Properties /></Directory></Entries><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '86d09871-001a-0033-381f-83cf2a000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:53 GMT',
+  'x-ms-request-id': 'd36c3518-001a-001c-4202-674e10000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:02 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -1302,12 +1302,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata23?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:55 GMT',
-  etag: '"0x8D35136472FA144"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:03 GMT',
+  etag: '"0x8D4351999DB9C77"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '85b3aed0-001a-0038-7c1f-83d75e000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:54 GMT',
+  'x-ms-request-id': '333bdf10-001a-0010-2602-67a0e1000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1315,12 +1315,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata23?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:55 GMT',
-  etag: '"0x8D35136472FA144"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:03 GMT',
+  etag: '"0x8D4351999DB9C77"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '85b3aed0-001a-0038-7c1f-83d75e000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:54 GMT',
+  'x-ms-request-id': '333bdf10-001a-0010-2602-67a0e1000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1328,12 +1328,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata23?restype=directory&comp=metadata')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:55 GMT',
-  etag: '"0x8D35136478BA737"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:04 GMT',
+  etag: '"0x8D435199A346BF5"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd7852c84-001a-0029-561f-83e045000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:55 GMT',
+  'x-ms-request-id': 'd0c09ac5-001a-0006-4702-67617f000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1341,12 +1341,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata23?restype=directory&comp=metadata')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:55 GMT',
-  etag: '"0x8D35136478BA737"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:04 GMT',
+  etag: '"0x8D435199A346BF5"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd7852c84-001a-0029-561f-83e045000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:55 GMT',
+  'x-ms-request-id': 'd0c09ac5-001a-0006-4702-67617f000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1354,13 +1354,13 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata23?restype=directory&comp=metadata')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:55 GMT',
-  etag: '"0x8D35136478BA737"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:04 GMT',
+  etag: '"0x8D435199A346BF5"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4f8f0a57-001a-0047-3c1f-83496c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'd1a25112-001a-004a-4002-67a660000000',
+  'x-ms-version': '2016-05-31',
   'x-ms-meta-class': 'Test',
-  date: 'Mon, 21 Mar 2016 03:09:55 GMT',
+  date: 'Thu, 05 Jan 2017 03:19:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1368,13 +1368,13 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata23?restype=directory&comp=metadata')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:55 GMT',
-  etag: '"0x8D35136478BA737"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:04 GMT',
+  etag: '"0x8D435199A346BF5"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4f8f0a57-001a-0047-3c1f-83496c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'd1a25112-001a-004a-4002-67a660000000',
+  'x-ms-version': '2016-05-31',
   'x-ms-meta-class': 'Test',
-  date: 'Mon, 21 Mar 2016 03:09:55 GMT',
+  date: 'Thu, 05 Jan 2017 03:19:03 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -1382,12 +1382,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata24?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:57 GMT',
-  etag: '"0x8D351364847D1B7"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:05 GMT',
+  etag: '"0x8D435199AC42AAF"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cc29927a-001a-000f-5c1f-837bf1000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:56 GMT',
+  'x-ms-request-id': '1e47d600-001a-0048-3502-67a49a000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1395,12 +1395,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata24?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:57 GMT',
-  etag: '"0x8D351364847D1B7"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:05 GMT',
+  etag: '"0x8D435199AC42AAF"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cc29927a-001a-000f-5c1f-837bf1000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:56 GMT',
+  'x-ms-request-id': '1e47d600-001a-0048-3502-67a49a000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1408,13 +1408,13 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata24?restype=directory&comp=metadata')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:57 GMT',
-  etag: '"0x8D351364847D1B7"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:05 GMT',
+  etag: '"0x8D435199AC42AAF"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3cd86792-001a-0015-421f-83549e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '1c99ca6c-001a-003e-3d02-672026000000',
+  'x-ms-version': '2016-05-31',
   'x-ms-meta-class': 'Test',
-  date: 'Mon, 21 Mar 2016 03:09:57 GMT',
+  date: 'Thu, 05 Jan 2017 03:19:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1422,13 +1422,13 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata24?restype=directory&comp=metadata')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:57 GMT',
-  etag: '"0x8D351364847D1B7"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:05 GMT',
+  etag: '"0x8D435199AC42AAF"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3cd86792-001a-0015-421f-83549e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '1c99ca6c-001a-003e-3d02-672026000000',
+  'x-ms-version': '2016-05-31',
   'x-ms-meta-class': 'Test',
-  date: 'Mon, 21 Mar 2016 03:09:57 GMT',
+  date: 'Thu, 05 Jan 2017 03:19:04 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -1436,12 +1436,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata25?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:58 GMT',
-  etag: '"0x8D3513648FB9784"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:06 GMT',
+  etag: '"0x8D435199B517860"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '267cf062-001a-001a-2c1f-83b968000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:57 GMT',
+  'x-ms-request-id': '6c806ad4-001a-003c-3902-6722dc000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1449,12 +1449,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata25?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:58 GMT',
-  etag: '"0x8D3513648FB9784"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:06 GMT',
+  etag: '"0x8D435199B517860"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '267cf062-001a-001a-2c1f-83b968000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:57 GMT',
+  'x-ms-request-id': '6c806ad4-001a-003c-3902-6722dc000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1462,12 +1462,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata25?restype=directory&comp=metadata')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:58 GMT',
-  etag: '"0x8D351364955A1B4"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:06 GMT',
+  etag: '"0x8D435199B97D113"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2ba3ffdb-001a-0046-731f-834891000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:58 GMT',
+  'x-ms-request-id': 'e7de3e68-001a-0030-2c02-67cc2d000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1475,12 +1475,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata25?restype=directory&comp=metadata')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:58 GMT',
-  etag: '"0x8D351364955A1B4"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:06 GMT',
+  etag: '"0x8D435199B97D113"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2ba3ffdb-001a-0046-731f-834891000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:58 GMT',
+  'x-ms-request-id': 'e7de3e68-001a-0030-2c02-67cc2d000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1488,13 +1488,13 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata25?restype=directory')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:58 GMT',
-  etag: '"0x8D351364955A1B4"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:06 GMT',
+  etag: '"0x8D435199B97D113"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8439b66f-001a-0037-2c1f-833aa8000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'f6ec98b3-001a-0011-6b02-67a11c000000',
+  'x-ms-version': '2016-05-31',
   'x-ms-meta-color': 'Blue',
-  date: 'Mon, 21 Mar 2016 03:09:58 GMT',
+  date: 'Thu, 05 Jan 2017 03:19:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1502,13 +1502,13 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata25?restype=directory')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:58 GMT',
-  etag: '"0x8D351364955A1B4"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:06 GMT',
+  etag: '"0x8D435199B97D113"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8439b66f-001a-0037-2c1f-833aa8000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'f6ec98b3-001a-0011-6b02-67a11c000000',
+  'x-ms-version': '2016-05-31',
   'x-ms-meta-color': 'Blue',
-  date: 'Mon, 21 Mar 2016 03:09:58 GMT',
+  date: 'Thu, 05 Jan 2017 03:19:07 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -1516,12 +1516,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata26?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:10:00 GMT',
-  etag: '"0x8D351364A0DD453"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:07 GMT',
+  etag: '"0x8D435199C1C451B"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '44743034-001a-0028-571f-83e1b8000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:58 GMT',
+  'x-ms-request-id': 'b6773d54-001a-0040-5302-67bfe9000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1529,12 +1529,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata26?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:10:00 GMT',
-  etag: '"0x8D351364A0DD453"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:07 GMT',
+  etag: '"0x8D435199C1C451B"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '44743034-001a-0028-571f-83e1b8000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:09:58 GMT',
+  'x-ms-request-id': 'b6773d54-001a-0040-5302-67bfe9000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1542,12 +1542,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata26?restype=directory&comp=metadata')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:10:00 GMT',
-  etag: '"0x8D351364A69B323"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:07 GMT',
+  etag: '"0x8D435199C5E7F08"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '21b94f29-001a-0006-801f-83617f000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:10:00 GMT',
+  'x-ms-request-id': 'da75efd9-001a-0016-4d02-675799000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1555,12 +1555,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata26?restype=directory&comp=metadata')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:10:00 GMT',
-  etag: '"0x8D351364A69B323"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:07 GMT',
+  etag: '"0x8D435199C5E7F08"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '21b94f29-001a-0006-801f-83617f000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:10:00 GMT',
+  'x-ms-request-id': 'da75efd9-001a-0016-4d02-675799000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1568,13 +1568,13 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata26?restype=directory&comp=metadata')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:10:00 GMT',
-  etag: '"0x8D351364A69B323"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:07 GMT',
+  etag: '"0x8D435199C5E7F08"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7bbac6f7-001a-001e-6a1f-834cea000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4d0a8dd7-001a-000b-5c02-678e73000000',
+  'x-ms-version': '2016-05-31',
   'x-ms-meta-class': 'Test',
-  date: 'Mon, 21 Mar 2016 03:10:01 GMT',
+  date: 'Thu, 05 Jan 2017 03:19:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1582,13 +1582,13 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata26?restype=directory&comp=metadata')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:10:00 GMT',
-  etag: '"0x8D351364A69B323"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:07 GMT',
+  etag: '"0x8D435199C5E7F08"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7bbac6f7-001a-001e-6a1f-834cea000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4d0a8dd7-001a-000b-5c02-678e73000000',
+  'x-ms-version': '2016-05-31',
   'x-ms-meta-class': 'Test',
-  date: 'Mon, 21 Mar 2016 03:10:01 GMT',
+  date: 'Thu, 05 Jan 2017 03:19:07 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -1596,12 +1596,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata27?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:10:02 GMT',
-  etag: '"0x8D351364B2604CF"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:09 GMT',
+  etag: '"0x8D435199CFA99F4"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c32d3f9f-001a-0014-5e1f-835563000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:10:01 GMT',
+  'x-ms-request-id': 'ae70ed83-001a-0028-0a02-67e1b8000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1609,12 +1609,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata27?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:10:02 GMT',
-  etag: '"0x8D351364B2604CF"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:09 GMT',
+  etag: '"0x8D435199CFA99F4"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c32d3f9f-001a-0014-5e1f-835563000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:10:01 GMT',
+  'x-ms-request-id': 'ae70ed83-001a-0028-0a02-67e1b8000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1622,12 +1622,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata27?restype=directory&comp=metadata')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:10:02 GMT',
-  etag: '"0x8D351364B82A6EB"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:09 GMT',
+  etag: '"0x8D435199D3FBA30"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1ce883b0-001a-0019-181f-83ba6f000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:10:02 GMT',
+  'x-ms-request-id': '3a370408-001a-0031-5f02-67cdd0000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1635,12 +1635,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata27?restype=directory&comp=metadata')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:10:02 GMT',
-  etag: '"0x8D351364B82A6EB"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:09 GMT',
+  etag: '"0x8D435199D3FBA30"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1ce883b0-001a-0019-181f-83ba6f000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:10:02 GMT',
+  'x-ms-request-id': '3a370408-001a-0031-5f02-67cdd0000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1648,13 +1648,13 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata27?restype=directory')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:10:02 GMT',
-  etag: '"0x8D351364B82A6EB"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:09 GMT',
+  etag: '"0x8D435199D3FBA30"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '670df414-001a-0023-1e1f-83f9cc000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4b857e51-001a-0012-6d02-67a21b000000',
+  'x-ms-version': '2016-05-31',
   'x-ms-meta-color': 'blue,Orange,Red',
-  date: 'Mon, 21 Mar 2016 03:10:02 GMT',
+  date: 'Thu, 05 Jan 2017 03:19:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1662,13 +1662,13 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata27?restype=directory')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:10:02 GMT',
-  etag: '"0x8D351364B82A6EB"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:09 GMT',
+  etag: '"0x8D435199D3FBA30"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '670df414-001a-0023-1e1f-83f9cc000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4b857e51-001a-0012-6d02-67a21b000000',
+  'x-ms-version': '2016-05-31',
   'x-ms-meta-color': 'blue,Orange,Red',
-  date: 'Mon, 21 Mar 2016 03:10:02 GMT',
+  date: 'Thu, 05 Jan 2017 03:19:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1676,12 +1676,12 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata27?restype=directory&comp=metadata')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:10:03 GMT',
-  etag: '"0x8D351364C38B6D9"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:10 GMT',
+  etag: '"0x8D435199DC76294"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd48b6e9a-001a-0000-3b1f-839607000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:10:03 GMT',
+  'x-ms-request-id': '7f8833fa-001a-0036-0602-673b55000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:09 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1689,12 +1689,12 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .put('/directory-test-share-testdata1/dir-testdata27?restype=directory&comp=metadata')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:10:03 GMT',
-  etag: '"0x8D351364C38B6D9"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:10 GMT',
+  etag: '"0x8D435199DC76294"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd48b6e9a-001a-0000-3b1f-839607000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:10:03 GMT',
+  'x-ms-request-id': '7f8833fa-001a-0036-0602-673b55000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:09 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1702,13 +1702,13 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata27?restype=directory')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:10:03 GMT',
-  etag: '"0x8D351364C38B6D9"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:10 GMT',
+  etag: '"0x8D435199DC76294"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '21d36db0-001a-002d-521f-8315c7000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '17b42d9b-001a-0020-6602-67facb000000',
+  'x-ms-version': '2016-05-31',
   'x-ms-meta-color': 'white,BLACK',
-  date: 'Mon, 21 Mar 2016 03:10:03 GMT',
+  date: 'Thu, 05 Jan 2017 03:19:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1716,13 +1716,13 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1/dir-testdata27?restype=directory')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:10:03 GMT',
-  etag: '"0x8D351364C38B6D9"',
+  'last-modified': 'Thu, 05 Jan 2017 03:19:10 GMT',
+  etag: '"0x8D435199DC76294"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '21d36db0-001a-002d-521f-8315c7000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '17b42d9b-001a-0020-6602-67facb000000',
+  'x-ms-version': '2016-05-31',
   'x-ms-meta-color': 'white,BLACK',
-  date: 'Mon, 21 Mar 2016 03:10:03 GMT',
+  date: 'Thu, 05 Jan 2017 03:19:10 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -1730,13 +1730,13 @@ var result =
 nock('http://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1?restype=share')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:22 GMT',
-  etag: '"0x8D3513633861736"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:40 GMT',
+  etag: '"0x8D435198C004392"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '536379dc-001a-000a-2d1f-838f8e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '708789ba-001a-0001-6102-6797fa000000',
+  'x-ms-version': '2016-05-31',
   'x-ms-share-quota': '5120',
-  date: 'Mon, 21 Mar 2016 03:10:03 GMT',
+  date: 'Thu, 05 Jan 2017 03:19:11 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1744,13 +1744,13 @@ var result =
 nock('https://xplat.file.core.windows.net:443')
   .head('/directory-test-share-testdata1?restype=share')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 03:09:22 GMT',
-  etag: '"0x8D3513633861736"',
+  'last-modified': 'Thu, 05 Jan 2017 03:18:40 GMT',
+  etag: '"0x8D435198C004392"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '536379dc-001a-000a-2d1f-838f8e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '708789ba-001a-0001-6102-6797fa000000',
+  'x-ms-version': '2016-05-31',
   'x-ms-share-quota': '5120',
-  date: 'Mon, 21 Mar 2016 03:10:03 GMT',
+  date: 'Thu, 05 Jan 2017 03:19:11 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1759,9 +1759,9 @@ nock('http://xplat.file.core.windows.net:443')
   .delete('/directory-test-share-testdata1?restype=share')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ee03483e-001a-004a-5e1f-83a660000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:10:04 GMT',
+  'x-ms-request-id': '50682ae2-001a-0013-6902-67a3e6000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:11 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1770,8 +1770,8 @@ nock('https://xplat.file.core.windows.net:443')
   .delete('/directory-test-share-testdata1?restype=share')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ee03483e-001a-004a-5e1f-83a660000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 03:10:04 GMT',
+  'x-ms-request-id': '50682ae2-001a-0013-6902-67a3e6000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:19:11 GMT',
   connection: 'close' });
  return result; }]];

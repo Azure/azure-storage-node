@@ -712,7 +712,7 @@ describe('blob-uploaddownload-tests', function () {
       });
     });
 
-    it('should download a range of block blob to stream', function (done) {
+    runOrSkip('should download a range of block blob to stream', function (done) {
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var fileNameSource = testutil.generateId('getBlockBlobRangeStreamLocal', [], suite.isMocked) + '.test';
       var fileSize = 97 * 1024 * 1024;  // Don't be a multiple of 4MB to cover more scenarios
