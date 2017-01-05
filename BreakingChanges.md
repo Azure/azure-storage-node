@@ -1,7 +1,7 @@
-Tracking Breaking Changes in 1.5.0
+Tracking Breaking Changes in 2.0.0
 
 BLOB
-* When specifiying access condition `If-None-Match: *`, it will always fail.
+* When specifiying access condition `If-None-Match: *` for read, it will always fail.
 
 QUEUE
 * `createMessage` callback has been changed from `errorOrResponse` to `errorOrResult<QueueMessageResult>` which contains `messageId`, `popReceipt`, `timeNextVisible`, `insertionTime` and `expirationTime`. It can be passed to `updateMessage` and `deleteMessage` APIs.
