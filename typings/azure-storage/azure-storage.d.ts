@@ -6107,6 +6107,34 @@ declare module azurestorage {
         listFilesAndDirectoriesSegmented(share: string, directory: string, currentToken: common.ContinuationToken, options: FileService.ListRequestOptions, callback: ErrorOrResult<FileService.ListFilesAndDirectoriesResult>): void;
         listFilesAndDirectoriesSegmented(share: string, directory: string, currentToken: common.ContinuationToken, callback: ErrorOrResult<FileService.ListFilesAndDirectoriesResult>): void;
 
+
+        /**
+        * Lists a segment containing a collection of file items in the directory.
+        *
+        * @this {FileService}
+        * @param {string}             share                             The share name.
+        * @param {string}             directory                         The directory name. Use '' to refer to the base directory.
+        * @param {string}             prefix                            The prefix of the directory/files name.
+        * @param {object}             currentToken                      A continuation token returned by a previous listing operation. Please use 'null' or 'undefined' if this is the first operation.
+        * @param {object}             [options]                         The request options.
+        * @param {int}                [options.maxResults]              Specifies the maximum number of files to return per call to Azure ServiceClient. This does NOT affect list size returned by this function. (maximum: 5000)
+        * @param {LocationMode}       [options.locationMode]            Specifies the location mode used to decide which location the request should be sent to.
+        *                                                               Please see StorageUtilities.LocationMode for the possible values.
+        * @param {int}                [options.timeoutIntervalInMs]     The server timeout interval, in milliseconds, to use for the request.
+        * @param {int}                [options.maximumExecutionTimeInMs]The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+        *                                                               The maximum execution time interval begins at the time that the client begins building the request. The maximum
+        *                                                               execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}             [options.clientRequestId]         A string that represents the client request ID with a 1KB character limit.
+        * @param {bool}               [options.useNagleAlgorithm]       Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+        *                                                               The default value is false.
+        * @param {errorOrResult}      callback                          `error` will contain information
+        *                                                               if an error occurs; otherwise `result` will contain
+        *                                                               entries.files, entries.directories and the continuationToken for the next listing operation.
+        *                                                               `response` will contain information related to this operation.
+        */
+        listFilesAndDirectoriesSegmentedWithPrefix(share: string, directory: string, prefix: string, currentToken: common.ContinuationToken, options: FileService.ListRequestOptions, callback: ErrorOrResult<FileService.ListFilesAndDirectoriesResult>): void;
+        listFilesAndDirectoriesSegmentedWithPrefix(share: string, directory: string,prefix: string, currentToken: common.ContinuationToken, callback: ErrorOrResult<FileService.ListFilesAndDirectoriesResult>): void;
+
         /**
         * Returns all user-defined metadata for the specified directory.
         *

@@ -23,6 +23,7 @@ QUEUE
 FILE
 * Returned content MD5 for range gets Files.
 * Fixed the issue that `useTransactionalMD5` didn't take effect for downloading a big file.
+* Added support for listing files and directories with prefix, refer to `FileService.listFilesAndDirectoriesSegmentedWithPrefix`.
 
 TABLE
 * Fixed the issue that response in incorrect for table batch operation when the error response item is not the first item in the responses. 
