@@ -1,5 +1,8 @@
 Tracking Breaking Changes in 2.0.0
 
+ALL
+* Fixed the issue that retry filter will continuously retry for client error like `ETIMEDOUT`.
+
 BLOB
 * When specifiying access condition `If-None-Match: *` for read, it will always fail.
 

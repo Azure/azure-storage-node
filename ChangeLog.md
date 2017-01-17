@@ -9,6 +9,7 @@ ALL
 * Fixed the issue that `BatchOperation` request pool size is too big when the socket reuse is supported.
 * Added empty headers to string-to-sign.
 * For response has body and no `content-type` header, try to parse the body using xml format.
+* Fixed the issue that retry filter will continuously retry for client error like `ETIMEDOUT`.
 
 BLOB
 * Added support for large block blob. 
