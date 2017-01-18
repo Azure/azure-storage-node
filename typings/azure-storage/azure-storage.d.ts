@@ -76,6 +76,7 @@ declare module azurestorage {
           * The following defaults can be set on the blob service.
           * singleBlobPutThresholdInBytes                       The default maximum size, in bytes, of a blob before it must be separated into blocks.
           * defaultTimeoutIntervalInMs                          The default timeout interval, in milliseconds, to use for request made via the Blob service.
+          * defaultClientRequestTimeoutInMs                     The default timeout of client requests, in milliseconds, to use for the request made via the Blob service.
           * defaultMaximumExecutionTimeInMs                     The default maximum execution time across all potential retries, for requests made via the Blob service.
           * defaultLocationMode                                 The default location mode for requests made via the Blob service.
           * parallelOperationThreadCount                        The number of parallel operations that may be performed when uploading a blob that is greater than
@@ -2658,6 +2659,7 @@ declare module azurestorage {
             accessConditions?: AccessConditions;
             locationMode?: StorageUtilities.LocationMode;
             timeoutIntervalInMs?: number;
+            clientRequestTimeoutInMs?: number;
             maximumExecutionTimeInMs?: number;
             useNagleAlgorithm?: boolean;
           }
@@ -2805,6 +2807,7 @@ declare module azurestorage {
         * The following defaults can be set on the Queue service.
         * messageEncoder                                      The message encoder to specify how QueueService encodes and decodes the queue message. Default is `[TextXmlQueueMessageEncoder]{@link TextXmlQueueMessageEncoder}`.
         * defaultTimeoutIntervalInMs                          The default timeout interval, in milliseconds, to use for request made via the Queue service.
+        * defaultClientRequestTimeoutInMs                     The default timeout of client requests, in milliseconds, to use for the request made via the Queue service.
         * defaultMaximumExecutionTimeInMs                     The default maximum execution time across all potential retries, for requests made via the Queue service.
         * defaultLocationMode                                 The default location mode for requests made via the Queue service.
         * useNagleAlgorithm                                   Determines whether the Nagle algorithm is used for requests made via the Queue service; true to use the  
@@ -5054,6 +5057,7 @@ declare module azurestorage {
         * [How to Use the Table Service from Node.js](http://azure.microsoft.com/en-us/documentation/articles/storage-nodejs-how-to-use-table-storage/).
         * The following defaults can be set on the Table service.
         * defaultTimeoutIntervalInMs                          The default timeout interval, in milliseconds, to use for request made via the Table service.
+        * defaultClientRequestTimeoutInMs                     The default timeout of client requests, in milliseconds, to use for the request made via the Table service.
         * defaultMaximumExecutionTimeInMs                     The default maximum execution time across all potential retries, for requests made via the Table service.
         * defaultLocationMode                                 The default location mode for requests made via the Table service.
         * defaultPayloadFormat                                The default payload format for requests made via the Table service.
@@ -7107,6 +7111,7 @@ declare module azurestorage {
         * [How to Use the File Service from Node.js](http://azure.microsoft.com/en-us/documentation/articles/storage-nodejs-how-to-use-file-storage/).
         * The following defaults can be set on the file service.
         * defaultTimeoutIntervalInMs                          The default timeout interval, in milliseconds, to use for request made via the file service.
+        * defaultClientRequestTimeoutInMs                     The default timeout of client requests, in milliseconds, to use for the request made via the file service.
         * defaultMaximumExecutionTimeInMs                     The default maximum execution time across all potential retries, for requests made via the file service.
         * defaultLocationMode                                 The default location mode for requests made via the file service.
         * parallelOperationThreadCount                        The number of parallel operations that may be performed when uploading a file.
@@ -8516,6 +8521,11 @@ declare module azurestorage {
           */
           defaultTimeoutIntervalInMs: number;
           /**
+          * The default timeout of client requests, in milliseconds, to use for the request.
+          * @member {int} StorageServiceClient#defaultClientRequestTimeoutInMs
+          */
+          defaultClientRequestTimeoutInMs: number;
+          /**
           * Determines whether the Nagle algorithm is used for requests made via the Queue service; true to use the
           *  Nagle algorithm; otherwise, false. The default value is false.
           * @member {bool} StorageServiceClient#useNagleAlgorithm
@@ -8629,6 +8639,11 @@ declare module azurestorage {
       * {int} The server timeout interval, in milliseconds, to use for the request.
       */
       timeoutIntervalInMs?: number;
+      /**
+      * {int} The timeout of client requests, in milliseconds, to use for the request.
+      */
+      clientRequestTimeoutInMs?: number;
+
       /**
       * {int} The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
       */

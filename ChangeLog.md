@@ -10,6 +10,7 @@ ALL
 * Added empty headers to string-to-sign.
 * For response has body and no `content-type` header, try to parse the body using xml format.
 * Fixed the issue that retry filter will continuously retry for client error like `ETIMEDOUT`.
+* Added support for client side timeout. In order to set the timeout per API, please use `options.clientRequestTimeoutInMs`. To set the default value for all requests made via a particular service, please use `{blob|queue|table|file}Service.defaultClientRequestTimeoutInMs`.
 
 BLOB
 * Added support for large block blob. 
