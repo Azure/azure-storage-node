@@ -8762,7 +8762,7 @@ declare module azurestorage {
   *                                                     Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.
   * @return {QueueService}                              A new QueueService object.
   */
-  export function createQueueService(storageAccount: string, storageAccessKey: string, host: string | StorageHost): QueueService;
+  export function createQueueService(storageAccount: string, storageAccessKey: string, host?: string | StorageHost): QueueService;
   export function createQueueService(connectionString: string): QueueService;
   export function createQueueService(): QueueService;
 
