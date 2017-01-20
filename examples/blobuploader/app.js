@@ -28,10 +28,10 @@ var blobClient = azure.createBlobService('UseDevelopmentStorage=true').withFilte
 var containerName = 'webpi';
 
 //Configuration
-app.set('views', path.join(__dirname + '/views'));
+app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'ejs');
 app.set('layout', 'layout');
-app.use(express.static(path.join(__dirname + '/public')));
+app.use(express.static(path.join(__dirname, '/public')));
 app.use(expressLayouts);
 
 app.set('development', function(){
@@ -93,7 +93,7 @@ app.post('/uploadhandler', function (req, res) {
       };
 
       blobClient.createBlockBlobFromLocalFile(containerName, fields.itemName, files.uploadedFile.path, options, function (error) {
-        if (error != null) {
+        if (error !== null) {
           helpers.renderError(res);
         } else {
           res.redirect('/Display');
@@ -107,7 +107,7 @@ app.post('/uploadhandler', function (req, res) {
 
 app.post('/Delete/:id', function (req, res) {
   blobClient.deleteBlob(containerName, req.params.id, function (error) {
-    if (error != null) {
+    if (error !== null) {
       helpers.renderError(res);
     } else {
       res.redirect('/Display');

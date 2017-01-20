@@ -192,7 +192,7 @@ a {
         color: #92a5bc;
     }
 
-    a#home {
+    #home {
         color: #91a1ab;
     }
 /*#endregion*/
@@ -277,9 +277,6 @@ fieldset {
         margin: 10px 0 15px;
     }
 
-    fieldset select {
-        
-    }
 /*#endregion*/
 /*#region -----------------------------Validation*/
 .message-info {
