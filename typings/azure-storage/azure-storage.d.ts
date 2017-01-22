@@ -7254,7 +7254,7 @@ declare module azurestorage {
           * var retryOperations = new azure.LinearRetryPolicyFilter();
           * var blobService = azure.createBlobService().withFilter(retryOperations)
           */
-          constructor(retryCount: number, retryInterval: number);
+          constructor(retryCount?: number, retryInterval?: number);
           /**
           * Represents the default client retry interval, in milliseconds.
           */
@@ -7305,7 +7305,7 @@ declare module azurestorage {
           * var retryOperations = new azure.ExponentialRetryPolicyFilter();
           * var blobService = azure.createBlobService().withFilter(retryOperations)
           */
-          constructor(retryCount: number, retryInterval: number, minRetryInterval: number, maxRetryInterval: number);
+          constructor(retryCount?: number, retryInterval?: number, minRetryInterval?: number, maxRetryInterval?: number);
           /**
           * Represents the default client retry interval, in milliseconds.
           */
