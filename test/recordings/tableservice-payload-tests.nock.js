@@ -13,12 +13,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata01\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '113f52aa-0002-0008-3616-ac8d74000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '1056d2e8-0002-001e-6603-674cea000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata01\')',
-  date: 'Thu, 12 May 2016 06:20:48 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:36 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -30,12 +30,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata01\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '113f52aa-0002-0008-3616-ac8d74000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '1056d2e8-0002-001e-6603-674cea000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata01\')',
-  date: 'Thu, 12 May 2016 06:20:48 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:36 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -45,15 +45,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata01', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A20%3A50.9764438Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A36.9138667Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata01(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '673df65e-0002-003b-7216-acd459000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'd5a564d0-0002-0027-2703-670c4e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata01(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:20:50 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:36 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -63,45 +63,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata01', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A20%3A50.9764438Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A36.9138667Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata01(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '673df65e-0002-003b-7216-acd459000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'd5a564d0-0002-0027-2703-670c4e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata01(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:20:50 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:36 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata01(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata01/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata01\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata01(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A20%3A50.9764438Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata01(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:20:50.9764438Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata01/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata01\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata01(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A25%3A36.9138667Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata01(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:25:36.9138667Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A20%3A50.9764438Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A36.9138667Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '85653f6c-0002-0049-3616-aca567000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'ae750c5d-0002-0044-5303-674a6b000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:20:52 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:36 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata01(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata01/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata01\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata01(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A20%3A50.9764438Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata01(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:20:50.9764438Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata01/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata01\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata01(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A25%3A36.9138667Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata01(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:25:36.9138667Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A20%3A50.9764438Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A36.9138667Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '85653f6c-0002-0049-3616-aca567000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'ae750c5d-0002-0044-5303-674a6b000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:20:52 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:36 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -113,12 +113,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata02\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b9fb62bf-0002-0034-6916-ac39af000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '6b17ed83-0002-0042-5203-67bd13000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata02\')',
-  date: 'Thu, 12 May 2016 06:20:53 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -130,12 +130,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata02\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b9fb62bf-0002-0034-6916-ac39af000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '6b17ed83-0002-0042-5203-67bd13000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata02\')',
-  date: 'Thu, 12 May 2016 06:20:53 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -145,15 +145,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata02', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A20%3A55.5255404Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A38.4785324Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata02(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e041ef02-0002-0038-1d16-acd75e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'e46bb53d-0002-004b-1a03-67a79d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata02(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:20:54 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -163,45 +163,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata02', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A20%3A55.5255404Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A38.4785324Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata02(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e041ef02-0002-0038-1d16-acd75e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'e46bb53d-0002-004b-1a03-67a79d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata02(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:20:54 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata02(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata02/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata02\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata02(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A20%3A55.5255404Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata02(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:20:55.5255404Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata02/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata02\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata02(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A25%3A38.4785324Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata02(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:25:38.4785324Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A20%3A55.5255404Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A38.4785324Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '43e33084-0002-0016-0916-ac5799000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '96ba7afb-0002-0018-0f03-67bb92000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:20:57 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata02(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata02/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata02\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata02(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A20%3A55.5255404Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata02(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:20:55.5255404Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata02/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata02\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata02(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A25%3A38.4785324Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata02(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:25:38.4785324Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A20%3A55.5255404Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A38.4785324Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '43e33084-0002-0016-0916-ac5799000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '96ba7afb-0002-0018-0f03-67bb92000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:20:57 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -213,12 +213,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata03\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3aef0513-0002-0032-5a16-acced7000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3830d2b2-0002-0021-1303-67fb36000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata03\')',
-  date: 'Thu, 12 May 2016 06:20:59 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -230,12 +230,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata03\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3aef0513-0002-0032-5a16-acced7000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3830d2b2-0002-0021-1303-67fb36000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata03\')',
-  date: 'Thu, 12 May 2016 06:20:59 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -245,15 +245,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata03', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A02.3012799Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A39.4832324Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata03(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cf43f3d0-0002-0010-7416-aca0e1000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '23f69e47-0002-002a-6e03-67e342000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata03(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:21:01 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -263,45 +263,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata03', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A02.3012799Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A39.4832324Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata03(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cf43f3d0-0002-0010-7416-aca0e1000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '23f69e47-0002-002a-6e03-67e342000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata03(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:21:01 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata03(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata03/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata03\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata03(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A21%3A02.3012799Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata03(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:21:02.3012799Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata03/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata03\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata03(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A25%3A39.4832324Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata03(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:25:39.4832324Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A02.3012799Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A39.4832324Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '936761fb-0002-0021-7f16-acfb36000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '19cffdd1-0002-0033-6d03-67cf2a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:02 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata03(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata03/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata03\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata03(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A21%3A02.3012799Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata03(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:21:02.3012799Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata03/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata03\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata03(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A25%3A39.4832324Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata03(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:25:39.4832324Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A02.3012799Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A39.4832324Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '936761fb-0002-0021-7f16-acfb36000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '19cffdd1-0002-0033-6d03-67cf2a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:02 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -313,12 +313,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata04\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '757bb1c3-0002-0015-3616-ac549e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a1ec4b0b-0002-0014-6703-675563000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata04\')',
-  date: 'Thu, 12 May 2016 06:21:04 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -330,12 +330,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata04\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '757bb1c3-0002-0015-3616-ac549e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a1ec4b0b-0002-0014-6703-675563000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata04\')',
-  date: 'Thu, 12 May 2016 06:21:04 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -345,15 +345,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata04', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A05.8235587Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A41.0323367Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata04(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fb9e9964-0002-0024-4016-ac0f49000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c44c2391-0002-0045-6103-674b96000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata04(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:21:05 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:40 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -363,73 +363,73 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata04', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A05.8235587Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A41.0323367Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata04(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fb9e9964-0002-0024-4016-ac0f49000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c44c2391-0002-0045-6103-674b96000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata04(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:21:05 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:40 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata04(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata04/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata04\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata04(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A21%3A05.8235587Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata04(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:21:05.8235587Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata04/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata04\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata04(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A25%3A41.0323367Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata04(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:25:41.0323367Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A05.8235587Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A41.0323367Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cf43f782-0002-0010-3b16-aca0e1000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '359b225e-0002-0007-7703-676082000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:08 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:40 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata04(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata04/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata04\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata04(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A21%3A05.8235587Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata04(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:21:05.8235587Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata04/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata04\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata04(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A25%3A41.0323367Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata04(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:25:41.0323367Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A05.8235587Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A41.0323367Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cf43f782-0002-0010-3b16-aca0e1000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '359b225e-0002-0007-7703-676082000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:08 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:40 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata01%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata01')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata01')\" /><title /><updated>2016-05-12T06:21:09Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata01</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata01\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'df835655-0002-003e-5c16-ac2026000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7a63bb4a-0002-0038-6a03-67d75e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:09 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:40 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata01%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata01')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata01')\" /><title /><updated>2016-05-12T06:21:09Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata01</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata01\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'df835655-0002-003e-5c16-ac2026000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7a63bb4a-0002-0038-6a03-67d75e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:09 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:40 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -439,10 +439,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '61978028-0002-0029-1616-ace045000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2c94d0b8-0002-0005-5803-676278000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:11 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:41 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -452,38 +452,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '61978028-0002-0029-1616-ace045000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2c94d0b8-0002-0005-5803-676278000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:11 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:41 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata02%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata02')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata02')\" /><title /><updated>2016-05-12T06:21:13Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata02</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata02\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6d09f675-0002-003a-1116-acd5a4000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '8036616c-0002-000e-4903-677a0c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:12 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:41 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata02%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata02')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata02')\" /><title /><updated>2016-05-12T06:21:13Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata02</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata02\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6d09f675-0002-003a-1116-acd5a4000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '8036616c-0002-000e-4903-677a0c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:12 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:41 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -493,10 +493,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9dd8fac1-0002-0006-3516-ac617f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'ddef6c0c-0002-0017-7103-675664000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:13 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:42 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -506,38 +506,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9dd8fac1-0002-0006-3516-ac617f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'ddef6c0c-0002-0017-7103-675664000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:13 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:42 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata03%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata03')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata03')\" /><title /><updated>2016-05-12T06:21:16Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata03</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata03\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '73e97738-0002-000f-3516-ac7bf1000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'b55df287-0002-0034-4103-6739af000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:15 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:42 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata03%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata03')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata03')\" /><title /><updated>2016-05-12T06:21:16Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata03</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata03\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '73e97738-0002-000f-3516-ac7bf1000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'b55df287-0002-0034-4103-6739af000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:15 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:42 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -547,10 +547,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '113f5c69-0002-0008-2716-ac8d74000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7991669a-0002-0029-0203-67e045000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:16 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:43 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -560,38 +560,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '113f5c69-0002-0008-2716-ac8d74000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7991669a-0002-0029-0203-67e045000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:16 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:43 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata04%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata04')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata04')\" /><title /><updated>2016-05-12T06:21:19Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata04</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata04\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1d25dd27-0002-0040-7116-acbfe9000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '754fca2e-0002-000a-5b03-678f8e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:18 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:43 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata04%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata04')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata04')\" /><title /><updated>2016-05-12T06:21:19Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata04</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata04\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1d25dd27-0002-0040-7116-acbfe9000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '754fca2e-0002-000a-5b03-678f8e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:18 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:43 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -601,10 +601,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ceee522a-0002-0035-3e16-ac3852000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'd427e950-0002-003b-6403-67d459000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:20 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -614,10 +614,10 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ceee522a-0002-0035-3e16-ac3852000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'd427e950-0002-003b-6403-67d459000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:20 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:44 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -629,12 +629,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata11\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6ea00852-0002-000c-2416-ac78f6000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'b8cdfb38-0002-001c-0503-674e10000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata11\')',
-  date: 'Thu, 12 May 2016 06:21:23 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -646,12 +646,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata11\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6ea00852-0002-000c-2416-ac78f6000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'b8cdfb38-0002-001c-0503-674e10000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata11\')',
-  date: 'Thu, 12 May 2016 06:21:23 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -661,15 +661,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata11', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A24.3313805Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A45.588957Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata11(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ba4eadbb-0002-0041-1116-acbe14000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '0647025c-0002-0010-0803-67a0e1000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata11(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:21:24 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:45 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -679,45 +679,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata11', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A24.3313805Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A45.588957Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata11(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ba4eadbb-0002-0041-1116-acbe14000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '0647025c-0002-0010-0803-67a0e1000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata11(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:21:24 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:45 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata11(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata11/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A21%3A24.3313805Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:21:24.3313805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata11/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A25%3A45.588957Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:25:45.588957Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A24.3313805Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A45.588957Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '47c4bd38-0002-0002-4916-ac94fd000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'df1c1b0b-0002-0006-6803-67617f000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:25 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:45 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata11(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata11/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A21%3A24.3313805Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:21:24.3313805Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata11/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A25%3A45.588957Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:25:45.588957Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A24.3313805Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A45.588957Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '47c4bd38-0002-0002-4916-ac94fd000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'df1c1b0b-0002-0006-6803-67617f000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:25 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:45 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -729,12 +729,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata12\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'df83605d-0002-003e-1016-ac2026000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '47718760-0002-004a-5c03-67a660000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata12\')',
-  date: 'Thu, 12 May 2016 06:21:27 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:46 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -746,12 +746,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata12\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'df83605d-0002-003e-1016-ac2026000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '47718760-0002-004a-5c03-67a660000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata12\')',
-  date: 'Thu, 12 May 2016 06:21:27 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:46 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -761,15 +761,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata12', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A29.2815284Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A47.4054215Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata12(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c6516025-0002-004c-5116-ac5118000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4fca8dd0-0002-0004-0d03-676385000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata12(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:21:28 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:46 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -779,45 +779,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata12', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A29.2815284Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A47.4054215Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata12(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c6516025-0002-004c-5116-ac5118000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4fca8dd0-0002-0004-0d03-676385000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata12(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:21:28 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:46 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata12(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata12/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A21%3A29.2815284Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:21:29.2815284Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata12/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A25%3A47.4054215Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:25:47.4054215Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A29.2815284Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A47.4054215Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '589e5605-0002-0027-5716-ac0c4e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7d134611-0002-0048-6b03-67a49a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:30 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:47 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata12(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata12/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A21%3A29.2815284Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:21:29.2815284Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata12/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A25%3A47.4054215Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:25:47.4054215Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A29.2815284Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A47.4054215Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '589e5605-0002-0027-5716-ac0c4e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7d134611-0002-0048-6b03-67a49a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:30 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:47 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -829,12 +829,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata13\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0a3add62-0002-0004-5b16-ac6385000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'b4eca3c0-0002-003e-1d03-672026000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata13\')',
-  date: 'Thu, 12 May 2016 06:21:32 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:47 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -846,12 +846,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata13\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0a3add62-0002-0004-5b16-ac6385000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'b4eca3c0-0002-003e-1d03-672026000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata13\')',
-  date: 'Thu, 12 May 2016 06:21:32 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:47 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -861,15 +861,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata13', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A33.9319605Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A47.9867658Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata13(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '673e190c-0002-003b-7b16-acd459000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'de3ea7c9-0002-0046-1603-674891000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata13(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:21:33 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:47 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -879,45 +879,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata13', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A33.9319605Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A47.9867658Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata13(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '673e190c-0002-003b-7b16-acd459000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'de3ea7c9-0002-0046-1603-674891000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata13(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:21:33 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:47 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata13(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata13/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A21%3A33.9319605Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:21:33.9319605Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata13/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A25%3A47.9867658Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:25:47.9867658Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A33.9319605Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A47.9867658Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '35ccd821-0002-0011-2516-aca11c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '0d10da53-0002-003c-7f03-6722dc000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:35 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:47 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata13(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata13/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A21%3A33.9319605Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:21:33.9319605Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata13/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A25%3A47.9867658Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:25:47.9867658Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A33.9319605Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A47.9867658Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '35ccd821-0002-0011-2516-aca11c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '0d10da53-0002-003c-7f03-6722dc000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:35 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:47 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -929,12 +929,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata14\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ceee5eda-0002-0035-3616-ac3852000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '27e9f085-0002-0030-5203-67cc2d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata14\')',
-  date: 'Thu, 12 May 2016 06:21:37 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:48 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -946,12 +946,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata14\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ceee5eda-0002-0035-3616-ac3852000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '27e9f085-0002-0030-5203-67cc2d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata14\')',
-  date: 'Thu, 12 May 2016 06:21:37 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:48 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -961,15 +961,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata14', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A38.8645961Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A50.3559833Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata14(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '673e1d15-0002-003b-2b16-acd459000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '764464b8-0002-0011-3003-67a11c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata14(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:21:38 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:49 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -979,73 +979,73 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata14', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A38.8645961Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A50.3559833Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata14(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '673e1d15-0002-003b-2b16-acd459000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '764464b8-0002-0011-3003-67a11c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata14(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:21:38 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:49 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata14(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata14/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A21%3A38.8645961Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:21:38.8645961Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata14/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A25%3A50.3559833Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:25:50.3559833Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A38.8645961Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A50.3559833Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'df836868-0002-003e-3616-ac2026000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c4589c4b-0002-002e-6003-6716c0000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:40 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:49 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata14(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata14/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A21%3A38.8645961Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:21:38.8645961Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata14/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A25%3A50.3559833Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:25:50.3559833Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A38.8645961Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A50.3559833Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'df836868-0002-003e-3616-ac2026000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c4589c4b-0002-002e-6003-6716c0000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:40 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:49 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata11%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata11')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata11')\" /><title /><updated>2016-05-12T06:21:42Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata11</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata11\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '73e98bc0-0002-000f-5a16-ac7bf1000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a1791a3d-0002-0037-6203-673aa8000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:41 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata11%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata11')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata11')\" /><title /><updated>2016-05-12T06:21:42Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata11</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata11\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '73e98bc0-0002-000f-5a16-ac7bf1000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a1791a3d-0002-0037-6203-673aa8000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:41 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1055,10 +1055,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '757bc08f-0002-0015-7816-ac549e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2d9c86f5-0002-0040-4403-67bfe9000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:43 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1068,38 +1068,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '757bc08f-0002-0015-7816-ac549e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2d9c86f5-0002-0040-4403-67bfe9000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:43 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata12%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata12')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata12')\" /><title /><updated>2016-05-12T06:21:46Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata12</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata12\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cf440d93-0002-0010-3f16-aca0e1000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '60d69f2a-0002-0049-2f03-67a567000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:46 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata12%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata12')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata12')\" /><title /><updated>2016-05-12T06:21:46Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata12</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata12\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cf440d93-0002-0010-3f16-aca0e1000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '60d69f2a-0002-0049-2f03-67a567000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:46 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1109,10 +1109,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9764741f-0002-000e-0b16-ac7a0c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '37a14125-0002-0016-7303-675799000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:47 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1122,38 +1122,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9764741f-0002-000e-0b16-ac7a0c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '37a14125-0002-0016-7303-675799000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:47 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata13%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata13')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata13')\" /><title /><updated>2016-05-12T06:21:49Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata13</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata13\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9dd909e7-0002-0006-3316-ac617f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '891fa4d0-0002-000b-0303-678e73000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:48 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata13%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata13')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata13')\" /><title /><updated>2016-05-12T06:21:49Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata13</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata13\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9dd909e7-0002-0006-3316-ac617f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '891fa4d0-0002-000b-0303-678e73000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:48 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1163,10 +1163,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fb9ec967-0002-0024-6f16-ac0f49000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '41f71b95-0002-0028-1303-67e1b8000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:50 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1176,38 +1176,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fb9ec967-0002-0024-6f16-ac0f49000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '41f71b95-0002-0028-1303-67e1b8000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:50 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata14%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata14')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata14')\" /><title /><updated>2016-05-12T06:21:53Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata14</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata14\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4ab36d16-0002-0028-0716-ace1b8000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '72ab368b-0002-0031-4903-67cdd0000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:53 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata14%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata14')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata14')\" /><title /><updated>2016-05-12T06:21:53Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata14</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata14\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4ab36d16-0002-0028-0716-ace1b8000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '72ab368b-0002-0031-4903-67cdd0000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:53 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1217,10 +1217,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ceee69af-0002-0035-5c16-ac3852000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '138f4f6b-0002-0012-2103-67a21b000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:53 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1230,10 +1230,10 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ceee69af-0002-0035-5c16-ac3852000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '138f4f6b-0002-0012-2103-67a21b000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:53 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:52 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -1245,12 +1245,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata21\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0ddcb58b-0002-0044-3516-ac4a6b000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '8279f93e-0002-001b-3303-67b895000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata21\')',
-  date: 'Thu, 12 May 2016 06:21:54 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:53 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1262,12 +1262,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata21\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0ddcb58b-0002-0044-3516-ac4a6b000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '8279f93e-0002-001b-3303-67b895000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata21\')',
-  date: 'Thu, 12 May 2016 06:21:54 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:53 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1277,15 +1277,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata21', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A56.743954Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A54.2807506Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata21(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e0420a78-0002-0038-1516-acd75e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '09e7098f-0002-004c-4003-675118000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata21(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:21:56 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1295,45 +1295,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata21', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A56.743954Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A54.2807506Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata21(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e0420a78-0002-0038-1516-acd75e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '09e7098f-0002-004c-4003-675118000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata21(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:21:56 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata21(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:21:56.743954Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:25:54.2807506Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A56.743954Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A54.2807506Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3217cbbc-0002-0005-2416-ac6278000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '396487ff-0002-002d-7c03-6715c7000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:58 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata21(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:21:56.743954Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:25:54.2807506Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A21%3A56.743954Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A54.2807506Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3217cbbc-0002-0005-2416-ac6278000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '396487ff-0002-002d-7c03-6715c7000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:21:58 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1345,12 +1345,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata22\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ba4ebc0a-0002-0041-4016-acbe14000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4c5354a3-0002-0036-6e03-673b55000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata22\')',
-  date: 'Thu, 12 May 2016 06:22:00 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1362,12 +1362,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata22\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ba4ebc0a-0002-0041-4016-acbe14000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4c5354a3-0002-0036-6e03-673b55000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata22\')',
-  date: 'Thu, 12 May 2016 06:22:00 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1377,15 +1377,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata22', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A02.3645667Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A55.6140181Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata22(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c65172ad-0002-004c-3c16-ac5118000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c705cb42-0002-002b-2f03-67e2bf000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata22(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:22:01 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:55 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1395,45 +1395,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata22', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A02.3645667Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A55.6140181Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata22(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c65172ad-0002-004c-3c16-ac5118000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c705cb42-0002-002b-2f03-67e2bf000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata22(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:22:01 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:55 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata22(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:22:02.3645667Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:25:55.6140181Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A02.3645667Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A55.6140181Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '35cce398-0002-0011-4d16-aca11c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'f902723b-0002-0020-7803-67facb000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:03 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:55 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata22(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:22:02.3645667Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:25:55.6140181Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A02.3645667Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A55.6140181Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '35cce398-0002-0011-4d16-aca11c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'f902723b-0002-0020-7803-67facb000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:03 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:55 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1445,12 +1445,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata23\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f7f176ff-0002-002d-0116-ac15c7000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9fd1db34-0002-0001-6103-6797fa000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata23\')',
-  date: 'Thu, 12 May 2016 06:22:04 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1462,12 +1462,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata23\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f7f176ff-0002-002d-0116-ac15c7000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9fd1db34-0002-0001-6103-6797fa000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata23\')',
-  date: 'Thu, 12 May 2016 06:22:04 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1477,15 +1477,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata23', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A06.9448321Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A56.8997984Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata23(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6a75de84-0002-0045-5816-ac4b96000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2acc9722-0002-0032-6303-67ced7000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata23(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:22:06 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1495,45 +1495,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata23', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A06.9448321Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A56.8997984Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata23(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6a75de84-0002-0045-5816-ac4b96000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2acc9722-0002-0032-6303-67ced7000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata23(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:22:06 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata23(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:22:06.9448321Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:25:56.8997984Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A06.9448321Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A56.8997984Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0a3af1a1-0002-0004-5316-ac6385000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4d748d62-0002-0013-2103-67a3e6000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:09 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata23(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:22:06.9448321Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:25:56.8997984Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A06.9448321Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A56.8997984Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0a3af1a1-0002-0004-5316-ac6385000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4d748d62-0002-0013-2103-67a3e6000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:09 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1545,12 +1545,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata24\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'df8378df-0002-003e-4616-ac2026000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3a860bb0-0002-0008-1303-678d74000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata24\')',
-  date: 'Thu, 12 May 2016 06:22:10 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:57 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1562,12 +1562,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata24\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'df8378df-0002-003e-4616-ac2026000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3a860bb0-0002-0008-1303-678d74000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata24\')',
-  date: 'Thu, 12 May 2016 06:22:10 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:57 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1577,15 +1577,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata24', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A12.5008226Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A58.1997832Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata24(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6a25faf1-0002-003f-1b16-ac21db000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'bee253b5-0002-004d-6703-6750e5000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata24(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:22:12 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:57 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1595,73 +1595,73 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata24', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A12.5008226Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A58.1997832Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata24(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6a25faf1-0002-003f-1b16-ac21db000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'bee253b5-0002-004d-6703-6750e5000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata24(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:22:12 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:57 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata24(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:22:12.5008226Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:25:58.1997832Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A12.5008226Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A58.1997832Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9dd912fe-0002-0006-5c16-ac617f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'afc0cff0-0002-001a-0103-67b968000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:13 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata24(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:22:12.5008226Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:25:58.1997832Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A12.5008226Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A25%3A58.1997832Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9dd912fe-0002-0006-5c16-ac617f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'afc0cff0-0002-001a-0103-67b968000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:13 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata21%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata21')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata21')\" /><title /><updated>2016-05-12T06:22:15Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata21</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata21\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3aef45d1-0002-0032-0516-acced7000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '99699b6d-0002-0023-6b03-67f9cc000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:15 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata21%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata21')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata21')\" /><title /><updated>2016-05-12T06:22:15Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata21</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata21\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3aef45d1-0002-0032-0516-acced7000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '99699b6d-0002-0023-6b03-67f9cc000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:15 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1671,10 +1671,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c64de215-0002-0009-7916-ac8c89000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '93618e13-0002-002c-5e03-67143a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:16 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1684,38 +1684,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c64de215-0002-0009-7916-ac8c89000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '93618e13-0002-002c-5e03-67143a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:16 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata22%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata22')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata22')\" /><title /><updated>2016-05-12T06:22:18Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata22</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata22\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4b879f07-0002-004d-7816-ac50e5000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'cc631e98-0002-0035-7a03-673852000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:17 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata22%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata22')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata22')\" /><title /><updated>2016-05-12T06:22:18Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata22</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata22\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4b879f07-0002-004d-7816-ac50e5000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'cc631e98-0002-0035-7a03-673852000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:17 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1725,10 +1725,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c6517cf5-0002-004c-3a16-ac5118000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9f194699-0002-0002-4503-6794fd000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:19 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1738,38 +1738,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c6517cf5-0002-004c-3a16-ac5118000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9f194699-0002-0002-4503-6794fd000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:19 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata23%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata23')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata23')\" /><title /><updated>2016-05-12T06:22:22Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata23</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata23\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e27a0f1d-0002-0037-3d16-ac3aa8000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '78319a9c-0002-0047-5f03-67496c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:22 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata23%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata23')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata23')\" /><title /><updated>2016-05-12T06:22:22Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata23</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata23\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e27a0f1d-0002-0037-3d16-ac3aa8000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '78319a9c-0002-0047-5f03-67496c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:22 GMT',
+  date: 'Thu, 05 Jan 2017 03:25:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1779,10 +1779,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f80b919f-0002-001d-2e16-ac4fed000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'bb6cdef0-0002-0000-7903-679607000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:23 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1792,38 +1792,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f80b919f-0002-001d-2e16-ac4fed000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'bb6cdef0-0002-0000-7903-679607000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:23 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata24%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata24')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata24')\" /><title /><updated>2016-05-12T06:22:24Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata24</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata24\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b9fba227-0002-0034-3616-ac39af000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'abc08c97-0002-0025-2b03-670eb4000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:24 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata24%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata24')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata24')\" /><title /><updated>2016-05-12T06:22:24Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata24</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata24\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b9fba227-0002-0034-3616-ac39af000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'abc08c97-0002-0025-2b03-670eb4000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:24 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1833,10 +1833,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'daaf3120-0002-0014-5816-ac5563000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7d580a1b-0002-002f-7803-67173d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:28 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1846,10 +1846,10 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'daaf3120-0002-0014-5816-ac5563000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7d580a1b-0002-002f-7803-67173d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:28 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:01 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -1861,12 +1861,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata31\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a3ccae43-0002-001a-7116-acb968000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '6eeffdd2-0002-000f-0403-677bf1000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata31\')',
-  date: 'Thu, 12 May 2016 06:22:28 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1878,12 +1878,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata31\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a3ccae43-0002-001a-7116-acb968000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '6eeffdd2-0002-000f-0403-677bf1000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata31\')',
-  date: 'Thu, 12 May 2016 06:22:28 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1893,15 +1893,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata31', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A30.2117195Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A02.8383237Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata31(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f0aba39e-0002-0047-6616-ac496c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2c7e85db-0002-0003-4203-679500000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata31(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:22:29 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1911,15 +1911,15 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata31', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A30.2117195Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A02.8383237Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata31(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f0aba39e-0002-0047-6616-ac496c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2c7e85db-0002-0003-4203-679500000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata31(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:22:29 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1929,15 +1929,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata31', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A31.9249745Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A03.516682Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata31(PartitionKey=\'partition1\',RowKey=\'row2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f1b7a3d9-0002-004a-4316-aca660000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'dbca23cc-0002-001f-5703-674d17000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata31(PartitionKey=\'partition1\',RowKey=\'row2\')',
-  date: 'Thu, 12 May 2016 06:22:31 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1947,43 +1947,43 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata31', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A31.9249745Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A03.516682Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata31(PartitionKey=\'partition1\',RowKey=\'row2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f1b7a3d9-0002-004a-4316-aca660000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'dbca23cc-0002-001f-5703-674d17000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata31(PartitionKey=\'partition1\',RowKey=\'row2\')',
-  date: 'Thu, 12 May 2016 06:22:31 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata31')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata31\",\"value\":[{\"odata.type\":\"xplat.tablepayloadteststestdata31\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata31(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A22%3A30.2117195Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata31(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:22:30.2117195Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.type\":\"xplat.tablepayloadteststestdata31\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata31(PartitionKey='partition1',RowKey='row2')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A22%3A31.9249745Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata31(PartitionKey='partition1',RowKey='row2')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:22:31.9249745Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata31\",\"value\":[{\"odata.type\":\"xplat.tablepayloadteststestdata31\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata31(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A02.8383237Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata31(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:26:02.8383237Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.type\":\"xplat.tablepayloadteststestdata31\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata31(PartitionKey='partition1',RowKey='row2')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A03.516682Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata31(PartitionKey='partition1',RowKey='row2')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:26:03.516682Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e48b9315-0002-002e-2716-ac16c0000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'e44fc3f7-0002-0015-0503-67549e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:33 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata31')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata31\",\"value\":[{\"odata.type\":\"xplat.tablepayloadteststestdata31\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata31(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A22%3A30.2117195Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata31(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:22:30.2117195Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.type\":\"xplat.tablepayloadteststestdata31\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata31(PartitionKey='partition1',RowKey='row2')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A22%3A31.9249745Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata31(PartitionKey='partition1',RowKey='row2')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:22:31.9249745Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata31\",\"value\":[{\"odata.type\":\"xplat.tablepayloadteststestdata31\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata31(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A02.8383237Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata31(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:26:02.8383237Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.type\":\"xplat.tablepayloadteststestdata31\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata31(PartitionKey='partition1',RowKey='row2')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A03.516682Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata31(PartitionKey='partition1',RowKey='row2')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:26:03.516682Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e48b9315-0002-002e-2716-ac16c0000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'e44fc3f7-0002-0015-0503-67549e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:33 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -1995,12 +1995,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata32\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '757bd030-0002-0015-3016-ac549e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'cee92a1d-0002-0009-3003-678c89000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata32\')',
-  date: 'Thu, 12 May 2016 06:22:35 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2012,12 +2012,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata32\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '757bd030-0002-0015-3016-ac549e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'cee92a1d-0002-0009-3003-678c89000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata32\')',
-  date: 'Thu, 12 May 2016 06:22:35 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2027,15 +2027,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata32', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A36.3711721Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A04.6154688Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata32(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e0421b64-0002-0038-6316-acd75e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c9047efa-0002-0026-1103-670db3000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata32(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:22:35 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2045,15 +2045,15 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata32', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A36.3711721Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A04.6154688Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata32(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e0421b64-0002-0038-6316-acd75e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c9047efa-0002-0026-1103-670db3000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata32(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:22:35 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2063,15 +2063,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata32', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A39.2788262Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A04.9556708Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata32(PartitionKey=\'partition1\',RowKey=\'row2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3f249fc6-0002-0025-5316-ac0eb4000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9981b3cf-0002-0043-0103-67bcee000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata32(PartitionKey=\'partition1\',RowKey=\'row2\')',
-  date: 'Thu, 12 May 2016 06:22:38 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2081,43 +2081,43 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata32', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A39.2788262Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A04.9556708Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata32(PartitionKey=\'partition1\',RowKey=\'row2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3f249fc6-0002-0025-5316-ac0eb4000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9981b3cf-0002-0043-0103-67bcee000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata32(PartitionKey=\'partition1\',RowKey=\'row2\')',
-  date: 'Thu, 12 May 2016 06:22:38 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata32')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata32\",\"value\":[{\"odata.type\":\"xplat.tablepayloadteststestdata32\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata32(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A22%3A36.3711721Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata32(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:22:36.3711721Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.type\":\"xplat.tablepayloadteststestdata32\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata32(PartitionKey='partition1',RowKey='row2')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A22%3A39.2788262Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata32(PartitionKey='partition1',RowKey='row2')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:22:39.2788262Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata32\",\"value\":[{\"odata.type\":\"xplat.tablepayloadteststestdata32\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata32(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A04.6154688Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata32(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:26:04.6154688Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.type\":\"xplat.tablepayloadteststestdata32\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata32(PartitionKey='partition1',RowKey='row2')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A04.9556708Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata32(PartitionKey='partition1',RowKey='row2')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:26:04.9556708Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fb9efe9d-0002-0024-1916-ac0f49000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'affc8625-0002-0024-6803-670f49000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:39 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata32')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata32\",\"value\":[{\"odata.type\":\"xplat.tablepayloadteststestdata32\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata32(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A22%3A36.3711721Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata32(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:22:36.3711721Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.type\":\"xplat.tablepayloadteststestdata32\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata32(PartitionKey='partition1',RowKey='row2')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A22%3A39.2788262Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata32(PartitionKey='partition1',RowKey='row2')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:22:39.2788262Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata32\",\"value\":[{\"odata.type\":\"xplat.tablepayloadteststestdata32\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata32(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A04.6154688Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata32(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:26:04.6154688Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.type\":\"xplat.tablepayloadteststestdata32\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata32(PartitionKey='partition1',RowKey='row2')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A04.9556708Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata32(PartitionKey='partition1',RowKey='row2')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:26:04.9556708Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fb9efe9d-0002-0024-1916-ac0f49000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'affc8625-0002-0024-6803-670f49000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:39 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2129,12 +2129,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata33\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f80b9724-0002-001d-1516-ac4fed000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '78413ce5-0002-0019-1703-67ba6f000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata33\')',
-  date: 'Thu, 12 May 2016 06:22:41 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2146,12 +2146,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata33\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f80b9724-0002-001d-1516-ac4fed000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '78413ce5-0002-0019-1703-67ba6f000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata33\')',
-  date: 'Thu, 12 May 2016 06:22:41 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2161,15 +2161,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata33', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A43.990431Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A06.4231266Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata33(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3ab783c4-0002-0018-6816-acbb92000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a6713622-0002-0022-5a03-67f831000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata33(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:22:43 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2179,15 +2179,15 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata33', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A43.990431Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A06.4231266Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata33(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3ab783c4-0002-0018-6816-acbb92000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a6713622-0002-0022-5a03-67f831000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata33(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:22:43 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2197,15 +2197,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata33', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A45.5164974Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A06.793739Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata33(PartitionKey=\'partition1\',RowKey=\'row2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd50659f5-0002-0023-2f16-acf9cc000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'da0a6ef0-0002-003f-2503-6721db000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata33(PartitionKey=\'partition1\',RowKey=\'row2\')',
-  date: 'Thu, 12 May 2016 06:22:45 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2215,43 +2215,43 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata33', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A45.5164974Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A06.793739Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata33(PartitionKey=\'partition1\',RowKey=\'row2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd50659f5-0002-0023-2f16-acf9cc000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'da0a6ef0-0002-003f-2503-6721db000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata33(PartitionKey=\'partition1\',RowKey=\'row2\')',
-  date: 'Thu, 12 May 2016 06:22:45 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata33')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata33\",\"value\":[{\"odata.type\":\"xplat.tablepayloadteststestdata33\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata33(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A22%3A43.990431Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata33(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:22:43.990431Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.type\":\"xplat.tablepayloadteststestdata33\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata33(PartitionKey='partition1',RowKey='row2')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A22%3A45.5164974Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata33(PartitionKey='partition1',RowKey='row2')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:22:45.5164974Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata33\",\"value\":[{\"odata.type\":\"xplat.tablepayloadteststestdata33\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata33(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A06.4231266Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata33(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:26:06.4231266Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.type\":\"xplat.tablepayloadteststestdata33\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata33(PartitionKey='partition1',RowKey='row2')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A06.793739Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata33(PartitionKey='partition1',RowKey='row2')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:26:06.793739Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b175a955-0002-004b-4416-aca79d000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '99153f54-0002-000c-6903-6778f6000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:46 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata33')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata33\",\"value\":[{\"odata.type\":\"xplat.tablepayloadteststestdata33\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata33(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A22%3A43.990431Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata33(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:22:43.990431Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.type\":\"xplat.tablepayloadteststestdata33\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata33(PartitionKey='partition1',RowKey='row2')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A22%3A45.5164974Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata33(PartitionKey='partition1',RowKey='row2')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:22:45.5164974Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata33\",\"value\":[{\"odata.type\":\"xplat.tablepayloadteststestdata33\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata33(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A06.4231266Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata33(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:26:06.4231266Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.type\":\"xplat.tablepayloadteststestdata33\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata33(PartitionKey='partition1',RowKey='row2')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A06.793739Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata33(PartitionKey='partition1',RowKey='row2')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:26:06.793739Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b175a955-0002-004b-4416-aca79d000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '99153f54-0002-000c-6903-6778f6000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:46 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2263,12 +2263,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata34\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2808c125-0002-0017-4916-ac5664000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'f603d039-0002-003d-7303-672321000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata34\')',
-  date: 'Thu, 12 May 2016 06:22:48 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2280,12 +2280,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata34\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2808c125-0002-0017-4916-ac5664000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'f603d039-0002-003d-7303-672321000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata34\')',
-  date: 'Thu, 12 May 2016 06:22:48 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2295,15 +2295,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata34', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A50.8929414Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A07.9436718Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata34(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3f24a694-0002-0025-2416-ac0eb4000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'd5a5721c-0002-0027-1503-670c4e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata34(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:22:50 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2313,15 +2313,15 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata34', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A50.8929414Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A07.9436718Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata34(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3f24a694-0002-0025-2416-ac0eb4000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'd5a5721c-0002-0027-1503-670c4e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata34(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:22:50 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2331,15 +2331,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata34', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A51.9237906Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A08.7268392Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata34(PartitionKey=\'partition1\',RowKey=\'row2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f7f18e3d-0002-002d-6f16-ac15c7000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '1869604b-0002-0039-7e03-67d6a3000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata34(PartitionKey=\'partition1\',RowKey=\'row2\')',
-  date: 'Thu, 12 May 2016 06:22:51 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2349,71 +2349,71 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata34', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A22%3A51.9237906Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A08.7268392Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata34(PartitionKey=\'partition1\',RowKey=\'row2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f7f18e3d-0002-002d-6f16-ac15c7000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '1869604b-0002-0039-7e03-67d6a3000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata34(PartitionKey=\'partition1\',RowKey=\'row2\')',
-  date: 'Thu, 12 May 2016 06:22:51 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata34')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata34\",\"value\":[{\"odata.type\":\"xplat.tablepayloadteststestdata34\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata34(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A22%3A50.8929414Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata34(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:22:50.8929414Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.type\":\"xplat.tablepayloadteststestdata34\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata34(PartitionKey='partition1',RowKey='row2')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A22%3A51.9237906Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata34(PartitionKey='partition1',RowKey='row2')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:22:51.9237906Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata34\",\"value\":[{\"odata.type\":\"xplat.tablepayloadteststestdata34\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata34(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A07.9436718Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata34(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:26:07.9436718Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.type\":\"xplat.tablepayloadteststestdata34\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata34(PartitionKey='partition1',RowKey='row2')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A08.7268392Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata34(PartitionKey='partition1',RowKey='row2')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:26:08.7268392Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1adb07f7-0002-0000-1816-ac9607000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '6b17ff49-0002-0042-7403-67bd13000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:53 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata34')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata34\",\"value\":[{\"odata.type\":\"xplat.tablepayloadteststestdata34\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata34(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A22%3A50.8929414Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata34(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:22:50.8929414Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.type\":\"xplat.tablepayloadteststestdata34\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata34(PartitionKey='partition1',RowKey='row2')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A22%3A51.9237906Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata34(PartitionKey='partition1',RowKey='row2')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:22:51.9237906Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata34\",\"value\":[{\"odata.type\":\"xplat.tablepayloadteststestdata34\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata34(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A07.9436718Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata34(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:26:07.9436718Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.type\":\"xplat.tablepayloadteststestdata34\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata34(PartitionKey='partition1',RowKey='row2')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A08.7268392Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata34(PartitionKey='partition1',RowKey='row2')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:26:08.7268392Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1adb07f7-0002-0000-1816-ac9607000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '6b17ff49-0002-0042-7403-67bd13000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:53 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata31%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata31')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata31')\" /><title /><updated>2016-05-12T06:22:54Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata31</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata31\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '673e569a-0002-003b-4916-acd459000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'e46bc3ce-0002-004b-4903-67a79d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:54 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata31%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata31')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata31')\" /><title /><updated>2016-05-12T06:22:54Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata31</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata31\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '673e569a-0002-003b-4916-acd459000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'e46bc3ce-0002-004b-4903-67a79d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:54 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2423,10 +2423,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f80b9bbe-0002-001d-2116-ac4fed000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '96ba8a89-0002-0018-2203-67bb92000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:56 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2436,38 +2436,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f80b9bbe-0002-001d-2116-ac4fed000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '96ba8a89-0002-0018-2203-67bb92000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:56 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata32%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata32')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata32')\" /><title /><updated>2016-05-12T06:22:58Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata32</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata32\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fea69e30-0002-002c-3616-ac143a000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3830e00c-0002-0021-1603-67fb36000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:58 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata32%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata32')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata32')\" /><title /><updated>2016-05-12T06:22:58Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata32</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata32\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fea69e30-0002-002c-3616-ac143a000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3830e00c-0002-0021-1603-67fb36000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:58 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2477,10 +2477,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f1b7bcb9-0002-004a-7d16-aca660000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '23f6bc72-0002-002a-2d03-67e342000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:59 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2490,38 +2490,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f1b7bcb9-0002-004a-7d16-aca660000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '23f6bc72-0002-002a-2d03-67e342000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:22:59 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata33%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata33')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata33')\" /><title /><updated>2016-05-12T06:23:02Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata33</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata33\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0a3b0db7-0002-0004-4516-ac6385000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '19d00a42-0002-0033-7703-67cf2a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:01 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata33%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata33')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata33')\" /><title /><updated>2016-05-12T06:23:02Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata33</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata33\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0a3b0db7-0002-0004-4516-ac6385000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '19d00a42-0002-0033-7703-67cf2a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:01 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2531,10 +2531,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '93678c7b-0002-0021-6a16-acfb36000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a1ec647c-0002-0014-4703-675563000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:03 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2544,38 +2544,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '93678c7b-0002-0021-6a16-acfb36000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a1ec647c-0002-0014-4703-675563000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:03 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata34%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata34')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata34')\" /><title /><updated>2016-05-12T06:23:05Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata34</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata34\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '856595b8-0002-0049-1816-aca567000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c44c38df-0002-0045-6a03-674b96000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:04 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:11 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata34%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata34')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata34')\" /><title /><updated>2016-05-12T06:23:05Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata34</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata34\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '856595b8-0002-0049-1816-aca567000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c44c38df-0002-0045-6a03-674b96000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:04 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:11 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2585,10 +2585,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3ab798e9-0002-0018-3316-acbb92000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3f95628b-0002-003a-1d03-67d5a4000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:06 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:12 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2598,10 +2598,10 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3ab798e9-0002-0018-3316-acbb92000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3f95628b-0002-003a-1d03-67d5a4000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:06 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:12 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -2613,12 +2613,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata41\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4b87afd0-0002-004d-7f16-ac50e5000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '359b349e-0002-0007-1803-676082000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata41\')',
-  date: 'Thu, 12 May 2016 06:23:07 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:12 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2630,12 +2630,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata41\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4b87afd0-0002-004d-7f16-ac50e5000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '359b349e-0002-0007-1803-676082000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata41\')',
-  date: 'Thu, 12 May 2016 06:23:07 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:12 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2645,15 +2645,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata41', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A23%3A09.8966888Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A13.2794066Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata41(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b175b584-0002-004b-0e16-aca79d000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7a63cc9e-0002-0038-2703-67d75e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata41(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:23:09 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:12 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2663,15 +2663,15 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata41', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A23%3A09.8966888Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A13.2794066Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata41(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b175b584-0002-004b-0e16-aca79d000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7a63cc9e-0002-0038-2703-67d75e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata41(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:23:09 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:12 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2681,15 +2681,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata41', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A23%3A12.1794333Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A13.5465917Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata41(PartitionKey=\'partition1\',RowKey=\'row2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fe6fa086-0002-0019-6416-acba6f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2c94e783-0002-0005-7f03-676278000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata41(PartitionKey=\'partition1\',RowKey=\'row2\')',
-  date: 'Thu, 12 May 2016 06:23:12 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:13 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2699,43 +2699,43 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata41', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A23%3A12.1794333Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A13.5465917Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata41(PartitionKey=\'partition1\',RowKey=\'row2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fe6fa086-0002-0019-6416-acba6f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2c94e783-0002-0005-7f03-676278000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata41(PartitionKey=\'partition1\',RowKey=\'row2\')',
-  date: 'Thu, 12 May 2016 06:23:12 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:13 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata41')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata41\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A23%3A09.8966888Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:23:09.8966888Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A23%3A12.1794333Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2016-05-12T06:23:12.1794333Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata41\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A13.2794066Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:13.2794066Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A13.5465917Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2017-01-05T03:26:13.5465917Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f7f199fe-0002-002d-3d16-ac15c7000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '8036816e-0002-000e-4c03-677a0c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:12 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:13 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata41')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata41\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A23%3A09.8966888Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:23:09.8966888Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A23%3A12.1794333Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2016-05-12T06:23:12.1794333Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata41\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A13.2794066Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:13.2794066Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A13.5465917Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2017-01-05T03:26:13.5465917Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f7f199fe-0002-002d-3d16-ac15c7000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '8036816e-0002-000e-4c03-677a0c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:12 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:13 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2747,12 +2747,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata42\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2808d767-0002-0017-7c16-ac5664000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '754fdd3d-0002-000a-3203-678f8e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata42\')',
-  date: 'Thu, 12 May 2016 06:23:14 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:14 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2764,12 +2764,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata42\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2808d767-0002-0017-7c16-ac5664000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '754fdd3d-0002-000a-3203-678f8e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata42\')',
-  date: 'Thu, 12 May 2016 06:23:14 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:14 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2779,15 +2779,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata42', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A23%3A17.1295297Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A14.6856375Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata42(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fea6a43f-0002-002c-1916-ac143a000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'd427fefa-0002-003b-5c03-67d459000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata42(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:23:16 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:14 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2797,15 +2797,15 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata42', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A23%3A17.1295297Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A14.6856375Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata42(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fea6a43f-0002-002c-1916-ac143a000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'd427fefa-0002-003b-5c03-67d459000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata42(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:23:16 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:14 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2815,15 +2815,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata42', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A23%3A18.7109395Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A15.2879285Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata42(PartitionKey=\'partition1\',RowKey=\'row2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '757bdd53-0002-0015-1d16-ac549e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'b8ce137a-0002-001c-6b03-674e10000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata42(PartitionKey=\'partition1\',RowKey=\'row2\')',
-  date: 'Thu, 12 May 2016 06:23:18 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:14 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2833,43 +2833,43 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata42', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A23%3A18.7109395Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A15.2879285Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata42(PartitionKey=\'partition1\',RowKey=\'row2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '757bdd53-0002-0015-1d16-ac549e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'b8ce137a-0002-001c-6b03-674e10000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata42(PartitionKey=\'partition1\',RowKey=\'row2\')',
-  date: 'Thu, 12 May 2016 06:23:18 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:14 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata42')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata42\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A23%3A17.1295297Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:23:17.1295297Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A23%3A18.7109395Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2016-05-12T06:23:18.7109395Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata42\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A14.6856375Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:14.6856375Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A15.2879285Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2017-01-05T03:26:15.2879285Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '750e0887-0002-0031-4816-accdd0000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '064710da-0002-0010-6203-67a0e1000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:20 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:15 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata42')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata42\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A23%3A17.1295297Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:23:17.1295297Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A23%3A18.7109395Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2016-05-12T06:23:18.7109395Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata42\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A14.6856375Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:14.6856375Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A15.2879285Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2017-01-05T03:26:15.2879285Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '750e0887-0002-0031-4816-accdd0000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '064710da-0002-0010-6203-67a0e1000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:20 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:15 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2881,12 +2881,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata43\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9dd92b5f-0002-0006-2d16-ac617f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'df1c2c73-0002-0006-5903-67617f000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata43\')',
-  date: 'Thu, 12 May 2016 06:23:21 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:15 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2898,12 +2898,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata43\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9dd92b5f-0002-0006-2d16-ac617f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'df1c2c73-0002-0006-5903-67617f000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata43\')',
-  date: 'Thu, 12 May 2016 06:23:21 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:15 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2913,15 +2913,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata43', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A23%3A23.4696105Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A16.6104834Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata43(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd5067900-0002-0023-3316-acf9cc000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '47719803-0002-004a-0303-67a660000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata43(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:23:23 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:16 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2931,15 +2931,15 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata43', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A23%3A23.4696105Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A16.6104834Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata43(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd5067900-0002-0023-3316-acf9cc000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '47719803-0002-004a-0303-67a660000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata43(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:23:23 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:16 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2949,15 +2949,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata43', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A23%3A25.1887274Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A17.5763645Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata43(PartitionKey=\'partition1\',RowKey=\'row2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c236cd1c-0002-0020-0416-acfacb000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4fca9b99-0002-0004-3803-676385000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata43(PartitionKey=\'partition1\',RowKey=\'row2\')',
-  date: 'Thu, 12 May 2016 06:23:24 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:16 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -2967,43 +2967,43 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata43', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A23%3A25.1887274Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A17.5763645Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata43(PartitionKey=\'partition1\',RowKey=\'row2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c236cd1c-0002-0020-0416-acfacb000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4fca9b99-0002-0004-3803-676385000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata43(PartitionKey=\'partition1\',RowKey=\'row2\')',
-  date: 'Thu, 12 May 2016 06:23:24 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:16 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata43')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata43\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A23%3A23.4696105Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:23:23.4696105Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A23%3A25.1887274Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2016-05-12T06:23:25.1887274Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata43\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A16.6104834Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:16.6104834Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A17.5763645Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2017-01-05T03:26:17.5763645Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cc36d518-0002-002f-1616-ac173d000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7d1360d6-0002-0048-6703-67a49a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:26 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:17 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata43')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata43\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A23%3A23.4696105Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:23:23.4696105Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A23%3A25.1887274Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2016-05-12T06:23:25.1887274Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata43\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A16.6104834Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:16.6104834Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A17.5763645Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2017-01-05T03:26:17.5763645Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cc36d518-0002-002f-1616-ac173d000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7d1360d6-0002-0048-6703-67a49a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:26 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:17 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3015,12 +3015,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata44\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '93679620-0002-0021-1516-acfb36000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'de3ebdcc-0002-0046-0a03-674891000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata44\')',
-  date: 'Thu, 12 May 2016 06:23:28 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:16 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3032,12 +3032,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata44\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '93679620-0002-0021-1516-acfb36000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'de3ebdcc-0002-0046-0a03-674891000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata44\')',
-  date: 'Thu, 12 May 2016 06:23:28 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:16 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3047,15 +3047,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata44', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A23%3A30.2182575Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A18.4429253Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata44(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '757be0f2-0002-0015-4b16-ac549e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '0d10edda-0002-003c-6303-6722dc000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata44(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:23:29 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:17 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3065,15 +3065,15 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata44', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A23%3A30.2182575Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A18.4429253Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata44(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '757be0f2-0002-0015-4b16-ac549e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '0d10edda-0002-003c-6303-6722dc000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata44(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:23:29 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:17 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3083,15 +3083,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata44', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A23%3A32.4669634Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A18.8426867Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata44(PartitionKey=\'partition1\',RowKey=\'row2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a088e677-0002-0042-0316-acbd13000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '27e9fd1d-0002-0030-7603-67cc2d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata44(PartitionKey=\'partition1\',RowKey=\'row2\')',
-  date: 'Thu, 12 May 2016 06:23:31 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:18 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3101,71 +3101,71 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata44', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A23%3A32.4669634Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A18.8426867Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata44(PartitionKey=\'partition1\',RowKey=\'row2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a088e677-0002-0042-0316-acbd13000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '27e9fd1d-0002-0030-7603-67cc2d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata44(PartitionKey=\'partition1\',RowKey=\'row2\')',
-  date: 'Thu, 12 May 2016 06:23:31 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:18 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata44')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata44\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A23%3A30.2182575Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:23:30.2182575Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A23%3A32.4669634Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2016-05-12T06:23:32.4669634Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata44\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A18.4429253Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:18.4429253Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A18.8426867Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2017-01-05T03:26:18.8426867Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6ea0782c-0002-000c-2916-ac78f6000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7644753c-0002-0011-0b03-67a11c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:33 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata44')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata44\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A23%3A30.2182575Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:23:30.2182575Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A23%3A32.4669634Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2016-05-12T06:23:32.4669634Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata44\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A18.4429253Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:18.4429253Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A18.8426867Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2017-01-05T03:26:18.8426867Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property@odata.type\":\"Edm.Int64\",\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty@odata.type\":\"Edm.Guid\",\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty@odata.type\":\"Edm.DateTime\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6ea0782c-0002-000c-2916-ac78f6000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7644753c-0002-0011-0b03-67a11c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:33 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata41%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata41')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata41')\" /><title /><updated>2016-05-12T06:23:35Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata41</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata41\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '113f8793-0002-0008-2516-ac8d74000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c458ad3c-0002-002e-2f03-6716c0000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:34 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata41%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata41')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata41')\" /><title /><updated>2016-05-12T06:23:35Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata41</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata41\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '113f8793-0002-0008-2516-ac8d74000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c458ad3c-0002-002e-2f03-6716c0000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:34 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3175,10 +3175,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd564a2c1-0002-001c-7e16-ac4e10000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a1792933-0002-0037-4003-673aa8000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:36 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3188,38 +3188,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd564a2c1-0002-001c-7e16-ac4e10000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a1792933-0002-0037-4003-673aa8000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:36 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata42%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata42')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata42')\" /><title /><updated>2016-05-12T06:23:38Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata42</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata42\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3217fe9b-0002-0005-2816-ac6278000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2d9ca064-0002-0040-1703-67bfe9000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:37 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata42%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata42')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata42')\" /><title /><updated>2016-05-12T06:23:38Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata42</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata42\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3217fe9b-0002-0005-2816-ac6278000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2d9ca064-0002-0040-1703-67bfe9000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:37 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3229,10 +3229,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '750e17b2-0002-0031-1716-accdd0000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '60d6adcf-0002-0049-4c03-67a567000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:39 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3242,38 +3242,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '750e17b2-0002-0031-1716-accdd0000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '60d6adcf-0002-0049-4c03-67a567000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:39 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata43%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata43')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata43')\" /><title /><updated>2016-05-12T06:23:41Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata43</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata43\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a5898ac5-0002-003d-7e16-ac2321000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '37a15be6-0002-0016-1b03-675799000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:41 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata43%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata43')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata43')\" /><title /><updated>2016-05-12T06:23:41Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata43</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata43\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a5898ac5-0002-003d-7e16-ac2321000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '37a15be6-0002-0016-1b03-675799000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:41 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3283,10 +3283,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1d26261d-0002-0040-2716-acbfe9000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '891fb4a6-0002-000b-7603-678e73000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:42 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3296,38 +3296,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1d26261d-0002-0040-2716-acbfe9000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '891fb4a6-0002-000b-7603-678e73000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:42 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata44%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata44')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata44')\" /><title /><updated>2016-05-12T06:23:44Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata44</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata44\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd68f33b3-0002-0039-7416-acd6a3000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '41f73073-0002-0028-3503-67e1b8000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:44 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata44%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata44')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata44')\" /><title /><updated>2016-05-12T06:23:44Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata44</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata44\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd68f33b3-0002-0039-7416-acd6a3000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '41f73073-0002-0028-3503-67e1b8000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:44 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3337,10 +3337,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a3cce246-0002-001a-2816-acb968000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '72ab44eb-0002-0031-2603-67cdd0000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:46 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:22 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3350,10 +3350,10 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a3cce246-0002-001a-2816-acb968000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '72ab44eb-0002-0031-2603-67cdd0000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:46 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:22 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -3365,12 +3365,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata51\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ba4ee00e-0002-0041-7b16-acbe14000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '138f6196-0002-0012-4603-67a21b000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata51\')',
-  date: 'Thu, 12 May 2016 06:23:47 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:22 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3382,12 +3382,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata51\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ba4ee00e-0002-0041-7b16-acbe14000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '138f6196-0002-0012-4603-67a21b000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata51\')',
-  date: 'Thu, 12 May 2016 06:23:47 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:22 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3397,15 +3397,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata51', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A23%3A50.1057648Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A23.482704Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata51(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fe6fc0ab-0002-0019-7616-acba6f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '827a0457-0002-001b-0203-67b895000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata51(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:23:50 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3415,15 +3415,15 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata51', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A23%3A50.1057648Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A23.482704Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata51(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fe6fc0ab-0002-0019-7616-acba6f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '827a0457-0002-001b-0203-67b895000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata51(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:23:50 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3433,15 +3433,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata51', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A23%3A51.1896112Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A24.0542915Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata51(PartitionKey=\'partition1\',RowKey=\'row2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e48be281-0002-002e-7c16-ac16c0000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '09e71e91-0002-004c-0803-675118000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata51(PartitionKey=\'partition1\',RowKey=\'row2\')',
-  date: 'Thu, 12 May 2016 06:23:50 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3451,43 +3451,43 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata51', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A23%3A51.1896112Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A24.0542915Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata51(PartitionKey=\'partition1\',RowKey=\'row2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e48be281-0002-002e-7c16-ac16c0000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '09e71e91-0002-004c-0803-675118000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata51(PartitionKey=\'partition1\',RowKey=\'row2\')',
-  date: 'Thu, 12 May 2016 06:23:50 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata51')
-  .reply(200, "{\"value\":[{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:23:50.1057648Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2016-05-12T06:23:51.1896112Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:23.482704Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2017-01-05T03:26:24.0542915Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'daaf50cd-0002-0014-1616-ac5563000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3964a1a6-0002-002d-6203-6715c7000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:54 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata51')
-  .reply(200, "{\"value\":[{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:23:50.1057648Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2016-05-12T06:23:51.1896112Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:23.482704Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2017-01-05T03:26:24.0542915Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'daaf50cd-0002-0014-1616-ac5563000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3964a1a6-0002-002d-6203-6715c7000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:54 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3499,12 +3499,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata52\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '113f8cc4-0002-0008-4116-ac8d74000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4c536f32-0002-0036-7003-673b55000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata52\')',
-  date: 'Thu, 12 May 2016 06:23:54 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3516,12 +3516,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata52\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '113f8cc4-0002-0008-4116-ac8d74000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4c536f32-0002-0036-7003-673b55000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata52\')',
-  date: 'Thu, 12 May 2016 06:23:54 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3531,15 +3531,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata52', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A23%3A56.6179379Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A25.3957915Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata52(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f80bafdb-0002-001d-7016-ac4fed000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c705de03-0002-002b-1003-67e2bf000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata52(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:23:56 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:25 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3549,15 +3549,15 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata52', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A23%3A56.6179379Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A25.3957915Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata52(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f80bafdb-0002-001d-7016-ac4fed000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c705de03-0002-002b-1003-67e2bf000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata52(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:23:56 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:25 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3567,15 +3567,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata52', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A23%3A58.2674597Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A25.6082374Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata52(PartitionKey=\'partition1\',RowKey=\'row2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '32180878-0002-0005-6116-ac6278000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'f9028c22-0002-0020-0a03-67facb000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata52(PartitionKey=\'partition1\',RowKey=\'row2\')',
-  date: 'Thu, 12 May 2016 06:23:57 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3585,43 +3585,43 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata52', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A23%3A58.2674597Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A25.6082374Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata52(PartitionKey=\'partition1\',RowKey=\'row2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '32180878-0002-0005-6116-ac6278000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'f9028c22-0002-0020-0a03-67facb000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata52(PartitionKey=\'partition1\',RowKey=\'row2\')',
-  date: 'Thu, 12 May 2016 06:23:57 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata52')
-  .reply(200, "{\"value\":[{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:23:56.6179379Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2016-05-12T06:23:58.2674597Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:25.3957915Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2017-01-05T03:26:25.6082374Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e27a2b2d-0002-0037-1016-ac3aa8000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9fd1f4f2-0002-0001-3c03-6797fa000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:59 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:25 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata52')
-  .reply(200, "{\"value\":[{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:23:56.6179379Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2016-05-12T06:23:58.2674597Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:25.3957915Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2017-01-05T03:26:25.6082374Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e27a2b2d-0002-0037-1016-ac3aa8000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9fd1f4f2-0002-0001-3c03-6797fa000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:23:59 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:25 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3633,12 +3633,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata53\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4bbb7a3c-0002-0026-2c16-ac0db3000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2accad61-0002-0032-3a03-67ced7000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata53\')',
-  date: 'Thu, 12 May 2016 06:24:00 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:26 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3650,12 +3650,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata53\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4bbb7a3c-0002-0026-2c16-ac0db3000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2accad61-0002-0032-3a03-67ced7000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata53\')',
-  date: 'Thu, 12 May 2016 06:24:00 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:26 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3665,15 +3665,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata53', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A24%3A03.2511499Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A27.0902865Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata53(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a3ccec9f-0002-001a-6516-acb968000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4d74a975-0002-0013-4603-67a3e6000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata53(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:24:02 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:27 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3683,15 +3683,15 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata53', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A24%3A03.2511499Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A27.0902865Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata53(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a3ccec9f-0002-001a-6516-acb968000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4d74a975-0002-0013-4603-67a3e6000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata53(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:24:02 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:27 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3701,15 +3701,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata53', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A24%3A04.8344504Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A27.6992398Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata53(PartitionKey=\'partition1\',RowKey=\'row2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c236d9de-0002-0020-7016-acfacb000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3a8621c6-0002-0008-5503-678d74000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata53(PartitionKey=\'partition1\',RowKey=\'row2\')',
-  date: 'Thu, 12 May 2016 06:24:04 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:27 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3719,43 +3719,43 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata53', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A24%3A04.8344504Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A27.6992398Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata53(PartitionKey=\'partition1\',RowKey=\'row2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c236d9de-0002-0020-7016-acfacb000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3a8621c6-0002-0008-5503-678d74000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata53(PartitionKey=\'partition1\',RowKey=\'row2\')',
-  date: 'Thu, 12 May 2016 06:24:04 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:27 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata53')
-  .reply(200, "{\"value\":[{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:24:03.2511499Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2016-05-12T06:24:04.8344504Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:27.0902865Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2017-01-05T03:26:27.6992398Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0a3b2e7a-0002-0004-0516-ac6385000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'bee27aab-0002-004d-4503-6750e5000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:06 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:27 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata53')
-  .reply(200, "{\"value\":[{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:24:03.2511499Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2016-05-12T06:24:04.8344504Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:27.0902865Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2017-01-05T03:26:27.6992398Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0a3b2e7a-0002-0004-0516-ac6385000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'bee27aab-0002-004d-4503-6750e5000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:06 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:27 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3767,12 +3767,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata54\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c236daf5-0002-0020-7116-acfacb000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'afc0de31-0002-001a-1603-67b968000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata54\')',
-  date: 'Thu, 12 May 2016 06:24:07 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:28 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3784,12 +3784,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata54\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c236daf5-0002-0020-7116-acfacb000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'afc0de31-0002-001a-1603-67b968000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata54\')',
-  date: 'Thu, 12 May 2016 06:24:07 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:28 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3799,15 +3799,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata54', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A24%3A08.635839Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A28.4269719Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata54(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '90ea1951-0002-0033-6d16-accf2a000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9969a659-0002-0023-5203-67f9cc000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata54(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:24:07 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:27 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3817,15 +3817,15 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata54', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A24%3A08.635839Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A28.4269719Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata54(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '90ea1951-0002-0033-6d16-accf2a000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9969a659-0002-0023-5203-67f9cc000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata54(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:24:07 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:27 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3835,15 +3835,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata54', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A24%3A11.366299Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A29.006257Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata54(PartitionKey=\'partition1\',RowKey=\'row2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1adb30fc-0002-0000-5016-ac9607000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '93619e7d-0002-002c-5803-67143a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata54(PartitionKey=\'partition1\',RowKey=\'row2\')',
-  date: 'Thu, 12 May 2016 06:24:10 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:28 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3853,71 +3853,71 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata54', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A24%3A11.366299Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A29.006257Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata54(PartitionKey=\'partition1\',RowKey=\'row2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1adb30fc-0002-0000-5016-ac9607000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '93619e7d-0002-002c-5803-67143a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata54(PartitionKey=\'partition1\',RowKey=\'row2\')',
-  date: 'Thu, 12 May 2016 06:24:10 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:28 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata54')
-  .reply(200, "{\"value\":[{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:24:08.635839Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2016-05-12T06:24:11.366299Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:28.4269719Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2017-01-05T03:26:29.006257Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '673e9147-0002-003b-1416-acd459000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'cc633016-0002-0035-3c03-673852000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:11 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:28 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata54')
-  .reply(200, "{\"value\":[{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:24:08.635839Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2016-05-12T06:24:11.366299Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:28.4269719Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"},{\"PartitionKey\":\"partition1\",\"RowKey\":\"row2\",\"Timestamp\":\"2017-01-05T03:26:29.006257Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '673e9147-0002-003b-1416-acd459000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'cc633016-0002-0035-3c03-673852000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:11 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:28 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata51%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata51')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata51')\" /><title /><updated>2016-05-12T06:24:14Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata51</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata51\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f1b7fd1e-0002-004a-7316-aca660000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9f19613e-0002-0002-5c03-6794fd000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:13 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:29 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata51%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata51')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata51')\" /><title /><updated>2016-05-12T06:24:14Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata51</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata51\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f1b7fd1e-0002-004a-7316-aca660000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9f19613e-0002-0002-5c03-6794fd000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:13 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:29 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3927,10 +3927,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '750e35e8-0002-0031-0316-accdd0000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7831abfe-0002-0047-1903-67496c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:16 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:29 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3940,38 +3940,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '750e35e8-0002-0031-0316-accdd0000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7831abfe-0002-0047-1903-67496c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:16 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:29 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata52%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata52')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata52')\" /><title /><updated>2016-05-12T06:24:17Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata52</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata52\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '113f935f-0002-0008-1b16-ac8d74000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'bb6cf308-0002-0000-6d03-679607000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:17 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata52%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata52')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata52')\" /><title /><updated>2016-05-12T06:24:17Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata52</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata52\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '113f935f-0002-0008-1b16-ac8d74000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'bb6cf308-0002-0000-6d03-679607000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:17 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3981,10 +3981,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a3ccf80d-0002-001a-3416-acb968000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a4b29588-0002-001d-3903-674fed000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:19 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -3994,38 +3994,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a3ccf80d-0002-001a-3416-acb968000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a4b29588-0002-001d-3903-674fed000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:19 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata53%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata53')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata53')\" /><title /><updated>2016-05-12T06:24:20Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata53</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata53\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cda7ffd1-0002-000b-3f16-ac8e73000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'abc09e39-0002-0025-3503-670eb4000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:20 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:31 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata53%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata53')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata53')\" /><title /><updated>2016-05-12T06:24:20Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata53</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata53\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cda7ffd1-0002-000b-3f16-ac8e73000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'abc09e39-0002-0025-3503-670eb4000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:20 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:31 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4035,10 +4035,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f0104f8a-0002-0013-1616-aca3e6000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7d581816-0002-002f-2603-67173d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:21 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:31 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4048,38 +4048,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f0104f8a-0002-0013-1616-aca3e6000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7d581816-0002-002f-2603-67173d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:21 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:31 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata54%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata54')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata54')\" /><title /><updated>2016-05-12T06:24:24Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata54</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata54\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c651c597-0002-004c-3216-ac5118000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '6ef0118a-0002-000f-7c03-677bf1000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:23 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:31 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata54%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata54')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata54')\" /><title /><updated>2016-05-12T06:24:24Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata54</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata54\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c651c597-0002-004c-3216-ac5118000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '6ef0118a-0002-000f-7c03-677bf1000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:23 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:31 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4089,10 +4089,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0ddcd52d-0002-0044-0d16-ac4a6b000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '0d9a7f79-0002-0041-1103-67be14000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:25 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:33 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4102,10 +4102,10 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0ddcd52d-0002-0044-0d16-ac4a6b000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '0d9a7f79-0002-0041-1103-67be14000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:25 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:33 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -4117,12 +4117,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata61\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b175dc79-0002-004b-5316-aca79d000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '198f175a-0002-000d-2003-67790b000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata61\')',
-  date: 'Thu, 12 May 2016 06:24:26 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:32 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4134,12 +4134,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata61\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b175dc79-0002-004b-5316-aca79d000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '198f175a-0002-000d-2003-67790b000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata61\')',
-  date: 'Thu, 12 May 2016 06:24:26 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:32 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4149,15 +4149,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata61', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A24%3A29.0579568Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A33.9029334Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata61(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6a768d77-0002-0045-3516-ac4b96000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2c7e9a2b-0002-0003-2703-679500000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata61(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:24:28 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:33 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4167,45 +4167,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata61', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A24%3A29.0579568Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A33.9029334Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata61(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6a768d77-0002-0045-3516-ac4b96000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2c7e9a2b-0002-0003-2703-679500000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata61(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:24:28 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:33 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata61(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata61/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata61\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata61(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A24%3A29.0579568Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata61(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:24:29.0579568Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata61/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata61\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata61(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A33.9029334Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata61(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:26:33.9029334Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A24%3A29.0579568Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A33.9029334Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '28091475-0002-0017-0b16-ac5664000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'dbca2fd3-0002-001f-6503-674d17000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:30 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:33 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata61(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata61/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata61\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata61(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A24%3A29.0579568Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata61(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:24:29.0579568Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata61/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata61\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata61(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A33.9029334Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata61(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:26:33.9029334Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A24%3A29.0579568Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A33.9029334Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '28091475-0002-0017-0b16-ac5664000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'dbca2fd3-0002-001f-6503-674d17000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:30 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:33 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4217,12 +4217,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata62\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f1b80d27-0002-004a-4916-aca660000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'e44fd8e5-0002-0015-5d03-67549e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata62\')',
-  date: 'Thu, 12 May 2016 06:24:31 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:34 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4234,12 +4234,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata62\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f1b80d27-0002-004a-4916-aca660000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'e44fd8e5-0002-0015-5d03-67549e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata62\')',
-  date: 'Thu, 12 May 2016 06:24:31 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:34 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4249,15 +4249,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata62', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A24%3A33.4750932Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A35.4557476Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata62(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '90ea2a6a-0002-0033-1e16-accf2a000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'cee93c00-0002-0009-1703-678c89000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata62(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:24:32 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:34 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4267,45 +4267,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata62', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A24%3A33.4750932Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A35.4557476Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata62(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '90ea2a6a-0002-0033-1e16-accf2a000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'cee93c00-0002-0009-1703-678c89000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata62(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:24:32 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:34 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata62(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata62/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata62\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata62(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A24%3A33.4750932Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata62(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:24:33.4750932Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata62/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata62\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata62(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A35.4557476Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata62(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:26:35.4557476Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A24%3A33.4750932Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A35.4557476Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8565cd2f-0002-0049-2016-aca567000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c904949a-0002-0026-6f03-670db3000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:35 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:34 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata62(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata62/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata62\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata62(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A24%3A33.4750932Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata62(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:24:33.4750932Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata62/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata62\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata62(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A35.4557476Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata62(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:26:35.4557476Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A24%3A33.4750932Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A35.4557476Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8565cd2f-0002-0049-2016-aca567000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c904949a-0002-0026-6f03-670db3000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:35 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:34 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4317,12 +4317,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata63\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c64e18c4-0002-0009-7a16-ac8c89000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9981c81c-0002-0043-4203-67bcee000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata63\')',
-  date: 'Thu, 12 May 2016 06:24:37 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:35 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4334,12 +4334,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata63\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c64e18c4-0002-0009-7a16-ac8c89000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9981c81c-0002-0043-4203-67bcee000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata63\')',
-  date: 'Thu, 12 May 2016 06:24:37 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:35 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4349,15 +4349,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata63', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A24%3A39.694971Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A36.4019176Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata63(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a589bf2e-0002-003d-6916-ac2321000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'affc951b-0002-0024-6c03-670f49000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata63(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:24:39 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:35 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4367,45 +4367,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata63', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A24%3A39.694971Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A36.4019176Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata63(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a589bf2e-0002-003d-6916-ac2321000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'affc951b-0002-0024-6c03-670f49000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata63(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:24:39 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:35 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata63(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata63/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata63\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata63(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A24%3A39.694971Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata63(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:24:39.694971Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata63/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata63\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata63(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A36.4019176Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata63(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:26:36.4019176Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A24%3A39.694971Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A36.4019176Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6a769b82-0002-0045-6516-ac4b96000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '784156df-0002-0019-1703-67ba6f000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:39 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:36 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata63(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata63/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata63\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata63(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A24%3A39.694971Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata63(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:24:39.694971Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata63/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata63\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata63(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A36.4019176Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata63(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:26:36.4019176Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A24%3A39.694971Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A36.4019176Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6a769b82-0002-0045-6516-ac4b96000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '784156df-0002-0019-1703-67ba6f000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:39 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:36 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4417,12 +4417,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata64\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3ab7efe1-0002-0018-6916-acbb92000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a6714a68-0002-0022-2a03-67f831000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata64\')',
-  date: 'Thu, 12 May 2016 06:24:42 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4434,12 +4434,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata64\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3ab7efe1-0002-0018-6916-acbb92000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a6714a68-0002-0022-2a03-67f831000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata64\')',
-  date: 'Thu, 12 May 2016 06:24:42 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4449,15 +4449,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata64', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A24%3A43.95648Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A37.5836613Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata64(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fb9f7ee3-0002-0024-4516-ac0f49000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '991549cf-0002-000c-4f03-6778f6000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata64(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:24:43 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4467,73 +4467,73 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata64', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A24%3A43.95648Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A37.5836613Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata64(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fb9f7ee3-0002-0024-4516-ac0f49000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '991549cf-0002-000c-4f03-6778f6000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata64(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:24:43 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata64(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata64/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata64\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata64(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A24%3A43.95648Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata64(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:24:43.95648Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata64/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata64\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata64(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A37.5836613Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata64(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:26:37.5836613Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A24%3A43.95648Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A37.5836613Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd564bcd4-0002-001c-4b16-ac4e10000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'f603f29f-0002-003d-5b03-672321000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:46 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata64(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata64/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata64\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata64(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A24%3A43.95648Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata64(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:24:43.95648Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata64/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata64\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata64(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A37.5836613Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata64(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:26:37.5836613Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A24%3A43.95648Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A37.5836613Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd564bcd4-0002-001c-4b16-ac4e10000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'f603f29f-0002-003d-5b03-672321000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:46 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata61%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata61')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata61')\" /><title /><updated>2016-05-12T06:24:48Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata61</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata61\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7eba72d1-0002-0012-1216-aca21b000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '10570eac-0002-001e-2a03-674cea000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:48 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata61%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata61')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata61')\" /><title /><updated>2016-05-12T06:24:48Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata61</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata61\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7eba72d1-0002-0012-1216-aca21b000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '10570eac-0002-001e-2a03-674cea000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:48 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4543,10 +4543,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3ab7f5f2-0002-0018-4816-acbb92000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'd5a57f3f-0002-0027-6003-670c4e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:48 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4556,38 +4556,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3ab7f5f2-0002-0018-4816-acbb92000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'd5a57f3f-0002-0027-6003-670c4e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:48 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata62%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata62')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata62')\" /><title /><updated>2016-05-12T06:24:51Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata62</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata62\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'df83c99f-0002-003e-7516-ac2026000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '186976aa-0002-0039-7503-67d6a3000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:50 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata62%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata62')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata62')\" /><title /><updated>2016-05-12T06:24:51Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata62</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata62\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'df83c99f-0002-003e-7516-ac2026000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '186976aa-0002-0039-7503-67d6a3000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:50 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4597,10 +4597,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fb9f8725-0002-0024-3a16-ac0f49000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '6b1811f8-0002-0042-5f03-67bd13000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:51 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4610,38 +4610,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fb9f8725-0002-0024-3a16-ac0f49000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '6b1811f8-0002-0042-5f03-67bd13000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:51 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata63%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata63')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata63')\" /><title /><updated>2016-05-12T06:24:54Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata63</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata63\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '113f9d37-0002-0008-6b16-ac8d74000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'e46bd35b-0002-004b-6903-67a79d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:54 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:40 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata63%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata63')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata63')\" /><title /><updated>2016-05-12T06:24:54Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata63</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata63\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '113f9d37-0002-0008-6b16-ac8d74000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'e46bd35b-0002-004b-6903-67a79d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:54 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:40 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4651,10 +4651,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fe6ff924-0002-0019-1d17-acba6f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '96ba9b30-0002-0018-5c03-67bb92000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:56 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4664,38 +4664,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fe6ff924-0002-0019-1d17-acba6f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '96ba9b30-0002-0018-5c03-67bb92000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:56 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata64%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata64')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata64')\" /><title /><updated>2016-05-12T06:24:57Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata64</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata64\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '113f9e4d-0002-0008-6717-ac8d74000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3830ede6-0002-0021-1803-67fb36000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:57 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:41 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata64%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata64')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata64')\" /><title /><updated>2016-05-12T06:24:57Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata64</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata64\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '113f9e4d-0002-0008-6717-ac8d74000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3830ede6-0002-0021-1803-67fb36000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:57 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:41 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4705,10 +4705,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c2f391ef-0002-0007-6517-ac6082000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '23f6d985-0002-002a-3f03-67e342000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:59 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:41 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4718,10 +4718,10 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c2f391ef-0002-0007-6517-ac6082000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '23f6d985-0002-002a-3f03-67e342000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:24:59 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:41 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -4733,12 +4733,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata71\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8e4d5ae8-0002-0036-1817-ac3b55000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '19d01732-0002-0033-6603-67cf2a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata71\')',
-  date: 'Thu, 12 May 2016 06:25:01 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:41 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4750,12 +4750,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata71\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8e4d5ae8-0002-0036-1817-ac3b55000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '19d01732-0002-0033-6603-67cf2a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata71\')',
-  date: 'Thu, 12 May 2016 06:25:01 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:41 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4765,15 +4765,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata71', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A02.7675229Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A42.4057194Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata71(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a3cd12c0-0002-001a-0117-acb968000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a1ec7d12-0002-0014-0a03-675563000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata71(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:25:02 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:41 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4783,45 +4783,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata71', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A02.7675229Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A42.4057194Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata71(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a3cd12c0-0002-001a-0117-acb968000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a1ec7d12-0002-0014-0a03-675563000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata71(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:25:02 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:41 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata71(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata71/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A25%3A02.7675229Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:25:02.7675229Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata71/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A42.4057194Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:42.4057194Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A02.7675229Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A42.4057194Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'efbd94e2-0002-001f-3817-ac4d17000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c44c4e84-0002-0045-6403-674b96000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:03 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:42 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata71(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata71/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A25%3A02.7675229Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:25:02.7675229Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata71/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A42.4057194Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:42.4057194Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A02.7675229Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A42.4057194Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'efbd94e2-0002-001f-3817-ac4d17000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c44c4e84-0002-0045-6403-674b96000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:03 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:42 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4833,12 +4833,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata72\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cf446bb6-0002-0010-4a17-aca0e1000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3f957407-0002-003a-3503-67d5a4000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata72\')',
-  date: 'Thu, 12 May 2016 06:25:06 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:43 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4850,12 +4850,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata72\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cf446bb6-0002-0010-4a17-aca0e1000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3f957407-0002-003a-3503-67d5a4000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata72\')',
-  date: 'Thu, 12 May 2016 06:25:06 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:43 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4865,15 +4865,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata72', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A07.7440213Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A43.9728022Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata72(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c2f39484-0002-0007-2b17-ac6082000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '359b47f5-0002-0007-7203-676082000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata72(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:25:07 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:43 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4883,45 +4883,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata72', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A07.7440213Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A43.9728022Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata72(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c2f39484-0002-0007-2b17-ac6082000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '359b47f5-0002-0007-7203-676082000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata72(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:25:07 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:43 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata72(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata72/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A25%3A07.7440213Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:25:07.7440213Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata72/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A43.9728022Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:43.9728022Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A07.7440213Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A43.9728022Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd564c569-0002-001c-2b17-ac4e10000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7a63e5de-0002-0038-4a03-67d75e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:09 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata72(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata72/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A25%3A07.7440213Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:25:07.7440213Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata72/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A43.9728022Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:43.9728022Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A07.7440213Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A43.9728022Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd564c569-0002-001c-2b17-ac4e10000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7a63e5de-0002-0038-4a03-67d75e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:09 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4933,12 +4933,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata73\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7eba7e01-0002-0012-7d17-aca21b000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2c94ff9c-0002-0005-2603-676278000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata73\')',
-  date: 'Thu, 12 May 2016 06:25:11 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4950,12 +4950,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata73\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7eba7e01-0002-0012-7d17-aca21b000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2c94ff9c-0002-0005-2603-676278000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata73\')',
-  date: 'Thu, 12 May 2016 06:25:11 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4965,15 +4965,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata73', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A12.6382017Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A45.3004797Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata73(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9367be44-0002-0021-6f17-acfb36000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '80369cf8-0002-000e-6603-677a0c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata73(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:25:12 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -4983,45 +4983,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata73', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A12.6382017Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A45.3004797Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata73(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9367be44-0002-0021-6f17-acfb36000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '80369cf8-0002-000e-6603-677a0c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata73(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:25:12 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata73(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata73/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A25%3A12.6382017Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:25:12.6382017Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata73/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A45.3004797Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:45.3004797Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A12.6382017Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A45.3004797Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8958d9df-0002-0046-2717-ac4891000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'ddef924d-0002-0017-1e03-675664000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:13 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata73(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata73/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A25%3A12.6382017Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:25:12.6382017Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata73/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A45.3004797Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:45.3004797Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A12.6382017Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A45.3004797Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8958d9df-0002-0046-2717-ac4891000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'ddef924d-0002-0017-1e03-675664000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:13 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5033,12 +5033,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata74\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '673ebe25-0002-003b-7117-acd459000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'b55e1bf7-0002-0034-0203-6739af000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata74\')',
-  date: 'Thu, 12 May 2016 06:25:14 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:45 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5050,12 +5050,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata74\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '673ebe25-0002-003b-7117-acd459000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'b55e1bf7-0002-0034-0203-6739af000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata74\')',
-  date: 'Thu, 12 May 2016 06:25:14 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:45 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5065,15 +5065,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata74', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A16.6885738Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A46.7428207Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata74(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '673ebef2-0002-003b-3117-acd459000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '79918d82-0002-0029-7603-67e045000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata74(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:25:16 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:46 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5083,73 +5083,73 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata74', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A16.6885738Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A46.7428207Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata74(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '673ebef2-0002-003b-3117-acd459000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '79918d82-0002-0029-7603-67e045000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata74(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:25:16 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:46 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata74(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata74/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A25%3A16.6885738Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:25:16.6885738Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata74/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A46.7428207Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:46.7428207Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A16.6885738Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A46.7428207Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c236f2e0-0002-0020-5d17-acfacb000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'd42815b9-0002-003b-3f03-67d459000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:18 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:46 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata74(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata74/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A25%3A16.6885738Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:25:16.6885738Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata74/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A26%3A46.7428207Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:46.7428207Z\",\"RegularDouble\":4.81516,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A16.6885738Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A46.7428207Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c236f2e0-0002-0020-5d17-acfacb000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'd42815b9-0002-003b-3f03-67d459000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:18 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:46 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata71%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata71')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata71')\" /><title /><updated>2016-05-12T06:25:20Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata71</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata71\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '39b36e2c-0002-0030-6317-accc2d000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'b8ce25d3-0002-001c-2403-674e10000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:19 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:46 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata71%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata71')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata71')\" /><title /><updated>2016-05-12T06:25:20Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata71</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata71\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '39b36e2c-0002-0030-6317-accc2d000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'b8ce25d3-0002-001c-2403-674e10000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:19 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:46 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5159,10 +5159,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '566d5b44-0002-001e-2e17-ac4cea000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'df1c4180-0002-0006-4103-67617f000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:19 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:47 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5172,38 +5172,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '566d5b44-0002-001e-2e17-ac4cea000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'df1c4180-0002-0006-4103-67617f000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:19 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:47 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata72%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata72')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata72')\" /><title /><updated>2016-05-12T06:25:23Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata72</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata72\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0ddce106-0002-0044-2817-ac4a6b000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4771a9b1-0002-004a-2f03-67a660000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:23 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:48 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata72%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata72')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata72')\" /><title /><updated>2016-05-12T06:25:23Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata72</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata72\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0ddce106-0002-0044-2817-ac4a6b000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4771a9b1-0002-004a-2f03-67a660000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:23 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:48 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5213,10 +5213,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6a264199-0002-003f-4d17-ac21db000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4fcaa94b-0002-0004-4c03-676385000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:24 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:48 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5226,38 +5226,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6a264199-0002-003f-4d17-ac21db000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4fcaa94b-0002-0004-4c03-676385000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:24 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:48 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata73%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata73')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata73')\" /><title /><updated>2016-05-12T06:25:27Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata73</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata73\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1adb5724-0002-0000-7617-ac9607000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7d137def-0002-0048-7503-67a49a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:26 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:49 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata73%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata73')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata73')\" /><title /><updated>2016-05-12T06:25:27Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata73</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata73\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1adb5724-0002-0000-7617-ac9607000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7d137def-0002-0048-7503-67a49a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:26 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:49 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5267,10 +5267,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '976514fb-0002-000e-5b17-ac7a0c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'b4ecbca9-0002-003e-5703-672026000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:28 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:49 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5280,38 +5280,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '976514fb-0002-000e-5b17-ac7a0c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'b4ecbca9-0002-003e-5703-672026000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:28 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:49 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata74%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata74')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata74')\" /><title /><updated>2016-05-12T06:25:30Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata74</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata74\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3ab81a8f-0002-0018-0617-acbb92000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'de3ed5d1-0002-0046-2f03-674891000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:29 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:48 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata74%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata74')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata74')\" /><title /><updated>2016-05-12T06:25:30Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata74</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata74\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3ab81a8f-0002-0018-0617-acbb92000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'de3ed5d1-0002-0046-2f03-674891000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:29 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:48 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5321,10 +5321,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3ab81be3-0002-0018-4917-acbb92000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '0d110263-0002-003c-4203-6722dc000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:31 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:49 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5334,10 +5334,10 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3ab81be3-0002-0018-4917-acbb92000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '0d110263-0002-003c-4203-6722dc000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:31 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:49 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -5349,12 +5349,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata81\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c5447cf2-0002-002b-7417-ace2bf000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '27ea0ab7-0002-0030-1203-67cc2d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata81\')',
-  date: 'Thu, 12 May 2016 06:25:31 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5366,12 +5366,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata81\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c5447cf2-0002-002b-7417-ace2bf000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '27ea0ab7-0002-0030-1203-67cc2d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata81\')',
-  date: 'Thu, 12 May 2016 06:25:31 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5381,15 +5381,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata81', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A34.5552434Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A52.3488203Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata81(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b175fb77-0002-004b-0c17-aca79d000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '764485a1-0002-0011-6903-67a11c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata81(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:25:33 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5399,45 +5399,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata81', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A34.5552434Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A52.3488203Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata81(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b175fb77-0002-004b-0c17-aca79d000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '764485a1-0002-0011-6903-67a11c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata81(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:25:33 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata81(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:25:34.5552434Z\",\"RegularDouble\":4.81516,\"NanDouble\":\"NaN\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:52.3488203Z\",\"RegularDouble\":4.81516,\"NanDouble\":\"NaN\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A34.5552434Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A52.3488203Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'efbda1f9-0002-001f-4a17-ac4d17000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c458bee6-0002-002e-5303-6716c0000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:35 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata81(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:25:34.5552434Z\",\"RegularDouble\":4.81516,\"NanDouble\":\"NaN\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:52.3488203Z\",\"RegularDouble\":4.81516,\"NanDouble\":\"NaN\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A34.5552434Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A52.3488203Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'efbda1f9-0002-001f-4a17-ac4d17000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c458bee6-0002-002e-5303-6716c0000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:35 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5449,12 +5449,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata82\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5db66b66-0002-001b-4a17-acb895000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a1793861-0002-0037-7803-673aa8000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata82\')',
-  date: 'Thu, 12 May 2016 06:25:37 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5466,12 +5466,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata82\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5db66b66-0002-001b-4a17-acb895000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a1793861-0002-0037-7803-673aa8000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata82\')',
-  date: 'Thu, 12 May 2016 06:25:37 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5481,15 +5481,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata82', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A38.6236577Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A52.6825359Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata82(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '566d62fc-0002-001e-2917-ac4cea000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2d9cbb1e-0002-0040-1203-67bfe9000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata82(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:25:37 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5499,45 +5499,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata82', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A38.6236577Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A52.6825359Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata82(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '566d62fc-0002-001e-2917-ac4cea000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2d9cbb1e-0002-0040-1203-67bfe9000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata82(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:25:37 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata82(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:25:38.6236577Z\",\"RegularDouble\":4.81516,\"NanDouble\":\"NaN\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:52.6825359Z\",\"RegularDouble\":4.81516,\"NanDouble\":\"NaN\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A38.6236577Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A52.6825359Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '691f4354-0002-002a-3a17-ace342000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '60d6bc65-0002-0049-6b03-67a567000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:41 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata82(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:25:38.6236577Z\",\"RegularDouble\":4.81516,\"NanDouble\":\"NaN\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:52.6825359Z\",\"RegularDouble\":4.81516,\"NanDouble\":\"NaN\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A38.6236577Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A52.6825359Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '691f4354-0002-002a-3a17-ace342000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '60d6bc65-0002-0049-6b03-67a567000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:41 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5549,12 +5549,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata83\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7ebd5fd0-0002-0001-2117-ac97fa000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '37a1780c-0002-0016-6f03-675799000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata83\')',
-  date: 'Thu, 12 May 2016 06:25:42 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:53 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5566,12 +5566,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata83\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7ebd5fd0-0002-0001-2117-ac97fa000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '37a1780c-0002-0016-6f03-675799000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata83\')',
-  date: 'Thu, 12 May 2016 06:25:42 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:53 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5581,15 +5581,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata83', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A44.0584136Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A53.8929045Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata83(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b9fc2a23-0002-0034-6017-ac39af000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '891fc533-0002-000b-4303-678e73000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata83(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:25:43 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:53 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5599,45 +5599,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata83', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A44.0584136Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A53.8929045Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata83(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b9fc2a23-0002-0034-6017-ac39af000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '891fc533-0002-000b-4303-678e73000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata83(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:25:43 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:53 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata83(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:25:44.0584136Z\",\"RegularDouble\":4.81516,\"NanDouble\":\"NaN\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:53.8929045Z\",\"RegularDouble\":4.81516,\"NanDouble\":\"NaN\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A44.0584136Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A53.8929045Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f0106831-0002-0013-4717-aca3e6000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '41f7471c-0002-0028-4003-67e1b8000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:45 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:53 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata83(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:25:44.0584136Z\",\"RegularDouble\":4.81516,\"NanDouble\":\"NaN\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:53.8929045Z\",\"RegularDouble\":4.81516,\"NanDouble\":\"NaN\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A44.0584136Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A53.8929045Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f0106831-0002-0013-4717-aca3e6000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '41f7471c-0002-0028-4003-67e1b8000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:45 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:53 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5649,12 +5649,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata84\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cda854cf-0002-000b-6917-ac8e73000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '72ab52d2-0002-0031-1503-67cdd0000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata84\')',
-  date: 'Thu, 12 May 2016 06:25:46 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5666,12 +5666,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata84\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cda854cf-0002-000b-6917-ac8e73000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '72ab52d2-0002-0031-1503-67cdd0000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata84\')',
-  date: 'Thu, 12 May 2016 06:25:46 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5681,15 +5681,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata84', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A49.9652628Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A55.2733901Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata84(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '13caf286-0002-0003-0b17-ac9500000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '138f7394-0002-0012-5303-67a21b000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata84(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:25:49 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5699,73 +5699,73 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata84', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A49.9652628Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A55.2733901Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata84(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '13caf286-0002-0003-0b17-ac9500000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '138f7394-0002-0012-5303-67a21b000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata84(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:25:49 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata84(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:25:49.9652628Z\",\"RegularDouble\":4.81516,\"NanDouble\":\"NaN\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:55.2733901Z\",\"RegularDouble\":4.81516,\"NanDouble\":\"NaN\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A49.9652628Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A55.2733901Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fea6c76f-0002-002c-2917-ac143a000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '827a0f6c-0002-001b-4903-67b895000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:50 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:55 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata84(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:25:49.9652628Z\",\"RegularDouble\":4.81516,\"NanDouble\":\"NaN\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:26:55.2733901Z\",\"RegularDouble\":4.81516,\"NanDouble\":\"NaN\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64\":\"9223372036854775807\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A25%3A49.9652628Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A26%3A55.2733901Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fea6c76f-0002-002c-2917-ac143a000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '827a0f6c-0002-001b-4903-67b895000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:50 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:55 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata81%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata81')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata81')\" /><title /><updated>2016-05-12T06:25:53Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata81</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata81\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2459a42d-0002-000d-1b17-ac790b000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '09e73509-0002-004c-1103-675118000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:52 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata81%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata81')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata81')\" /><title /><updated>2016-05-12T06:25:53Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata81</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata81\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2459a42d-0002-000d-1b17-ac790b000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '09e73509-0002-004c-1103-675118000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:52 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5775,10 +5775,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f0ac076c-0002-0047-6317-ac496c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3964bc8c-0002-002d-4e03-6715c7000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:53 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5788,38 +5788,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f0ac076c-0002-0047-6317-ac496c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3964bc8c-0002-002d-4e03-6715c7000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:53 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata82%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata82')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata82')\" /><title /><updated>2016-05-12T06:25:56Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata82</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata82\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '35cd34fe-0002-0011-3e17-aca11c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4c538a4c-0002-0036-1003-673b55000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:55 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata82%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata82')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata82')\" /><title /><updated>2016-05-12T06:25:56Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata82</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata82\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '35cd34fe-0002-0011-3e17-aca11c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4c538a4c-0002-0036-1003-673b55000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:55 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5829,10 +5829,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e27a4d6a-0002-0037-6817-ac3aa8000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c705f1a9-0002-002b-3203-67e2bf000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:57 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:57 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5842,38 +5842,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e27a4d6a-0002-0037-6817-ac3aa8000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c705f1a9-0002-002b-3203-67e2bf000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:25:57 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:57 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata83%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata83')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata83')\" /><title /><updated>2016-05-12T06:26:00Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata83</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata83\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6198063d-0002-0029-7e17-ace045000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9fd21070-0002-0001-2403-6797fa000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:00 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:57 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata83%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata83')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata83')\" /><title /><updated>2016-05-12T06:26:00Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata83</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata83\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6198063d-0002-0029-7e17-ace045000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9fd21070-0002-0001-2403-6797fa000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:00 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:57 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5883,10 +5883,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '28095e13-0002-0017-6317-ac5664000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2accc580-0002-0032-2803-67ced7000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:00 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:57 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5896,38 +5896,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '28095e13-0002-0017-6317-ac5664000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2accc580-0002-0032-2803-67ced7000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:00 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:57 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata84%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata84')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata84')\" /><title /><updated>2016-05-12T06:26:03Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata84</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata84\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '39b391e6-0002-0030-6917-accc2d000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4d74c6d0-0002-0013-7d03-67a3e6000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:02 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata84%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata84')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata84')\" /><title /><updated>2016-05-12T06:26:03Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata84</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata84\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '39b391e6-0002-0030-6917-accc2d000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4d74c6d0-0002-0013-7d03-67a3e6000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:02 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5937,10 +5937,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0a3b6ad7-0002-0004-1117-ac6385000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3a863953-0002-0008-4b03-678d74000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:04 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5950,10 +5950,10 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0a3b6ad7-0002-0004-1117-ac6385000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3a863953-0002-0008-4b03-678d74000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:04 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:59 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -5965,12 +5965,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata91\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9dd965bd-0002-0006-1717-ac617f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'bee2a26c-0002-004d-6703-6750e5000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata91\')',
-  date: 'Thu, 12 May 2016 06:26:06 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5982,12 +5982,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata91\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9dd965bd-0002-0006-1717-ac617f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'bee2a26c-0002-004d-6703-6750e5000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata91\')',
-  date: 'Thu, 12 May 2016 06:26:06 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -5997,15 +5997,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata91', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A08.1798773Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A00.1209953Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata91(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cc3746e0-0002-002f-6017-ac173d000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'afc0edd9-0002-001a-7d03-67b968000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata91(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:26:07 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6015,45 +6015,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata91', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A08.1798773Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A00.1209953Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata91(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cc3746e0-0002-002f-6017-ac173d000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'afc0edd9-0002-001a-7d03-67b968000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata91(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:26:07 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata91(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata91/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata91\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata91(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A26%3A08.1798773Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata91(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:26:08.1798773Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata91/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata91\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata91(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A00.1209953Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata91(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:27:00.1209953Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A08.1798773Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A00.1209953Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6f2309c1-0002-0048-1917-aca49a000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9969b277-0002-0023-5e03-67f9cc000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:08 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata91(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata91/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata91\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata91(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A26%3A08.1798773Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata91(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:26:08.1798773Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata91/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata91\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata91(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A00.1209953Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata91(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:27:00.1209953Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A08.1798773Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A00.1209953Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6f2309c1-0002-0048-1917-aca49a000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9969b277-0002-0023-5e03-67f9cc000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:08 GMT',
+  date: 'Thu, 05 Jan 2017 03:26:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6065,12 +6065,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata92\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '47c57e40-0002-0002-2417-ac94fd000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9361ae68-0002-002c-7603-67143a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata92\')',
-  date: 'Thu, 12 May 2016 06:26:10 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6082,12 +6082,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata92\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '47c57e40-0002-0002-2417-ac94fd000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9361ae68-0002-002c-7603-67143a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata92\')',
-  date: 'Thu, 12 May 2016 06:26:10 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6097,15 +6097,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata92', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A13.2099207Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A01.5937121Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata92(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '43e42a9b-0002-0016-0117-ac5799000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'cc63435a-0002-0035-2703-673852000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata92(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:26:12 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6115,45 +6115,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata92', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A13.2099207Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A01.5937121Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata92(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '43e42a9b-0002-0016-0117-ac5799000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'cc63435a-0002-0035-2703-673852000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata92(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:26:12 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata92(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata92/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata92\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata92(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A26%3A13.2099207Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata92(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:26:13.2099207Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata92/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata92\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata92(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A01.5937121Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata92(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:27:01.5937121Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A13.2099207Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A01.5937121Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c64e3d4f-0002-0009-2717-ac8c89000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9f197ec1-0002-0002-1b03-6794fd000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:14 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata92(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata92/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata92\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata92(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A26%3A13.2099207Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata92(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:26:13.2099207Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata92/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata92\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata92(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A01.5937121Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata92(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:27:01.5937121Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A13.2099207Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A01.5937121Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c64e3d4f-0002-0009-2717-ac8c89000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9f197ec1-0002-0002-1b03-6794fd000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:14 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6165,12 +6165,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata93\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cda872bd-0002-000b-2517-ac8e73000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7831c149-0002-0047-3103-67496c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata93\')',
-  date: 'Thu, 12 May 2016 06:26:15 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6182,12 +6182,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata93\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cda872bd-0002-000b-2517-ac8e73000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7831c149-0002-0047-3103-67496c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata93\')',
-  date: 'Thu, 12 May 2016 06:26:15 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6197,15 +6197,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata93', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A17.4731999Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A02.8478663Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata93(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f0ac1462-0002-0047-0417-ac496c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'bb6d0bb8-0002-0000-5b03-679607000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata93(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:26:16 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6215,45 +6215,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata93', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A17.4731999Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A02.8478663Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata93(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f0ac1462-0002-0047-0417-ac496c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'bb6d0bb8-0002-0000-5b03-679607000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata93(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:26:16 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata93(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata93/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata93\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata93(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A26%3A17.4731999Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata93(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:26:17.4731999Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata93/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata93\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata93(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A02.8478663Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata93(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:27:02.8478663Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A17.4731999Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A02.8478663Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cc374fc9-0002-002f-1f17-ac173d000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a4b2aaa4-0002-001d-8003-674fed000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:18 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata93(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata93/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata93\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata93(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A26%3A17.4731999Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata93(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:26:17.4731999Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata93/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata93\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata93(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A02.8478663Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata93(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:27:02.8478663Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A17.4731999Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A02.8478663Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cc374fc9-0002-002f-1f17-ac173d000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a4b2aaa4-0002-001d-8003-674fed000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:18 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6265,12 +6265,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata94\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6ea105ef-0002-000c-1117-ac78f6000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'abc0b336-0002-0025-2503-670eb4000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata94\')',
-  date: 'Thu, 12 May 2016 06:26:21 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6282,12 +6282,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata94\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6ea105ef-0002-000c-1117-ac78f6000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'abc0b336-0002-0025-2503-670eb4000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata94\')',
-  date: 'Thu, 12 May 2016 06:26:21 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6297,15 +6297,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata94', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A23.641047Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A03.8237973Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata94(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a0892553-0002-0042-5c17-acbd13000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7d5828d3-0002-002f-7203-67173d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata94(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:26:22 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6315,73 +6315,73 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata94', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A23.641047Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A03.8237973Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata94(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a0892553-0002-0042-5c17-acbd13000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7d5828d3-0002-002f-7203-67173d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata94(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:26:22 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata94(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata94/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata94\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata94(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A26%3A23.641047Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata94(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:26:23.641047Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata94/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata94\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata94(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A03.8237973Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata94(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:27:03.8237973Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A23.641047Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A03.8237973Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c6520689-0002-004c-5a17-ac5118000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '6ef027c1-0002-000f-1803-677bf1000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:23 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata94(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata94/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata94\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata94(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A26%3A23.641047Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata94(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:26:23.641047Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata94/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata94\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata94(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A03.8237973Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata94(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:27:03.8237973Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A23.641047Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A03.8237973Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c6520689-0002-004c-5a17-ac5118000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '6ef027c1-0002-000f-1803-677bf1000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:23 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata91%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata91')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata91')\" /><title /><updated>2016-05-12T06:26:26Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata91</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata91\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3ab8504f-0002-0018-7817-acbb92000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '0d9a91c2-0002-0041-6b03-67be14000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:25 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata91%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata91')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata91')\" /><title /><updated>2016-05-12T06:26:26Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata91</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata91\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3ab8504f-0002-0018-7817-acbb92000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '0d9a91c2-0002-0041-6b03-67be14000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:25 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6391,10 +6391,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '619813d1-0002-0029-6917-ace045000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '198f2712-0002-000d-3403-67790b000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:28 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6404,38 +6404,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '619813d1-0002-0029-6917-ace045000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '198f2712-0002-000d-3403-67790b000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:28 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata92%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata92')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata92')\" /><title /><updated>2016-05-12T06:26:28Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata92</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata92\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '90ea86d4-0002-0033-0717-accf2a000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2c7eb0a9-0002-0003-1203-679500000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:27 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata92%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata92')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata92')\" /><title /><updated>2016-05-12T06:26:28Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata92</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata92\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '90ea86d4-0002-0033-0717-accf2a000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2c7eb0a9-0002-0003-1203-679500000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:27 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6445,10 +6445,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'daaf91ab-0002-0014-6217-ac5563000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'dbca3a12-0002-001f-2803-674d17000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:31 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6458,38 +6458,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'daaf91ab-0002-0014-6217-ac5563000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'dbca3a12-0002-001f-2803-674d17000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:31 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata93%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata93')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata93')\" /><title /><updated>2016-05-12T06:26:32Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata93</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata93\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cda884ab-0002-000b-6e17-ac8e73000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'e44fedd3-0002-0015-4f03-67549e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:31 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata93%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata93')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata93')\" /><title /><updated>2016-05-12T06:26:32Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata93</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata93\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cda884ab-0002-000b-6e17-ac8e73000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'e44fedd3-0002-0015-4f03-67549e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:31 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6499,10 +6499,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2459c1a9-0002-000d-0117-ac790b000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'cee94ea8-0002-0009-5403-678c89000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:33 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6512,38 +6512,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2459c1a9-0002-000d-0117-ac790b000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'cee94ea8-0002-0009-5403-678c89000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:33 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata94%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata94')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata94')\" /><title /><updated>2016-05-12T06:26:36Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata94</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata94\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '750ea9e3-0002-0031-6e17-accdd0000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3830fa2a-0002-0021-1b03-67fb36000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:35 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata94%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata94')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata94')\" /><title /><updated>2016-05-12T06:26:36Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata94</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata94\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '750ea9e3-0002-0031-6e17-accdd0000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3830fa2a-0002-0021-1b03-67fb36000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:35 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6553,10 +6553,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '566d7d0d-0002-001e-2717-ac4cea000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '23f6f218-0002-002a-1003-67e342000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:35 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6566,10 +6566,10 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '566d7d0d-0002-001e-2717-ac4cea000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '23f6f218-0002-002a-1003-67e342000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:35 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:07 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -6581,12 +6581,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata101\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f80be625-0002-001d-6817-ac4fed000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '19d021af-0002-0033-1e03-67cf2a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata101\')',
-  date: 'Thu, 12 May 2016 06:26:38 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6598,12 +6598,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata101\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f80be625-0002-001d-6817-ac4fed000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '19d021af-0002-0033-1e03-67cf2a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata101\')',
-  date: 'Thu, 12 May 2016 06:26:38 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6613,15 +6613,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata101', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A41.2194492Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A08.7040706Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata101(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ceef1af0-0002-0035-1917-ac3852000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a1ec943b-0002-0014-6503-675563000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata101(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:26:40 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6631,45 +6631,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata101', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A41.2194492Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A08.7040706Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata101(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ceef1af0-0002-0035-1917-ac3852000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a1ec943b-0002-0014-6503-675563000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata101(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:26:40 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata101(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata101/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A26%3A41.2194492Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:26:41.2194492Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata101/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A08.7040706Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:08.7040706Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A41.2194492Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A08.7040706Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4ab3dd5c-0002-0028-3217-ace1b8000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c44c61b8-0002-0045-4e03-674b96000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:42 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata101(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata101/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A26%3A41.2194492Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:26:41.2194492Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata101/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A08.7040706Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:08.7040706Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A41.2194492Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A08.7040706Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4ab3dd5c-0002-0028-3217-ace1b8000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c44c61b8-0002-0045-4e03-674b96000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:42 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6681,12 +6681,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata102\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '757c1944-0002-0015-4a17-ac549e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2c951301-0002-0005-3a03-676278000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata102\')',
-  date: 'Thu, 12 May 2016 06:26:43 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:09 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6698,12 +6698,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata102\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '757c1944-0002-0015-4a17-ac549e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2c951301-0002-0005-3a03-676278000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata102\')',
-  date: 'Thu, 12 May 2016 06:26:43 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:09 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6713,15 +6713,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata102', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A45.6139891Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A09.9135002Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata102(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '280983e1-0002-0017-5f17-ac5664000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'd428267d-0002-003b-1103-67d459000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata102(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:26:45 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:09 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6731,45 +6731,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata102', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A45.6139891Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A09.9135002Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata102(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '280983e1-0002-0017-5f17-ac5664000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'd428267d-0002-003b-1103-67d459000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata102(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:26:45 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:09 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata102(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata102/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A26%3A45.6139891Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:26:45.6139891Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata102/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A09.9135002Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:09.9135002Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A45.6139891Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A09.9135002Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1adb8354-0002-0000-7a17-ac9607000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'b8ce3621-0002-001c-0f03-674e10000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:46 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:09 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata102(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata102/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A26%3A45.6139891Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:26:45.6139891Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata102/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A09.9135002Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:09.9135002Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A45.6139891Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A09.9135002Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1adb8354-0002-0000-7a17-ac9607000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'b8ce3621-0002-001c-0f03-674e10000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:46 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:09 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6781,12 +6781,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata103\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '13cb083b-0002-0003-7417-ac9500000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '06472a83-0002-0010-7903-67a0e1000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata103\')',
-  date: 'Thu, 12 May 2016 06:26:49 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6798,12 +6798,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata103\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '13cb083b-0002-0003-7417-ac9500000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '06472a83-0002-0010-7903-67a0e1000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata103\')',
-  date: 'Thu, 12 May 2016 06:26:49 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6813,15 +6813,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata103', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A51.0840513Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A11.6589845Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata103(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '750eb5cb-0002-0031-1c17-accdd0000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'df1c518a-0002-0006-2703-67617f000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata103(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:26:50 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6831,45 +6831,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata103', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A51.0840513Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A11.6589845Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata103(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '750eb5cb-0002-0031-1c17-accdd0000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'df1c518a-0002-0006-2703-67617f000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata103(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:26:50 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata103(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata103/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A26%3A51.0840513Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:26:51.0840513Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata103/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A11.6589845Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:11.6589845Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A51.0840513Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A11.6589845Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3ab86965-0002-0018-7d17-acbb92000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4771b6ea-0002-004a-5603-67a660000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:52 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:11 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata103(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata103/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A26%3A51.0840513Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:26:51.0840513Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata103/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A11.6589845Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:11.6589845Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A51.0840513Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A11.6589845Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3ab86965-0002-0018-7d17-acbb92000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4771b6ea-0002-004a-5603-67a660000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:52 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:11 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6881,12 +6881,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata104\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '47c59bff-0002-0002-4217-ac94fd000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4fcab302-0002-0004-5403-676385000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata104\')',
-  date: 'Thu, 12 May 2016 06:26:53 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:11 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6898,12 +6898,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata104\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '47c59bff-0002-0002-4217-ac94fd000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4fcab302-0002-0004-5403-676385000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata104\')',
-  date: 'Thu, 12 May 2016 06:26:53 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:11 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6913,15 +6913,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata104', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A55.8995701Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A13.0429153Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata104(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c2371b8f-0002-0020-0b17-acfacb000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7d139199-0002-0048-4703-67a49a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata104(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:26:55 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:12 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -6931,73 +6931,73 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata104', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A55.8995701Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A13.0429153Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata104(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c2371b8f-0002-0020-0b17-acfacb000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7d139199-0002-0048-4703-67a49a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata104(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:26:55 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:12 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata104(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata104/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A26%3A55.8995701Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:26:55.8995701Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata104/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A13.0429153Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:13.0429153Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A55.8995701Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A13.0429153Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3218663f-0002-0005-3517-ac6278000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'b4ecc60d-0002-003e-7803-672026000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:56 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:12 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata104(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata104/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A26%3A55.8995701Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:26:55.8995701Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata104/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A13.0429153Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:13.0429153Z\",\"RegularDouble\":4.81516423423,\"NanDouble@odata.type\":\"Edm.Double\",\"NanDouble\":\"NaN\",\"DoubleInInt\":10.0,\"DoubleInIntString\":10.0,\"LargeDoubleInString\":123456789012345.12,\"LargeDouble\":123456789012345.12,\"PositiveInfinityDouble@odata.type\":\"Edm.Double\",\"PositiveInfinityDouble\":\"Infinity\",\"NegativeInfinityDouble@odata.type\":\"Edm.Double\",\"NegativeInfinityDouble\":\"-Infinity\",\"MinDouble\":4.94065645841247E-324,\"MaxDouble\":1.7976931348623157E+308,\"MaxInt64@odata.type\":\"Edm.Int64\",\"MaxInt64\":\"9223372036854775807\",\"MinInt64@odata.type\":\"Edm.Int64\",\"MinInt64\":\"-9223372036854775808\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A26%3A55.8995701Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A13.0429153Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3218663f-0002-0005-3517-ac6278000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'b4ecc60d-0002-003e-7803-672026000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:56 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:12 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata101%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata101')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata101')\" /><title /><updated>2016-05-12T06:26:59Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata101</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata101\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2bb8b01f-0002-0043-7617-acbcee000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'de3ee71c-0002-0046-5b03-674891000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:59 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:13 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata101%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata101')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata101')\" /><title /><updated>2016-05-12T06:26:59Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata101</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata101\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2bb8b01f-0002-0043-7617-acbcee000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'de3ee71c-0002-0046-5b03-674891000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:26:59 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:13 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7007,10 +7007,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2459d3fb-0002-000d-7817-ac790b000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '0d1111b2-0002-003c-4003-6722dc000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:00 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:14 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7020,38 +7020,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2459d3fb-0002-000d-7817-ac790b000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '0d1111b2-0002-003c-4003-6722dc000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:00 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:14 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata102%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata102')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata102')\" /><title /><updated>2016-05-12T06:27:03Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata102</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata102\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7ebab227-0002-0012-5c17-aca21b000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '27ea1454-0002-0030-7903-67cc2d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:02 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:13 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata102%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata102')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata102')\" /><title /><updated>2016-05-12T06:27:03Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata102</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata102\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7ebab227-0002-0012-5c17-aca21b000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '27ea1454-0002-0030-7903-67cc2d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:02 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:13 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7061,10 +7061,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f0ac2f53-0002-0047-6a17-ac496c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7644906e-0002-0011-5c03-67a11c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:03 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:15 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7074,38 +7074,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f0ac2f53-0002-0047-6a17-ac496c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7644906e-0002-0011-5c03-67a11c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:03 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:15 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata103%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata103')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata103')\" /><title /><updated>2016-05-12T06:27:05Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata103</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata103\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9367e953-0002-0021-4417-acfb36000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c458c96b-0002-002e-0403-6716c0000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:05 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:14 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata103%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata103')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata103')\" /><title /><updated>2016-05-12T06:27:05Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata103</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata103\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9367e953-0002-0021-4417-acfb36000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c458c96b-0002-002e-0403-6716c0000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:05 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:14 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7115,10 +7115,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a3cd63f4-0002-001a-0717-acb968000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a179426e-0002-0037-0d03-673aa8000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:06 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:15 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7128,38 +7128,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a3cd63f4-0002-001a-0717-acb968000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a179426e-0002-0037-0d03-673aa8000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:06 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:15 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata104%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata104')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata104')\" /><title /><updated>2016-05-12T06:27:08Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata104</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata104\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a3cd64db-0002-001a-6017-acb968000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2d9cccab-0002-0040-0e03-67bfe9000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:08 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:15 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata104%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata104')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata104')\" /><title /><updated>2016-05-12T06:27:08Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata104</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata104\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a3cd64db-0002-001a-6017-acb968000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2d9cccab-0002-0040-0e03-67bfe9000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:08 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:15 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7169,10 +7169,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6ea1329d-0002-000c-6917-ac78f6000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '60d6c6ab-0002-0049-3603-67a567000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:10 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:16 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7182,10 +7182,10 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6ea1329d-0002-000c-6917-ac78f6000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '60d6c6ab-0002-0049-3603-67a567000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:10 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:16 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -7197,12 +7197,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata111\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f1b8999f-0002-004a-6917-aca660000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '37a18aaa-0002-0016-2103-675799000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata111\')',
-  date: 'Thu, 12 May 2016 06:27:10 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:16 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7214,12 +7214,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata111\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f1b8999f-0002-004a-6917-aca660000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '37a18aaa-0002-0016-2103-675799000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata111\')',
-  date: 'Thu, 12 May 2016 06:27:10 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:16 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7229,15 +7229,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata111', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A13.6535544Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A17.347125Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata111(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd68f5b14-0002-0039-3a17-acd6a3000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '891fd120-0002-000b-4803-678e73000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata111(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:27:12 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:17 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7247,45 +7247,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata111', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A13.6535544Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A17.347125Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata111(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd68f5b14-0002-0039-3a17-acd6a3000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '891fd120-0002-000b-4803-678e73000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata111(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:27:12 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:17 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata111(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata111/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata111\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata111(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A27%3A13.6535544Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata111(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:27:13.6535544Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata111/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata111\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata111(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A17.347125Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata111(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:27:17.347125Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A13.6535544Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A17.347125Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'df841439-0002-003e-1817-ac2026000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '72ab5eb9-0002-0031-4a03-67cdd0000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:14 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:17 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata111(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata111/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata111\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata111(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A27%3A13.6535544Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata111(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:27:13.6535544Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata111/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata111\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata111(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A17.347125Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata111(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:27:17.347125Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A13.6535544Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A17.347125Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'df841439-0002-003e-1817-ac2026000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '72ab5eb9-0002-0031-4a03-67cdd0000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:14 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:17 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7297,12 +7297,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata112\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd564f8ba-0002-001c-7817-ac4e10000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '138f819d-0002-0012-1903-67a21b000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata112\')',
-  date: 'Thu, 12 May 2016 06:27:16 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:17 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7314,12 +7314,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata112\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd564f8ba-0002-001c-7817-ac4e10000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '138f819d-0002-0012-1903-67a21b000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata112\')',
-  date: 'Thu, 12 May 2016 06:27:16 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:17 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7329,15 +7329,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata112', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A18.4896118Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A18.7206114Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata112(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'efbdce05-0002-001f-7817-ac4d17000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '827a18e1-0002-001b-1e03-67b895000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata112(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:27:17 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:18 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7347,45 +7347,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata112', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A18.4896118Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A18.7206114Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata112(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'efbdce05-0002-001f-7817-ac4d17000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '827a18e1-0002-001b-1e03-67b895000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata112(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:27:17 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:18 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata112(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata112/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata112\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata112(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A27%3A18.4896118Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata112(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:27:18.4896118Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata112/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata112\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata112(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A18.7206114Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata112(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:27:18.7206114Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A18.4896118Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A18.7206114Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '35cd54a0-0002-0011-5f17-aca11c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '09e7459c-0002-004c-6203-675118000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:19 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata112(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata112/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata112\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata112(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A27%3A18.4896118Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata112(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:27:18.4896118Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata112/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata112\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata112(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A18.7206114Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata112(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:27:18.7206114Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A18.4896118Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A18.7206114Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '35cd54a0-0002-0011-5f17-aca11c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '09e7459c-0002-004c-6203-675118000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:19 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7397,12 +7397,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata113\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6a776599-0002-0045-7017-ac4b96000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3964d0b1-0002-002d-2803-6715c7000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata113\')',
-  date: 'Thu, 12 May 2016 06:27:20 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7414,12 +7414,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata113\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6a776599-0002-0045-7017-ac4b96000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3964d0b1-0002-002d-2803-6715c7000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata113\')',
-  date: 'Thu, 12 May 2016 06:27:20 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7429,15 +7429,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata113', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A23.667998Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A20.2798509Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata113(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3ab886d5-0002-0018-3917-acbb92000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4c539e92-0002-0036-2203-673b55000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata113(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:27:23 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7447,45 +7447,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata113', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A23.667998Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A20.2798509Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata113(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3ab886d5-0002-0018-3917-acbb92000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4c539e92-0002-0036-2203-673b55000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata113(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:27:23 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata113(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata113/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata113\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata113(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A27%3A23.667998Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata113(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:27:23.667998Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata113/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata113\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata113(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A20.2798509Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata113(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:27:20.2798509Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A23.667998Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A20.2798509Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9dd98373-0002-0006-6f17-ac617f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2accd541-0002-0032-1003-67ced7000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:25 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata113(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata113/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata113\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata113(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A27%3A23.667998Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata113(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:27:23.667998Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata113/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata113\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata113(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A20.2798509Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata113(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:27:20.2798509Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A23.667998Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A20.2798509Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9dd98373-0002-0006-6f17-ac617f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2accd541-0002-0032-1003-67ced7000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:25 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7497,12 +7497,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata114\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9367f17c-0002-0021-5817-acfb36000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4d74da73-0002-0013-5003-67a3e6000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata114\')',
-  date: 'Thu, 12 May 2016 06:27:26 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7514,12 +7514,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata114\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9367f17c-0002-0021-5817-acfb36000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4d74da73-0002-0013-5003-67a3e6000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata114\')',
-  date: 'Thu, 12 May 2016 06:27:26 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7529,15 +7529,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata114', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A27.7944089Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A21.8356275Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata114(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c544bf8e-0002-002b-4a17-ace2bf000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3a86499a-0002-0008-3d03-678d74000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata114(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:27:26 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7547,73 +7547,73 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata114', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A27.7944089Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A21.8356275Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata114(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c544bf8e-0002-002b-4a17-ace2bf000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3a86499a-0002-0008-3d03-678d74000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata114(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:27:26 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata114(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata114/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata114\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata114(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A27%3A27.7944089Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata114(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:27:27.7944089Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata114/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata114\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata114(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A21.8356275Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata114(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:27:21.8356275Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A27.7944089Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A21.8356275Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1adb9a07-0002-0000-1917-ac9607000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'bee2bfee-0002-004d-0c03-6750e5000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:29 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata114(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata114/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata114\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata114(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A27%3A27.7944089Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata114(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2016-05-12T06:27:27.7944089Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata114/@Element\",\"odata.type\":\"xplat.tablepayloadteststestdata114\",\"odata.id\":\"https://xplat.table.core.windows.net/tablepayloadteststestdata114(PartitionKey='partition1',RowKey='row1')\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A21.8356275Z'\\\"\",\"odata.editLink\":\"tablepayloadteststestdata114(PartitionKey='partition1',RowKey='row1')\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp@odata.type\":\"Edm.DateTime\",\"Timestamp\":\"2017-01-05T03:27:21.8356275Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=fullmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A27.7944089Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A21.8356275Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1adb9a07-0002-0000-1917-ac9607000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'bee2bfee-0002-004d-0c03-6750e5000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:29 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata111%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata111')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata111')\" /><title /><updated>2016-05-12T06:27:31Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata111</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata111\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'df841c35-0002-003e-7417-ac2026000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'afc0f8c5-0002-001a-1003-67b968000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:30 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:22 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata111%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata111')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata111')\" /><title /><updated>2016-05-12T06:27:31Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata111</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata111\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'df841c35-0002-003e-7417-ac2026000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'afc0f8c5-0002-001a-1003-67b968000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:30 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:22 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7623,10 +7623,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3af05245-0002-0032-1817-acced7000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9969baae-0002-0023-4803-67f9cc000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:32 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7636,38 +7636,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3af05245-0002-0032-1817-acced7000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9969baae-0002-0023-4803-67f9cc000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:32 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata112%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata112')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata112')\" /><title /><updated>2016-05-12T06:27:35Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata112</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata112\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fe7080eb-0002-0019-2e17-acba6f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9361ba45-0002-002c-1403-67143a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:35 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:22 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata112%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata112')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata112')\" /><title /><updated>2016-05-12T06:27:35Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata112</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata112\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fe7080eb-0002-0019-2e17-acba6f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9361ba45-0002-002c-1403-67143a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:35 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:22 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7677,10 +7677,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '976575c3-0002-000e-2f17-ac7a0c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'cc63504f-0002-0035-5c03-673852000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:36 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7690,38 +7690,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '976575c3-0002-000e-2f17-ac7a0c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'cc63504f-0002-0035-5c03-673852000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:36 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata113%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata113')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata113')\" /><title /><updated>2016-05-12T06:27:38Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata113</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata113\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f1b8b1ac-0002-004a-5517-aca660000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9f199330-0002-0002-6b03-6794fd000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:37 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata113%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata113')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata113')\" /><title /><updated>2016-05-12T06:27:38Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata113</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata113\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f1b8b1ac-0002-004a-5517-aca660000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '9f199330-0002-0002-6b03-6794fd000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:37 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7731,10 +7731,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '619833e8-0002-0029-4417-ace045000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7831cfbc-0002-0047-1e03-67496c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:40 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7744,38 +7744,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '619833e8-0002-0029-4417-ace045000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7831cfbc-0002-0047-1e03-67496c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:40 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata114%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata114')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata114')\" /><title /><updated>2016-05-12T06:27:41Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata114</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata114\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fe708716-0002-0019-5717-acba6f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'bb6d1c4d-0002-0000-5003-679607000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:41 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata114%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata114')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata114')\" /><title /><updated>2016-05-12T06:27:41Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata114</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata114\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fe708716-0002-0019-5717-acba6f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'bb6d1c4d-0002-0000-5003-679607000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:41 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7785,10 +7785,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c64e60e9-0002-0009-1c17-ac8c89000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7d583535-0002-002f-0303-67173d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:42 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7798,10 +7798,10 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c64e60e9-0002-0009-1c17-ac8c89000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7d583535-0002-002f-0303-67173d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:42 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:24 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -7813,12 +7813,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata121\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7ebdb4d8-0002-0001-7417-ac97fa000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '6ef036bf-0002-000f-0703-677bf1000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata121\')',
-  date: 'Thu, 12 May 2016 06:27:44 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:25 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7830,12 +7830,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata121\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7ebdb4d8-0002-0001-7417-ac97fa000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '6ef036bf-0002-000f-0703-677bf1000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata121\')',
-  date: 'Thu, 12 May 2016 06:27:44 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:25 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7845,15 +7845,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata121', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A46.8690647Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A26.4711985Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata121(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fe708bce-0002-0019-4317-acba6f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '0d9a9dac-0002-0041-5e03-67be14000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata121(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:27:46 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:26 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7863,45 +7863,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata121', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A46.8690647Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A26.4711985Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata121(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fe708bce-0002-0019-4317-acba6f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '0d9a9dac-0002-0041-5e03-67be14000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata121(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:27:46 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:26 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata121(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata121/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A27%3A46.8690647Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:27:46.8690647Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata121/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A26.4711985Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:26.4711985Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A46.8690647Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A26.4711985Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '43e47953-0002-0016-7b17-ac5799000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '198f31d1-0002-000d-3603-67790b000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:48 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:25 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata121(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata121/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A27%3A46.8690647Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:27:46.8690647Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata121/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A26.4711985Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:26.4711985Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A46.8690647Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A26.4711985Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '43e47953-0002-0016-7b17-ac5799000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '198f31d1-0002-000d-3603-67790b000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:48 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:25 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7913,12 +7913,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata122\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '90eacac0-0002-0033-6717-accf2a000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2c7ebf3e-0002-0003-7103-679500000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata122\')',
-  date: 'Thu, 12 May 2016 06:27:48 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:26 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7930,12 +7930,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata122\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '90eacac0-0002-0033-6717-accf2a000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2c7ebf3e-0002-0003-7103-679500000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata122\')',
-  date: 'Thu, 12 May 2016 06:27:48 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:26 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7945,15 +7945,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata122', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A51.7545449Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A27.9025672Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata122(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3af06361-0002-0032-2d17-acced7000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'dbca411f-0002-001f-0b03-674d17000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata122(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:27:51 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:26 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -7963,45 +7963,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata122', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A51.7545449Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A27.9025672Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata122(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3af06361-0002-0032-2d17-acced7000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'dbca411f-0002-001f-0b03-674d17000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata122(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:27:51 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:26 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata122(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata122/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A27%3A51.7545449Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:27:51.7545449Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata122/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A27.9025672Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:27.9025672Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A51.7545449Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A27.9025672Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c73a56b1-0002-000a-3a17-ac8f8e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a6716b1e-0002-0022-4303-67f831000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:52 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:27 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata122(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata122/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A27%3A51.7545449Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:27:51.7545449Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata122/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A27.9025672Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:27.9025672Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A51.7545449Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A27.9025672Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c73a56b1-0002-000a-3a17-ac8f8e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a6716b1e-0002-0022-4303-67f831000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:52 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:27 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8013,12 +8013,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata123\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '589f751b-0002-0027-8017-ac0c4e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'da0ab43a-0002-003f-3903-6721db000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata123\')',
-  date: 'Thu, 12 May 2016 06:27:54 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:27 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8030,12 +8030,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata123\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '589f751b-0002-0027-8017-ac0c4e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'da0ab43a-0002-003f-3903-6721db000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata123\')',
-  date: 'Thu, 12 May 2016 06:27:54 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:27 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8045,15 +8045,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata123', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A56.4552188Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A28.9776182Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata123(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '73ea993f-0002-000f-4617-ac7bf1000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'f6042be5-0002-003d-3503-672321000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata123(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:27:56 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:28 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8063,45 +8063,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata123', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A56.4552188Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A28.9776182Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata123(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '73ea993f-0002-000f-4617-ac7bf1000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'f6042be5-0002-003d-3503-672321000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata123(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:27:56 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:28 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata123(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata123/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A27%3A56.4552188Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:27:56.4552188Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata123/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A28.9776182Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:28.9776182Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A56.4552188Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A28.9776182Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c2373616-0002-0020-2417-acfacb000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'd5a5955a-0002-0027-6e03-670c4e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:57 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:29 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata123(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata123/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A27%3A56.4552188Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:27:56.4552188Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata123/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A28.9776182Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:28.9776182Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A27%3A56.4552188Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A28.9776182Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c2373616-0002-0020-2417-acfacb000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'd5a5955a-0002-0027-6e03-670c4e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:27:57 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:29 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8113,12 +8113,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata124\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a0894a15-0002-0042-6817-acbd13000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'ae753ba9-0002-0044-6a03-674a6b000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata124\')',
-  date: 'Thu, 12 May 2016 06:27:59 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:29 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8130,12 +8130,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata124\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a0894a15-0002-0042-6817-acbd13000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'ae753ba9-0002-0044-6a03-674a6b000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata124\')',
-  date: 'Thu, 12 May 2016 06:27:59 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:29 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8145,15 +8145,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata124', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A28%3A01.2823999Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A30.5690434Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata124(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c6523cda-0002-004c-5617-ac5118000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '18699793-0002-0039-4b03-67d6a3000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata124(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:28:01 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8163,73 +8163,73 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata124', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A28%3A01.2823999Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A30.5690434Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata124(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c6523cda-0002-004c-5617-ac5118000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '18699793-0002-0039-4b03-67d6a3000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata124(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:28:01 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata124(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata124/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A28%3A01.2823999Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:28:01.2823999Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata124/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A30.5690434Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:30.5690434Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A28%3A01.2823999Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A30.5690434Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e48cdf38-0002-002e-5817-ac16c0000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '6b182e1c-0002-0042-2703-67bd13000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:02 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata124(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata124/@Element\",\"odata.etag\":\"W/\\\"datetime'2016-05-12T06%3A28%3A01.2823999Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:28:01.2823999Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#tablepayloadteststestdata124/@Element\",\"odata.etag\":\"W/\\\"datetime'2017-01-05T03%3A27%3A30.5690434Z'\\\"\",\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:30.5690434Z\",\"BooleanProperty\":true,\"BinaryProperty@odata.type\":\"Edm.Binary\",\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A28%3A01.2823999Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A30.5690434Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e48cdf38-0002-002e-5817-ac16c0000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '6b182e1c-0002-0042-2703-67bd13000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:02 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata121%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata121')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata121')\" /><title /><updated>2016-05-12T06:28:04Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata121</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata121\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0ddd07fd-0002-0044-4517-ac4a6b000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'e46beced-0002-004b-8003-67a79d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:04 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata121%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata121')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata121')\" /><title /><updated>2016-05-12T06:28:04Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata121</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata121\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0ddd07fd-0002-0044-4517-ac4a6b000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'e46beced-0002-004b-8003-67a79d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:04 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8239,10 +8239,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd68f6623-0002-0039-2117-acd6a3000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '96bab67c-0002-0018-7f03-67bb92000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:05 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8252,38 +8252,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd68f6623-0002-0039-2117-acd6a3000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '96bab67c-0002-0018-7f03-67bb92000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:05 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata122%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata122')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata122')\" /><title /><updated>2016-05-12T06:28:08Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata122</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata122\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd5076b22-0002-0023-1217-acf9cc000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3831056a-0002-0021-1f03-67fb36000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:07 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:31 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata122%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata122')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata122')\" /><title /><updated>2016-05-12T06:28:08Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata122</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata122\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd5076b22-0002-0023-1217-acf9cc000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3831056a-0002-0021-1f03-67fb36000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:07 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:31 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8293,10 +8293,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c73a6940-0002-000a-6d17-ac8f8e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '19d02bf8-0002-0033-0e03-67cf2a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:09 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:31 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8306,38 +8306,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c73a6940-0002-000a-6d17-ac8f8e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '19d02bf8-0002-0033-0e03-67cf2a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:09 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:31 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata123%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata123')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata123')\" /><title /><updated>2016-05-12T06:28:10Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata123</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata123\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '90eada86-0002-0033-3717-accf2a000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a1eca870-0002-0014-5e03-675563000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:09 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:32 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata123%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata123')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata123')\" /><title /><updated>2016-05-12T06:28:10Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata123</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata123\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '90eada86-0002-0033-3717-accf2a000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a1eca870-0002-0014-5e03-675563000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:09 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:32 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8347,10 +8347,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cda8ebf1-0002-000b-3417-ac8e73000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c44c7342-0002-0045-4d03-674b96000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:11 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:33 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8360,38 +8360,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cda8ebf1-0002-000b-3417-ac8e73000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c44c7342-0002-0045-4d03-674b96000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:11 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:33 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata124%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata124')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata124')\" /><title /><updated>2016-05-12T06:28:14Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata124</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata124\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7ebdc930-0002-0001-2617-ac97fa000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '359b683f-0002-0007-1b03-676082000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:14 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:33 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata124%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata124')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata124')\" /><title /><updated>2016-05-12T06:28:14Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata124</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata124\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7ebdc930-0002-0001-2617-ac97fa000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '359b683f-0002-0007-1b03-676082000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:14 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:33 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8401,10 +8401,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0ddd0a66-0002-0044-3f17-ac4a6b000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7a640864-0002-0038-2803-67d75e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:15 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:34 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8414,10 +8414,10 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0ddd0a66-0002-0044-3f17-ac4a6b000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7a640864-0002-0038-2803-67d75e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:15 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:34 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -8429,12 +8429,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata131\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '691f7a72-0002-002a-3c17-ace342000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2c952780-0002-0005-5303-676278000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata131\')',
-  date: 'Thu, 12 May 2016 06:28:17 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:34 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8446,12 +8446,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata131\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '691f7a72-0002-002a-3c17-ace342000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2c952780-0002-0005-5303-676278000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata131\')',
-  date: 'Thu, 12 May 2016 06:28:17 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:34 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8461,15 +8461,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata131', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A28%3A19.0058251Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A35.0803515Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata131(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '691f7b0e-0002-002a-4117-ace342000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '8036cd63-0002-000e-6f03-677a0c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata131(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:28:18 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:34 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8479,45 +8479,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata131', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A28%3A19.0058251Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A35.0803515Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata131(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '691f7b0e-0002-002a-4117-ace342000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '8036cd63-0002-000e-6f03-677a0c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata131(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:28:18 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:34 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata131(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:28:19.0058251Z\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:35.0803515Z\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A28%3A19.0058251Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A35.0803515Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '35cd6cd4-0002-0011-6017-aca11c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'ddefb257-0002-0017-2303-675664000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:20 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:34 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata131(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:28:19.0058251Z\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:35.0803515Z\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A28%3A19.0058251Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A35.0803515Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '35cd6cd4-0002-0011-6017-aca11c000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'ddefb257-0002-0017-2303-675664000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:20 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:34 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8529,12 +8529,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata132\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f010967f-0002-0013-7117-aca3e6000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'b55e3d7f-0002-0034-3c03-6739af000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata132\')',
-  date: 'Thu, 12 May 2016 06:28:21 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:35 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8546,12 +8546,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata132\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f010967f-0002-0013-7117-aca3e6000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'b55e3d7f-0002-0034-3c03-6739af000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata132\')',
-  date: 'Thu, 12 May 2016 06:28:21 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:35 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8561,15 +8561,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata132', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A28%3A24.403342Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A36.4387777Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata132(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fe70aafb-0002-0019-6017-acba6f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7550116f-0002-000a-2c03-678f8e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata132(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:28:24 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:35 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8579,45 +8579,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata132', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A28%3A24.403342Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A36.4387777Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata132(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fe70aafb-0002-0019-6017-acba6f000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7550116f-0002-000a-2c03-678f8e000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata132(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:28:24 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:35 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata132(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:28:24.403342Z\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:36.4387777Z\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A28%3A24.403342Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A36.4387777Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f1b8d927-0002-004a-5917-aca660000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'd4283a16-0002-003b-7103-67d459000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:25 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:36 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata132(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:28:24.403342Z\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:36.4387777Z\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A28%3A24.403342Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A36.4387777Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f1b8d927-0002-004a-5917-aca660000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'd4283a16-0002-003b-7103-67d459000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:25 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:36 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8629,12 +8629,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata133\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0a3bb70f-0002-0004-7d17-ac6385000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'b8ce4bf9-0002-001c-2d03-674e10000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata133\')',
-  date: 'Thu, 12 May 2016 06:28:27 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:36 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8646,12 +8646,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata133\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0a3bb70f-0002-0004-7d17-ac6385000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'b8ce4bf9-0002-001c-2d03-674e10000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata133\')',
-  date: 'Thu, 12 May 2016 06:28:27 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:36 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8661,15 +8661,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata133', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A28%3A29.1208045Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A37.8688455Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata133(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd5077d32-0002-0023-1117-acf9cc000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'df1c608b-0002-0006-6903-67617f000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata133(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:28:28 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8679,45 +8679,45 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata133', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A28%3A29.1208045Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A37.8688455Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata133(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd5077d32-0002-0023-1117-acf9cc000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'df1c608b-0002-0006-6903-67617f000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata133(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:28:28 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata133(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:28:29.1208045Z\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:37.8688455Z\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A28%3A29.1208045Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A37.8688455Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '32189942-0002-0005-6617-ac6278000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4771c5db-0002-004a-7e03-67a660000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:29 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata133(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:28:29.1208045Z\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:37.8688455Z\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A28%3A29.1208045Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A37.8688455Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '32189942-0002-0005-6617-ac6278000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4771c5db-0002-004a-7e03-67a660000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:29 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8729,12 +8729,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata134\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e27a8043-0002-0037-2c17-ac3aa8000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4fcabed6-0002-0004-3003-676385000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata134\')',
-  date: 'Thu, 12 May 2016 06:28:31 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8746,12 +8746,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata134\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e27a8043-0002-0037-2c17-ac3aa8000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '4fcabed6-0002-0004-3003-676385000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata134\')',
-  date: 'Thu, 12 May 2016 06:28:31 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8761,15 +8761,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata134', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A28%3A34.1542884Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A39.2265715Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata134(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7ebdd5ac-0002-0001-5817-ac97fa000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7d13a99f-0002-0048-0c03-67a49a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata134(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:28:33 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8779,73 +8779,73 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata134', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A28%3A34.1542884Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A39.2265715Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata134(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7ebdd5ac-0002-0001-5817-ac97fa000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '7d13a99f-0002-0048-0c03-67a49a000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata134(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:28:33 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata134(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:28:34.1542884Z\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:39.2265715Z\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A28%3A34.1542884Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A39.2265715Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '39b413b2-0002-0030-7817-accc2d000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'b4ecd045-0002-003e-4603-672026000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:34 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata134(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:28:34.1542884Z\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:39.2265715Z\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A28%3A34.1542884Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A39.2265715Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '39b413b2-0002-0030-7817-accc2d000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'b4ecd045-0002-003e-4603-672026000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:34 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata131%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata131')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata131')\" /><title /><updated>2016-05-12T06:28:37Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata131</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata131\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '691f82f8-0002-002a-0417-ace342000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'de3efa0b-0002-0046-2f03-674891000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:36 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata131%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata131')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata131')\" /><title /><updated>2016-05-12T06:28:37Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata131</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata131\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '691f82f8-0002-002a-0417-ace342000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'de3efa0b-0002-0046-2f03-674891000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:36 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8855,10 +8855,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '90eaf191-0002-0033-1a17-accf2a000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '0d112332-0002-003c-3a03-6722dc000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:37 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:40 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8868,38 +8868,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '90eaf191-0002-0033-1a17-accf2a000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '0d112332-0002-003c-3a03-6722dc000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:37 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:40 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata132%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata132')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata132')\" /><title /><updated>2016-05-12T06:28:40Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata132</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata132\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e27a834f-0002-0037-6b17-ac3aa8000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '27ea1f8a-0002-0030-6603-67cc2d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:39 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata132%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata132')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata132')\" /><title /><updated>2016-05-12T06:28:40Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata132</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata132\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e27a834f-0002-0037-6b17-ac3aa8000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '27ea1f8a-0002-0030-6603-67cc2d000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:39 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8909,10 +8909,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4ab40e6c-0002-0028-4117-ace1b8000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '76449ed0-0002-0011-2d03-67a11c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:42 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:41 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8922,38 +8922,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4ab40e6c-0002-0028-4117-ace1b8000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '76449ed0-0002-0011-2d03-67a11c000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:42 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:41 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata133%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata133')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata133')\" /><title /><updated>2016-05-12T06:28:43Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata133</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata133\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4b882891-0002-004d-7f17-ac50e5000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c458d822-0002-002e-3d03-6716c0000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:42 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:40 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata133%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata133')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata133')\" /><title /><updated>2016-05-12T06:28:43Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata133</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata133\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4b882891-0002-004d-7f17-ac50e5000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'c458d822-0002-002e-3d03-6716c0000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:42 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:40 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8963,10 +8963,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0ddd10b8-0002-0044-2f17-ac4a6b000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a1794eb6-0002-0037-7103-673aa8000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:44 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:41 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -8976,38 +8976,38 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0ddd10b8-0002-0044-2f17-ac4a6b000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': 'a1794eb6-0002-0037-7103-673aa8000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:44 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:41 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata134%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata134')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata134')\" /><title /><updated>2016-05-12T06:28:47Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata134</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata134\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3218a25c-0002-0005-3317-ac6278000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2d9cdfcb-0002-0040-7f03-67bfe9000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:46 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:41 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata134%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata134')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata134')\" /><title /><updated>2016-05-12T06:28:47Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata134</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata134\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3218a25c-0002-0005-3317-ac6278000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '2d9cdfcb-0002-0040-7f03-67bfe9000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:46 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:41 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -9017,10 +9017,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '589f9a4f-0002-0027-6a17-ac0c4e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '60d6d2d7-0002-0049-2303-67a567000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:48 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:42 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -9030,10 +9030,10 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '589f9a4f-0002-0027-6a17-ac0c4e000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '60d6d2d7-0002-0049-2303-67a567000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:48 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:42 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
@@ -9045,12 +9045,12 @@ nock('http://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata141\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '90eafaac-0002-0033-1d17-accf2a000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '37a19f30-0002-0016-0b03-675799000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata141\')',
-  date: 'Thu, 12 May 2016 06:28:48 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:42 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -9062,12 +9062,12 @@ nock('https://xplat.table.core.windows.net:443')
   'content-length': '0',
   location: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata141\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '90eafaac-0002-0033-1d17-accf2a000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '37a19f30-0002-0016-0b03-675799000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'tablepayloadteststestdata141\')',
-  date: 'Thu, 12 May 2016 06:28:48 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:42 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -9077,15 +9077,15 @@ nock('http://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata141', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A28%3A53.3162791Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A43.5204786Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata141(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'daafcf46-0002-0014-5217-ac5563000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '891fdf07-0002-000b-0b03-678e73000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata141(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:28:52 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:43 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -9095,73 +9095,73 @@ nock('https://xplat.table.core.windows.net:443')
 .post('/tablepayloadteststestdata141', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2016-05-12T06%3A28%3A53.3162791Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A43.5204786Z\'"',
   location: 'https://xplat.table.core.windows.net/tablepayloadteststestdata141(PartitionKey=\'partition1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'daafcf46-0002-0014-5217-ac5563000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '891fdf07-0002-000b-0b03-678e73000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
   dataserviceid: 'https://xplat.table.core.windows.net/tablepayloadteststestdata141(PartitionKey=\'partition1\',RowKey=\'row1\')',
-  date: 'Thu, 12 May 2016 06:28:52 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:43 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata141(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:28:53.3162791Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:43.5204786Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A28%3A53.3162791Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A43.5204786Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f0109eb1-0002-0013-3917-aca3e6000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '41f769c8-0002-0028-1403-67e1b8000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:52 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:43 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/tablepayloadteststestdata141(PartitionKey=%27partition1%27,RowKey=%27row1%27)')
-  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2016-05-12T06:28:53.3162791Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"PartitionKey\":\"partition1\",\"RowKey\":\"row1\",\"Timestamp\":\"2017-01-05T03:27:43.5204786Z\",\"StringProperty\":\"stringSample\",\"BooleanProperty\":true,\"BinaryProperty\":\"U2FtcGxlU3RyaW5nSW5CdWZmZXIh\",\"Int32Property\":42,\"Int64Property\":\"5432873627392\",\"DoubleProperty\":4.81516,\"GuidProperty\":\"dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2\",\"DateTimeProperty\":\"2014-05-07T08:20:53Z\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=nometadata;streaming=true;charset=utf-8',
-  etag: 'W/"datetime\'2016-05-12T06%3A28%3A53.3162791Z\'"',
+  etag: 'W/"datetime\'2017-01-05T03%3A27%3A43.5204786Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f0109eb1-0002-0013-3917-aca3e6000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '41f769c8-0002-0028-1403-67e1b8000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:52 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:43 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata141%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata141')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata141')\" /><title /><updated>2016-05-12T06:28:55Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata141</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata141\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e48d12fa-0002-002e-0517-ac16c0000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '72ab6af2-0002-0031-4403-67cdd0000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:54 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata141%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('tablepayloadteststestdata141')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('tablepayloadteststestdata141')\" /><title /><updated>2016-05-12T06:28:55Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>tablepayloadteststestdata141</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables/@Element\",\"TableName\":\"tablepayloadteststestdata141\"}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e48d12fa-0002-002e-0517-ac16c0000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '72ab6af2-0002-0031-4403-67cdd0000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:54 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -9171,10 +9171,10 @@ nock('http://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'df844597-0002-003e-5c17-ac2026000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '138f91ab-0002-0012-5003-67a21b000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:57 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -9184,93 +9184,93 @@ nock('https://xplat.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'df844597-0002-003e-5c17-ac2026000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '138f91ab-0002-0012-5003-67a21b000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:57 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata142%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:6d0bfc7b-0002-003a-7e17-acd5a4000000\nTime:2016-05-12T06:28:59.0773625Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "{\"odata.error\":{\"code\":\"ResourceNotFound\",\"message\":{\"lang\":\"en-US\",\"value\":\"The specified resource does not exist.\\nRequestId:827a22af-0002-001b-5203-67b895000000\\nTime:2017-01-05T03:27:45.3069754Z\"}}}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/xml;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6d0bfc7b-0002-003a-7e17-acd5a4000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '827a22af-0002-001b-5203-67b895000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:58 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata142%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:6d0bfc7b-0002-003a-7e17-acd5a4000000\nTime:2016-05-12T06:28:59.0773625Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "{\"odata.error\":{\"code\":\"ResourceNotFound\",\"message\":{\"lang\":\"en-US\",\"value\":\"The specified resource does not exist.\\nRequestId:827a22af-0002-001b-5203-67b895000000\\nTime:2017-01-05T03:27:45.3069754Z\"}}}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/xml;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6d0bfc7b-0002-003a-7e17-acd5a4000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '827a22af-0002-001b-5203-67b895000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:58 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata143%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:cc37c46a-0002-002f-0517-ac173d000000\nTime:2016-05-12T06:29:00.7199723Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "{\"odata.error\":{\"code\":\"ResourceNotFound\",\"message\":{\"lang\":\"en-US\",\"value\":\"The specified resource does not exist.\\nRequestId:09e756de-0002-004c-5903-675118000000\\nTime:2017-01-05T03:27:45.8925320Z\"}}}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/xml;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cc37c46a-0002-002f-0517-ac173d000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '09e756de-0002-004c-5903-675118000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:59 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:45 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata143%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:cc37c46a-0002-002f-0517-ac173d000000\nTime:2016-05-12T06:29:00.7199723Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "{\"odata.error\":{\"code\":\"ResourceNotFound\",\"message\":{\"lang\":\"en-US\",\"value\":\"The specified resource does not exist.\\nRequestId:09e756de-0002-004c-5903-675118000000\\nTime:2017-01-05T03:27:45.8925320Z\"}}}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/xml;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cc37c46a-0002-002f-0517-ac173d000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '09e756de-0002-004c-5903-675118000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:28:59 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:45 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata144%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:47c5f299-0002-0002-6517-ac94fd000000\nTime:2016-05-12T06:29:02.0607178Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "{\"odata.error\":{\"code\":\"ResourceNotFound\",\"message\":{\"lang\":\"en-US\",\"value\":\"The specified resource does not exist.\\nRequestId:3964e6ea-0002-002d-7003-6715c7000000\\nTime:2017-01-05T03:27:46.3642438Z\"}}}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/xml;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '47c5f299-0002-0002-6517-ac94fd000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3964e6ea-0002-002d-7003-6715c7000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:29:01 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:45 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.table.core.windows.net:443')
   .get('/Tables(%27tablepayloadteststestdata144%27)')
-  .reply(404, "<?xml version=\"1.0\" encoding=\"utf-8\"?><error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><code>ResourceNotFound</code><message xml:lang=\"en-US\">The specified resource does not exist.\nRequestId:47c5f299-0002-0002-6517-ac94fd000000\nTime:2016-05-12T06:29:02.0607178Z</message></error>", { 'cache-control': 'no-cache',
+  .reply(404, "{\"odata.error\":{\"code\":\"ResourceNotFound\",\"message\":{\"lang\":\"en-US\",\"value\":\"The specified resource does not exist.\\nRequestId:3964e6ea-0002-002d-7003-6715c7000000\\nTime:2017-01-05T03:27:46.3642438Z\"}}}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  'content-type': 'application/xml;charset=utf-8',
+  'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '47c5f299-0002-0002-6517-ac94fd000000',
-  'x-ms-version': '2015-04-05',
+  'x-ms-request-id': '3964e6ea-0002-002d-7003-6715c7000000',
+  'x-ms-version': '2016-05-31',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 12 May 2016 06:29:01 GMT',
+  date: 'Thu, 05 Jan 2017 03:27:45 GMT',
   connection: 'close' });
  return result; }]];

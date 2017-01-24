@@ -598,7 +598,7 @@ describe('FileUploadDownload', function () {
       var rangeStart = 100;
       var rangeEnd = size - 200;
       generateTempFile(localLargeFileName, size, false, function (fileInfo) {
-        var uploadOptions = {storeBlobContentMD5: true, parallelOperationThreadCount: 5};
+        var uploadOptions = {storeFileContentMD5: true, parallelOperationThreadCount: 5};
         fileService.createFileFromLocalFile(shareName, directoryName, fileName, localLargeFileName, uploadOptions, function (err) {
           assert.equal(err, null);
           var downloadOptions = {useTransactionalMD5: true, parallelOperationThreadCount: 5, rangeStart: 100, rangeEnd: size - 200};
@@ -618,7 +618,7 @@ describe('FileUploadDownload', function () {
       var size = 99*1024*1024; // Do not use a multiple of 4MB size
       generateTempFile(localLargeFileName, size, false, function (fileInfo) {
         var uploadOptions = {
-          storeBlobContentMD5: true,
+          storeFileContentMD5: true,
           parallelOperationThreadCount: 5
         };
           
@@ -780,7 +780,7 @@ describe('FileUploadDownload', function () {
       var rangeEnd = size - 200;
       generateTempFile(localLargeFileName, size, false, function (fileInfo) {
         var stream = rfs.createReadStream(localLargeFileName);
-        var uploadOptions = {storeBlobContentMD5: true, parallelOperationThreadCount: 5};
+        var uploadOptions = {storeFileContentMD5: true, parallelOperationThreadCount: 5};
         fileService.createFileFromStream(shareName, directoryName, fileName, stream, size, uploadOptions, function (uploadError, file, uploadResponse) {
           assert.equal(uploadError, null);
           assert.ok(file);
@@ -789,6 +789,8 @@ describe('FileUploadDownload', function () {
           var downloadOptions = {useTransactionalMD5: true, parallelOperationThreadCount: 5, rangeStart: 100, rangeEnd: size - 200};
           fileService.getFileToStream(shareName, directoryName, fileName, fs.createWriteStream(downloadFileName), downloadOptions, function (downloadErr, file, downloadResponse) {
             assert.equal(downloadErr, null);
+            assert.notEqual(file.contentSettings.contentMD5, null);
+
             assert.ok(downloadResponse.isSuccessful);
             assert.ok(file);
 
@@ -1223,7 +1225,7 @@ describe('FileUploadDownload', function () {
       });
     });
     
-    runOrSkip('storeFileContentMD5/useTransactionalMD5 with streams/ranges', function (done) {
+    it('storeFileContentMD5/useTransactionalMD5 with streams/ranges', function (done) {
       var fileBuffer = new Buffer(5 * 1024 * 1024);
       fileBuffer.fill(0);
       fileBuffer[0] = '1';
@@ -1241,13 +1243,13 @@ describe('FileUploadDownload', function () {
         fileService.getFileToStream(shareName, directoryName, fileName, fs.createWriteStream(downloadFileName), downloadOptions, function (downloadErr1, downloadResult1) {
           assert.equal(downloadErr1, null);
           assert.strictEqual(parseInt(downloadResult1.contentLength, 10), 512);
-          assert.strictEqual(downloadResult1.contentSettings.contentMD5, undefined);
+          assert.strictEqual(downloadResult1.contentSettings.contentMD5, 'ndpxhuSh0PPmMvK74fkYvg==');
 
           downloadOptions.useTransactionalMD5 = true
           fileService.getFileToStream(shareName, directoryName, fileName, fs.createWriteStream(downloadFileName), downloadOptions, function (downloadErr2, downloadResult2) {
             assert.equal(downloadErr2, null);
             assert.strictEqual(parseInt(downloadResult2.contentLength, 10), 512);
-            assert.strictEqual(downloadResult2.contentSettings.contentMD5, 'v2GerAzfP2jUluqTRBN+iw==');
+            assert.strictEqual(downloadResult2.contentSettings.contentMD5, 'ndpxhuSh0PPmMvK74fkYvg==');
 
             done();
           });

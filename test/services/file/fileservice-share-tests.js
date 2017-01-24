@@ -575,7 +575,7 @@ describe('FileShare', function () {
       assert.strictEqual(parsedUrl.port, '80');
       assert.strictEqual(parsedUrl.hostname, 'host.com');
       assert.strictEqual(parsedUrl.pathname, '/' + share + '/' + directoryName + '/' + fileName);
-      assert.strictEqual(parsedUrl.query, 'se=2015-02-12T11%3A03%3A40Z&sv=2015-12-11&sr=f&sig=VTj%2FRWHNlt49DRYc770I7Qt74FQDPhxPLbNdAm3WXok%3D');
+      assert.strictEqual(parsedUrl.query, 'se=2015-02-12T11%3A03%3A40Z&sv=2016-05-31&sr=f&sig=vdfuHApnUUqFEnxBNVpYQWttVq0vg1tKOFI0FjEpTLU%3D');
       
       done();
     });
