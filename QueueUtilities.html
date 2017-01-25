@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
 	<title>Microsoft Azure Storage Client Library for node.js Namespace: QueueUtilities</title>
 
 	<!--[if lt IE 9]>
@@ -15,221 +16,84 @@
 </head>
 
 <body>
-<div class="container-fluid">
-	<div class="navbar navbar-fixed-top navbar-inverse">
-		<div class="navbar-inner">
-			<a class="brand" href="index.html">Microsoft Azure Storage Client Library for node.js</a>
-			<ul class="nav">
-				
-				<li class="dropdown">
-					<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b
-						class="caret"></b></a>
 
-					<ul class="dropdown-menu ">
-						
-						<li>
-							<a href="BlobUtilities.html">BlobUtilities</a>
-						</li>
-						
-						<li>
-							<a href="FileUtilities.html">FileUtilities</a>
-						</li>
-						
-						<li>
-							<a href="QueueUtilities.html">QueueUtilities</a>
-						</li>
-						
-						<li>
-							<a href="TableUtilities.html">TableUtilities</a>
-						</li>
-						
-
-					</ul>
-				</li>
-				
-				<li class="dropdown">
-					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
-						class="caret"></b></a>
-
-					<ul class="dropdown-menu ">
-						
-						<li>
-							<a href="BinaryBase64QueueMessageEncoder.html">BinaryBase64QueueMessageEncoder</a>
-						</li>
-						
-						<li>
-							<a href="BlobResult.html">BlobResult</a>
-						</li>
-						
-						<li>
-							<a href="BlobService.html">BlobService</a>
-						</li>
-						
-						<li>
-							<a href="ContainerResult.html">ContainerResult</a>
-						</li>
-						
-						<li>
-							<a href="DirectoryResult.html">DirectoryResult</a>
-						</li>
-						
-						<li>
-							<a href="ExponentialRetryPolicyFilter.html">ExponentialRetryPolicyFilter</a>
-						</li>
-						
-						<li>
-							<a href="FileResult.html">FileResult</a>
-						</li>
-						
-						<li>
-							<a href="FileService.html">FileService</a>
-						</li>
-						
-						<li>
-							<a href="LeaseResult.html">LeaseResult</a>
-						</li>
-						
-						<li>
-							<a href="LinearRetryPolicyFilter.html">LinearRetryPolicyFilter</a>
-						</li>
-						
-						<li>
-							<a href="Logger.html">Logger</a>
-						</li>
-						
-						<li>
-							<a href="QueueMessageEncoder.html">QueueMessageEncoder</a>
-						</li>
-						
-						<li>
-							<a href="QueueMessageResult.html">QueueMessageResult</a>
-						</li>
-						
-						<li>
-							<a href="QueueResult.html">QueueResult</a>
-						</li>
-						
-						<li>
-							<a href="QueueService.html">QueueService</a>
-						</li>
-						
-						<li>
-							<a href="RetryPolicyFilter.html">RetryPolicyFilter</a>
-						</li>
-						
-						<li>
-							<a href="ShareResult.html">ShareResult</a>
-						</li>
-						
-						<li>
-							<a href="StorageServiceClient.html">StorageServiceClient</a>
-						</li>
-						
-						<li>
-							<a href="TableBatch.html">TableBatch</a>
-						</li>
-						
-						<li>
-							<a href="TableQuery.html">TableQuery</a>
-						</li>
-						
-						<li>
-							<a href="TableService.html">TableService</a>
-						</li>
-						
-						<li>
-							<a href="TextBase64QueueMessageEncoder.html">TextBase64QueueMessageEncoder</a>
-						</li>
-						
-						<li>
-							<a href="TextXmlQueueMessageEncoder.html">TextXmlQueueMessageEncoder</a>
-						</li>
-						
-
-					</ul>
-				</li>
-				
-				<li class="dropdown">
-					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
-						class="caret"></b></a>
-
-					<ul class="dropdown-menu ">
-						
-						<li>
-							<a href="global.html#createBlobService">createBlobService</a>
-						</li>
-						
-						<li>
-							<a href="global.html#createBlobServiceAnonymous">createBlobServiceAnonymous</a>
-						</li>
-						
-						<li>
-							<a href="global.html#createBlobServiceWithSas">createBlobServiceWithSas</a>
-						</li>
-						
-						<li>
-							<a href="global.html#createFileService">createFileService</a>
-						</li>
-						
-						<li>
-							<a href="global.html#createFileServiceWithSas">createFileServiceWithSas</a>
-						</li>
-						
-						<li>
-							<a href="global.html#createQueueService">createQueueService</a>
-						</li>
-						
-						<li>
-							<a href="global.html#createQueueServiceWithSas">createQueueServiceWithSas</a>
-						</li>
-						
-						<li>
-							<a href="global.html#createTableService">createTableService</a>
-						</li>
-						
-						<li>
-							<a href="global.html#createTableServiceWithSas">createTableServiceWithSas</a>
-						</li>
-						
-						<li>
-							<a href="global.html#generateAccountSharedAccessSignature">generateAccountSharedAccessSignature</a>
-						</li>
-						
-						<li>
-							<a href="global.html#generateDevelopmentStorageCredentials">generateDevelopmentStorageCredentials</a>
-						</li>
-						
-
-					</ul>
-				</li>
-				
-			</ul>
-		</div>
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Microsoft Azure Storage Client Library for node.js</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="BlobUtilities.html">BlobUtilities</a></li><li><a href="FileUtilities.html">FileUtilities</a></li><li><a href="QueueUtilities.html">QueueUtilities</a></li><li><a href="TableUtilities.html">TableUtilities</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="BinaryBase64QueueMessageEncoder.html">BinaryBase64QueueMessageEncoder</a></li><li><a href="BlobResult.html">BlobResult</a></li><li><a href="BlobService.html">BlobService</a></li><li><a href="ContainerResult.html">ContainerResult</a></li><li><a href="DirectoryResult.html">DirectoryResult</a></li><li><a href="ExponentialRetryPolicyFilter.html">ExponentialRetryPolicyFilter</a></li><li><a href="FileResult.html">FileResult</a></li><li><a href="FileService.html">FileService</a></li><li><a href="LeaseResult.html">LeaseResult</a></li><li><a href="LinearRetryPolicyFilter.html">LinearRetryPolicyFilter</a></li><li><a href="Logger.html">Logger</a></li><li><a href="QueueMessageEncoder.html">QueueMessageEncoder</a></li><li><a href="QueueMessageResult.html">QueueMessageResult</a></li><li><a href="QueueResult.html">QueueResult</a></li><li><a href="QueueService.html">QueueService</a></li><li><a href="RetryPolicyFilter.html">RetryPolicyFilter</a></li><li><a href="ShareResult.html">ShareResult</a></li><li><a href="StorageServiceClient.html">StorageServiceClient</a></li><li><a href="TableBatch.html">TableBatch</a></li><li><a href="TableQuery.html">TableQuery</a></li><li><a href="TableService.html">TableService</a></li><li><a href="TextBase64QueueMessageEncoder.html">TextBase64QueueMessageEncoder</a></li><li><a href="TextXmlQueueMessageEncoder.html">TextXmlQueueMessageEncoder</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#createBlobService">createBlobService</a></li><li><a href="global.html#createBlobServiceAnonymous">createBlobServiceAnonymous</a></li><li><a href="global.html#createBlobServiceWithSas">createBlobServiceWithSas</a></li><li><a href="global.html#createFileService">createFileService</a></li><li><a href="global.html#createFileServiceWithSas">createFileServiceWithSas</a></li><li><a href="global.html#createQueueService">createQueueService</a></li><li><a href="global.html#createQueueServiceWithSas">createQueueServiceWithSas</a></li><li><a href="global.html#createTableService">createTableService</a></li><li><a href="global.html#createTableServiceWithSas">createTableServiceWithSas</a></li><li><a href="global.html#generateAccountSharedAccessSignature">generateAccountSharedAccessSignature</a></li><li><a href="global.html#generateDevelopmentStorageCredentials">generateDevelopmentStorageCredentials</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
 	</div>
 
-	<div class="row-fluid">
+</div>
+</div>
 
-		
-		<div class="span8">
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
 			
-				<div id="main">
-					
-
 
 	<h1 class="page-title">Namespace: QueueUtilities</h1>
 <section>
 
 <header>
-    <h2>
-    QueueUtilities
-    </h2>
+    
+        <h2>
+        QueueUtilities
+        </h2>
+        
     
 </header>
 
+
 <article>
     <div class="container-overview">
-    
-
     
         
             <div class="description"><p>Defines enums for use with the Queue service.</p></div>
@@ -237,6 +101,22 @@
 
         
 <dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -247,23 +127,15 @@
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="queueutilities.js.html">services/queue/queueutilities.js</a>,
-				 <a href="queueutilities.js.html#sunlight-1-line-20">line 20</a>
+				<a href="services_queue_queueutilities.js.html">services/queue/queueutilities.js</a>,
+				 <a href="services_queue_queueutilities.js.html#sunlight-1-line-20">line 20</a>
 			</li>
 		</ul>
 	</dd>
@@ -296,8 +168,9 @@
 
         <dl>
             
-<dt class="name" id="SharedAccessPermissions">
-    <h4><span class="type-signature">&lt;static> </span>SharedAccessPermissions<span class="type-signature"> :string</span></h4>
+<hr>
+<dt class="name" id=".SharedAccessPermissions">
+    <h4 id=".SharedAccessPermissions"><span class="type-signature">&lt;static> </span>SharedAccessPermissions<span class="type-signature"> :string</span></h4>
 
     
 </dt>
@@ -316,39 +189,40 @@
 <span class="param-type">string</span>
 
 
+
             </li>
         </ul>
     
 
     
 <dl class="details">
-	
+    
 
-	<h5 class="subsection-title">Properties:</h5>
+    <h5 class="subsection-title">Properties:</h5>
 
-	<dl>
+    <dl>
 
 <table class="props table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
-		<th>Default</th>
-		
+        
+        <th>Default</th>
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -359,6 +233,7 @@
             
                 
 <span class="param-type">string</span>
+
 
 
             
@@ -377,7 +252,7 @@
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -388,6 +263,7 @@
             
                 
 <span class="param-type">string</span>
+
 
 
             
@@ -406,7 +282,7 @@
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -417,6 +293,7 @@
             
                 
 <span class="param-type">string</span>
+
 
 
             
@@ -435,7 +312,7 @@
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -446,6 +323,7 @@
             
                 
 <span class="param-type">string</span>
+
 
 
             
@@ -464,11 +342,27 @@
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 </dl>
 
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -479,23 +373,15 @@
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="queueutilities.js.html">services/queue/queueutilities.js</a>,
-				 <a href="queueutilities.js.html#sunlight-1-line-31">line 31</a>
+				<a href="services_queue_queueutilities.js.html">services/queue/queueutilities.js</a>,
+				 <a href="services_queue_queueutilities.js.html#sunlight-1-line-31">line 31</a>
 			</li>
 		</ul>
 	</dd>
@@ -527,96 +413,132 @@
 
 
 
-				</div>
-
-				<div class="clearfix"></div>
-				<footer>
-					
-					
-		<span class="jsdoc-message">
-		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Mon Aug 29th 2016 using the <a
-			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
-		</span>
-				</footer>
-			</div>
-
-			
-			<div class="span3">
-				<div id="toc"></div>
-			</div>
-			
-			<br clear="both">
 		</div>
-
 	</div>
-	<!--<script src="scripts/sunlight.js"></script>-->
-	<script src="scripts/docstrap.lib.js"></script>
-	<script src="scripts/bootstrap-dropdown.js"></script>
-	<script src="scripts/toc.js"></script>
 
-	<script>
-		$( function () {
-			$( "[id*='$']" ).each( function () {
-				var $this = $( this );
+	<div class="clearfix"></div>
 
-				$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
-			} );
-
-			$( "#toc" ).toc( {
-				anchorName  : function ( i, heading, prefix ) {
-					return $( heading ).attr( "id" ) || ( prefix + i );
-				},
-				selectors   : "h1,h2,h3,h4",
-				showAndHide : false,
-				scrollTo    : "100px"
-			} );
-
-			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
-			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
-			$( '.dropdown-toggle' ).dropdown();
-//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
-
-			$( ".tutorial-section pre, .readme-section pre" ).each( function () {
-				var $this = $( this );
-
-				var example = $this.find( "code" );
-				exampleText = example.html();
-				var lang = /{@lang (.*?)}/.exec( exampleText );
-				if ( lang && lang[1] ) {
-					exampleText = exampleText.replace( lang[0], "" );
-					example.html( exampleText );
-					lang = lang[1];
-				} else {
-					lang = "javascript";
-				}
-
-				if ( lang ) {
-
-					$this
-						.addClass( "sunlight-highlight-" + lang )
-						.addClass( "linenums" )
-						.html( example.html() );
-
-				}
-			} );
-
-			Sunlight.highlightAll( {
-				lineNumbers : true,
-				showMenu : true,
-				enableDoclinks : true
-			} );
-		} );
-	 </script>
-
-
-
-	<!--Navigation and Symbol Display-->
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
 	
 
+</div>
+</div>
 
-	<!--Google Analytics-->
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
+		on Wed Jan 25th 2017
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
 
 </body>
 </html>

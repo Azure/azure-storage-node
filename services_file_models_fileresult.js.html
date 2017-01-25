@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Microsoft Azure Storage Client Library for node.js Source: services/file/models/fileresult.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Microsoft Azure Storage Client Library for node.js</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="BlobUtilities.html">BlobUtilities</a></li><li><a href="FileUtilities.html">FileUtilities</a></li><li><a href="QueueUtilities.html">QueueUtilities</a></li><li><a href="TableUtilities.html">TableUtilities</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="BinaryBase64QueueMessageEncoder.html">BinaryBase64QueueMessageEncoder</a></li><li><a href="BlobResult.html">BlobResult</a></li><li><a href="BlobService.html">BlobService</a></li><li><a href="ContainerResult.html">ContainerResult</a></li><li><a href="DirectoryResult.html">DirectoryResult</a></li><li><a href="ExponentialRetryPolicyFilter.html">ExponentialRetryPolicyFilter</a></li><li><a href="FileResult.html">FileResult</a></li><li><a href="FileService.html">FileService</a></li><li><a href="LeaseResult.html">LeaseResult</a></li><li><a href="LinearRetryPolicyFilter.html">LinearRetryPolicyFilter</a></li><li><a href="Logger.html">Logger</a></li><li><a href="QueueMessageEncoder.html">QueueMessageEncoder</a></li><li><a href="QueueMessageResult.html">QueueMessageResult</a></li><li><a href="QueueResult.html">QueueResult</a></li><li><a href="QueueService.html">QueueService</a></li><li><a href="RetryPolicyFilter.html">RetryPolicyFilter</a></li><li><a href="ShareResult.html">ShareResult</a></li><li><a href="StorageServiceClient.html">StorageServiceClient</a></li><li><a href="TableBatch.html">TableBatch</a></li><li><a href="TableQuery.html">TableQuery</a></li><li><a href="TableService.html">TableService</a></li><li><a href="TextBase64QueueMessageEncoder.html">TextBase64QueueMessageEncoder</a></li><li><a href="TextXmlQueueMessageEncoder.html">TextXmlQueueMessageEncoder</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#createBlobService">createBlobService</a></li><li><a href="global.html#createBlobServiceAnonymous">createBlobServiceAnonymous</a></li><li><a href="global.html#createBlobServiceWithSas">createBlobServiceWithSas</a></li><li><a href="global.html#createFileService">createFileService</a></li><li><a href="global.html#createFileServiceWithSas">createFileServiceWithSas</a></li><li><a href="global.html#createQueueService">createQueueService</a></li><li><a href="global.html#createQueueServiceWithSas">createQueueServiceWithSas</a></li><li><a href="global.html#createTableService">createTableService</a></li><li><a href="global.html#createTableServiceWithSas">createTableServiceWithSas</a></li><li><a href="global.html#generateAccountSharedAccessSignature">generateAccountSharedAccessSignature</a></li><li><a href="global.html#generateDevelopmentStorageCredentials">generateDevelopmentStorageCredentials</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: services/file/models/fileresult.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">// 
+// Copyright (c) Microsoft and contributors.  All rights reserved.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// 
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+
+// Module dependencies.
+var _ = require('underscore');
+
+var azureCommon = require('./../../../common/common');
+var azureutil = azureCommon.util;
+var Constants = azureCommon.Constants;
+var HeaderConstants = Constants.HeaderConstants;
+
+/**
+* Creates a new FileResult object.
+* @class
+* The FileResult class is used to store the file information.
+* 
+ * @property  {string}                      share                                 The share name.
+ * @property  {string}                      directory                             The directory name.
+ * @property  {string}                      name                                  The file name.
+ * @property  {object}                      metadata                              The metadata key/value pair.
+ * @property  {string}                      etag                                  The etag.
+ * @property  {string}                      lastModified                          The date/time that the file was last modified.
+ * @property  {string}                      requestId                             The request id.
+ * @property  {string}                      acceptRanges                          The accept ranges.
+ * @property  {string}                      contentRange                          The content range
+ * @property  {string}                      contentLength                         The size of the file in bytes.
+ * @property  {object}                      contentSettings                       The content settings.
+ * @property  {string}                      contentSettings.contentType           The content type.
+ * @property  {string}                      contentSettings.contentEncoding       The content encoding.
+ * @property  {string}                      contentSettings.contentLanguage       The content language.
+ * @property  {string}                      contentSettings.cacheControl          The cache control.
+ * @property  {string}                      contentSettings.contentDisposition    The content disposition.
+ * @property  {string}                      contentSettings.contentMD5            The content MD5 hash.
+ * @property  {object}                      copy                                  The copy information.
+ * @property  {string}                      copy.id                               The copy id.
+ * @property  {string}                      copy.status                           The copy status.
+ * @property  {string}                      copy.completionTime                   The copy completion time. 
+ * @property  {string}                      copy.statusDescription                The copy status description.
+ * @property  {string}                      copy.progress                         The copy progress.
+ * @property  {string}                      copy.source                           The copy source.
+ * 
+* @constructor
+* @param {string} [share]      The share name.
+* @param {string} [directory]  The directory name.
+* @param {string} [name]       The file name.
+*/
+function FileResult(share, directory, name) {
+  this.share = share;
+  this.directory = directory;
+  this.name = name;
+}
+
+FileResult.parse = function (entryXml) {
+  var listResult = new FileResult();
+  for (var propertyName in entryXml) {
+    if (propertyName === 'Properties') {
+      //  Lift out the properties onto the main object to keep consistent across all APIs like: getFileProperties
+        azureutil.setPropertyValueFromXML(listResult, entryXml[propertyName], true);
+    } else {
+      listResult[propertyName.toLowerCase()] = entryXml[propertyName];
+    }
+  }
+
+  return listResult;
+};
+
+var responseHeaders = {
+  'acceptRanges': 'ACCEPT_RANGES',
+  'contentLength': 'CONTENT_LENGTH',
+  'contentRange': 'CONTENT_RANGE',
+
+  'contentSettings.contentType': 'CONTENT_TYPE',
+  'contentSettings.contentEncoding': 'CONTENT_ENCODING',
+  'contentSettings.contentLanguage': 'CONTENT_LANGUAGE',
+  'contentSettings.cacheControl': 'CACHE_CONTROL',
+  'contentSettings.contentDisposition': 'CONTENT_DISPOSITION',
+  'contentSettings.contentMD5': 'CONTENT_MD5',
+  'contentSettings.fileContentMD5': 'FILE_CONTENT_MD5',
+  
+  'copy.id': 'COPY_ID',
+  'copy.status': 'COPY_STATUS',
+  'copy.source': 'COPY_SOURCE',
+  'copy.progress': 'COPY_PROGRESS',
+  'copy.completionTime': 'COPY_COMPLETION_TIME',
+  'copy.statusDescription': 'COPY_STATUS_DESCRIPTION'
+};
+
+FileResult.prototype.getPropertiesFromHeaders = function (headers, content) {
+  var self = this;
+  
+  var setFilePropertyFromHeaders = function (fileProperty, headerProperty) {
+    if (!azureutil.tryGetValueChain(self, fileProperty.split('.'), null) &amp;&amp; headers[headerProperty.toLowerCase()]) {
+      azureutil.setObjectInnerPropertyValue(self, fileProperty.split('.'), headers[headerProperty.toLowerCase()]);
+      
+      if (fileProperty === 'copy.progress') {
+        var info = azureutil.parseCopyProgress(self.copy.progress);
+        self.copy.bytesCopied = parseInt(info.bytesCopied);
+        self.copy.totalBytes = parseInt(info.totalBytes);
+      }
+    }
+  };
+   
+  // For range get, 'x-ms-content-md5' indicate the overall MD5 of the file. Try to set the contentMD5 using this header if it presents
+  setFilePropertyFromHeaders('contentSettings.contentMD5', HeaderConstants['FILE_CONTENT_MD5']); 
+
+  setFilePropertyFromHeaders('etag', HeaderConstants.ETAG);
+  setFilePropertyFromHeaders('lastModified', HeaderConstants.LAST_MODIFIED);
+  setFilePropertyFromHeaders('requestId', HeaderConstants.REQUEST_ID);   
+
+  if (content) {
+     _.chain(responseHeaders).pairs().each(function (pair) {
+      var property = pair[0];
+      var header = HeaderConstants[pair[1]];
+      setFilePropertyFromHeaders(property, header);
+    });
+
+   }
+};
+
+/**
+* This method sets the HTTP headers and is used by all methods except setFileProperties and createFile. 
+* Those methods will set the x-ms-* headers using setProperties.
+*/
+FileResult.setHeaders = function (webResource, options) {
+  var setHeaderProperty = function (headerProperty, fileProperty) {
+    var propertyValue = azureutil.tryGetValueChain(options, fileProperty.split('.'), null);
+    if (propertyValue) {
+      webResource.withHeader(headerProperty, propertyValue);
+    }
+  };
+
+  if (options) {
+    // Content-MD5
+    setHeaderProperty(HeaderConstants.CONTENT_MD5, 'transactionalContentMD5');
+
+    // Content-Length
+    setHeaderProperty(HeaderConstants.CONTENT_LENGTH, 'contentLength');
+
+    // Range
+    if (!azureutil.objectIsNull(options.rangeStart)) {
+      var range = 'bytes=' + options.rangeStart + '-';
+
+      if (!azureutil.objectIsNull(options.rangeEnd)) {
+        range += options.rangeEnd;
+      }
+
+      webResource.withHeader(HeaderConstants.STORAGE_RANGE, range);
+    }   
+  }
+};
+
+/**
+* This method sets the x-ms-* headers and is used by setFileProperties and createFile. 
+* All other methods will set the regular HTTP headers using setHeaders.
+*/
+FileResult.setProperties = function (webResource, options) {
+  var setHeaderProperty = function (headerProperty, fileProperty) {
+    var propertyValue = azureutil.tryGetValueChain(options, fileProperty.split('.'), null);
+    if (propertyValue) {
+      webResource.withHeader(headerProperty, propertyValue);
+    }
+  };
+
+  if (options) {
+    // Content-Length
+    setHeaderProperty(HeaderConstants.FILE_CONTENT_LENGTH, 'contentLength');
+    
+    // Content-Type
+    setHeaderProperty(HeaderConstants.FILE_CONTENT_TYPE, 'contentSettings.contentType');
+
+    // Content-Encoding
+    setHeaderProperty(HeaderConstants.FILE_CONTENT_ENCODING, 'contentSettings.contentEncoding');
+
+    // Content-Language
+    setHeaderProperty(HeaderConstants.FILE_CONTENT_LANGUAGE, 'contentSettings.contentLanguage');
+
+    // Content-Disposition
+    setHeaderProperty(HeaderConstants.FILE_CONTENT_DISPOSITION, 'contentSettings.contentDisposition');
+
+    // Cache-Control
+    setHeaderProperty(HeaderConstants.FILE_CACHE_CONTROL, 'contentSettings.cacheControl');
+
+    // Content-MD5
+    setHeaderProperty(HeaderConstants.FILE_CONTENT_MD5, 'contentSettings.contentMD5');
+
+    if (options.metadata) {
+      webResource.addOptionalMetadataHeaders(options.metadata);
+    }
+  }
+};
+
+module.exports = FileResult;</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	
+		on Wed Jan 25th 2017
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>
