@@ -265,14 +265,16 @@ describe('QueueServiceTests', function() {
         assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         // Create message
-        queueService.createMessage(queueName, messageText1, function (createMessageError, createMessageResponse) {
+        queueService.createMessage(queueName, messageText1, function (createMessageError, createdMessage, createMessageResponse) {
           assert.equal(createMessageError, null);
+          assert.notEqual(createdMessage, null);
           assert.ok(createMessageResponse.isSuccessful);
           assert.equal(createMessageResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
           // Create another message
-          queueService.createMessage(queueName, messageText2, function (createMessageError2, createMessageResponse2) {
-            assert.equal(createMessageError, null);
+          queueService.createMessage(queueName, messageText2, function (createMessageError2, createdMessage2, createMessageResponse2) {
+            assert.equal(createMessageError2, null);
+          assert.notEqual(createdMessage2, null);
             assert.ok(createMessageResponse2.isSuccessful);
             assert.equal(createMessageResponse2.statusCode, HttpConstants.HttpResponseCodes.Created);
 
@@ -351,14 +353,16 @@ describe('QueueServiceTests', function() {
         assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         // Create message
-        queueService.createMessage(queueName, messageText1, function (createMessageError, createMessageResponse) {
+        queueService.createMessage(queueName, messageText1, function (createMessageError, createdMessage, createMessageResponse) {
           assert.equal(createMessageError, null);
+          assert.notEqual(createdMessage, null);
           assert.ok(createMessageResponse.isSuccessful);
           assert.equal(createMessageResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
           // Create another message
-          queueService.createMessage(queueName, messageText2, function (createMessageError2, createMessageResponse2) {
+          queueService.createMessage(queueName, messageText2, function (createMessageError2, createdMessage2, createMessageResponse2) {
             assert.equal(createMessageError, null);
+          assert.notEqual(createdMessage2, null);
             assert.ok(createMessageResponse2.isSuccessful);
             assert.equal(createMessageResponse2.statusCode, HttpConstants.HttpResponseCodes.Created);
 
@@ -443,14 +447,16 @@ describe('QueueServiceTests', function() {
         assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         // Create message
-        queueService.createMessage(queueName, new Buffer(messageText1), function (createMessageError, createMessageResponse) {
+        queueService.createMessage(queueName, new Buffer(messageText1), function (createMessageError, createdMessage, createMessageResponse) {
           assert.equal(createMessageError, null);
+          assert.notEqual(createdMessage, null);
           assert.ok(createMessageResponse.isSuccessful);
           assert.equal(createMessageResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
           // Create another message
-          queueService.createMessage(queueName, new Buffer(messageText2), function (createMessageError2, createMessageResponse2) {
+          queueService.createMessage(queueName, new Buffer(messageText2), function (createMessageError2, createdMessage2, createMessageResponse2) {
             assert.equal(createMessageError, null);
+            assert.notEqual(createdMessage2, null);
             assert.ok(createMessageResponse2.isSuccessful);
             assert.equal(createMessageResponse2.statusCode, HttpConstants.HttpResponseCodes.Created);
 
@@ -536,14 +542,16 @@ describe('QueueServiceTests', function() {
         assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         // Create message
-        queueService.createMessage(queueName, messageText1, function (createMessageError, createMessageResponse) {
+        queueService.createMessage(queueName, messageText1, function (createMessageError, createdMessage, createMessageResponse) {
           assert.equal(createMessageError, null);
+          assert.notEqual(createdMessage, null);
           assert.ok(createMessageResponse.isSuccessful);
           assert.equal(createMessageResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
           // Create another message
-          queueService.createMessage(queueName, messageText2, function (createMessageError2, createMessageResponse2) {
+          queueService.createMessage(queueName, messageText2, function (createMessageError2, createdMessage2, createMessageResponse2) {
             assert.equal(createMessageError, null);
+            assert.notEqual(createdMessage2, null);
             assert.ok(createMessageResponse2.isSuccessful);
             assert.equal(createMessageResponse2.statusCode, HttpConstants.HttpResponseCodes.Created);
 
@@ -630,14 +638,16 @@ describe('QueueServiceTests', function() {
         assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         // Create message
-        queueService.createMessage(queueName, new Buffer(messageText1), function (createMessageError, createMessageResponse) {
+        queueService.createMessage(queueName, new Buffer(messageText1), function (createMessageError, createdMessage, createMessageResponse) {
           assert.equal(createMessageError, null);
+          assert.notEqual(createdMessage, null);
           assert.ok(createMessageResponse.isSuccessful);
           assert.equal(createMessageResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
           // Create another message
-          queueService.createMessage(queueName, new Buffer(messageText2), function (createMessageError2, createMessageResponse2) {
+          queueService.createMessage(queueName, new Buffer(messageText2), function (createMessageError2, createdMessage2, createMessageResponse2) {
             assert.equal(createMessageError, null);
+            assert.notEqual(createdMessage2, null);
             assert.ok(createMessageResponse2.isSuccessful);
             assert.equal(createMessageResponse2.statusCode, HttpConstants.HttpResponseCodes.Created);
 
@@ -716,8 +726,9 @@ describe('QueueServiceTests', function() {
         assert.equal(createError1, null);
 
         // Create message
-        queueService.createMessage(queueName, '', function (createMessageError, createMessageResponse) {
+        queueService.createMessage(queueName, '', function (createMessageError, createdMessage, createMessageResponse) {
           assert.equal(createMessageError, null);
+          assert.notEqual(createdMessage, null);
           assert.equal(createMessageResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
           done();
@@ -1124,7 +1135,7 @@ describe('QueueServiceTests', function() {
         assert.strictEqual(parsedUrl.port, '80');
         assert.strictEqual(parsedUrl.hostname, 'host.com');
         assert.strictEqual(parsedUrl.pathname, '/' + queueName);
-        assert.strictEqual(parsedUrl.query, 'se=2016-10-12T11%3A53%3A40Z&sp=r&spr=https&sv=2015-12-11&sig=nm9AgRS1ciJ%2F%2FLG2LGFgjz9mItp8NhzcAwO6ygIQCJo%3D');
+        assert.strictEqual(parsedUrl.query, 'se=2016-10-12T11%3A53%3A40Z&sp=r&spr=https&sv=2016-05-31&sig=c2iGx7iv8NBhNz%2FjPukzNI8xFarrORgEdHyLnzeOTdY%3D');
         done();
     });
 
@@ -1148,7 +1159,7 @@ describe('QueueServiceTests', function() {
         assert.strictEqual(parsedUrl.port, '80');
         assert.strictEqual(parsedUrl.hostname, 'host.com');
         assert.strictEqual(parsedUrl.pathname, '/account1/' + queueName);
-        assert.strictEqual(parsedUrl.query, 'se=2016-10-12T11%3A53%3A40Z&sp=r&spr=https&sv=2015-12-11&sig=nm9AgRS1ciJ%2F%2FLG2LGFgjz9mItp8NhzcAwO6ygIQCJo%3D');
+        assert.strictEqual(parsedUrl.query, 'se=2016-10-12T11%3A53%3A40Z&sp=r&spr=https&sv=2016-05-31&sig=c2iGx7iv8NBhNz%2FjPukzNI8xFarrORgEdHyLnzeOTdY%3D');
         done();
     });
   });

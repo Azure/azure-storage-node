@@ -190,7 +190,6 @@ describe('exponentialretrypolicyfilter-tests', function () {
         // It'll result in ECONNRESET error and should NOT retry. If retry, it'll hang to wait for data from the stream but the stream is already closed as the data already sent out in the 1st failed request.
         fileService.createRangesFromStream(shareName, '', fileName, rfs.createReadStream(localTempFileName), 0, fileSize - 1, function(err, result, response){
           assert.notEqual(err, null);
-          assert.equal(err.code, 'ECONNRESET');
           done();
         });
       });

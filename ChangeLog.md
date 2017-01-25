@@ -1,6 +1,35 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
 be taken. This is a GA release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
 
+2017.01 Version 2.0.0
+
+ALL
+* Updated storage service version to 2016-05-31. Fore more information, please see - https://msdn.microsoft.com/en-us/library/azure/dd894041.aspx
+* Fixed the issue that `BatchOperation` doesn't support socket reuse for some node versions.
+* Fixed the issue that `BatchOperation` request pool size is too big when the socket reuse is supported.
+* Added empty headers to string-to-sign.
+* For response has body and no `content-type` header, try to parse the body using xml format.
+* Fixed the issue that retry filter will continuously retry for client error like `ETIMEDOUT`.
+* Added support for client side timeout. In order to set the timeout per API, please use `options.clientRequestTimeoutInMs`. To set the default value for all requests made via a particular service, please use `{blob|queue|table|file}Service.defaultClientRequestTimeoutInMs`.
+
+BLOB
+* Added support for large block blob. 
+* Added `publicAccessLevel` to `ContainerResult` for the APIs `listContainersSegmented` and `listContainersSegmentedWithPrefix`.
+* When specifiying access condition `If-None-Match: *` for reading, it will always fail.
+* Returned content MD5 for range gets Blobs.
+* Fixed the issue that `useTransactionalMD5` didn't take effect for downloading a big blob.
+
+QUEUE
+* `createMessage` callback has been changed from `errorOrResponse` to `errorOrResult<QueueMessageResult>` which contains `messageId`, `popReceipt`, `timeNextVisible`, `insertionTime` and `expirationTime`. It can be passed to updateMessage and deleteMessage APIs.
+
+FILE
+* Returned content MD5 for range gets Files.
+* Fixed the issue that `useTransactionalMD5` didn't take effect for downloading a big file.
+* Added support for listing files and directories with prefix, refer to `FileService.listFilesAndDirectoriesSegmentedWithPrefix`.
+
+TABLE
+* Fixed the issue that response in incorrect for table batch operation when the error response item is not the first item in the responses. 
+
 2016.11 Version 1.4.0
 
 ALL

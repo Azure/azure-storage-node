@@ -335,14 +335,14 @@ describe('FileDirectory', function () {
       done();
     });    
 
-    var listFilesAndDirectories = function (shareName, directoryName, token, callback) {
-      fileService.listFilesAndDirectoriesSegmented(shareName, directoryName, token, function(error, result) {
+    var listFilesAndDirectories = function (shareName, directoryName, prefix, token, callback) {
+      fileService.listFilesAndDirectoriesSegmentedWithPrefix(shareName, directoryName, prefix, token, function(error, result) {
         assert.equal(error, null);
         files.push.apply(files, result.entries.files);
         directories.push.apply(directories, result.entries.directories);
         var token = result.continuationToken;
         if(token) {
-          listFilesAndDirectories(shareName, directoryName, token, callback);
+          listFilesAndDirectories(shareName, directoryName, prefix, token, callback);
         }
         else {
           callback();
@@ -366,7 +366,7 @@ describe('FileDirectory', function () {
     });
 
     it('empty', function (done) {
-      listFilesAndDirectories(shareName, directoryName, null, function() {
+      listFilesAndDirectories(shareName, directoryName, null, null, function() {
         assert.equal(files.length, 0);
         done();
       });
@@ -377,7 +377,7 @@ describe('FileDirectory', function () {
         assert.equal(dirErr1, null);
 
         // Test listing 1 file
-        listFilesAndDirectories(shareName, directoryName, null, function() {
+        listFilesAndDirectories(shareName, directoryName, null, null, function() {
           assert.equal(directories.length, 1);
           assert.equal(directories[0].name, directoryName1);
           done();
@@ -390,7 +390,7 @@ describe('FileDirectory', function () {
         assert.equal(fileErr1, null);
 
         // Test listing 1 file
-        listFilesAndDirectories(shareName, directoryName, null, function() {
+        listFilesAndDirectories(shareName, directoryName, null, null, function() {
           assert.equal(files.length, 1);
           assert.equal(files[0].name, fileName1);
           done();
@@ -412,7 +412,7 @@ describe('FileDirectory', function () {
               assert.equal(fileErr2, null);
 
               // Test listing 1 file
-              listFilesAndDirectories(shareName, directoryName, null, function() {
+              listFilesAndDirectories(shareName, directoryName, null, null, function() {
                 assert.equal(directories.length, 2);
                 assert.equal(directories[0].name, directoryName1);
                 assert.equal(directories[1].name, directoryName2);
@@ -434,7 +434,7 @@ describe('FileDirectory', function () {
         var nextDirectory = directoryName + "/next";
         var dotdotDirectory = nextDirectory + "/..";
 
-        listFilesAndDirectories(shareName, dotdotDirectory, null, function() {
+        listFilesAndDirectories(shareName, dotdotDirectory, null, null, function() {
           assert.equal(directories.length, 0);
           assert.equal(files.length, 1);
           assert.equal(files[0].name, fileName1);
@@ -445,12 +445,45 @@ describe('FileDirectory', function () {
           fileService.createDirectory(shareName, nextDirectory, function(dirErr2) {
             assert.equal(dirErr2, null);
 
-            listFilesAndDirectories(shareName, dotdotDirectory, null, function() {
+            listFilesAndDirectories(shareName, dotdotDirectory, null, null, function() {
               assert.equal(directories.length, 1);
               assert.equal(directories[0].name, "next");
               assert.equal(files.length, 1);
               assert.equal(files[0].name, fileName1);
               done();
+            });
+          });
+        });
+      });
+    });
+
+    it('list with prefix should work', function (done) {
+      var prefixTest = 'prefixtest-';
+      var prefixTestDirectoryName1 = suite.getName(prefixTest);
+      var prefixTestDirectoryName2 = suite.getName(prefixTest);
+      var prefixTestFileName1 = suite.getName(prefixTest);
+      var prefixTestFileName2 = suite.getName(prefixTest);
+
+      fileService.createDirectory(shareName, prefixTestDirectoryName1, function(err){
+        assert.equal(err, null);
+        
+        fileService.createDirectory(shareName, prefixTestDirectoryName2, function(err){
+          assert.equal(err, null);
+
+          fileService.createFile(shareName, '', prefixTestFileName1, 0, function (fileErr1) {
+            assert.equal(fileErr1, null);
+
+            fileService.createFile(shareName, '', prefixTestFileName2, 0, function (fileErr1) {
+              assert.equal(fileErr1, null);
+
+              files = [];
+              directories = [];
+              
+              listFilesAndDirectories(shareName, '', prefixTest, null, function() {
+                assert.equal(files.length, 2);
+                assert.equal(directories.length, 2);
+                done();
+              });
             });
           });
         });

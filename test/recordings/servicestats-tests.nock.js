@@ -8,73 +8,73 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://xplat-secondary.blob.core.windows.net:443')
   .get('/?comp=stats&restype=service')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Mon, 21 Mar 2016 02:52:41 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Thu, 05 Jan 2017 03:05:15 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1f5c5647-0001-0026-2e1d-836d02000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 02:55:45 GMT',
+  'x-ms-request-id': 'fef023d2-0001-0021-2f00-679b87000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:08:14 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat-secondary.blob.core.windows.net:443')
   .get('/?comp=stats&restype=service')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Mon, 21 Mar 2016 02:52:41 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Thu, 05 Jan 2017 03:05:15 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1f5c5647-0001-0026-2e1d-836d02000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 02:55:45 GMT',
+  'x-ms-request-id': 'fef023d2-0001-0021-2f00-679b87000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:08:14 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat-secondary.queue.core.windows.net:443')
   .get('/?comp=stats&restype=service')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Mon, 21 Mar 2016 02:53:53 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'cache-control': 'no-cache',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Thu, 05 Jan 2017 03:06:45 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3c2a263f-0003-003c-511d-83426d000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 02:55:46 GMT',
+  'x-ms-request-id': '8a7059f2-0003-002a-3a00-6783f3000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:08:13 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat-secondary.queue.core.windows.net:443')
   .get('/?comp=stats&restype=service')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Mon, 21 Mar 2016 02:53:53 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'cache-control': 'no-cache',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Thu, 05 Jan 2017 03:06:45 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3c2a263f-0003-003c-511d-83426d000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 02:55:46 GMT',
+  'x-ms-request-id': '8a7059f2-0003-002a-3a00-6783f3000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:08:13 GMT',
   connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://xplat-secondary.table.core.windows.net:443')
   .get('/?comp=stats&restype=service')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Mon, 21 Mar 2016 02:52:57 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Thu, 05 Jan 2017 03:05:30 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '61ece0f6-0002-0018-631d-83db23000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 02:55:47 GMT',
+  'x-ms-request-id': '4460636c-0002-0007-1c00-670033000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:08:14 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat-secondary.table.core.windows.net:443')
   .get('/?comp=stats&restype=service')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Mon, 21 Mar 2016 02:52:57 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceStats><GeoReplication><Status>live</Status><LastSyncTime>Thu, 05 Jan 2017 03:05:30 GMT</LastSyncTime></GeoReplication></StorageServiceStats>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '61ece0f6-0002-0018-631d-83db23000000',
-  'x-ms-version': '2015-04-05',
-  date: 'Mon, 21 Mar 2016 02:55:47 GMT',
+  'x-ms-request-id': '4460636c-0002-0007-1c00-670033000000',
+  'x-ms-version': '2016-05-31',
+  date: 'Thu, 05 Jan 2017 03:08:14 GMT',
   connection: 'close' });
  return result; }]];

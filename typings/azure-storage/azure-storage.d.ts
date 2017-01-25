@@ -76,6 +76,7 @@ declare module azurestorage {
           * The following defaults can be set on the blob service.
           * singleBlobPutThresholdInBytes                       The default maximum size, in bytes, of a blob before it must be separated into blocks.
           * defaultTimeoutIntervalInMs                          The default timeout interval, in milliseconds, to use for request made via the Blob service.
+          * defaultClientRequestTimeoutInMs                     The default timeout of client requests, in milliseconds, to use for the request made via the Blob service.
           * defaultMaximumExecutionTimeInMs                     The default maximum execution time across all potential retries, for requests made via the Blob service.
           * defaultLocationMode                                 The default location mode for requests made via the Blob service.
           * parallelOperationThreadCount                        The number of parallel operations that may be performed when uploading a blob that is greater than
@@ -2658,6 +2659,7 @@ declare module azurestorage {
             accessConditions?: AccessConditions;
             locationMode?: StorageUtilities.LocationMode;
             timeoutIntervalInMs?: number;
+            clientRequestTimeoutInMs?: number;
             maximumExecutionTimeInMs?: number;
             useNagleAlgorithm?: boolean;
           }
@@ -2805,6 +2807,7 @@ declare module azurestorage {
         * The following defaults can be set on the Queue service.
         * messageEncoder                                      The message encoder to specify how QueueService encodes and decodes the queue message. Default is `[TextXmlQueueMessageEncoder]{@link TextXmlQueueMessageEncoder}`.
         * defaultTimeoutIntervalInMs                          The default timeout interval, in milliseconds, to use for request made via the Queue service.
+        * defaultClientRequestTimeoutInMs                     The default timeout of client requests, in milliseconds, to use for the request made via the Queue service.
         * defaultMaximumExecutionTimeInMs                     The default maximum execution time across all potential retries, for requests made via the Queue service.
         * defaultLocationMode                                 The default location mode for requests made via the Queue service.
         * useNagleAlgorithm                                   Determines whether the Nagle algorithm is used for requests made via the Queue service; true to use the  
@@ -3323,8 +3326,10 @@ declare module azurestorage {
         *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
-        * @param {errorOrResponse}  callback                                      `error` will contain information
-        *                                                                         if an error occurs; otherwise `response` will contain information related to this operation.
+        * @param {errorOrResult}      callback                                    `error` will contain information
+        *                                                                         if an error occurs; otherwise `[result]{@link QueueMessageResult}` will contain
+        *                                                                         the message.
+        *                                                                         `response` will contain information related to this operation.
         *
         * @example
         * var azure = require('azure-storage');
@@ -3335,7 +3340,7 @@ declare module azurestorage {
         *   }
         * });
         */
-        createMessage(queue: string, messageText: string|Buffer, options: QueueService.CreateMessageRequestOptions, callback?: ErrorOrResponse): void;
+        createMessage(queue: string, messageText: string|Buffer, options: QueueService.CreateMessageRequestOptions, callback?: ErrorOrResult<QueueService.QueueMessageResult>): void;
 
         /**
         * Adds a new message to the back of the message queue. 
@@ -3360,7 +3365,7 @@ declare module azurestorage {
         *   }
         * });
         */
-        createMessage(queue: string, messageText: string|Buffer, callback?: ErrorOrResponse): void;
+        createMessage(queue: string, messageText: string|Buffer, callback?: ErrorOrResult<QueueService.QueueMessageResult>): void;
 
         /**
         * Retrieves messages from the queue and makes them invisible to other consumers.
@@ -5052,6 +5057,7 @@ declare module azurestorage {
         * [How to Use the Table Service from Node.js](http://azure.microsoft.com/en-us/documentation/articles/storage-nodejs-how-to-use-table-storage/).
         * The following defaults can be set on the Table service.
         * defaultTimeoutIntervalInMs                          The default timeout interval, in milliseconds, to use for request made via the Table service.
+        * defaultClientRequestTimeoutInMs                     The default timeout of client requests, in milliseconds, to use for the request made via the Table service.
         * defaultMaximumExecutionTimeInMs                     The default maximum execution time across all potential retries, for requests made via the Table service.
         * defaultLocationMode                                 The default location mode for requests made via the Table service.
         * defaultPayloadFormat                                The default payload format for requests made via the Table service.
@@ -6105,6 +6111,34 @@ declare module azurestorage {
         listFilesAndDirectoriesSegmented(share: string, directory: string, currentToken: common.ContinuationToken, options: FileService.ListRequestOptions, callback: ErrorOrResult<FileService.ListFilesAndDirectoriesResult>): void;
         listFilesAndDirectoriesSegmented(share: string, directory: string, currentToken: common.ContinuationToken, callback: ErrorOrResult<FileService.ListFilesAndDirectoriesResult>): void;
 
+
+        /**
+        * Lists a segment containing a collection of file items in the directory.
+        *
+        * @this {FileService}
+        * @param {string}             share                             The share name.
+        * @param {string}             directory                         The directory name. Use '' to refer to the base directory.
+        * @param {string}             prefix                            The prefix of the directory/files name.
+        * @param {object}             currentToken                      A continuation token returned by a previous listing operation. Please use 'null' or 'undefined' if this is the first operation.
+        * @param {object}             [options]                         The request options.
+        * @param {int}                [options.maxResults]              Specifies the maximum number of files to return per call to Azure ServiceClient. This does NOT affect list size returned by this function. (maximum: 5000)
+        * @param {LocationMode}       [options.locationMode]            Specifies the location mode used to decide which location the request should be sent to.
+        *                                                               Please see StorageUtilities.LocationMode for the possible values.
+        * @param {int}                [options.timeoutIntervalInMs]     The server timeout interval, in milliseconds, to use for the request.
+        * @param {int}                [options.maximumExecutionTimeInMs]The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+        *                                                               The maximum execution time interval begins at the time that the client begins building the request. The maximum
+        *                                                               execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}             [options.clientRequestId]         A string that represents the client request ID with a 1KB character limit.
+        * @param {bool}               [options.useNagleAlgorithm]       Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+        *                                                               The default value is false.
+        * @param {errorOrResult}      callback                          `error` will contain information
+        *                                                               if an error occurs; otherwise `result` will contain
+        *                                                               entries.files, entries.directories and the continuationToken for the next listing operation.
+        *                                                               `response` will contain information related to this operation.
+        */
+        listFilesAndDirectoriesSegmentedWithPrefix(share: string, directory: string, prefix: string, currentToken: common.ContinuationToken, options: FileService.ListRequestOptions, callback: ErrorOrResult<FileService.ListFilesAndDirectoriesResult>): void;
+        listFilesAndDirectoriesSegmentedWithPrefix(share: string, directory: string,prefix: string, currentToken: common.ContinuationToken, callback: ErrorOrResult<FileService.ListFilesAndDirectoriesResult>): void;
+
         /**
         * Returns all user-defined metadata for the specified directory.
         *
@@ -7077,6 +7111,7 @@ declare module azurestorage {
         * [How to Use the File Service from Node.js](http://azure.microsoft.com/en-us/documentation/articles/storage-nodejs-how-to-use-file-storage/).
         * The following defaults can be set on the file service.
         * defaultTimeoutIntervalInMs                          The default timeout interval, in milliseconds, to use for request made via the file service.
+        * defaultClientRequestTimeoutInMs                     The default timeout of client requests, in milliseconds, to use for the request made via the file service.
         * defaultMaximumExecutionTimeInMs                     The default maximum execution time across all potential retries, for requests made via the file service.
         * defaultLocationMode                                 The default location mode for requests made via the file service.
         * parallelOperationThreadCount                        The number of parallel operations that may be performed when uploading a file.
@@ -7219,7 +7254,7 @@ declare module azurestorage {
           * var retryOperations = new azure.LinearRetryPolicyFilter();
           * var blobService = azure.createBlobService().withFilter(retryOperations)
           */
-          constructor(retryCount: number, retryInterval: number);
+          constructor(retryCount?: number, retryInterval?: number);
           /**
           * Represents the default client retry interval, in milliseconds.
           */
@@ -7270,7 +7305,7 @@ declare module azurestorage {
           * var retryOperations = new azure.ExponentialRetryPolicyFilter();
           * var blobService = azure.createBlobService().withFilter(retryOperations)
           */
-          constructor(retryCount: number, retryInterval: number, minRetryInterval: number, maxRetryInterval: number);
+          constructor(retryCount?: number, retryInterval?: number, minRetryInterval?: number, maxRetryInterval?: number);
           /**
           * Represents the default client retry interval, in milliseconds.
           */
@@ -8486,6 +8521,11 @@ declare module azurestorage {
           */
           defaultTimeoutIntervalInMs: number;
           /**
+          * The default timeout of client requests, in milliseconds, to use for the request.
+          * @member {int} StorageServiceClient#defaultClientRequestTimeoutInMs
+          */
+          defaultClientRequestTimeoutInMs: number;
+          /**
           * Determines whether the Nagle algorithm is used for requests made via the Queue service; true to use the
           *  Nagle algorithm; otherwise, false. The default value is false.
           * @member {bool} StorageServiceClient#useNagleAlgorithm
@@ -8600,6 +8640,11 @@ declare module azurestorage {
       */
       timeoutIntervalInMs?: number;
       /**
+      * {int} The timeout of client requests, in milliseconds, to use for the request.
+      */
+      clientRequestTimeoutInMs?: number;
+
+      /**
       * {int} The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
       */
       maximumExecutionTimeInMs?: number;
@@ -8659,7 +8704,9 @@ declare module azurestorage {
   * @return {TableService}                              A new TableService object.
   *
   */
-  export function createTableService(storageAccountOrConnectionString: string, storageAccessKey: string, host: StorageHost): TableService;
+  export function createTableService(): TableService;
+  export function createTableService(connectionString: string): TableService;
+  export function createTableService(storageAccountOrConnectionString: string, storageAccessKey: string, host?: StorageHost): TableService;
 
   /**
   * Creates a new {@link TableService} object using the host Uri and the SAS credentials provided.
@@ -8762,7 +8809,7 @@ declare module azurestorage {
   *                                                     Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.
   * @return {QueueService}                              A new QueueService object.
   */
-  export function createQueueService(storageAccount: string, storageAccessKey: string, host: string | StorageHost): QueueService;
+  export function createQueueService(storageAccount: string, storageAccessKey: string, host?: string | StorageHost): QueueService;
   export function createQueueService(connectionString: string): QueueService;
   export function createQueueService(): QueueService;
 

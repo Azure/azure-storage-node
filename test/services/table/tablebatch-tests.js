@@ -481,7 +481,7 @@ describe('batchserviceclient-tests', function () {
 
         tableService.executeBatch(tableName1, batch, function (error, operationResponses, response) {
           assert.notEqual(error, null);
-          assert.equal(error.code, 'InvalidInput');
+          assert.equal(error.code, 'InvalidDuplicateRow');
           assert.equal(operationResponses, null);
           assert.equal(response.isSuccessful, false);
           assert.equal(response.statusCode, HttpConstants.HttpResponseCodes.BadRequest);
