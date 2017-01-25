@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
 	<title>Microsoft Azure Storage Client Library for node.js Global</title>
 
 	<!--[if lt IE 9]>
@@ -15,233 +16,104 @@
 </head>
 
 <body>
-<div class="container-fluid">
-	<div class="navbar navbar-fixed-top navbar-inverse">
-		<div class="navbar-inner">
-			<a class="brand" href="index.html">Microsoft Azure Storage Client Library for node.js</a>
-			<ul class="nav">
-				
-				<li class="dropdown">
-					<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b
-						class="caret"></b></a>
 
-					<ul class="dropdown-menu ">
-						
-						<li>
-							<a href="BlobUtilities.html">BlobUtilities</a>
-						</li>
-						
-						<li>
-							<a href="FileUtilities.html">FileUtilities</a>
-						</li>
-						
-						<li>
-							<a href="QueueUtilities.html">QueueUtilities</a>
-						</li>
-						
-						<li>
-							<a href="TableUtilities.html">TableUtilities</a>
-						</li>
-						
-
-					</ul>
-				</li>
-				
-				<li class="dropdown">
-					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
-						class="caret"></b></a>
-
-					<ul class="dropdown-menu ">
-						
-						<li>
-							<a href="BinaryBase64QueueMessageEncoder.html">BinaryBase64QueueMessageEncoder</a>
-						</li>
-						
-						<li>
-							<a href="BlobResult.html">BlobResult</a>
-						</li>
-						
-						<li>
-							<a href="BlobService.html">BlobService</a>
-						</li>
-						
-						<li>
-							<a href="ContainerResult.html">ContainerResult</a>
-						</li>
-						
-						<li>
-							<a href="DirectoryResult.html">DirectoryResult</a>
-						</li>
-						
-						<li>
-							<a href="ExponentialRetryPolicyFilter.html">ExponentialRetryPolicyFilter</a>
-						</li>
-						
-						<li>
-							<a href="FileResult.html">FileResult</a>
-						</li>
-						
-						<li>
-							<a href="FileService.html">FileService</a>
-						</li>
-						
-						<li>
-							<a href="LeaseResult.html">LeaseResult</a>
-						</li>
-						
-						<li>
-							<a href="LinearRetryPolicyFilter.html">LinearRetryPolicyFilter</a>
-						</li>
-						
-						<li>
-							<a href="Logger.html">Logger</a>
-						</li>
-						
-						<li>
-							<a href="QueueMessageEncoder.html">QueueMessageEncoder</a>
-						</li>
-						
-						<li>
-							<a href="QueueMessageResult.html">QueueMessageResult</a>
-						</li>
-						
-						<li>
-							<a href="QueueResult.html">QueueResult</a>
-						</li>
-						
-						<li>
-							<a href="QueueService.html">QueueService</a>
-						</li>
-						
-						<li>
-							<a href="RetryPolicyFilter.html">RetryPolicyFilter</a>
-						</li>
-						
-						<li>
-							<a href="ShareResult.html">ShareResult</a>
-						</li>
-						
-						<li>
-							<a href="StorageServiceClient.html">StorageServiceClient</a>
-						</li>
-						
-						<li>
-							<a href="TableBatch.html">TableBatch</a>
-						</li>
-						
-						<li>
-							<a href="TableQuery.html">TableQuery</a>
-						</li>
-						
-						<li>
-							<a href="TableService.html">TableService</a>
-						</li>
-						
-						<li>
-							<a href="TextBase64QueueMessageEncoder.html">TextBase64QueueMessageEncoder</a>
-						</li>
-						
-						<li>
-							<a href="TextXmlQueueMessageEncoder.html">TextXmlQueueMessageEncoder</a>
-						</li>
-						
-
-					</ul>
-				</li>
-				
-				<li class="dropdown">
-					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
-						class="caret"></b></a>
-
-					<ul class="dropdown-menu ">
-						
-						<li>
-							<a href="global.html#createBlobService">createBlobService</a>
-						</li>
-						
-						<li>
-							<a href="global.html#createBlobServiceAnonymous">createBlobServiceAnonymous</a>
-						</li>
-						
-						<li>
-							<a href="global.html#createBlobServiceWithSas">createBlobServiceWithSas</a>
-						</li>
-						
-						<li>
-							<a href="global.html#createFileService">createFileService</a>
-						</li>
-						
-						<li>
-							<a href="global.html#createFileServiceWithSas">createFileServiceWithSas</a>
-						</li>
-						
-						<li>
-							<a href="global.html#createQueueService">createQueueService</a>
-						</li>
-						
-						<li>
-							<a href="global.html#createQueueServiceWithSas">createQueueServiceWithSas</a>
-						</li>
-						
-						<li>
-							<a href="global.html#createTableService">createTableService</a>
-						</li>
-						
-						<li>
-							<a href="global.html#createTableServiceWithSas">createTableServiceWithSas</a>
-						</li>
-						
-						<li>
-							<a href="global.html#generateAccountSharedAccessSignature">generateAccountSharedAccessSignature</a>
-						</li>
-						
-						<li>
-							<a href="global.html#generateDevelopmentStorageCredentials">generateDevelopmentStorageCredentials</a>
-						</li>
-						
-
-					</ul>
-				</li>
-				
-			</ul>
-		</div>
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Microsoft Azure Storage Client Library for node.js</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="BlobUtilities.html">BlobUtilities</a></li><li><a href="FileUtilities.html">FileUtilities</a></li><li><a href="QueueUtilities.html">QueueUtilities</a></li><li><a href="TableUtilities.html">TableUtilities</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="BinaryBase64QueueMessageEncoder.html">BinaryBase64QueueMessageEncoder</a></li><li><a href="BlobResult.html">BlobResult</a></li><li><a href="BlobService.html">BlobService</a></li><li><a href="ContainerResult.html">ContainerResult</a></li><li><a href="DirectoryResult.html">DirectoryResult</a></li><li><a href="ExponentialRetryPolicyFilter.html">ExponentialRetryPolicyFilter</a></li><li><a href="FileResult.html">FileResult</a></li><li><a href="FileService.html">FileService</a></li><li><a href="LeaseResult.html">LeaseResult</a></li><li><a href="LinearRetryPolicyFilter.html">LinearRetryPolicyFilter</a></li><li><a href="Logger.html">Logger</a></li><li><a href="QueueMessageEncoder.html">QueueMessageEncoder</a></li><li><a href="QueueMessageResult.html">QueueMessageResult</a></li><li><a href="QueueResult.html">QueueResult</a></li><li><a href="QueueService.html">QueueService</a></li><li><a href="RetryPolicyFilter.html">RetryPolicyFilter</a></li><li><a href="ShareResult.html">ShareResult</a></li><li><a href="StorageServiceClient.html">StorageServiceClient</a></li><li><a href="TableBatch.html">TableBatch</a></li><li><a href="TableQuery.html">TableQuery</a></li><li><a href="TableService.html">TableService</a></li><li><a href="TextBase64QueueMessageEncoder.html">TextBase64QueueMessageEncoder</a></li><li><a href="TextXmlQueueMessageEncoder.html">TextXmlQueueMessageEncoder</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#createBlobService">createBlobService</a></li><li><a href="global.html#createBlobServiceAnonymous">createBlobServiceAnonymous</a></li><li><a href="global.html#createBlobServiceWithSas">createBlobServiceWithSas</a></li><li><a href="global.html#createFileService">createFileService</a></li><li><a href="global.html#createFileServiceWithSas">createFileServiceWithSas</a></li><li><a href="global.html#createQueueService">createQueueService</a></li><li><a href="global.html#createQueueServiceWithSas">createQueueServiceWithSas</a></li><li><a href="global.html#createTableService">createTableService</a></li><li><a href="global.html#createTableServiceWithSas">createTableServiceWithSas</a></li><li><a href="global.html#generateAccountSharedAccessSignature">generateAccountSharedAccessSignature</a></li><li><a href="global.html#generateDevelopmentStorageCredentials">generateDevelopmentStorageCredentials</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
 	</div>
 
-	<div class="row-fluid">
+</div>
+</div>
 
-		
-		<div class="span8">
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
 			
-				<div id="main">
-					
-
 
 	<h1 class="page-title">Global</h1>
 <section>
 
 <header>
-    <h2>
     
-    </h2>
+        <h2>
+        
+        </h2>
+        
     
 </header>
 
+
 <article>
     <div class="container-overview">
-    
-
     
         
 
         
 <dl class="details">
-	
+    
 
 	
 
 	
 
 	
+
+    
+
+    
+
+    
+
+    
 
 	
 
@@ -286,24 +158,24 @@
 
         <dl>
             
+<hr>
 <dt>
-    <h4 class="name" id="createBlobService"><span class="type-signature"></span>createBlobService<span class="signature">(storageAccountOrConnectionString, <span class="optional">storageAccessKey</span>, <span class="optional">host</span>)</span><span class="type-signature"> &rarr; {<a href="BlobService.html">BlobService</a>}</span></h4>
+    <h4 class="name" id="createBlobService"><span class="type-signature"></span>createBlobService(storageAccountOrConnectionString [, storageAccessKey] [, host])</h4>
     
     
 </dt>
 <dd>
-    
+
     
     <div class="description">
-        <p>Creates a new <a href="BlobService.html">BlobService</a> object.
-If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_CONNECTION_STRING and then the AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_ACCESS_KEY 
-environment variables will be used.</p>
+        <p>Creates a new <a href="BlobService.html">BlobService</a> object.<br>If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_CONNECTION_STRING and then the AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_ACCESS_KEY<br>environment variables will be used.</p>
     </div>
     
 
     
+
     
-    
+
     
     
         <h5>Parameters:</h5>
@@ -311,25 +183,25 @@ environment variables will be used.</p>
 
 <table class="params table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Argument</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -340,6 +212,7 @@ environment variables will be used.</p>
             
                 
 <span class="param-type">string</span>
+
 
 
             
@@ -360,7 +233,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The storage account or the connection string.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -371,6 +244,7 @@ environment variables will be used.</p>
             
                 
 <span class="param-type">string</span>
+
 
 
             
@@ -393,7 +267,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The storage access key.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -407,6 +281,7 @@ environment variables will be used.</p>
 |
 
 <span class="param-type">object</span>
+
 
 
             
@@ -426,18 +301,33 @@ environment variables will be used.</p>
 
             
 
-            <td class="description last"><p>The host address. To define primary only, pass a string. 
-                                                    Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.</p></td>
+            <td class="description last"><p>The host address. To define primary only, pass a string.<br>                                                    Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
     
-    
+
     
 <dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -448,18 +338,10 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
@@ -477,15 +359,17 @@ environment variables will be used.</p>
 	
 </dl>
 
+
     
+
     
 
     
 
     
+
     
-    
-    
+
     
     <h5>Returns:</h5>
     
@@ -497,32 +381,34 @@ environment variables will be used.</p>
 
 
 <dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type"><a href="BlobService.html">BlobService</a></span>
 
 
-	</dd>
+
+    </dd>
 </dl>
 
 
         
-    
+
     
 </dd>
 
         
             
+<hr>
 <dt>
-    <h4 class="name" id="createBlobServiceAnonymous"><span class="type-signature"></span>createBlobServiceAnonymous<span class="signature">(host)</span><span class="type-signature"> &rarr; {<a href="BlobService.html">BlobService</a>}</span></h4>
+    <h4 class="name" id="createBlobServiceAnonymous"><span class="type-signature"></span>createBlobServiceAnonymous(host)</h4>
     
     
 </dt>
 <dd>
-    
+
     
     <div class="description">
         <p>Creates a new <a href="BlobService.html">BlobService</a> object using the host uri and anonymous access.</p>
@@ -530,8 +416,9 @@ environment variables will be used.</p>
     
 
     
+
     
-    
+
     
     
         <h5>Parameters:</h5>
@@ -539,23 +426,23 @@ environment variables will be used.</p>
 
 <table class="params table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -571,6 +458,7 @@ environment variables will be used.</p>
 <span class="param-type">object</span>
 
 
+
             
             </td>
 
@@ -578,18 +466,33 @@ environment variables will be used.</p>
 
             
 
-            <td class="description last"><p>The host address. To define primary only, pass a string. 
-                                                    Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.</p></td>
+            <td class="description last"><p>The host address. To define primary only, pass a string.<br>                                                    Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
     
-    
+
     
 <dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -600,18 +503,10 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
@@ -629,15 +524,17 @@ environment variables will be used.</p>
 	
 </dl>
 
+
     
+
     
 
     
 
     
+
     
-    
-    
+
     
     <h5>Returns:</h5>
     
@@ -649,32 +546,34 @@ environment variables will be used.</p>
 
 
 <dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type"><a href="BlobService.html">BlobService</a></span>
 
 
-	</dd>
+
+    </dd>
 </dl>
 
 
         
-    
+
     
 </dd>
 
         
             
+<hr>
 <dt>
-    <h4 class="name" id="createBlobServiceWithSas"><span class="type-signature"></span>createBlobServiceWithSas<span class="signature">(host, sasToken)</span><span class="type-signature"> &rarr; {<a href="BlobService.html">BlobService</a>}</span></h4>
+    <h4 class="name" id="createBlobServiceWithSas"><span class="type-signature"></span>createBlobServiceWithSas(host, sasToken)</h4>
     
     
 </dt>
 <dd>
-    
+
     
     <div class="description">
         <p>Creates a new <a href="BlobService.html">BlobService</a> object using the host Uri and the SAS credentials provided.</p>
@@ -682,8 +581,9 @@ environment variables will be used.</p>
     
 
     
+
     
-    
+
     
     
         <h5>Parameters:</h5>
@@ -691,23 +591,23 @@ environment variables will be used.</p>
 
 <table class="params table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -723,6 +623,7 @@ environment variables will be used.</p>
 <span class="param-type">object</span>
 
 
+
             
             </td>
 
@@ -730,11 +631,10 @@ environment variables will be used.</p>
 
             
 
-            <td class="description last"><p>The host address. To define primary only, pass a string. 
-                                                    Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.</p></td>
+            <td class="description last"><p>The host address. To define primary only, pass a string.<br>                                                    Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -747,6 +647,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -757,14 +658,30 @@ environment variables will be used.</p>
             <td class="description last"><p>The Shared Access Signature token.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
     
-    
+
     
 <dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -775,18 +692,10 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
@@ -804,15 +713,17 @@ environment variables will be used.</p>
 	
 </dl>
 
+
     
+
     
 
     
 
     
+
     
-    
-    
+
     
     <h5>Returns:</h5>
     
@@ -824,43 +735,44 @@ environment variables will be used.</p>
 
 
 <dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type"><a href="BlobService.html">BlobService</a></span>
 
 
-	</dd>
+
+    </dd>
 </dl>
 
 
         
-    
+
     
 </dd>
 
         
             
+<hr>
 <dt>
-    <h4 class="name" id="createFileService"><span class="type-signature"></span>createFileService<span class="signature">(storageAccountOrConnectionString, <span class="optional">storageAccessKey</span>, <span class="optional">host</span>)</span><span class="type-signature"> &rarr; {<a href="FileService.html">FileService</a>}</span></h4>
+    <h4 class="name" id="createFileService"><span class="type-signature"></span>createFileService(storageAccountOrConnectionString [, storageAccessKey] [, host])</h4>
     
     
 </dt>
 <dd>
-    
+
     
     <div class="description">
-        <p>Creates a new <a href="FileService.html">FileService</a> object.
-If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_CONNECTION_STRING and then the AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_ACCESS_KEY 
-environment variables will be used.</p>
+        <p>Creates a new <a href="FileService.html">FileService</a> object.<br>If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_CONNECTION_STRING and then the AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_ACCESS_KEY<br>environment variables will be used.</p>
     </div>
     
 
     
+
     
-    
+
     
     
         <h5>Parameters:</h5>
@@ -868,25 +780,25 @@ environment variables will be used.</p>
 
 <table class="params table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Argument</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -897,6 +809,7 @@ environment variables will be used.</p>
             
                 
 <span class="param-type">string</span>
+
 
 
             
@@ -917,7 +830,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The storage account or the connection string.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -928,6 +841,7 @@ environment variables will be used.</p>
             
                 
 <span class="param-type">string</span>
+
 
 
             
@@ -950,7 +864,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The storage access key.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -964,6 +878,7 @@ environment variables will be used.</p>
 |
 
 <span class="param-type">object</span>
+
 
 
             
@@ -983,18 +898,33 @@ environment variables will be used.</p>
 
             
 
-            <td class="description last"><p>The host address. To define primary only, pass a string. 
-                                                    Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.</p></td>
+            <td class="description last"><p>The host address. To define primary only, pass a string.<br>                                                    Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
     
-    
+
     
 <dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -1005,18 +935,10 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
@@ -1034,15 +956,17 @@ environment variables will be used.</p>
 	
 </dl>
 
+
     
+
     
 
     
 
     
+
     
-    
-    
+
     
     <h5>Returns:</h5>
     
@@ -1054,32 +978,34 @@ environment variables will be used.</p>
 
 
 <dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type"><a href="FileService.html">FileService</a></span>
 
 
-	</dd>
+
+    </dd>
 </dl>
 
 
         
-    
+
     
 </dd>
 
         
             
+<hr>
 <dt>
-    <h4 class="name" id="createFileServiceWithSas"><span class="type-signature"></span>createFileServiceWithSas<span class="signature">(host, sasToken)</span><span class="type-signature"> &rarr; {<a href="FileService.html">FileService</a>}</span></h4>
+    <h4 class="name" id="createFileServiceWithSas"><span class="type-signature"></span>createFileServiceWithSas(host, sasToken)</h4>
     
     
 </dt>
 <dd>
-    
+
     
     <div class="description">
         <p>Creates a new <a href="FileService.html">FileService</a> object using the host Uri and the SAS credentials provided.</p>
@@ -1087,8 +1013,9 @@ environment variables will be used.</p>
     
 
     
+
     
-    
+
     
     
         <h5>Parameters:</h5>
@@ -1096,23 +1023,23 @@ environment variables will be used.</p>
 
 <table class="params table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1128,6 +1055,7 @@ environment variables will be used.</p>
 <span class="param-type">object</span>
 
 
+
             
             </td>
 
@@ -1135,11 +1063,10 @@ environment variables will be used.</p>
 
             
 
-            <td class="description last"><p>The host address. To define primary only, pass a string. 
-                                                    Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.</p></td>
+            <td class="description last"><p>The host address. To define primary only, pass a string.<br>                                                    Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1152,6 +1079,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -1162,14 +1090,30 @@ environment variables will be used.</p>
             <td class="description last"><p>The Shared Access Signature token.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
     
-    
+
     
 <dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -1180,18 +1124,10 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
@@ -1209,15 +1145,17 @@ environment variables will be used.</p>
 	
 </dl>
 
+
     
+
     
 
     
 
     
+
     
-    
-    
+
     
     <h5>Returns:</h5>
     
@@ -1229,43 +1167,44 @@ environment variables will be used.</p>
 
 
 <dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type"><a href="FileService.html">FileService</a></span>
 
 
-	</dd>
+
+    </dd>
 </dl>
 
 
         
-    
+
     
 </dd>
 
         
             
+<hr>
 <dt>
-    <h4 class="name" id="createQueueService"><span class="type-signature"></span>createQueueService<span class="signature">(<span class="optional">storageAccountOrConnectionString</span>, <span class="optional">storageAccessKey</span>, <span class="optional">host</span>)</span><span class="type-signature"> &rarr; {<a href="QueueService.html">QueueService</a>}</span></h4>
+    <h4 class="name" id="createQueueService"><span class="type-signature"></span>createQueueService( [storageAccountOrConnectionString] [, storageAccessKey] [, host])</h4>
     
     
 </dt>
 <dd>
-    
+
     
     <div class="description">
-        <p>Creates a new <a href="QueueService.html">QueueService</a> object.
-If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_CONNECTION_STRING and then the AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_ACCESS_KEY 
-environment variables will be used.</p>
+        <p>Creates a new <a href="QueueService.html">QueueService</a> object.<br>If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_CONNECTION_STRING and then the AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_ACCESS_KEY<br>environment variables will be used.</p>
     </div>
     
 
     
+
     
-    
+
     
     
         <h5>Parameters:</h5>
@@ -1273,25 +1212,25 @@ environment variables will be used.</p>
 
 <table class="params table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Argument</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1302,6 +1241,7 @@ environment variables will be used.</p>
             
                 
 <span class="param-type">string</span>
+
 
 
             
@@ -1324,7 +1264,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The storage account or the connection string.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1335,6 +1275,7 @@ environment variables will be used.</p>
             
                 
 <span class="param-type">string</span>
+
 
 
             
@@ -1357,7 +1298,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The storage access key.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1371,6 +1312,7 @@ environment variables will be used.</p>
 |
 
 <span class="param-type">object</span>
+
 
 
             
@@ -1390,18 +1332,33 @@ environment variables will be used.</p>
 
             
 
-            <td class="description last"><p>The host address. To define primary only, pass a string. 
-                                                    Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.</p></td>
+            <td class="description last"><p>The host address. To define primary only, pass a string.<br>                                                    Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
     
-    
+
     
 <dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -1412,18 +1369,10 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
@@ -1441,15 +1390,17 @@ environment variables will be used.</p>
 	
 </dl>
 
+
     
+
     
 
     
 
     
+
     
-    
-    
+
     
     <h5>Returns:</h5>
     
@@ -1461,32 +1412,34 @@ environment variables will be used.</p>
 
 
 <dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type"><a href="QueueService.html">QueueService</a></span>
 
 
-	</dd>
+
+    </dd>
 </dl>
 
 
         
-    
+
     
 </dd>
 
         
             
+<hr>
 <dt>
-    <h4 class="name" id="createQueueServiceWithSas"><span class="type-signature"></span>createQueueServiceWithSas<span class="signature">(host, sasToken)</span><span class="type-signature"> &rarr; {<a href="QueueService.html">QueueService</a>}</span></h4>
+    <h4 class="name" id="createQueueServiceWithSas"><span class="type-signature"></span>createQueueServiceWithSas(host, sasToken)</h4>
     
     
 </dt>
 <dd>
-    
+
     
     <div class="description">
         <p>Creates a new <a href="QueueService.html">QueueService</a> object using the host Uri and the SAS credentials provided.</p>
@@ -1494,8 +1447,9 @@ environment variables will be used.</p>
     
 
     
+
     
-    
+
     
     
         <h5>Parameters:</h5>
@@ -1503,23 +1457,23 @@ environment variables will be used.</p>
 
 <table class="params table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1535,6 +1489,7 @@ environment variables will be used.</p>
 <span class="param-type">object</span>
 
 
+
             
             </td>
 
@@ -1542,11 +1497,10 @@ environment variables will be used.</p>
 
             
 
-            <td class="description last"><p>The host address. To define primary only, pass a string. 
-                                                    Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.</p></td>
+            <td class="description last"><p>The host address. To define primary only, pass a string.<br>                                                    Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1559,6 +1513,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -1569,14 +1524,30 @@ environment variables will be used.</p>
             <td class="description last"><p>The Shared Access Signature token.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
     
-    
+
     
 <dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -1587,18 +1558,10 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
@@ -1616,15 +1579,17 @@ environment variables will be used.</p>
 	
 </dl>
 
+
     
+
     
 
     
 
     
+
     
-    
-    
+
     
     <h5>Returns:</h5>
     
@@ -1636,43 +1601,44 @@ environment variables will be used.</p>
 
 
 <dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type"><a href="QueueService.html">QueueService</a></span>
 
 
-	</dd>
+
+    </dd>
 </dl>
 
 
         
-    
+
     
 </dd>
 
         
             
+<hr>
 <dt>
-    <h4 class="name" id="createTableService"><span class="type-signature"></span>createTableService<span class="signature">(<span class="optional">storageAccountOrConnectionString</span>, <span class="optional">storageAccessKey</span>, <span class="optional">host</span>)</span><span class="type-signature"> &rarr; {<a href="TableService.html">TableService</a>}</span></h4>
+    <h4 class="name" id="createTableService"><span class="type-signature"></span>createTableService( [storageAccountOrConnectionString] [, storageAccessKey] [, host])</h4>
     
     
 </dt>
 <dd>
-    
+
     
     <div class="description">
-        <p>Creates a new <a href="TableService.html">TableService</a> object.
-If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_CONNECTION_STRING and then the AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_ACCESS_KEY 
-environment variables will be used.</p>
+        <p>Creates a new <a href="TableService.html">TableService</a> object.<br>If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_CONNECTION_STRING and then the AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_ACCESS_KEY<br>environment variables will be used.</p>
     </div>
     
 
     
+
     
-    
+
     
     
         <h5>Parameters:</h5>
@@ -1680,25 +1646,25 @@ environment variables will be used.</p>
 
 <table class="params table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Argument</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1709,6 +1675,7 @@ environment variables will be used.</p>
             
                 
 <span class="param-type">string</span>
+
 
 
             
@@ -1731,7 +1698,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The storage account or the connection string.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1742,6 +1709,7 @@ environment variables will be used.</p>
             
                 
 <span class="param-type">string</span>
+
 
 
             
@@ -1764,7 +1732,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The storage access key.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1778,6 +1746,7 @@ environment variables will be used.</p>
 |
 
 <span class="param-type">object</span>
+
 
 
             
@@ -1797,18 +1766,33 @@ environment variables will be used.</p>
 
             
 
-            <td class="description last"><p>The host address. To define primary only, pass a string. 
-                                                    Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.</p></td>
+            <td class="description last"><p>The host address. To define primary only, pass a string.<br>                                                    Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
     
-    
+
     
 <dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -1819,18 +1803,10 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
@@ -1848,15 +1824,17 @@ environment variables will be used.</p>
 	
 </dl>
 
+
     
+
     
 
     
 
     
+
     
-    
-    
+
     
     <h5>Returns:</h5>
     
@@ -1868,32 +1846,34 @@ environment variables will be used.</p>
 
 
 <dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type"><a href="TableService.html">TableService</a></span>
 
 
-	</dd>
+
+    </dd>
 </dl>
 
 
         
-    
+
     
 </dd>
 
         
             
+<hr>
 <dt>
-    <h4 class="name" id="createTableServiceWithSas"><span class="type-signature"></span>createTableServiceWithSas<span class="signature">(host, sasToken)</span><span class="type-signature"> &rarr; {<a href="TableService.html">TableService</a>}</span></h4>
+    <h4 class="name" id="createTableServiceWithSas"><span class="type-signature"></span>createTableServiceWithSas(host, sasToken)</h4>
     
     
 </dt>
 <dd>
-    
+
     
     <div class="description">
         <p>Creates a new <a href="TableService.html">TableService</a> object using the host Uri and the SAS credentials provided.</p>
@@ -1901,8 +1881,9 @@ environment variables will be used.</p>
     
 
     
+
     
-    
+
     
     
         <h5>Parameters:</h5>
@@ -1910,23 +1891,23 @@ environment variables will be used.</p>
 
 <table class="params table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1942,6 +1923,7 @@ environment variables will be used.</p>
 <span class="param-type">object</span>
 
 
+
             
             </td>
 
@@ -1949,11 +1931,10 @@ environment variables will be used.</p>
 
             
 
-            <td class="description last"><p>The host address. To define primary only, pass a string. 
-                                                    Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.</p></td>
+            <td class="description last"><p>The host address. To define primary only, pass a string.<br>                                                    Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1966,6 +1947,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -1976,14 +1958,30 @@ environment variables will be used.</p>
             <td class="description last"><p>The Shared Access Signature token.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
     
-    
+
     
 <dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -1994,18 +1992,10 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
@@ -2023,15 +2013,17 @@ environment variables will be used.</p>
 	
 </dl>
 
+
     
+
     
 
     
 
     
+
     
-    
-    
+
     
     <h5>Returns:</h5>
     
@@ -2043,32 +2035,34 @@ environment variables will be used.</p>
 
 
 <dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type"><a href="TableService.html">TableService</a></span>
 
 
-	</dd>
+
+    </dd>
 </dl>
 
 
         
-    
+
     
 </dd>
 
         
             
+<hr>
 <dt>
-    <h4 class="name" id="generateAccountSharedAccessSignature"><span class="type-signature"></span>generateAccountSharedAccessSignature<span class="signature">(<span class="optional">storageAccountOrConnectionString</span>, <span class="optional">storageAccessKey</span>, sharedAccessPolicy)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="generateAccountSharedAccessSignature"><span class="type-signature"></span>generateAccountSharedAccessSignature( [storageAccountOrConnectionString] [, storageAccessKey], sharedAccessPolicy)</h4>
     
     
 </dt>
 <dd>
-    
+
     
     <div class="description">
         <p>Generates an account shared access signature token</p>
@@ -2076,8 +2070,9 @@ environment variables will be used.</p>
     
 
     
+
     
-    
+
     
     
         <h5>Parameters:</h5>
@@ -2085,25 +2080,25 @@ environment variables will be used.</p>
 
 <table class="params table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Argument</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2114,6 +2109,7 @@ environment variables will be used.</p>
             
                 
 <span class="param-type">string</span>
+
 
 
             
@@ -2136,7 +2132,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The storage account or the connection string.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2147,6 +2143,7 @@ environment variables will be used.</p>
             
                 
 <span class="param-type">string</span>
+
 
 
             
@@ -2169,7 +2166,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The storage access key.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2180,6 +2177,7 @@ environment variables will be used.</p>
             
                 
 <span class="param-type">object</span>
+
 
 
             
@@ -2198,28 +2196,28 @@ environment variables will be used.</p>
             
 
             <td class="description last"><p>The shared access policy.</p>
-                <h6>Properties</h6>
+                <h6 class="method-params-label method-subparams-label">Properties</h6>
                 
 
 <table class="params table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2232,6 +2230,7 @@ environment variables will be used.</p>
 <span class="param-type">SharedAccessServices</span>
 
 
+
             
             </td>
 
@@ -2239,11 +2238,10 @@ environment variables will be used.</p>
 
             
 
-            <td class="description last"><p>The services (blob, file, queue, table) for a shared access signature associated with this shared access policy.
-                                                                                      Refer to <code>Constants.AccountSasConstants.Services</code>.</p></td>
+            <td class="description last"><p>The services (blob, file, queue, table) for a shared access signature associated with this shared access policy.<br>                                                                                      Refer to <code>Constants.AccountSasConstants.Services</code>.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2256,6 +2254,7 @@ environment variables will be used.</p>
 <span class="param-type">SharedAccessResourceTypes</span>
 
 
+
             
             </td>
 
@@ -2263,11 +2262,10 @@ environment variables will be used.</p>
 
             
 
-            <td class="description last"><p>The resource type for a shared access signature associated with this shared access policy.
-                                                                                      Refer to <code>Constants.AccountSasConstants.ResourceTypes</code>.</p></td>
+            <td class="description last"><p>The resource type for a shared access signature associated with this shared access policy.<br>                                                                                      Refer to <code>Constants.AccountSasConstants.ResourceTypes</code>.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2280,6 +2278,7 @@ environment variables will be used.</p>
 <span class="param-type">SharedAccessPermissions</span>
 
 
+
             
             </td>
 
@@ -2287,11 +2286,10 @@ environment variables will be used.</p>
 
             
 
-            <td class="description last"><p>The permissions for a shared access signature. 
-                                                                                      Refer to <code>Constants.AccountSasConstants.Permissions</code>.</p></td>
+            <td class="description last"><p>The permissions for a shared access signature.<br>                                                                                      Refer to <code>Constants.AccountSasConstants.Permissions</code>.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2304,6 +2302,7 @@ environment variables will be used.</p>
 <span class="param-type">date</span>
 
 
+
             
             </td>
 
@@ -2314,7 +2313,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The time at which the Shared Access Signature becomes valid.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2327,6 +2326,7 @@ environment variables will be used.</p>
 <span class="param-type">date</span>
 
 
+
             
             </td>
 
@@ -2337,7 +2337,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The time at which the Shared Access Signature becomes expired.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2350,6 +2350,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -2360,7 +2361,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The permission type. Refer to <code>Constants.AccountSasConstants.ResourceTypes</code>.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2373,6 +2374,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -2383,21 +2385,37 @@ environment variables will be used.</p>
             <td class="description last"><p>The possible protocols. Refer to <code>Constants.AccountSasConstants.ResourceTypes</code>.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
     
-    
+
     
 <dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -2408,18 +2426,10 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
@@ -2437,29 +2447,32 @@ environment variables will be used.</p>
 	
 </dl>
 
+
     
+
     
 
     
 
     
+
     
+
     
-    
-    
-    
+
     
 </dd>
 
         
             
+<hr>
 <dt>
-    <h4 class="name" id="generateDevelopmentStorageCredentials"><span class="type-signature"></span>generateDevelopmentStorageCredentials<span class="signature">(<span class="optional">proxyUri</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    <h4 class="name" id="generateDevelopmentStorageCredentials"><span class="type-signature"></span>generateDevelopmentStorageCredentials( [proxyUri])</h4>
     
     
 </dt>
 <dd>
-    
+
     
     <div class="description">
         <p>Creates a connection string that can be used to create a service which runs on the storage emulator. The emulator must be downloaded separately.</p>
@@ -2467,8 +2480,9 @@ environment variables will be used.</p>
     
 
     
+
     
-    
+
     
     
         <h5>Parameters:</h5>
@@ -2476,25 +2490,25 @@ environment variables will be used.</p>
 
 <table class="params table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Argument</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2505,6 +2519,7 @@ environment variables will be used.</p>
             
                 
 <span class="param-type">string</span>
+
 
 
             
@@ -2524,17 +2539,33 @@ environment variables will be used.</p>
 
             
 
-            <td class="description last"><p>The proxyUri. By default, <a href="http://127.0.0.1">http://127.0.0.1</a></p></td>
+            <td class="description last"><p>The proxyUri. By default, http://127.0.0.1</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
     
-    
+
     
 <dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -2545,18 +2576,10 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
@@ -2574,15 +2597,17 @@ environment variables will be used.</p>
 	
 </dl>
 
+
     
+
     
 
     
 
     
+
     
-    
-    
+
     
     <h5>Returns:</h5>
     
@@ -2594,20 +2619,21 @@ environment variables will be used.</p>
 
 
 <dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">string</span>
 
 
-	</dd>
+
+    </dd>
 </dl>
 
 
         
-    
+
     
         <h5>Example</h5>
         
@@ -2625,15 +2651,16 @@ environment variables will be used.</p>
 
         <dl>
                 
+<hr>
 <dt class="name" id="AccessConditions">
-    <h4>AccessConditions</h4>
+    <h4 id="AccessConditions">AccessConditions</h4>
 
     
 </dt>
 <dd>
     
     <div class="description">
-        <p>Specifying conditional headers for blob service operations. See <a href="http://msdn.microsoft.com/en-us/library/dd179371.aspx">http://msdn.microsoft.com/en-us/library/dd179371.aspx</a> for more information.</p>
+        <p>Specifying conditional headers for blob service operations. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.</p>
     </div>
     
 
@@ -2645,37 +2672,38 @@ environment variables will be used.</p>
 <span class="param-type">object</span>
 
 
+
             </li>
         </ul>
     
 
     
 <dl class="details">
-	
+    
 
-	<h5 class="subsection-title">Properties:</h5>
+    <h5 class="subsection-title">Properties:</h5>
 
-	<dl>
+    <dl>
 
 <table class="props table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2688,6 +2716,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -2695,11 +2724,10 @@ environment variables will be used.</p>
 
             
 
-            <td class="description last"><p>If the ETag for the blob matches the specified ETag.
-                                                              Specify the wildcard character (*) to perform the operation only if the resource does exist, and fail the operation if it does not exist.</p></td>
+            <td class="description last"><p>If the ETag for the blob matches the specified ETag.<br>                                                              Specify the wildcard character (*) to perform the operation only if the resource does exist, and fail the operation if it does not exist.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2712,6 +2740,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -2719,11 +2748,10 @@ environment variables will be used.</p>
 
             
 
-            <td class="description last"><p>If the ETag for the blob does not match the specified ETag.
-                                                              Specify the wildcard character (*) to perform the operation only if the resource does not exist, and fail the operation if it does exist.</p></td>
+            <td class="description last"><p>If the ETag for the blob does not match the specified ETag.<br>                                                              Specify the wildcard character (*) to perform the operation only if the resource does not exist, and fail the operation if it does exist.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2739,6 +2767,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -2749,7 +2778,7 @@ environment variables will be used.</p>
             <td class="description last"><p>If the blob has been modified since the specified date.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2765,6 +2794,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -2775,7 +2805,7 @@ environment variables will be used.</p>
             <td class="description last"><p>If the blob has not been modified since the specified date.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2791,6 +2821,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -2798,11 +2829,10 @@ environment variables will be used.</p>
 
             
 
-            <td class="description last"><p>If the blob's sequence number is less than or equal to the specified value.
-                                                              For Put Page operation only. See <a href="https://msdn.microsoft.com/en-us/library/azure/ee691975.aspx">https://msdn.microsoft.com/en-us/library/azure/ee691975.aspx</a> for more information.</p></td>
+            <td class="description last"><p>If the blob's sequence number is less than or equal to the specified value.<br>                                                              For Put Page operation only. See https://msdn.microsoft.com/en-us/library/azure/ee691975.aspx for more information.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2818,6 +2848,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -2825,11 +2856,10 @@ environment variables will be used.</p>
 
             
 
-            <td class="description last"><p>If the blob's sequence number is less than the specified value.
-                                                              For Put Page operation only. See <a href="https://msdn.microsoft.com/en-us/library/azure/ee691975.aspx">https://msdn.microsoft.com/en-us/library/azure/ee691975.aspx</a> for more information.</p></td>
+            <td class="description last"><p>If the blob's sequence number is less than the specified value.<br>                                                              For Put Page operation only. See https://msdn.microsoft.com/en-us/library/azure/ee691975.aspx for more information.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2845,6 +2875,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -2852,11 +2883,10 @@ environment variables will be used.</p>
 
             
 
-            <td class="description last"><p>If the blob's sequence number is equal to the specified value.
-                                                              For Put Page operation only. See <a href="https://msdn.microsoft.com/en-us/library/azure/ee691975.aspx">https://msdn.microsoft.com/en-us/library/azure/ee691975.aspx</a> for more information.</p></td>
+            <td class="description last"><p>If the blob's sequence number is equal to the specified value.<br>                                                              For Put Page operation only. See https://msdn.microsoft.com/en-us/library/azure/ee691975.aspx for more information.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2872,6 +2902,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -2879,11 +2910,10 @@ environment variables will be used.</p>
 
             
 
-            <td class="description last"><p>If the Append Block operation would cause the blob to exceed that limit or if the blob size is already greater than the specified value. 
-                                                              For Append Block operation only. See <a href="https://msdn.microsoft.com/en-us/library/mt427365.aspx">https://msdn.microsoft.com/en-us/library/mt427365.aspx</a> for more information.</p></td>
+            <td class="description last"><p>If the Append Block operation would cause the blob to exceed that limit or if the blob size is already greater than the specified value.<br>                                                              For Append Block operation only. See https://msdn.microsoft.com/en-us/library/mt427365.aspx for more information.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2899,6 +2929,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -2906,15 +2937,30 @@ environment variables will be used.</p>
 
             
 
-            <td class="description last"><p>If the append position is equal to the specified value.
-                                                              For Append Block operation only. See <a href="https://msdn.microsoft.com/en-us/library/mt427365.aspx">https://msdn.microsoft.com/en-us/library/mt427365.aspx</a> for more information.</p></td>
+            <td class="description last"><p>If the append position is equal to the specified value.<br>                                                              For Append Block operation only. See https://msdn.microsoft.com/en-us/library/mt427365.aspx for more information.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 </dl>
 
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -2925,23 +2971,15 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-237">line 237</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-250">line 250</a>
 			</li>
 		</ul>
 	</dd>
@@ -2960,8 +2998,9 @@ environment variables will be used.</p>
 
             
                 
+<hr>
 <dt class="name" id="AccessPolicy">
-    <h4>AccessPolicy</h4>
+    <h4 id="AccessPolicy">AccessPolicy</h4>
 
     
 </dt>
@@ -2980,37 +3019,38 @@ environment variables will be used.</p>
 <span class="param-type">object</span>
 
 
+
             </li>
         </ul>
     
 
     
 <dl class="details">
-	
+    
 
-	<h5 class="subsection-title">Properties:</h5>
+    <h5 class="subsection-title">Properties:</h5>
 
-	<dl>
+    <dl>
 
 <table class="props table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3023,6 +3063,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -3033,7 +3074,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The permission type.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3046,6 +3087,7 @@ environment variables will be used.</p>
 <span class="param-type">Date</span>
 
 
+
             
             </td>
 
@@ -3056,7 +3098,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The time at which the access policy becomes valid.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3069,6 +3111,7 @@ environment variables will be used.</p>
 <span class="param-type">Date</span>
 
 
+
             
             </td>
 
@@ -3079,7 +3122,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The time at which the access policy becomes expired.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3092,6 +3135,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -3102,7 +3146,7 @@ environment variables will be used.</p>
             <td class="description last"><p>An IP address or a range of IP addresses from which to accept requests. When specifying a range, note that the range is inclusive.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3115,6 +3159,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -3125,7 +3170,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The protocols permitted for a request made with the SAS.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3138,6 +3183,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -3148,7 +3194,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The services (blob, file, queue, table) for a shared access signature associated with this shared access policy.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3161,6 +3207,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -3171,11 +3218,27 @@ environment variables will be used.</p>
             <td class="description last"><p>The resource type for a shared access signature associated with this shared access policy.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 </dl>
 
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -3186,23 +3249,15 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-249">line 249</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-318">line 318</a>
 			</li>
 		</ul>
 	</dd>
@@ -3221,8 +3276,9 @@ environment variables will be used.</p>
 
             
                 
+<hr>
 <dt class="name" id="ContainerAclResult">
-    <h4>ContainerAclResult</h4>
+    <h4 id="ContainerAclResult">ContainerAclResult</h4>
 
     
 </dt>
@@ -3241,37 +3297,38 @@ environment variables will be used.</p>
 <span class="param-type">object</span>
 
 
+
             </li>
         </ul>
     
 
     
 <dl class="details">
-	
+    
 
-	<h5 class="subsection-title">Properties:</h5>
+    <h5 class="subsection-title">Properties:</h5>
 
-	<dl>
+    <dl>
 
 <table class="props table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3284,6 +3341,7 @@ environment variables will be used.</p>
 <span class="param-type">Object.&lt;string, <a href="global.html#AccessPolicy">AccessPolicy</a>></span>
 
 
+
             
             </td>
 
@@ -3294,11 +3352,27 @@ environment variables will be used.</p>
             <td class="description last"><p>The container ACL settings. See <code><a href="global.html#AccessPolicy">AccessPolicy</a></code> for detailed information.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 </dl>
 
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -3309,23 +3383,15 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="containerresult.js.html">services/blob/models/containerresult.js</a>,
-				 <a href="containerresult.js.html#sunlight-1-line-105">line 105</a>
+				<a href="services_blob_models_containerresult.js.html">services/blob/models/containerresult.js</a>,
+				 <a href="services_blob_models_containerresult.js.html#sunlight-1-line-109">line 109</a>
 			</li>
 		</ul>
 	</dd>
@@ -3344,8 +3410,9 @@ environment variables will be used.</p>
 
             
                 
+<hr>
 <dt class="name" id="CorsRule">
-    <h4>CorsRule</h4>
+    <h4 id="CorsRule">CorsRule</h4>
 
     
 </dt>
@@ -3364,37 +3431,38 @@ environment variables will be used.</p>
 <span class="param-type">object</span>
 
 
+
             </li>
         </ul>
     
 
     
 <dl class="details">
-	
+    
 
-	<h5 class="subsection-title">Properties:</h5>
+    <h5 class="subsection-title">Properties:</h5>
 
-	<dl>
+    <dl>
 
 <table class="props table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3404,7 +3472,8 @@ environment variables will be used.</p>
             <td class="type">
             
                 
-<span class="param-type">string[]</span>
+<span class="param-type">Array.&lt;string></span>
+
 
 
             
@@ -3417,7 +3486,7 @@ environment variables will be used.</p>
             <td class="description last"><p>A list of HTTP methods that are allowed to be executed by the origin. For Azure Storage, permitted methods are DELETE, GET, HEAD, MERGE, POST, OPTIONS or PUT.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3427,7 +3496,8 @@ environment variables will be used.</p>
             <td class="type">
             
                 
-<span class="param-type">string[]</span>
+<span class="param-type">Array.&lt;string></span>
+
 
 
             
@@ -3440,7 +3510,7 @@ environment variables will be used.</p>
             <td class="description last"><p>A list of origin domains that are allowed via CORS, or &quot;*&quot; if all domains are allowed.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3450,7 +3520,8 @@ environment variables will be used.</p>
             <td class="type">
             
                 
-<span class="param-type">string[]</span>
+<span class="param-type">Array.&lt;string></span>
+
 
 
             
@@ -3463,7 +3534,7 @@ environment variables will be used.</p>
             <td class="description last"><p>A list of headers allowed to be part of the cross-origin request.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3473,7 +3544,8 @@ environment variables will be used.</p>
             <td class="type">
             
                 
-<span class="param-type">string[]</span>
+<span class="param-type">Array.&lt;string></span>
+
 
 
             
@@ -3486,7 +3558,7 @@ environment variables will be used.</p>
             <td class="description last"><p>A list of response headers to expose to CORS clients.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3499,6 +3571,7 @@ environment variables will be used.</p>
 <span class="param-type">number</span>
 
 
+
             
             </td>
 
@@ -3509,11 +3582,27 @@ environment variables will be used.</p>
             <td class="description last"><p>The number of seconds that the client/browser should cache a preflight response.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 </dl>
 
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -3524,23 +3613,15 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-245">line 245</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-301">line 301</a>
 			</li>
 		</ul>
 	</dd>
@@ -3559,13 +3640,14 @@ environment variables will be used.</p>
 
             
                 
+<hr>
 <dt>
-    <h4 class="name" id="errorOrResponse"><span class="type-signature"></span>errorOrResponse<span class="signature">(error, response)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="errorOrResponse"><span class="type-signature"></span>errorOrResponse(error, response)</h4>
     
     
 </dt>
 <dd>
-    
+
     
     <div class="description">
         <p>A callback that returns a response object.</p>
@@ -3573,8 +3655,9 @@ environment variables will be used.</p>
     
 
     
+
     
-    
+
     
     
         <h5>Parameters:</h5>
@@ -3582,23 +3665,23 @@ environment variables will be used.</p>
 
 <table class="params table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3611,6 +3694,7 @@ environment variables will be used.</p>
 <span class="param-type">object</span>
 
 
+
             
             </td>
 
@@ -3621,7 +3705,7 @@ environment variables will be used.</p>
             <td class="description last"><p>If an error occurs, will contain information about the error.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3634,6 +3718,7 @@ environment variables will be used.</p>
 <span class="param-type">object</span>
 
 
+
             
             </td>
 
@@ -3641,18 +3726,33 @@ environment variables will be used.</p>
 
             
 
-            <td class="description last"><p>Contains information about the response returned for the operation.
-                              For example, HTTP status codes and headers.</p></td>
+            <td class="description last"><p>Contains information about the response returned for the operation.<br>                              For example, HTTP status codes and headers.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
     
-    
+
     
 <dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -3663,18 +3763,10 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
@@ -3692,29 +3784,32 @@ environment variables will be used.</p>
 	
 </dl>
 
+
     
+
     
 
     
 
     
+
     
+
     
-    
-    
-    
+
     
 </dd>
 
             
                 
+<hr>
 <dt>
-    <h4 class="name" id="errorOrResult"><span class="type-signature"></span>errorOrResult<span class="signature">(error, result, response)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="errorOrResult"><span class="type-signature"></span>errorOrResult(error, result, response)</h4>
     
     
 </dt>
 <dd>
-    
+
     
     <div class="description">
         <p>A callback that returns result and response objects.</p>
@@ -3722,8 +3817,9 @@ environment variables will be used.</p>
     
 
     
+
     
-    
+
     
     
         <h5>Parameters:</h5>
@@ -3731,23 +3827,23 @@ environment variables will be used.</p>
 
 <table class="params table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3760,6 +3856,7 @@ environment variables will be used.</p>
 <span class="param-type">object</span>
 
 
+
             
             </td>
 
@@ -3770,7 +3867,7 @@ environment variables will be used.</p>
             <td class="description last"><p>If an error occurs, will contain information about the error.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3783,6 +3880,7 @@ environment variables will be used.</p>
 <span class="param-type">object</span>
 
 
+
             
             </td>
 
@@ -3793,7 +3891,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The result of the operation.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3806,6 +3904,7 @@ environment variables will be used.</p>
 <span class="param-type">object</span>
 
 
+
             
             </td>
 
@@ -3813,18 +3912,33 @@ environment variables will be used.</p>
 
             
 
-            <td class="description last"><p>Contains information about the response returned for the operation.
-                              For example, HTTP status codes and headers.</p></td>
+            <td class="description last"><p>Contains information about the response returned for the operation.<br>                              For example, HTTP status codes and headers.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
     
-    
+
     
 <dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -3835,23 +3949,15 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-234">line 234</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-240">line 240</a>
 			</li>
 		</ul>
 	</dd>
@@ -3864,24 +3970,27 @@ environment variables will be used.</p>
 	
 </dl>
 
+
     
+
     
 
     
 
     
+
     
+
     
-    
-    
-    
+
     
 </dd>
 
             
                 
+<hr>
 <dt class="name" id="LoggingProperties">
-    <h4>LoggingProperties</h4>
+    <h4 id="LoggingProperties">LoggingProperties</h4>
 
     
 </dt>
@@ -3900,37 +4009,38 @@ environment variables will be used.</p>
 <span class="param-type">object</span>
 
 
+
             </li>
         </ul>
     
 
     
 <dl class="details">
-	
+    
 
-	<h5 class="subsection-title">Properties:</h5>
+    <h5 class="subsection-title">Properties:</h5>
 
-	<dl>
+    <dl>
 
 <table class="props table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3943,6 +4053,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -3953,7 +4064,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The version of Storage Analytics currently in use for logging.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3966,6 +4077,7 @@ environment variables will be used.</p>
 <span class="param-type">boolean</span>
 
 
+
             
             </td>
 
@@ -3976,7 +4088,7 @@ environment variables will be used.</p>
             <td class="description last"><p>Indicates whether delete requests are being logged.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3989,6 +4101,7 @@ environment variables will be used.</p>
 <span class="param-type">boolean</span>
 
 
+
             
             </td>
 
@@ -3999,7 +4112,7 @@ environment variables will be used.</p>
             <td class="description last"><p>Indicates whether read requests are being logged.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4012,6 +4125,7 @@ environment variables will be used.</p>
 <span class="param-type">boolean</span>
 
 
+
             
             </td>
 
@@ -4022,7 +4136,7 @@ environment variables will be used.</p>
             <td class="description last"><p>Indicates whether write requests are being logged.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4035,6 +4149,7 @@ environment variables will be used.</p>
 <span class="param-type"><a href="global.html#RetentionPolicy">RetentionPolicy</a></span>
 
 
+
             
             </td>
 
@@ -4045,11 +4160,27 @@ environment variables will be used.</p>
             <td class="description last"><p>The retention policy of the log data.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 </dl>
 
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -4060,23 +4191,15 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-241">line 241</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-282">line 282</a>
 			</li>
 		</ul>
 	</dd>
@@ -4095,8 +4218,9 @@ environment variables will be used.</p>
 
             
                 
+<hr>
 <dt class="name" id="MetricsProperties">
-    <h4>MetricsProperties</h4>
+    <h4 id="MetricsProperties">MetricsProperties</h4>
 
     
 </dt>
@@ -4115,37 +4239,38 @@ environment variables will be used.</p>
 <span class="param-type">object</span>
 
 
+
             </li>
         </ul>
     
 
     
 <dl class="details">
-	
+    
 
-	<h5 class="subsection-title">Properties:</h5>
+    <h5 class="subsection-title">Properties:</h5>
 
-	<dl>
+    <dl>
 
 <table class="props table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4158,6 +4283,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -4168,7 +4294,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The version of Storage Analytics currently in use for hour metrics.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4181,6 +4307,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -4191,7 +4318,7 @@ environment variables will be used.</p>
             <td class="description last"><p>Indicates whether metrics are enabled</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4204,6 +4331,7 @@ environment variables will be used.</p>
 <span class="param-type">boolean</span>
 
 
+
             
             </td>
 
@@ -4214,7 +4342,7 @@ environment variables will be used.</p>
             <td class="description last"><p>Indicates whether metrics generate summary statistics for called API operations.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4227,6 +4355,7 @@ environment variables will be used.</p>
 <span class="param-type"><a href="global.html#RetentionPolicy">RetentionPolicy</a></span>
 
 
+
             
             </td>
 
@@ -4237,11 +4366,27 @@ environment variables will be used.</p>
             <td class="description last"><p>The retention policy of the metrics data.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 </dl>
 
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -4252,23 +4397,15 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-243">line 243</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-292">line 292</a>
 			</li>
 		</ul>
 	</dd>
@@ -4287,8 +4424,9 @@ environment variables will be used.</p>
 
             
                 
+<hr>
 <dt class="name" id="Range">
-    <h4>Range</h4>
+    <h4 id="Range">Range</h4>
 
     
 </dt>
@@ -4307,37 +4445,38 @@ environment variables will be used.</p>
 <span class="param-type">object</span>
 
 
+
             </li>
         </ul>
     
 
     
 <dl class="details">
-	
+    
 
-	<h5 class="subsection-title">Properties:</h5>
+    <h5 class="subsection-title">Properties:</h5>
 
-	<dl>
+    <dl>
 
 <table class="props table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4350,6 +4489,7 @@ environment variables will be used.</p>
 <span class="param-type">number</span>
 
 
+
             
             </td>
 
@@ -4360,7 +4500,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The start of the range.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4373,6 +4513,7 @@ environment variables will be used.</p>
 <span class="param-type">number</span>
 
 
+
             
             </td>
 
@@ -4383,11 +4524,27 @@ environment variables will be used.</p>
             <td class="description last"><p>The end of the range.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 </dl>
 
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -4398,23 +4555,15 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-253">line 253</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-340">line 340</a>
 			</li>
 		</ul>
 	</dd>
@@ -4433,15 +4582,16 @@ environment variables will be used.</p>
 
             
                 
+<hr>
 <dt class="name" id="RangeDiff">
-    <h4>RangeDiff</h4>
+    <h4 id="RangeDiff">RangeDiff</h4>
 
     
 </dt>
 <dd>
     
     <div class="description">
-        <p>The range diff. Refer to <a href="https://msdn.microsoft.com/en-us/library/azure/mt736912.aspx">https://msdn.microsoft.com/en-us/library/azure/mt736912.aspx</a></p>
+        <p>The range diff. Refer to https://msdn.microsoft.com/en-us/library/azure/mt736912.aspx</p>
     </div>
     
 
@@ -4453,37 +4603,38 @@ environment variables will be used.</p>
 <span class="param-type">object</span>
 
 
+
             </li>
         </ul>
     
 
     
 <dl class="details">
-	
+    
 
-	<h5 class="subsection-title">Properties:</h5>
+    <h5 class="subsection-title">Properties:</h5>
 
-	<dl>
+    <dl>
 
 <table class="props table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4496,6 +4647,7 @@ environment variables will be used.</p>
 <span class="param-type">number</span>
 
 
+
             
             </td>
 
@@ -4506,7 +4658,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The start of the range.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4519,6 +4671,7 @@ environment variables will be used.</p>
 <span class="param-type">number</span>
 
 
+
             
             </td>
 
@@ -4529,7 +4682,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The end of the range.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4542,6 +4695,7 @@ environment variables will be used.</p>
 <span class="param-type">boolean</span>
 
 
+
             
             </td>
 
@@ -4552,11 +4706,27 @@ environment variables will be used.</p>
             <td class="description last"><p>If the range is cleared or not.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 </dl>
 
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -4567,23 +4737,15 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-255">line 255</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-347">line 347</a>
 			</li>
 		</ul>
 	</dd>
@@ -4602,8 +4764,9 @@ environment variables will be used.</p>
 
             
                 
+<hr>
 <dt class="name" id="RetentionPolicy">
-    <h4>RetentionPolicy</h4>
+    <h4 id="RetentionPolicy">RetentionPolicy</h4>
 
     
 </dt>
@@ -4622,37 +4785,38 @@ environment variables will be used.</p>
 <span class="param-type">object</span>
 
 
+
             </li>
         </ul>
     
 
     
 <dl class="details">
-	
+    
 
-	<h5 class="subsection-title">Properties:</h5>
+    <h5 class="subsection-title">Properties:</h5>
 
-	<dl>
+    <dl>
 
 <table class="props table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4665,6 +4829,7 @@ environment variables will be used.</p>
 <span class="param-type">boolean</span>
 
 
+
             
             </td>
 
@@ -4675,7 +4840,7 @@ environment variables will be used.</p>
             <td class="description last"><p>Indicates whether a retention policy is enabled for the storage service.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4688,6 +4853,7 @@ environment variables will be used.</p>
 <span class="param-type">number</span>
 
 
+
             
             </td>
 
@@ -4698,11 +4864,27 @@ environment variables will be used.</p>
             <td class="description last"><p>Indicates the number of days that logging data is retained. All data older than this value will be deleted.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 </dl>
 
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -4713,23 +4895,15 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-247">line 247</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-311">line 311</a>
 			</li>
 		</ul>
 	</dd>
@@ -4748,8 +4922,9 @@ environment variables will be used.</p>
 
             
                 
+<hr>
 <dt class="name" id="ServiceProperties">
-    <h4>ServiceProperties</h4>
+    <h4 id="ServiceProperties">ServiceProperties</h4>
 
     
 </dt>
@@ -4768,37 +4943,38 @@ environment variables will be used.</p>
 <span class="param-type">object</span>
 
 
+
             </li>
         </ul>
     
 
     
 <dl class="details">
-	
+    
 
-	<h5 class="subsection-title">Properties:</h5>
+    <h5 class="subsection-title">Properties:</h5>
 
-	<dl>
+    <dl>
 
 <table class="props table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4811,6 +4987,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -4821,7 +4998,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The default version of Storage Analytics currently in use.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4834,6 +5011,7 @@ environment variables will be used.</p>
 <span class="param-type"><a href="global.html#LoggingProperties">LoggingProperties</a></span>
 
 
+
             
             </td>
 
@@ -4844,7 +5022,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The Logging settings.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4857,6 +5035,7 @@ environment variables will be used.</p>
 <span class="param-type"><a href="global.html#MetricsProperties">MetricsProperties</a></span>
 
 
+
             
             </td>
 
@@ -4867,7 +5046,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The HourMetrics settings provide a summary of request statistics grouped by API in hourly aggregates.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4880,6 +5059,7 @@ environment variables will be used.</p>
 <span class="param-type"><a href="global.html#MetricsProperties">MetricsProperties</a></span>
 
 
+
             
             </td>
 
@@ -4890,7 +5070,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The HourMetrics settings provide request statistics grouped by API for each minute.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4901,6 +5081,7 @@ environment variables will be used.</p>
             
                 
 <span class="param-type">object</span>
+
 
 
             
@@ -4915,23 +5096,23 @@ environment variables will be used.</p>
 
 <table class="props table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4941,7 +5122,8 @@ environment variables will be used.</p>
             <td class="type">
             
                 
-<span class="param-type">CorsRule[]</span>
+<span class="param-type">Array.&lt;<a href="global.html#CorsRule">CorsRule</a>></span>
+
 
 
             
@@ -4954,18 +5136,34 @@ environment variables will be used.</p>
             <td class="description last"><p>Groups settings for a <code><a href="global.html#CorsRule">CORS rule</a></code>.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 </dl>
 
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -4976,23 +5174,15 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-239">line 239</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-271">line 271</a>
 			</li>
 		</ul>
 	</dd>
@@ -5011,8 +5201,9 @@ environment variables will be used.</p>
 
             
                 
+<hr>
 <dt class="name" id="ServiceStats">
-    <h4>ServiceStats</h4>
+    <h4 id="ServiceStats">ServiceStats</h4>
 
     
 </dt>
@@ -5031,37 +5222,38 @@ environment variables will be used.</p>
 <span class="param-type">object</span>
 
 
+
             </li>
         </ul>
     
 
     
 <dl class="details">
-	
+    
 
-	<h5 class="subsection-title">Properties:</h5>
+    <h5 class="subsection-title">Properties:</h5>
 
-	<dl>
+    <dl>
 
 <table class="props table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -5072,6 +5264,7 @@ environment variables will be used.</p>
             
                 
 <span class="param-type">object</span>
+
 
 
             
@@ -5086,23 +5279,23 @@ environment variables will be used.</p>
 
 <table class="props table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -5115,6 +5308,7 @@ environment variables will be used.</p>
 <span class="param-type">string</span>
 
 
+
             
             </td>
 
@@ -5125,7 +5319,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The status of the secondary location.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5138,6 +5332,7 @@ environment variables will be used.</p>
 <span class="param-type">Date</span>
 
 
+
             
             </td>
 
@@ -5145,23 +5340,37 @@ environment variables will be used.</p>
 
             
 
-            <td class="description last"><p>A GMT date/time value, to the second. 
-                                                              All primary writes preceding this value are guaranteed to be available for read operations at the secondary.
-                                                              Primary writes after this point in time may or may not be available for reads.</p></td>
+            <td class="description last"><p>A GMT date/time value, to the second.<br>                                                              All primary writes preceding this value are guaranteed to be available for read operations at the secondary.<br>                                                              Primary writes after this point in time may or may not be available for reads.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 </dl>
 
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -5172,23 +5381,15 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-251">line 251</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-330">line 330</a>
 			</li>
 		</ul>
 	</dd>
@@ -5207,8 +5408,9 @@ environment variables will be used.</p>
 
             
                 
+<hr>
 <dt class="name" id="ShareAclResult">
-    <h4>ShareAclResult</h4>
+    <h4 id="ShareAclResult">ShareAclResult</h4>
 
     
 </dt>
@@ -5227,37 +5429,38 @@ environment variables will be used.</p>
 <span class="param-type">object</span>
 
 
+
             </li>
         </ul>
     
 
     
 <dl class="details">
-	
+    
 
-	<h5 class="subsection-title">Properties:</h5>
+    <h5 class="subsection-title">Properties:</h5>
 
-	<dl>
+    <dl>
 
 <table class="props table table-striped">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -5270,6 +5473,7 @@ environment variables will be used.</p>
 <span class="param-type">Object.&lt;string, <a href="global.html#AccessPolicy">AccessPolicy</a>></span>
 
 
+
             
             </td>
 
@@ -5280,11 +5484,27 @@ environment variables will be used.</p>
             <td class="description last"><p>The container ACL settings. See <code><a href="global.html#AccessPolicy">AccessPolicy</a></code> for detailed information.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 </dl>
 
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
 	
 
 	
@@ -5295,23 +5515,15 @@ environment variables will be used.</p>
 
 	
 
-	
-
-	
-
-	
-
-	
-
 
 
 	
-	<dt class="tag-source">Source:</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="shareresult.js.html">services/file/models/shareresult.js</a>,
-				 <a href="shareresult.js.html#sunlight-1-line-77">line 77</a>
+				<a href="services_file_models_shareresult.js.html">services/file/models/shareresult.js</a>,
+				 <a href="services_file_models_shareresult.js.html#sunlight-1-line-77">line 77</a>
 			</li>
 		</ul>
 	</dd>
@@ -5339,96 +5551,132 @@ environment variables will be used.</p>
 
 
 
-				</div>
-
-				<div class="clearfix"></div>
-				<footer>
-					
-					
-		<span class="jsdoc-message">
-		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Mon Aug 29th 2016 using the <a
-			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
-		</span>
-				</footer>
-			</div>
-
-			
-			<div class="span3">
-				<div id="toc"></div>
-			</div>
-			
-			<br clear="both">
 		</div>
-
 	</div>
-	<!--<script src="scripts/sunlight.js"></script>-->
-	<script src="scripts/docstrap.lib.js"></script>
-	<script src="scripts/bootstrap-dropdown.js"></script>
-	<script src="scripts/toc.js"></script>
 
-	<script>
-		$( function () {
-			$( "[id*='$']" ).each( function () {
-				var $this = $( this );
+	<div class="clearfix"></div>
 
-				$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
-			} );
-
-			$( "#toc" ).toc( {
-				anchorName  : function ( i, heading, prefix ) {
-					return $( heading ).attr( "id" ) || ( prefix + i );
-				},
-				selectors   : "h1,h2,h3,h4",
-				showAndHide : false,
-				scrollTo    : "100px"
-			} );
-
-			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
-			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
-			$( '.dropdown-toggle' ).dropdown();
-//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
-
-			$( ".tutorial-section pre, .readme-section pre" ).each( function () {
-				var $this = $( this );
-
-				var example = $this.find( "code" );
-				exampleText = example.html();
-				var lang = /{@lang (.*?)}/.exec( exampleText );
-				if ( lang && lang[1] ) {
-					exampleText = exampleText.replace( lang[0], "" );
-					example.html( exampleText );
-					lang = lang[1];
-				} else {
-					lang = "javascript";
-				}
-
-				if ( lang ) {
-
-					$this
-						.addClass( "sunlight-highlight-" + lang )
-						.addClass( "linenums" )
-						.html( example.html() );
-
-				}
-			} );
-
-			Sunlight.highlightAll( {
-				lineNumbers : true,
-				showMenu : true,
-				enableDoclinks : true
-			} );
-		} );
-	 </script>
-
-
-
-	<!--Navigation and Symbol Display-->
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
 	
 
+</div>
+</div>
 
-	<!--Google Analytics-->
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
+		on Wed Jan 25th 2017
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
 
 </body>
 </html>
