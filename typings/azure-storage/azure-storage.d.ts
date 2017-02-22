@@ -2611,6 +2611,7 @@ declare module azurestorage {
             lastModified: string;
             contentLength: string;
             blobType: string;
+            isIncrementalCopy?: boolean;
             requestId: string;
             sequenceNumber?: string;
             contentRange?: string;
@@ -2636,6 +2637,7 @@ declare module azurestorage {
               status?: string;
               completionTime?: string;
               statusDescription?: string;
+              destinationSnapshot?: string;
               progress?: string;
               source?: string;
             },
@@ -2698,6 +2700,7 @@ declare module azurestorage {
             sourceLeaseId?: string;
             accessConditions?: AccessConditions;
             sourceAccessConditions?: AccessConditions;
+            isIncrementalCopy?: boolean;
           }
 
           export interface DeleteBlobRequestOptions extends BlobRequestOptions {

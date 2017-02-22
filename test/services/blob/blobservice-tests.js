@@ -1121,6 +1121,87 @@ describe('BlobService', function () {
         });
       });
     });
+
+    runOrSkip('incremental copy should work', function(done) {
+      var sourceContainerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
+      var targetContainerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
+
+      var sourceBlobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+      var targetBlobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+
+      blobService.createContainer(sourceContainerName, function (err) {
+        assert.equal(err, null);
+
+        blobService.createContainer(targetContainerName, function (err) {
+          assert.equal(err, null);
+
+          blobService.createPageBlob(sourceContainerName, sourceBlobName, 1024, function(err) {
+            assert.equal(err, null);
+
+            blobService.createBlobSnapshot(sourceContainerName, sourceBlobName, function (snapshotError, snapshotId, snapshotResponse) {
+              assert.equal(snapshotError, null);
+              assert.notEqual(snapshotResponse, null);
+              assert.notEqual(snapshotId, null);
+
+              var startDate = new Date();
+              var expiryDate = new Date(startDate);
+              expiryDate.setMinutes(startDate.getMinutes() + 100);
+              startDate.setMinutes(startDate.getMinutes() - 100);
+
+              var sourceSAS = blobService.generateSharedAccessSignature(sourceContainerName, sourceBlobName, {
+                AccessPolicy: {
+                  Permissions: BlobUtilities.SharedAccessPermissions.READ,
+                  Start: startDate,
+                  Expiry: expiryDate
+                }
+              });
+              
+              blobService.startCopyBlob(blobService.getUrl(sourceContainerName, sourceBlobName, sourceSAS), targetContainerName, targetBlobName, {isIncrementalCopy: true, 'snapshotId': snapshotId}, function(err, result){
+                assert.equal(err, null);
+                assert.notEqual(result, null);
+                assert.notEqual(result.copy, null);
+                assert.notEqual(result.copy.id, null);
+                assert.notEqual(result.copy.status, null);
+
+                setTimeout(function() {
+                  blobService.listBlobsSegmented(targetContainerName, null, {include: 'snapshots'}, function(err, result) {
+                    assert.equal(err, null);
+                    // 1 base incremental copy blob + 1 snapshot
+                    assert.equal(result.entries.length, 2);
+
+                    var incrementalCopyBlob = result.entries.find(function(b) {
+                      return b.snapshot === undefined;
+                    });
+                    var incrementalCopyBlobSnapshot = result.entries.find(function(b) {
+                      return b.snapshot !== undefined;
+                    });
+
+                    assert.equal(incrementalCopyBlob.isIncrementalCopy, true);
+                    assert.notEqual(incrementalCopyBlob.copy.destinationSnapshot, null);                  
+
+                    blobService.getBlobProperties(targetContainerName, targetBlobName, function(err, result) {
+                      assert.equal(err, null);
+                      assert.equal(result.isIncrementalCopy, true);
+                      assert.notEqual(result.copy.destinationSnapshot, null);
+
+                      // base incremental blob cannot be read
+                      blobService.getBlobToText(targetContainerName, targetBlobName, { rangeStart: 1, rangeEnd: 2}, function(err) {
+                        assert.notEqual(err, null);
+                      
+                        blobService.getBlobToText(targetContainerName, targetBlobName, { rangeStart: 1, rangeEnd: 2, snapshotId: incrementalCopyBlobSnapshot.snapshot}, function(err) {
+                          assert.equal(err, null);
+                          done();
+                        });
+                      });
+                    });
+                  });
+                }, 10000); // Wait for incremental copy to complete
+              });
+            });
+          });
+        });
+      });
+    });
   });
 
   describe('shared access signature', function () {
