@@ -4541,7 +4541,7 @@ declare module azurestorage {
         *   }
         * });
         */
-        queryEntities<T>(table: string, tableQuery: TableQuery, currentToken: TableService.TableContinuationToken | null, options: TableService.TableEntityRequestOptions, callback: ErrorOrResult<TableService.QueryEntitiesResult<T>>): void;
+        queryEntities<T>(table: string, tableQuery: TableQuery, currentToken: TableService.TableContinuationToken, options: TableService.TableEntityRequestOptions, callback: ErrorOrResult<TableService.QueryEntitiesResult<T>>): void;
 
         /**
         * Queries data in a table. To retrieve a single entity by partition key and row key, use retrieve entity.
@@ -4558,7 +4558,7 @@ declare module azurestorage {
         *                                                                                  to retrieve the next set of results.
         *                                                                                  `response` will contain information related to this operation.
         */
-        queryEntities<T>(table: string, tableQuery: TableQuery, currentToken: TableService.TableContinuationToken | null, callback: ErrorOrResult<TableService.QueryEntitiesResult<T>>): void;
+        queryEntities<T>(table: string, tableQuery: TableQuery, currentToken: TableService.TableContinuationToken, callback: ErrorOrResult<TableService.QueryEntitiesResult<T>>): void;
 
         /**
         * Retrieves an entity from a table.
