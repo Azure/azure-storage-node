@@ -69,7 +69,6 @@
   "scripts": {
     "check": "jshint lib && nsp check",
     "test": "jshint lib && nsp check && mocha --no-timeouts --recursive test",
-    "testwithoutcheck": "jshint lib && mocha --no-timeouts --recursive test",
     "cover": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec -u bdd --no-timeouts --recursive test",
     "coveralls": "npm run cover && cat ./coverage/lcov.info | node ./node_modules/coveralls/bin/coveralls.js",
     "genjs": "node ./browser/bundle.js"
