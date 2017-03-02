@@ -1,20 +1,19 @@
 language: node_js
 node_js:
-  - "4.1"
-  - "4.0"
-  - "0.12"
-  - "0.10"
+  - "4"
+  - "5"
+  - "6"
+  - "7"
 
 after_script:
   - npm run coveralls
 
 install:
-  - npm install -g npm@1.4.23
   - npm --version
   - npm install
 
-script:
-  # `nsp check` doesn't work on NodeJS 0.8*. Don't run `nsp check` against 0.8*
-  - case ${TRAVIS_NODE_VERSION} in 0.8*) npm run testwithoutcheck;; *) npm test;; esac
+allow_failures:
+  - node_js: "5"
+  - node_js: "7"
 
 sudo: false

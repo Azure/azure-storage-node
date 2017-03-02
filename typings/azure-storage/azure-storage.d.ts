@@ -2611,6 +2611,7 @@ declare module azurestorage {
             lastModified: string;
             contentLength: string;
             blobType: string;
+            isIncrementalCopy?: boolean;
             requestId: string;
             sequenceNumber?: string;
             contentRange?: string;
@@ -2636,6 +2637,7 @@ declare module azurestorage {
               status?: string;
               completionTime?: string;
               statusDescription?: string;
+              destinationSnapshot?: string;
               progress?: string;
               source?: string;
             },
@@ -2698,6 +2700,7 @@ declare module azurestorage {
             sourceLeaseId?: string;
             accessConditions?: AccessConditions;
             sourceAccessConditions?: AccessConditions;
+            isIncrementalCopy?: boolean;
           }
 
           export interface DeleteBlobRequestOptions extends BlobRequestOptions {
@@ -8900,10 +8903,22 @@ declare module azurestorage {
     SequenceNumberEqual?: Number | string;
     MaxBlobSize?: Number | string;
     MaxAppendPosition?: Number | string;
+
+    generateEmptyCondition() : AccessConditions;
+    generateIfNotExistsCondition(): AccessConditions;
+    generateIfExistsCondition(): AccessConditions;
+    generateIfNoneMatchCondition(etag: string) : AccessConditions;
+    generateIfMatchCondition(etag: string) : AccessConditions;
+    generateIfModifiedSinceCondition(time: Date|string) : AccessConditions;
+    generateIfNotModifiedSinceCondition(time: Date|string) : AccessConditions;
+    generateSequenceNumberEqualCondition(sequenceNumber: Number|string) : AccessConditions;
+    generateSequenceNumberLessThanCondition(sequenceNumber: Number|string) : AccessConditions;
+    generateSequenceNumberLessThanOrEqualCondition(sequenceNumber: Number|string) : AccessConditions;
   }
 
   export import Constants = common.util.constants;
   export import StorageUtilities = common.util.storageutilities;
+  export var AccessConditions : AccessConditions;
   export import SR = common.util.sr.SR;
   export import StorageServiceClient = common.services.storageserviceclient.StorageServiceClient;
   export import Logger = common.diagnostics.logger.Logger;
