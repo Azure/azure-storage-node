@@ -199,8 +199,8 @@ declare module azurestorage {
           *                                                                         `entries`  gives a list of containers and the `continuationToken` is used for the next listing operation.
           *                                                                         `response` will contain information related to this operation.
           */
-          listContainersSegmented(currentToken: common.ContinuationToken, options: BlobService.ListContainerOptions, callback: ErrorOrResult<BlobService.ListContainerResult>): void;
-          listContainersSegmented(currentToken: common.ContinuationToken, callback: ErrorOrResult<BlobService.ListContainerResult>): void;
+          listContainersSegmented(currentToken: common.ContinuationToken | null | undefined, options: BlobService.ListContainerOptions, callback: ErrorOrResult<BlobService.ListContainerResult>): void;
+          listContainersSegmented(currentToken: common.ContinuationToken | null | undefined, callback: ErrorOrResult<BlobService.ListContainerResult>): void;
           /**
           * Lists a segment containing a collection of container items whose names begin with the specified prefix under the specified account.
           *
@@ -223,8 +223,8 @@ declare module azurestorage {
           *                                                                         `entries`  gives a list of containers and the `continuationToken` is used for the next listing operation.
           *                                                                         `response` will contain information related to this operation.
           */
-          listContainersSegmentedWithPrefix(prefix: string, currentToken: common.ContinuationToken, options: BlobService.ListContainerOptions, callback: ErrorOrResult<BlobService.ListContainerResult>): void;
-          listContainersSegmentedWithPrefix(prefix: string, currentToken: common.ContinuationToken, callback: ErrorOrResult<BlobService.ListContainerResult>): void;
+          listContainersSegmentedWithPrefix(prefix: string, currentToken: common.ContinuationToken | null | undefined, options: BlobService.ListContainerOptions, callback: ErrorOrResult<BlobService.ListContainerResult>): void;
+          listContainersSegmentedWithPrefix(prefix: string, currentToken: common.ContinuationToken | null | undefined, callback: ErrorOrResult<BlobService.ListContainerResult>): void;
 
           /**
           * Checks whether or not a container exists on the service.
@@ -606,7 +606,7 @@ declare module azurestorage {
           *                                                               `entries`  gives a list of blobs and the `continuationToken` is used for the next listing operation.
           *                                                               `response` will contain information related to this operation.
           */
-          listBlobsSegmented(container: string, currentToken: common.ContinuationToken, callback: ErrorOrResult<BlobService.ListBlobsResult>): void;
+          listBlobsSegmented(container: string, currentToken: common.ContinuationToken | null | undefined, callback: ErrorOrResult<BlobService.ListBlobsResult>): void;
 
           /**
           * Lists a segment containing a collection of blob items in the container.
@@ -631,7 +631,7 @@ declare module azurestorage {
           *                                                               `entries`  gives a list of blobs and the `continuationToken` is used for the next listing operation.
           *                                                               `response` will contain information related to this operation.
           */
-          listBlobsSegmented(container: string, currentToken: common.ContinuationToken, options: BlobService.ListBlobsSegmentedRequestOptions, callback: ErrorOrResult<BlobService.ListBlobsResult>): void;
+          listBlobsSegmented(container: string, currentToken: common.ContinuationToken | null | undefined, options: BlobService.ListBlobsSegmentedRequestOptions, callback: ErrorOrResult<BlobService.ListBlobsResult>): void;
 
           /**
           * Lists a segment containing a collection of blob items whose names begin with the specified prefix in the container.
@@ -645,7 +645,7 @@ declare module azurestorage {
           *                                                               the entries of blobs and the continuation token for the next listing operation.
           *                                                               `response` will contain information related to this operation.
           */
-          listBlobsSegmentedWithPrefix(container: string, prefix: string, currentToken: common.ContinuationToken, callback: ErrorOrResult<BlobService.ListBlobsResult>): void;
+          listBlobsSegmentedWithPrefix(container: string, prefix: string, currentToken: common.ContinuationToken | null | undefined, callback: ErrorOrResult<BlobService.ListBlobsResult>): void;
 
           /**
           * Lists a segment containing a collection of blob items whose names begin with the specified prefix in the container.
@@ -671,7 +671,7 @@ declare module azurestorage {
           *                                                               the entries of blobs and the continuation token for the next listing operation.
           *                                                               `response` will contain information related to this operation.
           */
-          listBlobsSegmentedWithPrefix(container: string, prefix: string, currentToken: common.ContinuationToken, options: BlobService.ListBlobsSegmentedRequestOptions, callback: ErrorOrResult<BlobService.ListBlobsResult>): void;
+          listBlobsSegmentedWithPrefix(container: string, prefix: string, currentToken: common.ContinuationToken | null | undefined, options: BlobService.ListBlobsSegmentedRequestOptions, callback: ErrorOrResult<BlobService.ListBlobsResult>): void;
 
           /**
           * Acquires a new lease. If container and blob are specified, acquires a blob lease. Otherwise, if only container is specified and blob is null, acquires a container lease.
@@ -2972,7 +2972,7 @@ declare module azurestorage {
         *                                                                         `entries`  gives a list of queues and the `continuationToken` is used for the next listing operation.
         *                                                                         `response` will contain information related to this operation.
         */
-        listQueuesSegmented(currentToken: common.ContinuationToken, options: QueueService.ListQueuesRequestOptions, callback: ErrorOrResult<QueueService.ListQueueResult>): void;
+        listQueuesSegmented(currentToken: common.ContinuationToken | null | undefined, options: QueueService.ListQueuesRequestOptions, callback: ErrorOrResult<QueueService.ListQueueResult>): void;
 
         /**
         * Lists a segment containing a collection of queue items whose names begin with the specified prefix under the given account.
@@ -2986,7 +2986,7 @@ declare module azurestorage {
         *                                                                         `entries`  gives a list of queues and the `continuationToken` is used for the next listing operation.
         *                                                                         `response` will contain information related to this operation.
         */
-        listQueuesSegmented(currentToken: common.ContinuationToken, callback: ErrorOrResult<QueueService.ListQueueResult>): void;
+        listQueuesSegmented(currentToken: common.ContinuationToken | null | undefined, callback: ErrorOrResult<QueueService.ListQueueResult>): void;
 
         /**
         * Lists a segment containing a collection of queue items under the given account.
@@ -3013,7 +3013,7 @@ declare module azurestorage {
         *                                                                         `entries`  gives a list of queues and the `continuationToken` is used for the next listing operation.
         *                                                                         `response` will contain information related to this operation.
         */
-        listQueuesSegmentedWithPrefix(prefix: string, currentToken: common.ContinuationToken, options: QueueService.ListQueuesRequestOptions, callback: ErrorOrResult<QueueService.ListQueueResult>): void;
+        listQueuesSegmentedWithPrefix(prefix: string, currentToken: common.ContinuationToken | null | undefined, options: QueueService.ListQueuesRequestOptions, callback: ErrorOrResult<QueueService.ListQueueResult>): void;
 
         /**
         * Lists a segment containing a collection of queue items under the given account.
@@ -3028,7 +3028,7 @@ declare module azurestorage {
         *                                                                         `entries`  gives a list of queues and the `continuationToken` is used for the next listing operation.
         *                                                                         `response` will contain information related to this operation.
         */
-        listQueuesSegmentedWithPrefix(prefix: string, currentToken: common.ContinuationToken, callback: ErrorOrResult<QueueService.ListQueueResult>): void;
+        listQueuesSegmentedWithPrefix(prefix: string, currentToken: common.ContinuationToken | null | undefined, callback: ErrorOrResult<QueueService.ListQueueResult>): void;
 
         /**
         * Checks to see if a queue exists.
@@ -4119,7 +4119,7 @@ declare module azurestorage {
         *                                                                               `entries`  gives a list of tables and the `continuationToken` is used for the next listing operation.
         *                                                                               `response` will contain information related to this operation.
         */
-        listTablesSegmented(currentToken: TableService.ListTablesContinuationToken, options: TableService.ListTablesRequestOptions, callback: ErrorOrResult<TableService.ListTablesResponse>): void;
+        listTablesSegmented(currentToken: TableService.ListTablesContinuationToken | null | undefined, options: TableService.ListTablesRequestOptions, callback: ErrorOrResult<TableService.ListTablesResponse>): void;
 
         /**
         * Lists a segment containing a collection of table items under the specified account.
@@ -4131,7 +4131,7 @@ declare module azurestorage {
         *                                                                               `entries`  gives a list of tables and the `continuationToken` is used for the next listing operation.
         *                                                                               `response` will contain information related to this operation.
         */
-        listTablesSegmented(currentToken: TableService.ListTablesContinuationToken, callback: ErrorOrResult<TableService.ListTablesResponse>): void;
+        listTablesSegmented(currentToken: TableService.ListTablesContinuationToken | null | undefined, callback: ErrorOrResult<TableService.ListTablesResponse>): void;
 
         /**
         * Lists a segment containing a collection of table items under the specified account.
@@ -4156,7 +4156,7 @@ declare module azurestorage {
         *                                                                               `entries`  gives a list of tables and the `continuationToken` is used for the next listing operation.
         *                                                                               `response` will contain information related to this operation.
         */
-        listTablesSegmentedWithPrefix(prefix: string, currentToken: TableService.ListTablesContinuationToken, options: TableService.ListTablesRequestOptions, callback: ErrorOrResult<TableService.ListTablesResponse>): void;
+        listTablesSegmentedWithPrefix(prefix: string, currentToken: TableService.ListTablesContinuationToken | null | undefined, options: TableService.ListTablesRequestOptions, callback: ErrorOrResult<TableService.ListTablesResponse>): void;
 
         /**
         * Lists a segment containing a collection of table items under the specified account.
@@ -4169,7 +4169,7 @@ declare module azurestorage {
         *                                                                               `entries`  gives a list of tables and the `continuationToken` is used for the next listing operation.
         *                                                                               `response` will contain information related to this operation.
         */
-        listTablesSegmentedWithPrefix(prefix: string, currentToken: TableService.ListTablesContinuationToken, callback: ErrorOrResult<TableService.ListTablesResponse>): void;
+        listTablesSegmentedWithPrefix(prefix: string, currentToken: TableService.ListTablesContinuationToken | null | undefined, callback: ErrorOrResult<TableService.ListTablesResponse>): void;
 
         /**
         * Gets the table's ACL.
@@ -5610,8 +5610,8 @@ declare module azurestorage {
         *                                                                         `entries`  gives a list of shares and the `continuationToken` is used for the next listing operation.
         *                                                                         `response` will contain information related to this operation.
         */
-        listSharesSegmented(currentToken: common.ContinuationToken, options: FileService.ListRequestOptions, callback: ErrorOrResult<FileService.ListSharesResult>): void;
-        listSharesSegmented(currentToken: common.ContinuationToken, callback: ErrorOrResult<FileService.ListSharesResult>): void;
+        listSharesSegmented(currentToken: common.ContinuationToken | null | undefined, options: FileService.ListRequestOptions, callback: ErrorOrResult<FileService.ListSharesResult>): void;
+        listSharesSegmented(currentToken: common.ContinuationToken | null | undefined, callback: ErrorOrResult<FileService.ListSharesResult>): void;
 
         /**
         * Lists a segment containing a collection of share items whose names begin with the specified prefix under the specified account.
@@ -5637,8 +5637,8 @@ declare module azurestorage {
         *                                                                         `entries`  gives a list of shares and the `continuationToken` is used for the next listing operation.
         *                                                                         `response` will contain information related to this operation.
         */
-        listSharesSegmentedWithPrefix(prefix: string, currentToken: common.ContinuationToken, options: FileService.ListRequestOptions, callback: ErrorOrResult<FileService.ListSharesResult>): void;
-        listSharesSegmentedWithPrefix(prefix: string, currentToken: common.ContinuationToken, callback: ErrorOrResult<FileService.ListSharesResult>): void;
+        listSharesSegmentedWithPrefix(prefix: string, currentToken: common.ContinuationToken | null | undefined, options: FileService.ListRequestOptions, callback: ErrorOrResult<FileService.ListSharesResult>): void;
+        listSharesSegmentedWithPrefix(prefix: string, currentToken: common.ContinuationToken | null | undefined, callback: ErrorOrResult<FileService.ListSharesResult>): void;
 
         /**
         * Checks whether or not a share exists on the service.
@@ -6111,8 +6111,8 @@ declare module azurestorage {
         *                                                               entries.files, entries.directories and the continuationToken for the next listing operation.
         *                                                               `response` will contain information related to this operation.
         */
-        listFilesAndDirectoriesSegmented(share: string, directory: string, currentToken: common.ContinuationToken, options: FileService.ListRequestOptions, callback: ErrorOrResult<FileService.ListFilesAndDirectoriesResult>): void;
-        listFilesAndDirectoriesSegmented(share: string, directory: string, currentToken: common.ContinuationToken, callback: ErrorOrResult<FileService.ListFilesAndDirectoriesResult>): void;
+        listFilesAndDirectoriesSegmented(share: string, directory: string, currentToken: common.ContinuationToken | null | undefined, options: FileService.ListRequestOptions, callback: ErrorOrResult<FileService.ListFilesAndDirectoriesResult>): void;
+        listFilesAndDirectoriesSegmented(share: string, directory: string, currentToken: common.ContinuationToken | null | undefined, callback: ErrorOrResult<FileService.ListFilesAndDirectoriesResult>): void;
 
 
         /**
@@ -6139,8 +6139,8 @@ declare module azurestorage {
         *                                                               entries.files, entries.directories and the continuationToken for the next listing operation.
         *                                                               `response` will contain information related to this operation.
         */
-        listFilesAndDirectoriesSegmentedWithPrefix(share: string, directory: string, prefix: string, currentToken: common.ContinuationToken, options: FileService.ListRequestOptions, callback: ErrorOrResult<FileService.ListFilesAndDirectoriesResult>): void;
-        listFilesAndDirectoriesSegmentedWithPrefix(share: string, directory: string,prefix: string, currentToken: common.ContinuationToken, callback: ErrorOrResult<FileService.ListFilesAndDirectoriesResult>): void;
+        listFilesAndDirectoriesSegmentedWithPrefix(share: string, directory: string, prefix: string, currentToken: common.ContinuationToken | null | undefined, options: FileService.ListRequestOptions, callback: ErrorOrResult<FileService.ListFilesAndDirectoriesResult>): void;
+        listFilesAndDirectoriesSegmentedWithPrefix(share: string, directory: string,prefix: string, currentToken: common.ContinuationToken | null | undefined, callback: ErrorOrResult<FileService.ListFilesAndDirectoriesResult>): void;
 
         /**
         * Returns all user-defined metadata for the specified directory.
