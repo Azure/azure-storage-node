@@ -225,15 +225,29 @@ var files = document.getElementById('fileinput').files;
 var file = files[0];
 var fileStream = new FileStream(file);
 
-fileService.createFileFromStream('myfileshare', 'mydirectory', file.name, fileStream, file.size, {}, function(error, result, response) {
+var finishedOrError = false;
+var speedSummary = fileService.createFileFromStream('myfileshare', 'mydirectory', file.name, fileStream, file.size, {}, function(error, result, response) {
+    finishedOrError = true;
     if (error) {
         // Upload file failed
     } else {
         // Upload successfully
     }
 });
+refreshProgress();
 </pre>
-
+            <p>Checking the upload progress with speedSummary object. </p>
+<pre>
+function refreshProgress() {
+    setTimeout(function() {
+        if (!finishedOrError) {
+            var process = speedSummary.getCompletePercent();
+            displayProcess(process);
+            refreshProgress();
+        }
+    }, 200);
+}
+</pre>
             <h3>Download File</h3>
             <p>
                 <code>FileService</code> provides interfaces for downloading a file into browser memory directly. 
@@ -274,7 +288,7 @@ fileService.deleteFileIfExists('myfileshare', 'mydirectory', 'myfile', function(
                 </li>
                 <li><p> Click <button class="btn btn-xs btn-primary" onclick="backDirectory()">GoToUpperDirectory</button> button to return to upper level directory</p></li>
                 <li><p> Click <button id="upload-button" class="btn btn-xs btn-primary" onclick="createFileFromStream(false)">Upload</button> button to upload a local file to current directory</p>
-                <p><input type="file" id="files" name="file" /></p></li>
+                <p><input type="file" id="files" name="file" onclick="displayProcess(0)" /></p></li>
                 <li><p> Click "<b>Delete</b>" button to delete the directory or file</p></li>
                 <li><p> Click "<b>Download</b>" link to download a file to local</p></li>
             </ul>
@@ -589,6 +603,11 @@ fileService.deleteFileIfExists('myfileshare', 'mydirectory', 'myfile', function(
                 });
             }
 
+            function displayProcess(process) {
+                document.getElementById("progress").style.width = process + '%';
+                document.getElementById("progress").innerHTML = process + '%';                   
+            }
+
             function createFileFromStream(checkMD5) {
                 var files = document.getElementById('files').files;
                 if (!files.length) {
@@ -620,22 +639,22 @@ fileService.deleteFileIfExists('myfileshare', 'mydirectory', 'myfile', function(
                     if (error) {
                         alert("Upload filed, open brower console for more detailed info.");
                         console.log(error);
+                        displayProcess(0);
                     } else {
-                        alert("Upload successfully!");
+                        displayProcess(100);
+                        setTimeout(function() { // Prevent alert from stopping UI progress update
+                            alert('Upload successfully!');
+                        }, 1000);
                         refreshDirectoryFileList();
                     }
                 });
-                
+
                 function refreshProgress() {
                     setTimeout(function() {
                         if (!finishedOrError) {
                             var process = speedSummary.getCompletePercent();
-                            document.getElementById("progress").style.width = process + '%';
-                            document.getElementById("progress").innerHTML = process + '%';
+                            displayProcess(process);
                             refreshProgress();
-                        } else {
-                            document.getElementById("progress").style.width = '0%';
-                            document.getElementById("progress").innerHTML = '0%';
                         }
                     }, 200);
                 }

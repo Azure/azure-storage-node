@@ -208,14 +208,47 @@ var files = document.getElementById('fileinput').files;
 var file = files[0];
 var fileStream = new FileStream(file);
 
-blobService.createBlockBlobFromStream('mycontainer', file.name, fileStream, file.size, {}, function(error, result, response) {
+var customBlockSize = file.size > 1024 * 1024 * 32 ? 1024 * 1024 * 4 : 1024 * 512;
+blobService.singleBlobPutThresholdInBytes = customBlockSize;
+
+var finishedOrError = false;
+var speedSummary = blobService.createBlockBlobFromStream('mycontainer', file.name, fileStream, file.size, {blockSize : customBlockSize}, function(error, result, response) {
+    finishedOrError = true;
     if (error) {
         // Upload blob failed
     } else {
         // Upload successfully
     }
 });
+refreshProgress();
 </pre>
+            <p>Checking the upload progress with speedSummary object. </p>
+<pre>
+function refreshProgress() {
+    setTimeout(function() {
+        if (!finishedOrError) {
+            var process = speedSummary.getCompletePercent();
+            displayProcess(process);
+            refreshProgress();
+        }
+    }, 200);
+}
+</pre>
+            <div class="panel panel-danger"> 
+                <div class="panel-body">
+                    <b>Warning:</b> 
+                    By default, the <code>speedSummary.getCompletePercent()</code> only updates progress when a block is uploaded to server. There are 2 default settings may influence the upload progress display.
+                    
+                    <ul>
+                        <li><code>blobService.singleBlobPutThresholdInBytes</code> is the maximum size (default 32MB), in bytes, of a blob before it must be separated into blocks.</li>
+                        <li>Option <code>{blockSize: SizeInBytes}</code> of <code>blobService.createBlockBlobFromStream()</code> is the size (default 4MB) of every block in the storage layer.</li>
+                    </ul>
+
+                    This means, by default, blobs smaller than 32MB will only get the progress update when the upload is over, and blobs larger than 32MB will update the process every 4MB.
+                    For slow connections or progress reporting for small blobs, you can customize both the two settings into samller values such as 1MB or 512KB. Thus the progress will update with the smaller step you set.
+                    However, very small block sizes will impact the storage performance especially for a large blob.
+                </div> 
+            </div>
 
             <h3>Download Blob</h3>
             <p>
@@ -255,7 +288,7 @@ blobService.deleteBlobIfExists(container, blob, function(error, result) {
                 <li><p> 
                     Click <button id="upload-button" class="btn btn-xs btn-primary" onclick="uploadBlobByStream(false)">UploadBlob</button> button to upload a local file to current container after selecting a file:  
                 </p>
-                <p> <input type="file" id="files" name="file" /> </p></li>
+                <p> <input type="file" id="files" name="file" onclick="displayProcess(0)" /> </p></li>
                 <li><p> Click "<b>Delete</b>" button to delete the blob</p></li>
                 <li><p> Click "<b>Download</b>" link to download a blob to local</p></li>
             </ul>
@@ -492,6 +525,11 @@ blobService.deleteBlobIfExists(container, blob, function(error, result) {
                 });
             }
 
+            function displayProcess(process) {
+                document.getElementById("progress").style.width = process + '%';
+                document.getElementById("progress").innerHTML = process + '%';                   
+            }
+
             function uploadBlobByStream(checkMD5) {
                 var files = document.getElementById('files').files;
                 if (!files.length) {
@@ -510,8 +548,14 @@ blobService.deleteBlobIfExists(container, blob, function(error, result) {
 
                 var fileStream = new FileStream(file);
 
-                var options = {};
-                options.storeBlobContentMD5 = checkMD5;
+                // Make a smaller block size when uploading small blobs
+                var blockSize = file.size > 1024 * 1024 * 32 ? 1024 * 1024 * 4 : 1024 * 512;
+                var options = {
+                    storeBlobContentMD5 : checkMD5,
+                    blockSize : blockSize
+                };
+                blobService.singleBlobPutThresholdInBytes = blockSize;
+
                 var finishedOrError = false;
                 var speedSummary = blobService.createBlockBlobFromStream(container, file.name, fileStream, file.size, options, function(error, result, response) {
                     finishedOrError = true;
@@ -520,8 +564,12 @@ blobService.deleteBlobIfExists(container, blob, function(error, result) {
                     if (error) {
                         alert('Upload filed, open brower console for more detailed info.');
                         console.log(error);
+                        displayProcess(0);                        
                     } else {
-                        alert('Upload successfully!');
+                        displayProcess(100);
+                        setTimeout(function() { // Prevent alert from stopping UI progress update
+                            alert('Upload successfully!');
+                        }, 1000);
                         refreshBlobList();
                     }
                 });
@@ -530,12 +578,8 @@ blobService.deleteBlobIfExists(container, blob, function(error, result) {
                     setTimeout(function() {
                         if (!finishedOrError) {
                             var process = speedSummary.getCompletePercent();
-                            document.getElementById("progress").style.width = process + '%';
-                            document.getElementById("progress").innerHTML = process + '%';
+                            displayProcess(process);
                             refreshProgress();
-                        } else {
-                            document.getElementById("progress").style.width = '0%';
-                            document.getElementById("progress").innerHTML = '0%';
                         }
                     }, 200);
                 }
