@@ -46,8 +46,13 @@ Compatibility with mobile browsers have not been fully validated, please open is
 
 | Chrome     | Firefox  | Internet Explorer  | Microsoft Edge  |
 |------------|----------|--------------------|-----------------|
-| v55        | v50      | v11                | v38             |
-| v56        | v51      |                    | v39             |
+| v56        | v51      | v11                | v38             |
+| v57        | v52      |                    |                 |
+
+### Footprint
+
+Currently, the size of generated JavaScript library is relatively large. We already have the backlog to further reduce the footprint of our library.
+To improve the transfer speed and bandwidth utilization, HTTP compression such as gzip is recommended.
 
 ## Generating a Custom Azure Storage JavaScript Client Library
 
