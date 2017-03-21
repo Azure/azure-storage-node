@@ -1934,8 +1934,8 @@ declare module azurestorage {
           * var blobService = azure.createBlobService();
           * var stream = fs.createReadStream(fileNameTarget).pipe(blobService.createWriteStreamToBlockBlob(containerName, blobName, { blockIdPrefix: 'block' }));
           */
-          createWriteStreamToBlockBlob(container: string, blob: string, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): stream.Writable;
-          createWriteStreamToBlockBlob(container: string, blob: string, callback: ErrorOrResult<BlobService.BlobResult>): stream.Writable;
+          createWriteStreamToBlockBlob(container: string, blob: string, options: BlobService.CreateBlobRequestOptions, callback?: ErrorOrResult<BlobService.BlobResult>): stream.Writable;
+          createWriteStreamToBlockBlob(container: string, blob: string, callback?: ErrorOrResult<BlobService.BlobResult>): stream.Writable;
 
           /**
           * Creates a new block to be committed as part of a blob.
