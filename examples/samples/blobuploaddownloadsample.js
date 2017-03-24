@@ -181,7 +181,7 @@ function useAccessCondition(containerName, callback) {
     if (error) {
       console.log(error);
     } else {
-      console.log(' Created the blob ' + blobAccess.blob);
+      console.log(' Created the blob ' + blobAccess.name);
       console.log(' Blob Etag is: ' + blobAccess.etag);
           
       // Use the If-not-match ETag condition to access the blob. By
@@ -190,7 +190,7 @@ function useAccessCondition(containerName, callback) {
       // sample no other client is accessing the blob, so this will fail as
       // expected.
       var options = { accessConditions: { EtagNonMatch: blobAccess.etag} };
-      blobService.createBlockBlobFromText(containerName, blobAccess.blob, 'new hello', options, function (error2) {
+      blobService.createBlockBlobFromText(containerName, blobAccess.name, 'new hello', options, function (error2) {
         if (error2 && error2.statusCode === 412 && error2.code === 'ConditionNotMet') {
           console.log('Attempted to recreate the blob with the if-none-match access condition and got the expected exception.');
           callback();
