@@ -25,7 +25,7 @@ AzureStorage.generateDevelopmentStorageCredentials = function (proxyUri) {
   return devStore;
 };
 
-var FileService = require('../lib/services/file/fileservice');
+var FileService = require('../lib/services/file/fileservice.browser');
 
 AzureStorage.FileService = FileService;
 AzureStorage.FileUtilities = require('../lib/services/file/fileutilities');
@@ -38,7 +38,7 @@ AzureStorage.createFileServiceWithSas = function (hostUri, sasToken) {
   return new FileService(null, null, hostUri, sasToken);
 };
 
-var azureCommon = require('../lib/common/common');
+var azureCommon = require('../lib/common/common.browser');
 var StorageServiceClient = azureCommon.StorageServiceClient;
 var SharedKey = azureCommon.SharedKey;
 

@@ -240,7 +240,7 @@ describe('FileUploadDownload', function () {
         fileService.createReadStream(shareName, directoryName, fileName).pipe(writable);
 
         writable.on('close', function () {
-          var exists = azureutil.pathExistsSync(destinationFileNameTarget);
+          var exists = fs.existsSync(destinationFileNameTarget);
           assert.equal(exists, true);
 
           fs.readFile(destinationFileNameTarget, function (err, destFileText) {
@@ -539,7 +539,7 @@ describe('FileUploadDownload', function () {
           assert.equal(file.directory, directoryName);
           assert.equal(file.name, fileName);
 
-          var exists = azureutil.pathExistsSync(downloadFileName);
+          var exists = fs.existsSync(downloadFileName);
           assert.equal(exists, true);
 
           fs.readFile(downloadFileName, function (err, text) {
@@ -563,7 +563,7 @@ describe('FileUploadDownload', function () {
           assert.equal(file.directory, directoryName);
           assert.equal(file.name, fileName);
 
-          var exists = azureutil.pathExistsSync(downloadFileName);
+          var exists = fs.existsSync(downloadFileName);
           assert.equal(exists, true);
 
           fs.readFile(downloadFileName, function (err, text) {
@@ -580,7 +580,7 @@ describe('FileUploadDownload', function () {
               assert.equal(file.directory, directoryName);
               assert.equal(file.name, fileName);
     
-              var exists = azureutil.pathExistsSync(downloadFileName);
+              var exists = fs.existsSync(downloadFileName);
               assert.equal(exists, true);
     
               fs.readFile(downloadFileName, function (err, text) {
@@ -655,7 +655,7 @@ describe('FileUploadDownload', function () {
           assert.equal(err, null);
           assert.equal(file.contentSettings.contentMD5, fileContentMD5);
 
-          var exists = azureutil.pathExistsSync(downloadFileName);
+          var exists = fs.existsSync(downloadFileName);
           assert.equal(exists, true);
 
           fs.readFile(downloadFileName, function (err, text) {
@@ -704,7 +704,7 @@ describe('FileUploadDownload', function () {
           assert.equal(file.directory, directoryName);
           assert.equal(file.name, fileName);
 
-          var exists = azureutil.pathExistsSync(downloadFileName);
+          var exists = fs.existsSync(downloadFileName);
           assert.equal(exists, true);
 
           fs.readFile(downloadFileName, function (err, text) {
@@ -733,7 +733,7 @@ describe('FileUploadDownload', function () {
           assert.equal(file.directory, directoryName);
           assert.equal(file.name, fileName);
 
-          var exists = azureutil.pathExistsSync(downloadFileName);
+          var exists = fs.existsSync(downloadFileName);
           assert.equal(exists, true);
 
           fs.readFile(downloadFileName, function (err, text) {
@@ -750,7 +750,7 @@ describe('FileUploadDownload', function () {
               assert.equal(file.directory, directoryName);
               assert.equal(file.name, fileName);
     
-              var exists = azureutil.pathExistsSync(downloadFileName);
+              var exists = fs.existsSync(downloadFileName);
               assert.equal(exists, true);
     
               fs.readFile(downloadFileName, function (err, text) {
@@ -794,7 +794,7 @@ describe('FileUploadDownload', function () {
             assert.ok(downloadResponse.isSuccessful);
             assert.ok(file);
 
-            var exists = azureutil.pathExistsSync(downloadFileName);
+            var exists = fs.existsSync(downloadFileName);
             assert.equal(exists, true);
 
             var status = fs.statSync(downloadFileName);
@@ -820,7 +820,7 @@ describe('FileUploadDownload', function () {
           assert.ok(file);
           assert.equal(file.contentSettings.contentMD5, fileContentMD5);
 
-          var exists = azureutil.pathExistsSync(downloadFileName);
+          var exists = fs.existsSync(downloadFileName);
           assert.equal(exists, true);
 
           fs.readFile(downloadFileName, function (err, text) {
