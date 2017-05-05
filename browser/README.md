@@ -23,36 +23,13 @@ After generating the JavaScript Client Library, you can try the samples in brows
 
 The Azure Storage JavaScript Client Library is currently in preview stage, there are some known issues or limitations as follows.
 
-### Browser Sandbox
-
-In the generated Azure Storage JavaScript Client Library, these are some "local file" related APIs including:
-- `getBlobToLocalFile`
-- `createAppendBlobFromLocalFile`
-- `createBlockBlobFromLocalFile`
-- `createPageBlobFromLocalFile`
-- `appendFromLocalFile`
-- `createFileFromLocalFile`
-- `getFileToLocalFile`
-
-Theses "local file" related APIs are not recommended in the browser because of the browsers sandbox limitation. The "local file" here is not actually the local file on your disk. Data of the "local file" is kept in the browser memory. It is wrappered with a browserify module [browserify-fs](https://www.npmjs.com/package/browserify-fs), which encapsulates file system APIs based on your browser's IndexedDB.
-
-The "local file" related APIs are kept in the JavaScript Client Library, because we want to keep the compatibility for the browserify of some native Node.js applications. Some Node.js applications depends on Azure Storage Node.js Client Library and the fs module to operate with local files on the disk. When browserifing these applications, browserify-fs helps the applications adapt to the browser environment.
-
-For blob and file uploading or downloading with Azure Storage JavaScript Client Library in browser, please refer to our samples.
-
 ### Compatibility
 
 Compatibility with mobile browsers have not been fully validated, please open issues when you get errors. Current validated browsers are as below:
 
 | Chrome     | Firefox  | Internet Explorer  | Microsoft Edge  |
 |------------|----------|--------------------|-----------------|
-| v56        | v51      | v11                | v38             |
-| v57        | v52      |                    |                 |
-
-### Footprint
-
-Currently, the size of generated JavaScript library is relatively large. We already have the backlog to further reduce the footprint of our library.
-To improve the transfer speed and bandwidth utilization, HTTP compression such as gzip is recommended.
+| v58        | v53      | v11                | v40             |
 
 ## Generating a Custom Azure Storage JavaScript Client Library
 
