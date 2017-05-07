@@ -1,11 +1,11 @@
 # Microsoft Azure Storage SDK for Node.js 
 
-[![NPM version](https://badge.fury.io/js/azure-storage.svg)](http://badge.fury.io/js/azure-storage) 
+[![NPM version](https://badge.fury.io/js/azure-storage.svg)](http://badge.fury.io/js/azure-storage) [![Slack](https://azurestorageslack.azurewebsites.net/badge.svg)]( https://azurestorageslack.azurewebsites.net)
 
 * Master [![Build Status](https://travis-ci.org/Azure/azure-storage-node.svg?branch=master)](https://travis-ci.org/Azure/azure-storage-node/branches) [![Coverage Status](https://coveralls.io/repos/Azure/azure-storage-node/badge.svg?branch=master&service=github)](https://coveralls.io/github/Azure/azure-storage-node?branch=master)
 * Dev [![Build Status](https://travis-ci.org/Azure/azure-storage-node.svg?branch=dev)](https://travis-ci.org/Azure/azure-storage-node/branches) [![Coverage Status](https://coveralls.io/repos/Azure/azure-storage-node/badge.svg?branch=dev&service=github)](https://coveralls.io/github/Azure/azure-storage-node?branch=dev)
 
-This project provides a Node.js package that makes it easy to consume and manage Microsoft Azure Storage Services.
+This project provides a Node.js package and a browser compatible [JavaScript Client Library](#azure-storage-javascript-client-library-for-browsers) that make it easy to consume and manage Microsoft Azure Storage Services.
 
 > If you are looking for the Node.js SDK for other Azure services, visit [https://github.com/Azure/azure-sdk-for-node](https://github.com/Azure/azure-sdk-for-node).
 
@@ -451,6 +451,22 @@ set HTTP_PROXY=http://127.0.0.1:8888
 ```
 
 On Linux, please use `export` other than `set` to set the variables.
+
+# Azure Storage JavaScript Client Library for Browsers
+
+* JavaScript Client Library is currently in Preview. Questions and feedback are welcome in our [Slack channel](https://azurestorageslack.azurewebsites.net).
+
+Azure Storage Node.js Client Library is compatible with [Browserify](http://browserify.org/). This means you can bundle your Node.js application which depends on the Node.js Client Library using Browserify.
+
+You can also choose to download the JavaScript Client Library provided by us, or generate the library by yourself. Please refer to the [README.md](browser/README.md) under `browser` folder for detailed usage guidelines.
+
+## Downloading Azure Storage JavaScript Client Library
+
+It's recommended to use the Azure Storage JavaScript Client Library provided by us. Please [download the latest library](https://aka.ms/downloadazurestoragejs).
+
+## Generating Azure Storage JavaScript Client Library
+
+We also provide browserify bundle scripts which generate Azure Storage JavaScript Client Library. The bundle script reduces the size of the Storage Client Library by splitting into smaller files, one per storage service and a common shared file. For more detailed information, refer to [README.md](browser/README.md) under `browser` folder.
 
 # JsDoc
 

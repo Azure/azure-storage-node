@@ -1,6 +1,20 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
 be taken. This is a GA release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
 
+2017.03 Version 2.1.0
+
+ALL
+* Fixed the type script issue that AccessConditions is missing in the type definition file
+
+BLOB
+* Added support for page blob incremental copy. Refer to https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/incremental-copy-blob
+
+QUEUE
+* Fixed the issue that `responseObject` may not have response body in `createMessage` function.
+
+BROWSER
+* Generated browser compatible JavaScript files based on Microsoft Azure Storage SDK for Node.js 2.1.0
+
 2017.01 Version 2.0.0
 
 ALL
