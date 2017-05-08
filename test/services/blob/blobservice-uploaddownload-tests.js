@@ -470,7 +470,7 @@ describe('blob-uploaddownload-tests', function () {
         blobService.createReadStream(containerName, blobName).pipe(writable);
 
         writable.on('close', function () {
-          var exists = azureutil.pathExistsSync(destinationFileNameTarget);
+          var exists = fs.existsSync(destinationFileNameTarget);
           assert.equal(exists, true);
 
           fs.readFile(destinationFileNameTarget, function (err, destFileText) {
@@ -2667,7 +2667,7 @@ describe('blob-uploaddownload-tests', function () {
           assert.equal(blob.blobType, 'AppendBlob');
           assert.equal(blob.contentSettings.contentMD5, appendBlobContentMD5);
           
-          var exists = azureutil.pathExistsSync(downloadName);
+          var exists = fs.existsSync(downloadName);
           assert.equal(exists, true);
           
           fs.readFile(downloadName, function (err, text) {
@@ -2690,7 +2690,7 @@ describe('blob-uploaddownload-tests', function () {
           assert.equal(blob.blobType, 'AppendBlob');
           assert.equal(blob.contentSettings.contentMD5, appendBlobContentMD5);
           
-          var exists = azureutil.pathExistsSync(downloadName);
+          var exists = fs.existsSync(downloadName);
           assert.equal(exists, true);
           
           fs.readFile(downloadName, function (err, text) {
@@ -2714,7 +2714,7 @@ describe('blob-uploaddownload-tests', function () {
           assert.equal(err, null);
           assert.equal(blob.contentSettings.contentMD5, blockBlobContentMD5);
 
-          var exists = azureutil.pathExistsSync(downloadName);
+          var exists = fs.existsSync(downloadName);
           assert.equal(exists, true);
 
           fs.readFile(downloadName, function (err, text) {
@@ -2735,7 +2735,7 @@ describe('blob-uploaddownload-tests', function () {
           assert.equal(err, null);
           assert.equal(blob.contentSettings.contentMD5, blockBlobContentMD5);
 
-          var exists = azureutil.pathExistsSync(downloadName);
+          var exists = fs.existsSync(downloadName);
           assert.equal(exists, true);
 
           fs.readFile(downloadName, function (err, text) {
@@ -2758,7 +2758,7 @@ describe('blob-uploaddownload-tests', function () {
           assert.equal(err, null);
           assert.equal(blob.contentSettings.contentMD5, blockBlobContentMD5);
 
-          var exists = azureutil.pathExistsSync(downloadName);
+          var exists = fs.existsSync(downloadName);
           assert.equal(exists, true);
 
           fs.readFile(downloadName, function (err, text) {
@@ -2773,7 +2773,7 @@ describe('blob-uploaddownload-tests', function () {
               assert.equal(err, null);
               assert.equal(blob.contentSettings.contentMD5, blockBlobContentMD5);
     
-              var exists = azureutil.pathExistsSync(downloadName);
+              var exists = fs.existsSync(downloadName);
               assert.equal(exists, true);
     
               fs.readFile(downloadName, function (err, text) {
@@ -2857,7 +2857,7 @@ describe('blob-uploaddownload-tests', function () {
           assert.equal(err, null);
           assert.equal(blob.contentSettings.contentMD5, pageBlobContentMD5);
 
-          var exists = azureutil.pathExistsSync(downloadName);
+          var exists = fs.existsSync(downloadName);
           assert.equal(exists, true);
 
           fs.readFile(downloadName, function (err, text) {
@@ -2878,7 +2878,7 @@ describe('blob-uploaddownload-tests', function () {
           assert.equal(err, null);
           assert.equal(blob.contentSettings.contentMD5, pageBlobContentMD5);
 
-          var exists = azureutil.pathExistsSync(downloadName);
+          var exists = fs.existsSync(downloadName);
           assert.equal(exists, true);
 
           fs.readFile(downloadName, function (err, text) {

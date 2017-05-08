@@ -25,7 +25,7 @@ AzureStorage.generateDevelopmentStorageCredentials = function (proxyUri) {
   return devStore;
 };
 
-var BlobService = require('../lib/services/blob/blobservice');
+var BlobService = require('../lib/services/blob/blobservice.browser');
 
 AzureStorage.BlobService = BlobService;
 AzureStorage.BlobUtilities = require('../lib/services/blob/blobutilities');
@@ -42,7 +42,7 @@ AzureStorage.createBlobServiceAnonymous = function (host) {
   return new BlobService(null, null, host, null);
 };
 
-var azureCommon = require('../lib/common/common');
+var azureCommon = require('../lib/common/common.browser');
 var StorageServiceClient = azureCommon.StorageServiceClient;
 var SharedKey = azureCommon.SharedKey;
 
