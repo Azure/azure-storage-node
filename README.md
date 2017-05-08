@@ -240,7 +240,10 @@ queueService.getMessages(queueName, function(error, serverMessages) {
   }
 });
 ```
-
+Use below parameter in Queue Service to set encoding. Else, you won't be able to see data in Storage explorer. [#176](https://github.com/Azure/azure-storage-node/issues/176)
+```
+queueService.messageEncoder = new azure.QueueMessageEncoder.TextBase64QueueMessageEncoder();
+```
 ### File Storage
 
 The **createShareIfNotExists** method can be used to create a
