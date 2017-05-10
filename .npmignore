@@ -8,4 +8,8 @@ node_modules/
 test/
 
 # Examples #
-examples/blobuploader/
+examples/
+
+jsdoc/
+test/
+typings/
