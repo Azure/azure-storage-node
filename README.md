@@ -11,6 +11,8 @@ This project provides a Node.js package and a browser compatible [JavaScript Cli
 
 # Features
 
+**[API Reference](http://azure.github.io/azure-storage-node)**
+
 - Tables
   - Create/Delete Tables
   - Query/Create/Read/Update/Delete Entities
@@ -28,8 +30,6 @@ This project provides a Node.js package and a browser compatible [JavaScript Cli
 - Service Properties
   - Get Service Properties
   - Set Service Properties
-
-Please check details on [API reference documents](http://azure.github.io/azure-storage-node).
 
 # Getting Started
 
