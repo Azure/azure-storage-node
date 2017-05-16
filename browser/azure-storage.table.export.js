@@ -39,7 +39,7 @@ AzureStorage.createTableServiceWithSas = function (hostUri, sasToken) {
   return new TableService(null, null, hostUri, sasToken);
 };
 
-var azureCommon = require('../lib/common/common');
+var azureCommon = require('../lib/common/common.browser');
 var StorageServiceClient = azureCommon.StorageServiceClient;
 var SharedKey = azureCommon.SharedKey;
 
