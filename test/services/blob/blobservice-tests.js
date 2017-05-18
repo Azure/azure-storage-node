@@ -1030,6 +1030,240 @@ describe('BlobService', function () {
     });
   });
 
+  describe('softdeleteOperations', function () {
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+    var blobText = 'Hello World!';
+    var softdeleteDays = 1;
+    var softdeleteRetainedVersionsPerBlob = 5;
+
+    beforeEach(function (done) {
+      containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
+      blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+
+      blobService.createContainer(containerName, function (error) {
+        assert.equal(error, null);
+        blobService.createBlockBlobFromText(containerName, blobName, blobText, function (error) {
+          assert.equal(error, null);
+
+          blobService.doesBlobExist(containerName, blobName, function (error, res) {
+            assert.equal(error, null);
+            assert.equal(res.exists, true);
+            done();
+          });
+        });
+      });
+    });
+
+    afterEach(function (done) {
+      blobService.deleteContainerIfExists(containerName, function (error) {
+        assert.equal(error, null);
+        done();
+      });
+    });
+
+    it('Set soft delete properties for blob service should work', function (done) {
+      var properties = {
+        DeleteRetentionPolicy: {
+          Enabled: true,
+          Days: softdeleteDays
+        }
+      };
+
+      blobService.setServiceProperties(properties, function (error, response) {
+        assert.equal(error, null);
+
+        setTimeout(function() {
+          blobService.getServiceProperties(function (error, properties) {
+            assert.equal(error, null);
+            assert.ok(properties);
+            assert.ok(properties.DeleteRetentionPolicy);
+            assert.equal(properties.DeleteRetentionPolicy.Enabled, true);
+            assert.equal(properties.DeleteRetentionPolicy.Days, softdeleteDays);
+            done();
+          });
+        }, 10000);
+      });
+    });
+
+    it('listBlobsSegmented should display soft deleted blob properties', function (done) {
+      blobService.deleteBlob(containerName, blobName, function (error, response) {
+        assert.equal(error, null);
+
+        blobService.listBlobsSegmented(containerName, null, { include: BlobUtilities.BlobListingDetails.DELETED }, function (error, result) {
+          assert.equal(error, null);
+          assert.equal(result.entries.length, 1);
+          assert.notEqual(result.entries[0], undefined);
+          assert.equal(result.entries[0].deleted, true);
+          assert.equal(result.entries[0].remainingRetentionDays === softdeleteDays || result.entries[0].remainingRetentionDays === softdeleteDays - 1, true);
+          assert.notEqual(result.entries[0].deletedTime, undefined);
+          assert.equal(result.entries[0].deletedTime.length > 0, true);
+          done();
+        });
+      });
+    });
+
+    it('listBlobsSegmented should not display soft deleted blobs', function (done) {
+      blobService.deleteBlob(containerName, blobName, function (error, response) {
+        assert.equal(error, null);
+
+        blobService.listBlobsSegmented(containerName, null, function (error, result) {
+          assert.equal(error, null);
+          assert.equal(result.entries.length, 0);
+          done();
+        });
+      });
+    });
+
+    it('listBlobsSegmented should not display soft deleted snapshots', function (done) {
+      blobService.createBlockBlobFromText(containerName, blobName, "New Content", function (error, response) {
+        assert.equal(error, null);
+
+        blobService.listBlobsSegmented(containerName, null, function (error, result) {
+          assert.equal(error, null);
+          assert.equal(result.entries.length, 1);
+          done();
+        });
+      });
+    });
+
+    it('listBlobsSegmented should display soft deleted blobs', function (done) {
+      blobService.deleteBlob(containerName, blobName, function (error, response) {
+        assert.equal(error, null);
+
+        blobService.listBlobsSegmented(containerName, null, function (error, result) {
+          assert.equal(error, null);
+
+          blobService.listBlobsSegmented(containerName, null, { include: BlobUtilities.BlobListingDetails.DELETED }, function (error, result) {
+            assert.equal(error, null);
+            assert.equal(result.entries.length, 1);
+            done();
+          });
+        });
+      });
+    });
+
+    it('listBlobsSegmented should display auto generated snapshot by write protection', function (done) {
+      blobService.createBlockBlobFromText(containerName, blobName, "New Content", function (error, response) {
+        assert.equal(error, null);
+
+        var includeOption = BlobUtilities.BlobListingDetails.DELETED + ',' + BlobUtilities.BlobListingDetails.SNAPSHOTS;
+        blobService.listBlobsSegmented(containerName, null, { include: includeOption }, function (error, result) {
+          assert.equal(error, null);
+          assert.equal(result.entries.length, 2);
+
+          for (var i = 0; i < result.entries.length; i++) {
+            var entry = result.entries[i];
+            if (entry.snapshot) {
+              var snapId = entry.snapshot;
+            }
+          }
+          assert.notEqual(typeof snapId, 'undefined');
+
+          blobService.undeleteBlob(containerName, blobName, function (error, response) {
+            assert.equal(error, null);
+
+            blobService.getBlobToText(containerName, blobName, { snapshotId: snapId }, function (error, text) {
+              assert.equal(error, null);
+              assert.equal(text, blobText);
+              done();
+            });
+          });
+        });
+      });
+    });
+
+    it('undeleteBlob should work for single soft deleted blob', function (done) {
+      blobService.deleteBlob(containerName, blobName, function (error, response) {
+        assert.equal(error, null);
+
+        blobService.listBlobsSegmented(containerName, null, function (error, result) {
+          assert.equal(error, null);
+          assert.equal(result.entries.length, 0);
+
+          blobService.undeleteBlob(containerName, blobName, function (error, response) {
+            assert.equal(error, null);
+
+            blobService.listBlobsSegmented(containerName, null, function (error, result) {
+              assert.equal(error, null);
+              assert.equal(result.entries.length, 1);
+
+              blobService.getBlobToText(containerName, blobName, function (error, text) {
+                assert.equal(error, null);
+                assert.equal(text, blobText);
+                done();                
+              });
+            });
+          });
+        });
+      });
+    });
+
+    it('undeleteBlob should work for single soft deleted snapshot', function (done) {
+      blobService.createBlobSnapshot(containerName, blobName, function (error, snapshotID) {
+        assert.equal(error, null);
+        assert.notEqual(snapshotID, undefined);
+
+        blobService.listBlobsSegmented(containerName, null, { include: BlobUtilities.BlobListingDetails.SNAPSHOTS }, function (error, result) {
+          assert.equal(error, null);
+          assert.equal(result.entries.length, 2);
+
+          blobService.deleteBlob(containerName, blobName, {
+            snapshotId: snapshotID
+          }, function (error, response) {
+            assert.equal(error, null);
+
+            blobService.listBlobsSegmented(containerName, null, { include: BlobUtilities.BlobListingDetails.SNAPSHOTS }, function (error, result) {
+              assert.equal(error, null);
+              assert.equal(result.entries.length, 1);
+
+              blobService.undeleteBlob(containerName, blobName, function (error, response) {
+                assert.equal(error, null);
+
+                blobService.listBlobsSegmented(containerName, null, { include: BlobUtilities.BlobListingDetails.SNAPSHOTS }, function (error, result) {
+                  assert.equal(error, null);
+                  assert.equal(result.entries.length, 2);
+                  done();
+                })
+              });
+            });
+          });
+        });
+      });
+    });
+
+    it('undeleteBlob should work for soft deleted blob and its snapshot', function (done) {
+      blobService.createBlobSnapshot(containerName, blobName, function (error, snapshotID) {
+        assert.equal(error, null);
+        assert.notEqual(snapshotID, undefined);
+
+        blobService.listBlobsSegmented(containerName, null, { include: BlobUtilities.BlobListingDetails.SNAPSHOTS }, function (error, result) {
+          assert.equal(error, null);
+          assert.equal(result.entries.length, 2);
+
+          blobService.deleteBlob(containerName, blobName, { deleteSnapshots: BlobUtilities.SnapshotDeleteOptions.BLOB_AND_SNAPSHOTS }, function (error, response) {
+            assert.equal(error, null);
+
+            blobService.listBlobsSegmented(containerName, null, { include: BlobUtilities.BlobListingDetails.SNAPSHOTS }, function (error, result) {
+              assert.equal(error, null);
+              assert.equal(result.entries.length, 0);
+
+              blobService.undeleteBlob(containerName, blobName, function (error, response) {
+                assert.equal(error, null);
+
+                blobService.listBlobsSegmented(containerName, null, { include: BlobUtilities.BlobListingDetails.SNAPSHOTS }, function (error, result) {
+                  assert.equal(error, null);
+                  assert.equal(result.entries.length, 2);
+                  done();
+                })
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+
   describe('startCopyBlob', function () {
     it('should work', function (done) {
       var sourceContainerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
@@ -1286,7 +1520,7 @@ describe('BlobService', function () {
         assert.strictEqual(parsedUrl.port, '80');
         assert.strictEqual(parsedUrl.hostname, 'host.com');
         assert.strictEqual(parsedUrl.pathname, '/' + containerName + '/' + blobName);
-        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&spr=https&sv=2017-04-17&sr=b&sig=A7y9u890HRxG0XSEsRntrGJ7WIzwrXC5ttro2KFOySU%3D');
+        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&spr=https&sv=2017-07-29&sr=b&sig=o1TR6AHtC7jKDuMq6Y9bqOtCxTBiokFRHtKgv9VEFpQ%3D');
 
         blobUrl = blobServiceassert.getUrl(containerName, blobName, sasToken, false, '2016-10-11T11:03:40Z');
 
@@ -1295,7 +1529,7 @@ describe('BlobService', function () {
         assert.strictEqual(parsedUrl.port, '80');
         assert.strictEqual(parsedUrl.hostname, 'host-secondary.com');
         assert.strictEqual(parsedUrl.pathname, '/' + containerName + '/' + blobName);
-        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&spr=https&sv=2017-04-17&sr=b&sig=A7y9u890HRxG0XSEsRntrGJ7WIzwrXC5ttro2KFOySU%3D&snapshot=2016-10-11T11%3A03%3A40Z');
+        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&spr=https&sv=2017-07-29&sr=b&sig=o1TR6AHtC7jKDuMq6Y9bqOtCxTBiokFRHtKgv9VEFpQ%3D&snapshot=2016-10-11T11%3A03%3A40Z');
 
         done();
       });
@@ -1376,7 +1610,7 @@ describe('BlobService', function () {
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_PERMISSIONS], BlobUtilities.SharedAccessPermissions.READ);
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_PROTOCOL], 'https');
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_VERSION], HeaderConstants.TARGET_STORAGE_VERSION);
-      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'Qa15RHcYQIkyLGqQgvf5qbHesBnK5Uzjgzzpo92vCXc=');
+      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'b6Do7ByS97s+IVkusKmJ56h7YJQh0FNMmX9h4ps/HcE=');
 
       done();
     });
