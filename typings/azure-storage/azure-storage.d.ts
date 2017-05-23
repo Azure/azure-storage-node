@@ -59,6 +59,7 @@ declare module azurestorage {
       // ###########################
       module blobservice {
         export class BlobService extends StorageServiceClient {
+          defaultEnableReuseSocket: boolean;
           singleBlobPutThresholdInBytes: number;
           parallelOperationThreadCount: number;
 
@@ -75,6 +76,8 @@ declare module azurestorage {
           * [How to Use the Blob Service from Node.js](http://azure.microsoft.com/en-us/documentation/articles/storage-nodejs-how-to-use-blob-storage/).
           * The following defaults can be set on the blob service.
           * singleBlobPutThresholdInBytes                       The default maximum size, in bytes, of a blob before it must be separated into blocks.
+          * defaultEnableReuseSocket                            The default boolean value to enable socket reuse when uploading local files or streams.
+          *                                                     If the Node.js version is lower than 0.10.x, socket reuse will always be turned off.
           * defaultTimeoutIntervalInMs                          The default timeout interval, in milliseconds, to use for request made via the Blob service.
           * defaultClientRequestTimeoutInMs                     The default timeout of client requests, in milliseconds, to use for the request made via the Blob service.
           * defaultMaximumExecutionTimeInMs                     The default maximum execution time across all potential retries, for requests made via the Blob service.
@@ -5518,6 +5521,7 @@ declare module azurestorage {
 
     module file {
       export interface FileService extends StorageServiceClient {
+        defaultEnableReuseSocket: boolean;
         singleFileThresholdInBytes: number;
         parallelOperationThreadCount: number;
 
@@ -7114,6 +7118,8 @@ declare module azurestorage {
         * [How to Use the File Service from Node.js](http://azure.microsoft.com/en-us/documentation/articles/storage-nodejs-how-to-use-file-storage/).
         * The following defaults can be set on the file service.
         * defaultTimeoutIntervalInMs                          The default timeout interval, in milliseconds, to use for request made via the file service.
+        * defaultEnableReuseSocket                            The default boolean value to enable socket reuse when uploading local files or streams.
+        *                                                     If the Node.js version is lower than 0.10.x, socket reuse will always be turned off.
         * defaultClientRequestTimeoutInMs                     The default timeout of client requests, in milliseconds, to use for the request made via the file service.
         * defaultMaximumExecutionTimeInMs                     The default maximum execution time across all potential retries, for requests made via the file service.
         * defaultLocationMode                                 The default location mode for requests made via the file service.
@@ -7356,6 +7362,13 @@ declare module azurestorage {
         * @type {string}
         */
         export var DEFAULT_PARALLEL_OPERATION_THREAD_COUNT: number;
+        /**
+        * The boolean of default value for enabling reuseSocket.
+        *
+        * @const
+        * @type {bool}
+        */
+        export var DEFAULT_ENABLE_REUSE_SOCKET: boolean;        
         /**
         * Constant representing a kilobyte (Non-SI version).
         *
