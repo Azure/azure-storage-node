@@ -1286,7 +1286,7 @@ describe('BlobService', function () {
         assert.strictEqual(parsedUrl.port, '80');
         assert.strictEqual(parsedUrl.hostname, 'host.com');
         assert.strictEqual(parsedUrl.pathname, '/' + containerName + '/' + blobName);
-        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&spr=https&sv=2016-05-31&sr=b&sig=5ubgzWFxfpW857DpF5QVK9HNbewzuQHjvwB%2BlGEdubM%3D');
+        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&spr=https&sv=2017-04-17&sr=b&sig=A7y9u890HRxG0XSEsRntrGJ7WIzwrXC5ttro2KFOySU%3D');
 
         blobUrl = blobServiceassert.getUrl(containerName, blobName, sasToken, false, '2016-10-11T11:03:40Z');
 
@@ -1295,7 +1295,7 @@ describe('BlobService', function () {
         assert.strictEqual(parsedUrl.port, '80');
         assert.strictEqual(parsedUrl.hostname, 'host-secondary.com');
         assert.strictEqual(parsedUrl.pathname, '/' + containerName + '/' + blobName);
-        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&spr=https&sv=2016-05-31&sr=b&sig=5ubgzWFxfpW857DpF5QVK9HNbewzuQHjvwB%2BlGEdubM%3D&snapshot=2016-10-11T11%3A03%3A40Z');
+        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&spr=https&sv=2017-04-17&sr=b&sig=A7y9u890HRxG0XSEsRntrGJ7WIzwrXC5ttro2KFOySU%3D&snapshot=2016-10-11T11%3A03%3A40Z');
 
         done();
       });
@@ -1376,7 +1376,7 @@ describe('BlobService', function () {
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_PERMISSIONS], BlobUtilities.SharedAccessPermissions.READ);
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_PROTOCOL], 'https');
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_VERSION], HeaderConstants.TARGET_STORAGE_VERSION);
-      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'JM+OTBtD7HFVD3A/I5r/iE0HlW8yLcv7DMQoqDT/rtw=');
+      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'Qa15RHcYQIkyLGqQgvf5qbHesBnK5Uzjgzzpo92vCXc=');
 
       done();
     });

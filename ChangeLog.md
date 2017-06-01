@@ -1,6 +1,14 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
 be taken. This is a GA release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
 
+2017.08 Version 2.3.0
+
+ALL
+* Updated storage service version to 2017-04-17. Fore more information, please see - https://docs.microsoft.com/en-us/rest/api/storageservices/versioning-for-the-azure-storage-services
+
+BLOB
+* PageBlobs: For Premium Accounts only, added support for getting and setting the tier on a page blob. The tier can also be set when creating or copying from an existing page blob.
+
 2017.08 Version 2.2.2
 
 ALL
