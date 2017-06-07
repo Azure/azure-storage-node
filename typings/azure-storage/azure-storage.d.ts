@@ -1302,6 +1302,8 @@ declare module azurestorage {
           * @param {string}             container                               The container name.
           * @param {string}             blob                                    The blob name.
           * @param {object}             [options]                               The request options.
+          * @param {string}             [options.snapshotId]                    The snapshot identifier.
+          * @param {string}             [options.leaseId]                       The lease identifier.
           * @param {LocationMode}       [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to.
           *                                                                     Please see StorageUtilities.LocationMode for the possible values.
           * @param {int}                [options.timeoutIntervalInMs]           The server timeout interval, in milliseconds, to use for the request.
@@ -1315,7 +1317,7 @@ declare module azurestorage {
           *                                                                     be true if the blob exists, or false if the blob does not exist.
           *                                                                     `response` will contain information related to this operation.
           */
-          doesBlobExist(container: string, blob: string, options: common.RequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): void;
+          doesBlobExist(container: string, blob: string, options: BlobService.BlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): void;
 
           /**
           * Creates a read-only snapshot of a blob.
