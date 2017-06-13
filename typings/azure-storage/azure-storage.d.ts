@@ -8918,7 +8918,9 @@ declare module azurestorage {
     SequenceNumberEqual?: Number | string;
     MaxBlobSize?: Number | string;
     MaxAppendPosition?: Number | string;
+  }
 
+  interface AccessCondition {
     generateEmptyCondition() : AccessConditions;
     generateIfNotExistsCondition(): AccessConditions;
     generateIfExistsCondition(): AccessConditions;
@@ -8933,7 +8935,7 @@ declare module azurestorage {
 
   export import Constants = common.util.constants;
   export import StorageUtilities = common.util.storageutilities;
-  export var AccessConditions : AccessConditions;
+  export var AccessCondition : AccessCondition;
   export import SR = common.util.sr.SR;
   export import StorageServiceClient = common.services.storageserviceclient.StorageServiceClient;
   export import Logger = common.diagnostics.logger.Logger;
