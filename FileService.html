@@ -89,7 +89,7 @@
         </h2>
         
             <div class="class-description"><p>The FileService class is used to perform operations on the Microsoft Azure File Service.<br>The File Service provides storage for binary large objects, and provides functions for working with data stored in files.</p>
-<p>For more information on the File Service, as well as task focused information on using it in a Node.js application, see<br><a href="http://azure.microsoft.com/en-us/documentation/articles/storage-nodejs-how-to-use-file-storage/">How to Use the File Service from Node.js</a>.<br>The following defaults can be set on the file service.<br>defaultTimeoutIntervalInMs                          The default timeout interval, in milliseconds, to use for request made via the file service.<br>defaultClientRequestTimeoutInMs                     The default timeout of client requests, in milliseconds, to use for the request made via the file service.<br>defaultMaximumExecutionTimeInMs                     The default maximum execution time across all potential retries, for requests made via the file service.<br>defaultLocationMode                                 The default location mode for requests made via the file service.<br>parallelOperationThreadCount                        The number of parallel operations that may be performed when uploading a file.<br>useNagleAlgorithm                                   Determines whether the Nagle algorithm is used for requests made via the file service; true to use the<br>                                                    Nagle algorithm; otherwise, false. The default value is false.</p></div>
+<p>For more information on the File Service, as well as task focused information on using it in a Node.js application, see<br><a href="http://azure.microsoft.com/en-us/documentation/articles/storage-nodejs-how-to-use-file-storage/">How to Use the File Service from Node.js</a>.<br>The following defaults can be set on the file service.<br>defaultTimeoutIntervalInMs                          The default timeout interval, in milliseconds, to use for request made via the file service.<br>defaultEnableReuseSocket                            The default boolean value to enable socket reuse when uploading local files or streams.<br>                                                    If the Node.js version is lower than 0.10.x, socket reuse will always be turned off.<br>defaultClientRequestTimeoutInMs                     The default timeout of client requests, in milliseconds, to use for the request made via the file service.<br>defaultMaximumExecutionTimeInMs                     The default maximum execution time across all potential retries, for requests made via the file service.<br>defaultLocationMode                                 The default location mode for requests made via the file service.<br>parallelOperationThreadCount                        The number of parallel operations that may be performed when uploading a file.<br>useNagleAlgorithm                                   Determines whether the Nagle algorithm is used for requests made via the file service; true to use the<br>                                                    Nagle algorithm; otherwise, false. The default value is false.</p></div>
         
     
 </header>
@@ -356,8 +356,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-89">line 89</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-89">line 89</a>
 			</li>
 		</ul>
 	</dd>
@@ -1703,8 +1703,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-3157">line 3157</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-3005">line 3005</a>
 			</li>
 		</ul>
 	</dd>
@@ -2280,8 +2280,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-2609">line 2609</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-2529">line 2529</a>
 			</li>
 		</ul>
 	</dd>
@@ -2795,8 +2795,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-1044">line 1044</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-1045">line 1045</a>
 			</li>
 		</ul>
 	</dd>
@@ -3310,8 +3310,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-1111">line 1111</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-1112">line 1112</a>
 			</li>
 		</ul>
 	</dd>
@@ -4161,8 +4161,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-2053">line 2053</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-2054">line 2054</a>
 			</li>
 		</ul>
 	</dd>
@@ -4203,7 +4203,7 @@
 
     
     <div class="description">
-        <p>Uploads a file to storage from a local file. If the file already exists on the service, it will be overwritten.<br>(Not recommended for use in the JavaScript Client Library)</p>
+        <p>Uploads a file to storage from a local file. If the file already exists on the service, it will be overwritten.<br>(Not available in the JavaScript Client Library for Browsers)</p>
     </div>
     
 
@@ -5102,8 +5102,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-2813">line 2813</a>
+				<a href="services_file_fileservice.node.js.html">services/file/fileservice.node.js</a>,
+				 <a href="services_file_fileservice.node.js.html#sunlight-1-line-151">line 151</a>
 			</li>
 		</ul>
 	</dd>
@@ -6095,8 +6095,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-2885">line 2885</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-2733">line 2733</a>
 			</li>
 		</ul>
 	</dd>
@@ -7065,8 +7065,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-2741">line 2741</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-2661">line 2661</a>
 			</li>
 		</ul>
 	</dd>
@@ -7742,8 +7742,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-2671">line 2671</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-2591">line 2591</a>
 			</li>
 		</ul>
 	</dd>
@@ -8391,8 +8391,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-2383">line 2383</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-2303">line 2303</a>
 			</li>
 		</ul>
 	</dd>
@@ -8934,8 +8934,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-371">line 371</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-372">line 372</a>
 			</li>
 		</ul>
 	</dd>
@@ -9417,8 +9417,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-441">line 441</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-442">line 442</a>
 			</li>
 		</ul>
 	</dd>
@@ -10338,8 +10338,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-2960">line 2960</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-2808">line 2808</a>
 			</li>
 		</ul>
 	</dd>
@@ -11311,8 +11311,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-3027">line 3027</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-2875">line 2875</a>
 			</li>
 		</ul>
 	</dd>
@@ -11818,8 +11818,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-1229">line 1229</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-1230">line 1230</a>
 			</li>
 		</ul>
 	</dd>
@@ -12299,8 +12299,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-1278">line 1278</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-1279">line 1279</a>
 			</li>
 		</ul>
 	</dd>
@@ -12812,8 +12812,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-2111">line 2111</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-2112">line 2112</a>
 			</li>
 		</ul>
 	</dd>
@@ -13325,8 +13325,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-2162">line 2162</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-2163">line 2163</a>
 			</li>
 		</ul>
 	</dd>
@@ -13774,8 +13774,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-908">line 908</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-909">line 909</a>
 			</li>
 		</ul>
 	</dd>
@@ -14223,8 +14223,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-956">line 956</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-957">line 957</a>
 			</li>
 		</ul>
 	</dd>
@@ -14704,8 +14704,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-1016">line 1016</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-1017">line 1017</a>
 			</li>
 		</ul>
 	</dd>
@@ -15217,8 +15217,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-2017">line 2017</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-2018">line 2018</a>
 			</li>
 		</ul>
 	</dd>
@@ -15666,8 +15666,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-343">line 343</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-344">line 344</a>
 			</li>
 		</ul>
 	</dd>
@@ -16387,8 +16387,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-1593">line 1593</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-1594">line 1594</a>
 			</li>
 		</ul>
 	</dd>
@@ -16796,8 +16796,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-1474">line 1474</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-1475">line 1475</a>
 			</li>
 		</ul>
 	</dd>
@@ -17277,8 +17277,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-1174">line 1174</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-1175">line 1175</a>
 			</li>
 		</ul>
 	</dd>
@@ -17728,8 +17728,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-1768">line 1768</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-1769">line 1769</a>
 			</li>
 		</ul>
 	</dd>
@@ -18241,8 +18241,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-1709">line 1709</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-1710">line 1710</a>
 			</li>
 		</ul>
 	</dd>
@@ -18283,7 +18283,7 @@
 
     
     <div class="description">
-        <p>Downloads an Azure file into a file.<br>(Not recommended for use in the JavaScript Client Library)</p>
+        <p>Downloads an Azure file into a file.<br>(Not available in the JavaScript Client Library for Browsers)</p>
     </div>
     
 
@@ -19024,8 +19024,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-2312">line 2312</a>
+				<a href="services_file_fileservice.node.js.html">services/file/fileservice.node.js</a>,
+				 <a href="services_file_fileservice.node.js.html#sunlight-1-line-70">line 70</a>
 			</li>
 		</ul>
 	</dd>
@@ -19833,8 +19833,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-2453">line 2453</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-2373">line 2373</a>
 			</li>
 		</ul>
 	</dd>
@@ -20474,8 +20474,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-2226">line 2226</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-2227">line 2227</a>
 			</li>
 		</ul>
 	</dd>
@@ -20891,8 +20891,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-170">line 170</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-171">line 171</a>
 			</li>
 		</ul>
 	</dd>
@@ -21340,8 +21340,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-786">line 786</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-787">line 787</a>
 			</li>
 		</ul>
 	</dd>
@@ -21789,8 +21789,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-672">line 672</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-673">line 673</a>
 			</li>
 		</ul>
 	</dd>
@@ -22238,8 +22238,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-504">line 504</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-505">line 505</a>
 			</li>
 		</ul>
 	</dd>
@@ -22687,8 +22687,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-616">line 616</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-617">line 617</a>
 			</li>
 		</ul>
 	</dd>
@@ -22969,8 +22969,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-1662">line 1662</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-1663">line 1663</a>
 			</li>
 		</ul>
 	</dd>
@@ -23546,8 +23546,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-1339">line 1339</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-1340">line 1340</a>
 			</li>
 		</ul>
 	</dd>
@@ -24125,8 +24125,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-1369">line 1369</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-1370">line 1370</a>
 			</li>
 		</ul>
 	</dd>
@@ -24706,8 +24706,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-2531">line 2531</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-2451">line 2451</a>
 			</li>
 		</ul>
 	</dd>
@@ -25223,8 +25223,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-225">line 225</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-226">line 226</a>
 			</li>
 		</ul>
 	</dd>
@@ -25806,8 +25806,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-255">line 255</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-256">line 256</a>
 			</li>
 		</ul>
 	</dd>
@@ -26317,8 +26317,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-1957">line 1957</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-1958">line 1958</a>
 			</li>
 		</ul>
 	</dd>
@@ -27220,8 +27220,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-1531">line 1531</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-1532">line 1532</a>
 			</li>
 		</ul>
 	</dd>
@@ -27765,8 +27765,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-1898">line 1898</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-1899">line 1899</a>
 			</li>
 		</ul>
 	</dd>
@@ -28578,8 +28578,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-1837">line 1837</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-1838">line 1838</a>
 			</li>
 		</ul>
 	</dd>
@@ -29027,8 +29027,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-195">line 195</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-196">line 196</a>
 			</li>
 		</ul>
 	</dd>
@@ -29474,8 +29474,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-841">line 841</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-842">line 842</a>
 			</li>
 		</ul>
 	</dd>
@@ -29956,8 +29956,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-730">line 730</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-731">line 731</a>
 			</li>
 		</ul>
 	</dd>
@@ -30470,8 +30470,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-560">line 560</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-561">line 561</a>
 			</li>
 		</ul>
 	</dd>
@@ -31117,8 +31117,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-3093">line 3093</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-2941">line 2941</a>
 			</li>
 		</ul>
 	</dd>
@@ -31506,8 +31506,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_file_fileservice.js.html">services/file/fileservice.js</a>,
-				 <a href="services_file_fileservice.js.html#sunlight-1-line-3932">line 3932</a>
+				<a href="services_file_fileservice.core.js.html">services/file/fileservice.core.js</a>,
+				 <a href="services_file_fileservice.core.js.html#sunlight-1-line-3787">line 3787</a>
 			</li>
 		</ul>
 	</dd>
@@ -31584,7 +31584,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on Thu Mar 2nd 2017
+		on Tue Jun 13th 2017
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

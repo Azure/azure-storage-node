@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Microsoft Azure Storage Client Library for node.js Source: services/file/fileservice.node.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Microsoft Azure Storage Client Library for node.js</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="BlobUtilities.html">BlobUtilities</a></li><li><a href="FileUtilities.html">FileUtilities</a></li><li><a href="QueueUtilities.html">QueueUtilities</a></li><li><a href="TableUtilities.html">TableUtilities</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="BinaryBase64QueueMessageEncoder.html">BinaryBase64QueueMessageEncoder</a></li><li><a href="BlobResult.html">BlobResult</a></li><li><a href="BlobService.html">BlobService</a></li><li><a href="ContainerResult.html">ContainerResult</a></li><li><a href="DirectoryResult.html">DirectoryResult</a></li><li><a href="ExponentialRetryPolicyFilter.html">ExponentialRetryPolicyFilter</a></li><li><a href="FileResult.html">FileResult</a></li><li><a href="FileService.html">FileService</a></li><li><a href="LeaseResult.html">LeaseResult</a></li><li><a href="LinearRetryPolicyFilter.html">LinearRetryPolicyFilter</a></li><li><a href="Logger.html">Logger</a></li><li><a href="QueueMessageEncoder.html">QueueMessageEncoder</a></li><li><a href="QueueMessageResult.html">QueueMessageResult</a></li><li><a href="QueueResult.html">QueueResult</a></li><li><a href="QueueService.html">QueueService</a></li><li><a href="RetryPolicyFilter.html">RetryPolicyFilter</a></li><li><a href="ShareResult.html">ShareResult</a></li><li><a href="StorageServiceClient.html">StorageServiceClient</a></li><li><a href="TableBatch.html">TableBatch</a></li><li><a href="TableQuery.html">TableQuery</a></li><li><a href="TableService.html">TableService</a></li><li><a href="TextBase64QueueMessageEncoder.html">TextBase64QueueMessageEncoder</a></li><li><a href="TextXmlQueueMessageEncoder.html">TextXmlQueueMessageEncoder</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#createBlobService">createBlobService</a></li><li><a href="global.html#createBlobServiceAnonymous">createBlobServiceAnonymous</a></li><li><a href="global.html#createBlobServiceWithSas">createBlobServiceWithSas</a></li><li><a href="global.html#createFileService">createFileService</a></li><li><a href="global.html#createFileServiceWithSas">createFileServiceWithSas</a></li><li><a href="global.html#createQueueService">createQueueService</a></li><li><a href="global.html#createQueueServiceWithSas">createQueueServiceWithSas</a></li><li><a href="global.html#createTableService">createTableService</a></li><li><a href="global.html#createTableServiceWithSas">createTableServiceWithSas</a></li><li><a href="global.html#generateAccountSharedAccessSignature">generateAccountSharedAccessSignature</a></li><li><a href="global.html#generateDevelopmentStorageCredentials">generateDevelopmentStorageCredentials</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: services/file/fileservice.node.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">// 
+// Copyright (c) Microsoft and contributors.  All rights reserved.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// 
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+
+// Module dependencies.
+var azureCommon = require('./../../common/common.node');
+var extend = require('extend');
+var fs = require('fs');
+var FileService = require('./fileservice.core');
+
+var azureutil = azureCommon.util;
+var FileReadStream = azureCommon.FileReadStream;
+var SpeedSummary = azureCommon.SpeedSummary;
+var validate = azureCommon.validate;
+
+/**
+* Downloads an Azure file into a file.
+* (Not available in the JavaScript Client Library for Browsers)
+*
+* @this {FileService}
+* @param {string}             share                                       The share name.
+* @param {string}             directory                                   The directory name. Use '' to refer to the base directory.
+* @param {string}             file                                        The file name. File names may not start or end with the delimiter '/'.
+* @param {string}             localFileName                               The local path to the file to be downloaded.
+* @param {object}             [options]                                   The request options.
+* @param {boolean}            [options.skipSizeCheck]                     Skip the size check to perform direct download.
+*                                                                         Set the option to true for small files.
+*                                                                         Parallel download and speed summary won't work with this option on.
+* @param {SpeedSummary}       [options.speedSummary]                      The download tracker objects.
+* @param {int}                [options.parallelOperationThreadCount]      Parallel operation thread count.
+* @param {string}             [options.rangeStart]                        Return only the bytes of the file in the specified range.
+* @param {string}             [options.rangeEnd]                          Return only the bytes of the file in the specified range.
+* @param {boolean}            [options.useTransactionalMD5]               When set to true, Calculate and send/validate content MD5 for transactions.
+* @param {boolean}            [options.disableContentMD5Validation]       When set to true, MD5 validation will be disabled when downloading files.
+* @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+*                                                                         Please see StorageUtilities.LocationMode for the possible values.
+* @param {int}                [options.timeoutIntervalInMs]               The timeout interval, in milliseconds, to use for the request.
+* @param {int}                [options.clientRequestTimeoutInMs]          The timeout of client requests, in milliseconds, to use for the request.
+* @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+*                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
+*                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+* @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
+* @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+*                                                                         The default value is false.
+* @param {errorOrResult}      callback                                    `error` will contain information if an error occurs; 
+*                                                                         otherwise `[result]{@link FileResult}` will contain the file information.
+*                                                                         `response` will contain information related to this operation.
+* @return {SpeedSummary}
+* 
+* @example
+* var azure = require('azure-storage');
+* var FileService = azure.createFileService();
+* FileService.getFileToLocalFile('taskshare', taskdirectory', 'task1', 'task1-download.txt', function(error, serverFile) {
+*   if(!error) {
+*     // file available in serverFile.file variable
+*   }
+*/
+FileService.prototype.getFileToLocalFile = function (share, directory, file, localFileName, optionsOrCallback, callback) {
+  var userOptions;
+  azureutil.normalizeArgs(optionsOrCallback, callback, function (o, c) { userOptions = o; callback = c; });
+  userOptions.speedSummary = userOptions.speedSummary || new SpeedSummary(file);
+
+  validate.validateArgs('getFileToLocalFile', function (v) {
+    v.string(share, 'share');
+    v.stringAllowEmpty(directory, 'directory');
+    v.string(file, 'file');
+    v.string(localFileName, 'localFileName');
+    v.shareNameIsValid(share);
+    v.callback(callback);
+  });
+
+  var options = extend(true, {}, userOptions);
+
+  var writeStream = fs.createWriteStream(localFileName);
+  writeStream.on('error', function (error) {
+    callback(error);
+    return;    
+  });
+
+  this.getFileToStream(share, directory, file, writeStream, options, function (error, responseFile, response) {
+    if (error) {
+      // make sure writeStream is closed / destroyed to avoid locking issues
+      if (writeStream.close) {
+        writeStream.close();
+      }
+
+      if (fs.existsSync(localFileName)) {
+        // If the download failed from the beginning, remove the file.
+        fs.unlink(localFileName, function () {
+          callback(error, responseFile, response);
+          return;
+        });
+      }
+    }
+    callback(error, responseFile, response); 
+  });
+  
+  return options.speedSummary;
+};
+
+
+/**
+* Uploads a file to storage from a local file. If the file already exists on the service, it will be overwritten.
+* (Not available in the JavaScript Client Library for Browsers)
+*
+* @this {FileService}
+* @param {string}             share                                         The share name.
+* @param {string}             directory                                     The directory name. Use '' to refer to the base directory.
+* @param {string}             file                                          The file name. File names may not start or end with the delimiter '/'.
+* @param (string)             localFileName                                 The local path to the file to be uploaded.
+* @param {object}             [options]                                     The request options.
+* @param {SpeedSummary}       [options.speedSummary]                        The download tracker objects;
+* @param {bool}               [options.storeFileContentMD5]                 Specifies whether the file's ContentMD5 header should be set on uploads. 
+*                                                                           The default value is false for files.
+* @param {bool}               [options.useTransactionalMD5]                 Calculate and send/validate content MD5 for transactions.
+* @param {object}             [options.contentSettings]                     The file's content settings.
+* @param {string}             [options.contentSettings.contentType]         The MIME content type of the file. The default type is application/octet-stream.
+* @param {string}             [options.contentSettings.contentEncoding]     The content encodings that have been applied to the file.
+* @param {string}             [options.contentSettings.contentLanguage]     The natural languages used by this resource.
+* @param {string}             [options.contentSettings.cacheControl]        The file service stores this value but does not use or modify it.
+* @param {string}             [options.contentSettings.contentDisposition]  The file's content disposition.
+* @param {string}             [options.contentSettings.contentMD5]          The file's MD5 hash.
+* @param {object}             [options.metadata]                            The metadata key/value pairs.
+* @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+*                                                                           Please see StorageUtilities.LocationMode for the possible values.
+* @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
+* @param {int}                [options.clientRequestTimeoutInMs]            The timeout of client requests, in milliseconds, to use for the request.
+* @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+*                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
+*                                                                           execution time is checked intermittently while performing requests, and before executing retries.
+* @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
+* @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+*                                                                           The default value is false.
+* @param {errorOrResult}      callback                                      `error` will contain information if an error occurs; 
+*                                                                           otherwise `[result]{@link FileResult}` will contain the file information.
+*                                                                           `response` will contain information related to this operation.
+* @return {SpeedSummary}
+*/
+FileService.prototype.createFileFromLocalFile = function (share, directory, file, localFileName, optionsOrCallback, callback) {
+  var userOptions;
+  azureutil.normalizeArgs(optionsOrCallback, callback, function (o, c) { userOptions = o; callback = c; });
+
+  validate.validateArgs('createFileFromLocalFile', function (v) {
+    v.string(share, 'share');
+    v.stringAllowEmpty(directory, 'directory');
+    v.string(file, 'file');
+    v.string(localFileName, 'localFileName');
+    v.shareNameIsValid(share);
+    v.callback(callback);
+  });
+
+  var options = extend(true, {}, userOptions);
+  options.speedSummary = options.speedSummary || new SpeedSummary(file);
+
+  var self = this;
+  fs.stat(localFileName, function(error, stat) {
+    if (error) {
+      callback(error);
+    } else {
+      self.createFile(share, directory, file, stat.size, options, function(error) {
+        if(error) {
+          callback(error);
+        } else {
+          var stream = new FileReadStream(localFileName, {calcContentMd5: options.storeFileContentMD5});
+          self._createFileFromChunkStream(share, directory, file, stream, stat.size, options, callback);
+        }
+      });
+    }
+  });
+
+  return options.speedSummary;
+};
+
+module.exports = FileService;</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	
+		on Tue Jun 13th 2017
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>
