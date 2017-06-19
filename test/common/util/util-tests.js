@@ -132,7 +132,6 @@ describe('speed-summary-tests', function() {
     var summary = new speedSummary('test');
     summary.totalSize = 100;
     summary.completeSize = 10;
-    console.log(summary.getAverageSpeed(false));
     assert.equal(summary.getAverageSpeed(true), '10.00B/s');
     assert.equal(summary.getAverageSpeed(false).toString(), '10');
     done();
