@@ -133,6 +133,7 @@ declare module azurestorage {
           * @param {int}          [options.maximumExecutionTimeInMs]      The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                               The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                               execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}       [options.clientRequestId]               A string that represents the client request ID with a 1KB character limit.
           * @param {bool}         [options.useNagleAlgorithm]             Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                               The default value is false.
           * @param {errorOrResult}  callback                              `error` will contain information if an error occurs; otherwise, `result` will contain the stats and
@@ -152,6 +153,7 @@ declare module azurestorage {
           * @param {int}          [options.maximumExecutionTimeInMs]      The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                               The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                               execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}       [options.clientRequestId]               A string that represents the client request ID with a 1KB character limit.
           * @param {bool}         [options.useNagleAlgorithm]             Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                               The default value is false.
           * @param {errorOrResult}  callback                              `error` will contain information if an error occurs; otherwise, `result` will contain the properties
@@ -172,6 +174,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]       The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                      The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                      execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]              Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                      The default value is false.
           * @param {errorOrResponse}  callback                                   `error` will contain information
@@ -195,6 +198,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                         The default value is false.
           * @param {errorOrResult}  callback                                        `error` will contain information
@@ -219,6 +223,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                         The default value is false.
           * @param {errorOrResult}      callback                                    `error` will contain information
@@ -241,6 +246,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]      The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                     The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                     execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]               A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]             Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                     The default value is false.
           * @param {errorOrResult}      callback                                `error` will contain information
@@ -292,6 +298,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                 The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                 execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                 The default value is false.
           * @param {errorOrResult}      callback                            `error` will contain information
@@ -337,6 +344,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]        The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                       The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                       execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]               Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                       The default value is false.
           * @param {errorOrResult}      callback                                  `error` will contain information
@@ -381,6 +389,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                 The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                 execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]           A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                 The default value is false.
           * @param {errorOrResult}      callback                            `error` will contain information
@@ -415,6 +424,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]        The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                       The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                       execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                 A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]               Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                       The default value is false.
           * @param {errorOrResult}  callback                                      `error` will contain information
@@ -457,6 +467,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                 The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                 execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]           A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                 The default value is false.
           * @param {errorOrResponse}  callback                              `error` will contain information
@@ -490,6 +501,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                 The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                 execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]           A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                 The default value is false.
           * @param {errorOrResult}      callback                            `error` will contain information
@@ -551,6 +563,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                 The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                 execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]           A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                 The default value is false.
           * @param {errorOrResponse}  callback                              `error` will contain information
@@ -588,6 +601,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                 The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                 execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]           A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                 The default value is false.
           * @param {errorOrResult} callback                                 `error` will contain information
@@ -627,6 +641,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                               The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                               execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]         A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]       Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                               The default value is false.
           * @param {errorOrResult}  callback                              `error` will contain information
@@ -667,6 +682,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                               The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                               execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]         A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]       Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                               The default value is false.
           * @param {errorOrResult}  callback                              `error` will contain information
@@ -705,6 +721,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                         The default value is false.
           * @param {errorOrResult}  callback                                        `error` will contain information
@@ -743,6 +760,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                         The default value is false.
           * @param {errorOrResult}  callback                                        `error` will contain information
@@ -784,6 +802,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                         The default value is false.
           * @param {errorOrResult}  callback                                        `error` will contain information if an error occurs;
@@ -821,6 +840,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                         The default value is false.
           * @param {errorOrResult}  callback                                        `error` will contain information
@@ -861,6 +881,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                         The default value is false.
           * @param {errorOrResult}  callback                                        `error` will contain information
@@ -901,6 +922,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                         The default value is false.
           * @param {errorOrResult}  callback                                        `error` will contain information
@@ -927,6 +949,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                         The default value is false.
           * @param {errorOrResult}  callback                                        `error` will contain information
@@ -973,6 +996,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                         The default value is false.
           * @param {errorOrResult}  callback                                        `error` will contain information
@@ -1015,6 +1039,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                         The default value is false.
           * @param {errorOrResult}  callback                                        `error` will contain information
@@ -1047,6 +1072,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                         The default value is false.
           * @param {errorOrResult}  callback                                        `error` will contain information if an error occurs;
@@ -1084,6 +1110,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                         The default value is false.
           * @param {errorOrResult}  callback                                        `error` will contain information if an error occurs;
@@ -1143,6 +1170,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                         The default value is false.
           * @param {errorOrResult}  callback                                        `error` will contain information if an error occurs;
@@ -1179,6 +1207,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                         The default value is false.
           * @param {BlobService~blobToText}  callback                               `error` will contain information
@@ -1226,6 +1255,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                         The default value is false.
           * @param {errorOrResponse}  callback                                      `error` will contain information
@@ -1272,6 +1302,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                 The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                 execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]           A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                 The default value is false.
           * @param {errorOrResult} callback                                 `error` will contain information
@@ -1310,6 +1341,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]      The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                     The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                     execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]               A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]             Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                     The default value is false.
           * @param {errorOrResult}  callback                                    `error` will contain information
@@ -1336,6 +1368,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]    The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                   The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                   execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]             A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]           Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                   The default value is false.
           * @param {errorOrResult}  callback                                  `error` will contain information
@@ -1366,6 +1399,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]        The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                       The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                       execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                 A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]               Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                       The default value is false.
           * @param {errorOrResult}  callback                                      `error` will contain information
@@ -1391,6 +1425,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]        The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                       The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                       execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                 A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]               Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                       The default value is false.
           * @param {ErrorOrResponse}  callback                                    `error` will contain information.
@@ -1492,6 +1527,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]              The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                             The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                             execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                       A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                     Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                             The default value is false.
           * @param {errorOrResult}  callback                                            The callback function.
@@ -1530,6 +1566,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]              The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                             The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                             execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                       A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                     Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                             The default value is false.
           * @param {errorOrResult}  callback                                            The callback function.
@@ -1566,6 +1603,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]              The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                             The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                             execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                       A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                     Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                             The default value is false.
           * @param {errorOrResult}      callback                                        `error` will contain information
@@ -1612,6 +1650,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]              The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                             The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                             execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                       A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                     Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                             The default value is false.
           * @param {errorOrResult}      callback                                        `error` will contain information
@@ -1650,6 +1689,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                         The default value is false.
           * @param {errorOrResult}  callback                                        `error` will contain information
@@ -1678,6 +1718,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                         The default value is false.
           * @param {errorOrResult}  callback                                        `error` will contain information
@@ -1708,6 +1749,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                         The default value is false.
           * @param {errorOrResponse}  callback                                      `error` will contain information
@@ -1733,6 +1775,7 @@ declare module azurestorage {
           * @param {int}                  [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                           execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}               [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
           * @param {bool}                 [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                           The default value is false.
           * @param {errorOrResult}  callback                                          `error` will contain information
@@ -1761,7 +1804,8 @@ declare module azurestorage {
           * @param {int}                  [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                           execution time is checked intermittently while performing requests, and before executing retries.
-          * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+          * @param {string}               [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
+          * @param {bool}                 [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                           The default value is false.
           * @param {errorOrResult}  callback                                          `error` will contain information
           *                                                                           if an error occurs; otherwise `result` will contain
@@ -1783,6 +1827,7 @@ declare module azurestorage {
           * @param {string}             blob                                            The blob name.
           * @param {string}             localFileName                                   The local path to the file to be uploaded.
           * @param {object}             [options]                                       The request options.
+          * @param {int}                [options.blockSize]                             The size of each block. Maximum is 100MB.
           * @param {string}             [options.blockIdPrefix]                         The prefix to be used to generate the block id.
           * @param {string}             [options.leaseId]                               The lease identifier.
           * @param {string}             [options.transactionalContentMD5]               The MD5 hash of the blob content. This hash is used to verify the integrity of the blob during transport.
@@ -1802,6 +1847,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]              The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                             The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                             execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                       A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                     Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                             The default value is false.
           * @param {errorOrResult}      callback                                        `error` will contain information
@@ -1810,7 +1856,7 @@ declare module azurestorage {
           *                                                                             `response` will contain information related to this operation.
           * @return {SpeedSummary}
           */
-          createBlockBlobFromLocalFile(container: string, blob: string, localFileName: string, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
+          createBlockBlobFromLocalFile(container: string, blob: string, localFileName: string, options: BlobService.CreateBlockBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
           createBlockBlobFromLocalFile(container: string, blob: string, localFileName: string, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
 
           /**
@@ -1836,6 +1882,7 @@ declare module azurestorage {
           * @param {int}                streamLength                                    The length of the stream to upload.
           * @param {object}             [options]                                       The request options.
           * @param {SpeedSummary}       [options.speedSummary]                          The download tracker objects.
+          * @param {int}                [options.blockSize]                             The size of each block. Maximum is 100MB.
           * @param {string}             [options.blockIdPrefix]                         The prefix to be used to generate the block id.
           * @param {string}             [options.leaseId]                               The lease identifier.
           * @param {string}             [options.transactionalContentMD5]               The MD5 hash of the blob content. This hash is used to verify the integrity of the blob during transport.
@@ -1856,12 +1903,13 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]              The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                             The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                             execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                       A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                     Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                             The default value is false.
           * @param {errorOrResult}  callback                                            The callback function.
           * @return {SpeedSummary}
           */
-          createBlockBlobFromStream(container: string, blob: string, stream: stream.Readable, streamLength: number, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
+          createBlockBlobFromStream(container: string, blob: string, stream: stream.Readable, streamLength: number, options: BlobService.CreateBlockBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
 
           /**
           * Uploads a block blob from a text string.
@@ -1889,6 +1937,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]              The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                             The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                             execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                       A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                     Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                             The default value is false.
           * @param {errorOrResult}  callback                                            `error` will contain information
@@ -1906,6 +1955,7 @@ declare module azurestorage {
           * @param {string}             container                                       The container name.
           * @param {string}             blob                                            The blob name.
           * @param {object}             [options]                                       The request options.
+          * @param {int}                [options.blockSize]                             The size of each block. Maximum is 100MB.
           * @param {string}             [options.blockIdPrefix]                         The prefix to be used to generate the block id.
           * @param {string}             [options.leaseId]                               The lease identifier.
           * @param {string}             [options.transactionalContentMD5]               The MD5 hash of the blob content. This hash is used to verify the integrity of the blob during transport.
@@ -1927,6 +1977,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]              The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                             The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                             execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                       A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                     Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                             The default value is false.
           * @param {errorOrResult}  callback                                            `error` will contain information
@@ -1939,7 +1990,7 @@ declare module azurestorage {
           * var blobService = azure.createBlobService();
           * var stream = fs.createReadStream(fileNameTarget).pipe(blobService.createWriteStreamToBlockBlob(containerName, blobName, { blockIdPrefix: 'block' }));
           */
-          createWriteStreamToBlockBlob(container: string, blob: string, options: BlobService.CreateBlobRequestOptions, callback?: ErrorOrResult<BlobService.BlobResult>): stream.Writable;
+          createWriteStreamToBlockBlob(container: string, blob: string, options: BlobService.CreateBlockBlobRequestOptions, callback?: ErrorOrResult<BlobService.BlobResult>): stream.Writable;
           createWriteStreamToBlockBlob(container: string, blob: string, callback?: ErrorOrResult<BlobService.BlobResult>): stream.Writable;
 
           /**
@@ -1962,6 +2013,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]        The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                       The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                       execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                 A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]               Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                       The default value is false.
           * @param {errorOrResponse}  callback                                    `error` will contain information
@@ -1990,6 +2042,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]        The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                       The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                       execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                 A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]               Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                       The default value is false.
           * @param {errorOrResponse}  callback                                    `error` will contain information
@@ -2025,6 +2078,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                           execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                           The default value is false.
           * @param {errorOrResult}  callback                                          `error` will contain information
@@ -2051,6 +2105,7 @@ declare module azurestorage {
           * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
           *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
           *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
           * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                         The default value is false.
           * @param {errorOrResult}  callback                                        `error` will contain information
@@ -2729,6 +2784,10 @@ declare module azurestorage {
               contentMD5?: string;
             }
           }
+
+          export interface CreateBlockBlobRequestOptions extends CreateBlobRequestOptions {
+            blockSize?: number;
+          }
           
           export interface BlobToText {
             (error: Error, text: string, result: BlobResult, response: ServiceResponse): void
@@ -2870,6 +2929,7 @@ declare module azurestorage {
         * @param {int}          [options.maximumExecutionTimeInMs]                The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
         *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
         *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}       [options.clientRequestId]                         A string that represents the client request ID with a 1KB character limit.
         * @param {bool}         [options.useNagleAlgorithm]                       Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
         * @param {errorOrResult}  callback                                        `error` will contain information
@@ -2903,6 +2963,7 @@ declare module azurestorage {
         * @param {int}                [options.maximumExecutionTimeInMs]        The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
         *                                                                       The maximum execution time interval begins at the time that the client begins building the request. The maximum
         *                                                                       execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}             [options.clientRequestId]                 A string that represents the client request ID with a 1KB character limit.
         * @param {bool}               [options.useNagleAlgorithm]               Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                       The default value is false.
         * @param {errorOrResult}  callback                                      `error` will contain information
@@ -2936,6 +2997,7 @@ declare module azurestorage {
         * @param {int}                [options.maximumExecutionTimeInMs]       The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
         *                                                                      The maximum execution time interval begins at the time that the client begins building the request. The maximum
         *                                                                      execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}             [options.clientRequestId]                A string that represents the client request ID with a 1KB character limit.
         * @param {bool}               [options.useNagleAlgorithm]              Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                      The default value is false.
         * @param {errorOrResponse}  callback                                   `error` will contain information
@@ -2970,6 +3032,7 @@ declare module azurestorage {
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
         *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
         *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
         * @param {errorOrResult}  callback                                        `error` will contain information
@@ -3011,6 +3074,7 @@ declare module azurestorage {
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
         *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
         *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
         * @param {errorOrResult}  callback                                        `error` will contain information
@@ -3049,6 +3113,7 @@ declare module azurestorage {
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
         *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
         *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
         * @param {errorOrResult}      callback                                    `error` will contain information
@@ -3087,6 +3152,7 @@ declare module azurestorage {
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
         *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
         *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
         * @param {errorOrResult}      callback                                    `error` will contain information
@@ -3125,6 +3191,7 @@ declare module azurestorage {
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
         *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
         *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
         * @param {errorOrResult}  callback                                       `error` will contain information
@@ -3180,6 +3247,7 @@ declare module azurestorage {
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
         *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
         *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
         * @param {errorOrResponse}  callback                                      `error` will contain information if an error occurs; 
@@ -3213,6 +3281,7 @@ declare module azurestorage {
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
         *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
         *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
         * @param {errorOrResult}  callback                                        `error` will contain information
@@ -3250,6 +3319,7 @@ declare module azurestorage {
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
         *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
         *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
         * @param {errorOrResult}  callback                                        `error` will contain information
@@ -3288,6 +3358,7 @@ declare module azurestorage {
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
         *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
         *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
         * @param {errorOrResult}  callback                                        `error` will contain information
@@ -3332,6 +3403,7 @@ declare module azurestorage {
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
         *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
         *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
         * @param {errorOrResult}      callback                                    `error` will contain information
@@ -3391,6 +3463,7 @@ declare module azurestorage {
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
         *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
         *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
         * @param {errorOrResult}  callback                                        `error` will contain information
@@ -3461,6 +3534,7 @@ declare module azurestorage {
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
         *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
         *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
         * @param {errorOrResult}  callback                                        `error` will contain information
@@ -3531,6 +3605,7 @@ declare module azurestorage {
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
         *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
         *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
         * @param {errorOrResult}  callback                                        `error` will contain information
@@ -3568,6 +3643,7 @@ declare module azurestorage {
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
         *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
         *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
         * @param {errorOrResult}  callback                                        `error` will contain information
@@ -3607,6 +3683,7 @@ declare module azurestorage {
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
         *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
         *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
         * @param {errorOrResponse}  callback                                      `error` will contain information if an error occurs; 
@@ -3642,6 +3719,7 @@ declare module azurestorage {
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
         *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
         *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
         * @param {errorOrResponse}  callback                                      `error` will contain information
@@ -3682,6 +3760,7 @@ declare module azurestorage {
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
         *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
         *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
         * @param {errorOrResult}  callback                                        `error` will contain information
@@ -3723,6 +3802,7 @@ declare module azurestorage {
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
         *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
         *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
         * @param {errorOrResult}  callback                                        `error` will contain information
@@ -3761,6 +3841,7 @@ declare module azurestorage {
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
         *                                                                         The maximum execution time interval begins at the time that the client begins building the request. The maximum
         *                                                                         execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
         * @param {errorOrResult}  callback                                        `error` will contain information
@@ -7990,8 +8071,114 @@ declare module azurestorage {
           SECONDARY_THEN_PRIMARY = 3,
         }
       }
-      
-      
+
+      // ###########################
+      // ./common/util/accesscondition
+      // ###########################
+      module accesscondition {
+        /**
+        * Constructs an empty access condition.
+        *
+        * @return {AccessConditions} An empty AccessConditions object
+        */
+        export function generateEmptyCondition() : AccessConditions;
+
+        /**
+        * Constructs an access condition such that an operation will be performed only if the resource does not exist on the service
+        *
+        * Setting this access condition modifies the request to include the HTTP If-None-Match conditional header
+
+        * @return {AccessConditions} An AccessConditions object that represents a condition that checks for nonexistence
+        */
+        export function generateIfNotExistsCondition(): AccessConditions;
+
+        /**
+        * Constructs an access condition such that an operation will be performed only if the resource exists on the service
+        *
+        * Setting this access condition modifies the request to include the HTTP If-Match conditional header
+
+        * @return {AccessConditions} An AccessConditions object that represents a condition that checks for existence
+        */
+        export function generateIfExistsCondition(): AccessConditions;
+
+        /**
+        * Constructs an access condition such that an operation will be performed only if the resource's ETag value 
+        * does not match the specified ETag value
+        *
+        * Setting this access condition modifies the request to include the HTTP If-None-Match conditional header
+        *
+        * @param  {string} etag                    The ETag value to check against the resource's ETag
+        * @return {AccessConditions}               An AccessConditions object that represents the If-None-Match condition
+        */
+        export function generateIfNoneMatchCondition(etag: string) : AccessConditions;
+
+        /**
+        * Constructs an access condition such that an operation will be performed only if the resource's ETag value
+        * matches the specified ETag value
+        *
+        * Setting this access condition modifies the request to include the HTTP If-Match conditional header
+        *
+        * @param  {string} etag                    The ETag value to check against the resource's ETag
+        * @return {AccessConditions}               An AccessConditions object that represents the If-Match condition
+        */
+        export function generateIfMatchCondition(etag: string) : AccessConditions;
+
+        /**
+        * Constructs an access condition such that an operation will be performed only if the resource has been
+        * modified since the specified time
+        *
+        * Setting this access condition modifies the request to include the HTTP If-Modified-Since conditional header
+        *
+        * @param  {Date|string}  time              A date object specifying the time since which the resource must have been modified
+        * @return {AccessConditions}               An AccessConditions object that represents the If-Modified-Since condition
+        */
+        export function generateIfModifiedSinceCondition(time: Date|string) : AccessConditions;
+
+        /**
+        * Constructs an access condition such that an operation will be performed only if the resource has not been
+        * modified since the specified time
+        *
+        * Setting this access condition modifies the request to include the HTTP If-Unmodified-Since conditional header
+        *
+        * @param  {Date|string}    time            A date object specifying the time since which the resource must have not been modified
+        * @return {AccessConditions}               An AccessConditions object that represents the If-Unmodified-Since condition
+        */
+        export function generateIfNotModifiedSinceCondition(time: Date|string) : AccessConditions;
+
+        /**
+        * Constructs an access condition such that an operation will be performed only if the resource's sequence number
+        * is equal to the specified value
+        *
+        * Setting this access condition modifies the request to include the HTTP x-ms-if-sequence-number-eq conditional header
+        *
+        * @param  {Number|string}    sequenceNumber    A date object specifying the time since which the resource must have not been modified
+        * @return {AccessConditions}                   An AccessConditions object that represents the If-Unmodified-Since condition
+        */
+        export function generateSequenceNumberEqualCondition(sequenceNumber: Number|string) : AccessConditions;
+
+        /**
+        * Constructs an access condition such that an operation will be performed only if the resource's sequence number
+        * is less than the specified value
+        *
+        * Setting this access condition modifies the request to include the HTTP x-ms-if-sequence-number-lt conditional header
+        *
+        * @param  {Number|string}    sequenceNumber    A date object specifying the time since which the resource must have not been modified
+        * @return {AccessConditions}                   An AccessConditions object that represents the If-Unmodified-Since condition
+        */
+        export function generateSequenceNumberLessThanCondition(sequenceNumber: Number|string) : AccessConditions;
+
+        /**
+        * Constructs an access condition such that an operation will be performed only if the resource's sequence number
+        * is less than or equal to the specified value
+        *
+        * Setting this access condition modifies the request to include the HTTP x-ms-if-sequence-number-le conditional header
+        *
+        * @param  {Number|string}    sequenceNumber    A date object specifying the time since which the resource must have not been modified
+        * @return {AccessConditions}                   An AccessConditions object that represents the If-Unmodified-Since condition
+        */
+        export function generateSequenceNumberLessThanOrEqualCondition(sequenceNumber: Number|string) : AccessConditions;
+      }
+
       // ###########################
       // ./common/util/sr
       // ###########################
@@ -8670,6 +8857,10 @@ declare module azurestorage {
       * {bool} Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
       */
       useNagleAlgorithm?: boolean;
+      /**
+      * {string} A string that represents the client request ID with a 1KB character limit.
+      */
+      clientRequestId?: string;
     }
 
     export interface ContinuationToken {
@@ -8908,7 +9099,7 @@ declare module azurestorage {
   * @property   {Number|string}   MaxAppendPosition               If the append position is equal to the specified value.
   *                                                               For Append Block operation only. See https://msdn.microsoft.com/en-us/library/mt427365.aspx for more information.
   */
-  interface AccessConditions {
+  export interface AccessConditions {
     EtagMatch?: string;
     EtagNonMatch?: string;
     DateModifedSince?: Date | string;
@@ -8920,22 +9111,9 @@ declare module azurestorage {
     MaxAppendPosition?: Number | string;
   }
 
-  interface AccessCondition {
-    generateEmptyCondition() : AccessConditions;
-    generateIfNotExistsCondition(): AccessConditions;
-    generateIfExistsCondition(): AccessConditions;
-    generateIfNoneMatchCondition(etag: string) : AccessConditions;
-    generateIfMatchCondition(etag: string) : AccessConditions;
-    generateIfModifiedSinceCondition(time: Date|string) : AccessConditions;
-    generateIfNotModifiedSinceCondition(time: Date|string) : AccessConditions;
-    generateSequenceNumberEqualCondition(sequenceNumber: Number|string) : AccessConditions;
-    generateSequenceNumberLessThanCondition(sequenceNumber: Number|string) : AccessConditions;
-    generateSequenceNumberLessThanOrEqualCondition(sequenceNumber: Number|string) : AccessConditions;
-  }
-
   export import Constants = common.util.constants;
   export import StorageUtilities = common.util.storageutilities;
-  export var AccessCondition : AccessCondition;
+  export import AccessCondition = common.util.accesscondition;
   export import SR = common.util.sr.SR;
   export import StorageServiceClient = common.services.storageserviceclient.StorageServiceClient;
   export import Logger = common.diagnostics.logger.Logger;
