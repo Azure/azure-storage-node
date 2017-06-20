@@ -1,10 +1,31 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
 be taken. This is a GA release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
 
+2017.06 Version 2.2.0
+
+ALL
+* Fixed a TypeScript issue that callback of `createWriteStreamToBlockBlob` should be optional in the TypeScript definition file.
+* Fixed a bug in TypeScript definition file about `AccessConditions` mismatches with `AccessCondition` which is exported in JavaScript.
+* Fixed an undefined property issue in `BlobResult` object of the sample code.
+* Updated node-uuid to uuid.
+* Updated underscore version to 1.8.3.
+* Updated validator version to 3.35.0.
+
+BLOB
+* Added a `defaultEnableReuseSocket` option for `BlobService` to control reuseSocket settings.
+* Fixed a hanging or silent failing issue for blob uploading under some situations.
+* Fixed a bug that `doesBlobExist` does not support `snapshotId` parameter.
+* Fixed a bug in `getBlobToLocalFile` that `fs` will throw exceptions instead of returning errors in callback.
+
+FILE
+* Added a `defaultEnableReuseSocket` option for `FileService` to control reuseSocket settings.
+* Fixed a hanging or silent failing issue for file uploading under some situations.
+* Fixed a bug in `getFileToLocalFile` that `fs` will throw exceptions instead of returning errors in callback.
+
 2017.03 Version 2.1.0
 
 ALL
-* Fixed the type script issue that AccessConditions is missing in the type definition file
+* Fixed the type script issue that AccessConditions is missing in the type definition file.
 
 BLOB
 * Added support for page blob incremental copy. Refer to https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/incremental-copy-blob

@@ -18,7 +18,7 @@ var _ = require('underscore');
 var fs = require('fs');
 var os = require('os');
 var path = require('path');
-var guid = require('node-uuid');
+var guid = require('uuid');
 var nockHelper = require('./nock-helper');
 
 exports = module.exports = TestSuite;

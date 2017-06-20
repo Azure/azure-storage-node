@@ -14,7 +14,7 @@
 // limitations under the License.
 // 
 var assert = require('assert');
-var guid = require('node-uuid');
+var guid = require('uuid');
 
 // Lib includes
 var testutil = require('../../framework/util');
