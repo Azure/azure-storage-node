@@ -89,7 +89,7 @@
         </h2>
         
             <div class="class-description"><p>The BlobService class is used to perform operations on the Microsoft Azure Blob Service.<br>The Blob Service provides storage for binary large objects, and provides<br>functions for working with data stored in blobs as either streams or pages of data.</p>
-<p>For more information on the Blob Service, as well as task focused information on using it in a Node.js application, see<br><a href="http://azure.microsoft.com/en-us/documentation/articles/storage-nodejs-how-to-use-blob-storage/">How to Use the Blob Service from Node.js</a>.<br>The following defaults can be set on the blob service.<br>singleBlobPutThresholdInBytes                       The default maximum size, in bytes, of a blob before it must be separated into blocks.<br>defaultTimeoutIntervalInMs                          The default timeout interval, in milliseconds, to use for request made via the Blob service.<br>defaultClientRequestTimeoutInMs                     The default timeout of client requests, in milliseconds, to use for the request made via the Blob service.<br>defaultMaximumExecutionTimeInMs                     The default maximum execution time across all potential retries, for requests made via the Blob service.<br>defaultLocationMode                                 The default location mode for requests made via the Blob service.<br>parallelOperationThreadCount                        The number of parallel operations that may be performed when uploading a blob that is greater than<br>                                                    the value specified by the singleBlobPutThresholdInBytes property in size.<br>useNagleAlgorithm                                   Determines whether the Nagle algorithm is used for requests made via the Blob service; true to use the<br>                                                    Nagle algorithm; otherwise, false. The default value is false.</p></div>
+<p>For more information on the Blob Service, as well as task focused information on using it in a Node.js application, see<br><a href="http://azure.microsoft.com/en-us/documentation/articles/storage-nodejs-how-to-use-blob-storage/">How to Use the Blob Service from Node.js</a>.<br>The following defaults can be set on the blob service.<br>singleBlobPutThresholdInBytes                       The default maximum size, in bytes, of a blob before it must be separated into blocks.<br>defaultEnableReuseSocket                            The default boolean value to enable socket reuse when uploading local files or streams.<br>                                                    If the Node.js version is lower than 0.10.x, socket reuse will always be turned off.<br>defaultTimeoutIntervalInMs                          The default timeout interval, in milliseconds, to use for request made via the Blob service.<br>defaultClientRequestTimeoutInMs                     The default timeout of client requests, in milliseconds, to use for the request made via the Blob service.<br>defaultMaximumExecutionTimeInMs                     The default maximum execution time across all potential retries, for requests made via the Blob service.<br>defaultLocationMode                                 The default location mode for requests made via the Blob service.<br>parallelOperationThreadCount                        The number of parallel operations that may be performed when uploading a blob that is greater than<br>                                                    the value specified by the singleBlobPutThresholdInBytes property in size.<br>useNagleAlgorithm                                   Determines whether the Nagle algorithm is used for requests made via the Blob service; true to use the<br>                                                    Nagle algorithm; otherwise, false. The default value is false.</p></div>
         
     
 </header>
@@ -356,8 +356,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-99">line 99</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-98">line 98</a>
 			</li>
 		</ul>
 	</dd>
@@ -1705,8 +1705,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-2179">line 2179</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-2123">line 2123</a>
 			</li>
 		</ul>
 	</dd>
@@ -2288,8 +2288,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-1104">line 1104</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-1104">line 1104</a>
 			</li>
 		</ul>
 	</dd>
@@ -3037,8 +3037,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-4046">line 4046</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3782">line 3782</a>
 			</li>
 		</ul>
 	</dd>
@@ -3757,8 +3757,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-4098">line 4098</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3834">line 3834</a>
 			</li>
 		</ul>
 	</dd>
@@ -3799,7 +3799,7 @@
 
     
     <div class="description">
-        <p>Appends to an append blob from a local file. Assumes the blob already exists on the service.<br>This API should be used strictly in a single writer scenario because the API internally uses the append-offset conditional header to avoid duplicate blocks.<br>If you are guaranteed to have a single writer scenario, please look at options.absorbConditionalErrorsOnRetry and see if setting this flag to true is acceptable for you.<br>(Not recommended for use in the JavaScript Client Library)</p>
+        <p>Appends to an append blob from a local file. Assumes the blob already exists on the service.<br>This API should be used strictly in a single writer scenario because the API internally uses the append-offset conditional header to avoid duplicate blocks.<br>If you are guaranteed to have a single writer scenario, please look at options.absorbConditionalErrorsOnRetry and see if setting this flag to true is acceptable for you.<br>(Not available in the JavaScript Client Library for Browsers)</p>
     </div>
     
 
@@ -4672,8 +4672,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-3882">line 3882</a>
+				<a href="services_blob_blobservice.node.js.html">services/blob/blobservice.node.js</a>,
+				 <a href="services_blob_blobservice.node.js.html#sunlight-1-line-265">line 265</a>
 			</li>
 		</ul>
 	</dd>
@@ -5701,8 +5701,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-3955">line 3955</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3691">line 3691</a>
 			</li>
 		</ul>
 	</dd>
@@ -6707,8 +6707,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-4009">line 4009</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3745">line 3745</a>
 			</li>
 		</ul>
 	</dd>
@@ -7256,8 +7256,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-1267">line 1267</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-1267">line 1267</a>
 			</li>
 		</ul>
 	</dd>
@@ -7835,8 +7835,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-1186">line 1186</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-1186">line 1186</a>
 			</li>
 		</ul>
 	</dd>
@@ -8448,8 +8448,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-2885">line 2885</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-2783">line 2783</a>
 			</li>
 		</ul>
 	</dd>
@@ -9329,8 +9329,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-3434">line 3434</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3287">line 3287</a>
 			</li>
 		</ul>
 	</dd>
@@ -9371,7 +9371,7 @@
 
     
     <div class="description">
-        <p>Creates a new append blob from a local file. If the blob already exists on the service, it will be overwritten.<br>To avoid overwriting and instead throw an error if the blob exists, please pass in an accessConditions parameter in the options object.<br>This API should be used strictly in a single writer scenario because the API internally uses the append-offset conditional header to avoid duplicate blocks.<br>If you are guaranteed to have a single writer scenario, please look at options.absorbConditionalErrorsOnRetry and see if setting this flag to true is acceptable for you.<br>If you want to append data to an already existing blob, please look at appendFromLocalFile.<br>(Not recommended for use in the JavaScript Client Library)</p>
+        <p>Creates a new append blob from a local file. If the blob already exists on the service, it will be overwritten.<br>To avoid overwriting and instead throw an error if the blob exists, please pass in an accessConditions parameter in the options object.<br>This API should be used strictly in a single writer scenario because the API internally uses the append-offset conditional header to avoid duplicate blocks.<br>If you are guaranteed to have a single writer scenario, please look at options.absorbConditionalErrorsOnRetry and see if setting this flag to true is acceptable for you.<br>If you want to append data to an already existing blob, please look at appendFromLocalFile.<br>(Not available in the JavaScript Client Library for Browsers)</p>
     </div>
     
 
@@ -10312,8 +10312,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-3659">line 3659</a>
+				<a href="services_blob_blobservice.node.js.html">services/blob/blobservice.node.js</a>,
+				 <a href="services_blob_blobservice.node.js.html#sunlight-1-line-223">line 223</a>
 			</li>
 		</ul>
 	</dd>
@@ -11375,8 +11375,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-3706">line 3706</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3513">line 3513</a>
 			</li>
 		</ul>
 	</dd>
@@ -12381,8 +12381,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-3750">line 3750</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3557">line 3557</a>
 			</li>
 		</ul>
 	</dd>
@@ -12998,8 +12998,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-2033">line 2033</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-1977">line 1977</a>
 			</li>
 		</ul>
 	</dd>
@@ -13040,7 +13040,7 @@
 
     
     <div class="description">
-        <p>Creates a new block blob. If the blob already exists on the service, it will be overwritten.<br>To avoid overwriting and instead throw an error if the blob exists, please pass in an accessConditions parameter in the options object.<br>(Not recommended for use in the JavaScript Client Library)</p>
+        <p>Creates a new block blob. If the blob already exists on the service, it will be overwritten.<br>To avoid overwriting and instead throw an error if the blob exists, please pass in an accessConditions parameter in the options object.<br>(Not available in the JavaScript Client Library for Browsers)</p>
     </div>
     
 
@@ -14049,8 +14049,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-3086">line 3086</a>
+				<a href="services_blob_blobservice.node.js.html">services/blob/blobservice.node.js</a>,
+				 <a href="services_blob_blobservice.node.js.html#sunlight-1-line-177">line 177</a>
 			</li>
 		</ul>
 	</dd>
@@ -15214,8 +15214,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-3133">line 3133</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-2986">line 2986</a>
 			</li>
 		</ul>
 	</dd>
@@ -16220,8 +16220,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-3174">line 3174</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3027">line 3027</a>
 			</li>
 		</ul>
 	</dd>
@@ -16933,8 +16933,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-3255">line 3255</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3108">line 3108</a>
 			</li>
 		</ul>
 	</dd>
@@ -17617,8 +17617,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-3304">line 3304</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3157">line 3157</a>
 			</li>
 		</ul>
 	</dd>
@@ -18134,8 +18134,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-424">line 424</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-424">line 424</a>
 			</li>
 		</ul>
 	</dd>
@@ -18651,8 +18651,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-496">line 496</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-496">line 496</a>
 			</li>
 		</ul>
 	</dd>
@@ -19506,8 +19506,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-3584">line 3584</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3437">line 3437</a>
 			</li>
 		</ul>
 	</dd>
@@ -20421,8 +20421,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-2366">line 2366</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-2310">line 2310</a>
 			</li>
 		</ul>
 	</dd>
@@ -20463,7 +20463,7 @@
 
     
     <div class="description">
-        <p>Uploads a page blob from file. If the blob already exists on the service, it will be overwritten.<br>To avoid overwriting and instead throw an error if the blob exists, please pass in an accessConditions parameter in the options object.<br>(Not recommended for use in the JavaScript Client Library)</p>
+        <p>Uploads a page blob from file. If the blob already exists on the service, it will be overwritten.<br>To avoid overwriting and instead throw an error if the blob exists, please pass in an accessConditions parameter in the options object.<br>(Not available in the JavaScript Client Library for Browsers)</p>
     </div>
     
 
@@ -21466,8 +21466,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-2447">line 2447</a>
+				<a href="services_blob_blobservice.node.js.html">services/blob/blobservice.node.js</a>,
+				 <a href="services_blob_blobservice.node.js.html#sunlight-1-line-132">line 132</a>
 			</li>
 		</ul>
 	</dd>
@@ -22563,8 +22563,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-2493">line 2493</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-2391">line 2391</a>
 			</li>
 		</ul>
 	</dd>
@@ -23296,8 +23296,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-2626">line 2626</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-2524">line 2524</a>
 			</li>
 		</ul>
 	</dd>
@@ -24015,8 +24015,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-1639">line 1639</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-1581">line 1581</a>
 			</li>
 		</ul>
 	</dd>
@@ -25094,8 +25094,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-3223">line 3223</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3076">line 3076</a>
 			</li>
 		</ul>
 	</dd>
@@ -26071,8 +26071,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-3840">line 3840</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3647">line 3647</a>
 			</li>
 		</ul>
 	</dd>
@@ -27082,8 +27082,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-2543">line 2543</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-2441">line 2441</a>
 			</li>
 		</ul>
 	</dd>
@@ -28059,8 +28059,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-3795">line 3795</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3602">line 3602</a>
 			</li>
 		</ul>
 	</dd>
@@ -29102,8 +29102,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-2593">line 2593</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-2491">line 2491</a>
 			</li>
 		</ul>
 	</dd>
@@ -29745,8 +29745,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-1865">line 1865</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-1807">line 1807</a>
 			</li>
 		</ul>
 	</dd>
@@ -30362,8 +30362,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-1970">line 1970</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-1914">line 1914</a>
 			</li>
 		</ul>
 	</dd>
@@ -30879,8 +30879,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-868">line 868</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-868">line 868</a>
 			</li>
 		</ul>
 	</dd>
@@ -31396,8 +31396,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-919">line 919</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-919">line 919</a>
 			</li>
 		</ul>
 	</dd>
@@ -31593,6 +31593,74 @@
     </thead>
 
     <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>snapshotId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The snapshot identifier.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>leaseId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The lease identifier.</p></td>
+        </tr>
+
     
 
         <tr>
@@ -31877,8 +31945,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-1923">line 1923</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-1867">line 1867</a>
 			</li>
 		</ul>
 	</dd>
@@ -32326,8 +32394,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-385">line 385</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-385">line 385</a>
 			</li>
 		</ul>
 	</dd>
@@ -32414,8 +32482,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-3538">line 3538</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3391">line 3391</a>
 			</li>
 		</ul>
 	</dd>
@@ -33101,8 +33169,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-2233">line 2233</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-2177">line 2177</a>
 			</li>
 		</ul>
 	</dd>
@@ -33708,8 +33776,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-1380">line 1380</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-1380">line 1380</a>
 			</li>
 		</ul>
 	</dd>
@@ -34291,8 +34359,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-1311">line 1311</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-1311">line 1311</a>
 			</li>
 		</ul>
 	</dd>
@@ -34333,7 +34401,7 @@
 
     
     <div class="description">
-        <p>Downloads a blob into a file.<br>(Not recommended for use in the JavaScript Client Library)</p>
+        <p>Downloads a blob into a file.<br>(Not available in the JavaScript Client Library for Browsers)</p>
     </div>
     
 
@@ -35144,8 +35212,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-1590">line 1590</a>
+				<a href="services_blob_blobservice.node.js.html">services/blob/blobservice.node.js</a>,
+				 <a href="services_blob_blobservice.node.js.html#sunlight-1-line-75">line 75</a>
 			</li>
 		</ul>
 	</dd>
@@ -36023,8 +36091,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-1707">line 1707</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-1649">line 1649</a>
 			</li>
 		</ul>
 	</dd>
@@ -36768,8 +36836,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-1790">line 1790</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-1732">line 1732</a>
 			</li>
 		</ul>
 	</dd>
@@ -36856,8 +36924,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-3546">line 3546</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3399">line 3399</a>
 			</li>
 		</ul>
 	</dd>
@@ -37339,8 +37407,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-738">line 738</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-738">line 738</a>
 			</li>
 		</ul>
 	</dd>
@@ -37822,8 +37890,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-617">line 617</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-617">line 617</a>
 			</li>
 		</ul>
 	</dd>
@@ -38305,8 +38373,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-558">line 558</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-558">line 558</a>
 			</li>
 		</ul>
 	</dd>
@@ -38988,8 +39056,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-2773">line 2773</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-2671">line 2671</a>
 			</li>
 		</ul>
 	</dd>
@@ -39405,8 +39473,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-213">line 213</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-213">line 213</a>
 			</li>
 		</ul>
 	</dd>
@@ -39822,8 +39890,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-163">line 163</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-163">line 163</a>
 			</li>
 		</ul>
 	</dd>
@@ -40106,8 +40174,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-2303">line 2303</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-2247">line 2247</a>
 			</li>
 		</ul>
 	</dd>
@@ -40651,8 +40719,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-978">line 978</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-978">line 978</a>
 			</li>
 		</ul>
 	</dd>
@@ -41198,8 +41266,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-1006">line 1006</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-1006">line 1006</a>
 			</li>
 		</ul>
 	</dd>
@@ -41781,8 +41849,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-1041">line 1041</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-1041">line 1041</a>
 			</li>
 		</ul>
 	</dd>
@@ -42396,8 +42464,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-1073">line 1073</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-1073">line 1073</a>
 			</li>
 		</ul>
 	</dd>
@@ -42977,8 +43045,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-3499">line 3499</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3352">line 3352</a>
 			</li>
 		</ul>
 	</dd>
@@ -43494,8 +43562,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-266">line 266</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-266">line 266</a>
 			</li>
 		</ul>
 	</dd>
@@ -44043,8 +44111,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-295">line 295</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-295">line 295</a>
 			</li>
 		</ul>
 	</dd>
@@ -44694,8 +44762,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-2681">line 2681</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-2579">line 2579</a>
 			</li>
 		</ul>
 	</dd>
@@ -45241,8 +45309,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-1226">line 1226</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-1226">line 1226</a>
 			</li>
 		</ul>
 	</dd>
@@ -45754,8 +45822,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-1146">line 1146</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-1146">line 1146</a>
 			</li>
 		</ul>
 	</dd>
@@ -46335,8 +46403,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-2936">line 2936</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-2834">line 2834</a>
 			</li>
 		</ul>
 	</dd>
@@ -47374,8 +47442,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-1507">line 1507</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-1507">line 1507</a>
 			</li>
 		</ul>
 	</dd>
@@ -48189,8 +48257,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-1453">line 1453</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-1453">line 1453</a>
 			</li>
 		</ul>
 	</dd>
@@ -48738,8 +48806,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-797">line 797</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-797">line 797</a>
 			</li>
 		</ul>
 	</dd>
@@ -49288,8 +49356,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-680">line 680</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-680">line 680</a>
 			</li>
 		</ul>
 	</dd>
@@ -49867,8 +49935,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-2995">line 2995</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-2893">line 2893</a>
 			</li>
 		</ul>
 	</dd>
@@ -49909,7 +49977,7 @@
 
     
     <div class="description">
-        <p>Sets the properties of a storage account’s Blob service, including Azure Storage Analytics.<br>You can also use this operation to set the default request version for all incoming requests that do not have a version specified.</p>
+        <p>Sets the properties of a storage account's Blob service, including Azure Storage Analytics.<br>You can also use this operation to set the default request version for all incoming requests that do not have a version specified.</p>
     </div>
     
 
@@ -50316,8 +50384,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-238">line 238</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-238">line 238</a>
 			</li>
 		</ul>
 	</dd>
@@ -51067,8 +51135,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-2097">line 2097</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-2041">line 2041</a>
 			</li>
 		</ul>
 	</dd>
@@ -51456,8 +51524,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="services_blob_blobservice.js.html">services/blob/blobservice.js</a>,
-				 <a href="services_blob_blobservice.js.html#sunlight-1-line-5985">line 5985</a>
+				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-5579">line 5579</a>
 			</li>
 		</ul>
 	</dd>
@@ -51534,7 +51602,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on Thu Mar 2nd 2017
+		on Tue Jun 13th 2017
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
