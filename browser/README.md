@@ -29,7 +29,7 @@ Compatibility with mobile browsers have not been fully validated, please open is
 
 | Chrome     | Firefox  | Internet Explorer  | Microsoft Edge  |
 |------------|----------|--------------------|-----------------|
-| v58        | v53      | v11                | v40             |
+| v59        | v54      | v11                | v40             |
 
 ## Generating a Custom Azure Storage JavaScript Client Library
 
