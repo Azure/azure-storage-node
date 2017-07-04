@@ -7226,6 +7226,14 @@ declare module azurestorage {
       // ./services/file/fileutilities
       // ###########################
       export module FileUtilities {
+        var SharedAccessPermissions: {
+          READ: string;
+          CREATE: string;
+          WRITE: string;
+          DELETE: string;
+          LIST: string;
+        };
+
         var ListingDetails: {
           METADATA: string;
         };
