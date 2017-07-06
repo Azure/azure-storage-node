@@ -158,61 +158,19 @@ blobService.listBlobsSegmented('mycontainer', null, function (error, results) {
 });
 </pre>
             <h3>Upload Blob</h3>
-            <p><code>BlobService</code> provides <code>uploadBlobByStream</code> for uploading a blob from stream.
-               However, currently <code>uploadBlobByStream</code> only accepts a Node.js <code>ReadableStream</code> type which pure JavaScript doesn't provide.
+            <p><code>BlobService</code> provides <code>createBlockBlobFromBrowserFile</code>, <code>createPageBlobFromBrowserFile</code>, <code>createAppendBlobFromBrowserFile</code> and <code>appendFromBrowserFile</code> for uploading or appending a blob from an HTML file in browsers.
             </p>
 
-            <div class="panel panel-primary"> 
-                <div class="panel-body">
-                    <b>Note</b>: After importing <code>azure-storage.common.js</code>, you could require 3 Node.js types: <code>stream</code>, <code>util</code> and <code>buffer</code>, then wrap a ReadableStream based on HTML5 <code>FileReader</code>.
-                </div>
-            </div>
-<pre>
-// Provides a Stream for a file in webpage, inheriting from NodeJS Readable stream.
-var Buffer = require('buffer').Buffer;
-var Stream = require('stream');
-var util = require('util');
-
-function FileStream(file, opt) {
-    Stream.Readable.call(this, opt);
-
-    this.fileReader = new FileReader(file);
-    this.file = file;
-    this.size = file.size;
-    this.chunkSize = 1024 * 1024 * 4; // 4MB
-    this.offset = 0;
-    var _me = this;
-    
-    this.fileReader.onloadend = function loaded(event) {
-        var data = event.target.result;
-        var buf = Buffer.from(data);
-        _me.push(buf);
-    }
-}
-util.inherits(FileStream, Stream.Readable);
-FileStream.prototype._read = function() {
-    if (this.offset > this.size) {
-        this.push(null);
-    } else {
-        var end = this.offset + this.chunkSize;
-        var slice = this.file.slice(this.offset, end);
-        this.fileReader.readAsArrayBuffer(slice);
-        this.offset = end;
-    }
-};
-</pre>
             <p>Uploading blob from stream. You can set up the blob name as well as the size of this uploading session. </p>
 <pre>
 // If one file has been selected in the HTML file input element
-var files = document.getElementById('fileinput').files;
-var file = files[0];
-var fileStream = new FileStream(file);
+var file = document.getElementById('fileinput').files[0];
 
 var customBlockSize = file.size > 1024 * 1024 * 32 ? 1024 * 1024 * 4 : 1024 * 512;
 blobService.singleBlobPutThresholdInBytes = customBlockSize;
 
 var finishedOrError = false;
-var speedSummary = blobService.createBlockBlobFromStream('mycontainer', file.name, fileStream, file.size, {blockSize : customBlockSize}, function(error, result, response) {
+var speedSummary = blobService.createBlockBlobFromBrowserFile('mycontainer', file.name, file, {blockSize : customBlockSize}, function(error, result, response) {
     finishedOrError = true;
     if (error) {
         // Upload blob failed
@@ -317,41 +275,6 @@ blobService.deleteBlobIfExists(container, blob, function(error, result) {
         <!-- azure-storage.common.js also exports Node.js module stream, util and buffer -->
         <script src="../bundle/azure-storage.common.js"></script> 
         <script src="../bundle/azure-storage.blob.js"></script>
-
-        <script>
-            // Provides a Stream for a file in webpage, inheriting from NodeJS Readable stream.
-            var Stream = require('stream');
-            var util = require('util');
-            var Buffer = require('buffer').Buffer;
-
-            function FileStream(file, opt) {
-                Stream.Readable.call(this, opt);
-
-                this.fileReader = new FileReader(file);
-                this.file = file;
-                this.size = file.size;
-                this.chunkSize = 1024 * 1024 * 4; // 4MB
-                this.offset = 0;
-                var _me = this;
-                
-                this.fileReader.onloadend = function loaded(event) {
-                    var data = event.target.result;
-                    var buf = Buffer.from(data);
-                    _me.push(buf);
-                }
-            }
-            util.inherits(FileStream, Stream.Readable);
-            FileStream.prototype._read = function() {
-                if (this.offset > this.size) {
-                    this.push(null);
-                } else {
-                    var end = this.offset + this.chunkSize;
-                    var slice = this.file.slice(this.offset, end);
-                    this.fileReader.readAsArrayBuffer(slice);
-                    this.offset = end;
-                }
-            };
-        </script>
 
         <script>
             var account = document.getElementById('account').value;
@@ -546,8 +469,6 @@ blobService.deleteBlobIfExists(container, blob, function(error, result) {
                 btn.disabled = true;
                 btn.innerHTML = "Uploading";
 
-                var fileStream = new FileStream(file);
-
                 // Make a smaller block size when uploading small blobs
                 var blockSize = file.size > 1024 * 1024 * 32 ? 1024 * 1024 * 4 : 1024 * 512;
                 var options = {
@@ -557,7 +478,7 @@ blobService.deleteBlobIfExists(container, blob, function(error, result) {
                 blobService.singleBlobPutThresholdInBytes = blockSize;
 
                 var finishedOrError = false;
-                var speedSummary = blobService.createBlockBlobFromStream(container, file.name, fileStream, file.size, options, function(error, result, response) {
+                var speedSummary = blobService.createBlockBlobFromBrowserFile(container, file.name, file, options, function(error, result, response) {
                     finishedOrError = true;
                     btn.disabled = false;
                     btn.innerHTML = "UploadBlob";

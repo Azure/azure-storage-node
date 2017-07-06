@@ -1058,7 +1058,7 @@ declare module azurestorage {
           * @param {string}             localFileName                               The local path to the file to be downloaded.
           * @param {object}             [options]                                   The request options.
           * @param {SpeedSummary}       [options.speedSummary]                      The upload tracker objects.
-          * @param {int}                [options.parallelOperationThreadCount]      Parallel operation thread count
+          * @param {int}                [options.parallelOperationThreadCount]      The number of parallel operations that may be performed when uploading.
           * @param {string}             [options.snapshotId]                        The snapshot identifier.
           * @param {string}             [options.leaseId]                           The lease identifier.
           * @param {string}             [options.rangeStart]                        Return only the bytes of the blob in the specified range.
@@ -1507,7 +1507,7 @@ declare module azurestorage {
           * @param (string)             localFileName                                   The local path to the file to be uploaded.
           * @param {object}             [options]                                       The request options.
           * @param {SpeedSummary}       [options.speedSummary]                          The upload tracker objects.
-          * @param {int}                [options.parallelOperationThreadCount]          Parallel operation thread count
+          * @param {int}                [options.parallelOperationThreadCount]          The number of parallel operations that may be performed when uploading.
           * @param {string}             [options.leaseId]                               The lease identifier.
           * @param {string}             [options.transactionalContentMD5]               An MD5 hash of the blob content. This hash is used to verify the integrity of the blob during transport.
           * @param {object}             [options.metadata]                              The metadata key/value pairs.
@@ -1537,6 +1537,51 @@ declare module azurestorage {
           createPageBlobFromLocalFile(container: string, blob: string, localFileName: string, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
 
           /**
+          * Uploads a page blob from an HTML file. If the blob already exists on the service, it will be overwritten.
+          * To avoid overwriting and instead throw an error if the blob exists, please pass in an accessConditions parameter in the options object.
+          * (Only available in the JavaScript Client Library for Browsers)
+          *
+          * @this {BlobService}
+          * @param {string}             container                                           The container name.
+          * @param {string}             blob                                                The blob name.
+          * @param {object}             browserFile                                         The File object to be uploaded created by HTML File API.
+          * @param {object}             [options]                                           The request options.
+          * @param {SpeedSummary}       [options.speedSummary]                              The upload tracker objects.
+          * @param {int}                [options.parallelOperationThreadCount]              The number of parallel operations that may be performed when uploading.
+          * @param {string}             [options.leaseId]                                   The lease identifier.
+          * @param {string}             [options.transactionalContentMD5]                   An MD5 hash of the blob content. This hash is used to verify the integrity of the blob during transport.
+          * @param {object}             [options.metadata]                                  The metadata key/value pairs.
+          * @param {bool}               [options.storeBlobContentMD5]                       Specifies whether the blob's ContentMD5 header should be set on uploads. 
+          *                                                                                 The default value is false for page blobs.
+          * @param {bool}               [options.useTransactionalMD5]                       Calculate and send/validate content MD5 for transactions.
+          * @param {object}             [options.contentSettings]                           The content settings of the blob.
+          * @param {string}             [options.contentSettings.contentType]               The MIME content type of the blob. The default type is application/octet-stream.
+          * @param {string}             [options.contentSettings.contentEncoding]           The content encodings that have been applied to the blob.
+          * @param {string}             [options.contentSettings.contentLanguage]           The natural languages used by this resource.
+          * @param {string}             [options.contentSettings.cacheControl]              The Blob service stores this value but does not use or modify it.
+          * @param {string}             [options.contentSettings.contentDisposition]        The blob's content disposition.
+          * @param {string}             [options.contentSettings.contentMD5]                The blob's MD5 hash.
+          * @param {AccessConditions}   [options.accessConditions]                          The access conditions.
+          * @param {LocationMode}       [options.locationMode]                              Specifies the location mode used to decide which location the request should be sent to. 
+          *                                                                                 Please see StorageUtilities.LocationMode for the possible values.
+          * @param {int}                [options.timeoutIntervalInMs]                       The server timeout interval, in milliseconds, to use for the request.
+          * @param {int}                [options.clientRequestTimeoutInMs]                  The timeout of client requests, in milliseconds, to use for the request.
+          * @param {int}                [options.maximumExecutionTimeInMs]                  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+          *                                                                                 The maximum execution time interval begins at the time that the client begins building the request. The maximum
+          *                                                                                 execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                           A string that represents the client request ID with a 1KB character limit.
+          * @param {bool}               [options.useNagleAlgorithm]                         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+          *                                                                                 The default value is false.
+          * @param {errorOrResult}      callback                                            `error` will contain information
+          *                                                                                 if an error occurs; otherwise `[result]{@link BlobResult}` will contain
+          *                                                                                 the blob information.
+          *                                                                                 `response` will contain information related to this operation.
+          * @return {SpeedSummary}
+          */
+          createPageBlobFromBrowserFile(container: string, blob: string, browserFile: object, options: BlobService.CreatePageBlobOptions, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
+          createPageBlobFromBrowserFile(container: string, blob: string, browserFile: object, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
+
+          /**
           * Uploads a page blob from a stream.
           *
           * @this {BlobService}
@@ -1546,7 +1591,7 @@ declare module azurestorage {
           * @param {int}                streamLength                                    The length of the stream to upload.
           * @param {object}             [options]                                       The request options.
           * @param {SpeedSummary}       [options.speedSummary]                          The download tracker objects;
-          * @param {int}                [options.parallelOperationThreadCount]          Parallel operation thread count
+          * @param {int}                [options.parallelOperationThreadCount]          The number of parallel operations that may be performed when uploading.
           * @param {string}             [options.leaseId]                               The lease identifier.
           * @param {string}             [options.transactionalContentMD5]               An MD5 hash of the blob content. This hash is used to verify the integrity of the blob during transport.
           * @param {object}             [options.metadata]                              The metadata key/value pairs.
@@ -1586,7 +1631,7 @@ declare module azurestorage {
           * @param {string}             [options.leaseId]                               The lease identifier.
           * @param {string}             [options.transactionalContentMD5]               The MD5 hash of the blob content. This hash is used to verify the integrity of the blob during transport.
           * @param {object}             [options.metadata]                              The metadata key/value pairs.
-          * @param {int}                [options.parallelOperationThreadCount]          Parallel operation thread count
+          * @param {int}                [options.parallelOperationThreadCount]          The number of parallel operations that may be performed when uploading.
           * @param {bool}               [options.storeBlobContentMD5]                   Specifies whether the blob's ContentMD5 header should be set on uploads.
           *                                                                             The default value is false for page blobs and true for block blobs.
           * @param {bool}               [options.useTransactionalMD5]                   Calculate and send/validate content MD5 for transactions.
@@ -1633,7 +1678,7 @@ declare module azurestorage {
           * @param {string}             [options.leaseId]                               The lease identifier.
           * @param {string}             [options.transactionalContentMD5]               The MD5 hash of the blob content. This hash is used to verify the integrity of the blob during transport.
           * @param {object}             [options.metadata]                              The metadata key/value pairs.
-          * @param {int}                [options.parallelOperationThreadCount]          Parallel operation thread count
+          * @param {int}                [options.parallelOperationThreadCount]          The number of parallel operations that may be performed when uploading.
           * @param {bool}               [options.storeBlobContentMD5]                   Specifies whether the blob's ContentMD5 header should be set on uploads.
           *                                                                             The default value is false for page blobs and true for block blobs.
           * @param {bool}               [options.useTransactionalMD5]                   Calculate and send/validate content MD5 for transactions.
@@ -1832,7 +1877,7 @@ declare module azurestorage {
           * @param {string}             [options.leaseId]                               The lease identifier.
           * @param {string}             [options.transactionalContentMD5]               The MD5 hash of the blob content. This hash is used to verify the integrity of the blob during transport.
           * @param {object}             [options.metadata]                              The metadata key/value pairs.
-          * @param {int}                [options.parallelOperationThreadCount]          Parallel operation thread count
+          * @param {int}                [options.parallelOperationThreadCount]          The number of parallel operations that may be performed when uploading.
           * @param {bool}               [options.storeBlobContentMD5]                   Specifies whether the blob's ContentMD5 header should be set on uploads. The default value is true for block blobs.
           * @param {string}             [options.contentSettings.contentType]           The MIME content type of the blob. The default type is application/octet-stream.
           * @param {string}             [options.contentSettings.contentEncoding]       The content encodings that have been applied to the blob.
@@ -1858,6 +1903,50 @@ declare module azurestorage {
           */
           createBlockBlobFromLocalFile(container: string, blob: string, localFileName: string, options: BlobService.CreateBlockBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
           createBlockBlobFromLocalFile(container: string, blob: string, localFileName: string, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
+
+          /**
+          * Creates a new block blob. If the blob already exists on the service, it will be overwritten.
+          * To avoid overwriting and instead throw an error if the blob exists, please pass in an accessConditions parameter in the options object.
+          * (Only available in the JavaScript Client Library for Browsers)
+          *
+          * @this {BlobService}
+          * @param {string}             container                                     The container name.
+          * @param {string}             blob                                          The blob name.
+          * @param {object}             browserFile                                   The File object to be uploaded created by HTML File API.
+          * @param {object}             [options]                                     The request options.
+          * @param {int}                [options.blockSize]                           The size of each block. Maximum is 100MB.
+          * @param {string}             [options.blockIdPrefix]                       The prefix to be used to generate the block id.
+          * @param {string}             [options.leaseId]                             The lease identifier.
+          * @param {string}             [options.transactionalContentMD5]             The MD5 hash of the blob content. This hash is used to verify the integrity of the blob during transport.
+          * @param {object}             [options.metadata]                            The metadata key/value pairs.
+          * @param {int}                [options.parallelOperationThreadCount]        The number of parallel operations that may be performed when uploading.
+          * @param {bool}               [options.storeBlobContentMD5]                 Specifies whether the blob's ContentMD5 header should be set on uploads. The default value is true for block blobs.
+          * @param {object}             [options.contentSettings]                     The content settings of the blob.
+          * @param {string}             [options.contentSettings.contentType]         The MIME content type of the blob. The default type is application/octet-stream.
+          * @param {string}             [options.contentSettings.contentEncoding]     The content encodings that have been applied to the blob.
+          * @param {string}             [options.contentSettings.contentLanguage]     The natural languages used by this resource.
+          * @param {string}             [options.contentSettings.cacheControl]        The Blob service stores this value but does not use or modify it.
+          * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
+          * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 hash.
+          * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
+          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+          *                                                                           Please see StorageUtilities.LocationMode for the possible values.
+          * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
+          * @param {int}                [options.clientRequestTimeoutInMs]            The timeout of client requests, in milliseconds, to use for the request.
+          * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+          *                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
+          *                                                                           execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
+          * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+          *                                                                           The default value is false.
+          * @param {errorOrResult}      callback                                      `error` will contain information
+          *                                                                           if an error occurs; otherwise `[result]{@link BlobResult}` will contain
+          *                                                                           the blob information.
+          *                                                                           `response` will contain information related to this operation.
+          * @return {SpeedSummary}
+          */
+          createBlockBlobFromBrowserFile(container: string, blob: string, browserFile: object, options: BlobService.CreateBlockBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
+          createBlockBlobFromBrowserFile(container: string, blob: string, browserFile: object, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
 
           /**
           * Uploads a block blob from a stream.
@@ -1887,7 +1976,7 @@ declare module azurestorage {
           * @param {string}             [options.leaseId]                               The lease identifier.
           * @param {string}             [options.transactionalContentMD5]               The MD5 hash of the blob content. This hash is used to verify the integrity of the blob during transport.
           * @param {object}             [options.metadata]                              The metadata key/value pairs.
-          * @param {int}                [options.parallelOperationThreadCount]          Parallel operation thread count
+          * @param {int}                [options.parallelOperationThreadCount]          The number of parallel operations that may be performed when uploading.
           * @param {bool}               [options.storeBlobContentMD5]                   Specifies whether the blob's ContentMD5 header should be set on uploads. The default value is true for block blobs.
           * @param {bool}               [options.useTransactionalMD5]                   Calculate and send/validate content MD5 for transactions.
           * @param {string}             [options.contentSettings.contentType]           The MIME content type of the blob. The default type is application/octet-stream.
@@ -1960,7 +2049,7 @@ declare module azurestorage {
           * @param {string}             [options.leaseId]                               The lease identifier.
           * @param {string}             [options.transactionalContentMD5]               The MD5 hash of the blob content. This hash is used to verify the integrity of the blob during transport.
           * @param {object}             [options.metadata]                              The metadata key/value pairs.
-          * @param {int}                [options.parallelOperationThreadCount]          Parallel operation thread count
+          * @param {int}                [options.parallelOperationThreadCount]          The number of parallel operations that may be performed when uploading.
           * @param {bool}               [options.storeBlobContentMD5]                   Specifies whether the blob's ContentMD5 header should be set on uploads.
           *                                                                             The default value is false for page blobs and true for block blobs.
           * @param {bool}               [options.useTransactionalMD5]                   Calculate and send/validate content MD5 for transactions.
@@ -2199,7 +2288,52 @@ declare module azurestorage {
           */
           createAppendBlobFromLocalFile(container: string, blob: string, localFileName: string, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
           createAppendBlobFromLocalFile(container: string, blob: string, localFileName: string, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
-          
+
+          /**
+          * Creates a new append blob from an HTML File object. If the blob already exists on the service, it will be overwritten.
+          * To avoid overwriting and instead throw an error if the blob exists, please pass in an accessConditions parameter in the options object.
+          * This API should be used strictly in a single writer scenario because the API internally uses the append-offset conditional header to avoid duplicate blocks.
+          * If you are guaranteed to have a single writer scenario, please look at options.absorbConditionalErrorsOnRetry and see if setting this flag to true is acceptable for you.
+          * If you want to append data to an already existing blob, please look at appendFromBrowserFile.
+          * (Only available in the JavaScript Client Library for Browsers)
+          *
+          * @this {BlobService}
+          * @param {string}             container                                     The container name.
+          * @param {string}             blob                                          The blob name.
+          * @param {object}             browserFile                                   The File object to be uploaded created by HTML File API.
+          * @param {object}             [options]                                     The request options.
+          * @param {bool}               [options.absorbConditionalErrorsOnRetry]      Specifies whether to absorb the conditional error on retry.
+          * @param {string}             [options.leaseId]                             The lease identifier. 
+          * @param {object}             [options.metadata]                            The metadata key/value pairs.
+          * @param {bool}               [options.storeBlobContentMD5]                 Specifies whether the blob's ContentMD5 header should be set on uploads. The default value is true for block blobs.
+          * @param {bool}               [options.useTransactionalMD5]                 Calculate and send/validate content MD5 for transactions.
+          * @param {object}             [options.contentSettings]                     The content settings of the blob.
+          * @param {string}             [options.contentSettings.contentType]         The MIME content type of the blob. The default type is application/octet-stream.
+          * @param {string}             [options.contentSettings.contentEncoding]     The content encodings that have been applied to the blob.
+          * @param {string}             [options.contentSettings.contentLanguage]     The natural languages used by this resource.
+          * @param {string}             [options.contentSettings.cacheControl]        The Blob service stores this value but does not use or modify it.
+          * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
+          * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 ahash.
+          * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
+          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+          *                                                                           Please see StorageUtilities.LocationMode for the possible values.
+          * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
+          * @param {int}                [options.clientRequestTimeoutInMs]            The timeout of client requests, in milliseconds, to use for the request.
+          * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+          *                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
+          *                                                                           execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
+          * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+          *                                                                           The default value is false.
+          * @param {errorOrResult}      callback                                      `error` will contain information
+          *                                                                           if an error occurs; otherwise `[result]{@link BlobResult}` will contain
+          *                                                                           the blob information.
+          *                                                                           `response` will contain information related to this operation.
+          * @return {SpeedSummary}
+          */
+          createAppendBlobFromBrowserFile(container: string, blob: string, browserFile: object, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
+          createAppendBlobFromBrowserFile(container: string, blob: string, browserFile: object, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
+
           /**
           * Uploads an append blob from a stream. If the blob already exists on the service, it will be overwritten.
           * To avoid overwriting and instead throw an error if the blob exists, please pass in an accessConditions parameter in the options object.
@@ -2414,6 +2548,47 @@ declare module azurestorage {
           */
           appendFromLocalFile(container: string, blob: string, localFileName: string, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
           appendFromLocalFile(container: string, blob: string, localFileName: string, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
+
+          /**
+          * Appends to an append blob from an HTML File object. Assumes the blob already exists on the service.
+          * This API should be used strictly in a single writer scenario because the API internally uses the append-offset conditional header to avoid duplicate blocks.
+          * If you are guaranteed to have a single writer scenario, please look at options.absorbConditionalErrorsOnRetry and see if setting this flag to true is acceptable for you.
+          * (Only available in the JavaScript Client Library for Browsers)
+          *
+          * @this {BlobService}
+          * @param {string}             container                                     The container name.
+          * @param {string}             blob                                          The blob name.
+          * @param {object}             browserFile                                   The File object to be uploaded created by HTML File API.
+          * @param {object}             [options]                                     The request options.
+          * @param {bool}               [options.absorbConditionalErrorsOnRetry]      Specifies whether to absorb the conditional error on retry.
+          * @param {string}             [options.leaseId]                             The lease identifier.
+          * @param {object}             [options.metadata]                            The metadata key/value pairs.
+          * @param {object}             [options.contentSettings]                     The content settings of the blob.
+          * @param {string}             [options.contentSettings.contentType]         The MIME content type of the blob. The default type is application/octet-stream.
+          * @param {string}             [options.contentSettings.contentEncoding]     The content encodings that have been applied to the blob.
+          * @param {string}             [options.contentSettings.contentLanguage]     The natural languages used by this resource.
+          * @param {string}             [options.contentSettings.cacheControl]        The Blob service stores this value but does not use or modify it.
+          * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
+          * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 hash.
+          * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
+          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+          *                                                                           Please see StorageUtilities.LocationMode for the possible values.
+          * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
+          * @param {int}                [options.clientRequestTimeoutInMs]            The timeout of client requests, in milliseconds, to use for the request.
+          * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+          *                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
+          *                                                                           execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
+          * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+          *                                                                           The default value is false.
+          * @param {errorOrResult}      callback                                      `error` will contain information
+          *                                                                           if an error occurs; otherwise `[result]{@link BlobResult}` will contain
+          *                                                                           the blob information.
+          *                                                                           `response` will contain information related to this operation.
+          * @return {SpeedSummary}
+          */
+          appendFromBrowserFile(container: string, blob: string, browserFile: object, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
+          appendFromBrowserFile(container: string, blob: string, browserFile: object, callback: ErrorOrResult<BlobService.BlobResult>): common.streams.speedsummary.SpeedSummary;
 
           /**
           * Appends to an append blob from a stream. Assumes the blob already exists on the service.
@@ -6870,6 +7045,46 @@ declare module azurestorage {
         */
         createFileFromLocalFile(share: string, directory: string, file: string, localFileName: string, options: FileService.CreateFileRequestOptions, callback: ErrorOrResult<FileService.FileResult>): common.streams.speedsummary.SpeedSummary;
         createFileFromLocalFile(share: string, directory: string, file: string, localFileName: string, callback: ErrorOrResult<FileService.FileResult>): common.streams.speedsummary.SpeedSummary;
+
+        /**
+        * Uploads a file to storage from an HTML File object. If the file already exists on the service, it will be overwritten.
+        * (Only available in the JavaScript Client Library for Browsers)
+        *
+        * @this {FileService}
+        * @param {string}             share                                         The share name.
+        * @param {string}             directory                                     The directory name. Use '' to refer to the base directory.
+        * @param {string}             file                                          The file name. File names may not start or end with the delimiter '/'.
+        * @param {object}             browserFile                                   The File object to be uploaded created by HTML File API.
+        * @param {object}             [options]                                     The request options.
+        * @param {SpeedSummary}       [options.speedSummary]                        The download tracker objects;
+        * @param {bool}               [options.storeFileContentMD5]                 Specifies whether the file's ContentMD5 header should be set on uploads. 
+        *                                                                           The default value is false for files.
+        * @param {bool}               [options.useTransactionalMD5]                 Calculate and send/validate content MD5 for transactions.
+        * @param {object}             [options.contentSettings]                     The file's content settings.
+        * @param {string}             [options.contentSettings.contentType]         The MIME content type of the file. The default type is application/octet-stream.
+        * @param {string}             [options.contentSettings.contentEncoding]     The content encodings that have been applied to the file.
+        * @param {string}             [options.contentSettings.contentLanguage]     The natural languages used by this resource.
+        * @param {string}             [options.contentSettings.cacheControl]        The file service stores this value but does not use or modify it.
+        * @param {string}             [options.contentSettings.contentDisposition]  The file's content disposition.
+        * @param {string}             [options.contentSettings.contentMD5]          The file's MD5 hash.
+        * @param {object}             [options.metadata]                            The metadata key/value pairs.
+        * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+        *                                                                           Please see StorageUtilities.LocationMode for the possible values.
+        * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
+        * @param {int}                [options.clientRequestTimeoutInMs]            The timeout of client requests, in milliseconds, to use for the request.
+        * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+        *                                                                           The maximum execution time interval begins at the time that the client begins building the request. The maximum
+        *                                                                           execution time is checked intermittently while performing requests, and before executing retries.
+        * @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
+        * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+        *                                                                           The default value is false.
+        * @param {errorOrResult}      callback                                      `error` will contain information if an error occurs; 
+        *                                                                           otherwise `[result]{@link FileResult}` will contain the file information.
+        *                                                                           `response` will contain information related to this operation.
+        * @return {SpeedSummary}
+        */
+        createFileFromBrowserFile(share: string, directory: string, file: string, browserFile: object, options: FileService.CreateFileRequestOptions, callback: ErrorOrResult<FileService.FileResult>): common.streams.speedsummary.SpeedSummary;
+        createFileFromBrowserFile(share: string, directory: string, file: string, browserFile: object, callback: ErrorOrResult<FileService.FileResult>): common.streams.speedsummary.SpeedSummary; 
 
         /**
         * Uploads a file from a stream.
