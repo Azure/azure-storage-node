@@ -1,5 +1,16 @@
 Note: This is the change log file for Azure Storage JavaScript Client Library.
 
+2017.07 Version 0.2.2-preview.7
+
+* Added browser specific APIs for blobs and files uploading.
+    * `BlobService.createBlockBlobFromBrowserFile`
+    * `BlobService.createPageBlobFromBrowserFile`
+    * `BlobService.createAppendBlobFromBrowserFile`
+    * `BlobService.appendFromBrowserFile`
+    * `FileService.createFileFromBrowserFile`
+* Updated samples with above new added APIs.
+* Dropped dependency to browserify-fs.
+
 2017.07 Version 0.2.2-preview.6
 
 * Generated browser compatible JavaScript files based on Microsoft Azure Storage SDK for Node.js 2.2.1.

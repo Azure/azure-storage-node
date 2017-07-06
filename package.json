@@ -34,7 +34,6 @@
   },
   "devDependencies": {
     "browserify": "^13.3.0",
-    "browserify-fs": "^1.0.0",
     "batchflow": "0.4.0",
     "coveralls": "^2.11.4",
     "factor-bundle": "^2.5.0",
@@ -53,9 +52,6 @@
     "nock": "0.16",
     "nsp": "^2.2.0",
     "should": "1.2.x"
-  },
-  "browser": {
-    "fs": "browserify-fs"
   },
   "homepage": "http://github.com/Azure/azure-storage-node",
   "repository": {

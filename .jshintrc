@@ -24,5 +24,9 @@
   "trailing": true,
   "undef": true,
   "unused": true,
-  "shadow": true
+  "shadow": true,
+  "globals": {
+    "FileReader": true,
+    "window": true
+  }
 }

@@ -176,57 +176,17 @@ fileService.deleteDirectoryIfExists('myfileshare', 'mydirectory', function(error
 </pre>
 
             <h3>Upload File</h3>
-            <p><code>FileService</code> provides <code>createFileFromStream</code> for uploading a file from stream.
-               However, currently <code>createFileFromStream</code> only accepts a Node.js <code>ReadableStream</code> type which pure JavaScript doesn't provide.
+            <p><code>FileService</code> provides <code>createFileFromBrowserFile</code> for uploading a file from an HTML file in browsers.
             </p>
-            <div class="panel panel-primary"> 
-                <div class="panel-body">
-                    <b>Note</b>: After importing <code>azure-storage.common.js</code>, you could require 3 Node.js types: <code>stream</code>, <code>util</code> and <code>buffer</code>, then wrap a ReadableStream based on HTML5 <code>FileReader</code>.
-                </div>
-            </div>
-<pre>
-// Provides a Stream for a file in webpage, inheriting from NodeJS Readable stream.
-var Stream = require('stream');
-var util = require('util');
-var Buffer = require('buffer').Buffer;
 
-function FileStream(file, opt) {
-    Stream.Readable.call(this, opt);
-
-    this.fileReader = new FileReader(file);
-    this.file = file;
-    this.size = file.size;
-    this.chunkSize = 1024 * 1024 * 4; // 4MB
-    this.offset = 0;
-    var _me = this;
-    
-    this.fileReader.onloadend = function loaded(event) {
-        var data = event.target.result;
-        var buf = Buffer.from(data);
-        _me.push(buf);
-    }
-}
-util.inherits(FileStream, Stream.Readable);
-FileStream.prototype._read = function() {
-    if (this.offset > this.size) {
-        this.push(null);
-    } else {
-        var end = this.offset + this.chunkSize;
-        var slice = this.file.slice(this.offset, end);
-        this.fileReader.readAsArrayBuffer(slice);
-        this.offset = end;
-    }
-};
-</pre>
             <p>Uploading file from stream. You can set up the file name as well as the size of this uploading session. </p>
 <pre>
 // If one file has been selected in the HTML file input element
 var files = document.getElementById('fileinput').files;
 var file = files[0];
-var fileStream = new FileStream(file);
 
 var finishedOrError = false;
-var speedSummary = fileService.createFileFromStream('myfileshare', 'mydirectory', file.name, fileStream, file.size, {}, function(error, result, response) {
+var speedSummary = fileService.createFileFromBrowserFile('myfileshare', 'mydirectory', file.name, file, {}, function(error, result, response) {
     finishedOrError = true;
     if (error) {
         // Upload file failed
@@ -315,42 +275,6 @@ fileService.deleteFileIfExists('myfileshare', 'mydirectory', 'myfile', function(
 
         <script src="../bundle/azure-storage.common.js"></script> 
         <script src="../bundle/azure-storage.file.js"></script>
-
-        <script>
-            // Provides a Stream for a file in webpage, inheriting from NodeJS Readable stream.
-            var Stream = require('stream');
-            var util = require('util');
-            var Buffer = require('buffer').Buffer;
-
-            function FileStream(file, opt) {
-                Stream.Readable.call(this, opt);
-
-                this.fileReader = new FileReader(file);
-                this.file = file;
-                this.size = file.size;
-                this.chunkSize = 1024 * 1024 * 4; // 4MB
-                this.offset = 0;
-                var _me = this;
-                
-                this.fileReader.onloadend = function loaded(event) {
-                    var data = event.target.result;
-                    var buf = Buffer.from(data);
-                    _me.push(buf);
-                }
-            }
-            util.inherits(FileStream, Stream.Readable);
-            FileStream.prototype._read = function() {
-                if (this.offset > this.size) {
-                    console.log('FileStream reaches file end');
-                    this.push(null);
-                } else {
-                    var end = this.offset + this.chunkSize;
-                    var slice = this.file.slice(this.offset, end);
-                    this.fileReader.readAsArrayBuffer(slice);
-                    this.offset = end;
-                }
-            };
-        </script>
 
         <script>
             var account = document.getElementById('account').value;
@@ -624,7 +548,6 @@ fileService.deleteFileIfExists('myfileshare', 'mydirectory', 'myfile', function(
                 btn.disabled = true;
                 btn.innerHTML = "Uploading";
                 var finishedOrError = false;
-                var fileStream = new FileStream(file);
                 var options = {
                     contentSettings: {
                         contentType: file.type
@@ -632,7 +555,7 @@ fileService.deleteFileIfExists('myfileshare', 'mydirectory', 'myfile', function(
                     storeFileContentMD5 : checkMD5
                 };
 
-                var speedSummary = fileService.createFileFromStream(fileShare, currentPath.join('\\\\'), file.name, fileStream, file.size, options, function(error, result, response) {
+                var speedSummary = fileService.createFileFromBrowserFile(fileShare, currentPath.join('\\\\'), file.name, file, options, function(error, result, response) {
                     finishedOrError = true;
                     btn.disabled = false;
                     btn.innerHTML = "Upload";
