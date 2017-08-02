@@ -5,9 +5,13 @@ be taken. This is a GA release and the changes described below indicate the chan
 
 ALL
 * Updated storage service version to 2017-04-17. Fore more information, please see - https://docs.microsoft.com/en-us/rest/api/storageservices/versioning-for-the-azure-storage-services
+* Added `requestServerEncrypted` property to `ServiceResponse` which indicates if the contents of the request have been successfully encrypted.
 
 BLOB
 * PageBlobs: For Premium Accounts only, added support for getting and setting the tier on a page blob. The tier can also be set when creating or copying from an existing page blob.
+
+FILE
+* Added `serverEncryped` property to `FileResult` and `DirectoryResult` which indicates if the file data and application metadata are completely encrypted using the specified algorithm on the server.
 
 2017.08 Version 2.2.2
 
@@ -143,7 +147,7 @@ ALL
 
 BLOB
 * Fixed the issue that the service error message will be written to the destination stream if getting error when downloading the blob to a stream/file.
-* Added `serverEncryped` property to 'BlobResult' class which indicates if the blob data and application metadata are completely encrypted using the specified algorithm on the server.
+* Added `serverEncryped` property to `BlobResult` class which indicates if the blob data and application metadata are completely encrypted using the specified algorithm on the server.
 
 FILE
 * Fixed the issue that the service error message will be written to the destination stream if getting error when downloading the file to a stream/file.

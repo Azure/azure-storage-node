@@ -656,7 +656,7 @@ describe('BlobService', function () {
             assert.equal(getErr, null);
 
             assert.notEqual(blob, null);
-            assert.notEqual(blob.serverEncrypted, false);
+            assert.strictEqual(blob.serverEncrypted, "false");
 
             if (blob) {
               assert.notEqual(blob.metadata, null);

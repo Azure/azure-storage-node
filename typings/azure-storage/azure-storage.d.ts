@@ -7341,6 +7341,7 @@ declare module azurestorage {
           lastModified: string;
           requestId?: string;
           metadata?: { [key: string]: string; };
+          serverEncrypted?: string;
           exists?: boolean;
           created?: boolean;
         }
@@ -7356,6 +7357,7 @@ declare module azurestorage {
           contentRange: string;
           contentLength: string;
           metadata?: { [key: string]: string; };
+          serverEncrypted?: string;
           contentSettings?:{
             contentEncoding: string;
             contentLanguage: string;
@@ -9313,6 +9315,7 @@ declare module azurestorage {
     headers?: Map<string>;
     md5: string;
     error?: StorageError | Error;
+    requestServerEncrypted?: boolean;
   }
 
   interface ServiceResult {
