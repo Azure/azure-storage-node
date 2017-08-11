@@ -318,11 +318,11 @@ describe('BlobService', function () {
           assert.equal(uploadError, null);
           assert.ok(uploadResponse.isSuccessful);
 
-          blobService.getBlobToText(containerName, blobName, function (downloadErr, blobText, blob, downloadResponse) {
+          blobService.getBlobToText(containerName, blobName, function (downloadErr, content, blob, downloadResponse) {
             assert.equal(downloadErr, null);
             assert.ok(downloadResponse.isSuccessful);
             assert.ok(blob);
-            assert.equal(blobText, blobText);
+            assert.strictEqual(content, blobText);
 
             done();
           });
@@ -337,11 +337,11 @@ describe('BlobService', function () {
           assert.equal(uploadError, null);
           assert.ok(uploadResponse.isSuccessful);
 
-          blobService.getBlobToText(containerName, blobName, function (downloadErr, blobText, blob, downloadResponse) {
+          blobService.getBlobToText(containerName, blobName, function (downloadErr, content, blob, downloadResponse) {
             assert.equal(downloadErr, null);
             assert.ok(downloadResponse.isSuccessful);
             assert.ok(blob);
-            assert.equal(blobText, blobText);
+            assert.strictEqual(content, blobText);
 
             done();
           });
@@ -356,11 +356,11 @@ describe('BlobService', function () {
           assert.equal(uploadError, null);
           assert.ok(uploadResponse.isSuccessful);
 
-          blobService.getBlobToText(containerName, blobName, function (downloadErr, blobText, blob, downloadResponse) {
+          blobService.getBlobToText(containerName, blobName, function (downloadErr, content, blob, downloadResponse) {
             assert.equal(downloadErr, null);
             assert.ok(downloadResponse.isSuccessful);
             assert.ok(blob);
-            assert.equal(blobText, blobText);
+            assert.strictEqual(content, blobText);
 
             done();
           });
@@ -375,11 +375,11 @@ describe('BlobService', function () {
           assert.equal(uploadError, null);
           assert.ok(uploadResponse.isSuccessful);
 
-          blobService.getBlobToText(containerName, blobName, function (downloadErr,  blobText, blob, downloadResponse) {
+          blobService.getBlobToText(containerName, blobName, function (downloadErr, content, blob, downloadResponse) {
             assert.equal(downloadErr, null);
             assert.ok(downloadResponse.isSuccessful);
             assert.ok(blob);
-            assert.equal(blobText, blobText);
+            assert.equal(content, blobText);
 
             done();
           });
@@ -656,7 +656,7 @@ describe('BlobService', function () {
             assert.equal(getErr, null);
 
             assert.notEqual(blob, null);
-            assert.strictEqual(blob.serverEncrypted, "false");
+            assert.notEqual(blob.serverEncrypted, null); //Note the storage account for this test suite could have enabled or disabled SSE.
 
             if (blob) {
               assert.notEqual(blob.metadata, null);
