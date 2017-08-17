@@ -1650,6 +1650,7 @@ declare module azurestorage {
           /**
           * Provides a stream to write to a page blob. Assumes that the blob exists.
           * If it does not, please create the blob using createPageBlob before calling this method or use createWriteStreamNewPageBlob.
+          * Please note the `Stream` returned by this API should be used with piping.
           *
           * @this {BlobService}
           * @param {string}             container                                       The container name.
@@ -1696,6 +1697,7 @@ declare module azurestorage {
 
           /**
           * Provides a stream to write to a page blob. Creates the blob before writing data.
+          * Please note the `Stream` returned by this API should be used with piping.
           *
           * @this {BlobService}
           * @param {string}             container                                       The container name.
@@ -2067,6 +2069,7 @@ declare module azurestorage {
 
           /**
           * Provides a stream to write to a block blob.
+          * Please note the `Stream` returned by this API should be used with piping.
           *
           * @this {BlobService}
           * @param {string}             container                                       The container name.
@@ -2453,6 +2456,7 @@ declare module azurestorage {
           * To avoid overwriting and instead throw an error if the blob exists, please pass in an accessConditions parameter in the options object.
           * This API should be used strictly in a single writer scenario because the API internally uses the append-offset conditional header to avoid duplicate blocks.
           * If you are guaranteed to have a single writer scenario, please look at options.absorbConditionalErrorsOnRetry and see if setting this flag to true is acceptable for you.
+          * Please note the `Stream` returned by this API should be used with piping.
           *
           * @this {BlobService}
           * @param {string}             container                                     The container name.
@@ -2499,6 +2503,7 @@ declare module azurestorage {
           * If it does not, please create the blob using createAppendBlob before calling this method or use createWriteStreamToNewAppendBlob.
           * This API should be used strictly in a single writer scenario because the API internally uses the append-offset conditional header to avoid duplicate blocks.
           * If you are guaranteed to have a single writer scenario, please look at options.absorbConditionalErrorsOnRetry and see if setting this flag to true is acceptable for you.
+          * Please note the `Stream` returned by this API should be used with piping.
           *
           * @this {BlobService}
           * @param {string}             container                                     The container name.
@@ -7169,6 +7174,7 @@ declare module azurestorage {
         /**
         * Provides a stream to write to a file. Assumes that the file exists.
         * If it does not, please create the file using createFile before calling this method or use createWriteStreamNewFile.
+        * Please note the `Stream` returned by this API should be used with piping.
         *
         * @this {FileService}
         * @param {string}             share                                         The share name.
@@ -7211,6 +7217,7 @@ declare module azurestorage {
 
         /**
         * Provides a stream to write to a file. Creates the file before writing data.
+        * Please note the `Stream` returned by this API should be used with piping.
         *
         * @this {FileService}
         * @param {string}             share                                         The share name.
