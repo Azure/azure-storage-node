@@ -1,6 +1,24 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
 be taken. This is a GA release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
 
+2017.08 Version 2.3.0
+
+ALL
+* Updated storage service version to 2017-04-17. For more information, please see - https://docs.microsoft.com/en-us/rest/api/storageservices/versioning-for-the-azure-storage-services
+* Updated the dependency of the 'request' module to avoid security vulnerability: (https://snyk.io/test/npm/azure-storage). 
+* Added `requestServerEncrypted` property to `ServiceResponse` which indicates if the contents of the request have been successfully encrypted.
+* Improved API documentation.
+
+BLOB
+* PageBlobs: For Premium Accounts only, added support for getting and setting the tier on a page blob. The tier can also be set when creating or copying from an existing page blob.
+
+FILE
+* Added `serverEncryped` property to `FileResult` and `DirectoryResult` which indicates if the file data and application metadata are completely encrypted using the specified algorithm on the server.
+* Fixed a TypeScript issue that SharedAccessPermissions for FileUtilities is missing in type definition file.
+
+TABLE
+* Fixed a typo in table query example for combineFilters function.
+
 2017.08 Version 2.2.2
 
 ALL
@@ -135,7 +153,7 @@ ALL
 
 BLOB
 * Fixed the issue that the service error message will be written to the destination stream if getting error when downloading the blob to a stream/file.
-* Added `serverEncryped` property to 'BlobResult' class which indicates if the blob data and application metadata are completely encrypted using the specified algorithm on the server.
+* Added `serverEncryped` property to `BlobResult` class which indicates if the blob data and application metadata are completely encrypted using the specified algorithm on the server.
 
 FILE
 * Fixed the issue that the service error message will be written to the destination stream if getting error when downloading the file to a stream/file.

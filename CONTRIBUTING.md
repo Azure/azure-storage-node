@@ -26,7 +26,7 @@ npm install
 ## Tests
 
 ### Running
-Unit tests don't require real credentials and don't require any environment varaibles to be set. By default the unit tests are run with Nock recording data.
+Unit tests don't require real credentials and don't require any environment variables to be set. By default the unit tests are run with Nock recording data.
 
 If you would like to run the unit test against a live storage account, you will need to setup environment variables which will be used. These test will use these credentials to run live tests against Azure with the provided credentials. Note that you will be charged for storage usage. You need verify the clean up script did its job at the end of a test run.
 
@@ -36,7 +36,7 @@ Unit tests can then be run from root directory using:
 npm test
 ```
 
-To run unit tests against a live storage account, please set environment variable to turn off Nock by:
+To run unit tests against live storage accounts, please set environment variable to turn off Nock by:
 
 ```bash
 export NOCK_OFF=true
@@ -46,12 +46,11 @@ and set up the following environment variables for storage account credentials b
 
 ```bash
 export AZURE_STORAGE_CONNECTION_STRING="valid storage connection string"
+export AZURE_STORAGE_CONNECTION_STRING_PREMIUM_ACCOUNT="optional valid storage connection string for premium storage account"
+export AZURE_STORAGE_CONNECTION_STRING_SSE_ENABLED_ACCOUNT="optional valid storage connection string for storage account with storage service encryption enabled"
 ```
-or 
-```bash
-export AZURE_STORAGE_ACCOUNT="valid storage account name"
-export AZURE_STORAGE_ACCESS_KEY="valid storage account key"
-```
+
+Note: `AZURE_STORAGE_CONNECTION_STRING_PREMIUM_ACCOUNT` and `AZURE_STORAGE_CONNECTION_STRING_SSE_ENABLED_ACCOUNT` are optional settings to enable testing suites related to premium storage account and storage service encryption, and only needed to be set when you are developing related features.
 
 ### Testing Features
 As you develop a feature, you'll need to write tests to ensure quality. Your changes should be covered by both unit tests. You should also run existing tests related to your change to address any unexpected breaks.
