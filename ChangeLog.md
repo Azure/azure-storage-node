@@ -7,16 +7,17 @@ ALL
 * Updated storage service version to 2017-04-17. For more information, please see - https://docs.microsoft.com/en-us/rest/api/storageservices/versioning-for-the-azure-storage-services
 * Updated the dependency of the 'request' module to avoid security vulnerability: (https://snyk.io/test/npm/azure-storage). 
 * Added `requestServerEncrypted` property to `ServiceResponse` which indicates if the contents of the request have been successfully encrypted.
+* Improved API documentation.
 
 BLOB
 * PageBlobs: For Premium Accounts only, added support for getting and setting the tier on a page blob. The tier can also be set when creating or copying from an existing page blob.
 
 FILE
 * Added `serverEncryped` property to `FileResult` and `DirectoryResult` which indicates if the file data and application metadata are completely encrypted using the specified algorithm on the server.
-* Fix a TypeScript issue that SharedAccessPermissions for FileUtilities is missing in type definition file.
+* Fixed a TypeScript issue that SharedAccessPermissions for FileUtilities is missing in type definition file.
 
 TABLE
-* Fix a typo in table query example for combineFilters function.
+* Fixed a typo in table query example for combineFilters function.
 
 2017.08 Version 2.2.2
 
