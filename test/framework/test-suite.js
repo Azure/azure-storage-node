@@ -32,8 +32,20 @@ function TestSuite(testPrefix, env, forceMocked) {
   function stripAccessKey(connectionString) {
     return connectionString.replace(/AccountKey=[^;]+/, 'AccountKey=null');
   }
-
-  var requiredEnvironment = [{ name: 'AZURE_STORAGE_CONNECTION_STRING', secure: stripAccessKey }];
+  
+  var requiredEnvironment = [{
+    name: 'AZURE_STORAGE_CONNECTION_STRING',
+    secure: stripAccessKey,
+    optional: false
+  },{
+    name: 'AZURE_STORAGE_CONNECTION_STRING_PREMIUM_ACCOUNT',
+    secure: stripAccessKey,
+    optional: true
+  },{
+    name: 'AZURE_STORAGE_CONNECTION_STRING_SSE_ENABLED_ACCOUNT',
+    secure: stripAccessKey,
+    optional: true
+  }];
   env = env.concat(requiredEnvironment);
 
   this.testPrefix = testPrefix;
@@ -44,10 +56,12 @@ function TestSuite(testPrefix, env, forceMocked) {
   if (forceMocked) {
     this.isMocked = true;
   } else {
-    this.isMocked = testPrefix && !process.env.NOCK_OFF;
+    var nockOff = process.env.NOCK_OFF === 'true';
+    this.isMocked = testPrefix && !nockOff;
   }
 
-  this.isRecording = process.env.AZURE_NOCK_RECORD;
+  this.isRecording = process.env.AZURE_NOCK_RECORD === 'true';
+
   this.skipSubscription = true;
 
   var nodeVersion = Number(process.version.match(/^v(\d+\.\d+)/)[1]);
@@ -96,7 +110,7 @@ _.extend(TestSuite.prototype, {
     var messages = [];
     var missing = [];
     this.requiredEnvironment.forEach(function (e) {
-      if (!process.env[e.name] && !e.defaultValue) {
+      if (!process.env[e.name] && !e.defaultValue && !e.optional) {
         missing.push(e.name);
       }
     });
@@ -111,7 +125,7 @@ _.extend(TestSuite.prototype, {
     } else if (this.requiresCert && profile.current.currentSubscription.user) {
       messages.push('This test requires certificate authentication only. The current subscription has an access token. Please switch subscriptions or use azure logout to remove the access token');
     } else if(this.requiresCert && !profile.current.currentSubscription.managementCertificate) {
-      messges.push('This test requires certificate authentication but the current subscription does not have a management certificate. Please use azure account import to obtain one.');
+      messages.push('This test requires certificate authentication but the current subscription does not have a management certificate. Please use azure account import to obtain one.');
     } else if (this.requiresToken && !profile.current.currentSubscription.user) {
       messages.push('This test required an access token but the current subscription does not have one. Please use azure login to obtain an access token');
     }

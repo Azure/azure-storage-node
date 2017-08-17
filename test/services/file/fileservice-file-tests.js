@@ -148,7 +148,7 @@ describe('File', function () {
       var sasToken = fileServiceForUrl.generateSharedAccessSignature(share, directory, file, sharedAccessPolicy);
       fileServiceForUrl.setHost({ secondaryHost: 'https://host-secondary.com:88/account' });
       url = fileServiceForUrl.getUrl(share, directory, file, sasToken, false);
-      assert.strictEqual(url, 'https://host-secondary.com:88/account/' + share + '/' + directory + '/' + file + '?se=2011-10-12T11%3A53%3A40Z&sp=r&spr=https&sv=2016-05-31&sr=f&sig=s9RdvabzNxKkFGvab6Q5yXsKXgU3vbw%2BTAruKM9qo8o%3D');
+      assert.strictEqual(url, 'https://host-secondary.com:88/account/' + share + '/' + directory + '/' + file + '?se=2011-10-12T11%3A53%3A40Z&sp=r&spr=https&sv=2017-04-17&sr=f&sig=iknD7nq7vHhZDMo0DIhwSP0tfYbzvL5cqXlzDktAkLU%3D');
 
       done();
     });
