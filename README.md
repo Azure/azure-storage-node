@@ -284,7 +284,25 @@ fileService.createFileFromLocalFile('taskshare', 'taskdirectory', 'taskfile', 't
 });
 ```
 
-There are other methods for uploading files also, such as **createFileFromText** or **createFileFromStream**.
+To upload a file from a stream, the method **createFileFromStream** can be used. The var `myFileBuffer` in the script below is a native Node Buffer, or ArrayBuffer object if within a browser environment.
+
+```Javascript
+ var stream = require('stream');
+ var azure = require('azure-storage');
+ var fileService = azure.createFileService();
+
+ var fileStream = new stream.Readable();
+ fileStream.push(myFileBuffer);
+ fileStream.push(null);
+
+ fileService.createFileFromStream('taskshare', 'taskdirectory', 'taskfile', fileStream, myFileBuffer.length, function(error, result, response) {
+   if (!error) {
+     // file uploaded
+   }
+ });
+```
+
+There are other methods for uploading files also, such as **createFileFromText**.
 
 There are also several ways to download files. For example, **getFileToStream** downloads the file to a stream:
   
