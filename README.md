@@ -302,7 +302,20 @@ To upload a file from a stream, the method **createFileFromStream** can be used.
  });
 ```
 
-There are other methods for uploading files also, such as **createFileFromText**.
+To create a file from a text string, the method **createFileFromText** can be used. A Node Buffer or ArrayBuffer object containing the text can also be supplied.
+
+```Javascript
+ var azure = require('azure-storage');
+ var fileService = azure.createFileService();
+
+ var text = 'Hello World!';
+
+ fileService.createFileFromText('taskshare', 'taskdirectory', 'taskfile', text, function(error, result, response) {
+   if (!error) {
+     // file created
+   }
+ });
+```
 
 There are also several ways to download files. For example, **getFileToStream** downloads the file to a stream:
   
