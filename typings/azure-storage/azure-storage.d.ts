@@ -185,12 +185,12 @@ declare module azurestorage {
           setServiceProperties(serviceProperties: common.models.ServicePropertiesResult.ServiceProperties, callback: ErrorOrResponse): void;
 
           /**
-          * Sets the tier of a pageblob under a premium storage account.
+          * Sets the tier of a blockblob under a blob storage LRS account, or the tier of a pageblob under a premium storage account.
           *
           * @this {BlobService}
           * @param {string}             container                                The container name.
           * @param {string}             blob                                     The blob name.
-          * @param {string}             blobTier                                 Please see BlobUtilities.BlobTier.PremiumPageBlobTier for possible values.
+          * @param {string}             blobTier                                 Please see BlobUtilities.BlobTier.StandardBlobTier or BlobUtilities.BlobTier.PremiumPageBlobTier for possible values.
           * @param {LocationMode}       [options.locationMode]                   Specifies the location mode used to decide which location the request should be sent to. 
           *                                                                      Please see StorageUtilities.LocationMode for the possible values.
           * @param {int}                [options.timeoutIntervalInMs]            The server timeout interval, in milliseconds, to use for the request.
@@ -2881,6 +2881,7 @@ declare module azurestorage {
             blobType: string;
             accessTier?: string;
             accessTierInferred?: boolean;
+            archiveStatus?: string;
             isIncrementalCopy?: boolean;
             requestId: string;
             sequenceNumber?: string;
@@ -3072,6 +3073,11 @@ declare module azurestorage {
               P40: string;
               P50: string;
               P60: string;
+            };
+            StandardBlobTier: {
+              HOT: string;
+              COOL: string;
+              ARCHIVE: string;
             };
           }
         };

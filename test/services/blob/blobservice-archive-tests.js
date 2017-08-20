@@ -46,6 +46,211 @@ var containerName;
 var blobName;
 
 describe('BlobArchive', function () {
+  describe('Archive tests for block blobs in a blob storage account with LRS', function () {
+    before(function (done) {
+      if (!runBlockBlobSuite) {
+        done();
+      } else {
+        if (blockBlobSuite.isMocked) {
+          blockBlobSuite.POLL_REQUEST_INTERVAL = 0;
+        }
+        blockBlobSuite.setupSuite(function () {
+          // In mocked recording mode, the connection string environment is set in the suite.setupSuite()
+          blobAccountLRSConnectionString = process.env.AZURE_STORAGE_CONNECTION_STRING_BLOB_ACCOUNT_LRS;
+          blobService = azure.createBlobService(blobAccountLRSConnectionString).withFilter(new azure.ExponentialRetryPolicyFilter());
+          done();
+        });
+      }
+    });
+
+    after(function (done) {
+      if (!runBlockBlobSuite) {
+        done();
+      } else {
+        blockBlobSuite.teardownSuite(done);
+      }
+    });
+
+    beforeEach(function (done) {
+      if (!runBlockBlobSuite) {
+        done();
+      } else {
+        blockBlobSuite.setupTest(function () {
+          containerName = blockBlobSuite.getName(containerNamesPrefix).toLowerCase();
+          blobService.createContainerIfNotExists(containerName, function (createError, container, response) {
+            assert.equal(createError, null);
+            assert.notEqual(container, null);
+
+            blobName = blockBlobSuite.getName(blobNamesPrefix).toLowerCase();
+            var blobText = 'archive-test-blob';
+            blobService.createBlockBlobFromText(containerName, blobName, blobText, function (uploadError, blob, uploadResponse) {
+              assert.equal(uploadError, null);
+              assert.notEqual(blob, null);
+              assert.ok(uploadResponse.isSuccessful);
+              done();
+            });
+          });
+        });
+      }
+    });
+
+    afterEach(function (done) {
+      if (!runBlockBlobSuite) {
+        done();
+      } else {
+        blobService.deleteContainerIfExists(containerName, function (deleteError) {
+          assert.equal(deleteError, null);
+          blockBlobSuite.teardownTest(done);
+        });
+      }
+    });
+
+    runBlockBlobCase('setBlobTier should work setting tier to hot for a block blob without tier', function (done) {
+      blobService.setBlobTier(containerName, blobName, blobutil.BlobTier.StandardBlobTier.HOT, function (err, resp) {
+        assert.equal(err, null);
+
+        blobService.getBlobProperties(containerName, blobName, function (err, properties, resp) {
+          assert.equal(err, null);
+          assert.equal(properties.accessTier, blobutil.BlobTier.StandardBlobTier.HOT);
+
+          blobService.listBlobsSegmented(containerName, null, function (err, results, resp) {
+            assert.equal(err, null);
+            assert.equal(results.entries.length, 1);
+            assert.equal(results.entries[0].accessTier, blobutil.BlobTier.StandardBlobTier.HOT);
+            done();
+          });
+        });
+      });
+    });
+
+    runBlockBlobCase('setBlobTier should work setting tier to cool for a block blob without tier', function (done) {
+      blobService.setBlobTier(containerName, blobName, blobutil.BlobTier.StandardBlobTier.COOL, function (err, resp) {
+        assert.equal(err, null);
+
+        blobService.getBlobProperties(containerName, blobName, function (err, properties, resp) {
+          assert.equal(err, null);
+          assert.equal(properties.accessTier, blobutil.BlobTier.StandardBlobTier.COOL);
+
+          blobService.listBlobsSegmentedWithPrefix(containerName, '', null, function (err, results, resp) {
+            assert.equal(err, null);
+            assert.equal(results.entries.length, 1);
+            assert.equal(results.entries[0].accessTier, blobutil.BlobTier.StandardBlobTier.COOL);
+            done();
+          });
+        });
+      });
+    });
+
+    runBlockBlobCase('setBlobTier should work setting tier to archive for a block blob without tier', function (done) {
+      blobService.setBlobTier(containerName, blobName, blobutil.BlobTier.StandardBlobTier.ARCHIVE, function (err, resp) {
+        assert.equal(err, null);
+
+        blobService.getBlobProperties(containerName, blobName, function (err, properties, resp) {
+          assert.equal(err, null);
+          assert.equal(properties.accessTier, blobutil.BlobTier.StandardBlobTier.ARCHIVE);
+
+          blobService.listBlobsSegmented(containerName, null, function (err, results, resp) {
+            assert.equal(err, null);
+            assert.equal(results.entries.length, 1);
+            assert.equal(results.entries[0].accessTier, blobutil.BlobTier.StandardBlobTier.ARCHIVE);
+            done();
+          });
+        });
+      });
+    });
+
+    runBlockBlobCase('setBlobTier should work setting tier to hot for a block blob with archive tier', function (done) {
+      blobService.setBlobTier(containerName, blobName, blobutil.BlobTier.StandardBlobTier.ARCHIVE, function (err, resp) {
+        assert.equal(err, null);
+
+        blobService.getBlobProperties(containerName, blobName, function (err, properties, resp) {
+          assert.equal(err, null);
+          assert.equal(properties.accessTier, blobutil.BlobTier.StandardBlobTier.ARCHIVE);
+
+          blobService.setBlobTier(containerName, blobName, blobutil.BlobTier.StandardBlobTier.HOT, function (err, resp) {
+            assert.equal(err, null);
+
+            blobService.getBlobProperties(containerName, blobName, function (err, properties, resp) {
+              assert.equal(err, null);
+              assert.equal(properties.accessTier, blobutil.BlobTier.StandardBlobTier.ARCHIVE);
+              assert.equal(properties.archiveStatus, rehydrate2hot);
+
+              blobService.listBlobsSegmentedWithPrefix(containerName, '', null, function (err, results, resp) {
+                assert.equal(err, null);
+                assert.equal(results.entries.length, 1);
+                assert.equal(results.entries[0].accessTier, blobutil.BlobTier.StandardBlobTier.ARCHIVE);
+                assert.equal(results.entries[0].archiveStatus, rehydrate2hot);
+                done();
+              });
+            });
+          });
+        });
+      });
+    });
+
+    runBlockBlobCase('setBlobTier should work setting tier to cool for a block blob with archive tier', function (done) {
+      blobService.setBlobTier(containerName, blobName, blobutil.BlobTier.StandardBlobTier.ARCHIVE, function (err, resp) {
+        assert.equal(err, null);
+
+        blobService.getBlobProperties(containerName, blobName, function (err, properties, resp) {
+          assert.equal(err, null);
+          assert.equal(properties.accessTier, blobutil.BlobTier.StandardBlobTier.ARCHIVE);
+
+          blobService.setBlobTier(containerName, blobName, blobutil.BlobTier.StandardBlobTier.COOL, function (err, resp) {
+            assert.equal(err, null);
+
+            blobService.getBlobProperties(containerName, blobName, function (err, properties, resp) {
+              assert.equal(err, null);
+              assert.equal(properties.accessTier, blobutil.BlobTier.StandardBlobTier.ARCHIVE);
+              assert.equal(properties.archiveStatus, rehydrate2cool);
+
+              blobService.listBlobsSegmented(containerName, null, function (err, results, resp) {
+                assert.equal(err, null);
+                assert.equal(results.entries.length, 1);
+                assert.equal(results.entries[0].accessTier, blobutil.BlobTier.StandardBlobTier.ARCHIVE);
+                assert.equal(results.entries[0].archiveStatus, rehydrate2cool);
+                done();
+              });
+            });
+          });
+        });
+      });
+    });
+
+    runBlockBlobCase('setBlobTier should not work setting tier to cool for a block blob with Rehydrate-Pending-To-Hot status', function (done) {
+      blobService.setBlobTier(containerName, blobName, blobutil.BlobTier.StandardBlobTier.ARCHIVE, function (err, resp) {
+        assert.equal(err, null);
+
+        blobService.getBlobProperties(containerName, blobName, function (err, properties, resp) {
+          assert.equal(err, null);
+          assert.equal(properties.accessTier, blobutil.BlobTier.StandardBlobTier.ARCHIVE);
+
+          blobService.setBlobTier(containerName, blobName, blobutil.BlobTier.StandardBlobTier.HOT, function (err, resp) {
+            assert.equal(err, null);
+
+            blobService.getBlobProperties(containerName, blobName, function (err, properties, resp) {
+              assert.equal(err, null);
+              assert.equal(properties.accessTier, blobutil.BlobTier.StandardBlobTier.ARCHIVE);
+              assert.equal(properties.archiveStatus, rehydrate2hot);
+
+              blobService.setBlobTier(containerName, blobName, blobutil.BlobTier.StandardBlobTier.COOL, function (err, resp) {
+                assert.notEqual(err, null);
+                done();
+              });
+            });
+          });
+        });
+      });
+    });
+
+    runBlockBlobCase('setBlobTier should not work setting page block tiers for a block blob', function (done) {
+      blobService.setBlobTier(containerName, blobName, blobutil.BlobTier.PremiumPageBlobTier.P10, function (err, resp) {
+        assert.notEqual(err, null);
+        done();
+      });
+    });
+  }); // inner describe ends
+
   describe('Archive tests for page blobs in a premium storage account', function () {
     before(function (done) {
       if (!runPageBlobSuite) {
