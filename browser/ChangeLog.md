@@ -1,5 +1,9 @@
 Note: This is the change log file for Azure Storage JavaScript Client Library.
 
+2017.08 Version 0.2.4-preview.10
+
+* Generated browser compatible JavaScript files based on Microsoft Azure Storage SDK for Node.js 2.4.0.
+
 2017.08 Version 0.2.3-preview.9
 
 * Generated browser compatible JavaScript files based on Microsoft Azure Storage SDK for Node.js 2.3.0.

@@ -41,6 +41,10 @@ function TestSuite(testPrefix, env, forceMocked) {
     name: 'AZURE_STORAGE_CONNECTION_STRING_PREMIUM_ACCOUNT',
     secure: stripAccessKey,
     optional: true
+  },{ 
+    name: 'AZURE_STORAGE_CONNECTION_STRING_BLOB_ACCOUNT_LRS', 
+    secure: stripAccessKey,
+    optional: true
   },{
     name: 'AZURE_STORAGE_CONNECTION_STRING_SSE_ENABLED_ACCOUNT',
     secure: stripAccessKey,
