@@ -3,6 +3,9 @@ be taken. This is a GA release and the changes described below indicate the chan
 
 2017.08 Version 2.4.0
 
+ALL
+* Fixed a TypeScript issue that `browserFile` should be `Object` type in the TypeScript definition file.
+
 BLOB
 * Added support for getting and setting a tier for a block blob under a LRS Blob Storage Account from tiers hot, cool and archive.
 
