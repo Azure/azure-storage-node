@@ -1,6 +1,11 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
 be taken. This is a GA release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
 
+2017.09 Version 2.5.0
+
+FILE
+* Added support for File metrics.
+
 2017.08 Version 2.4.0
 
 ALL
@@ -88,7 +93,7 @@ ALL
 BLOB
 * Added support for large block blob. 
 * Added `publicAccessLevel` to `ContainerResult` for the APIs `listContainersSegmented` and `listContainersSegmentedWithPrefix`.
-* When specifiying access condition `If-None-Match: *` for reading, it will always fail.
+* When specifying access condition `If-None-Match: *` for reading, it will always fail.
 * Returned content MD5 for range gets Blobs.
 * Fixed the issue that `useTransactionalMD5` didn't take effect for downloading a big blob.
 

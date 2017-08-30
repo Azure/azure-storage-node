@@ -226,15 +226,19 @@ describe('validator-tests', function () {
     Validate.tableNameIsValid('$MetricsHourPrimaryTransactionsBlob').should.equal(true);
     Validate.tableNameIsValid('$MetricsHourPrimaryTransactionsQueue').should.equal(true);
     Validate.tableNameIsValid('$MetricsHourPrimaryTransactionsTable').should.equal(true);
+    Validate.tableNameIsValid('$MetricsHourPrimaryTransactionsFile').should.equal(true);
     Validate.tableNameIsValid('$MetricsMinutePrimaryTransactionsBlob').should.equal(true);
     Validate.tableNameIsValid('$MetricsMinutePrimaryTransactionsQueue').should.equal(true);
     Validate.tableNameIsValid('$MetricsMinutePrimaryTransactionsTable').should.equal(true);
+    Validate.tableNameIsValid('$MetricsMinutePrimaryTransactionsFile').should.equal(true);
     Validate.tableNameIsValid('$MetricsHourSecondaryTransactionsBlob').should.equal(true);
     Validate.tableNameIsValid('$MetricsHourSecondaryTransactionsQueue').should.equal(true);
     Validate.tableNameIsValid('$MetricsHourSecondaryTransactionsTable').should.equal(true);
+    Validate.tableNameIsValid('$MetricsHourSecondaryTransactionsFile').should.equal(true);
     Validate.tableNameIsValid('$MetricsMinuteSecondaryTransactionsBlob').should.equal(true);
     Validate.tableNameIsValid('$MetricsMinuteSecondaryTransactionsQueue').should.equal(true);
     Validate.tableNameIsValid('$MetricsMinuteSecondaryTransactionsTable').should.equal(true);
+    Validate.tableNameIsValid('$MetricsMinuteSecondaryTransactionsFile').should.equal(true);
     assert.throws(
       function() {
         Validate.tableNameIsValid('');

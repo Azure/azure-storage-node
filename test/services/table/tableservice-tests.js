@@ -137,7 +137,7 @@ describe('tableservice-tests', function () {
     var service = azure.createTableService(storageAccount, storageAccountKey, 'https://account.table.core.windows.net');
     assert.equal(service.host.primaryHost, 'https://account.table.core.windows.net:443/');
 
-    var service = azure.createTableService(storageAccount, storageAccountKey, 'https://account.table.core.windows.net:21');
+    service = azure.createTableService(storageAccount, storageAccountKey, 'https://account.table.core.windows.net:21');
     assert.equal(service.host.primaryHost, 'https://account.table.core.windows.net:21/');
 
     service = azure.createTableService(storageAccount, storageAccountKey, 'http://account.table.core.windows.net');
@@ -151,15 +151,19 @@ describe('tableservice-tests', function () {
 
   describe('doesTableExist', function () {
     it('should work', function (done) {
-      assert.doesNotThrow(function () { 
-        tableService.doesTableExist('$MetricsMinutePrimaryTransactionsBlob', function () { 
-          assert.doesNotThrow(function () { 
-            tableService.doesTableExist('$MetricsTransactionsTable', function () { 
-              done();
-            }); 
-          });     
-        }); 
-      });      
+      assert.doesNotThrow(function () {
+        tableService.doesTableExist('$MetricsMinutePrimaryTransactionsBlob', function () {
+          assert.doesNotThrow(function () {
+            tableService.doesTableExist('$MetricsHourPrimaryTransactionsFile', function () {
+              assert.doesNotThrow(function () {
+                tableService.doesTableExist('$MetricsTransactionsTable', function () {
+                  done();
+                });
+              });
+            });
+          });
+        });
+      });
     });
   });
 
