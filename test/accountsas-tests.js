@@ -91,7 +91,7 @@ var getPolicyWithFullPermissions = function(){
 function defaultServiceProperties(serviceType){
   var serviceProperties = {};
   
-  if (serviceType != ServiceTypes.File) {
+  if (serviceType !== ServiceTypes.File) {
     serviceProperties.Logging = {};
     serviceProperties.Logging.Version = '1.0';
     serviceProperties.Logging.Delete = true;
@@ -132,7 +132,7 @@ function defaultServiceProperties(serviceType){
   }
 
   return serviceProperties;
-};
+}
 
 function writeFile(fileName, content) {
   fs.writeFileSync(fileName, content);
@@ -338,12 +338,12 @@ var runBlobsPermissionTests = function(sharedAccessPolicy, next){
             testDeleteBlob(function(){
               testDeleteContainer(function(){
                 next();
-              })
-            })
-          })
-        })
-      })
-    })
+              });
+            });
+          });
+        });
+      });
+    });
   });
 };
 
@@ -433,7 +433,7 @@ var runTablesPermissionTests = function(sharedAccessPolicy, next){
       });
     } else {
       sharedTableService.setServiceProperties(serviceProperties, function (error) {
-        assert.notEqual(error, null, 'Setting table service properites should fail with SAS without Write and Service-level permissions.');
+        assert.notEqual(error, null, 'Setting table service properties should fail with SAS without Write and Service-level permissions.');
         
         tableService.setServiceProperties(serviceProperties, function (error) {
           if(error) {

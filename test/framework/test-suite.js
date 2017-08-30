@@ -265,7 +265,8 @@ _.extend(TestSuite.prototype, {
   writeRecordingHeader: function () {
     var template = fs.readFileSync(path.join(__dirname, 'preamble.template'), { encoding: 'utf8' });
 
-    fs.writeFileSync(this.recordingsFile, _.template(template, {
+    var compiled = _.template(template);
+    fs.writeFileSync(this.recordingsFile, compiled({
       requiredEnvironment: this.requiredEnvironment
     }));
   },
