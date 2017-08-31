@@ -3,6 +3,9 @@ be taken. This is a GA release and the changes described below indicate the chan
 
 2017.09 Version 2.5.0
 
+ALL 
+* Optimized samples and documentation for retry policies.
+
 FILE
 * Added support for File metrics.
 
