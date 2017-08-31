@@ -96,7 +96,7 @@ var task = {
   PartitionKey: entGen.String('hometasks'),
   RowKey: entGen.String('1'),
   description: entGen.String('take out the trash'),
-  dueDate: entGen.DateTime(new Date(Date.UTC(2015, 6, 20))),
+  dueDate: entGen.DateTime(new Date(Date.UTC(2015, 6, 20)))
 };
 ```
 
@@ -190,7 +190,7 @@ var sharedAccessPolicy = {
     Permissions: azure.BlobUtilities.SharedAccessPermissions.READ,
     Start: startDate,
     Expiry: expiryDate
-  },
+  }
 };
 
 var token = blobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
@@ -431,6 +431,14 @@ blobService.getServiceProperties(function(error, result, response) {
   } 
 });
 ```
+
+### Retry Policies
+
+By default, no retry will be performed with service instances newly created by Azure storage client library for Node.js.
+Two pre-written retry polices [ExponentialRetryPolicyFilter](http://azure.github.io/azure-storage-node/ExponentialRetryPolicyFilter.html) and [LinearRetryPolicyFilter](http://azure.github.io/azure-storage-node/LinearRetryPolicyFilter.html) are available with modifiable settings, and can be used through associating filter.
+Any custom retry logic may be used by customizing RetryPolicyFilter instance.
+
+For how to use pre-writtern retry policies and how to define customized retry policy, please refer to **retrypolicysample** in samples directory. 
 
 ## Code Samples
 
