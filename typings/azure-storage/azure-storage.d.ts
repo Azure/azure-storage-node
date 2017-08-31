@@ -2176,11 +2176,27 @@ declare module azurestorage {
           * Writes a blob by specifying the list of block IDs that make up the blob.
           * In order to be written as part of a blob, a block must have been successfully written to the server in a prior
           * createBlock operation.
+          * Note: If no valid list is specified in the blockList parameter, blob would be updated with empty content,
+          * i.e. existing blocks in the blob will be removed, this behavior is kept for backward compatibility consideration.
           *
           * @this {BlobService}
           * @param {string}             container                                     The container name.
           * @param {string}             blob                                          The blob name.
-          * @param {Object}             blockList                                     The block identifiers.
+          * @param {Object}             blockList                                     The wrapper for block ID list contains block IDs that make up the blob.
+          *                                                                           Three kinds of list are provided, please choose one to use according to requirement.
+          *                                                                           For more background knowledge, please refer to https://docs.microsoft.com/en-us/rest/api/storageservices/put-block-list
+          * @param {string[]}           [blockList.LatestBlocks]                      The list contains block IDs that make up the blob sequentially.
+          *                                                                           All the block IDs in this list will be specified within Latest element.
+          *                                                                           Choose this list to contain block IDs indicates that the Blob service should first search
+          *                                                                           the uncommitted block list, and then the committed block list for the named block.
+          * @param {string[]}           [blockList.CommittedBlocks]                   The list contains block IDs that make up the blob sequentially.
+          *                                                                           All the block IDs in this list will be specified within Committed element.
+          *                                                                           Choose this list to contain block IDs indicates that the Blob service should only search
+          *                                                                           the committed block list for the named block.
+          * @param {string[]}           [blockList.UncommittedBlocks]                 The list contains block IDs that make up the blob sequentially.
+          *                                                                           All the block IDs in this list will be specified within Uncommitted element.
+          *                                                                           Choose this list to contain block IDs indicates that the Blob service should only search
+          *                                                                           the uncommitted block list for the named block.
           * @param {Object}             [options]                                     The request options.
           * @param {Object}             [options.metadata]                            The metadata key/value pairs.
           * @param {string}             [options.leaseId]                             The target blob lease identifier.
@@ -2205,10 +2221,22 @@ declare module azurestorage {
           *                                                                           if an error occurs; otherwise `result` will contain
           *                                                                           the blocklist information.
           *                                                                           `response` will contain information related to this operation.
+          * @example
+          * var azure = require('azure-storage');
+          * var blobService = azure.createBlobService();
+          * blobService.createBlockFromText("sampleBlockName", containerName, blobName, "sampleBlockContent", function(error) {
+          *   assert.equal(error, null);
+          *   // In this example, LatestBlocks is used, we hope the Blob service first search
+          *   // the uncommitted block list, and then the committed block list for the named block "sampleBlockName",
+          *   // and thus make sure the block is with latest content.
+          *   blobService.commitBlocks(containerName, blobName, { LatestBlocks: ["sampleBlockName"] }, function(error) {
+          *     assert.equal(error, null);
+          *   });
+          * });
           */
           commitBlocks(container: string, blob: string, blockList: BlobService.PutBlockListRequest, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): void;
           commitBlocks(container: string, blob: string, blockList: BlobService.PutBlockListRequest, callback: ErrorOrResult<BlobService.BlobResult>): void;
-
+          
           /**
           * Retrieves the list of blocks that have been uploaded as part of a block blob.
           *
@@ -2785,7 +2813,7 @@ declare module azurestorage {
             metadata?: Map<string>;
             publicAccessLevel?: string;
           }
-          
+
           export interface ListContainerOptions extends common.RequestOptions {
             maxResults?: number;
             include?: string;
@@ -3000,7 +3028,7 @@ declare module azurestorage {
           export interface CreateBlockBlobRequestOptions extends CreateBlobRequestOptions {
             blockSize?: number;
           }
-          
+
           export interface BlobToText {
             (error: Error, text: string, result: BlobResult, response: ServiceResponse): void
           }
@@ -3009,18 +3037,18 @@ declare module azurestorage {
             rangeStart?: number;
             rangeEnd?: number;
           }
-          
+
           export interface BlockListResult {
             CommittedBlocks?: Block[];
             UncommittedBlocks?: Block[];
           }
-          
+
           export interface PutBlockListRequest {
             LatestBlocks?: string[];
             CommittedBlocks?: string[];
             UncommittedBlocks?: string[];
           }
-          
+
           export interface Block {
             Name?: string;
             Size?: string;
