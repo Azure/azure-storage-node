@@ -5,6 +5,10 @@ be taken. This is a GA release and the changes described below indicate the chan
 
 ALL 
 * Optimized samples and documentation for retry policies.
+* Added additional samples for blob and file.
+
+BLOB
+* Optimized `commitBlocks` API implementation and documentation. 
 
 FILE
 * Added support for File metrics.
