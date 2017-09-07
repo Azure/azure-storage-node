@@ -3038,7 +3038,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
-				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3846">line 3846</a>
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3876">line 3876</a>
 			</li>
 		</ul>
 	</dd>
@@ -3758,7 +3758,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
-				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3898">line 3898</a>
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3928">line 3928</a>
 			</li>
 		</ul>
 	</dd>
@@ -6637,7 +6637,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
-				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3755">line 3755</a>
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3785">line 3785</a>
 			</li>
 		</ul>
 	</dd>
@@ -7643,7 +7643,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
-				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3809">line 3809</a>
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3839">line 3839</a>
 			</li>
 		</ul>
 	</dd>
@@ -9425,7 +9425,7 @@
 
     
     <div class="description">
-        <p>Writes a blob by specifying the list of block IDs that make up the blob.<br>In order to be written as part of a blob, a block must have been successfully written to the server in a prior<br>createBlock operation.</p>
+        <p>Writes a blob by specifying the list of block IDs that make up the blob.<br>In order to be written as part of a blob, a block must have been successfully written to the server in a prior<br>createBlock operation.<br>Note: If no valid list is specified in the blockList parameter, blob would be updated with empty content,<br>i.e. existing blocks in the blob will be removed, this behavior is kept for backward compatibility consideration.</p>
     </div>
     
 
@@ -9554,7 +9554,137 @@
 
             
 
-            <td class="description last"><p>The block identifiers.</p></td>
+            <td class="description last"><p>The wrapper for block ID list contains block IDs that make up the blob.<br>                                                                          Three kinds of list are provided, please choose one to use according to requirement.<br>                                                                          For more background knowledge, please refer to https://docs.microsoft.com/en-us/rest/api/storageservices/put-block-list</p>
+                <h6 class="method-params-label method-subparams-label">Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>LatestBlocks</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The list contains block IDs that make up the blob sequentially.<br>                                                                          All the block IDs in this list will be specified within Latest element.<br>                                                                          Choose this list to contain block IDs indicates that the Blob service should first search<br>                                                                          the uncommitted block list, and then the committed block list for the named block.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>CommittedBlocks</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The list contains block IDs that make up the blob sequentially.<br>                                                                          All the block IDs in this list will be specified within Committed element.<br>                                                                          Choose this list to contain block IDs indicates that the Blob service should only search<br>                                                                          the committed block list for the named block.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>UncommittedBlocks</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The list contains block IDs that make up the blob sequentially.<br>                                                                          All the block IDs in this list will be specified within Uncommitted element.<br>                                                                          Choose this list to contain block IDs indicates that the Blob service should only search<br>                                                                          the uncommitted block list for the named block.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -10265,7 +10395,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
-				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3349">line 3349</a>
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3378">line 3378</a>
 			</li>
 		</ul>
 	</dd>
@@ -10290,6 +10420,12 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">var azure = require(&#x27;azure-storage&#x27;);var blobService = azure.createBlobService();blobService.createBlockFromText(&quot;sampleBlockName&quot;, containerName, blobName, &quot;sampleBlockContent&quot;, function(error) {  assert.equal(error, null);  // In this example, LatestBlocks is used, we hope the Blob service first search  // the uncommitted block list, and then the committed block list for the named block &quot;sampleBlockName&quot;,  // and thus make sure the block is with latest content.  blobService.commitBlocks(containerName, blobName, { LatestBlocks: [&quot;sampleBlockName&quot;] }, function(error) {    assert.equal(error, null);  });});</pre>
+
 
     
 </dd>
@@ -13314,7 +13450,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
-				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3575">line 3575</a>
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3605">line 3605</a>
 			</li>
 		</ul>
 	</dd>
@@ -14320,7 +14456,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
-				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3619">line 3619</a>
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3649">line 3649</a>
 			</li>
 		</ul>
 	</dd>
@@ -22516,7 +22652,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
-				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3499">line 3499</a>
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3529">line 3529</a>
 			</li>
 		</ul>
 	</dd>
@@ -30260,7 +30396,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
-				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3711">line 3711</a>
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3741">line 3741</a>
 			</li>
 		</ul>
 	</dd>
@@ -32248,7 +32384,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
-				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3665">line 3665</a>
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3695">line 3695</a>
 			</li>
 		</ul>
 	</dd>
@@ -36705,7 +36841,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
-				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3453">line 3453</a>
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3483">line 3483</a>
 			</li>
 		</ul>
 	</dd>
@@ -41147,7 +41283,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
-				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3461">line 3461</a>
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3491">line 3491</a>
 			</li>
 		</ul>
 	</dd>
@@ -47268,7 +47404,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
-				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3414">line 3414</a>
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-3444">line 3444</a>
 			</li>
 		</ul>
 	</dd>
@@ -56379,7 +56515,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_blob_blobservice.core.js.html">services/blob/blobservice.core.js</a>,
-				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-5641">line 5641</a>
+				 <a href="services_blob_blobservice.core.js.html#sunlight-1-line-5671">line 5671</a>
 			</li>
 		</ul>
 	</dd>
@@ -56454,9 +56590,9 @@
 
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.3</a>
 	
-		on Mon Aug 21st 2017
+		on Thu Sep 7th 2017
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
