@@ -10,10 +10,10 @@ There are 5 generated JavaScript files for Azure Storage JavaScript Client Libra
 - `azure-storage.file.js` contains the Azure Storage file service operation logic, which depends on azure-storage.common.js
 
 We also provide samples to guide you quickly start with the Azure Storage JavaScript Client Library. In the [JavaScript Client Library zip file](https://aka.ms/downloadazurestoragejs) or [azure-storage-node/browser/samples](samples), you will find 4 HTML samples:
-- `sample-table.html` demostrates how to operate with Azure Storage table service in the browser
-- `sample-blob.html` demostrates how to operate with Azure Storage blob service in the browser
-- `sample-queue.html` demostrates how to operate with Azure Storage queue service in the browser
-- `sample-file.html` demostrates how to operate with Azure Storage file service in the browser
+- `sample-table.html` demonstrates how to operate with Azure Storage table service in the browser
+- `sample-blob.html` demonstrates how to operate with Azure Storage blob service in the browser
+- `sample-queue.html` demonstrates how to operate with Azure Storage queue service in the browser
+- `sample-file.html` demonstrates how to operate with Azure Storage file service in the browser
 
 After generating the JavaScript Client Library, you can try the samples in browsers such as Chrome/Edge/Firefox directly.
 
