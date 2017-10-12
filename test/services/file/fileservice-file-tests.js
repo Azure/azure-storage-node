@@ -99,6 +99,7 @@ describe('File', function () {
     var directory = 'directory';
     var file = 'file'
     var fileServiceForUrl = azure.createFileService('storageAccount', 'storageAccessKey');
+    var shareSnapshotId = '2017-05-10T04:40:00.0000000Z';
     var url;
 
     it('Directory and file', function (done) {
@@ -106,6 +107,10 @@ describe('File', function () {
       url = fileServiceForUrl.getUrl(share, directory, file, null, true);
       assert.strictEqual(url, 'https://host.com/' + share + '/' + directory + '/' + file);
       
+      fileServiceForUrl.setHost({ primaryHost: 'host.com' });
+      url = fileServiceForUrl.getUrl(share, directory, file, null, true, shareSnapshotId);
+      assert.strictEqual(url, 'https://host.com/' + share + '/' + directory + '/' + file + '?sharesnapshot=2017-05-10T04%3A40%3A00.0000000Z');
+
       fileServiceForUrl.setHost({ primaryHost: 'http://host.com:80' });
       url = fileServiceForUrl.getUrl(share, directory, file, null, true);
       assert.strictEqual(url, 'http://host.com/' + share + '/' + directory + '/' + file);
@@ -157,9 +162,15 @@ describe('File', function () {
       fileServiceForUrl.setHost({ primaryHost: 'host.com' });
       url = fileServiceForUrl.getUrl(share, directory, null, null, true);
       assert.strictEqual(url, 'https://host.com/' + share + '/' + directory);
-      url = fileServiceForUrl.getUrl(share, directory, '', true);
+      url = fileServiceForUrl.getUrl(share, directory, '', null, true);
       assert.strictEqual(url, 'https://host.com/' + share + '/' + directory);
       
+      fileServiceForUrl.setHost({ primaryHost: 'host.com' });
+      url = fileServiceForUrl.getUrl(share, directory, null, null, true, shareSnapshotId);
+      assert.strictEqual(url, 'https://host.com/' + share + '/' + directory + '?sharesnapshot=2017-05-10T04%3A40%3A00.0000000Z');
+      url = fileServiceForUrl.getUrl(share, directory, '', null, true, shareSnapshotId);
+      assert.strictEqual(url, 'https://host.com/' + share + '/' + directory + '?sharesnapshot=2017-05-10T04%3A40%3A00.0000000Z');
+
       fileServiceForUrl.setHost({ primaryHost: 'http://host.com:80' });
       url = fileServiceForUrl.getUrl(share, directory, null, null, true);
       assert.strictEqual(url, 'http://host.com/' + share + '/' + directory);
@@ -199,6 +210,12 @@ describe('File', function () {
       assert.strictEqual(url, 'https://host.com/' + share);
       url = fileServiceForUrl.getUrl(share, '', file, null, true);
       assert.strictEqual(url, 'https://host.com/' + share + '/' + file);
+
+      fileServiceForUrl.setHost({ primaryHost: 'host.com' });
+      url = fileServiceForUrl.getUrl(share, '', null, null, true, shareSnapshotId);
+      assert.strictEqual(url, 'https://host.com/' + share + '?sharesnapshot=2017-05-10T04%3A40%3A00.0000000Z');
+      url = fileServiceForUrl.getUrl(share, '', file, null, true, shareSnapshotId);
+      assert.strictEqual(url, 'https://host.com/' + share + '/' + file + '?sharesnapshot=2017-05-10T04%3A40%3A00.0000000Z');
       
       fileServiceForUrl.setHost({ primaryHost: 'http://host.com:80' });
       url = fileServiceForUrl.getUrl(share, '', null, null, true);
