@@ -342,6 +342,71 @@ describe('BlobServiceLeasing', function () {
     });
   });
 
+  describe('leaseWithAppendFromText', function () {
+    it('should work without options specified', function (done) {
+      var tempAppendBlobName = suite.getName(blobNamesPrefix).toLowerCase();
+
+      blobService.createAppendBlobFromText(containerName, tempAppendBlobName, "CreateText", function (createErr, out) {
+        assert.equal(createErr, null);
+
+        blobService.acquireLease(containerName, tempAppendBlobName, function (leaseError, lease, leaseResponse) {
+          assert.equal(leaseError, null);
+          assert.notEqual(lease, null);
+          assert.ok(lease.id);
+          assert.notEqual(lease.etag, null);
+          assert.notEqual(lease.lastModified, null);
+          assert.notEqual(leaseResponse, null);
+          assert.ok(leaseResponse.isSuccessful);
+
+          var option = {leaseId: lease.id};
+
+          blobService.appendFromText(containerName, tempAppendBlobName, "AppendText", option, function (appendErr) {
+            assert.equal(appendErr, null);
+            blobService.getBlobToText(containerName, tempAppendBlobName, function (getErr, blobText, blobResult, response) {
+              assert.equal(getErr, null);
+              assert.ok(response.isSuccessful);
+              assert.notEqual(blobResult, null);
+              assert.equal(blobText, "CreateTextAppendText");
+              done();
+            });
+          });
+        });
+      });
+    });
+  });
+
+  describe('leaseWithResizePageBlob', function () {
+    it('should work without options specified', function (done) {
+      var tempAppendBlobName = suite.getName(blobNamesPrefix).toLowerCase();
+
+      blobService.createPageBlob(containerName, tempAppendBlobName, 1024, function (createErr) {
+        assert.equal(createErr, null);
+
+        blobService.acquireLease(containerName, tempAppendBlobName, function (acquireErr, lease) {
+          assert.equal(acquireErr, null);
+          assert.ok(lease.id);
+
+          var option = {leaseId: lease.id};
+
+          blobService.getBlobProperties(containerName, tempAppendBlobName, function (getErr, blob) { //Do not set lease Id by design.
+            assert.equal(getErr, null);
+            assert.equal(blob.contentLength, 1024);
+
+            blobService.resizePageBlob(containerName, tempAppendBlobName, 2048, option, function (resizeErr) {
+              assert.equal(resizeErr, null);
+
+              blobService.getBlobProperties(containerName, tempAppendBlobName, option, function (getErr, blob) { // set lease Id.
+                assert.equal(getErr, null);
+                assert.equal(blob.contentLength, 2048);
+                done();
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+
   describe('renewContainerLease', function () {
     it('should work', function (done) {
       // Acquire a lease
