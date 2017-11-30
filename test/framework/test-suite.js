@@ -42,7 +42,7 @@ function TestSuite(testPrefix, env, forceMocked) {
     secure: stripAccessKey,
     optional: true
   },{ 
-    name: 'AZURE_STORAGE_CONNECTION_STRING_BLOB_ACCOUNT_LRS', 
+    name: 'AZURE_STORAGE_CONNECTION_STRING_BLOB_ACCOUNT',
     secure: stripAccessKey,
     optional: true
   },{

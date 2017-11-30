@@ -2908,6 +2908,7 @@ declare module azurestorage {
             contentLength: string;
             blobType: string;
             accessTier?: string;
+            accessTierChangeTime?: string;
             accessTierInferred?: boolean;
             archiveStatus?: string;
             isIncrementalCopy?: boolean;
