@@ -28,15 +28,15 @@ var blobNamesPrefix = 'archive-blob-';
 var rehydrate2hot = 'rehydrate-pending-to-hot';
 var rehydrate2cool = 'rehydrate-pending-to-cool';
 
-var blobAccountLRSConnectionString = process.env.AZURE_STORAGE_CONNECTION_STRING_BLOB_ACCOUNT_LRS;
+var blobAccountConnectionString = process.env.AZURE_STORAGE_CONNECTION_STRING_BLOB_ACCOUNT;
 var premiumAccountConnectionString = process.env.AZURE_STORAGE_CONNECTION_STRING_PREMIUM_ACCOUNT;
-var blobAccountLRSConnectionStringEnabled = !azureutil.IsNullOrEmptyOrUndefinedOrWhiteSpace(blobAccountLRSConnectionString);
+var blobAccountConnectionStringEnabled = !azureutil.IsNullOrEmptyOrUndefinedOrWhiteSpace(blobAccountConnectionString);
 var premiumAccountConnectionStringEnabled = !azureutil.IsNullOrEmptyOrUndefinedOrWhiteSpace(premiumAccountConnectionString);
 
 var blockBlobSuite = new TestSuite('blob-archive-blockblob-tests');
 var pageBlobSuite = new TestSuite('blob-archive-pageblob-tests');
 
-var runBlockBlobSuite = blobAccountLRSConnectionStringEnabled || (!blobAccountLRSConnectionStringEnabled && blockBlobSuite.isPlayback());
+var runBlockBlobSuite = blobAccountConnectionStringEnabled || (!blobAccountConnectionStringEnabled && blockBlobSuite.isPlayback());
 var runPageBlobSuite = premiumAccountConnectionStringEnabled || (!premiumAccountConnectionStringEnabled && pageBlobSuite.isPlayback());
 var runBlockBlobCase = runBlockBlobSuite ? it : it.skip;
 var runPageBlobCase = runPageBlobSuite ? it : it.skip;
@@ -46,7 +46,7 @@ var containerName;
 var blobName;
 
 describe('BlobArchive', function () {
-  describe('Archive tests for block blobs in a blob storage account with LRS', function () {
+  describe('Archive tests for block blobs in a blob storage account', function () {
     before(function (done) {
       if (!runBlockBlobSuite) {
         done();
@@ -56,8 +56,8 @@ describe('BlobArchive', function () {
         }
         blockBlobSuite.setupSuite(function () {
           // In mocked recording mode, the connection string environment is set in the suite.setupSuite()
-          blobAccountLRSConnectionString = process.env.AZURE_STORAGE_CONNECTION_STRING_BLOB_ACCOUNT_LRS;
-          blobService = azure.createBlobService(blobAccountLRSConnectionString).withFilter(new azure.ExponentialRetryPolicyFilter());
+          blobAccountConnectionString = process.env.AZURE_STORAGE_CONNECTION_STRING_BLOB_ACCOUNT;
+          blobService = azure.createBlobService(blobAccountConnectionString).withFilter(new azure.ExponentialRetryPolicyFilter());
           done();
         });
       }
@@ -105,6 +105,20 @@ describe('BlobArchive', function () {
       }
     });
 
+    runBlockBlobCase('Shoud return accessTierInferred for a block blob without tier', function (done) {
+        blobService.getBlobProperties(containerName, blobName, function (err, properties, resp) {
+          assert.equal(err, null);
+          assert.equal(properties.accessTierInferred, true);
+
+          blobService.listBlobsSegmented(containerName, null, function (err, results, resp) {
+            assert.equal(err, null);
+            assert.equal(results.entries.length, 1);
+            assert.equal(results.entries[0].accessTierInferred, true);
+            done();
+          });
+        });
+    });
+
     runBlockBlobCase('setBlobTier should work setting tier to hot for a block blob without tier', function (done) {
       blobService.setBlobTier(containerName, blobName, blobutil.BlobTier.StandardBlobTier.HOT, function (err, resp) {
         assert.equal(err, null);
@@ -112,11 +126,13 @@ describe('BlobArchive', function () {
         blobService.getBlobProperties(containerName, blobName, function (err, properties, resp) {
           assert.equal(err, null);
           assert.equal(properties.accessTier, blobutil.BlobTier.StandardBlobTier.HOT);
+          assert.notEqual(properties.accessTierChangeTime, null);
 
           blobService.listBlobsSegmented(containerName, null, function (err, results, resp) {
             assert.equal(err, null);
             assert.equal(results.entries.length, 1);
             assert.equal(results.entries[0].accessTier, blobutil.BlobTier.StandardBlobTier.HOT);
+            assert.notEqual(results.entries[0].accessTierChangeTime, null);
             done();
           });
         });

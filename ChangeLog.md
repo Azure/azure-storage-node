@@ -1,6 +1,18 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
 be taken. This is a GA release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
 
+2017.12 Version 2.7.0
+
+ALL
+* Default HTTP connection will enable keep-alive to improve performance.
+
+BLOB
+* Added support for `getBlobProperties`, `listBlobsSegmented` and `listBlobsSegmentedWithPrefix` to return `AccessTierChangeTime` and `AccessTierInferred` properties.
+* Fixed a blob lease support issue for `appendFromText` and `resizePageBlob`.
+
+TABLE
+* Fixed an apostrophe missing issue in `TableQuery.where()` example.
+
 2017.10 Version 2.6.0
 
 FILE
