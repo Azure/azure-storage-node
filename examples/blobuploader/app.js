@@ -64,7 +64,7 @@ app.get('/Display', function (req, res) {
 app.get('/Download/:id', function (req, res) {
   blobClient.getBlobProperties(containerName, req.params.id, function (err, blobInfo) {
     if (err === null) {
-      res.header('content-type', blobInfo.contentType);
+      res.header('content-type', blobInfo.contentSettings.contentType);
       res.header('content-disposition', 'attachment; filename=' + blobInfo.metadata.filename);
       blobClient.getBlobToStream(containerName, req.params.id, res, function () { });
     } else {
