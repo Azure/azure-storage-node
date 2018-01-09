@@ -9,6 +9,10 @@ ALL
 BLOB
 * Added support for Soft Delete feature.
 * Fixed several blobuploader example issues.
+* Fixed a compatibility issue for `getBlobToLocalFile` and `createReadStream` with Node.js v9.
+
+FILE
+* Fixed a compatibility issue for `getFileToLocalFile` and `createReadStream` with Node.js v9.
 
 2017.12 Version 2.7.0
 
