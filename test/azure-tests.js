@@ -135,7 +135,7 @@ describe('azure', function () {
 
   it('EmulatedExplicitCredentials', function (done) {
     // set emulated to true
-    process.env[StorageServiceClientConstants.EnvironmentVariables.EMULATED] = true;
+    process.env[StorageServiceClientConstants.EnvironmentVariables.EMULATED] = "true";
 
     // set some environment credentials for the production azure services
     process.env[StorageServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
@@ -186,7 +186,7 @@ describe('azure', function () {
 
   it('EmulatedWithoutParameters', function (done) {
     // set emulated to true
-    process.env[StorageServiceClientConstants.EnvironmentVariables.EMULATED] = true;
+    process.env[StorageServiceClientConstants.EnvironmentVariables.EMULATED] = "true";
 
     // set some environment credentials for the production azure services
     process.env[StorageServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
