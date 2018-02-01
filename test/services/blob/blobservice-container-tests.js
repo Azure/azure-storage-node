@@ -867,6 +867,27 @@ describe('BlobContainer', function () {
         });
       });
     });
+
+    it('should work with blob with space only', function(done) {
+      var blobName1 = ' ';
+      var blobText1 = 'hello1';
+      blobs.length = 0;
+
+      listBlobs(null, null, null, function() {
+        assert.equal(blobs.length, 0);
+
+        blobService.createBlockBlobFromText(containerName, blobName1, blobText1, function (blobErr1) {
+          assert.equal(blobErr1, null);
+
+          // Test listing 1 blob
+          listBlobs(null, null, null, function() {
+            assert.equal(blobs.length, 1);
+            assert.equal(blobs[0].name, blobName1);
+            done();
+          });
+        });
+      });
+    });
   });
 
   describe('listBlobDirectories', function () {
