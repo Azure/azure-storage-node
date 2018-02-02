@@ -1,7 +1,7 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
 be taken. This is a GA release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
 
-2018.01 Version 2.8.0
+2018.02 Version 2.8.0
 
 ALL
 * Updated storage service version to 2017-07-29.
@@ -10,6 +10,8 @@ BLOB
 * Added support for Soft Delete feature.
 * Fixed several blobuploader example issues.
 * Fixed a compatibility issue for `getBlobToLocalFile` and `createReadStream` with Node.js v9.
+* Fixed a bug that blob name will be wrongly trimmed to empty string when listing blobs.
+* Fixed a bug when blob size > 32M, GetBlobStream returns root blob data instead of snapshot data.
 
 FILE
 * Fixed a compatibility issue for `getFileToLocalFile` and `createReadStream` with Node.js v9.
