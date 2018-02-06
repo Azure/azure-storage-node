@@ -486,6 +486,48 @@ describe('blob-uploaddownload-tests', function () {
         });
       });
     });
+
+    runOrSkip('should be able to download blob snapshot to stream', function (done) {
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+      var sourceFileNameTarget = testutil.generateId('getBlobSourceFile', [], suite.isMocked) + '.test';
+      var destinationFileNameTarget = testutil.generateId('getBlobDestinationFile', [], suite.isMocked) + '.test';
+      var length = 33 * 1024 * 1024;
+      var blobBuffer = new Buffer(length);
+      blobBuffer.fill(1);
+
+      fs.writeFileSync(sourceFileNameTarget, blobBuffer);
+
+      blobService.createPageBlobFromStream(containerName, blobName, rfs.createReadStream(sourceFileNameTarget), length, function (uploadError) {
+        assert.equal(uploadError, null);
+
+        blobService.createBlobSnapshot(containerName, blobName, function (err, snapshotID) {
+          assert.equal(err, null);
+
+          blobService.clearPageRange(containerName, blobName, 0, length - 1, function (err) {
+            assert.equal(err, null);
+
+            var writable = fs.createWriteStream(destinationFileNameTarget);
+            blobService.getBlobToStream(containerName, blobName, writable, {snapshotId: snapshotID}, function(err) {
+              assert.equal(err, null);
+
+              var exists = fs.existsSync(destinationFileNameTarget);
+              assert.equal(exists, true);
+
+              fs.readFile(destinationFileNameTarget, function (err, destFileText) {
+                fs.readFile(sourceFileNameTarget, function (err, srcFileText) {
+                  assert.deepEqual(destFileText, srcFileText);
+    
+                  try { fs.unlinkSync(sourceFileNameTarget); } catch (e) {}
+                  try { fs.unlinkSync(destinationFileNameTarget); } catch (e) {}
+    
+                  done();
+                });
+              });
+            });
+          });
+        });
+      });
+    });
     
     it('should emit error events when using piped streams', function (done) {
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
