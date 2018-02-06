@@ -1,22 +1,22 @@
-# Microsoft Azure Storage SDK for Node.js 
+# Microsoft Azure Storage SDK for Node.js and JavaScript for Browsers
 
 [![NPM version](https://badge.fury.io/js/azure-storage.svg)](http://badge.fury.io/js/azure-storage) [![Slack](https://azurestorageslack.azurewebsites.net/badge.svg)]( https://azurestorageslack.azurewebsites.net)
 
 * Master [![Build Status](https://travis-ci.org/Azure/azure-storage-node.svg?branch=master)](https://travis-ci.org/Azure/azure-storage-node/branches) [![Coverage Status](https://coveralls.io/repos/Azure/azure-storage-node/badge.svg?branch=master&service=github)](https://coveralls.io/github/Azure/azure-storage-node?branch=master)
 * Dev [![Build Status](https://travis-ci.org/Azure/azure-storage-node.svg?branch=dev)](https://travis-ci.org/Azure/azure-storage-node/branches) [![Coverage Status](https://coveralls.io/repos/Azure/azure-storage-node/badge.svg?branch=dev&service=github)](https://coveralls.io/github/Azure/azure-storage-node?branch=dev)
 
-This project provides a Node.js package and a browser compatible [JavaScript Client Library](#azure-storage-javascript-client-library-for-browsers) that makes it easy to consume and manage Microsoft Azure Storage Services.
+This project provides a Node.js package and a browser compatible [JavaScript Client Library](https://github.com/Azure/azure-storage-node#azure-storage-javascript-client-library-for-browsers) that makes it easy to consume and manage Microsoft Azure Storage Services.
 
 > If you are looking for the Node.js SDK for other Azure services, visit [https://github.com/Azure/azure-sdk-for-node](https://github.com/Azure/azure-sdk-for-node).
 
 # Features
 
-- Tables
-  - Create/Delete Tables
-  - Query/Create/Read/Update/Delete Entities
 - Blobs
   - Create/Delete Containers
   - Create/Read/Update/Delete Blobs
+- Tables
+  - Create/Delete Tables
+  - Query/Create/Read/Update/Delete Entities
 - Files
   - Create/Delete Shares
   - Create/Delete Directories
@@ -50,6 +50,75 @@ When using the Storage SDK, you must provide connection information for the stor
 * Environment variables - **AZURE_STORAGE_ACCOUNT** and **AZURE_STORAGE_ACCESS_KEY**, or **AZURE_STORAGE_CONNECTION_STRING**.
 
 * Constructors - For example, `var tableSvc = azure.createTableService(accountName, accountKey);`
+
+### Blob Storage
+
+The **createContainerIfNotExists** method can be used to create a
+container in which to store a blob:
+
+```Javascript
+var azure = require('azure-storage');
+var blobService = azure.createBlobService();
+blobService.createContainerIfNotExists('taskcontainer', {
+  publicAccessLevel: 'blob'
+}, function(error, result, response) {
+  if (!error) {
+    // if result = true, container was created.
+    // if result = false, container already existed.
+  }
+});
+```
+
+To upload a file (assuming it is called task1-upload.txt and it is placed in the same folder as the script below), the method **createBlockBlobFromLocalFile** can be used.
+
+```Javascript
+var azure = require('azure-storage');
+var blobService = azure.createBlobService();
+
+blobService.createBlockBlobFromLocalFile('mycontainer', 'taskblob', 'task1-upload.txt', function(error, result, response) {
+  if (!error) {
+    // file uploaded
+  }
+});
+```
+
+
+For page blobs, use **createPageBlobFromLocalFile**. There are other methods for uploading blobs also, such as **createBlockBlobFromText** or **createPageBlobFromStream**.
+
+There are also several ways to download block and page blobs. For example, **getBlobToStream** downloads the blob to a stream:
+  
+```Javascript
+var blobService = azure.createBlobService();
+var fs = require('fs');
+blobService.getBlobToStream('mycontainer', 'taskblob', fs.createWriteStream('output.txt'), function(error, result, response) {
+  if (!error) {
+    // blob retrieved
+  }
+});
+```
+
+To create a Shared Access Signature (SAS), use the **generateSharedAccessSignature** method. Additionally you can use the **date** helper functions to easily create a SAS that expires at some point relative to the current time.
+
+```Javascript
+var azure = require('azure-storage');
+var blobService = azure.createBlobService();
+
+var startDate = new Date();
+var expiryDate = new Date(startDate);
+expiryDate.setMinutes(startDate.getMinutes() + 100);
+startDate.setMinutes(startDate.getMinutes() - 100);
+
+var sharedAccessPolicy = {
+  AccessPolicy: {
+    Permissions: azure.BlobUtilities.SharedAccessPermissions.READ,
+    Start: startDate,
+    Expiry: expiryDate
+  }
+};
+
+var token = blobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
+var sasUrl = blobService.getUrl(containerName, blobName, token);
+```
 
 ### Table Storage
 
@@ -144,75 +213,6 @@ tableService.queryEntities('mytable', query, null, function(error, result, respo
     // result.entries contains entities matching the query
   }
 });
-```
-
-### Blob Storage
-
-The **createContainerIfNotExists** method can be used to create a
-container in which to store a blob:
-
-```Javascript
-var azure = require('azure-storage');
-var blobService = azure.createBlobService();
-blobService.createContainerIfNotExists('taskcontainer', {
-  publicAccessLevel: 'blob'
-}, function(error, result, response) {
-  if (!error) {
-    // if result = true, container was created.
-    // if result = false, container already existed.
-  }
-});
-```
-
-To upload a file (assuming it is called task1-upload.txt and it is placed in the same folder as the script below), the method **createBlockBlobFromLocalFile** can be used.
-
-```Javascript
-var azure = require('azure-storage');
-var blobService = azure.createBlobService();
-
-blobService.createBlockBlobFromLocalFile('mycontainer', 'taskblob', 'task1-upload.txt', function(error, result, response) {
-  if (!error) {
-    // file uploaded
-  }
-});
-```
-
-
-For page blobs, use **createPageBlobFromLocalFile**. There are other methods for uploading blobs also, such as **createBlockBlobFromText** or **createPageBlobFromStream**.
-
-There are also several ways to download block and page blobs. For example, **getBlobToStream** downloads the blob to a stream:
-  
-```Javascript
-var blobService = azure.createBlobService();
-var fs = require('fs');
-blobService.getBlobToStream('mycontainer', 'taskblob', fs.createWriteStream('output.txt'), function(error, result, response) {
-  if (!error) {
-    // blob retrieved
-  }
-});
-```
-
-To create a Shared Access Signature (SAS), use the **generateSharedAccessSignature** method. Additionally you can use the **date** helper functions to easily create a SAS that expires at some point relative to the current time.
-
-```Javascript
-var azure = require('azure-storage');
-var blobService = azure.createBlobService();
-
-var startDate = new Date();
-var expiryDate = new Date(startDate);
-expiryDate.setMinutes(startDate.getMinutes() + 100);
-startDate.setMinutes(startDate.getMinutes() - 100);
-
-var sharedAccessPolicy = {
-  AccessPolicy: {
-    Permissions: azure.BlobUtilities.SharedAccessPermissions.READ,
-    Start: startDate,
-    Expiry: expiryDate
-  }
-};
-
-var token = blobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
-var sasUrl = blobService.getUrl(containerName, blobName, token);
 ```
 
 ### Queue Storage
@@ -515,7 +515,7 @@ On Linux, please use `export` other than `set` to set the variables.
 
 Azure Storage Node.js Client Library is compatible with [Browserify](http://browserify.org/). This means you can bundle your Node.js application which depends on the Node.js Client Library using Browserify.
 
-You can also choose to download the JavaScript Client Library provided by us, or generate the library by yourself. Please refer to the [README.md](browser/README.md) under `browser` folder for detailed usage guidelines.
+You can also choose to download the JavaScript Client Library provided by us, or generate the library by yourself. Please refer to the [README.md](https://github.com/Azure/azure-storage-node/blob/master/browser/README.md) under `browser` folder for detailed usage guidelines.
 
 ## Downloading Azure Storage JavaScript Client Library
 
@@ -523,7 +523,7 @@ It's recommended to use the Azure Storage JavaScript Client Library provided by 
 
 ## Generating Azure Storage JavaScript Client Library
 
-We also provide browserify bundle scripts which generate Azure Storage JavaScript Client Library. The bundle script reduces the size of the Storage Client Library by splitting into smaller files, one per storage service and a common shared file. For more detailed information, refer to [README.md](browser/README.md) under `browser` folder.
+We also provide browserify bundle scripts which generate Azure Storage JavaScript Client Library. The bundle script reduces the size of the Storage Client Library by splitting into smaller files, one per storage service and a common shared file. For more detailed information, refer to [README.md](https://github.com/Azure/azure-storage-node/blob/master/browser/README.md) under `browser` folder.
 
 # JsDoc
 

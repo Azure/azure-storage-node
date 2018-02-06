@@ -1,5 +1,10 @@
 Note: This is the change log file for Azure Storage JavaScript Client Library.
 
+2018.03 Version 0.2.8-preview.15
+
+* Supported UMD module standard.
+* Drop `azure-storage.common.js`.
+
 2018.02 Version 0.2.8-preview.14
 
 * Generated browser compatible JavaScript files based on Microsoft Azure Storage SDK for Node.js 2.8.0.
