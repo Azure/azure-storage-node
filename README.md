@@ -64,7 +64,7 @@ tableService.createTableIfNotExists('mytable', function(error, result, response)
   }
 });
 ```
-A new entity can be added by calling **insertEntity**:
+A new entity can be added by calling **insertEntity** or **insertOrReplaceEntity**:
 
 ```Javascript
 var azure = require('azure-storage');
@@ -108,6 +108,24 @@ var tableService = azure.createTableService();
 tableService.retrieveEntity('mytable', 'part2', 'row1', function(error, result, response) {
   if (!error) {
     // result contains the entity
+  }
+});
+```
+
+The method **replaceEntity** or **insertOrReplaceEntity** can be called to update/edit an existing entry. In the following example we asssume that an entity `'part2', 'row1'` with a field `'taskDone'` set to `false` already exists.
+
+```Javascript
+var azure = require('azure-storage');
+var tableService = azure.createTableService();
+var entity = {
+  PartitionKey: entGen.String('part2'),
+  RowKey: entGen.String('row1'),
+  taskDone: entGen.Boolean(true),
+};
+
+tableService.insertOrReplaceEntity('mytable', entity, function(error, result, response) {
+  if (!error) {
+    // result contains the entity with field 'taskDone' set to `true`
   }
 });
 ```
