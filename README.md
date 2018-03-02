@@ -523,7 +523,7 @@ It's recommended to use the Azure Storage JavaScript Client Library provided by 
 
 ## Generating Azure Storage JavaScript Client Library
 
-We also provide browserify bundle scripts which generate Azure Storage JavaScript Client Library. The bundle script reduces the size of the Storage Client Library by splitting into smaller files, one per storage service and a common shared file. For more detailed information, refer to [README.md](https://github.com/Azure/azure-storage-node/blob/master/browser/README.md) under `browser` folder.
+We also provide browserify bundle scripts which generate Azure Storage JavaScript Client Library. The bundle script reduces the size of the Storage Client Library by splitting into smaller files, one per storage service. For more detailed information, refer to [README.md](https://github.com/Azure/azure-storage-node/blob/master/browser/README.md) under `browser` folder.
 
 # JsDoc
 

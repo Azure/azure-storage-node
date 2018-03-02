@@ -38,7 +38,7 @@ Compatibility with mobile browsers have not been fully validated, please open is
 
 If you wish to customize the library and generate the Azure Storage JavaScript Client Library, you can follow the following steps.
 
-We provide browserify bundle scripts which generate Azure Storage JavaScript Client Library. The bundle script reduces the size of the Storage Client Library by splitting into smaller files, one per storage service and a common shared file. 
+We provide browserify bundle scripts which generate Azure Storage JavaScript Client Library. The bundle script reduces the size of the Storage Client Library by splitting into smaller files, one per storage service. 
 
 The generated JavaScript Client Library includes 8 separated JavaScript files:
 - `azure-storage.blob.js`
