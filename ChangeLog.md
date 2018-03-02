@@ -4,7 +4,7 @@ be taken. This is a GA release and the changes described below indicate the chan
 2018.03 Version 2.8.1
 
 ALL
-* Updated request and validator package dependencies to improve vulnerability.
+* Updated request and validator package dependencies to reduce vulnerability.
 * Fix a type assignment bug in tests for env variables.
 * Improved documents.
 
