@@ -283,8 +283,8 @@ var fileService = azure.createFileService();
 
 fileService.createDirectoryIfNotExists('taskshare', 'taskdirectory', function(error, result, response) {
   if (!error) {
-    // if result = true, share was created.
-    // if result = false, share already existed.
+    // if result.created = true, share was created.
+    // if result.created = false, share already existed.
   }
 });
 ```
