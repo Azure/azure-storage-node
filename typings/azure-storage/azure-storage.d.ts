@@ -1535,6 +1535,7 @@ declare module azurestorage {
           * @param {string}                   [blob]                   The blob name.
           * @param {string}                   [sasToken]               The Shared Access Signature token.
           * @param {boolean}                  [primary]                A boolean representing whether to use the primary or the secondary endpoint.
+          * @param {string}                   [snapshotId]             The snapshot identifier.
           * @return {string}                                           The formatted URL string.
           * @example
           * var azure = require('azure-storage');
@@ -1543,7 +1544,7 @@ declare module azurestorage {
           * var sasToken = blobService.generateSharedAccessSignature(containerName, blobName, { AccessPolicy: { Expiry: azure.date.minutesFromNow(60); } });
           * var sasUrl = blobService.getUrl(containerName, blobName, sasToken, true);
           */
-          getUrl(container: string, blob?: string, sasToken?: string, primary?: boolean): string
+          getUrl(container: string, blob?: string, sasToken?: string, primary?: boolean, snapshotId?: string): string
 
           createPageBlob(container: string, blob: string, length: number, callback: ErrorOrResponse): void;
 
@@ -6631,7 +6632,7 @@ declare module azurestorage {
         * @param {string}                   [file]                   The file name. File names may not start or end with the delimiter '/'.
         * @param {string}                   [sasToken]               The Shared Access Signature token.
         * @param {boolean}                  [primary]                A boolean representing whether to use the primary or the secondary endpoint.
-        * @param {boolean}                  [shareSnapshotId]        The snapshot identifier of the share.
+        * @param {string}                   [shareSnapshotId]        The snapshot identifier of the share.
         * @return {string}                                           The formatted URL string.
         * @example
         * var azure = require('azure-storage');

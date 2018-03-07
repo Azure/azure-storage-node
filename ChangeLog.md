@@ -1,6 +1,9 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
 be taken. This is a GA release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
 
+ALL
+* Fixed a TypeScript definition error that blobService.getUrl() misses snapshotId parameter.
+
 2018.03 Version 2.8.1
 
 ALL
