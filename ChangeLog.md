@@ -3,6 +3,8 @@ be taken. This is a GA release and the changes described below indicate the chan
 
 ALL
 * Fixed a TypeScript definition error that blobService.getUrl() misses snapshotId parameter.
+* Fixed a README.MD mistake in the FileService example.
+* Fixed an error in method comments of SharedKey.generateAccountSignedQueryString().
 
 2018.03 Version 2.8.1
 
