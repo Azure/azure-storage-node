@@ -18,15 +18,14 @@ var url = require('url');
 
 // Lib includes
 var testutil = require('../../framework/util');
-var SR = testutil.libRequire('common/util/sr');
+var SR = require('../../../lib/common/util/sr');
 var TestSuite = require('../../framework/test-suite');
-var errors = testutil.libRequire('common/errors/errors');
-var ArgumentError = errors.ArgumentError;
-var ArgumentNullError = errors.ArgumentNullError;
-var TimeoutError = errors.TimeoutError;
-var StorageError = errors.StorageError;
 
-var azure = testutil.libRequire('azure-storage');
+if (testutil.isBrowser()) {
+  var azure = AzureStorage.File;
+} else {
+  var azure = require('../../../');
+}
 
 var Constants = azure.Constants;
 var FileUtilities = azure.FileUtilities;
@@ -47,7 +46,7 @@ describe('FileShare', function () {
       testutil.POLL_REQUEST_INTERVAL = 0;
     }
     suite.setupSuite(function () {
-      fileService = azure.createFileService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      fileService = azure.createFileService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
       done();
     });
   });
@@ -96,17 +95,17 @@ describe('FileShare', function () {
     it('should detect incorrect share names', function (done) {
       assert.throws(function () { fileService.createShare(null, function () { }); },
         function(err) {
-          return (err instanceof ArgumentNullError) && err.message === 'Required argument share for function createShare is not defined'; 
+          return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === 'Required argument share for function createShare is not defined'; 
         });
 
       assert.throws(function () { fileService.createShare('', function () { }); },
         function(err) {
-          return (err instanceof ArgumentNullError) && err.message === 'Required argument share for function createShare is not defined'; 
+          return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === 'Required argument share for function createShare is not defined'; 
         });
 
       assert.throws(function () { fileService.createShare('as', function () { }); },
        function(err) {
-        if ((err instanceof ArgumentError) && err.message === 'Share name must be between 3 and 63 characters long.') {
+        if ((typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === 'Share name must be between 3 and 63 characters long.') {
           return true;
         }
       });
@@ -201,7 +200,7 @@ describe('FileShare', function () {
 
     it('should throw if called without a callback', function (done) {
       assert.throws(function () { fileService.createShareIfNotExists('name'); },
-        ArgumentNullError
+        function (err) { return typeof err.name === 'undefined' || err.name === 'ArgumentNullError';}
       );
 
       done();
@@ -245,7 +244,7 @@ describe('FileShare', function () {
 
     it('should throw if called without a callback', function (done) {
       assert.throws(function () { fileService.deleteShareIfExists('name'); },
-        ArgumentNullError
+        function (err) { return typeof err.name === 'undefined' || err.name === 'ArgumentNullError';}
       );
       done();
     });
@@ -404,20 +403,20 @@ describe('FileShare', function () {
       }
 
       assert.throws( function() { setShareMetadata(shareName, {'' : 'value1'}); },
-        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_KEY_INVALID});
+        function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === SR.METADATA_KEY_INVALID});
       assert.throws( function() { setShareMetadata(shareName, {' ' : 'value1'}); },
-        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_KEY_INVALID});
+        function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === SR.METADATA_KEY_INVALID});
       assert.throws( function() { setShareMetadata(shareName, {'\n\t' : 'value1'}); },
-        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_KEY_INVALID});
+        function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === SR.METADATA_KEY_INVALID});
 
       assert.throws( function() { setShareMetadata(shareName, {'key1' : null}); },
-        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_VALUE_INVALID});
+        function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === SR.METADATA_VALUE_INVALID});
       assert.throws( function() { setShareMetadata(shareName, {'key1' : ''}); },
-        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_VALUE_INVALID});
+        function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === SR.METADATA_VALUE_INVALID});
       assert.throws( function() { setShareMetadata(shareName, {'key1' : '\n\t'}); },
-        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_VALUE_INVALID});
+        function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === SR.METADATA_VALUE_INVALID});
       assert.throws( function() { setShareMetadata(shareName, {'key1' : ' '}); },
-        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_VALUE_INVALID});
+        function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === SR.METADATA_VALUE_INVALID});
 
       done();
     });

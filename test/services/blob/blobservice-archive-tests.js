@@ -18,8 +18,13 @@ var fs = require('fs');
 
 // Lib includes
 var testutil = require('../../framework/util');
-var azure = testutil.libRequire('azure-storage');
-var azureutil = testutil.libRequire('/common/util/util');
+if (testutil.isBrowser()) {
+  var azure = AzureStorage.Blob;
+} else {
+  var azure = require('../../../');
+}
+
+var azureutil = require('../../../lib/common/util/util');
 var blobutil = azure.BlobUtilities;
 var TestSuite = require('../../framework/test-suite');
 
@@ -28,18 +33,18 @@ var blobNamesPrefix = 'archive-blob-';
 var rehydrate2hot = 'rehydrate-pending-to-hot';
 var rehydrate2cool = 'rehydrate-pending-to-cool';
 
+var blockBlobSuite = new TestSuite('blob-archive-blockblob-tests');
+var pageBlobSuite = new TestSuite('blob-archive-pageblob-tests');
+
 var blobAccountConnectionString = process.env.AZURE_STORAGE_CONNECTION_STRING_BLOB_ACCOUNT;
 var premiumAccountConnectionString = process.env.AZURE_STORAGE_CONNECTION_STRING_PREMIUM_ACCOUNT;
 var blobAccountConnectionStringEnabled = !azureutil.IsNullOrEmptyOrUndefinedOrWhiteSpace(blobAccountConnectionString);
 var premiumAccountConnectionStringEnabled = !azureutil.IsNullOrEmptyOrUndefinedOrWhiteSpace(premiumAccountConnectionString);
 
-var blockBlobSuite = new TestSuite('blob-archive-blockblob-tests');
-var pageBlobSuite = new TestSuite('blob-archive-pageblob-tests');
-
 var runBlockBlobSuite = blobAccountConnectionStringEnabled || (!blobAccountConnectionStringEnabled && blockBlobSuite.isPlayback());
 var runPageBlobSuite = premiumAccountConnectionStringEnabled || (!premiumAccountConnectionStringEnabled && pageBlobSuite.isPlayback());
 var runBlockBlobCase = runBlockBlobSuite ? it : it.skip;
-var runPageBlobCase = runPageBlobSuite ? it : it.skip;
+var runPageBlobCase = runPageBlobSuite && pageBlobSuite.isBrowser ? it : it.skip;
 
 var blobService;
 var containerName;

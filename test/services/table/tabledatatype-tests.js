@@ -23,8 +23,13 @@ var tabletestutil = require('./table-test-utils');
 var TestSuite = require('../../framework/test-suite');
 
 // Lib includes
-var azure = testutil.libRequire('azure-storage');
-var azureutil = testutil.libRequire('common/util/util');
+if (testutil.isBrowser()) {
+  var azure = AzureStorage.Table;
+} else {
+  var azure = require('../../../');
+}
+
+var azureutil = require('../../../lib/common/util/util');
 var eg = azure.TableUtilities.entityGenerator;
 
 var TableUtilities = azure.TableUtilities;
@@ -89,7 +94,7 @@ describe('tabledatatype-tests', function () {
       testutil.POLL_REQUEST_INTERVAL = 0;
     }
     suite.setupSuite(function () {
-      tableService = azure.createTableService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      tableService = azure.createTableService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
       done();
     });   
   });

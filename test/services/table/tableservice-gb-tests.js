@@ -15,7 +15,6 @@
 // 
 
 var should = require('should');
-var mocha = require('mocha');
 
 // Test includes
 var testutil = require('../../framework/util');
@@ -23,7 +22,11 @@ var tabletestutil = require('./table-test-utils');
 var TestSuite = require('../../framework/test-suite');
 
 // Lib includes
-var azure = testutil.libRequire('azure-storage');
+if (testutil.isBrowser()) {
+  var azure = AzureStorage.Table;
+} else {
+  var azure = require('../../../');
+}
 
 var tableNames = [];
 var tablePrefix = 'tableservice';
@@ -39,7 +42,7 @@ describe('tableservice-gb-tests', function () {
       testutil.POLL_REQUEST_INTERVAL = 0;
     }
     suite.setupSuite(function () {
-      tableService = azure.createTableService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      tableService = azure.createTableService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
       done();
     }); 
   });

@@ -31,9 +31,13 @@ var testutil = require('../../framework/util');
 var TestSuite = require('../../framework/test-suite');
 
 // Lib includes
-var azureutil = testutil.libRequire('common/util/util');
-var azure = testutil.libRequire('azure-storage');
-var rfs = testutil.libRequire('common/streams/readablefs');
+var azureutil = require('../../../lib/common/util/util');//testutil.libRequire('/common/util/util');
+if (testutil.isBrowser()) {
+  var azure = AzureStorage.Blob;
+} else {
+  var azure = require('../../../');
+}
+var rfs = require('../../../lib/common/streams/readablefs');//testutil.libRequire('common/streams/readablefs');
 var WebResource = azure.WebResource;
 var SR = azure.SR;
 var SharedAccessSignature = azure.SharedAccessSignature;
@@ -49,12 +53,6 @@ var StorageServiceClientConstants = Constants.StorageServiceClientConstants;
 var QueryStringConstants = Constants.QueryStringConstants;
 var CompatibleVersionConstants = Constants.CompatibleVersionConstants;
 
-var errors = testutil.libRequire('common/errors/errors');
-var ArgumentError = errors.ArgumentError;
-var ArgumentNullError = errors.ArgumentNullError;
-var TimeoutError = errors.TimeoutError;
-var StorageError = errors.StorageError;
-
 var blobNames = [];
 var blobNamesPrefix = 'blob';
 
@@ -63,6 +61,8 @@ var blob60MBuffer = new Buffer(80 * 1024 * 1024);
 
 var suite = new TestSuite('blobservice-tests');
 var runOrSkip = suite.isMocked ? it.skip : it;
+var skipBrowser = suite.isBrowser ? it.skip : it;
+var skipMockAndBrowser = suite.isBrowser ? it.skip : (suite.isMocked ? it.skip : it);
 var aclTimeout = (suite.isRecording || !suite.isMocked) ? 30000 : 10;
 
 var containerNames = [];
@@ -79,7 +79,7 @@ describe('BlobService', function () {
       testutil.POLL_REQUEST_INTERVAL = 0;
     }
     suite.setupSuite(function () {
-      blobService = azure.createBlobService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      blobService = azure.createBlobService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
       done();
     });
   });
@@ -556,7 +556,7 @@ describe('BlobService', function () {
     });
 
     describe('setBlobMime', function () {
-      it('should work', function (done) {
+      skipBrowser('should work', function (done) {
         var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
         var fileNameSource = testutil.generateId('file') + '.bmp'; // fake bmp file with text...
         var blobText = 'Hello World!';
@@ -582,7 +582,7 @@ describe('BlobService', function () {
         });
       });
 
-      it('should work with skip', function (done) {
+      skipBrowser('should work with skip', function (done) {
           var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
           var fileNameSource = testutil.generateId('prefix') + '.bmp'; // fake bmp file with text...
           var blobText = 'Hello World!';
@@ -744,7 +744,7 @@ describe('BlobService', function () {
         });
       });
 
-      it('setPageBlobSequenceNumber', function (done) {
+      skipBrowser('setPageBlobSequenceNumber', function (done) {
         var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
         var fileNameSource = testutil.generateId('getBlobFile', [], suite.isMocked) + '.test';
 
@@ -775,11 +775,11 @@ describe('BlobService', function () {
                   }
 
                   assert.throws( function() { setPageSequenceNumber(containerName, blobName, BlobUtilities.SequenceNumberAction.UPDATE, null); },
-                    function (err) {return (err instanceof ArgumentNullError) && err.message === util.format(SR.ARGUMENT_NULL_OR_EMPTY, 'sequenceNumber')});
+                    function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === util.format(SR.ARGUMENT_NULL_OR_EMPTY, 'sequenceNumber')});
                   assert.throws( function() { setPageSequenceNumber(containerName, blobName, BlobUtilities.SequenceNumberAction.MAX, null); },
-                     function (err) {return (err instanceof ArgumentNullError) && err.message === util.format(SR.ARGUMENT_NULL_OR_EMPTY, 'sequenceNumber')});
+                     function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === util.format(SR.ARGUMENT_NULL_OR_EMPTY, 'sequenceNumber')});
                   assert.throws( function() { setPageSequenceNumber(containerName, blobName, BlobUtilities.SequenceNumberAction.INCREMENT, 1); },
-                    function (err) {return (err instanceof ArgumentError) && err.message === SR.BLOB_INVALID_SEQUENCE_NUMBER});
+                    function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === SR.BLOB_INVALID_SEQUENCE_NUMBER});
 
                   fs.writeFile(fileNameSource, blobBuffer, function () {
                     var options = { accessConditions: { SequenceNumberEqual: 8} };
@@ -987,7 +987,8 @@ describe('BlobService', function () {
         });
       });
       
-      it('should work when there are upper cases in the metadata keys', function (done) {
+      // We should trust the cases of headers inside a browser environment
+      skipBrowser('should work when there are upper cases in the metadata keys', function (done) {
         var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
         
         var metadata = { color1: 'blue', ColoR2: 'Orange', cOLOr3: 'Red', cOlor1: 'blAck', coLoR2: 'greEN', COlor3: 'puRPle' };
@@ -1535,7 +1536,7 @@ describe('BlobService', function () {
       });
 
       // Skip this case in nock because the signing key is different between live run and mocked run
-      runOrSkip('should work with container acl permissions', function (done) {
+      skipMockAndBrowser('should work with container acl permissions', function (done) {
         var containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
         var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
         var fileNameSource = testutil.generateId('prefix') + '.bmp'; // fake bmp file with text...
@@ -1618,7 +1619,7 @@ describe('BlobService', function () {
     runOrSkip('should be able to append block to AppendBlob using SharedAccessSignature', function (done) {
       var containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
-      var blobService = azure.createBlobService()
+      var blobService = azure.createBlobService(process.env['AZURE_STORAGE_CONNECTION_STRING'])
       .withFilter(new azure.ExponentialRetryPolicyFilter());
 
       blobService.createContainer(containerName, function (error) {
@@ -1666,7 +1667,7 @@ describe('BlobService', function () {
     runOrSkip('should be able to download blob using SharedAccessSignature', function (done) {
       var containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
-      var blobService = azure.createBlobService()
+      var blobService = azure.createBlobService(process.env['AZURE_STORAGE_CONNECTION_STRING'])
       .withFilter(new azure.ExponentialRetryPolicyFilter());
 
       blobService.createContainer(containerName, function (error) {
@@ -1719,7 +1720,7 @@ describe('BlobService', function () {
     it('should NOT be able to specify api-version in SAS', function (done) {
       var containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
-      var blobService = azure.createBlobService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      var blobService = azure.createBlobService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
       var sharedAccessPolicy = {
         AccessPolicy: {
           Permissions: BlobUtilities.SharedAccessPermissions.READ,
@@ -1738,7 +1739,7 @@ describe('BlobService', function () {
     runOrSkip('should append api-version', function (done) {
       var containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
-      var blobService = azure.createBlobService()
+      var blobService = azure.createBlobService(process.env['AZURE_STORAGE_CONNECTION_STRING'])
       .withFilter(new azure.ExponentialRetryPolicyFilter());
 
       blobService.createContainer(containerName, function (error) {
@@ -1789,7 +1790,7 @@ describe('BlobService', function () {
       runOrSkip('SasStrangeCharsBlobName', function (done) {
         var containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
         var blobName = 'def@#/abef?def/& &/abcde+=-';
-        var blobService = azure.createBlobService().withFilter(new azure.ExponentialRetryPolicyFilter());
+        var blobService = azure.createBlobService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
         var blobText = 'sampletext!';
 
         blobService.createContainer(containerName, function (error) {
@@ -1830,7 +1831,7 @@ describe('BlobService', function () {
         var blobText = 'sampletext!';
 
         before(function (done) {
-          blobService = azure.createBlobService().withFilter(new azure.ExponentialRetryPolicyFilter());
+          blobService = azure.createBlobService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
           done();
         })
 
@@ -2023,7 +2024,7 @@ describe('BlobService', function () {
     });
   });
 
-  runOrSkip('maximumExecutionTime should work while uploading big blobs', function (done) {
+  skipMockAndBrowser('maximumExecutionTime should work while uploading big blobs', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
 

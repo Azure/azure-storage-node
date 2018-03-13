@@ -17,16 +17,14 @@ var assert = require('assert');
 
 // Lib includes
 var testutil = require('../../framework/util');
-var SR = testutil.libRequire('common/util/sr');
+var SR = require('../../../lib/common/util/sr');
 var TestSuite = require('../../framework/test-suite');
 
-var errors = testutil.libRequire('common/errors/errors');
-var ArgumentError = errors.ArgumentError;
-var ArgumentNullError = errors.ArgumentNullError;
-var TimeoutError = errors.TimeoutError;
-var StorageError = errors.StorageError;
-
-var azure = testutil.libRequire('azure-storage');
+if (testutil.isBrowser()) {
+  var azure = AzureStorage.File;
+} else {
+  var azure = require('../../../');
+}
 
 var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
@@ -47,7 +45,7 @@ describe('FileDirectory', function () {
       testutil.POLL_REQUEST_INTERVAL = 0;
     }
     suite.setupSuite(function () {
-      fileService = azure.createFileService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      fileService = azure.createFileService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
       done();
     });
   });
@@ -116,11 +114,11 @@ describe('FileDirectory', function () {
     it('should detect incorrect directory names', function (done) {
       assert.throws(function () { fileService.createDirectory(shareName, null, function () { }); },
         function(err) {
-          return (err instanceof ArgumentNullError) && err.message === 'Required argument directory for function createDirectory is not defined'; 
+          return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === 'Required argument directory for function createDirectory is not defined'; 
         });
       assert.throws(function () { fileService.createDirectory(shareName, '', function () { }); },
         function(err) {
-          return (err instanceof ArgumentNullError) && err.message === 'Required argument directory for function createDirectory is not defined'; 
+          return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === 'Required argument directory for function createDirectory is not defined'; 
         });
       done();
     });
@@ -219,7 +217,7 @@ describe('FileDirectory', function () {
 
     it('should throw if called without a callback', function (done) {
       assert.throws(function () { fileService.createDirectoryIfNotExists('name'); },
-        ArgumentNullError
+        function (err) { return typeof err.name === 'undefined' || err.name === 'ArgumentNullError';}
       );
 
       done();
@@ -263,8 +261,8 @@ describe('FileDirectory', function () {
 
     it('should throw if called without a callback', function (done) {
       assert.throws(function () { fileService.deleteDirectoryIfExists('name'); },
-        ArgumentNullError
-      );
+      function (err) { return typeof err.name === 'undefined' || err.name === 'ArgumentNullError';}
+    );
       done();
     });
   });

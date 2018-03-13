@@ -20,7 +20,13 @@ var assert = require('assert');
 var testutil = require('./framework/util');
 
 // Lib includes
-var azure = testutil.libRequire('azure-storage');
+if (testutil.isBrowser()) {
+  var azure = AzureStorage.Blob;
+} else {
+  var azure = require('../');
+}
+
+var skipBrowser = testutil.isBrowser() ? it.skip : it;
 
 var Constants = azure.Constants;
 var StorageServiceClientConstants = Constants.StorageServiceClientConstants;
@@ -157,7 +163,7 @@ describe('azure', function () {
     done();
   });
 
-  it('NotEmulatedWithoutParameters', function (done) {
+  skipBrowser('NotEmulatedWithoutParameters', function (done) {
     // Make sure is not emulated
     var connString = process.env[StorageServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_CONNECTION_STRING];
     delete process.env[StorageServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_CONNECTION_STRING];
@@ -184,7 +190,7 @@ describe('azure', function () {
     done();
   });
 
-  it('EmulatedWithoutParameters', function (done) {
+  skipBrowser('EmulatedWithoutParameters', function (done) {
     // set emulated to true
     process.env[StorageServiceClientConstants.EnvironmentVariables.EMULATED] = "true";
 

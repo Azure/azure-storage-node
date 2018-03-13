@@ -18,16 +18,14 @@ var guid = require('uuid');
 
 // Lib includes
 var testutil = require('../../framework/util');
-var SR = testutil.libRequire('common/util/sr');
+var SR = require('../../../lib/common/util/sr');
 var TestSuite = require('../../framework/test-suite');
-var errors = testutil.libRequire('common/errors/errors');
-var ArgumentError = errors.ArgumentError;
-var ArgumentNullError = errors.ArgumentNullError;
-var TimeoutError = errors.TimeoutError;
-var StorageError = errors.StorageError;
 
-var azure = testutil.libRequire('azure-storage');
-
+if (testutil.isBrowser()) {
+  var azure = AzureStorage.Blob;
+} else {
+  var azure = require('../../../');
+}
 var Constants = azure.Constants;
 var BlobUtilities = azure.BlobUtilities;
 var HttpConstants = Constants.HttpConstants;
@@ -49,7 +47,7 @@ describe('BlobContainer', function () {
       testutil.POLL_REQUEST_INTERVAL = 0;
     }
     suite.setupSuite(function () {
-      blobService = azure.createBlobService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      blobService = azure.createBlobService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
       done();
     }); 
   });
@@ -108,7 +106,7 @@ describe('BlobContainer', function () {
     it('should detect incorrect container names', function (done) {
       assert.throws(function () { blobService.createContainer(null, function () { }); },
         function(err){
-          return (err instanceof ArgumentNullError) && err.message === 'Required argument container for function createContainer is not defined';
+          return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === 'Required argument container for function createContainer is not defined';
         });
         
       assert.throws(function () { blobService.createContainer('$root1', function () { }); },
@@ -122,12 +120,12 @@ describe('BlobContainer', function () {
 
       assert.throws(function () { blobService.createContainer('', function () { }); },
         function(err){
-          return (err instanceof ArgumentNullError) && err.message === 'Required argument container for function createContainer is not defined';
+          return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === 'Required argument container for function createContainer is not defined';
         });
 
       assert.throws(function () { blobService.createContainer('as', function () { }); },
        function(err) {
-          return (err instanceof ArgumentError) && err.message === 'Container name must be between 3 and 63 characters long.';
+          return (typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === 'Container name must be between 3 and 63 characters long.';
       });
 
       assert.throws(function () { blobService.createContainer('a--s', function () { }); },
@@ -246,7 +244,7 @@ describe('BlobContainer', function () {
 
     it('should throw if called without a callback', function (done) {
       assert.throws(function () { blobService.createContainerIfNotExists('name'); },
-        ArgumentNullError
+        function (err) { return typeof err.name === 'undefined' || err.name === 'ArgumentNullError';}
       );
 
       done();
@@ -294,7 +292,7 @@ describe('BlobContainer', function () {
 
     it('should throw if called without a callback', function (done) {
       assert.throws(function () { blobService.deleteContainerIfExists('name'); },
-        ArgumentNullError
+        function (err) { return typeof err.name === 'undefined' || err.name === 'ArgumentNullError';}
       );
       done();
     });
@@ -439,20 +437,20 @@ describe('BlobContainer', function () {
       }
 
       assert.throws( function() { setContainerMetadata(containerName, {'' : 'value1'}); },
-        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_KEY_INVALID});
+        function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === SR.METADATA_KEY_INVALID});
       assert.throws( function() { setContainerMetadata(containerName, {' ' : 'value1'}); },
-        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_KEY_INVALID});
+        function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === SR.METADATA_KEY_INVALID});
       assert.throws( function() { setContainerMetadata(containerName, {'\n\t' : 'value1'}); },
-        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_KEY_INVALID});
+        function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === SR.METADATA_KEY_INVALID});
 
       assert.throws( function() { setContainerMetadata(containerName, {'key1' : null}); },
-        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_VALUE_INVALID});
+        function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === SR.METADATA_VALUE_INVALID});
       assert.throws( function() { setContainerMetadata(containerName, {'key1' : ''}); },
-        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_VALUE_INVALID});
+        function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === SR.METADATA_VALUE_INVALID});
       assert.throws( function() { setContainerMetadata(containerName, {'key1' : '\n\t'}); },
-        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_VALUE_INVALID});
+        function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === SR.METADATA_VALUE_INVALID});
       assert.throws( function() { setContainerMetadata(containerName, {'key1' : ' '}); },
-        function (err) {return (err instanceof ArgumentError) && err.message === SR.METADATA_VALUE_INVALID});
+        function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === SR.METADATA_VALUE_INVALID});
 
       // test that empty headers can be got.
       var callback = function(webresource) {

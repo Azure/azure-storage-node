@@ -13,19 +13,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // 
+var assert = require('assert');
 var url = require('url');
 
-var assert = require('assert');
+var queueMessageEncoder = require('../../../lib/services/queue/queuemessageencoder');
 var testutil = require('../../framework/util');
 var TestSuite = require('../../framework/test-suite');
-var azure = testutil.libRequire('azure-storage');
-var queueMessageEncoder = testutil.libRequire('services/queue/queuemessageencoder');
 
-var errors = testutil.libRequire('common/errors/errors');
-var ArgumentError = errors.ArgumentError;
-var ArgumentNullError = errors.ArgumentNullError;
-var TimeoutError = errors.TimeoutError;
-var StorageError = errors.StorageError;
+if (testutil.isBrowser()) {
+  var azure = AzureStorage.Queue;
+} else {
+  var azure = require('../../../');
+}
 
 var Constants = azure.Constants;
 var StorageServiceClientConstants = Constants.StorageServiceClientConstants;
@@ -63,7 +62,7 @@ describe('QueueServiceTests', function() {
       testutil.POLL_REQUEST_INTERVAL = 0;
     }
     suite.setupSuite(function () {
-      queueService = azure.createQueueService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      queueService = azure.createQueueService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
       done();
     });
   });
@@ -94,17 +93,17 @@ describe('QueueServiceTests', function() {
     it('should detect incorrect queue names', function (done) {
       assert.throws(function () { queueService.createQueue(null, function () { }); },
         function(err) {
-          return (err instanceof ArgumentNullError) && err.message === 'Required argument queue for function createQueue is not defined'; 
+          return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === 'Required argument queue for function createQueue is not defined'; 
         });
 
       assert.throws(function () { queueService.createQueue('', function () { }); },
         function(err) {
-          return (err instanceof ArgumentNullError) && err.message === 'Required argument queue for function createQueue is not defined'; 
+          return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === 'Required argument queue for function createQueue is not defined'; 
         });
 
       assert.throws(function () { queueService.createQueue('as', function () { }); },
        function(err) {
-        if ((err instanceof ArgumentError) && err.message === 'Queue name must be between 3 and 63 characters long.') {
+        if ((typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === 'Queue name must be between 3 and 63 characters long.') {
           return true;
         }
       });

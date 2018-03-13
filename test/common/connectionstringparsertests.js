@@ -20,10 +20,15 @@ var util = require('util');
 // Test includes
 var testutil = require('../framework/util');
 
-var ServiceSettings = testutil.libRequire('common/services/servicesettings');
-var StorageServiceSettings = testutil.libRequire('common/services/storageservicesettings');
+var ServiceSettings = require('../../lib/common/services/servicesettings');
+var StorageServiceSettings = require('../../lib/common/services/storageservicesettings');
 
-var azure = testutil.libRequire('azure-storage');
+if (testutil.isBrowser()) {
+  var azure = AzureStorage.Blob;
+} else {
+  var azure = require('../../');
+}
+
 var Constants = azure.Constants;
 var ConnectionStringKeys = Constants.ConnectionStringKeys;
 var SR = azure.SR;

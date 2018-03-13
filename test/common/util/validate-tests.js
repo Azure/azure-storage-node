@@ -18,13 +18,7 @@ var should = require('should');
 var assert = require('assert');
 
 var testutil = require('../../framework/util');
-var Validate = testutil.libRequire('common/util/validate');
-
-var errors = testutil.libRequire('common/errors/errors');
-var ArgumentError = errors.ArgumentError;
-var ArgumentNullError = errors.ArgumentNullError;
-var TimeoutError = errors.TimeoutError;
-var StorageError = errors.StorageError;
+var Validate = require('../../../lib/common/util/validate');
 
 describe('validator-tests', function () {
   it('isValidEnumValue should work', function (done) {
@@ -117,7 +111,7 @@ describe('validator-tests', function () {
         Validate.containerNameIsValid('');
       },
       function(err) {
-        return (err instanceof ArgumentNullError) && err.message === 'Container name must be a non empty string.';
+        return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === 'Container name must be a non empty string.';
       }
     );
     assert.throws(
@@ -125,7 +119,7 @@ describe('validator-tests', function () {
         Validate.containerNameIsValid('aa');
       },
       function(err) {
-        return (err instanceof ArgumentError) && err.message === 'Container name must be between 3 and 63 characters long.';
+        return (typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === 'Container name must be between 3 and 63 characters long.';
       }
     );
     assert.throws(
@@ -148,7 +142,7 @@ describe('validator-tests', function () {
         Validate.blobNameIsValid('aaaaaa', '');
       },
       function(err) {
-        return (err instanceof ArgumentNullError) && err.message === 'Blob name is not specified.';
+        return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === 'Blob name is not specified.';
       }
     );
     assert.throws(
@@ -169,7 +163,7 @@ describe('validator-tests', function () {
         Validate.shareNameIsValid('');
       },
       function(err) {
-        return (err instanceof ArgumentNullError) && err.message === 'Share name must be a non empty string.';
+        return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === 'Share name must be a non empty string.';
       }
     );
     assert.throws(
@@ -177,7 +171,7 @@ describe('validator-tests', function () {
         Validate.shareNameIsValid('aa');
       },
       function(err) {
-        return (err instanceof ArgumentError) && err.message === 'Share name must be between 3 and 63 characters long.';
+        return (typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === 'Share name must be between 3 and 63 characters long.';
       }
     );
     assert.throws(
@@ -198,7 +192,7 @@ describe('validator-tests', function () {
         Validate.queueNameIsValid('');
       },
       function(err) {
-        return (err instanceof ArgumentNullError) && err.message === 'Queue name must be a non empty string.';
+        return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === 'Queue name must be a non empty string.';
       }
     );
     assert.throws(
@@ -206,7 +200,7 @@ describe('validator-tests', function () {
         Validate.queueNameIsValid('aa');
       },
       function(err) {
-        return (err instanceof ArgumentError) && err.message === 'Queue name must be between 3 and 63 characters long.';
+        return (typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === 'Queue name must be between 3 and 63 characters long.';
       }
     );
     assert.throws(
@@ -244,7 +238,7 @@ describe('validator-tests', function () {
         Validate.tableNameIsValid('');
       },
       function(err) {
-        return (err instanceof ArgumentNullError) && err.message === 'Table name must be a non empty string.'; 
+        return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === 'Table name must be a non empty string.'; 
       }
     );
     assert.throws(
@@ -252,7 +246,7 @@ describe('validator-tests', function () {
         Validate.tableNameIsValid('aa');
       },
       function(err) {
-        return (err instanceof ArgumentError) && err.message === 'Table name must be between 3 and 63 characters long.';
+        return (typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === 'Table name must be between 3 and 63 characters long.';
       }
     );
     assert.throws(
@@ -317,7 +311,7 @@ describe('validator-tests', function () {
         Validate.shareACLIsValid('share');
       },
       function(err) {
-        return (err instanceof ArgumentError) && err.message === 'The access type is not supported.';
+        return (typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === 'The access type is not supported.';
       }
     );
     assert.throws(
@@ -325,7 +319,7 @@ describe('validator-tests', function () {
         Validate.shareACLIsValid('file');
       },
       function(err) {
-        return (err instanceof ArgumentError) && err.message === 'The access type is not supported.';
+        return (typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === 'The access type is not supported.';
       }
     );
     done();

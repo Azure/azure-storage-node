@@ -21,7 +21,11 @@ var testutil = require('../../framework/util');
 var TestSuite = require('../../framework/test-suite');
 
 // Lib includes
-var azure = testutil.libRequire('azure-storage');
+if (testutil.isBrowser()) {
+  var azure = AzureStorage.Table;
+} else {
+  var azure = require('../../../');
+}
 
 var TableQuery = azure.TableQuery;
 var TableBatch = azure.TableBatch;
@@ -92,7 +96,7 @@ describe('tablequery-tests', function () {
       testutil.POLL_REQUEST_INTERVAL = 0;
     }
     suite.setupSuite(function () {
-      tableService = azure.createTableService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      tableService = azure.createTableService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
       done();
     }); 
   });

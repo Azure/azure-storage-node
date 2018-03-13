@@ -25,14 +25,13 @@ var tabletestutil = require('./table-test-utils');
 var TestSuite = require('../../framework/test-suite');
 
 // Lib includes
-var azure = testutil.libRequire('azure-storage');
-var azureutil = testutil.libRequire('common/util/util');
+if (testutil.isBrowser()) {
+  var azure = AzureStorage.Table;
+} else {
+  var azure = require('../../../');
+}
 
-var errors = testutil.libRequire('common/errors/errors');
-var ArgumentError = errors.ArgumentError;
-var ArgumentNullError = errors.ArgumentNullError;
-var TimeoutError = errors.TimeoutError;
-var StorageError = errors.StorageError;
+var azureutil = require('../../../lib/common/util/util');
 
 var TableQuery = azure.TableQuery;
 var Constants = azure.Constants;
@@ -98,7 +97,7 @@ describe('tableservice-tests', function () {
       testutil.POLL_REQUEST_INTERVAL = 0;
     }
     suite.setupSuite(function () {
-      tableService = azure.createTableService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      tableService = azure.createTableService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
       done();
     }); 
   });
@@ -171,17 +170,17 @@ describe('tableservice-tests', function () {
     it('should detect incorrect table names', function (done) {
       assert.throws(function () { tableService.createTable(null, function () { }); },
         function(err) {
-          return (err instanceof ArgumentNullError) && err.message === 'Required argument table for function createTable is not defined'; 
+          return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === 'Required argument table for function createTable is not defined'; 
         });
 
       assert.throws(function () { tableService.createTable('', function () { }); },
         function(err) {
-          return (err instanceof ArgumentNullError) && err.message === 'Required argument table for function createTable is not defined'; 
+          return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === 'Required argument table for function createTable is not defined'; 
         });
 
       assert.throws(function () { tableService.createTable('as', function () { }); },
        function(err) {
-        if ((err instanceof ArgumentError) && err.message === 'Table name must be between 3 and 63 characters long.') {
+        if ((typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === 'Table name must be between 3 and 63 characters long.') {
           return true;
         }
       });

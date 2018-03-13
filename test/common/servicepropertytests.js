@@ -15,10 +15,17 @@
 // 
 var assert = require('assert');
 var _ = require('underscore');
+var extend = require('extend');
 
 var testutil = require('../framework/util');
 var TestSuite = require('../framework/test-suite');
-var azure = testutil.libRequire('azure-storage');
+
+if (testutil.isBrowser()) {
+  var azure = extend({}, AzureStorage.Blob, AzureStorage.Table, AzureStorage.Queue, AzureStorage.File);
+} else {
+  var azure = require('../../');
+}
+
 var Constants = azure.Constants;
 var HeaderConstants = Constants.HeaderConstants;
 var ServiceTypes = Constants.ServiceType;
@@ -37,10 +44,10 @@ describe('ServiceProperties', function () {
       testutil.POLL_REQUEST_INTERVAL = 0;
     }
     suite.setupSuite(function () {
-      blobService = azure.createBlobService().withFilter(new azure.ExponentialRetryPolicyFilter());
-      queueService = azure.createQueueService().withFilter(new azure.ExponentialRetryPolicyFilter());
-      tableService = azure.createTableService().withFilter(new azure.ExponentialRetryPolicyFilter());
-      fileService = azure.createFileService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      blobService = azure.createBlobService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
+      queueService = azure.createQueueService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
+      tableService = azure.createTableService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
+      fileService = azure.createFileService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
       done();
     });
   });
