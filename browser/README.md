@@ -22,6 +22,12 @@ After generating the JavaScript Client Library, you can try the samples in brows
 
 **Note**: An HTTP server should be set to host the samples for IE browser.
 
+Or you can directly try with following online samples:
+- [sample-blob](https://dmrelease.blob.core.windows.net/azurestoragejssample/samples/sample-blob.html)
+- [sample-table](https://dmrelease.blob.core.windows.net/azurestoragejssample/samples/sample-table.html)
+- [sample-queue](https://dmrelease.blob.core.windows.net/azurestoragejssample/samples/sample-queue.html)
+- [sample-file](https://dmrelease.blob.core.windows.net/azurestoragejssample/samples/sample-file.html)
+
 ## Module Support
 
 Above JavaScript files are all [UMD compatible](https://github.com/umdjs/umd). You can load them in a CommonJS or AMD environment by JavaScript module loaders. If no module system is found, following global variables will be set:
