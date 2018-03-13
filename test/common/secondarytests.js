@@ -20,13 +20,16 @@ var testutil = require('../framework/util');
 var TestSuite = require('../framework/test-suite');
 
 // Lib includes
-var azure = testutil.libRequire('azure-storage');
+if (testutil.isBrowser()) {
+  var azure = AzureStorage.Blob;
+} else {
+  var azure = require('../../');
+}
+
 var Constants = azure.Constants;
 var StorageUtilities = azure.StorageUtilities;
-var SR = testutil.libRequire('common/util/sr');
+var SR = azure.SR;
 var RetryPolicyFilter = azure.RetryPolicyFilter;
-var errors = testutil.libRequire('common/errors/errors');
-var ArgumentNullError = errors.ArgumentNullError;
 
 var hostName = process.env['AZURE_STORAGE_ACCOUNT'];
 var testPrimaryHost = 'http://'+ hostName + '.blob.core.windows.net';
@@ -51,7 +54,7 @@ describe('SecondaryTests', function () {
   });
 
   beforeEach(function (done) {
-    blobService = azure.createBlobService();
+    blobService = azure.createBlobService(process.env['AZURE_STORAGE_CONNECTION_STRING']);
     suite.setupTest(done);
   });
 
@@ -72,15 +75,15 @@ describe('SecondaryTests', function () {
       };
 
       assert.throws(function () { blobService.getContainerProperties(container, options, function () { }); },
-        function (err) {return (err instanceof ArgumentNullError) && err.message === SR.STORAGE_HOST_MISSING_LOCATION});
+        function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === SR.STORAGE_HOST_MISSING_LOCATION});
 
       options.locationMode = StorageUtilities.LocationMode.SECONDARY_THEN_PRIMARY;
       assert.throws(function () { blobService.getContainerProperties(container, options, function () { }); },
-        function (err) {return (err instanceof ArgumentNullError) && err.message === SR.STORAGE_HOST_MISSING_LOCATION});
+        function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === SR.STORAGE_HOST_MISSING_LOCATION});
 
       options.locationMode = StorageUtilities.LocationMode.PRIMARY_THEN_SECONDARY;
       assert.throws(function () { blobService.getContainerProperties(container, options, function () { }); },
-        function (err) {return (err instanceof ArgumentNullError) && err.message === SR.STORAGE_HOST_MISSING_LOCATION});
+        function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === SR.STORAGE_HOST_MISSING_LOCATION});
 
       done();
     });

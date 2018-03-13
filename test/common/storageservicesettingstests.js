@@ -19,14 +19,16 @@ var assert = require('assert');
 var url = require('url');
 
 var testutil = require('../framework/util');
-var azure = testutil.libRequire('azure-storage');
+if (testutil.isBrowser()) {
+  var azure = AzureStorage.Blob;
+} else {
+  var azure = require('../../');
+}
+
 var Constants = azure.Constants;
 var StorageServiceClientConstants = Constants.StorageServiceClientConstants;
 var ConnectionStringKeys = Constants.ConnectionStringKeys;
-var StorageServiceSettings = testutil.libRequire('common/services/storageservicesettings');
-var NoMatchError = testutil.libRequire('common/services/servicesettings').NoMatchError;
-var errors = testutil.libRequire('common/errors/errors');
-var ArgumentNullError = errors.ArgumentNullError;
+var StorageServiceSettings = require('../../lib/common/services/storageservicesettings');
 
 describe('StorageServiceSettingsTests', function(done) {
 
@@ -80,17 +82,17 @@ describe('StorageServiceSettingsTests', function(done) {
   it('testCreateWithBadHost', function(done) {
     assert.throws(
       function () {var blobServiceUsingExplicitHost = azure.createBlobService('xyz','abc=', {});}, 
-      function (err) {return (err instanceof ArgumentNullError) && err.message === 'The host for the storage service must be specified.';}
+      function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === 'The host for the storage service must be specified.';}
     );
 
     var blobServiceUsingExplicitHost = azure.createBlobService('DefaultEndpointsProtocol=http;AccountName=xyz;AccountKey=abc=');
     assert.throws(
       function () {blobServiceUsingExplicitHost.setHost(null);}, 
-      function (err) {return (err instanceof ArgumentNullError) && err.message === 'The host for the storage service must be specified.';}
+      function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === 'The host for the storage service must be specified.';}
     );
     assert.throws(
       function () {blobServiceUsingExplicitHost.setHost({});}, 
-      function (err) {return (err instanceof ArgumentNullError) && err.message === 'The host for the storage service must be specified.';}
+      function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === 'The host for the storage service must be specified.';}
     );
     assert.throws(
       function () {blobServiceUsingExplicitHost.setHost('xyz');}, 
@@ -186,7 +188,7 @@ describe('StorageServiceSettingsTests', function(done) {
       StorageServiceSettings.createFromConnectionString(connectionString);
       },
       function(err) {
-        return (err instanceof NoMatchError) && err.message === 'The provided connection string "" does not have complete configuration settings.';
+        return (typeof err.name === 'undefined' || err.name === 'NoMatchError') && err.message === 'The provided connection string "" does not have complete configuration settings.';
       }
     );
     done();
@@ -203,7 +205,7 @@ describe('StorageServiceSettingsTests', function(done) {
         azure.createBlobService(connectionString);
       },
       function(err) {
-        return (err instanceof NoMatchError) && err.message === 'The provided connection string "' + connectionString + '" does not have complete configuration settings.';
+        return (typeof err.name === 'undefined' || err.name === 'NoMatchError') && err.message === 'The provided connection string "' + connectionString + '" does not have complete configuration settings.';
       }
     );
 
@@ -421,7 +423,7 @@ describe('StorageServiceSettingsTests', function(done) {
         StorageServiceSettings.createFromConnectionString(connectionString);
       },
       function(err) {
-        return (err instanceof NoMatchError) && err.message === 'The provided connection string "' + connectionString + '" does not have complete configuration settings.';
+        return (typeof err.name === 'undefined' || err.name === 'NoMatchError') && err.message === 'The provided connection string "' + connectionString + '" does not have complete configuration settings.';
       }
     );
     done();
@@ -438,7 +440,7 @@ describe('StorageServiceSettingsTests', function(done) {
         StorageServiceSettings.createFromConnectionString(connectionString);
       },
       function(err) {
-        return (err instanceof NoMatchError) && err.message === 'The provided connection string "' + connectionString + '" does not have complete configuration settings.';
+        return (typeof err.name === 'undefined' || err.name === 'NoMatchError') && err.message === 'The provided connection string "' + connectionString + '" does not have complete configuration settings.';
       }
     );
     done();

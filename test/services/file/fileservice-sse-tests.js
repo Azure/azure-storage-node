@@ -21,8 +21,12 @@ var testutil = require('../../framework/util');
 var TestSuite = require('../../framework/test-suite');
 
 // Lib includes
-var azure = testutil.libRequire('azure-storage');
-var azureutil = testutil.libRequire('/common/util/util');
+if (testutil.isBrowser()) {
+  var azure = AzureStorage.File;
+} else {
+  var azure = require('../../../');
+}
+var azureutil = require('../../../lib/common/util/util');
 
 var fileSseSuite = new TestSuite('fileservice-sse-tests');
 var sseEnabledAccountConnectionString = process.env.AZURE_STORAGE_CONNECTION_STRING_SSE_ENABLED_ACCOUNT;

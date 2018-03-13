@@ -119,3 +119,28 @@ exports.withTempFile = function (content, action) {
     fs.unlinkSync(path);
   });
 };
+
+exports.isBrowser = function () {
+  return typeof window === 'object';
+}
+
+// Mock a Browser file with specified name and size
+
+exports.getBrowserFile = function (name, size) {
+  function getRandomFilledBinaryArray (size) {
+    var uint8Arr = new Uint8Array(size);
+    for (var j = 0; j < size; j++) {
+        uint8Arr[j] = Math.floor(Math.random() * 256);
+    }
+    return uint8Arr;
+  };
+
+  var binary = getRandomFilledBinaryArray(size);
+  
+  // IE11 & Edge doesn't support create File using var file = new File([binary], name);
+  // We leverage Blob() to mock a File
+
+  var file = new Blob([binary]);
+  file.name = name;
+  return file;
+};

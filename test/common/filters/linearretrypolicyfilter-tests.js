@@ -21,7 +21,11 @@ var testutil = require('../../framework/util');
 var TestSuite = require('../../framework/test-suite');
 
 // Lib includes
-var azure = testutil.libRequire('azure-storage');
+if (testutil.isBrowser()) {
+  var azure = AzureStorage.Table;
+} else {
+  var azure = require('../../../');
+}
 
 var LinearRetryPolicyFilter = azure.LinearRetryPolicyFilter;
 var Constants = azure.Constants;
@@ -44,7 +48,7 @@ describe('linearretrypolicyfilter-tests', function () {
     }
     suite.setupSuite(function () {
       linearRetryPolicyFilter = new LinearRetryPolicyFilter();
-      tableService = azure.createTableService().withFilter(linearRetryPolicyFilter);
+      tableService = azure.createTableService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(linearRetryPolicyFilter);
       done();
     });
   });

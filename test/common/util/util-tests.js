@@ -20,8 +20,8 @@ var assert = require('assert');
 var testutil = require('../../framework/util');
 
 // Lib includes
-var util = testutil.libRequire('common/util/util');
-var speedSummary = testutil.libRequire('common/streams/speedsummary');
+var util = require('../../../lib/common/util/util');
+var speedSummary = require('../../../lib/common/streams/speedsummary');
 
 describe('util-tests', function() {
   it('should be an empty object', function (done) {

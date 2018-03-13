@@ -14,10 +14,15 @@
 // limitations under the License.
 // 
 var assert = require('assert');
+var extend = require('extend');
 
 var testutil = require('../framework/util');
 var TestSuite = require('../framework/test-suite');
-var azure = testutil.libRequire('azure-storage');
+if (testutil.isBrowser()) {
+  var azure = extend({}, AzureStorage.Blob, AzureStorage.Table, AzureStorage.Queue, AzureStorage.File);
+} else {
+  var azure = require('../../');
+}
 var Constants = azure.Constants;
 var StorageUtilities = azure.StorageUtilities;
 
@@ -33,11 +38,11 @@ describe('ServiceStats', function () {
       testutil.POLL_REQUEST_INTERVAL = 0;
     }
     suite.setupSuite(function () {
-      blobService = azure.createBlobService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      blobService = azure.createBlobService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
       blobService.defaultLocationMode = StorageUtilities.LocationMode.SECONDARY_ONLY;
-      queueService = azure.createQueueService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      queueService = azure.createQueueService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
       queueService.defaultLocationMode = StorageUtilities.LocationMode.SECONDARY_ONLY;
-      tableService = azure.createTableService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      tableService = azure.createTableService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
       tableService.defaultLocationMode = StorageUtilities.LocationMode.SECONDARY_ONLY;
       done();
     });

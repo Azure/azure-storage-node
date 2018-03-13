@@ -23,8 +23,13 @@ var testutil = require('../../framework/util');
 var TestSuite = require('../../framework/test-suite');
 
 // Lib includes
-var azure = testutil.libRequire('azure-storage');
-var azureutil = testutil.libRequire('common/util/util');
+if (testutil.isBrowser()) {
+  var azure = AzureStorage.Table;
+} else {
+  var azure = require('../../../');
+}
+
+var azureutil = require('../../../lib/common/util/util');
 
 var TableQuery = azure.TableQuery;
 var TableUtilities = azure.TableUtilities;
@@ -75,7 +80,7 @@ var getNewEntityToTest = function () {
     Int64Property: eg.Int64('5432873627392'),
     DoubleProperty: eg.Double(4.81516),
     GuidProperty: eg.Guid('dd3cb8f8-93b7-44e2-b74a-c0aa3b27a6d2'),
-    DateTimeProperty: eg.DateTime(new Date(Date.UTC(2014, 04, 07, 08, 20, 53))),
+    DateTimeProperty: eg.DateTime(new Date(1399450853000)), // 2014-04-07 08:20:53 UTC
   };
 }
 
@@ -90,7 +95,7 @@ describe('tableservice-payload-tests', function () {
       testutil.POLL_REQUEST_INTERVAL = 0;
     }
     suite.setupSuite(function () {
-      tableService = azure.createTableService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      tableService = azure.createTableService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
       done();
     }); 
   });

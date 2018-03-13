@@ -68,8 +68,22 @@ function TestSuite(testPrefix, env, forceMocked) {
 
   this.skipSubscription = true;
 
-  var nodeVersion = Number(process.version.match(/^v(\d+\.\d+)/)[1]);
-  this.metadataCaseSensitive = (!this.isMocked || this.isRecording) && nodeVersion >= 0.12;
+  // Settings for testing in browser environments
+  this.isBrowser = typeof window !== 'undefined';
+  if (this.isBrowser) {
+    this.isMocked = false;
+    this.metadataCaseSensitive = false; // Browsers doesn't support header key sensitive
+
+    process.env['AZURE_STORAGE_CONNECTION_STRING'] = window.__env__['AZURE_STORAGE_CONNECTION_STRING'];
+    process.env['AZURE_STORAGE_CONNECTION_STRING_SSE_ENABLED_ACCOUNT'] = window.__env__['AZURE_STORAGE_CONNECTION_STRING_SSE_ENABLED_ACCOUNT'];
+    process.env['AZURE_STORAGE_CONNECTION_STRING_BLOB_ACCOUNT'] = window.__env__['AZURE_STORAGE_CONNECTION_STRING_BLOB_ACCOUNT'];
+    
+    // Premium blob storage account doesn't support CORS currently
+    // process.env['AZURE_STORAGE_CONNECTION_STRING_PREMIUM_ACCOUNT'] = window.__env__['AZURE_STORAGE_CONNECTION_STRING_PREMIUM_ACCOUNT'];
+  } else {
+    var nodeVersion = Number(process.version.match(/^v(\d+\.\d+)/)[1]);
+    this.metadataCaseSensitive = (!this.isMocked || this.isRecording) && nodeVersion >= 0.12;
+  }
 
   // Normalize environment
   this.normalizeEnvironment(env);

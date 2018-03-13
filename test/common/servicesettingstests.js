@@ -18,7 +18,7 @@ var should = require('should');
 var assert = require('assert');
 
 var testutil = require('../framework/util');
-var ServiceSettings = testutil.libRequire('common/services/servicesettings');
+var ServiceSettings = require('../../lib/common/services/servicesettings');
 
 describe('ServiceSettingsTests', function () {
   

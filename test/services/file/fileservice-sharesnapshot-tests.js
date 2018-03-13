@@ -19,15 +19,14 @@ var fs = require('fs');
 
 // Lib includes
 var testutil = require('../../framework/util');
-var SR = testutil.libRequire('common/util/sr');
+var SR = require('../../../lib/common/util/sr');
 var TestSuite = require('../../framework/test-suite');
-var errors = testutil.libRequire('common/errors/errors');
-var ArgumentError = errors.ArgumentError;
-var ArgumentNullError = errors.ArgumentNullError;
-var TimeoutError = errors.TimeoutError;
-var StorageError = errors.StorageError;
 
-var azure = testutil.libRequire('azure-storage');
+if (testutil.isBrowser()) {
+  var azure = AzureStorage.File;
+} else {
+  var azure = require('../../../');
+}
 
 var Constants = azure.Constants;
 var FileUtilities = azure.FileUtilities;
@@ -87,6 +86,8 @@ var fileContentTypeUpdated = 'filecontentypeupdated';
 
 var suite = new TestSuite('fileservice-sharesnapshot-tests');
 var runOrSkip = suite.isMocked ? it.skip : it;
+var skipBrowser = suite.isBrowser ? it.skip : it;
+var skipMockAndBrowser = suite.isBrowser ? it.skip : (suite.isMocked ? it.skip : it);
 var timeout = (suite.isRecording || !suite.isMocked) ? 30000 : 10;
 
 describe('FileShare', function () {
@@ -96,7 +97,7 @@ describe('FileShare', function () {
     }
     shareName = suite.getName(shareNamesPrefix);
     suite.setupSuite(function () {
-      fileService = azure.createFileService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      fileService = azure.createFileService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
       done();
     });
   });
@@ -485,7 +486,7 @@ describe('FileShare', function () {
   });
 
   describe('getFileToStream', function () {
-      it('should work with base share', function (done) {
+      skipBrowser('should work with base share', function (done) {
           fileService.getFileToStream(shareName, directoryName, fileName, fs.createWriteStream(downloadFileName), function (error, result, response) {
             assert.equal(error, null);
             assert.ok(response.isSuccessful);
@@ -505,7 +506,7 @@ describe('FileShare', function () {
           });
       });
       
-      it('should work with share snapshot', function (done) {
+      skipBrowser('should work with share snapshot', function (done) {
           fileService.getFileToStream(shareName, directoryName, fileName, fs.createWriteStream(downloadFileName), {shareSnapshotId: shareSnapshotId}, function (error, result, response) {
             assert.equal(error, null);
             assert.ok(response.isSuccessful);

@@ -21,7 +21,11 @@ var qs = require('querystring');
 var testutil = require('../framework/util');
 
 // Lib includes
-var azure = testutil.libRequire('azure-storage');
+if (testutil.isBrowser()) {
+  var azure = AzureStorage.Blob;
+} else {
+  var azure = require('../../');
+}
 var WebResource = azure.WebResource;
 var Constants = azure.Constants;
 var StorageServiceClientConstants = Constants.StorageServiceClientConstants;
@@ -29,7 +33,7 @@ var QueryStringConstants = Constants.QueryStringConstants;
 var HeaderConstants = Constants.HeaderConstants;
 var AccountSasConstants = Constants.AccountSasConstants;
 
-var SharedKey = testutil.libRequire('common/signing/sharedkey');
+var SharedKey = require('../../lib/common/signing/sharedkey');
 
 var sharedkey;
 

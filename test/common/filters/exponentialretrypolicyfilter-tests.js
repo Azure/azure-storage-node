@@ -16,14 +16,19 @@
 
 var assert = require('assert');
 var fs = require('fs');
+var extend = require('extend');
 
 // Test includes
 var testutil = require('../../framework/util');
 var TestSuite = require('../../framework/test-suite');
-var rfs = testutil.libRequire('common/streams/readablefs');
+var rfs = require('../../../lib/common/streams/readablefs');
 
 // Lib includes
-var azure = testutil.libRequire('azure-storage');
+if (testutil.isBrowser()) {
+  var azure = extend({}, AzureStorage.Blob, AzureStorage.Table, AzureStorage.Queue, AzureStorage.File);
+} else {
+  var azure = require('../../../');
+}
 
 var ExponentialRetryPolicyFilter = azure.ExponentialRetryPolicyFilter;
 var Constants = azure.Constants;
@@ -47,6 +52,7 @@ var shareName;
 
 var suite = new TestSuite('exponentialretrypolicyfilter-tests');
 var runOrSkip = suite.isMocked ? it.skip : it;
+var skipMockAndBrowser = suite.isBrowser ? it.skip : (suite.isMocked ? it.skip : it);
 
 describe('exponentialretrypolicyfilter-tests', function () {
   before(function (done) {
@@ -55,7 +61,7 @@ describe('exponentialretrypolicyfilter-tests', function () {
     }
     suite.setupSuite(function () {
       exponentialRetryPolicyFilter = new ExponentialRetryPolicyFilter();
-      tableService = azure.createTableService().withFilter(exponentialRetryPolicyFilter);
+      tableService = azure.createTableService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(exponentialRetryPolicyFilter);
       done();
     });
   });
@@ -166,8 +172,8 @@ describe('exponentialretrypolicyfilter-tests', function () {
     });
   });
 
-  runOrSkip('should NOT retry when the output stream is already sent', function(done) {
-    fileService = azure.createFileService().withFilter(exponentialRetryPolicyFilter);
+  skipMockAndBrowser('should NOT retry when the output stream is already sent', function(done) {
+    fileService = azure.createFileService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(exponentialRetryPolicyFilter);
     shareName = testutil.generateId(sharePrefix, shareNames, suite.isMocked);
     var fileName = testutil.generateId(filePrefix, fileNames, suite.isMocked);
     var localTempFileName = suite.getName('fileservice_test_retry');

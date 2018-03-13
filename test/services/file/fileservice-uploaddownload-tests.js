@@ -21,12 +21,16 @@ var path = require('path');
 
 // Lib includes
 var testutil = require('../../framework/util');
-var SR = testutil.libRequire('common/util/sr');
-var azureutil = testutil.libRequire('/common/util/util');
+var SR = require('../../../lib/common/util/sr');
+var azureutil = require('../../../lib/common/util/util');
 var TestSuite = require('../../framework/test-suite');
 
-var azure = testutil.libRequire('azure-storage');
-var rfs = testutil.libRequire('common/streams/readablefs');
+if (testutil.isBrowser()) {
+  var azure = AzureStorage.File;
+} else {
+  var azure = require('../../../');
+}
+var rfs = require('../../../lib/common/streams/readablefs');
 
 var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
@@ -49,6 +53,8 @@ var fileName;
 
 var suite = new TestSuite('fileservice-uploaddownload-tests');
 var runOrSkip = suite.isMocked ? it.skip : it;
+var skipBrowser = suite.isBrowser ? it.skip : it;
+var skipMockAndBrowser = suite.isBrowser ? it.skip : (suite.isMocked ? it.skip : it);
 
 function writeFile(fileName, content) {
   fs.writeFileSync(fileName, content);
@@ -101,7 +107,7 @@ describe('FileUploadDownload', function () {
       testutil.POLL_REQUEST_INTERVAL = 0;
     }
     suite.setupSuite(function () {
-      fileService = azure.createFileService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      fileService = azure.createFileService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
       done();
     });     
   });
@@ -139,7 +145,7 @@ describe('FileUploadDownload', function () {
   });
 
   describe('createWriteStream', function() {
-     runOrSkip('existing file', function (done) {
+    skipMockAndBrowser('existing file', function (done) {
       var fileBuffer = new Buffer( 5 * 1024 * 1024 );
       fileBuffer.fill(1);
 
@@ -162,7 +168,7 @@ describe('FileUploadDownload', function () {
       });
     });
 
-    runOrSkip('new file', function (done) {
+    skipMockAndBrowser('new file', function (done) {
       var fileBuffer = new Buffer( 6 * 1024 * 1024 );
       fileBuffer.fill(1);
 
@@ -182,7 +188,7 @@ describe('FileUploadDownload', function () {
       });
     });
 
-    runOrSkip('store the MD5 on the server', function (done) {
+    skipMockAndBrowser('store the MD5 on the server', function (done) {
       var fileBuffer = new Buffer( 3 * 1024 * 1024 );
       fileBuffer.fill(1);
 
@@ -205,7 +211,7 @@ describe('FileUploadDownload', function () {
       });
     });
 
-    it('should emit error events', function (done) {
+    skipBrowser('should emit error events', function (done) {
       var fileText = "Hello, world!"
       writeFile(localFileName, fileText);
 
@@ -222,7 +228,7 @@ describe('FileUploadDownload', function () {
   });
 
   describe('createReadStream', function() {
-    runOrSkip('download file', function (done) {
+    skipMockAndBrowser('download file', function (done) {
       var sourceFileNameTarget = testutil.generateId('getFileSourceFile', [], suite.isMocked) + '.test';
       var destinationFileNameTarget = testutil.generateId('getFileDestinationFile', [], suite.isMocked) + '.test';
 
@@ -257,7 +263,7 @@ describe('FileUploadDownload', function () {
       });
     });
     
-    it('should emit error events', function (done) {
+    skipBrowser('should emit error events', function (done) {
       var stream = fileService.createReadStream(shareName, directoryName, fileName);
       stream.on('error', function (error) {
         assert.equal(error.code, 'NotFound');
@@ -310,7 +316,7 @@ describe('FileUploadDownload', function () {
   });
 
   describe('createRangesFromStream', function() {
-    it('should work', function (done) {
+    skipBrowser('should work', function (done) {
       var fileText = "createRangesFromStreamText";
       var fileMD5 = writeFile(localFileName, fileText);
 
@@ -333,7 +339,7 @@ describe('FileUploadDownload', function () {
        });
     });
 
-    it('should work with transactional MD5', function (done) {
+    skipBrowser('should work with transactional MD5', function (done) {
       var fileText = "createRangesFromStreamText";
       var fileMD5 = writeFile(localFileName, fileText);
 
@@ -362,7 +368,7 @@ describe('FileUploadDownload', function () {
       });
     });
 
-    it('should work with MD5', function (done) {
+    skipBrowser('should work with MD5', function (done) {
       var fileText = "createRangesFromStreamText";
       var fileMD5 = writeFile(localFileName, fileText);
       
@@ -393,7 +399,7 @@ describe('FileUploadDownload', function () {
   });
 
   describe('clearRange', function() {
-    it('should work', function (done) {
+    skipBrowser('should work', function (done) {
       var buffer = new Buffer(512);
       buffer.fill(0);
       buffer[0] = '1';
@@ -420,7 +426,7 @@ describe('FileUploadDownload', function () {
       });
     });
 
-    it('multiple ranges', function (done) {
+    skipBrowser('multiple ranges', function (done) {
       var buffer = new Buffer(1024);
       buffer.fill(0);
       buffer[0] = '1';
@@ -451,7 +457,7 @@ describe('FileUploadDownload', function () {
   });
 
   describe('listRanges', function() {
-    it('should work', function (done) {
+    skipBrowser('should work', function (done) {
       var buffer = new Buffer(512);
       buffer.fill(0);
       buffer[0] = '1';
@@ -492,7 +498,7 @@ describe('FileUploadDownload', function () {
       });
     });
 
-    it('multiple discrete ranges', function (done) {
+    skipBrowser('multiple discrete ranges', function (done) {
       var buffer = new Buffer(512);
       buffer.fill(0);
       buffer[0] = '1';
@@ -528,7 +534,7 @@ describe('FileUploadDownload', function () {
   describe('getFileToLocalFile', function() {
     var fileText = "Hello world!";
 
-    it('should work with basic file', function(done) {
+    skipBrowser('should work with basic file', function(done) {
       writeFile(localFileName, fileText);
       fileService.createFileFromLocalFile(shareName, directoryName, fileName, localFileName, function (err) {
         assert.equal(err, null);
@@ -550,7 +556,7 @@ describe('FileUploadDownload', function () {
       });
     });
     
-    it('should skip the size check', function(done) {
+    skipBrowser('should skip the size check', function(done) {
       writeFile(localFileName, fileText);
       fileService.createFileFromLocalFile(shareName, directoryName, fileName, localFileName, function (err) {
         assert.equal(err, null);
@@ -593,7 +599,7 @@ describe('FileUploadDownload', function () {
       });
     });
 
-    runOrSkip('should work with file range', function(done) {
+    skipMockAndBrowser('should work with file range', function(done) {
       var size = 99*1024*1024; // Do not use a multiple of 4MB size
       var rangeStart = 100;
       var rangeEnd = size - 200;
@@ -614,7 +620,7 @@ describe('FileUploadDownload', function () {
       });
     });
 
-    runOrSkip('should return speedSummary correctly', function(done) {
+    skipMockAndBrowser('should return speedSummary correctly', function(done) {
       var size = 99*1024*1024; // Do not use a multiple of 4MB size
       generateTempFile(localLargeFileName, size, false, function (fileInfo) {
         var uploadOptions = {
@@ -646,7 +652,7 @@ describe('FileUploadDownload', function () {
       });
     });
 
-    it('should calculate content md5', function(done) {
+    skipBrowser('should calculate content md5', function(done) {
       fileContentMD5 = writeFile(localFileName, fileText);
       fileService.createFileFromLocalFile(shareName, directoryName, fileName, localFileName, {storeFileContentMD5: true}, function (err) {
         assert.equal(err, null);        
@@ -666,7 +672,7 @@ describe('FileUploadDownload', function () {
       });
     });
     
-    it('should download a file to a local file in chunks', function (done) {
+    skipBrowser('should download a file to a local file in chunks', function (done) {
       var buffer = new Buffer(4 * 1024 * 1024 + 512); // Don't be a multiple of 4MB to cover more scenarios
       var originLimit = fileService.singleFileThresholdInBytes;
       buffer.fill(0);
@@ -688,7 +694,7 @@ describe('FileUploadDownload', function () {
   describe('getFileToStream', function() {
     var fileText = "Hello world!";
 
-    it('should work with basic stream', function (done) {
+    skipBrowser('should work with basic stream', function (done) {
       fileContentMD5 = writeFile(localFileName, fileText);
       var stream = rfs.createReadStream(localFileName);
       fileService.createFileFromStream(shareName, directoryName, fileName, stream, fileText.length, function (uploadError, file, uploadResponse) {
@@ -715,7 +721,7 @@ describe('FileUploadDownload', function () {
       });
     });
     
-    it('should skip the size check', function (done) {
+    skipBrowser('should skip the size check', function (done) {
       fileContentMD5 = writeFile(localFileName, fileText);
       var stream = rfs.createReadStream(localFileName);
       fileService.createFileFromStream(shareName, directoryName, fileName, stream, fileText.length, function (uploadError, file, uploadResponse) {
@@ -763,7 +769,7 @@ describe('FileUploadDownload', function () {
       });
     });
 
-    runOrSkip('should NOT write error message to destination stream', function (done) {
+    skipMockAndBrowser('should NOT write error message to destination stream', function (done) {
       var downloadFileName = testutil.generateId('getFileToStream', [], suite.isMocked) + '.test';
       try { fs.unlinkSync(downloadFileName); } catch (e) {}
       fileService.getFileToStream(shareName, '', fileName, fs.createWriteStream(downloadFileName), {skipSizeCheck: true}, function (downloadErr, file, downloadResponse) {
@@ -774,7 +780,7 @@ describe('FileUploadDownload', function () {
       });
     });
 
-    runOrSkip('should work with range', function (done) {
+    skipMockAndBrowser('should work with range', function (done) {
       var size = 99*1024*1024; // Do not use a multiple of 4MB size
       var rangeStart = 100;
       var rangeEnd = size - 200;
@@ -805,7 +811,7 @@ describe('FileUploadDownload', function () {
       });
     });
 
-    it('should calculate content md5', function(done) {
+    skipBrowser('should calculate content md5', function(done) {
       fileContentMD5 = writeFile(localFileName, fileText);
       var stream = rfs.createReadStream(localFileName);
       fileService.createFileFromStream(shareName, directoryName, fileName, stream, fileText.length, {storeFileContentMD5: true}, function (uploadError, file, uploadResponse) {
@@ -936,256 +942,258 @@ describe('FileUploadDownload', function () {
     });
   });
 
-  describe('createFileFromFile', function() {
-    var fileText = 'Hello World!';
-    var zeroFileContentMD5;
-    var fileContentMD5;
-    before(function (done) {
-      fileContentMD5 = writeFile(localFileName, fileText);
-      var zeroBuffer = new Buffer(0);
-      zeroFileContentMD5 = writeFile(zeroSizeFileName, zeroBuffer);
-      done();
-    });
-
-    afterEach(function (done) {
-      fileService.deleteFileIfExists(shareName, directoryName, fileName, function (err) {
-        assert.equal(err, null);
+  if (!azureutil.isBrowser()) {
+    describe('createFileFromFile', function() {
+      var fileText = 'Hello World!';
+      var zeroFileContentMD5;
+      var fileContentMD5;
+      before(function (done) {
+        fileContentMD5 = writeFile(localFileName, fileText);
+        var zeroBuffer = new Buffer(0);
+        zeroFileContentMD5 = writeFile(zeroSizeFileName, zeroBuffer);
         done();
       });
-    });
-
-    it('should work with basic file', function(done) {
-      fileService.createFileFromLocalFile(shareName, directoryName, fileName, localFileName, function (err, file) {
-        assert.equal(err, null);
-        assert.equal(file.share, shareName);
-        assert.equal(file.directory, directoryName);
-        assert.equal(file.name, fileName);
-
-        fileService.getFileProperties(shareName, directoryName, fileName, function (err, file) {
-          assert.equal(file.contentSettings, undefined);
-
-          fileService.getFileToText(shareName, directoryName, fileName, function (downloadErr, fileTextResponse) {
-            assert.equal(downloadErr, null);
-            assert.equal(fileTextResponse, fileText);
-            done();
-          });
-        });
-      });
-    });
-
-    it('should work with speed summary', function(done) {
-      var speedSummary = fileService.createFileFromLocalFile(shareName, directoryName, fileName, localFileName, function (err) {
-        assert.equal(err, null);
-
-        fileService.getFileProperties(shareName, directoryName, fileName, function (err1, file) {
-          assert.equal(err1, null);
-          assert.equal(file.contentSettings, undefined);
-          assert.equal(speedSummary.getTotalSize(false), fileText.length);
-          assert.equal(speedSummary.getCompleteSize(false), fileText.length);
-          assert.equal(speedSummary.getCompletePercent(), '100.0');
-          done();
-        });
-      });
-    });
-
-    it('should set content md5', function(done) {
-      var options = {
-        storeFileContentMD5 : true,
-        useTransactionalMD5 : true
-      };
-
-      fileService.createFileFromLocalFile(shareName, directoryName, fileName, localFileName, options, function (err) {
-        assert.equal(err, null);
-
-        fileService.getFileProperties(shareName, directoryName, fileName, function (getErr, file) {
-          assert.equal(getErr, null);
-          assert.equal(file.contentSettings.contentMD5, fileContentMD5);
-          done();
-        });
-      });
-    });
-
-    it('should overwrite the existing file', function(done) {
-      fileService.createFileFromText(shareName, directoryName, fileName, 'garbage', function (err) {
-        assert.equal(err, null);
-        fileService.createFileFromLocalFile(shareName, directoryName, fileName, localFileName, function (err) {
+  
+      afterEach(function (done) {
+        fileService.deleteFileIfExists(shareName, directoryName, fileName, function (err) {
           assert.equal(err, null);
-
-          fileService.getFileToText(shareName, directoryName, fileName, function (downloadErr, fileTextResponse) {
-            assert.equal(downloadErr, null);
-            assert.equal(fileTextResponse, fileText);
+          done();
+        });
+      });
+  
+      skipBrowser('should work with basic file', function(done) {
+        fileService.createFileFromLocalFile(shareName, directoryName, fileName, localFileName, function (err, file) {
+          assert.equal(err, null);
+          assert.equal(file.share, shareName);
+          assert.equal(file.directory, directoryName);
+          assert.equal(file.name, fileName);
+  
+          fileService.getFileProperties(shareName, directoryName, fileName, function (err, file) {
+            assert.equal(file.contentSettings, undefined);
+  
+            fileService.getFileToText(shareName, directoryName, fileName, function (downloadErr, fileTextResponse) {
+              assert.equal(downloadErr, null);
+              assert.equal(fileTextResponse, fileText);
+              done();
+            });
+          });
+        });
+      });
+  
+      skipBrowser('should work with speed summary', function(done) {
+        var speedSummary = fileService.createFileFromLocalFile(shareName, directoryName, fileName, localFileName, function (err) {
+          assert.equal(err, null);
+  
+          fileService.getFileProperties(shareName, directoryName, fileName, function (err1, file) {
+            assert.equal(err1, null);
+            assert.equal(file.contentSettings, undefined);
+            assert.equal(speedSummary.getTotalSize(false), fileText.length);
+            assert.equal(speedSummary.getCompleteSize(false), fileText.length);
+            assert.equal(speedSummary.getCompletePercent(), '100.0');
             done();
           });
         });
       });
-    });
-
-    it('should work with content type', function (done) {
-      var fileOptions = { contentSettings: { contentType: 'text' }};
-      fileService.createFileFromLocalFile(shareName, directoryName, fileName, localFileName, fileOptions, function (uploadError, fileResponse, uploadResponse) {
-        assert.equal(uploadError, null);
-        assert.notEqual(fileResponse, null);
-        assert.ok(uploadResponse.isSuccessful);
-
-        fileService.getFileProperties(shareName, directoryName, fileName, function (getFilePropertiesErr, fileGetResponse) {
-          assert.equal(getFilePropertiesErr, null);
-          assert.notEqual(fileGetResponse, null);
-          assert.equal(fileOptions.contentSettings.contentType, fileGetResponse.contentSettings.contentType);
-          done();
-        });
-      });
-    });
-
-    it('should work with zero size file', function(done) {
-      var fileOptions = {storeFileContentMD5: true};
-      fileService.createFileFromLocalFile(shareName, directoryName, fileName, zeroSizeFileName, fileOptions, function (err1) {
-        assert.equal(err1, null);
-
-        fileService.getFileProperties(shareName, directoryName, fileName, function (err2, file) {
-          assert.equal(err2, null);
-          assert.equal(file.contentLength, 0);
-          assert.equal(file.contentSettings.contentMD5, zeroFileContentMD5);
-          done();
-        });
-      });
-    });
-
-    it('should work with not existing file', function(done) {
-      fileService.createFileFromLocalFile(shareName, directoryName, fileName, notExistFileName, function (err) {
-        assert.notEqual(err, null);
-        assert.equal(path.basename(err.path), notExistFileName);
-
-        fileService.doesFileExist(shareName, directoryName, fileName, function (existsErr, existsResult) {
-          assert.equal(existsErr, null);
-          assert.equal(existsResult.exists, false);
-          done();
-        });
-      });
-    });
-  });
-
-  describe('createFileFromStream', function() {
-    var fileText = 'Hello World!';
-    var zeroFileContentMD5;
-    var fileContentMD5;
-    var len;
-    var stream;
-
-    before(function (done) {
-      fileContentMD5 = writeFile(localFileName, fileText);
-      var zeroBuffer = new Buffer(0);
-      zeroFileContentMD5 = writeFile(zeroSizeFileName, zeroBuffer);
-      done();
-    });
-
-    beforeEach(function (done) {
-      len = Buffer.byteLength(fileText);
-      stream = rfs.createReadStream(localFileName);
-      done();
-    });
-
-    afterEach(function (done) {
-      fileService.deleteFileIfExists(shareName, directoryName, fileName, function(error) {
-        done();
-      });
-    });
-
-    it('should work with basic stream', function(done) {   
-      var stream = rfs.createReadStream(localFileName);   
-      fileService.createFileFromStream(shareName, directoryName, fileName, stream, fileText.length, function (err, file) { 
-        assert.equal(err, null);
-        assert.equal(file.share, shareName);
-        assert.equal(file.directory, directoryName);
-        assert.equal(file.name, fileName);
-
-        fileService.getFileProperties(shareName, directoryName, fileName, function (err1, file) {
-          assert.equal(err1, null);
-          assert.equal(file.contentSettings, undefined);
-
-          fileService.getFileToText(shareName, directoryName, fileName, function (downloadErr, fileTextResponse) {
-            assert.equal(downloadErr, null);
-            assert.equal(fileTextResponse, fileText);
+  
+      skipBrowser('should set content md5', function(done) {
+        var options = {
+          storeFileContentMD5 : true,
+          useTransactionalMD5 : true
+        };
+  
+        fileService.createFileFromLocalFile(shareName, directoryName, fileName, localFileName, options, function (err) {
+          assert.equal(err, null);
+  
+          fileService.getFileProperties(shareName, directoryName, fileName, function (getErr, file) {
+            assert.equal(getErr, null);
+            assert.equal(file.contentSettings.contentMD5, fileContentMD5);
             done();
           });
         });
       });
-    });
-
-    it('should work with contentMD5 in options', function(done) {
-      var options = {
-        contentSettings: {
-          contentMD5: fileContentMD5
-        }
-      };
-
-      fileService.createFileFromStream(shareName, directoryName, fileName, stream, len, options, function (err) {
-        assert.equal(err, null);
-        fileService.getFileProperties(shareName, directoryName, fileName, function (err, file) {
-          assert.equal(file.contentSettings.contentMD5, fileContentMD5);
-          done();
+  
+      skipBrowser('should overwrite the existing file', function(done) {
+        fileService.createFileFromText(shareName, directoryName, fileName, 'garbage', function (err) {
+          assert.equal(err, null);
+          fileService.createFileFromLocalFile(shareName, directoryName, fileName, localFileName, function (err) {
+            assert.equal(err, null);
+  
+            fileService.getFileToText(shareName, directoryName, fileName, function (downloadErr, fileTextResponse) {
+              assert.equal(downloadErr, null);
+              assert.equal(fileTextResponse, fileText);
+              done();
+            });
+          });
         });
       });
-    });
-
-    it('should work with the speed summary in options', function(done) {
-      var speedSummary = new azure.FileService.SpeedSummary();
-      var options = {
-        speedSummary : speedSummary
-      };
-
-      fileService.createFileFromStream(shareName, directoryName, fileName, stream, len, options, function (err) {
-        assert.equal(err, null);
-        assert.equal(speedSummary.getTotalSize(false), Buffer.byteLength(fileText));
-        assert.equal(speedSummary.getCompleteSize(false), Buffer.byteLength(fileText));
-        assert.equal(speedSummary.getCompletePercent(), '100.0');
-        done();
-      });
-    });
-
-    it('should work with content type', function (done) {
-      var fileOptions = { contentSettings: { contentType: 'text' }};
-
-      fileService.createFileFromStream(shareName, directoryName, fileName, rfs.createReadStream(localFileName), fileText.length, fileOptions, function (uploadError, fileResponse, uploadResponse) {
-        assert.equal(uploadError, null);
-        assert.notEqual(fileResponse, null);
-        assert.ok(uploadResponse.isSuccessful);
-
-        fileService.getFileToText(shareName, directoryName, fileName, function (downloadErr, fileTextResponse) {
-          assert.equal(downloadErr, null);
-          assert.equal(fileTextResponse, fileText);
-
+  
+      skipBrowser('should work with content type', function (done) {
+        var fileOptions = { contentSettings: { contentType: 'text' }};
+        fileService.createFileFromLocalFile(shareName, directoryName, fileName, localFileName, fileOptions, function (uploadError, fileResponse, uploadResponse) {
+          assert.equal(uploadError, null);
+          assert.notEqual(fileResponse, null);
+          assert.ok(uploadResponse.isSuccessful);
+  
           fileService.getFileProperties(shareName, directoryName, fileName, function (getFilePropertiesErr, fileGetResponse) {
             assert.equal(getFilePropertiesErr, null);
             assert.notEqual(fileGetResponse, null);
             assert.equal(fileOptions.contentSettings.contentType, fileGetResponse.contentSettings.contentType);
-
+            done();
+          });
+        });
+      });
+  
+      skipBrowser('should work with zero size file', function(done) {
+        var fileOptions = {storeFileContentMD5: true};
+        fileService.createFileFromLocalFile(shareName, directoryName, fileName, zeroSizeFileName, fileOptions, function (err1) {
+          assert.equal(err1, null);
+  
+          fileService.getFileProperties(shareName, directoryName, fileName, function (err2, file) {
+            assert.equal(err2, null);
+            assert.equal(file.contentLength, 0);
+            assert.equal(file.contentSettings.contentMD5, zeroFileContentMD5);
+            done();
+          });
+        });
+      });
+  
+      skipBrowser('should work with not existing file', function(done) {
+        fileService.createFileFromLocalFile(shareName, directoryName, fileName, notExistFileName, function (err) {
+          assert.notEqual(err, null);
+          assert.equal(path.basename(err.path), notExistFileName);
+  
+          fileService.doesFileExist(shareName, directoryName, fileName, function (existsErr, existsResult) {
+            assert.equal(existsErr, null);
+            assert.equal(existsResult.exists, false);
             done();
           });
         });
       });
     });
-
-    runOrSkip('should work with parallelOperationsThreadCount in options', function(done) {
-      var options = { parallelOperationThreadCount : 4 };
-      var buffer = new Buffer(65 * 1024 * 1024);
-      buffer.fill(0);
-      buffer[0] = '1';
-      writeFile(localFileName, buffer);
-      var stream = rfs.createReadStream(localFileName);
-      
-      fileService.createFileFromStream(shareName, directoryName, fileName, stream, buffer.length, options, function (err) {
-        assert.equal(err, null);
-
-        fileService.getFileProperties(shareName, directoryName, fileName, function (getFilePropertiesErr, fileGetResponse) {
-          assert.equal(getFilePropertiesErr, null);
-          assert.notEqual(fileGetResponse, null);
-          assert.equal(fileGetResponse.contentLength, buffer.length);
-
+  
+    describe('createFileFromStream', function() {
+      var fileText = 'Hello World!';
+      var zeroFileContentMD5;
+      var fileContentMD5;
+      var len;
+      var stream;
+  
+      before(function (done) {
+        fileContentMD5 = writeFile(localFileName, fileText);
+        var zeroBuffer = new Buffer(0);
+        zeroFileContentMD5 = writeFile(zeroSizeFileName, zeroBuffer);
+        done();
+      });
+  
+      beforeEach(function (done) {
+        len = Buffer.byteLength(fileText);
+        stream = rfs.createReadStream(localFileName);
+        done();
+      });
+  
+      afterEach(function (done) {
+        fileService.deleteFileIfExists(shareName, directoryName, fileName, function(error) {
           done();
         });
       });
+  
+      skipBrowser('should work with basic stream', function(done) {   
+        var stream = rfs.createReadStream(localFileName);   
+        fileService.createFileFromStream(shareName, directoryName, fileName, stream, fileText.length, function (err, file) { 
+          assert.equal(err, null);
+          assert.equal(file.share, shareName);
+          assert.equal(file.directory, directoryName);
+          assert.equal(file.name, fileName);
+  
+          fileService.getFileProperties(shareName, directoryName, fileName, function (err1, file) {
+            assert.equal(err1, null);
+            assert.equal(file.contentSettings, undefined);
+  
+            fileService.getFileToText(shareName, directoryName, fileName, function (downloadErr, fileTextResponse) {
+              assert.equal(downloadErr, null);
+              assert.equal(fileTextResponse, fileText);
+              done();
+            });
+          });
+        });
+      });
+  
+      skipBrowser('should work with contentMD5 in options', function(done) {
+        var options = {
+          contentSettings: {
+            contentMD5: fileContentMD5
+          }
+        };
+  
+        fileService.createFileFromStream(shareName, directoryName, fileName, stream, len, options, function (err) {
+          assert.equal(err, null);
+          fileService.getFileProperties(shareName, directoryName, fileName, function (err, file) {
+            assert.equal(file.contentSettings.contentMD5, fileContentMD5);
+            done();
+          });
+        });
+      });
+  
+      skipBrowser('should work with the speed summary in options', function(done) {
+        var speedSummary = new azure.FileService.SpeedSummary();
+        var options = {
+          speedSummary : speedSummary
+        };
+  
+        fileService.createFileFromStream(shareName, directoryName, fileName, stream, len, options, function (err) {
+          assert.equal(err, null);
+          assert.equal(speedSummary.getTotalSize(false), Buffer.byteLength(fileText));
+          assert.equal(speedSummary.getCompleteSize(false), Buffer.byteLength(fileText));
+          assert.equal(speedSummary.getCompletePercent(), '100.0');
+          done();
+        });
+      });
+  
+      skipBrowser('should work with content type', function (done) {
+        var fileOptions = { contentSettings: { contentType: 'text' }};
+  
+        fileService.createFileFromStream(shareName, directoryName, fileName, rfs.createReadStream(localFileName), fileText.length, fileOptions, function (uploadError, fileResponse, uploadResponse) {
+          assert.equal(uploadError, null);
+          assert.notEqual(fileResponse, null);
+          assert.ok(uploadResponse.isSuccessful);
+  
+          fileService.getFileToText(shareName, directoryName, fileName, function (downloadErr, fileTextResponse) {
+            assert.equal(downloadErr, null);
+            assert.equal(fileTextResponse, fileText);
+  
+            fileService.getFileProperties(shareName, directoryName, fileName, function (getFilePropertiesErr, fileGetResponse) {
+              assert.equal(getFilePropertiesErr, null);
+              assert.notEqual(fileGetResponse, null);
+              assert.equal(fileOptions.contentSettings.contentType, fileGetResponse.contentSettings.contentType);
+  
+              done();
+            });
+          });
+        });
+      });
+  
+      skipMockAndBrowser('should work with parallelOperationsThreadCount in options', function(done) {
+        var options = { parallelOperationThreadCount : 4 };
+        var buffer = new Buffer(65 * 1024 * 1024);
+        buffer.fill(0);
+        buffer[0] = '1';
+        writeFile(localFileName, buffer);
+        var stream = rfs.createReadStream(localFileName);
+        
+        fileService.createFileFromStream(shareName, directoryName, fileName, stream, buffer.length, options, function (err) {
+          assert.equal(err, null);
+  
+          fileService.getFileProperties(shareName, directoryName, fileName, function (getFilePropertiesErr, fileGetResponse) {
+            assert.equal(getFilePropertiesErr, null);
+            assert.notEqual(fileGetResponse, null);
+            assert.equal(fileGetResponse.contentLength, buffer.length);
+  
+            done();
+          });
+        });
+      });
     });
-  });
+  }
 
   describe('MD5Validation', function() {
     var callback = function (webresource) {
@@ -1194,7 +1202,7 @@ describe('FileUploadDownload', function () {
       }
     };
 
-    runOrSkip('storeFileContentMD5/useTransactionalMD5 on file', function (done) {
+    skipMockAndBrowser('storeFileContentMD5/useTransactionalMD5 on file', function (done) {
       var fileBuffer = new Buffer(5 * 1024 * 1024);
       fileBuffer.fill(0);
       fileBuffer[0] = '1';
@@ -1225,7 +1233,7 @@ describe('FileUploadDownload', function () {
       });
     });
     
-    it('storeFileContentMD5/useTransactionalMD5 with streams/ranges', function (done) {
+    skipBrowser('storeFileContentMD5/useTransactionalMD5 with streams/ranges', function (done) {
       var fileBuffer = new Buffer(5 * 1024 * 1024);
       fileBuffer.fill(0);
       fileBuffer[0] = '1';
@@ -1280,7 +1288,7 @@ describe('FileUploadDownload', function () {
       });
     });
 
-    runOrSkip('disableContentMD5Validation', function (done) {
+    skipMockAndBrowser('disableContentMD5Validation', function (done) {
       var fileBuffer = new Buffer(5 * 1024 * 1024);
       fileBuffer.fill(0);
       fileBuffer[0] = '1';

@@ -18,12 +18,18 @@ var should = require('should');
 var assert = require('assert');
 
 var testutil = require('../framework/util');
-var HmacSha256Sign = testutil.libRequire('common/signing/hmacsha256sign');
-var azure = testutil.libRequire('azure-storage');
+var HmacSha256Sign = require('../../lib/common/signing/hmacsha256sign');
+if (testutil.isBrowser()) {
+  var azure = AzureStorage.Blob;
+} else {
+  var azure = require('../../');
+}
 var StorageServiceClient = azure.StorageServiceClient;
 
 var Constants = azure.Constants;
 var StorageServiceClientConstants = Constants.StorageServiceClientConstants;
+
+var skipBrowser = testutil.isBrowser() ? it.skip : it;
 
 describe('StorageServiceClientTests', function () {
 
@@ -47,7 +53,7 @@ describe('StorageServiceClientTests', function () {
     done();
   });
 
-  it('hmacsha256sign', function (done) {
+  skipBrowser('hmacsha256sign', function (done) {
     var hmacSha256Sign = new HmacSha256Sign('Buggy');
 
     var result = hmacSha256Sign.sign('DELETE\n\n0\n\n\n\n\n\n\n\n\nx-ms-date:Thu, 01 Aug 2013 13:49:05 GMTx-ms-version:2012-02-12\n/ciserversdk/cont1\nrestype:container');

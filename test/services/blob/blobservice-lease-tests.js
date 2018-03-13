@@ -17,7 +17,12 @@ var assert = require('assert');
 
 // Lib includes
 var testutil = require('../../framework/util');
-var azure = testutil.libRequire('azure-storage');
+if (testutil.isBrowser()) {
+  var azure = AzureStorage.Blob;
+} else {
+  var azure = require('../../../');
+}
+
 var TestSuite = require('../../framework/test-suite');
 
 var containerNamesPrefix = 'lease-cont-';
@@ -36,7 +41,7 @@ describe('BlobServiceLeasing', function () {
       testutil.POLL_REQUEST_INTERVAL = 0;
     }
     suite.setupSuite(function () {
-      blobService = azure.createBlobService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      blobService = azure.createBlobService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
       done();
     });
   });

@@ -17,10 +17,14 @@ var assert = require('assert');
 
 // Lib includes
 var testutil = require('../../framework/util');
-var SR = testutil.libRequire('common/util/sr');
+var SR = require('../../../lib/common/util/sr');
 var TestSuite = require('../../framework/test-suite');
 
-var azure = testutil.libRequire('azure-storage');
+if (testutil.isBrowser()) {
+  var azure = AzureStorage.File;
+} else {
+  var azure = require('../../../');
+}
 
 var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
@@ -33,7 +37,7 @@ describe('FileService', function () {
       testutil.POLL_REQUEST_INTERVAL = 0;
     }
     suite.setupSuite(function () {
-      fileService = azure.createFileService().withFilter(new azure.ExponentialRetryPolicyFilter());
+      fileService = azure.createFileService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
       done();
     });
   });
