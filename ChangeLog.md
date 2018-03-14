@@ -5,6 +5,7 @@ ALL
 * Fixed a TypeScript definition error that blobService.getUrl() misses snapshotId parameter.
 * Fixed a README.MD mistake in the FileService example.
 * Fixed an error in method comments of SharedKey.generateAccountSignedQueryString().
+* Improved JSDoc to clarify Node.js Writable and Readable stream.
 
 2018.03 Version 2.8.1
 
