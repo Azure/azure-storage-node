@@ -2,17 +2,21 @@
 
 * Join the community discussion on Slack! [![Slack](https://azurestorageslack.azurewebsites.net/badge.svg)]( https://azurestorageslack.azurewebsites.net) 
 
+## Downloading
+
+It's recommended to use the Azure Storage JavaScript Client Library provided by us. Please [download the latest library](https://aka.ms/downloadazurestoragejs).
+
 There are 8 generated JavaScript files for Azure Storage JavaScript Client Library:
 - `azure-storage.blob.js` and `azure-storage.blob.min.js` contain the Azure Storage blob service operation logic
 - `azure-storage.table.js` and `azure-storage.table.min.js` contain the Azure Storage table service operation logic
 - `azure-storage.queue.js` and `azure-storage.queue.min.js` contain the Azure Storage queue service operation logic
 - `azure-storage.file.js` and `azure-storage.file.min.js` contain the Azure Storage file service operation logic
 
-We also provide samples to guide you quickly start with the Azure Storage JavaScript Client Library. In the [JavaScript Client Library zip file](https://aka.ms/downloadazurestoragejs) or [azure-storage-node/browser/samples](samples), you will find 4 HTML samples:
-- `sample-blob.html` demonstrates how to operate with Azure Storage blob service in the browser
-- `sample-table.html` demonstrates how to operate with Azure Storage table service in the browser
-- `sample-queue.html` demonstrates how to operate with Azure Storage queue service in the browser
-- `sample-file.html` demonstrates how to operate with Azure Storage file service in the browser
+We also provide samples to guide you quickly start with the Azure Storage JavaScript Client Library. In the [JavaScript Client Library zip file](https://aka.ms/downloadazurestoragejs) or following online links, you will find 4 HTML samples:
+- [sample-blob.html](https://dmrelease.blob.core.windows.net/azurestoragejssample/samples/sample-blob.html) demonstrates how to operate with Azure Storage blob service in the browser
+- [sample-table.html](https://dmrelease.blob.core.windows.net/azurestoragejssample/samples/sample-table.html) demonstrates how to operate with Azure Storage table service in the browser
+- [sample-queue.html](https://dmrelease.blob.core.windows.net/azurestoragejssample/samples/sample-queue.html) demonstrates how to operate with Azure Storage queue service in the browser
+- [sample-file.html](https://dmrelease.blob.core.windows.net/azurestoragejssample/samples/sample-file.html) demonstrates how to operate with Azure Storage file service in the browser
 
 After generating the JavaScript Client Library, you can try the samples in browsers such as Chrome/Edge/Firefox directly.
 
