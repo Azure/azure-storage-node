@@ -9084,6 +9084,15 @@ declare module azurestorage {
         export function serialize(servicePropertiesJs: ServiceProperties): string;
         export function parse(servicePropertiesXml: any): ServiceProperties;
       }
+
+      module tokenCredential {
+        export class TokenCredential {
+          token: string;
+          constructor(token: string);
+          get(): string;
+          set(token: string): void;
+        }
+      }
     }
 
     module services {
@@ -9351,6 +9360,22 @@ declare module azurestorage {
   export function createBlobServiceWithSas(host: string|StorageHost, sasToken: string): BlobService;
 
   /**
+  * Creates a new {@link BlobService} object using the host Uri and the {@link TokenCredential} provided, which supports OAuth.
+  * 
+  * @param {string|object} host                         The host address. To define primary only, pass a string. 
+  *                                                     Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.
+  * @param {TokenCredential} token                      The TokenCredential object.
+  * @return {BlobService}                               A new BlobService object with the {@link TokenCredential} credentials.
+  *
+  * @example
+  * var azure = require('azure-storage');
+  * var tokenCredential = new azure.TokenCredential('myOAuthAccessToken');
+  * var blobService = azure.createBlobServiceWithTokenCredential('https://account.blob.core.windows.net', tokenCredential);
+  * tokenCredential.set('updatedOAuthAccessToken');
+  */
+  export function createBlobServiceWithTokenCredential(host: string|StorageHost, token: TokenCredential): BlobService;
+
+  /**
   * Creates a new {@link BlobService} object using the host uri and anonymous access.
   *
   * @param {string|object} host                         The host address. To define primary only, pass a string.
@@ -9422,8 +9447,24 @@ declare module azurestorage {
   * @param {string} sasToken                            The Shared Access Signature token.
   * @return {QueueService}                              A new QueueService object with the SAS credentials.
   */
-  export function createQueueServiceWithSas(hostUri: string | StorageHost, sasToken: string): QueueService;
+  export function createQueueServiceWithSas(host: string | StorageHost, sasToken: string): QueueService;
   
+  /**
+  * Creates a new {@link QueueService} object using the host Uri and the {@link TokenCredential} provided, which supports OAuth.
+  * 
+  * @param {string|object} host                         The host address. To define primary only, pass a string. 
+  *                                                     Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.
+  * @param {TokenCredential} token                      The TokenCredential object.
+  * @return {QueueService}                              A new QueueService object with the {@link TokenCredential} object.
+  *
+  * @example
+  * var azure = require('azure-storage');
+  * var tokenCredential = new azure.TokenCredential('myOAuthAccessToken');
+  * var queueService = azure.createQueueServiceWithTokenCredential('https://account.queue.core.windows.net', tokenCredential);
+  * tokenCredential.set('updatedOAuthAccessToken');
+  */
+  export function createQueueServiceWithTokenCredential(host: string | StorageHost, token: TokenCredential): QueueService;
+
   export function generateAccountSharedAccessSignature(storageAccountOrConnectionString: string, storageAccessKey: string, sharedAccessAccountPolicy: common.SharedAccessPolicy): string;
 
   interface StorageError extends Error {
@@ -9513,6 +9554,7 @@ declare module azurestorage {
   export import WebResource = common.http.webresource.WebResource;
   export import Validate = common.util.validate;
   export import date = common.util.date;
+  export import TokenCredential = common.models.tokenCredential.TokenCredential;
   export import LinearRetryPolicyFilter = common.filters.linearretrypolicyfilter.LinearRetryPolicyFilter;
   export import ExponentialRetryPolicyFilter = common.filters.exponentialretrypolicyfilter.ExponentialRetryPolicyFilter;
   export import RetryPolicyFilter = common.filters.retrypolicyfilter.RetryPolicyFilter;

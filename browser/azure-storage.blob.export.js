@@ -36,6 +36,10 @@ module.exports.createBlobServiceWithSas = function (host, sasToken) {
   return new BlobService(null, null, host, sasToken);
 };
 
+module.exports.createBlobServiceWithTokenCredential = function (host, tokenCredential) {
+  return new BlobService(null, null, host, null, null, tokenCredential);
+};
+
 module.exports.createBlobServiceAnonymous = function (host) {
   return new BlobService(null, null, host, null);
 };
@@ -62,6 +66,7 @@ module.exports.Logger = azureCommon.Logger;
 module.exports.WebResource = azureCommon.WebResource;
 module.exports.Validate = azureCommon.validate;
 module.exports.date = azureCommon.date;
+module.exports.TokenCredential = azureCommon.TokenCredential;
 
 // Other filters
 module.exports.LinearRetryPolicyFilter = azureCommon.LinearRetryPolicyFilter;
