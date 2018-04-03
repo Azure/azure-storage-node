@@ -37,6 +37,10 @@ module.exports.createQueueServiceWithSas = function(hostUri, sasToken) {
   return new QueueService(null, null, hostUri, sasToken);
 };
 
+module.exports.createQueueServiceWithTokenCredential = function (host, tokenCredential) {
+  return new QueueService(null, null, host, null, null, tokenCredential);
+};
+
 var azureCommon = require('../lib/common/common.browser');
 var StorageServiceClient = azureCommon.StorageServiceClient;
 var SharedKey = azureCommon.SharedKey;
@@ -59,6 +63,7 @@ module.exports.Logger = azureCommon.Logger;
 module.exports.WebResource = azureCommon.WebResource;
 module.exports.Validate = azureCommon.validate;
 module.exports.date = azureCommon.date;
+module.exports.TokenCredential = azureCommon.TokenCredential;
 
 // Other filters
 module.exports.LinearRetryPolicyFilter = azureCommon.LinearRetryPolicyFilter;

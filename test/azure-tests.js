@@ -109,10 +109,38 @@ describe('azure', function () {
     done();
   });
 
+  it('TokenCredential', function () {
+    assert.notEqual(azure.TokenCredential, null);
+  });
+
   it('Constants', function (done) {
     assert.notEqual(azure.Constants, null);
 
     done();
+  });
+
+  it('createBlobServiceWithTokenCredential', function () {
+    var token = new azure.TokenCredential('oauthtoken');
+    var blobServiceWithTokenCredential = azure.createBlobServiceWithTokenCredential('https://myaccount.blob.core.windows.net', token);
+
+    assert.strictEqual(blobServiceWithTokenCredential.token, token);
+    assert.strictEqual(blobServiceWithTokenCredential.storageCredentials.tokenCredential, token);
+    
+    token.set('renewed');
+    assert.strictEqual(blobServiceWithTokenCredential.token.get(), 'renewed');
+    assert.strictEqual(blobServiceWithTokenCredential.storageCredentials.tokenCredential.get(), 'renewed');
+  });
+
+  it('createQueueServiceWithTokenCredential', function () {
+    var token = new azure.TokenCredential('oauthtoken');
+    var queueServiceWithTokenCredential = azure.createQueueServiceWithTokenCredential('https://myaccount.queue.core.windows.net', token);
+
+    assert.strictEqual(queueServiceWithTokenCredential.token, token);
+    assert.strictEqual(queueServiceWithTokenCredential.storageCredentials.tokenCredential, token);
+    
+    token.set('renewed');
+    assert.strictEqual(queueServiceWithTokenCredential.token.get(), 'renewed');
+    assert.strictEqual(queueServiceWithTokenCredential.storageCredentials.tokenCredential.get(), 'renewed');
   });
 
   it('NotEmulatedExplicitCredentials', function (done) {
