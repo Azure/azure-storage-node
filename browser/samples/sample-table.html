@@ -62,8 +62,9 @@ var tableService = AzureStorage.Table.createTableServiceWithSas(tableUri, 'SAS_T
             </p>
             <div class="panel panel-primary"> 
                 <div class="panel-body">
-                    <b>How to get full detailed API definitions? </b> Currently, the JavaScript Client Library shares the same API definitions with Node.js SDK. 
-                    Please check API details on <a href="http://azure.github.io/azure-storage-node/">Azure Storage Node.js API reference documents</a>. The JavaScript global variable <code>AzureStorage.Table</code> is just like the object <code>require('azure-storage')</code> returns in Node.js.
+                    <b>How to get full detailed API definitions? </b> Currently, the JavaScript Client Library shares almost the same API definitions with Node.js SDK, besides Node.js runtime specific APIs. 
+                    Please check API details on <a href="http://azure.github.io/azure-storage-node/">Azure Storage API reference documents</a>. The JavaScript global variable <code>AzureStorage.Table</code> is just like the object <code>require('azure-storage')</code> returns in Node.js, but limits to Table related interfaces.
+                    Go to <a href="https://azure.github.io/azure-storage-node/TableService.html">TableService</a> to view possible methods provided by <code>TableService</code> class.
                 </div> 
             </div>
             <div class="panel panel-danger"> 
@@ -205,7 +206,7 @@ tableService.deleteEntity('mytable', deleteEntity, function(error, result, respo
                 <li>1. Setting CORS rules for your selected Azure-Storage account table service.</li>
                 <li>2. Including functional file(s) needed, such as "azure-storage.table.js" for table operation.</li>
                 <li>3. Using keyword "AzureStorage.Table" to access to Azure storage JavaScript APIs for tables.</li>
-                <li>4. Referring to <a href="http://azure.github.io/azure-storage-node/">Azure Storage Node.js SDK documents</a> for detailed API definitions which keep same with JavaScript APIs.</li>
+                <li>4. Referring to <a href="http://azure.github.io/azure-storage-node/">API documents</a> for detailed API definitions.</li>
             </ul>
             <p> You can view the source code of this sample for detailed reference. </p>
         </div>
