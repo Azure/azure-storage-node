@@ -511,7 +511,7 @@ On Linux, please use `export` other than `set` to set the variables.
 
 # Azure Storage JavaScript Client Library for Browsers
 
-* JavaScript Client Library is currently in Preview. Questions and feedback are welcome in our [Slack channel](https://azurestorageslack.azurewebsites.net).
+* Questions and feedback are welcome in our [Slack channel](https://azurestorageslack.azurewebsites.net).
 
 Azure Storage Node.js Client Library is compatible with [Browserify](http://browserify.org/). This means you can bundle your Node.js application which depends on the Node.js Client Library using Browserify.
 

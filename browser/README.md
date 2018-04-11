@@ -38,11 +38,7 @@ Above JavaScript files are all [UMD compatible](https://github.com/umdjs/umd). Y
 
 ## Compatibility
 
-Compatibility with mobile browsers have not been fully validated, please open issues when you get errors. Latest validated browser versions are as below:
-
-| Chrome     | Firefox  | Internet Explorer  | Microsoft Edge  |
-|------------|----------|--------------------|-----------------|
-| v64        | v58      | v11                | v41             |
+Compatibility with mobile browsers have not been fully validated, please open issues when you get errors.
 
 ## Generating a Custom Azure Storage JavaScript Client Library
 
