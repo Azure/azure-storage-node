@@ -20,7 +20,7 @@ We also provide samples to guide you quickly start with the Azure Storage JavaSc
 
 After generating the JavaScript Client Library, you can try the samples in browsers such as Chrome/Edge/Firefox directly.
 
-**Note**: An HTTP server should be set to host the samples for IE browser.
+**Note**: An HTTP server should be set to host the samples for IE11 and latest Chrome.
 
 Or you can directly try with following online samples:
 - [sample-blob](https://dmrelease.blob.core.windows.net/azurestoragejssample/samples/sample-blob.html)
