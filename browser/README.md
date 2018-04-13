@@ -20,7 +20,7 @@ We also provide samples to guide you quickly start with the Azure Storage JavaSc
 
 After generating the JavaScript Client Library, you can try the samples in browsers such as Chrome/Edge/Firefox directly.
 
-**Note**: An HTTP server should be set to host the samples for IE11 and latest Chrome.
+**Note**: An HTTP server should be set to host the samples for IE11 and Chrome (56 or newer versions).
 
 Or you can directly try with following online samples:
 - [sample-blob](https://dmrelease.blob.core.windows.net/azurestoragejssample/samples/sample-blob.html)
@@ -39,6 +39,16 @@ Above JavaScript files are all [UMD compatible](https://github.com/umdjs/umd). Y
 ## Compatibility
 
 Compatibility with mobile browsers have not been fully validated, please open issues when you get errors.
+
+# Running Tests against Browsers
+
+Running tests against Chrome by default. The Storage Account should be configured with CORS support before running test. Please see above online samples about how to configure CORS rules for an account.
+
+```
+set AZURE_STORAGE_CONNECTION_STRING="valid storage connection string"
+npm install
+npm run jstest
+```
 
 ## Generating a Custom Azure Storage JavaScript Client Library
 
