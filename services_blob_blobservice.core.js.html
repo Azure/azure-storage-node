@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Microsoft Azure Storage Client Library for node.js Source: services/blob/blobservice.core.js</title>
+	<title>Microsoft Azure Storage Client Library for Node.js and JavaScript Source: services/blob/blobservice.core.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -20,7 +20,7 @@
 <div class="navbar navbar-default navbar-fixed-top navbar-inverse">
 <div class="container">
 	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Microsoft Azure Storage Client Library for node.js</a>
+		<a class="navbar-brand" href="index.html">Microsoft Azure Storage Client Library for Node.js and JavaScript</a>
 		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
@@ -1711,7 +1711,7 @@ BlobService.prototype.setBlobMetadata = function (container, blob, metadata, opt
 * @param {errorOrResult}      callback                                    `error` will contain information if an error occurs; 
 *                                                                         otherwise `[result]{@link BlobResult}` will contain the blob information.
 *                                                                         `response` will contain information related to this operation.
-* @return {Stream}
+* @return {Readable}                                                      A Node.js Readable stream.
 * @example
 * var azure = require('azure-storage');
 * var blobService = azure.createBlobService();
@@ -1748,7 +1748,7 @@ BlobService.prototype.createReadStream = function (container, blob, optionsOrCal
 * @this {BlobService}
 * @param {string}             container                                   The container name.
 * @param {string}             blob                                        The blob name.
-* @param {Stream}             writeStream                                 The write stream.
+* @param {Writable}           writeStream                                 The Node.js Writable stream.
 * @param {object}             [options]                                   The request options.
 * @param {boolean}            [options.skipSizeCheck]                     Skip the size check to perform direct download.
 *                                                                         Set the option to true for small blobs.
@@ -2421,7 +2421,7 @@ BlobService.prototype.generateSharedAccessSignature = function (container, blob,
 * @param {string}                   [blob]                   The blob name.
 * @param {string}                   [sasToken]               The Shared Access Signature token.
 * @param {boolean}                  [primary]                A boolean representing whether to use the primary or the secondary endpoint.
-* @param {boolean}                  [snapshotId]             The snapshot identifier.
+* @param {string}                   [snapshotId]             The snapshot identifier.
 * @return {string}                                           The formatted URL string.
 * @example
 * var azure = require('azure-storage');
@@ -2626,7 +2626,7 @@ BlobService.prototype.createPageBlobFromStream = function (container, blob, stre
 *                                                                           if an error occurs; otherwise `[result]{@link BlobResult}` will contain
 *                                                                           the blob information.
 *                                                                           `response` will contain information related to this operation.
-* @return {Stream}
+* @return {Writable}                                                        A Node.js Writable stream.
 * @example
 * var azure = require('azure-storage');
 * var blobService = azure.createBlobService();
@@ -2678,7 +2678,7 @@ BlobService.prototype.createWriteStreamToExistingPageBlob = function (container,
 *                                                                           if an error occurs; otherwise `[result]{@link BlobResult}` will contain
 *                                                                           the blob information.
 *                                                                           `response` will contain information related to this operation.
-* @return {Stream}
+* @return {Writable}                                                        A Node.js Writable stream.
 * @example
 * var azure = require('azure-storage');
 * var blobService = azure.createBlobService();
@@ -2697,7 +2697,7 @@ BlobService.prototype.createWriteStreamToNewPageBlob = function (container, blob
 * @this {BlobService}
 * @param {string}             container                                   The container name.
 * @param {string}             blob                                        The blob name.
-* @param {Stream}             readStream                                  The read stream.
+* @param {Readable}           readStream                                  The Node.js Readable stream.
 * @param {int}                rangeStart                                  The range start.
 * @param {int}                rangeEnd                                    The range end.
 * @param {object}             [options]                                   The request options.
@@ -3268,7 +3268,7 @@ BlobService.prototype.createBlockBlobFromText = function (container, blob, text,
 *                                                                           if an error occurs; otherwise `[result]{@link BlobResult}` will contain
 *                                                                           the blob information.
 *                                                                           `response` will contain information related to this operation.
-* @return {Stream}
+* @return {Writable}                                                        A Node.js Writable stream.
 * @example
 * var azure = require('azure-storage');
 * var blobService = azure.createBlobService();
@@ -3285,7 +3285,7 @@ BlobService.prototype.createWriteStreamToBlockBlob = function (container, blob, 
 * @param {string}             blockId                                   The block identifier.
 * @param {string}             container                                 The container name.
 * @param {string}             blob                                      The blob name.
-* @param {Stream}             readStream                                The read stream.
+* @param {Readable}           readStream                                The Node.js Readable stream.
 * @param {int}                streamLength                              The stream length.
 * @param {object}             [options]                                 The request options.
 * @param {bool}               [options.useTransactionalMD5]             Calculate and send/validate content MD5 for transactions.
@@ -3825,7 +3825,7 @@ BlobService.prototype.createAppendBlobFromText = function (container, blob, text
 * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                           The default value is false.
 * @param {errorOrResponse}    callback                                      The callback function.
-* @return {Stream}
+* @return {Writable}                                                        A Node.js Writable stream.
 * @example
 * var azure = require('azure-storage');
 * var blobService = azure.createBlobService();
@@ -3871,7 +3871,7 @@ BlobService.prototype.createWriteStreamToNewAppendBlob = function (container, bl
 * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                           The default value is false.
 * @param {errorOrResponse}    callback                                      The callback function.
-* @return {Stream}
+* @return {Writable}                                                        A Node.js Writable stream.
 * @example
 * var azure = require('azure-storage');
 * var blobService = azure.createBlobService();
@@ -3988,7 +3988,7 @@ BlobService.prototype.appendFromText = function (container, blob, text, optionsO
 * @this {BlobService}
 * @param {string}             container                                 The container name.
 * @param {string}             blob                                      The blob name.
-* @param {Stream}             readStream                                The read stream.
+* @param {Readable}           readStream                                The Node.js Readable stream.
 * @param {int}                streamLength                              The stream length.
 * @param {object}             [options]                                 The request options.
 * @param {bool}               [options.absorbConditionalErrorsOnRetry]  Specifies whether to absorb the conditional error on retry.
@@ -4272,7 +4272,7 @@ BlobService.prototype._createBlobFromText = function (container, blob, blobType,
 * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                           The default value is false.
 * @param {errorOrResponse}    callback                                      The callback function.
-* @return {Stream}
+* @return {Writable}                                                        A Node.js Writable stream.
 */
 BlobService.prototype._createWriteStreamToBlob = function (container, blob, blobType, length, createNewBlob, optionsOrCallback, callback) {
   var userOptions;
@@ -4806,7 +4806,7 @@ BlobService.prototype._leaseImpl = function (container, blob, leaseId, leaseActi
 * @param {string}             container                                   The container name.
 * @param {string}             blob                                        The blob name.
 * @param {string}             text                                        The text string.
-* @param {Stream}             readStream                                  The read stream.
+* @param {Readable}           readStream                                  The Node.js Readable stream.
 * @param {int}                rangeStart                                  The range start.
 * @param {int}                rangeEnd                                    The range end.
 * @param {object}             [options]                                   The request options.
@@ -5410,7 +5410,7 @@ BlobService.prototype._setRangeContentMD5Header = function (webResource, options
 * @param {string}             container                                   The container name.
 * @param {string}             blob                                        The blob name.
 * @param {string}             blobType                                    The type of blob to download: block blob, page blob or append blob.
-* @param {Stream}             writeStream                                 The write stream.
+* @param {Writable}           writeStream                                 The Node.js Writable stream.
 * @param {object}             [options]                                   The request options.
 * @param {SpeedSummary}       [options.speedSummary]                      The download tracker objects.
 * @param {int}                [options.parallelOperationThreadCount]      The number of parallel operations that may be performed when uploading.
@@ -5616,7 +5616,7 @@ BlobService.prototype._getBlobToRangeStream = function (container, blob, blobTyp
 * @this {BlobService}
 * @param {string}             container                                   The container name.
 * @param {string}             blob                                        The blob name.
-* @param {Stream}             writeStream                                 The write stream.
+* @param {Writable}           writeStream                                 The Node.js Writable stream.
 * @param {object}             [options]                                   The request options.
 * @param {string}             [options.snapshotId]                        The snapshot identifier.
 * @param {string}             [options.leaseId]                           The lease identifier.
@@ -5858,7 +5858,7 @@ module.exports = BlobService;
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on Fri Mar 2nd 2018
+		on Mon Apr 16th 2018
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
