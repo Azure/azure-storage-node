@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Microsoft Azure Storage Client Library for node.js Source: services/file/fileservice.core.js</title>
+	<title>Microsoft Azure Storage Client Library for Node.js and JavaScript Source: services/file/fileservice.core.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -20,7 +20,7 @@
 <div class="navbar navbar-default navbar-fixed-top navbar-inverse">
 <div class="container">
 	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Microsoft Azure Storage Client Library for node.js</a>
+		<a class="navbar-brand" href="index.html">Microsoft Azure Storage Client Library for Node.js and JavaScript</a>
 		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
@@ -1816,7 +1816,7 @@ FileService.prototype.generateSharedAccessSignature = function (share, directory
 * @param {string}                   [file]                   The file name. File names may not start or end with the delimiter '/'.
 * @param {string}                   [sasToken]               The Shared Access Signature token.
 * @param {boolean}                  [primary]                A boolean representing whether to use the primary or the secondary endpoint.
-* @param {boolean}                  [shareSnapshotId]        The snapshot identifier of the share.
+* @param {string}                   [shareSnapshotId]        The snapshot identifier of the share.
 * @return {string}                                           The formatted URL string.
 * @example
 * var azure = require('azure-storage');
@@ -2480,7 +2480,7 @@ FileService.prototype.getFileToText = function (share, directory, file, optionsO
 * @param {errorOrResult}      callback                                    `error` will contain information if an error occurs; 
 *                                                                         otherwise `[result]{@link FileResult}` will contain the file information.
 *                                                                         `response` will contain information related to this operation.
-* @return {Stream}
+* @return {Readable}                                                      A Node.js Readable stream.
 * @example
 * var azure = require('azure-storage');
 * var fileService = azure.createFileService();
@@ -2521,7 +2521,7 @@ FileService.prototype.createReadStream = function (share, directory, file, optio
 * @param {string}             share                                       The share name.
 * @param {string}             directory                                   The directory name. Use '' to refer to the base directory.
 * @param {string}             file                                        The file name. File names may not start or end with the delimiter '/'.
-* @param {Stream}             writeStream                                 The write stream.
+* @param {Writable}           writeStream                                 The Node.js Writable stream.
 * @param {object}             [options]                                   The request options.
 * @param {string}             [options.shareSnapshotId]                   The snapshot identifier of the share.
 * @param {boolean}            [options.skipSizeCheck]                     Skip the size check to perform direct download.
@@ -2758,7 +2758,7 @@ FileService.prototype.clearRange = function (share, directory, file, rangeStart,
 * @param {string}             share                                       The share name.
 * @param {string}             directory                                   The directory name. Use '' to refer to the base directory.
 * @param {string}             file                                        The file name. File names may not start or end with the delimiter '/'.
-* @param {Stream}             readStream                                  The read stream.
+* @param {Readable}           readStream                                  The Node.js Readable stream.
 * @param {int}                rangeStart                                  The range start.
 * @param {int}                rangeEnd                                    The range end.
 * @param {object}             [options]                                   The request options.
@@ -3013,7 +3013,7 @@ FileService.prototype.createFileFromStream = function(share, directory, file, st
 * @param {errorOrResult}      callback                                      `error` will contain information if an error occurs; 
 *                                                                           otherwise `[result]{@link FileResult}` will contain the file information.
 *                                                                           `response` will contain information related to this operation.
-* @return {Stream}
+* @return {Writable}                                                        A Node.js Writable stream.
 * @example
 * var azure = require('azure-storage');
 * var FileService = azure.createFileService();
@@ -3084,7 +3084,7 @@ FileService.prototype.createWriteStreamToExistingFile = function (share, directo
 * @param {errorOrResult}      callback                                      `error` will contain information if an error occurs; 
 *                                                                           otherwise `[result]{@link FileResult}` will contain the file information.
 *                                                                           `response` will contain information related to this operation.
-* @return {Stream}
+* @return {Writable}                                                        A Node.js Writable stream.
 * @example
 * var azure = require('azure-storage');
 * var FileService = azure.createFileService();
@@ -3262,7 +3262,7 @@ FileService.prototype.abortCopyFile = function (share, directory, file, copyId, 
 * @param {string}             directory                                   The directory name. Use '' to refer to the base directory.
 * @param {string}             file                                        The file name. File names may not start or end with the delimiter '/'.
 * @param {string}             text                                        The text string.
-* @param {Stream}             readStream                                  The read stream.
+* @param {Readable}           readStream                                  The Node.js Readable stream.
 * @param {int}                rangeStart                                  The range start.
 * @param {int}                rangeEnd                                    The range end.
 * @param {object}             [options]                                   The request options.
@@ -3468,7 +3468,7 @@ FileService.prototype._createFileFromChunkStream = function(share, directory, fi
 * @param {string}             share                                       The share name.
 * @param {string}             directory                                   The directory name. Use '' to refer to the base directory.
 * @param {string}             file                                        The file name. File names may not start or end with the delimiter '/'.
-* @param {Stream}             writeStream                                 The write stream.
+* @param {Writable}           writeStream                                 The Node.js Writable stream.
 * @param {object}             [options]                                   The request options.
 * @param {string}             [options.shareSnapshotId]                   The snapshot identifier of the share.
 * @param {string}             [options.rangeStart]                        Return only the bytes of the file in the specified range.
@@ -3543,7 +3543,7 @@ FileService.prototype._getFileToStream = function (share, directory, file, write
 * @param {string}             share                                       The share name.
 * @param {string}             directory                                   The directory name. Use '' to refer to the base directory.
 * @param {string}             file                                        The file name. File names may not start or end with the delimiter '/'.
-* @param {Stream}             writeStream                                 The write stream.
+* @param {Writable}           writeStream                                 The Node.js Writable stream.
 * @param {object}             [options]                                   The request options.
 * @param {int}                [options.parallelOperationThreadCount]      The number of parallel operations that may be performed when uploading.
 * @param {string}             [options.rangeStart]                        Return only the bytes of the file in the specified range.
@@ -4062,7 +4062,7 @@ module.exports = FileService;
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on Fri Mar 2nd 2018
+		on Mon Apr 16th 2018
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
