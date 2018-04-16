@@ -2540,7 +2540,7 @@ describe('blob-uploaddownload-tests', function () {
     });
   });
 
-  if (!testutil.isBrowser) {
+  if (!testutil.isBrowser()) {
     describe('appendFromLocalFile', function () {  
       afterEach(function (done) {
         blobService.deleteBlobIfExists(containerName, appendBlobName, function (error) {
@@ -2706,7 +2706,7 @@ describe('blob-uploaddownload-tests', function () {
     });
   });
 
-  if (!testutil.isBrowser) {
+  if (!testutil.isBrowser()) {
     describe('getAppendBlobToFile', function () {
       var appendBlobName = 'appendblob-test-getblob';
       
