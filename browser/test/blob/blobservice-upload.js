@@ -16,9 +16,10 @@
 
 
 var assert = require('assert');
-var TestSuite = require('../../framework/test-suite');
+var TestSuite = require('../../../test/framework/test-suite');
+var testUtil = require('../../../test/framework/util');
+
 var suite = new TestSuite('blobservice-upload-browser');
-var testUtil = require('../../framework/util');
 
 if (testUtil.isBrowser()) {
     var azure = AzureStorage.Blob;
