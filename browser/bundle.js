@@ -33,7 +33,7 @@ console.log('Generating Azure Storage JavaScript Client Library to ' + outputFol
 if (version === '') {
     console.warn(
         'No version number provided.',
-        'Please set up a version number by first parameter of bundle.js or environment value AZURE_STORAGE_JAVASCRIPT_VERSION'
+        'You can set up a version number by first parameter of bundle.js or environment value AZURE_STORAGE_JAVASCRIPT_VERSION'
     );
 }
 

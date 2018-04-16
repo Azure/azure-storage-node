@@ -77,6 +77,6 @@
     "cover": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec -u bdd --no-timeouts --recursive test",
     "coveralls": "npm run cover && cat ./coverage/lcov.info | node ./node_modules/coveralls/bin/coveralls.js",
     "genjs": "node ./browser/bundle.js",
-    "jstest": "npm run genjs && node ./test/browser/bundle.js && karma start --single-run"
+    "jstest": "npm run genjs && node ./browser/test/bundle.js && karma start --single-run"
   }
 }

@@ -44,4 +44,4 @@ blobservice_test.tmp
 
 # Browserify bundle scripts
 browser/bundle
-browser/test
+browser/test/browser.tests.bundled.js

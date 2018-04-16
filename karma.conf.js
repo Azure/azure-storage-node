@@ -24,7 +24,7 @@ module.exports = function (config) {
       'browser/bundle/azure-storage.table.js',
       'browser/bundle/azure-storage.queue.js',
       'browser/bundle/azure-storage.file.js',
-      'test/browser/browser.bundled.js'
+      'browser/test/browser.tests.bundled.js'
     ],
 
     // list of files / patterns to exclude
@@ -77,13 +77,13 @@ module.exports = function (config) {
     // how many browser should be started simultaneous
     concurrency: 1,
 
-    browserNoActivityTimeout: 100000,
+    browserNoActivityTimeout: 600000,
 
     client: {
       mocha: {
         // change Karma's debug.html to the mocha web reporter
         reporter: 'html',
-        timeout: '100000'
+        timeout: '600000'
       }
     }
   })

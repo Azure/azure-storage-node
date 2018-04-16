@@ -44,7 +44,7 @@ var premiumAccountConnectionStringEnabled = !azureutil.IsNullOrEmptyOrUndefinedO
 var runBlockBlobSuite = blobAccountConnectionStringEnabled || (!blobAccountConnectionStringEnabled && blockBlobSuite.isPlayback());
 var runPageBlobSuite = premiumAccountConnectionStringEnabled || (!premiumAccountConnectionStringEnabled && pageBlobSuite.isPlayback());
 var runBlockBlobCase = runBlockBlobSuite ? it : it.skip;
-var runPageBlobCase = runPageBlobSuite && pageBlobSuite.isBrowser ? it : it.skip;
+var runPageBlobCase = pageBlobSuite.isBrowser ? it.skip : (runPageBlobSuite ? it : it.skip);
 
 var blobService;
 var containerName;
@@ -466,4 +466,4 @@ describe('BlobArchive', function () {
       });
     });
   }); // inner describe ends
-}); // outer describe ends
+}); // outer description ends
