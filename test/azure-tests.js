@@ -26,7 +26,7 @@ if (testutil.isBrowser()) {
   var azure = require('../');
 }
 
-var skipBrowser = testutil.isBrowser() ? it.skip : it;
+var skipBrowser = testutil.itSkipBrowser();
 
 var Constants = azure.Constants;
 var StorageServiceClientConstants = Constants.StorageServiceClientConstants;

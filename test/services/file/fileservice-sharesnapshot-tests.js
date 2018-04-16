@@ -85,9 +85,9 @@ var fileContentType = 'filecontentype';
 var fileContentTypeUpdated = 'filecontentypeupdated';
 
 var suite = new TestSuite('fileservice-sharesnapshot-tests');
-var runOrSkip = suite.isMocked ? it.skip : it;
-var skipBrowser = suite.isBrowser ? it.skip : it;
-var skipMockAndBrowser = suite.isBrowser ? it.skip : (suite.isMocked ? it.skip : it);
+var runOrSkip = testutil.itSkipMock(suite.isMocked);
+var skipBrowser = testutil.itSkipBrowser();
+var skipMockAndBrowser = testutil.itSkipMockAndBrowser(suite.isMocked);
 var timeout = (suite.isRecording || !suite.isMocked) ? 30000 : 10;
 
 describe('FileShare', function () {
@@ -185,6 +185,7 @@ describe('FileShare', function () {
            });
 
            assert.equal(2, testShares.length);
+           testutil.polyfillArrayFind();
 
            var baseShare = testShares.find(function (element) {
                 return !element.snapshot;
@@ -477,7 +478,7 @@ describe('FileShare', function () {
       });
 
       it('should work with share snapshot', function (done) {
-        fileService.getFileToText(shareName, directoryName, fileName, {shareSnapshotId, shareSnapshotId}, function (error, text) {
+        fileService.getFileToText(shareName, directoryName, fileName, {shareSnapshotId: shareSnapshotId}, function (error, text) {
             assert.equal(error, null);
             assert.equal(text, fileText);
             done();

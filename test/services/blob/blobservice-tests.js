@@ -60,9 +60,9 @@ var fileName = 'blobservice_test.tmp';
 var blob60MBuffer = new Buffer(80 * 1024 * 1024);
 
 var suite = new TestSuite('blobservice-tests');
-var runOrSkip = suite.isMocked ? it.skip : it;
-var skipBrowser = suite.isBrowser ? it.skip : it;
-var skipMockAndBrowser = suite.isBrowser ? it.skip : (suite.isMocked ? it.skip : it);
+var runOrSkip = testutil.itSkipMock(suite.isMocked);
+var skipBrowser = testutil.itSkipBrowser();
+var skipMockAndBrowser = testutil.itSkipMockAndBrowser(suite.isMocked);
 var aclTimeout = (suite.isRecording || !suite.isMocked) ? 30000 : 10;
 
 var containerNames = [];
@@ -1404,6 +1404,8 @@ describe('BlobService', function () {
                     // 1 base incremental copy blob + 1 snapshot
                     assert.equal(result.entries.length, 2);
 
+                    testutil.polyfillArrayFind();
+
                     var incrementalCopyBlob = result.entries.find(function(b) {
                       return b.snapshot === undefined;
                     });
@@ -1691,10 +1693,14 @@ describe('BlobService', function () {
           var headers = {
             cacheControl: 'no-transform',
             contentDisposition: 'attachment',
-            contentEncoding: 'gzip',
             contentLanguage: 'tr,en',
             contentType: 'text/html'
           };
+
+          // IE11 and Edge has a bug which cannot get content encoding in HTTP response
+          if (!testutil.isBrowser()) {
+            headers['contentEncoding'] = 'gzip';
+          }
 
           var token = blobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy, headers);
           var sharedBlobService = azure.createBlobServiceWithSas(blobService.host, token);

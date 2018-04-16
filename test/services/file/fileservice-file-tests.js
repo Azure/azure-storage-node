@@ -51,7 +51,9 @@ var properties = {
 }
 
 var suite = new TestSuite('fileservice-file-tests');
-var runOrSkip = suite.isMocked ? it.skip : it;
+var runOrSkip = testutil.itSkipMock(suite.isMocked);
+var skipBrowser = testutil.itSkipBrowser();
+var skipMockAndBrowser = testutil.itSkipMockAndBrowser(suite.isMocked);
 
 describe('File', function () {
   before(function (done) {
@@ -316,7 +318,7 @@ describe('File', function () {
       });
     });
 
-    it('metadata', function (done) {
+    skipBrowser('metadata', function (done) {
       fileService.createFile(shareName, directoryName, fileName, 0, function (createError1, file1, createResponse1) {
         assert.equal(createError1, null);
         assert.notEqual(file1, null);
@@ -483,17 +485,21 @@ describe('File', function () {
             assert.equal(getResponse.isSuccessful, true);
 
             assert.equal(file.name, fileName);
-            assert.equal(file.contentLength , '5');
             assert.notEqual(file.etag, null);
             assert.notEqual(file.lastModified, null);
             assert.notEqual(file.requestId, null);
 
             assert.equal(file.contentSettings.contentMD5, 'MDAwMDAwMDA=');
             assert.equal(file.contentSettings.contentType, 'text/html');
-            assert.equal(file.contentSettings.contentEncoding, 'gzip');
             assert.equal(file.contentSettings.contentLanguage, 'tr,en');
             assert.equal(file.contentSettings.contentDisposition , 'attachment');
             assert.equal(file.contentSettings.cacheControl, 'no-transform');
+
+            // IE11 and Edge have a bug when returning following 2 headers
+            if (!testutil.isBrowser()) {
+              assert.equal(file.contentLength , '5');
+              assert.equal(file.contentSettings.contentEncoding, 'gzip');
+            }
 
             done();
           });
@@ -512,17 +518,20 @@ describe('File', function () {
           assert.equal(getResponse.isSuccessful, true);
 
           assert.equal(file.name, fileName);
-          assert.equal(file.contentLength , '5');
           assert.notEqual(file.etag, null);
           assert.notEqual(file.lastModified, null);
           assert.notEqual(file.requestId, null);
 
           assert.equal(file.contentSettings.contentMD5, 'MDAwMDAwMDA=');
           assert.equal(file.contentSettings.contentType, 'text/html');
-          assert.equal(file.contentSettings.contentEncoding, 'gzip');
-          assert.equal(file.contentSettings.contentLanguage, 'tr,en');
           assert.equal(file.contentSettings.contentDisposition , 'attachment');
           assert.equal(file.contentSettings.cacheControl, 'no-transform');
+
+          // IE11 and Edge have a bug when returning following 2 headers
+          if (!testutil.isBrowser()) {
+            assert.equal(file.contentLength , '5');
+            assert.equal(file.contentSettings.contentEncoding, 'gzip');
+          }
 
           done();
         });
@@ -559,7 +568,7 @@ describe('File', function () {
   });
 
   describe('fileMetadata', function () {
-    it('should work', function (done) {
+    skipBrowser('should work', function (done) {
       fileService.createFile(shareName, directoryName, fileName, 0, function (createError) {
         assert.equal(createError, null);
 
@@ -585,7 +594,7 @@ describe('File', function () {
       });
     });
 
-    it('withCreate', function (done) {
+    skipBrowser('withCreate', function (done) {
       var metadata = { 'Class': 'Test' };
       fileService.createFile(shareName, directoryName, fileName, 0, {metadata: metadata}, function (createError) {
         assert.equal(createError, null);
@@ -606,7 +615,7 @@ describe('File', function () {
       });
     });
 
-    it('withGetProperties', function (done) {
+    skipBrowser('withGetProperties', function (done) {
       fileService.createFile(shareName, directoryName, fileName, 0, function (createError) {
         assert.equal(createError, null);
 
@@ -634,7 +643,7 @@ describe('File', function () {
       });
     });
 
-    it('should ignore the metadata in the options', function (done) {
+    skipBrowser('should ignore the metadata in the options', function (done) {
       fileService.createFile(shareName, directoryName, fileName, 0, function (createError) {
         assert.equal(createError, null);
 
@@ -731,17 +740,21 @@ describe('File', function () {
             assert.equal(getResponse.isSuccessful, true);
 
             assert.equal(file.name, fileName);
-            assert.equal(file.contentLength , '5');
             assert.notEqual(file.etag, null);
             assert.notEqual(file.lastModified, null);
             assert.notEqual(file.requestId, null);
 
             assert.equal(file.contentSettings.contentMD5, 'MDAwMDAwMDA=');
             assert.equal(file.contentSettings.contentType, 'text/html');
-            assert.equal(file.contentSettings.contentEncoding, 'gzip');
             assert.equal(file.contentSettings.contentLanguage, 'tr,en');
             assert.equal(file.contentSettings.contentDisposition , 'attachment');
             assert.equal(file.contentSettings.cacheControl, 'no-transform');
+
+            // IE11 and Edge have a bug when returning following 2 headers
+            if (!testutil.isBrowser()) {
+              assert.equal(file.contentLength , '5');
+              assert.equal(file.contentSettings.contentEncoding, 'gzip');
+            }
 
             done();
           });
@@ -773,7 +786,7 @@ describe('File', function () {
   });
   
   describe('startCopyFile', function () {
-    it('should work', function (done) {
+    skipBrowser('should work', function (done) {
       var sourceShareName = suite.getName(shareNamesPrefix);
       var targetShareName = suite.getName(shareNamesPrefix);
       

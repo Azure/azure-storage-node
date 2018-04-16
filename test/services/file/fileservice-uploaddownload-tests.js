@@ -52,9 +52,9 @@ var directoryName;
 var fileName;
 
 var suite = new TestSuite('fileservice-uploaddownload-tests');
-var runOrSkip = suite.isMocked ? it.skip : it;
-var skipBrowser = suite.isBrowser ? it.skip : it;
-var skipMockAndBrowser = suite.isBrowser ? it.skip : (suite.isMocked ? it.skip : it);
+var runOrSkip = testutil.itSkipMock(suite.isMocked);
+var skipBrowser = testutil.itSkipBrowser();
+var skipMockAndBrowser = testutil.itSkipMockAndBrowser(suite.isMocked);
 
 function writeFile(fileName, content) {
   fs.writeFileSync(fileName, content);

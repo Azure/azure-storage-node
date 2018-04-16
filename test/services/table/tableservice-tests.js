@@ -69,7 +69,9 @@ var tableService;
 var tablePrefix = 'tableservice';
 
 var suite = new TestSuite('tableservice-tests');
-var runOrSkip = suite.isMocked ? it.skip : it;
+var runOrSkip = testutil.itSkipMock(suite.isMocked);
+var skipBrowser = testutil.itSkipBrowser();
+var skipMockAndBrowser = testutil.itSkipMockAndBrowser(suite.isMocked);
 var timeout = (suite.isRecording || !suite.isMocked) ? 30000 : 10;
 
 var tables = [];

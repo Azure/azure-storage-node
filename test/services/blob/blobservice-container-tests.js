@@ -34,6 +34,7 @@ var containerNamesPrefix = 'cont-';
 var blobNamesPrefix = 'blob-';
 
 var suite = new TestSuite('blobservice-container-tests');
+var skipBrowser = testutil.itSkipBrowser();
 var timeout = (suite.isRecording || !suite.isMocked) ? 30000 : 10;
 
 var blobService;
@@ -299,7 +300,7 @@ describe('BlobContainer', function () {
   });
 
   describe('getContainerProperties', function () {
-    it('should work', function (done) {
+    skipBrowser('should work', function (done) {
       var metadata = { 'Color': 'Blue' };
       blobService.setContainerMetadata(containerName, metadata, function (setMetadataError, setMetadataResult, setMetadataResponse) {
         assert.equal(setMetadataError, null);
@@ -334,7 +335,7 @@ describe('BlobContainer', function () {
   });
 
   describe('setContainerMetadata', function () {
-    it('should work', function (done) {
+    skipBrowser('should work', function (done) {
       var metadata = { 'Class': 'Test' };
       blobService.setContainerMetadata(containerName, metadata, function (setMetadataError, setMetadataResult, setMetadataResponse) {
         assert.equal(setMetadataError, null);
@@ -451,7 +452,6 @@ describe('BlobContainer', function () {
         function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === SR.METADATA_VALUE_INVALID});
       assert.throws( function() { setContainerMetadata(containerName, {'key1' : ' '}); },
         function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentError') && err.message === SR.METADATA_VALUE_INVALID});
-
       // test that empty headers can be got.
       var callback = function(webresource) {
         webresource.headers['x-ms-meta-key1'] = '';
@@ -460,6 +460,13 @@ describe('BlobContainer', function () {
       blobService.on('sendingRequestEvent', callback);
 
       blobService.setContainerMetadata(containerName, {}, function(setMetadataError) {
+        // IE11 cannot set 'x-ms-meta-key1' with empty value
+        if (testutil.isBrowser()) {
+          blobService.removeListener('sendingRequestEvent', callback);
+          done();
+          return;
+        }
+
         assert.equal(setMetadataError, null);
         blobService.getContainerProperties(containerName, function(getContainerPropsError, properties) {
           assert.equal(getContainerPropsError, null);

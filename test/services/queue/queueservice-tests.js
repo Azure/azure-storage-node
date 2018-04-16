@@ -32,7 +32,9 @@ var QueueUtilities = azure.QueueUtilities;
 var HttpConstants = Constants.HttpConstants;
 
 var suite = new TestSuite('queueservice-tests');
-var runOrSkip = suite.isMocked ? it.skip : it;
+var runOrSkip = testutil.itSkipMock(suite.isMocked);
+var skipBrowser = testutil.itSkipBrowser();
+var skipMockAndBrowser = testutil.itSkipMockAndBrowser(suite.isMocked);
 
 var queueNamesPrefix = suite.getShortName('');
 
@@ -753,7 +755,7 @@ describe('QueueServiceTests', function() {
   });
 
   describe('SetQueueMetadata', function () {
-    it('should work', function (done) {
+    skipBrowser('should work', function (done) {
       var metadata = { 'Class': 'Test' };
 
       queueService.createQueueIfNotExists(queueName, function (createError) {

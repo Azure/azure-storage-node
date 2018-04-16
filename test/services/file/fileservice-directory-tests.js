@@ -38,6 +38,7 @@ var shareName;
 var directoryName;
 
 var suite = new TestSuite('fileservice-directory-tests');
+var skipBrowser = testutil.itSkipBrowser();
 
 describe('FileDirectory', function () {
   before(function (done) {
@@ -490,7 +491,7 @@ describe('FileDirectory', function () {
   });
   
   describe('directoryMetadata', function () {
-    it('should work', function (done) {
+    skipBrowser('should work', function (done) {
       fileService.createDirectory(shareName, directoryName, function (createError) {
         assert.equal(createError, null);
         
@@ -516,7 +517,7 @@ describe('FileDirectory', function () {
       });
     });
     
-    it('withCreate', function (done) {
+    skipBrowser('withCreate', function (done) {
       var metadata = { 'Class': 'Test' };
       fileService.createDirectory(shareName, directoryName, { metadata: metadata }, function (createError) {
         assert.equal(createError, null);
@@ -537,7 +538,7 @@ describe('FileDirectory', function () {
       });
     });
     
-    it('withGetProperties', function (done) {
+    skipBrowser('withGetProperties', function (done) {
       fileService.createDirectory(shareName, directoryName, function (createError) {
         assert.equal(createError, null);
         
@@ -565,7 +566,7 @@ describe('FileDirectory', function () {
       });
     });
 
-    it('should ignore the metadata in the options', function (done) {
+    skipBrowser('should ignore the metadata in the options', function (done) {
       fileService.createDirectory(shareName, directoryName, function (createError) {
         assert.equal(createError, null);
         
