@@ -37,7 +37,9 @@ var fileService;
 var shareName;
 
 var suite = new TestSuite('fileservice-share-tests');
-var runOrSkip = suite.isMocked ? it.skip : it;
+var runOrSkip = testutil.itSkipMock(suite.isMocked);
+var skipBrowser = testutil.itSkipBrowser();
+var skipMockAndBrowser = testutil.itSkipMockAndBrowser(suite.isMocked);
 var timeout = (suite.isRecording || !suite.isMocked) ? 30000 : 10;
 
 describe('FileShare', function () {
@@ -282,7 +284,7 @@ describe('FileShare', function () {
   });
 
   describe('getShareProperties', function () {
-    it('should work', function (done) {
+    skipBrowser('should work', function (done) {
       fileService.createShareIfNotExists(shareName, function (createError, createResult) {
         assert.equal(createError, null);
         assert.equal(createResult.created, true);

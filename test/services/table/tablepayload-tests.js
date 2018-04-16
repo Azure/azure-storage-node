@@ -339,7 +339,7 @@ var expectPropType = function (options, property) {
   }
 
   if (property['$'] === 'Edm.Int32' || property['$'] === 'Edm.Double') {
-    if ((Number.isNaN(property['_']) 
+    if ((azureutil.objectIsNaN(property['_']) 
         || property['_'] === Number.POSITIVE_INFINITY 
         || property['_'] === Number.NEGATIVE_INFINITY
         || (property['$'] === 'Edm.Double' && azureutil.objectIsInt(parseFloat(property['_'])) ) ) 

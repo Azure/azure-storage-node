@@ -79,9 +79,9 @@ var uploadOptions = {
 };
 
 var suite = new TestSuite('blobservice-uploaddownload-tests');
-var runOrSkip = suite.isMocked ? it.skip : it;
-var skipBrowser = suite.isBrowser ? it.skip : it;
-var skipMockAndBrowser = suite.isBrowser ? it.skip : (suite.isMocked ? it.skip : it);
+var runOrSkip = testutil.itSkipMock(suite.isMocked);
+var skipBrowser = testutil.itSkipBrowser();
+var skipMockAndBrowser = testutil.itSkipMockAndBrowser(suite.isMocked);
 
 function getContentMD5(content) {
   var md5hash = crypto.createHash('md5');

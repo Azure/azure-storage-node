@@ -25,7 +25,9 @@ var azure = testutil.libRequire('azure-storage');
 var BlobUtilities = azure.BlobUtilities;
 
 var suite = new TestSuite('blobservice-uploaddownload-scale-tests');
-var runOrSkip = suite.isMocked ? it.skip : it;
+var runOrSkip = testutil.itSkipMock(suite.isMocked);
+var skipBrowser = testutil.itSkipBrowser();
+var skipMockAndBrowser = testutil.itSkipMockAndBrowser(suite.isMocked);
 
 var blobService = null;
 var containerName = 'blobservicescaletest';

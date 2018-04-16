@@ -51,8 +51,9 @@ var fileService;
 var shareName;
 
 var suite = new TestSuite('exponentialretrypolicyfilter-tests');
-var runOrSkip = suite.isMocked ? it.skip : it;
-var skipMockAndBrowser = suite.isBrowser ? it.skip : (suite.isMocked ? it.skip : it);
+var runOrSkip = testutil.itSkipMock(suite.isMocked);
+var skipBrowser = testutil.itSkipBrowser();
+var skipMockAndBrowser = testutil.itSkipMockAndBrowser(suite.isMocked);
 
 describe('exponentialretrypolicyfilter-tests', function () {
   before(function (done) {

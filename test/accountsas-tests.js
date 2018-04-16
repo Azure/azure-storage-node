@@ -60,9 +60,9 @@ var originalAzureStorageEmulated = null;
 
 
 var suite = new TestSuite('accountsas-tests');
-var runOrSkip = suite.isMocked ? it.skip : it;
-var skipBrowser = testutil.isBrowser() ? it.skip : it;
-var skipMockAndBrowser = suite.isBrowser ? it.skip : (suite.isMocked ? it.skip : it);
+var runOrSkip = testutil.itSkipMock(suite.isMocked);
+var skipBrowser = testutil.itSkipBrowser();
+var skipMockAndBrowser = testutil.itSkipMockAndBrowser(suite.isMocked);
 
 var getPolicyWithFullPermissions = function(){
   var startDate = new Date();

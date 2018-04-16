@@ -32,7 +32,9 @@ var directoryName;
 var fileName;
 
 var suite = new TestSuite('fileservice-scale-tests');
-var runOrSkip = suite.isMocked ? it.skip : it;
+var runOrSkip = testutil.itSkipMock(suite.isMocked);
+var skipBrowser = testutil.itSkipBrowser();
+var skipMockAndBrowser = testutil.itSkipMockAndBrowser(suite.isMocked);
 
 describe('FileUploadDownloadScale', function () {
   before(function (done) {

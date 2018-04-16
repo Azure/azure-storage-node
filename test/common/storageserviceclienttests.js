@@ -29,7 +29,7 @@ var StorageServiceClient = azure.StorageServiceClient;
 var Constants = azure.Constants;
 var StorageServiceClientConstants = Constants.StorageServiceClientConstants;
 
-var skipBrowser = testutil.isBrowser() ? it.skip : it;
+var skipBrowser = testutil.itSkipBrowser();
 
 describe('StorageServiceClientTests', function () {
 
