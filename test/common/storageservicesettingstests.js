@@ -94,10 +94,6 @@ describe('StorageServiceSettingsTests', function(done) {
       function () {blobServiceUsingExplicitHost.setHost({});}, 
       function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === 'The host for the storage service must be specified.';}
     );
-    assert.throws(
-      function () {blobServiceUsingExplicitHost.setHost('xyz');}, 
-      function (err) {return (err instanceof URIError) && err.message === 'The provided URI "xyz" is invalid.';}
-    );
 
     done();
   });
