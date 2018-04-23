@@ -37,12 +37,14 @@ describe('validator-tests', function () {
   it('isValidUri should work', function (done) {
     Validate.isValidUri('http://www.microsoft.com').should.be.ok;
     Validate.isValidUri('http://www.microsoft.com').should.equal(true);
+    Validate.isValidUri('http://non-tld-host').should.be.ok;
+    Validate.isValidUri('http://non-tld-host').should.equal(true);
     assert.throws(
       function() {
-        Validate.isValidUri('something');
+        Validate.isValidUri('http:///something');
       },
       function(err) {
-        return (err instanceof URIError) && err.message == 'The provided URI "something" is invalid.' 
+        return (err instanceof URIError) && err.message == 'The provided URI "http:///something" is invalid.'
       }
     );
     done();
@@ -50,12 +52,13 @@ describe('validator-tests', function () {
   
   it('isValidHost should work', function (done) {
     Validate.isValidHost('http://www.microsoft.com').should.be.ok;
+    Validate.isValidHost('http://non-tld-host').should.be.ok;
     assert.throws(
       function() {
-        Validate.isValidHost('something');
+        Validate.isValidHost('http:///something');
       },
       function(err) {
-        return (err instanceof URIError) && err.message == 'The provided URI "something" is invalid.' 
+        return (err instanceof URIError) && err.message == 'The provided URI "http:///something" is invalid.'
       }
     );
     done();
