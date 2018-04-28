@@ -105,6 +105,7 @@ describe('validator-tests', function () {
   it('containerNameIsValid should work', function (done) {
     Validate.containerNameIsValid('aaaaaa').should.equal(true);
     Validate.containerNameIsValid('$root').should.equal(true);
+    Validate.containerNameIsValid('$web').should.equal(true);
     Validate.containerNameIsValid('$logs').should.equal(true);
     assert.throws(
       function() {
