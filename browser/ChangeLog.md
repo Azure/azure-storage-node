@@ -1,6 +1,7 @@
 Note: This is the change log file for Azure Storage JavaScript Client Library.
 
 * Added `progress` event for `SpeedSummary` class, which will be triggered when every progress updates.
+* Added `/* eslint-disable */` to generated JS files to avoid eslint warnings when using with create-react-app.
 
 2018.04 Version 2.8.100+2.8.2
 
