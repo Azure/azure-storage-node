@@ -153,6 +153,18 @@ describe('speed-summary-tests', function() {
     assert.equal(summary.increment(10), 25);
     done();
   });
+
+  it('progress event should work', function (done) {
+    var summary = new speedSummary('test');
+    summary.on('progress', function () {
+      assert.equal(summary.completeSize, 25);
+      done();      
+    });
+
+    summary.totalSize = 100;
+    summary.completeSize = 15;
+    assert.equal(summary.increment(10), 25);
+  });
   
   it('getAutoIncrementFunction should work', function (done) {
     var summary = new speedSummary('test');

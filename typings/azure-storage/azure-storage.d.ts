@@ -1,4 +1,4 @@
-﻿// 
+// 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -8993,7 +8993,7 @@ declare module azurestorage {
       // ./common/util/speedsummary
       // ###########################
       module speedsummary {
-        export interface SpeedSummary {
+        export interface SpeedSummary extends events.EventEmitter {
           name: string;
           totalSize: number;
           completeSize: number;
