@@ -22,7 +22,8 @@ var UglifyJS = require('uglify-js');
 var version = process.argv[2] || process.env.AZURE_STORAGE_JAVASCRIPT_VERSION || '';
 var license = [
     '// Azure Storage JavaScript Client Library ' + version,
-    '// Copyright (c) Microsoft and contributors. All rights reserved.'
+    '// Copyright (c) Microsoft and contributors. All rights reserved.',
+    '/* eslint-disable */'
 ].join('\n') + '\n';
 
 var outputFolder = 'bundle';
