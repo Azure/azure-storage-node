@@ -1,5 +1,7 @@
 Note: This is the change log file for Azure Storage JavaScript Client Library.
 
+* Added `progress` event for `SpeedSummary` class, which will be triggered when every progress updates.
+
 2018.04 Version 2.8.100+2.8.2
 
 * Fixed a bug that retry policy will not retry for XHR error in browsers.

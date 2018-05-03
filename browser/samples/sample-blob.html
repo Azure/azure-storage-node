@@ -182,15 +182,10 @@ refreshProgress();
 </pre>
             <p>Checking the upload progress with speedSummary object. </p>
 <pre>
-function refreshProgress() {
-    setTimeout(function() {
-        if (!finishedOrError) {
-            var process = speedSummary.getCompletePercent();
-            displayProcess(process);
-            refreshProgress();
-        }
-    }, 200);
-}
+speedSummary.on('progress', function () {
+    var process = speedSummary.getCompletePercent();
+    displayProcess(process);
+});
 </pre>
             <div class="panel panel-danger"> 
                 <div class="panel-body">
@@ -492,16 +487,10 @@ blobService.deleteBlobIfExists(container, blob, function(error, result) {
                     }
                 });
 
-                function refreshProgress() {
-                    setTimeout(function() {
-                        if (!finishedOrError) {
-                            var process = speedSummary.getCompletePercent();
-                            displayProcess(process);
-                            refreshProgress();
-                        }
-                    }, 200);
-                }
-                refreshProgress();
+                speedSummary.on('progress', function () {
+                    var process = speedSummary.getCompletePercent();
+                    displayProcess(process);
+                });
             }
         </script>
     </body> 
