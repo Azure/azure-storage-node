@@ -2909,6 +2909,8 @@ declare module azurestorage {
             publicAccessLevel: string;
             etag: string;
             lastModified: string;
+            hasImmutabilityPolicy: boolean;
+            hasLegalHold: boolean;
             metadata?: { [key: string]: string; };
             requestId?: string;
             lease?: {
@@ -2933,6 +2935,7 @@ declare module azurestorage {
             metadata?: { [key: string]: string; };
             etag: string;
             lastModified: string;
+            creationTime: string;
             contentLength: string;
             blobType: string;
             accessTier?: string;

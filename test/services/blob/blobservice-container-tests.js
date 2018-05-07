@@ -314,6 +314,10 @@ describe('BlobContainer', function () {
             assert.equal('available', container2.lease.state);
             assert.equal(null, container2.lease.duration);
             assert.notEqual(null, container2.requestId);
+            assert.notEqual(container2.hasImmutabilityPolicy, null);
+            assert.deepStrictEqual(typeof container2.hasImmutabilityPolicy, 'boolean');
+            assert.notEqual(container2.hasLegalHold, null);
+            assert.deepStrictEqual(typeof container2.hasLegalHold, 'boolean');
 
             if(suite.metadataCaseSensitive) {
               assert.strictEqual(container2.metadata.Color, metadata.Color);
@@ -702,6 +706,9 @@ describe('BlobContainer', function () {
 
                 var entries = 0;
                 blobs.forEach(function (blob) {
+                  assert.notEqual(blob.creationTime, null);
+                  assert.deepStrictEqual(typeof blob.creationTime, 'string');
+
                   if (blob.name === blobName1) {
                     entries += 1;
                   }

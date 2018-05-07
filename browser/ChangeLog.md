@@ -1,7 +1,20 @@
 Note: This is the change log file for Azure Storage JavaScript Client Library.
 
-* Added `progress` event for `SpeedSummary` class, which will be triggered when every progress updates.
+2018.05 Version 2.9.100
+
+ALL
+* Generated browser compatible JavaScript files based on Microsoft Azure Storage SDK for Node.js 2.9.0.
+* Updated storage service version to 2017-11-09.
 * Added `/* eslint-disable */` to generated JS files to avoid eslint warnings when using with create-react-app.
+* Added `progress` event for `SpeedSummary` class, which will be triggered when every progress updates.
+
+BLOB
+* Add ```createBlobServiceWithBearerToken()``` to create ```BlobService``` object with bearer tokens such as OAuth access token.
+* Added support for '$web' as a valid blob container name for static website.
+* Added support for write-once read-many containers.
+
+QUEUE
+* Added ```createQueueServiceWithBearerToken()``` to create ```QueueService``` object with bearer tokens such as OAuth access token.
 
 2018.04 Version 2.8.100+2.8.2
 
