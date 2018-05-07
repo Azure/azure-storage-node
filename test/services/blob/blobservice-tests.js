@@ -177,6 +177,11 @@ describe('BlobService', function () {
       var validateAndDeleteContainers = function (containers, callback) {
         var entries = [];
         containers.forEach(function (container) {
+          assert.notEqual(container.hasImmutabilityPolicy, null);
+          assert.deepStrictEqual(typeof container.hasImmutabilityPolicy, 'boolean');
+          assert.notEqual(container.hasLegalHold, null);
+          assert.deepStrictEqual(typeof container.hasLegalHold, 'boolean');
+
           if (container.name == containerName1) {
             assert.equal(container.publicAccessLevel, 'container');
             assert.equal(container.metadata.color, metadata1.COLOR);
@@ -654,6 +659,9 @@ describe('BlobService', function () {
 
           blobService.getBlobProperties(containerName, blobName, function (getErr, blob) {
             assert.equal(getErr, null);
+
+            assert.notEqual(blob.creationTime, null);
+            assert.deepStrictEqual(typeof blob.creationTime, 'string');
 
             assert.notEqual(blob, null);
             assert.notEqual(blob.serverEncrypted, null); //Note the storage account for this test suite could have enabled or disabled SSE.
