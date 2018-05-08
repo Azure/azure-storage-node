@@ -14,6 +14,7 @@ ALL
 
 BLOB
 * Fixed a TypeScript definition error that `blobService.getUrl()` misses `snapshotId` parameter.
+* Fixed a bug that `Speedsummary` doesn't get updated when downloading file/blob under 32MB.
 
 FILE
 * Fixed a README.MD mistake for `FileService` example.
