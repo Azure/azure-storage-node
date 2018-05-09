@@ -2087,6 +2087,62 @@ describe('BlobService', function () {
     done();
   });
 
+  describe('StaticWebsite', function () {
+    it('should be able to enable static website', function (done) {
+      var prop = {
+        StaticWebsite: {
+          Enabled: true,
+          IndexDocument: 'index.htm',
+          ErrorDocument404Path: 'error/index.htm'
+        }
+      };
+
+      blobService.setServiceProperties(prop, function (err) {
+        assert.equal(err, null);
+
+        blobService.getServiceProperties(function (err, res) {
+          assert.equal(res.StaticWebsite.Enabled, true);
+          assert.equal(res.StaticWebsite.IndexDocument, prop.StaticWebsite.IndexDocument);
+          assert.equal(res.StaticWebsite.ErrorDocument404Path, prop.StaticWebsite.ErrorDocument404Path);
+          done();
+        });
+      });
+    });
+
+    it('should be able to disable static website', function (done) {
+      var prop = {
+        StaticWebsite: {
+          Enabled: false
+        }
+      };
+
+      blobService.setServiceProperties(prop, function (err) {
+        assert.equal(err, null);
+
+        blobService.getServiceProperties(function (err, res) {
+          assert.equal(res.StaticWebsite.Enabled, false);
+          assert.equal(res.StaticWebsite.IndexDocument, null);
+          assert.equal(res.StaticWebsite.ErrorDocument404Path, null);
+          done();
+        });
+      });
+    });
+
+    it('should return error when setting properties with static website disabled', function (done) {
+      var prop = {
+        StaticWebsite: {
+          IndexDocument: 'index.htm',
+          ErrorDocument404Path: 'error/index.htm'
+        }
+      };
+
+      blobService.setServiceProperties(prop, function (err, res) {
+        assert.notEqual(err, null);
+        done();
+      });
+    });
+  });
+
   describe('getAccountProperties', function () {
     it('should work without container and blob names', function (done) {
       blobService.getAccountProperties(null, null, function (err, res) {

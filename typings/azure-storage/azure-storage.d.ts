@@ -159,8 +159,8 @@ declare module azurestorage {
           * @param {errorOrResult}  callback                              `error` will contain information if an error occurs; otherwise, `result` will contain the properties
           *                                                               and `response` will contain information related to this operation.
           */
-          getServiceProperties(options: common.RequestOptions, callback?: ErrorOrResult<common.models.ServicePropertiesResult.ServiceProperties>): void;
-          getServiceProperties(callback?: ErrorOrResult<common.models.ServicePropertiesResult.ServiceProperties>): void;
+          getServiceProperties(options: common.RequestOptions, callback?: ErrorOrResult<common.models.ServicePropertiesResult.BlobServiceProperties>): void;
+          getServiceProperties(callback?: ErrorOrResult<common.models.ServicePropertiesResult.BlobServiceProperties>): void;
           
           /**
           * Gets the properties of a storage account.
@@ -206,8 +206,8 @@ declare module azurestorage {
           *                                                                      if an error occurs; otherwise, `response`
           *                                                                      will contain information related to this operation.
           */
-          setServiceProperties(serviceProperties: common.models.ServicePropertiesResult.ServiceProperties, options: common.RequestOptions, callback: ErrorOrResponse): void;
-          setServiceProperties(serviceProperties: common.models.ServicePropertiesResult.ServiceProperties, callback: ErrorOrResponse): void;
+          setServiceProperties(serviceProperties: common.models.ServicePropertiesResult.BlobServiceProperties, options: common.RequestOptions, callback: ErrorOrResponse): void;
+          setServiceProperties(serviceProperties: common.models.ServicePropertiesResult.BlobServiceProperties, callback: ErrorOrResponse): void;
 
           /**
           * Sets the tier of a blockblob under a blob storage LRS account, or the tier of a pageblob under a premium storage account.
@@ -9156,6 +9156,14 @@ declare module azurestorage {
           Cors?: {
             CorsRule: CorsRule[];
           };
+        }
+        export interface StaticWebsiteProperties {
+          Enabled: boolean;
+          IndexDocument?: string;
+          ErrorDocument404Path?: string;
+        }
+        export interface BlobServiceProperties extends ServiceProperties {
+          StaticWebsite?: StaticWebsiteProperties;
         }
         export function serialize(servicePropertiesJs: ServiceProperties): string;
         export function parse(servicePropertiesXml: any): ServiceProperties;

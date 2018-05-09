@@ -3,11 +3,15 @@ be taken. This is a GA release and the changes described below indicate the chan
 
 2018.06 Version 2.10.0
 
+ALL
+* Updated storage service version to 2018-03-28.
+
 BLOB
 * Fixed a bug that `DeleteRetentionPolicy.Days` should be `number` instead of `string` when calling `getServiceProperties`.
 * Added method `getAccountProperties` on `blobService`.
 * Added support for synchronous copy of block blobs and put block from URL.
 * Added a method `createBlockFromURL` for `blobService`.
+* Added support for static website service properties.
 
 2018.05 Version 2.9.0-preview
 
