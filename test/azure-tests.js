@@ -132,8 +132,13 @@ describe('azure', function () {
   });
 
   it('createQueueServiceWithTokenCredential', function () {
-    var token = new azure.TokenCredential('oauthtoken');
-    var queueServiceWithTokenCredential = azure.createQueueServiceWithTokenCredential('https://myaccount.queue.core.windows.net', token);
+    if (testutil.isBrowser()) {
+      var token = new AzureStorage.Queue.TokenCredential('oauthtoken');
+      var queueServiceWithTokenCredential = AzureStorage.Queue.createQueueServiceWithTokenCredential('https://myaccount.queue.core.windows.net', token);
+    } else {
+      var token = new azure.TokenCredential('oauthtoken');
+      var queueServiceWithTokenCredential = azure.createQueueServiceWithTokenCredential('https://myaccount.queue.core.windows.net', token);
+    }
 
     assert.strictEqual(queueServiceWithTokenCredential.token, token);
     assert.strictEqual(queueServiceWithTokenCredential.storageCredentials.tokenCredential, token);
