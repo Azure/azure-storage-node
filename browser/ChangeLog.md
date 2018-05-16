@@ -1,5 +1,8 @@
 Note: This is the change log file for Azure Storage JavaScript Client Library.
 
+BLOB
+* Added support for synchronous copy of block blobs and put block from URL.
+
 2018.05 Version 2.9.100-preview
 
 BLOB
