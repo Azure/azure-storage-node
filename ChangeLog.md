@@ -1,6 +1,11 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
 be taken. This is a GA release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
 
+2018.05 Version 2.8.3
+
+ALL
+* Bumped version of request module from ~2.83.0 to ^2.86.0 to solve a vulnerability issue.
+
 2018.04 Version 2.8.2
 
 ALL
