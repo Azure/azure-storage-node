@@ -1,9 +1,9 @@
 Note: This is the change log file for Azure Storage JavaScript Client Library.
 
-2018.05 Version 2.9.100
+2018.05 Version 2.9.100-preview
 
 ALL
-* Generated browser compatible JavaScript files based on Microsoft Azure Storage SDK for Node.js 2.9.0.
+* Generated browser compatible JavaScript files based on Microsoft Azure Storage SDK for Node.js 2.9.0-preview.
 * Updated storage service version to 2017-11-09.
 * Added `/* eslint-disable */` to generated JS files to avoid eslint warnings when using with create-react-app.
 * Added `progress` event for `SpeedSummary` class, which will be triggered when every progress updates.
