@@ -47,7 +47,7 @@
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html#createBlobService">createBlobService</a></li><li><a href="global.html#createBlobServiceAnonymous">createBlobServiceAnonymous</a></li><li><a href="global.html#createBlobServiceWithSas">createBlobServiceWithSas</a></li><li><a href="global.html#createFileService">createFileService</a></li><li><a href="global.html#createFileServiceWithSas">createFileServiceWithSas</a></li><li><a href="global.html#createQueueService">createQueueService</a></li><li><a href="global.html#createQueueServiceWithSas">createQueueServiceWithSas</a></li><li><a href="global.html#createTableService">createTableService</a></li><li><a href="global.html#createTableServiceWithSas">createTableServiceWithSas</a></li><li><a href="global.html#generateAccountSharedAccessSignature">generateAccountSharedAccessSignature</a></li><li><a href="global.html#generateDevelopmentStorageCredentials">generateDevelopmentStorageCredentials</a></li>
+					<li><a href="global.html#createBlobService">createBlobService</a></li><li><a href="global.html#createBlobServiceAnonymous">createBlobServiceAnonymous</a></li><li><a href="global.html#createBlobServiceWithSas">createBlobServiceWithSas</a></li><li><a href="global.html#createBlobServiceWithTokenCredential">createBlobServiceWithTokenCredential</a></li><li><a href="global.html#createFileService">createFileService</a></li><li><a href="global.html#createFileServiceWithSas">createFileServiceWithSas</a></li><li><a href="global.html#createQueueService">createQueueService</a></li><li><a href="global.html#createQueueServiceWithSas">createQueueServiceWithSas</a></li><li><a href="global.html#createQueueServiceWithTokenCredential">createQueueServiceWithTokenCredential</a></li><li><a href="global.html#createTableService">createTableService</a></li><li><a href="global.html#createTableServiceWithSas">createTableServiceWithSas</a></li><li><a href="global.html#generateAccountSharedAccessSignature">generateAccountSharedAccessSignature</a></li><li><a href="global.html#generateDevelopmentStorageCredentials">generateDevelopmentStorageCredentials</a></li>
 				</ul>
 			</li>
 			
@@ -511,7 +511,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-120">line 120</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-138">line 138</a>
 			</li>
 		</ul>
 	</dd>
@@ -757,6 +757,201 @@
             
 <hr>
 <dt>
+    <h4 class="name" id="createBlobServiceWithTokenCredential"><span class="type-signature"></span>createBlobServiceWithTokenCredential(host, tokenCredential)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Creates a new <a href="BlobService.html">BlobService</a> object using the host Uri and the TokenCredential provided, which supports OAuth.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>host</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The host address. To define primary only, pass a string.<br>                                                    Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tokenCredential</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">TokenCredential</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The token credential object.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="azure-storage.js.html">azure-storage.js</a>,
+				 <a href="azure-storage.js.html#sunlight-1-line-127">line 127</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>A new BlobService object with the TokenCredential object.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="BlobService.html">BlobService</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">var azure = require(&#x27;azure-storage&#x27;);var tokenCredential = new azure.TokenCredential(&#x27;myOAuthAccessToken&#x27;);var blobService = azure.createBlobServiceWithTokenCredential(&#x27;https://account.blob.core.windows.net&#x27;, tokenCredential);tokenCredential.set(&#x27;updatedOAuthAccessToken&#x27;);</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
     <h4 class="name" id="createFileService"><span class="type-signature"></span>createFileService(storageAccountOrConnectionString [, storageAccessKey] [, host])</h4>
     
     
@@ -943,7 +1138,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-144">line 144</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-162">line 162</a>
 			</li>
 		</ul>
 	</dd>
@@ -1132,7 +1327,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-156">line 156</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-174">line 174</a>
 			</li>
 		</ul>
 	</dd>
@@ -1377,7 +1572,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-181">line 181</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-199">line 199</a>
 			</li>
 		</ul>
 	</dd>
@@ -1566,7 +1761,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-193">line 193</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-211">line 211</a>
 			</li>
 		</ul>
 	</dd>
@@ -1615,6 +1810,201 @@
 
 
         
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="createQueueServiceWithTokenCredential"><span class="type-signature"></span>createQueueServiceWithTokenCredential(host, tokenCredential)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Creates a new <a href="QueueService.html">QueueService</a> object using the host Uri and the TokenCredential provided, which supports OAuth.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>host</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The host address. To define primary only, pass a string.<br>                                                    Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tokenCredential</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">TokenCredential</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The TokenCredential object.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="azure-storage.js.html">azure-storage.js</a>,
+				 <a href="azure-storage.js.html#sunlight-1-line-229">line 229</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>A new QueueService object with the TokenCredential object.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="QueueService.html">QueueService</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">var azure = require(&#x27;azure-storage&#x27;);var tokenCredential = new azure.TokenCredential(&#x27;myOAuthAccessToken&#x27;);var queueService = azure.createQueueServiceWithTokenCredential(&#x27;https://account.queue.core.windows.net&#x27;, tokenCredential);tokenCredential.set(&#x27;updatedOAuthAccessToken&#x27;);</pre>
+
 
     
 </dd>
@@ -2434,7 +2824,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-222">line 222</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-258">line 258</a>
 			</li>
 		</ul>
 	</dd>
@@ -2979,7 +3369,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-249">line 249</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-285">line 285</a>
 			</li>
 		</ul>
 	</dd>
@@ -3257,7 +3647,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-317">line 317</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-353">line 353</a>
 			</li>
 		</ul>
 	</dd>
@@ -3391,7 +3781,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_blob_models_containerresult.js.html">services/blob/models/containerresult.js</a>,
-				 <a href="services_blob_models_containerresult.js.html#sunlight-1-line-109">line 109</a>
+				 <a href="services_blob_models_containerresult.js.html#sunlight-1-line-131">line 131</a>
 			</li>
 		</ul>
 	</dd>
@@ -3621,7 +4011,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-300">line 300</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-336">line 336</a>
 			</li>
 		</ul>
 	</dd>
@@ -3771,7 +4161,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-231">line 231</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-267">line 267</a>
 			</li>
 		</ul>
 	</dd>
@@ -3957,7 +4347,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-239">line 239</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-275">line 275</a>
 			</li>
 		</ul>
 	</dd>
@@ -4199,7 +4589,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-281">line 281</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-317">line 317</a>
 			</li>
 		</ul>
 	</dd>
@@ -4405,7 +4795,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-291">line 291</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-327">line 327</a>
 			</li>
 		</ul>
 	</dd>
@@ -4563,7 +4953,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-339">line 339</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-375">line 375</a>
 			</li>
 		</ul>
 	</dd>
@@ -4745,7 +5135,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-346">line 346</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-382">line 382</a>
 			</li>
 		</ul>
 	</dd>
@@ -4903,7 +5293,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-310">line 310</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-346">line 346</a>
 			</li>
 		</ul>
 	</dd>
@@ -5182,7 +5572,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-270">line 270</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-306">line 306</a>
 			</li>
 		</ul>
 	</dd>
@@ -5389,7 +5779,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-329">line 329</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-365">line 365</a>
 			</li>
 		</ul>
 	</dd>
@@ -5588,7 +5978,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on Mon Apr 16th 2018
+		on Fri May 25th 2018
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

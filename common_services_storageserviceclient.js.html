@@ -47,7 +47,7 @@
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html#createBlobService">createBlobService</a></li><li><a href="global.html#createBlobServiceAnonymous">createBlobServiceAnonymous</a></li><li><a href="global.html#createBlobServiceWithSas">createBlobServiceWithSas</a></li><li><a href="global.html#createFileService">createFileService</a></li><li><a href="global.html#createFileServiceWithSas">createFileServiceWithSas</a></li><li><a href="global.html#createQueueService">createQueueService</a></li><li><a href="global.html#createQueueServiceWithSas">createQueueServiceWithSas</a></li><li><a href="global.html#createTableService">createTableService</a></li><li><a href="global.html#createTableServiceWithSas">createTableServiceWithSas</a></li><li><a href="global.html#generateAccountSharedAccessSignature">generateAccountSharedAccessSignature</a></li><li><a href="global.html#generateDevelopmentStorageCredentials">generateDevelopmentStorageCredentials</a></li>
+					<li><a href="global.html#createBlobService">createBlobService</a></li><li><a href="global.html#createBlobServiceAnonymous">createBlobServiceAnonymous</a></li><li><a href="global.html#createBlobServiceWithSas">createBlobServiceWithSas</a></li><li><a href="global.html#createBlobServiceWithTokenCredential">createBlobServiceWithTokenCredential</a></li><li><a href="global.html#createFileService">createFileService</a></li><li><a href="global.html#createFileServiceWithSas">createFileServiceWithSas</a></li><li><a href="global.html#createQueueService">createQueueService</a></li><li><a href="global.html#createQueueServiceWithSas">createQueueServiceWithSas</a></li><li><a href="global.html#createQueueServiceWithTokenCredential">createQueueServiceWithTokenCredential</a></li><li><a href="global.html#createTableService">createTableService</a></li><li><a href="global.html#createTableServiceWithSas">createTableServiceWithSas</a></li><li><a href="global.html#generateAccountSharedAccessSignature">generateAccountSharedAccessSignature</a></li><li><a href="global.html#generateDevelopmentStorageCredentials">generateDevelopmentStorageCredentials</a></li>
 				</ul>
 			</li>
 			
@@ -129,6 +129,7 @@ var TableUtilities = require('../../services/table/tableutilities');
 
 var SharedKey = require('../signing/sharedkey');
 var SharedAccessSignature = require('../signing/sharedaccesssignature');
+var TokenSigner = require('../signing/tokensigner');
 
 var HeaderConstants = Constants.HeaderConstants;
 var QueryStringConstants = Constants.QueryStringConstants;
@@ -154,9 +155,10 @@ var StorageError = errors.StorageError;
 * @param {string} storageAccessKey         The storage access key.
 * @param {object} host                     The host for the service.
 * @param {bool}   usePathStyleUri          Boolean value indicating wether to use path style uris.
-* @param {string} sasToken                 The Shared Access Signature token.
+* @param {string} sas                      The Shared Access Signature string.
+* @param {TokenCredential} [token]         The {@link TokenCredential} object, which can be created with an OAuth access token string.
 */
-function StorageServiceClient(storageAccount, storageAccessKey, host, usePathStyleUri, sasToken) {
+function StorageServiceClient(storageAccount, storageAccessKey, host, usePathStyleUri, sas, token) {
   StorageServiceClient['super_'].call(this);
 
   if(storageAccount &amp;&amp; storageAccessKey) {
@@ -164,10 +166,14 @@ function StorageServiceClient(storageAccount, storageAccessKey, host, usePathSty
     this.storageAccount = storageAccount;
     this.storageAccessKey = storageAccessKey;
     this.storageCredentials = new SharedKey(this.storageAccount, this.storageAccessKey, usePathStyleUri);
-  } else if (sasToken) {
+  } else if (sas) {
     // sas
-    this.sasToken = sasToken;
-    this.storageCredentials = new SharedAccessSignature(sasToken);
+    this.sasToken = sas;
+    this.storageCredentials = new SharedAccessSignature(sas);
+  } else if (token) {
+    // access token
+    this.token = token;
+    this.storageCredentials = new TokenSigner(token);
   } else {
     // anonymous
     this.anonymous = true;
@@ -980,18 +986,19 @@ StorageServiceClient._parseResponse = function (response, xml2jsSettings, option
 * @param {string} [storageAccountOrConnectionString]  The storage account or the connection string.
 * @param {string} [storageAccessKey]                  The storage access key.
 * @param {string} [host]                              The host address.
-* @param {object} [sasToken]                          The sas token.
+* @param {object} [sas]                               The Shared Access Signature string.
+* @param {TokenCredential} [token]                    The {@link TokenCredential} object.
 *
 * @return {StorageServiceSettings}
 */
-StorageServiceClient.getStorageSettings = function (storageAccountOrConnectionString, storageAccessKey, host, sasToken, endpointSuffix) {
+StorageServiceClient.getStorageSettings = function (storageAccountOrConnectionString, storageAccessKey, host, sas, endpointSuffix, token) {
   var storageServiceSettings;
-  if (storageAccountOrConnectionString &amp;&amp; !storageAccessKey &amp;&amp; !sasToken) {
+  if (storageAccountOrConnectionString &amp;&amp; !storageAccessKey &amp;&amp; !sas) {
     // If storageAccountOrConnectionString was passed and no accessKey was passed, assume connection string
     storageServiceSettings = StorageServiceSettings.createFromConnectionString(storageAccountOrConnectionString);
-  } else if ((storageAccountOrConnectionString &amp;&amp; storageAccessKey) || sasToken || host) {
+  } else if ((storageAccountOrConnectionString &amp;&amp; storageAccessKey) || sas || token || host) {
     // Account and key or credentials or anonymous
-    storageServiceSettings = StorageServiceSettings.createExplicitly(storageAccountOrConnectionString, storageAccessKey, host, sasToken, endpointSuffix);
+    storageServiceSettings = StorageServiceSettings.createExplicitly(storageAccountOrConnectionString, storageAccessKey, host, sas, endpointSuffix, token);
   } else {
     // Use environment variables
     storageServiceSettings = StorageServiceSettings.createFromEnvironment();
@@ -1480,7 +1487,7 @@ module.exports = StorageServiceClient;
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on Mon Apr 16th 2018
+		on Fri May 25th 2018
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
