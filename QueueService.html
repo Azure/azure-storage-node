@@ -47,7 +47,7 @@
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html#createBlobService">createBlobService</a></li><li><a href="global.html#createBlobServiceAnonymous">createBlobServiceAnonymous</a></li><li><a href="global.html#createBlobServiceWithSas">createBlobServiceWithSas</a></li><li><a href="global.html#createFileService">createFileService</a></li><li><a href="global.html#createFileServiceWithSas">createFileServiceWithSas</a></li><li><a href="global.html#createQueueService">createQueueService</a></li><li><a href="global.html#createQueueServiceWithSas">createQueueServiceWithSas</a></li><li><a href="global.html#createTableService">createTableService</a></li><li><a href="global.html#createTableServiceWithSas">createTableServiceWithSas</a></li><li><a href="global.html#generateAccountSharedAccessSignature">generateAccountSharedAccessSignature</a></li><li><a href="global.html#generateDevelopmentStorageCredentials">generateDevelopmentStorageCredentials</a></li>
+					<li><a href="global.html#createBlobService">createBlobService</a></li><li><a href="global.html#createBlobServiceAnonymous">createBlobServiceAnonymous</a></li><li><a href="global.html#createBlobServiceWithSas">createBlobServiceWithSas</a></li><li><a href="global.html#createBlobServiceWithTokenCredential">createBlobServiceWithTokenCredential</a></li><li><a href="global.html#createFileService">createFileService</a></li><li><a href="global.html#createFileServiceWithSas">createFileServiceWithSas</a></li><li><a href="global.html#createQueueService">createQueueService</a></li><li><a href="global.html#createQueueServiceWithSas">createQueueServiceWithSas</a></li><li><a href="global.html#createQueueServiceWithTokenCredential">createQueueServiceWithTokenCredential</a></li><li><a href="global.html#createTableService">createTableService</a></li><li><a href="global.html#createTableServiceWithSas">createTableServiceWithSas</a></li><li><a href="global.html#generateAccountSharedAccessSignature">generateAccountSharedAccessSignature</a></li><li><a href="global.html#generateDevelopmentStorageCredentials">generateDevelopmentStorageCredentials</a></li>
 				</ul>
 			</li>
 			
@@ -101,7 +101,7 @@
         
 <hr>
 <dt>
-    <h4 class="name" id="QueueService"><span class="type-signature"></span>new QueueService( [storageAccountOrConnectionString] [, storageAccessKey] [, host] [, sasToken] [, endpointSuffix])</h4>
+    <h4 class="name" id="QueueService"><span class="type-signature"></span>new QueueService( [storageAccountOrConnectionString] [, storageAccessKey] [, host] [, sas] [, endpointSuffix] [, token])</h4>
     
     
 </dt>
@@ -251,7 +251,7 @@
 
         <tr>
             
-                <td class="name"><code>sasToken</code></td>
+                <td class="name"><code>sas</code></td>
             
 
             <td class="type">
@@ -278,7 +278,7 @@
 
             
 
-            <td class="description last"><p>The Shared Access Signature token.</p></td>
+            <td class="description last"><p>The Shared Access Signature string.</p></td>
         </tr>
 
     
@@ -313,6 +313,40 @@
             
 
             <td class="description last"><p>The endpoint suffix.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>token</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">TokenCredential</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The TokenCredential object.</p></td>
         </tr>
 
     
@@ -357,7 +391,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-68">line 68</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-69">line 69</a>
 			</li>
 		</ul>
 	</dd>
@@ -486,7 +520,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="common_services_storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-105">line 105</a>
+				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-111">line 111</a>
 			</li>
 		</ul>
 	</dd>
@@ -612,7 +646,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-87">line 87</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-89">line 89</a>
 			</li>
 		</ul>
 	</dd>
@@ -703,7 +737,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="common_services_storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-969">line 969</a>
+				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-976">line 976</a>
 			</li>
 		</ul>
 	</dd>
@@ -800,7 +834,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="common_services_storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1265">line 1265</a>
+				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1272">line 1272</a>
 			</li>
 		</ul>
 	</dd>
@@ -897,7 +931,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="common_services_storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1320">line 1320</a>
+				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1327">line 1327</a>
 			</li>
 		</ul>
 	</dd>
@@ -994,7 +1028,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="common_services_storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1334">line 1334</a>
+				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1341">line 1341</a>
 			</li>
 		</ul>
 	</dd>
@@ -1091,7 +1125,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="common_services_storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1226">line 1226</a>
+				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1233">line 1233</a>
 			</li>
 		</ul>
 	</dd>
@@ -1188,7 +1222,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="common_services_storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1345">line 1345</a>
+				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1352">line 1352</a>
 			</li>
 		</ul>
 	</dd>
@@ -1285,7 +1319,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="common_services_storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1288">line 1288</a>
+				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1295">line 1295</a>
 			</li>
 		</ul>
 	</dd>
@@ -1734,7 +1768,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-1036">line 1036</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-1038">line 1038</a>
 			</li>
 		</ul>
 	</dd>
@@ -2286,7 +2320,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-711">line 711</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-713">line 713</a>
 			</li>
 		</ul>
 	</dd>
@@ -2775,7 +2809,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-361">line 361</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-363">line 363</a>
 			</li>
 		</ul>
 	</dd>
@@ -3258,7 +3292,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-427">line 427</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-429">line 429</a>
 			</li>
 		</ul>
 	</dd>
@@ -3777,7 +3811,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-983">line 983</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-985">line 985</a>
 			</li>
 		</ul>
 	</dd>
@@ -4226,7 +4260,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-485">line 485</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-487">line 487</a>
 			</li>
 		</ul>
 	</dd>
@@ -4675,7 +4709,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-529">line 529</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-531">line 531</a>
 			</li>
 		</ul>
 	</dd>
@@ -5124,7 +5158,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-335">line 335</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-337">line 337</a>
 			</li>
 		</ul>
 	</dd>
@@ -5525,7 +5559,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-1296">line 1296</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-1298">line 1298</a>
 			</li>
 		</ul>
 	</dd>
@@ -6032,7 +6066,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-852">line 852</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-854">line 854</a>
 			</li>
 		</ul>
 	</dd>
@@ -6555,7 +6589,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-798">line 798</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-800">line 800</a>
 			</li>
 		</ul>
 	</dd>
@@ -7010,7 +7044,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-1157">line 1157</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-1159">line 1159</a>
 			</li>
 		</ul>
 	</dd>
@@ -7459,7 +7493,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-586">line 586</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-588">line 588</a>
 			</li>
 		</ul>
 	</dd>
@@ -7876,7 +7910,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-165">line 165</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-167">line 167</a>
 			</li>
 		</ul>
 	</dd>
@@ -8293,7 +8327,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-112">line 112</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-114">line 114</a>
 			</li>
 		</ul>
 	</dd>
@@ -8509,7 +8543,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-1459">line 1459</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-1461">line 1461</a>
 			</li>
 		</ul>
 	</dd>
@@ -9056,7 +9090,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-218">line 218</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-220">line 220</a>
 			</li>
 		</ul>
 	</dd>
@@ -9639,7 +9673,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-248">line 248</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-250">line 250</a>
 			</li>
 		</ul>
 	</dd>
@@ -10088,7 +10122,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-937">line 937</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-939">line 939</a>
 			</li>
 		</ul>
 	</dd>
@@ -10571,7 +10605,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-899">line 899</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-901">line 901</a>
 			</li>
 		</ul>
 	</dd>
@@ -10995,7 +11029,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="common_services_storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1105">line 1105</a>
+				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1112">line 1112</a>
 			</li>
 		</ul>
 	</dd>
@@ -11142,7 +11176,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="common_services_storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1213">line 1213</a>
+				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1220">line 1220</a>
 			</li>
 		</ul>
 	</dd>
@@ -11644,7 +11678,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-1236">line 1236</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-1238">line 1238</a>
 			</li>
 		</ul>
 	</dd>
@@ -12131,7 +12165,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-643">line 643</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-645">line 645</a>
 			</li>
 		</ul>
 	</dd>
@@ -12580,7 +12614,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-190">line 190</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-192">line 192</a>
 			</li>
 		</ul>
 	</dd>
@@ -13159,7 +13193,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="services_queue_queueservice.js.html">services/queue/queueservice.js</a>,
-				 <a href="services_queue_queueservice.js.html#sunlight-1-line-1086">line 1086</a>
+				 <a href="services_queue_queueservice.js.html#sunlight-1-line-1088">line 1088</a>
 			</li>
 		</ul>
 	</dd>
@@ -13308,7 +13342,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="common_services_storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-769">line 769</a>
+				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-775">line 775</a>
 			</li>
 		</ul>
 	</dd>
@@ -13411,7 +13445,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on Mon Apr 16th 2018
+		on Fri May 25th 2018
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

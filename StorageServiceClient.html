@@ -47,7 +47,7 @@
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html#createBlobService">createBlobService</a></li><li><a href="global.html#createBlobServiceAnonymous">createBlobServiceAnonymous</a></li><li><a href="global.html#createBlobServiceWithSas">createBlobServiceWithSas</a></li><li><a href="global.html#createFileService">createFileService</a></li><li><a href="global.html#createFileServiceWithSas">createFileServiceWithSas</a></li><li><a href="global.html#createQueueService">createQueueService</a></li><li><a href="global.html#createQueueServiceWithSas">createQueueServiceWithSas</a></li><li><a href="global.html#createTableService">createTableService</a></li><li><a href="global.html#createTableServiceWithSas">createTableServiceWithSas</a></li><li><a href="global.html#generateAccountSharedAccessSignature">generateAccountSharedAccessSignature</a></li><li><a href="global.html#generateDevelopmentStorageCredentials">generateDevelopmentStorageCredentials</a></li>
+					<li><a href="global.html#createBlobService">createBlobService</a></li><li><a href="global.html#createBlobServiceAnonymous">createBlobServiceAnonymous</a></li><li><a href="global.html#createBlobServiceWithSas">createBlobServiceWithSas</a></li><li><a href="global.html#createBlobServiceWithTokenCredential">createBlobServiceWithTokenCredential</a></li><li><a href="global.html#createFileService">createFileService</a></li><li><a href="global.html#createFileServiceWithSas">createFileServiceWithSas</a></li><li><a href="global.html#createQueueService">createQueueService</a></li><li><a href="global.html#createQueueServiceWithSas">createQueueServiceWithSas</a></li><li><a href="global.html#createQueueServiceWithTokenCredential">createQueueServiceWithTokenCredential</a></li><li><a href="global.html#createTableService">createTableService</a></li><li><a href="global.html#createTableServiceWithSas">createTableServiceWithSas</a></li><li><a href="global.html#generateAccountSharedAccessSignature">generateAccountSharedAccessSignature</a></li><li><a href="global.html#generateDevelopmentStorageCredentials">generateDevelopmentStorageCredentials</a></li>
 				</ul>
 			</li>
 			
@@ -100,7 +100,7 @@
         
 <hr>
 <dt>
-    <h4 class="name" id="StorageServiceClient"><span class="type-signature"></span>new StorageServiceClient(storageAccount, storageAccessKey, host, usePathStyleUri, sasToken)</h4>
+    <h4 class="name" id="StorageServiceClient"><span class="type-signature"></span>new StorageServiceClient(storageAccount, storageAccessKey, host, usePathStyleUri, sas [, token])</h4>
     
     
 </dt>
@@ -131,6 +131,8 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
         
 
@@ -157,6 +159,14 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
@@ -180,6 +190,14 @@
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -205,6 +223,14 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
@@ -229,6 +255,14 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
@@ -239,7 +273,7 @@
 
         <tr>
             
-                <td class="name"><code>sasToken</code></td>
+                <td class="name"><code>sas</code></td>
             
 
             <td class="type">
@@ -253,10 +287,52 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The Shared Access Signature token.</p></td>
+            <td class="description last"><p>The Shared Access Signature string.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>token</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">TokenCredential</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The TokenCredential object, which can be created with an OAuth access token string.</p></td>
         </tr>
 
     
@@ -301,7 +377,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="common_services_storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-73">line 73</a>
+				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-75">line 75</a>
 			</li>
 		</ul>
 	</dd>
@@ -410,7 +486,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="common_services_storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-105">line 105</a>
+				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-111">line 111</a>
 			</li>
 		</ul>
 	</dd>
@@ -437,7 +513,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".getStorageSettings"><span class="type-signature">&lt;static> </span>getStorageSettings( [storageAccountOrConnectionString] [, storageAccessKey] [, host] [, sasToken])</h4>
+    <h4 class="name" id=".getStorageSettings"><span class="type-signature">&lt;static> </span>getStorageSettings( [storageAccountOrConnectionString] [, storageAccessKey] [, host] [, sas] [, token])</h4>
     
     
 </dt>
@@ -584,7 +660,7 @@
 
         <tr>
             
-                <td class="name"><code>sasToken</code></td>
+                <td class="name"><code>sas</code></td>
             
 
             <td class="type">
@@ -611,7 +687,41 @@
 
             
 
-            <td class="description last"><p>The sas token.</p></td>
+            <td class="description last"><p>The Shared Access Signature string.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>token</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">TokenCredential</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The TokenCredential object.</p></td>
         </tr>
 
     
@@ -656,7 +766,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="common_services_storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-901">line 901</a>
+				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-908">line 908</a>
 			</li>
 		</ul>
 	</dd>
@@ -764,7 +874,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="common_services_storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-969">line 969</a>
+				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-976">line 976</a>
 			</li>
 		</ul>
 	</dd>
@@ -852,7 +962,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="common_services_storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1265">line 1265</a>
+				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1272">line 1272</a>
 			</li>
 		</ul>
 	</dd>
@@ -940,7 +1050,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="common_services_storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1320">line 1320</a>
+				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1327">line 1327</a>
 			</li>
 		</ul>
 	</dd>
@@ -1028,7 +1138,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="common_services_storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1334">line 1334</a>
+				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1341">line 1341</a>
 			</li>
 		</ul>
 	</dd>
@@ -1116,7 +1226,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="common_services_storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1226">line 1226</a>
+				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1233">line 1233</a>
 			</li>
 		</ul>
 	</dd>
@@ -1204,7 +1314,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="common_services_storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1345">line 1345</a>
+				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1352">line 1352</a>
 			</li>
 		</ul>
 	</dd>
@@ -1292,7 +1402,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="common_services_storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1288">line 1288</a>
+				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1295">line 1295</a>
 			</li>
 		</ul>
 	</dd>
@@ -1707,7 +1817,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="common_services_storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1105">line 1105</a>
+				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1112">line 1112</a>
 			</li>
 		</ul>
 	</dd>
@@ -1845,7 +1955,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="common_services_storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1213">line 1213</a>
+				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-1220">line 1220</a>
 			</li>
 		</ul>
 	</dd>
@@ -1985,7 +2095,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="common_services_storageserviceclient.js.html">common/services/storageserviceclient.js</a>,
-				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-769">line 769</a>
+				 <a href="common_services_storageserviceclient.js.html#sunlight-1-line-775">line 775</a>
 			</li>
 		</ul>
 	</dd>
@@ -2088,7 +2198,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on Mon Apr 16th 2018
+		on Fri May 25th 2018
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
