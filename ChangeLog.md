@@ -9,12 +9,14 @@ ALL
 * Bumped version of request module from ~2.83.0 to ^2.86.0 to solve a vulnerability issue.
 
 BLOB
-* Add ```createBlobServiceWithBearerToken()``` to create ```BlobService``` object with bearer tokens such as OAuth access token (in preview).
+* Added `createBlobServiceWithTokenCredential()` to create `BlobService` object with bearer tokens such as OAuth access token (in preview).
 * Added support for '$web' as a valid blob container name for static website.
 * Added support for write-once read-many containers.
+* The `Get Container Properties` and `List Containers` APIs now return two new properties indicating whether the container has an immutability policy or a legal hold.
+* The `Get Blob Properties` and `List Blobs` APIs now return the creation time of the blob as a property.
 
 QUEUE
-* Added ```createQueueServiceWithBearerToken()``` to create ```QueueService``` object with bearer tokens such as OAuth access token (in preview).
+* Added `createQueueServiceWithTokenCredential()` to create `QueueService` object with bearer tokens such as OAuth access token (in preview).
 
 2018.05 Version 2.8.3
 
