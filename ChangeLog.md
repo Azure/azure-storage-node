@@ -1,6 +1,11 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
 be taken. This is a GA release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
 
+2018.06 Version 2.10.0
+
+BLOB
+* Fixed a bug that `DeleteRetentionPolicy.Days` should be `number` instead of `string` when calling `getServiceProperties`.
+
 2018.05 Version 2.9.0-preview
 
 ALL
