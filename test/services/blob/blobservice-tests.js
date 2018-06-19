@@ -1531,7 +1531,7 @@ describe('BlobService', function () {
         assert.strictEqual(parsedUrl.port, '80');
         assert.strictEqual(parsedUrl.hostname, 'host.com');
         assert.strictEqual(parsedUrl.pathname, '/' + containerName + '/' + blobName);
-        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&spr=https&sv=2017-11-09&sr=b&sig=Q9TPDPb4L1Xga4FwRd1XzRqdjZPQP0dDtUD29jryY64%3D');
+        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&spr=https&sv=2018-03-28&sr=b&sig=j6Ubb%2Flpyt9cd55dlfwoEGOog9a%2FyDYWhB8UscVCTo4%3D');
 
         blobUrl = blobServiceassert.getUrl(containerName, blobName, sasToken, false, '2016-10-11T11:03:40Z');
 
@@ -1540,7 +1540,7 @@ describe('BlobService', function () {
         assert.strictEqual(parsedUrl.port, '80');
         assert.strictEqual(parsedUrl.hostname, 'host-secondary.com');
         assert.strictEqual(parsedUrl.pathname, '/' + containerName + '/' + blobName);
-        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&spr=https&sv=2017-11-09&sr=b&sig=Q9TPDPb4L1Xga4FwRd1XzRqdjZPQP0dDtUD29jryY64%3D&snapshot=2016-10-11T11%3A03%3A40Z');
+        assert.strictEqual(parsedUrl.query, 'se=2011-10-12T11%3A53%3A40Z&spr=https&sv=2018-03-28&sr=b&sig=j6Ubb%2Flpyt9cd55dlfwoEGOog9a%2FyDYWhB8UscVCTo4%3D&snapshot=2016-10-11T11%3A03%3A40Z');
 
         done();
       });
@@ -1621,7 +1621,7 @@ describe('BlobService', function () {
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_PERMISSIONS], BlobUtilities.SharedAccessPermissions.READ);
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_PROTOCOL], 'https');
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_VERSION], HeaderConstants.TARGET_STORAGE_VERSION);
-      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], '/BJO5Zfw6k19Abg8YanZuJgx/IuO2ZJmRnb1xX28oGA=');
+      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], '8rgGI044z+1BGRrVKaxO+u5y/pqjBSPVqC3QDEJvTUA=');
 
       done();
     });
@@ -2085,6 +2085,80 @@ describe('BlobService', function () {
     assert.equal(blobService.host.primaryHost, 'http://127.0.0.1:10000/devstoreaccount1');
 
     done();
+  });
+
+  describe('getAccountProperties', function () {
+    it('should work without container and blob names', function (done) {
+      blobService.getAccountProperties(null, null, function (err, res) {
+        assert.equal(err, null);
+        assert.equal(typeof res.SkuName, 'string');
+        assert.equal(typeof res.AccountKind, 'string');
+        assert.equal(true, res.SkuName.length > 0);
+        assert.equal(true, res.AccountKind.length > 0);
+        done();
+      });
+    });
+
+    skipMockAndBrowser('should work with container name', function (done) {
+      var containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
+
+      var sharedAccessPolicy = {
+        AccessPolicy: {
+          Permissions: BlobUtilities.SharedAccessPermissions.READ,
+          Expiry: new Date('October 12, 2020 11:53:40 am GMT'),
+        }
+      };
+
+      var sharedAccessSignature = blobService.generateSharedAccessSignature(containerName, null, sharedAccessPolicy);
+      var blobServiceWithSAS = azure.createBlobServiceWithSas(blobService.host.primaryHost, sharedAccessSignature);
+
+      blobService.createContainerIfNotExists(containerName, function (err) {
+        assert.equal(err, null);
+
+        blobServiceWithSAS.getAccountProperties(containerName, null, function (err, res) {
+          assert.equal(err, null);
+          assert.equal(typeof res.SkuName, 'string');
+          assert.equal(typeof res.AccountKind, 'string');
+          assert.equal(true, res.SkuName.length > 0);
+          assert.equal(true, res.AccountKind.length > 0);
+          done();
+        });
+      });
+    });
+
+    skipMockAndBrowser('should work with container and blob names', function (done) {
+      var containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+
+      var sharedAccessPolicy = {
+        AccessPolicy: {
+          Permissions: BlobUtilities.SharedAccessPermissions.READ,
+          Expiry: new Date('October 12, 2020 11:53:40 am GMT'),
+        }
+      };
+
+      var sharedAccessSignature = blobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
+      var blobServiceWithSAS = azure.createBlobServiceWithSas(blobService.host.primaryHost, sharedAccessSignature);
+
+      blobService.createContainerIfNotExists(containerName, function (err) {
+        assert.equal(err, null);
+        var blobText = 'Hello World';
+
+        blobService.createBlockBlobFromText(containerName, blobName, blobText, function (uploadError, blob, uploadResponse) {
+          assert.equal(uploadError, null);
+          assert.ok(uploadResponse.isSuccessful);
+
+          blobServiceWithSAS.getAccountProperties(containerName, blobName, function (err, res) {
+            assert.equal(err, null);
+            assert.equal(typeof res.SkuName, 'string');
+            assert.equal(typeof res.AccountKind, 'string');
+            assert.equal(true, res.SkuName.length > 0);
+            assert.equal(true, res.AccountKind.length > 0);
+            done();
+          });
+        });
+      });
+    });
   });
 });
 

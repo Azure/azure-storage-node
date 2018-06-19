@@ -2,6 +2,9 @@ Note: This is the change log file for Azure Storage JavaScript Client Library.
 
 2018.05 Version 2.9.100-preview
 
+BLOB
+* Added method `getAccountProperties` on `blobService`.
+
 ALL
 * Generated browser compatible JavaScript files based on Microsoft Azure Storage SDK for Node.js 2.9.0-preview.
 * Updated storage service version to 2017-11-09.
@@ -18,7 +21,7 @@ BLOB
 QUEUE
 * Added `createQueueServiceWithTokenCredential()` to create `QueueService` object with bearer tokens such as OAuth access token (in preview).
 
-2018.04 Version 2.8.100+2.8.2
+2018.04 Version 2.8.100
 
 * Fixed a bug that retry policy will not retry for XHR error in browsers.
 * Updated README.md under browser folder to make it more clear about the zip file downloading link.
