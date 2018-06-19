@@ -1365,45 +1365,6 @@ describe('BlobService', function () {
       });
     });
 
-    it('should work with sync copy', function(done) {
-      var sourceContainerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
-      var targetContainerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
-
-      var sourceBlobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
-      var targetBlobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
-
-      var blobText = 'hi there';
-
-      blobService.createContainer(sourceContainerName, function (createErr1) {
-        assert.equal(createErr1, null);
-
-        blobService.createContainer(targetContainerName, function (createErr2) {
-          assert.equal(createErr2, null);
-
-          blobService.createBlockBlobFromText(sourceContainerName, sourceBlobName, blobText, function (uploadErr, res) {
-            assert.equal(uploadErr, null);
-
-            blobService.startCopyBlob(blobService.getUrl(sourceContainerName, sourceBlobName), targetContainerName, targetBlobName, {isSyncCopy: true}, function (copyErr, copyRes, resp) {
-              assert.equal(copyErr, null);
-
-              blobService.getBlobToText(targetContainerName, targetBlobName, function (downloadErr, text) {
-                assert.equal(downloadErr, null);
-                assert.equal(text, blobText);
-
-                blobService.deleteContainer(sourceContainerName, function (deleteError) {
-                  assert.equal(deleteError, null);
-                  blobService.deleteContainer(targetContainerName, function (deleteError) {
-                    assert.equal(deleteError, null);
-                    done();
-                  });
-                });
-              });
-            });
-          });
-        });
-      });
-    });
-
     runOrSkip('incremental copy should work', function(done) {
       var sourceContainerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
       var targetContainerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);

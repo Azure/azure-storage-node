@@ -1456,9 +1456,6 @@ declare module azurestorage {
           /**
           * Starts to copy a blob or an Azure Storage file to a destination blob.
           *
-          * For a synchronous copy(when option isSyncCopy is true), the source is required to be a block blob.
-          * This operation returns when the copy is finished on the service side.
-          *
           * For an asynchronous copy(by default), this operation returns a object including a copy ID which
           * you can use to check or abort the copy operation. The Blob service copies blobs on a best-effort basis.
           * The source blob for an asynchronous copy operation may be a block blob, an append blob,
@@ -1473,7 +1470,6 @@ declare module azurestorage {
           * @param {Object}             [options]                                 The request options.
           * @param {string}             [options.blobTier]                        For page blobs on premium accounts only. Set the tier of target blob. Refer to BlobUtilities.BlobTier.PremiumPageBlobTier.
           * @param {boolean}            [options.isIncrementalCopy]               If it's incremental copy or not. Refer to https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/incremental-copy-blob
-          * @param {boolean}            [options.isSyncCopy]                      Whether to perform the copy operation synchronously. Source must be a block blob.
           * @param {string}             [options.snapshotId]                      The source blob snapshot identifier.
           * @param {Object}             [options.metadata]                        The target blob metadata key/value pairs.
           * @param {string}             [options.leaseId]                         The target blob lease identifier.
@@ -3107,7 +3103,6 @@ declare module azurestorage {
             accessConditions?: AccessConditions;
             sourceAccessConditions?: AccessConditions;
             isIncrementalCopy?: boolean;
-            isSyncCopy?: boolean;
           }
 
           export interface DeleteBlobRequestOptions extends BlobRequestOptions {

@@ -7,6 +7,7 @@ BLOB
 * Fixed a bug that `DeleteRetentionPolicy.Days` should be `number` instead of `string` when calling `getServiceProperties`.
 * Added method `getAccountProperties` on `blobService`.
 * Added support for synchronous copy of block blobs and put block from URL.
+* Added a method `createBlockFromURL` for `blobService`.
 
 2018.05 Version 2.9.0-preview
 
