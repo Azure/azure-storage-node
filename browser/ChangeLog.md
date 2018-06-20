@@ -1,12 +1,18 @@
 Note: This is the change log file for Azure Storage JavaScript Client Library.
 
+2018.06 Version 2.10.100
+
+ALL
+* Generated browser compatible JavaScript files based on Microsoft Azure Storage SDK for Node.js 2.10.0.
+* Updated storage service version to 2018-03-28.
+
 BLOB
-* Added a method `createBlockFromURL` for `blobService`.
+* Fixed a bug that `DeleteRetentionPolicy.Days` should be `number` instead of `string` when calling `getServiceProperties`.
+* Added a method `getAccountProperties` to `blobService`.
+* Added a method `createBlockFromURL` to `blobService`.
+* Added support for static website service properties (in preview).
 
 2018.05 Version 2.9.100-preview
-
-BLOB
-* Added method `getAccountProperties` on `blobService`.
 
 ALL
 * Generated browser compatible JavaScript files based on Microsoft Azure Storage SDK for Node.js 2.9.0-preview.
@@ -17,7 +23,7 @@ ALL
 BLOB
 * Added `createBlobServiceWithTokenCredential()` to create `BlobService` object with bearer tokens such as OAuth access token (in preview).
 * Added support for '$web' as a valid blob container name for static website.
-* Added support for write-once read-many containers.
+* Added support for write-once read-many containers (in preview).
 * The `Get Container Properties` and `List Containers` APIs now return two new properties indicating whether the container has an immutability policy or a legal hold.
 * The `Get Blob Properties` and `List Blobs` APIs now return the creation time of the blob as a property.
 
