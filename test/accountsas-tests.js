@@ -67,7 +67,7 @@ var skipMockAndBrowser = testutil.itSkipMockAndBrowser(suite.isMocked);
 var getPolicyWithFullPermissions = function(){
   var startDate = new Date();
   var expiryDate = new Date();
-  startDate.setTime(startDate.getTime() - 1000);
+  startDate.setTime(startDate.getTime() - 5*60*1000);
   expiryDate.setTime(expiryDate.getTime() + 24*60*60*1000);
   
   var sharedAccessPolicy = {
