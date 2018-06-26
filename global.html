@@ -3647,7 +3647,468 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-353">line 353</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-380">line 380</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+            
+                
+<hr>
+<dt class="name" id="AccountProperties">
+    <h4 id="AccountProperties">AccountProperties</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The properties of a storage account.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    <dl>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>SkuName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The header that specifies storage SKU, also known as account type.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>AccountKind</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The header that describes the flavour of the storage account, also known as account kind.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</dl>
+
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="azure-storage.js.html">azure-storage.js</a>,
+				 <a href="azure-storage.js.html#sunlight-1-line-317">line 317</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+            
+                
+<hr>
+<dt class="name" id="BlobServiceProperties">
+    <h4 id="BlobServiceProperties">BlobServiceProperties</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The properties of a blob storage service, including properties of Storage Analytics, CORS (Cross-Origin Resource Sharing) rules and Static Webiste configurations.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    <dl>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>DefaultServiceVersion</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The default version of Storage Analytics currently in use.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>Logging</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#LoggingProperties">LoggingProperties</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Logging settings.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HourMetrics</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#MetricsProperties">MetricsProperties</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The HourMetrics settings provide a summary of request statistics grouped by API in hourly aggregates.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>MinuteMetrics</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#MetricsProperties">MetricsProperties</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The HourMetrics settings provide request statistics grouped by API for each minute.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>StaticWebsite</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#StaticWebsiteProperties">StaticWebsiteProperties</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Azure Static Website settings.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>Cors</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Groups all CORS rules.</p>
+                <h6>Properties</h6>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>CorsRules</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="global.html#CorsRule">CorsRule</a>></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Groups settings for a <code><a href="global.html#CorsRule">CORS rule</a></code>.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</dl>
+
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="azure-storage.js.html">azure-storage.js</a>,
+				 <a href="azure-storage.js.html#sunlight-1-line-324">line 324</a>
 			</li>
 		</ul>
 	</dd>
@@ -4011,7 +4472,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-336">line 336</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-363">line 363</a>
 			</li>
 		</ul>
 	</dd>
@@ -4589,7 +5050,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-317">line 317</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-344">line 344</a>
 			</li>
 		</ul>
 	</dd>
@@ -4795,7 +5256,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-327">line 327</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-354">line 354</a>
 			</li>
 		</ul>
 	</dd>
@@ -4953,7 +5414,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-375">line 375</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-402">line 402</a>
 			</li>
 		</ul>
 	</dd>
@@ -5135,7 +5596,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-382">line 382</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-409">line 409</a>
 			</li>
 		</ul>
 	</dd>
@@ -5293,7 +5754,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-346">line 346</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-373">line 373</a>
 			</li>
 		</ul>
 	</dd>
@@ -5779,7 +6240,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="azure-storage.js.html">azure-storage.js</a>,
-				 <a href="azure-storage.js.html#sunlight-1-line-365">line 365</a>
+				 <a href="azure-storage.js.html#sunlight-1-line-392">line 392</a>
 			</li>
 		</ul>
 	</dd>
@@ -5930,6 +6391,188 @@
     
 </dd>
 
+            
+                
+<hr>
+<dt class="name" id="StaticWebsiteProperties">
+    <h4 id="StaticWebsiteProperties">StaticWebsiteProperties</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The Azure Static Website settings.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    <dl>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>Enabled</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether feature of Static Website is enabled.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>IndexDocument</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Indicates index document page path.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ErrorDocument404Path</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Indicates 404 document page path.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</dl>
+
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="azure-storage.js.html">azure-storage.js</a>,
+				 <a href="azure-storage.js.html#sunlight-1-line-336">line 336</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
             </dl>
     
 
@@ -5978,7 +6621,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on Fri May 25th 2018
+		on Tue Jun 26th 2018
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
