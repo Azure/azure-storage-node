@@ -95,9 +95,9 @@ describe('StorageServiceSettingsTests', function(done) {
       function (err) {return (typeof err.name === 'undefined' || err.name === 'ArgumentNullError') && err.message === 'The host for the storage service must be specified.';}
     );
     assert.throws(
-      function () {blobServiceUsingExplicitHost.setHost('xyz');}, 
-      function (err) {return (err instanceof URIError) && err.message === 'The provided URI "xyz" is invalid.';}
-    );
+      function () {blobServiceUsingExplicitHost.setHost('weird and invalid chars: 🦄💨');},
+      function (err) {return (err instanceof URIError) && err.message === 'The provided URI "weird and invalid chars: 🦄💨" is invalid.';}
+    )
 
     done();
   });

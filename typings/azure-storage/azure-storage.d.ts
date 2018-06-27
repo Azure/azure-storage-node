@@ -159,8 +159,32 @@ declare module azurestorage {
           * @param {errorOrResult}  callback                              `error` will contain information if an error occurs; otherwise, `result` will contain the properties
           *                                                               and `response` will contain information related to this operation.
           */
-          getServiceProperties(options: common.RequestOptions, callback?: ErrorOrResult<common.models.ServicePropertiesResult.ServiceProperties>): void;
-          getServiceProperties(callback?: ErrorOrResult<common.models.ServicePropertiesResult.ServiceProperties>): void;
+          getServiceProperties(options: common.RequestOptions, callback?: ErrorOrResult<common.models.ServicePropertiesResult.BlobServiceProperties>): void;
+          getServiceProperties(callback?: ErrorOrResult<common.models.ServicePropertiesResult.BlobServiceProperties>): void;
+          
+          /**
+          * Gets the properties of a storage account.
+          *
+          * @this {BlobService}
+          * @param {string}       [container]                             Optional. Name of an existing container. Required when using a SAS token to a specific container or blob.
+          * @param {string}       [blob]                                  Optional. Name of an existing blob. Required when using a SAS token to a specific blob.
+          * @param {Object}       [options]                               The request options.
+          * @param {LocationMode} [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to. 
+          *                                                               Please see StorageUtilities.LocationMode for the possible values.
+          * @param {int}          [options.timeoutIntervalInMs]           The server timeout interval, in milliseconds, to use for the request.
+          * @param {int}          [options.clientRequestTimeoutInMs]      The timeout of client requests, in milliseconds, to use for the request.
+          * @param {int}          [options.maximumExecutionTimeInMs]      The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+          *                                                               The maximum execution time interval begins at the time that the client begins building the request. The maximum
+          *                                                               execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}       [options.clientRequestId]               A string that represents the client request ID with a 1KB character limit.
+          * @param {bool}         [options.useNagleAlgorithm]             Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+          *                                                               The default value is false.
+          * @param {errorOrResult}  callback                              `error` will contain information if an error occurs; otherwise, `[result]{@link AccountProperties}` will contain the properties 
+          *                                                               and `response` will contain information related to this operation.
+          */
+         getAccountProperties(container?:string, blob?:string, options?: common.RequestOptions, callback?: ErrorOrResult<common.models.AccountProperties>): void;
+         getAccountProperties(container?:string, blob?:string, callback?: ErrorOrResult<common.models.AccountProperties>): void;          
+
           /**
           * Sets the properties of a storage account’s Blob service, including Azure Storage Analytics.
           * You can also use this operation to set the default request version for all incoming requests that do not have a version specified.
@@ -182,8 +206,8 @@ declare module azurestorage {
           *                                                                      if an error occurs; otherwise, `response`
           *                                                                      will contain information related to this operation.
           */
-          setServiceProperties(serviceProperties: common.models.ServicePropertiesResult.ServiceProperties, options: common.RequestOptions, callback: ErrorOrResponse): void;
-          setServiceProperties(serviceProperties: common.models.ServicePropertiesResult.ServiceProperties, callback: ErrorOrResponse): void;
+          setServiceProperties(serviceProperties: common.models.ServicePropertiesResult.BlobServiceProperties, options: common.RequestOptions, callback: ErrorOrResponse): void;
+          setServiceProperties(serviceProperties: common.models.ServicePropertiesResult.BlobServiceProperties, callback: ErrorOrResponse): void;
 
           /**
           * Sets the tier of a blockblob under a blob storage LRS account, or the tier of a pageblob under a premium storage account.
@@ -1430,7 +1454,14 @@ declare module azurestorage {
           createBlobSnapshot(container: string, blob: string, callback: ErrorOrResult<string>): void;
 
           /**
-          * Starts to copy a blob to a destination within the storage account. The Copy Blob operation copies the entire committed blob.
+          * Starts to copy a blob or an Azure Storage file to a destination blob.
+          *
+          * For an asynchronous copy(by default), this operation returns a object including a copy ID which
+          * you can use to check or abort the copy operation. The Blob service copies blobs on a best-effort basis.
+          * The source blob for an asynchronous copy operation may be a block blob, an append blob,
+          * a page blob or an Azure Storage file.
+          *
+          * Refer to https://docs.microsoft.com/en-us/rest/api/storageservices/copy-blob for more details. 
           *
           * @this {BlobService}
           * @param {string}             sourceUri                                 The source blob URI.
@@ -1438,6 +1469,7 @@ declare module azurestorage {
           * @param {string}             targetBlob                                The target blob name.
           * @param {Object}             [options]                                 The request options.
           * @param {string}             [options.blobTier]                        For page blobs on premium accounts only. Set the tier of target blob. Refer to BlobUtilities.BlobTier.PremiumPageBlobTier.
+          * @param {boolean}            [options.isIncrementalCopy]               If it's incremental copy or not. Refer to https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/incremental-copy-blob
           * @param {string}             [options.snapshotId]                      The source blob snapshot identifier.
           * @param {Object}             [options.metadata]                        The target blob metadata key/value pairs.
           * @param {string}             [options.leaseId]                         The target blob lease identifier.
@@ -2198,6 +2230,38 @@ declare module azurestorage {
           */
           createBlockFromText(blockId: string, container: string, blob: string, content: string | Buffer, options: BlobService.BlobRequestOptions, callback: ErrorOrResponse): void;
           createBlockFromText(blockId: string, container: string, blob: string, content: string | Buffer, callback: ErrorOrResponse): void;
+
+         /**
+         * Creates a new block to be committed as part of a blob from an URL of an Azure blob or file.
+         *
+         * @this {BlobService}
+         * @param {string}             blockId                                   The block identifier.
+         * @param {string}             container                                 The container name.
+         * @param {string}             blob                                      The blob name.
+         * @param {string}             sourceURL                                 The URL of the source data.
+         *                                                                       It can point to any Azure Blob or File, that is either public or has a shared access signature attached.
+         * @param {int}                sourceRangeStart                          The start of the range of bytes(inclusive) that has to be taken from the copy source.
+         * @param {int}                sourceRangeEnd                            The end of the range of bytes(inclusive) that has to be taken from the copy source.
+         * @param {object}             [options]                                 The request options.
+         * @param {string}             [options.leaseId]                         The target blob lease identifier.
+         * @param {string}             [options.transactionalContentMD5]         An MD5 hash of the block content. This hash is used to verify the integrity of the block during transport. 
+         * @param {AccessConditions}   [options.accessConditions]                The access conditions.
+         * @param {LocationMode}       [options.locationMode]                    Specifies the location mode used to decide which location the request should be sent to. 
+         *                                                                       Please see StorageUtilities.LocationMode for the possible values.
+         * @param {int}                [options.timeoutIntervalInMs]             The server timeout interval, in milliseconds, to use for the request.
+         * @param {int}                [options.clientRequestTimeoutInMs]        The timeout of client requests, in milliseconds, to use for the request.
+         * @param {int}                [options.maximumExecutionTimeInMs]        The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+         *                                                                       The maximum execution time interval begins at the time that the client begins building the request. The maximum
+         *                                                                       execution time is checked intermittently while performing requests, and before executing retries.
+         * @param {string}             [options.clientRequestId]                 A string that represents the client request ID with a 1KB character limit.
+         * @param {bool}               [options.useNagleAlgorithm]               Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+         *                                                                       The default value is false.
+         * @param {errorOrResponse}    callback                                  `error` will contain information
+         *                                                                       if an error occurs; otherwise 
+         *                                                                       `response` will contain information related to this operation.
+         */
+         createBlockFromURL(blockId: string, container: string, blob: string, sourceURL: string, sourceRangeStart: number, sourceRangeEnd: number, options: BlobService.CreateBlockRequestOptions, callback: ErrorOrResponse): void;
+         createBlockFromURL(blockId: string, container: string, blob: string, sourceURL: string, sourceRangeStart: number, sourceRangeEnd: number, callback: ErrorOrResponse): void;
 
           /**
           * Writes a blob by specifying the list of block IDs that make up the blob.
@@ -3003,6 +3067,10 @@ declare module azurestorage {
           export interface BlobRequestOptions extends ConditionalRequestOption {
             snapshotId?: string; // TODO: Not valid for most write requests...
             leaseId?: string;
+          }
+
+          export interface CreateBlockRequestOptions extends BlobRequestOptions {
+            transactionalContentMD5?: string;
           }
 
           export interface AppendBlobRequestOptions extends ConditionalRequestOption, BlobRequestOptions {
@@ -9045,6 +9113,11 @@ declare module azurestorage {
         };
       }
 
+      export interface AccountProperties {
+        SkuName: string;
+        AccountKind: string;
+      }
+
       module ServicePropertiesResult {
         export interface RetentionPolicy {
           Enabled: boolean;
@@ -9083,6 +9156,14 @@ declare module azurestorage {
           Cors?: {
             CorsRule: CorsRule[];
           };
+        }
+        export interface StaticWebsiteProperties {
+          Enabled: boolean;
+          IndexDocument?: string;
+          ErrorDocument404Path?: string;
+        }
+        export interface BlobServiceProperties extends ServiceProperties {
+          StaticWebsite?: StaticWebsiteProperties;
         }
         export function serialize(servicePropertiesJs: ServiceProperties): string;
         export function parse(servicePropertiesXml: any): ServiceProperties;

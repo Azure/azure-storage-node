@@ -67,7 +67,7 @@ var skipMockAndBrowser = testutil.itSkipMockAndBrowser(suite.isMocked);
 var getPolicyWithFullPermissions = function(){
   var startDate = new Date();
   var expiryDate = new Date();
-  startDate.setTime(startDate.getTime() - 1000);
+  startDate.setTime(startDate.getTime() - 5*60*1000);
   expiryDate.setTime(expiryDate.getTime() + 24*60*60*1000);
   
   var sharedAccessPolicy = {
@@ -1454,7 +1454,7 @@ describe('azure', function () {
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_PROTOCOL], sharedAccessPolicy.AccessPolicy.Protocols);
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_IP], sharedAccessPolicy.AccessPolicy.IPAddressOrRange);
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_VERSION], HeaderConstants.TARGET_STORAGE_VERSION);
-      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'VLRp5YUqhsFp/0eSstlRtmCGErv6FaFxp0WmcQpiHmE=');
+      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'LsKIiYE4YXwZMsShc2/2tuJeHQSWvelT07ahZVgkeqg=');
 
       process.env[StorageServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_CONNECTION_STRING] = connString;
       done();
@@ -1486,7 +1486,7 @@ describe('azure', function () {
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_PROTOCOL], sharedAccessPolicy.AccessPolicy.Protocols);
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_IP], sharedAccessPolicy.AccessPolicy.IPAddressOrRange);
       assert.equal(sasQueryString[QueryStringConstants.SIGNED_VERSION], HeaderConstants.TARGET_STORAGE_VERSION);
-      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'VLRp5YUqhsFp/0eSstlRtmCGErv6FaFxp0WmcQpiHmE=');
+      assert.equal(sasQueryString[QueryStringConstants.SIGNATURE], 'LsKIiYE4YXwZMsShc2/2tuJeHQSWvelT07ahZVgkeqg=');
       
       done();
     });

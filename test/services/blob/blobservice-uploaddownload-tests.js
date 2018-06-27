@@ -910,6 +910,42 @@ describe('blob-uploaddownload-tests', function () {
         });
       });
     });
+
+    it('createBlockFromUrl should work', function(done) {
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+      var destBlobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
+      var blobText = 'Hello World!';
+
+      blobService.createBlockBlobFromText(containerName, blobName, blobText, function (err, res) {
+        assert.equal(err, null);
+
+        var expiryDate = new Date();
+        expiryDate.setHours(expiryDate.getHours() + 1);
+        var sas = blobService.generateSharedAccessSignature(containerName, blobName, {AccessPolicy: {Permissions: 'r', Expiry: expiryDate}});
+
+        blobService.createBlockFromURL('MDE=', containerName, destBlobName, blobService.getUrl(containerName, blobName, sas), 0, 4, function (err, res) {
+          assert.equal(err, null);
+
+          blobService.listBlocks(containerName, destBlobName, 'all', function (err, res) {
+            assert.equal(err, null);
+            assert.equal(res.UncommittedBlocks.length, 1);
+            assert.equal(res.UncommittedBlocks[0].Name, 'MDE=');
+            assert.equal(res.UncommittedBlocks[0].Size, 5);
+
+            blobService.commitBlocks(containerName, destBlobName, {LatestBlocks: ['MDE=']}, function (err, res) {
+              assert.equal(err, null);
+
+              blobService.getBlobToText(containerName, destBlobName, function (err, text) {
+                assert.equal(err, null);
+                assert.equal(blobText.substr(0, 5), text);
+                done();
+              });
+            });
+          });
+        });
+      });
+    });
+
   });
   
   describe('AppendBlock', function() {
