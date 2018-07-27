@@ -86,6 +86,8 @@ declare module azurestorage {
           *                                                     the value specified by the singleBlobPutThresholdInBytes property in size.
           * useNagleAlgorithm                                   Determines whether the Nagle algorithm is used for requests made via the Blob service; true to use the
           *                                                     Nagle algorithm; otherwise, false. The default value is false.
+          * enableGlobalHttpAgent                               Determines whether global HTTP(s) agent is enabled; true to use Global HTTP(s) agent; otherwise, false to use
+          *                                                     http(s).Agent({keepAlive:true}).
           * @constructor
           * @extends {StorageServiceClient}
           *
@@ -3240,6 +3242,8 @@ declare module azurestorage {
         * defaultLocationMode                                 The default location mode for requests made via the Queue service.
         * useNagleAlgorithm                                   Determines whether the Nagle algorithm is used for requests made via the Queue service; true to use the  
         *                                                     Nagle algorithm; otherwise, false. The default value is false.
+        * enableGlobalHttpAgent                               Determines whether global HTTP(s) agent is enabled; true to use Global HTTP(s) agent; otherwise, false to use
+        *                                                     http(s).Agent({keepAlive:true}).
         * If no connection string or storageaccount and storageaccesskey are provided,
         * the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_ACCESS_KEY environment variables will be used.
         * @augments {StorageServiceClient}
@@ -5513,6 +5517,8 @@ declare module azurestorage {
         * defaultPayloadFormat                                The default payload format for requests made via the Table service.
         * useNagleAlgorithm                                   Determines whether the Nagle algorithm is used for requests made via the Table service.; true to use the
         *                                                     Nagle algorithm; otherwise, false. The default value is false.
+        * enableGlobalHttpAgent                               Determines whether global HTTP(s) agent is enabled; true to use Global HTTP(s) agent; otherwise, false to use
+        *                                                     http(s).Agent({keepAlive:true}).
         * @constructor
         * @extends {StorageServiceClient}
         *
@@ -7654,6 +7660,8 @@ declare module azurestorage {
         * parallelOperationThreadCount                        The number of parallel operations that may be performed when uploading a file.
         * useNagleAlgorithm                                   Determines whether the Nagle algorithm is used for requests made via the file service; true to use the  
         *                                                     Nagle algorithm; otherwise, false. The default value is false.
+        * enableGlobalHttpAgent                               Determines whether global HTTP(s) agent is enabled; true to use Global HTTP(s) agent; otherwise, false to use
+        *                                                     http(s).Agent({keepAlive:true}).
         * @constructor
         * @extends {StorageServiceClient}
         *
@@ -9217,15 +9225,21 @@ declare module azurestorage {
           defaultClientRequestTimeoutInMs: number;
           /**
           * Determines whether the Nagle algorithm is used for requests made via the Queue service; true to use the
-          *  Nagle algorithm; otherwise, false. The default value is false.
+          * Nagle algorithm; otherwise, false. The default value is false.
           * @member {bool} StorageServiceClient#useNagleAlgorithm
           */
           useNagleAlgorithm: boolean;
+          /**
+          * Determines whether global HTTP(s) agent is enabled; true to use Global HTTP(s) agent; otherwise, false to use
+          * http(s).Agent({keepAlive:true}).
+          * @member {bool} StorageServiceClient#enableGlobalHttpAgent
+          */
+          enableGlobalHttpAgent: boolean;
           /** The proxy object specified by caller.
           * @member {Proxy}   StorageServiceClient#proxy
           */
           proxy: Proxy;
-            /** The logging settings object.
+          /** The logging settings object.
           * @member {diagnostics.logger.Logger}   StorageServiceClient#logger
           */
           logger: diagnostics.logger.Logger;
