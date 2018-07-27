@@ -1,18 +1,18 @@
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 import * as events from 'events';
 import * as url from 'url';
 import * as stream from 'stream';
@@ -141,7 +141,7 @@ declare module azurestorage {
           */
           getServiceStats(options: common.RequestOptions, callback: ErrorOrResult<common.models.ServiceStats>): void;
           getServiceStats(callback: ErrorOrResult<common.models.ServiceStats>): void;
-          
+
           /**
           * Gets the properties of a storage account’s Blob service, including Azure Storage Analytics.
           *
@@ -161,7 +161,7 @@ declare module azurestorage {
           */
           getServiceProperties(options: common.RequestOptions, callback?: ErrorOrResult<common.models.ServicePropertiesResult.BlobServiceProperties>): void;
           getServiceProperties(callback?: ErrorOrResult<common.models.ServicePropertiesResult.BlobServiceProperties>): void;
-          
+
           /**
           * Gets the properties of a storage account.
           *
@@ -169,7 +169,7 @@ declare module azurestorage {
           * @param {string}       [container]                             Optional. Name of an existing container. Required when using a SAS token to a specific container or blob.
           * @param {string}       [blob]                                  Optional. Name of an existing blob. Required when using a SAS token to a specific blob.
           * @param {Object}       [options]                               The request options.
-          * @param {LocationMode} [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to. 
+          * @param {LocationMode} [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to.
           *                                                               Please see StorageUtilities.LocationMode for the possible values.
           * @param {int}          [options.timeoutIntervalInMs]           The server timeout interval, in milliseconds, to use for the request.
           * @param {int}          [options.clientRequestTimeoutInMs]      The timeout of client requests, in milliseconds, to use for the request.
@@ -179,11 +179,11 @@ declare module azurestorage {
           * @param {string}       [options.clientRequestId]               A string that represents the client request ID with a 1KB character limit.
           * @param {bool}         [options.useNagleAlgorithm]             Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                               The default value is false.
-          * @param {errorOrResult}  callback                              `error` will contain information if an error occurs; otherwise, `[result]{@link AccountProperties}` will contain the properties 
+          * @param {errorOrResult}  callback                              `error` will contain information if an error occurs; otherwise, `[result]{@link AccountProperties}` will contain the properties
           *                                                               and `response` will contain information related to this operation.
           */
          getAccountProperties(container?:string, blob?:string, options?: common.RequestOptions, callback?: ErrorOrResult<common.models.AccountProperties>): void;
-         getAccountProperties(container?:string, blob?:string, callback?: ErrorOrResult<common.models.AccountProperties>): void;          
+         getAccountProperties(container?:string, blob?:string, callback?: ErrorOrResult<common.models.AccountProperties>): void;
 
           /**
           * Sets the properties of a storage account’s Blob service, including Azure Storage Analytics.
@@ -216,7 +216,7 @@ declare module azurestorage {
           * @param {string}             container                                The container name.
           * @param {string}             blob                                     The blob name.
           * @param {string}             blobTier                                 Please see BlobUtilities.BlobTier.StandardBlobTier or BlobUtilities.BlobTier.PremiumPageBlobTier for possible values.
-          * @param {LocationMode}       [options.locationMode]                   Specifies the location mode used to decide which location the request should be sent to. 
+          * @param {LocationMode}       [options.locationMode]                   Specifies the location mode used to decide which location the request should be sent to.
           *                                                                      Please see StorageUtilities.LocationMode for the possible values.
           * @param {int}                [options.timeoutIntervalInMs]            The server timeout interval, in milliseconds, to use for the request.
           * @param {int}                [options.clientRequestTimeoutInMs]       The timeout of client requests, in milliseconds, to use for the request.
@@ -304,7 +304,7 @@ declare module azurestorage {
           *                                                                     `response` will contain information related to this operation.
           */
           doesContainerExist(container: string, options: common.RequestOptions, callback: ErrorOrResult<BlobService.ContainerResult>): void;
-          
+
 
           /**
           * Checks whether or not a container exists on the service.
@@ -331,7 +331,7 @@ declare module azurestorage {
           */
           createContainer(container: string, callback: ErrorOrResult<BlobService.ContainerResult>): void;
 
-          
+
           /**
           * Creates a new container under the specified account.
           * If a container with the same name already exists, the operation fails.
@@ -378,7 +378,7 @@ declare module azurestorage {
           * });
           */
           createContainerIfNotExists(container: string, callback: ErrorOrResult<BlobService.ContainerResult>): void;
-          
+
           /**
           * Creates a new container under the specified account if the container does not exists.
           *
@@ -424,7 +424,7 @@ declare module azurestorage {
           *                                                                 `response` will contain information related to this operation.
           */
           getContainerProperties(container: string, callback: ErrorOrResult<BlobService.ContainerResult>): void;
-          
+
           /**
           * Retrieves a container and its properties from a specified account.
           *
@@ -1315,13 +1315,13 @@ declare module azurestorage {
           /**
           * The undelete Blob operation restores the contents and metadata of soft deleted blob or snapshot.
           * Attempting to undelete a blob or snapshot that is not soft deleted will succeed without any changes.
-          * 
+          *
           * @this {BlobService}
           * @param {string}             container                                   The container name.
           * @param {string}             blob                                        The blob name.
           * @param {object}             [options]                                   The request options.
           * @param {AccessConditions}   [options.accessConditions]                  The access conditions.
-          * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+          * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
           *                                                                         Please see StorageUtilities.LocationMode for the possible values.
           * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
           * @param {int}                [options.clientRequestTimeoutInMs]          The timeout of client requests, in milliseconds, to use for the request.
@@ -1461,7 +1461,7 @@ declare module azurestorage {
           * The source blob for an asynchronous copy operation may be a block blob, an append blob,
           * a page blob or an Azure Storage file.
           *
-          * Refer to https://docs.microsoft.com/en-us/rest/api/storageservices/copy-blob for more details. 
+          * Refer to https://docs.microsoft.com/en-us/rest/api/storageservices/copy-blob for more details.
           *
           * @this {BlobService}
           * @param {string}             sourceUri                                 The source blob URI.
@@ -1636,7 +1636,7 @@ declare module azurestorage {
           * @param {string}             [options.leaseId]                                   The lease identifier.
           * @param {string}             [options.transactionalContentMD5]                   An MD5 hash of the blob content. This hash is used to verify the integrity of the blob during transport.
           * @param {Object}             [options.metadata]                                  The metadata key/value pairs.
-          * @param {bool}               [options.storeBlobContentMD5]                       Specifies whether the blob's ContentMD5 header should be set on uploads. 
+          * @param {bool}               [options.storeBlobContentMD5]                       Specifies whether the blob's ContentMD5 header should be set on uploads.
           *                                                                                 The default value is false for page blobs.
           * @param {bool}               [options.useTransactionalMD5]                       Calculate and send/validate content MD5 for transactions.
           * @param {Object}             [options.contentSettings]                           The content settings of the blob.
@@ -1647,7 +1647,7 @@ declare module azurestorage {
           * @param {string}             [options.contentSettings.contentDisposition]        The blob's content disposition.
           * @param {string}             [options.contentSettings.contentMD5]                The blob's MD5 hash.
           * @param {AccessConditions}   [options.accessConditions]                          The access conditions.
-          * @param {LocationMode}       [options.locationMode]                              Specifies the location mode used to decide which location the request should be sent to. 
+          * @param {LocationMode}       [options.locationMode]                              Specifies the location mode used to decide which location the request should be sent to.
           *                                                                                 Please see StorageUtilities.LocationMode for the possible values.
           * @param {int}                [options.timeoutIntervalInMs]                       The server timeout interval, in milliseconds, to use for the request.
           * @param {int}                [options.clientRequestTimeoutInMs]                  The timeout of client requests, in milliseconds, to use for the request.
@@ -2018,7 +2018,7 @@ declare module azurestorage {
           * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
           * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 hash.
           * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
-          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to.
           *                                                                           Please see StorageUtilities.LocationMode for the possible values.
           * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
           * @param {int}                [options.clientRequestTimeoutInMs]            The timeout of client requests, in milliseconds, to use for the request.
@@ -2163,7 +2163,7 @@ declare module azurestorage {
           *                                                                             if an error occurs; otherwise `result` will contain
           *                                                                             information about the blob.
           *                                                                             `response` will contain information related to this operation.
-          * @return {Writable}                                                          A Node.js Writable stream. 
+          * @return {Writable}                                                          A Node.js Writable stream.
           * @example
           * var azure = require('azure-storage');
           * var blobService = azure.createBlobService();
@@ -2244,9 +2244,9 @@ declare module azurestorage {
          * @param {int}                sourceRangeEnd                            The end of the range of bytes(inclusive) that has to be taken from the copy source.
          * @param {object}             [options]                                 The request options.
          * @param {string}             [options.leaseId]                         The target blob lease identifier.
-         * @param {string}             [options.transactionalContentMD5]         An MD5 hash of the block content. This hash is used to verify the integrity of the block during transport. 
+         * @param {string}             [options.transactionalContentMD5]         An MD5 hash of the block content. This hash is used to verify the integrity of the block during transport.
          * @param {AccessConditions}   [options.accessConditions]                The access conditions.
-         * @param {LocationMode}       [options.locationMode]                    Specifies the location mode used to decide which location the request should be sent to. 
+         * @param {LocationMode}       [options.locationMode]                    Specifies the location mode used to decide which location the request should be sent to.
          *                                                                       Please see StorageUtilities.LocationMode for the possible values.
          * @param {int}                [options.timeoutIntervalInMs]             The server timeout interval, in milliseconds, to use for the request.
          * @param {int}                [options.clientRequestTimeoutInMs]        The timeout of client requests, in milliseconds, to use for the request.
@@ -2257,7 +2257,7 @@ declare module azurestorage {
          * @param {bool}               [options.useNagleAlgorithm]               Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
          *                                                                       The default value is false.
          * @param {errorOrResponse}    callback                                  `error` will contain information
-         *                                                                       if an error occurs; otherwise 
+         *                                                                       if an error occurs; otherwise
          *                                                                       `response` will contain information related to this operation.
          */
          createBlockFromURL(blockId: string, container: string, blob: string, sourceURL: string, sourceRangeStart: number, sourceRangeEnd: number, options: BlobService.CreateBlockRequestOptions, callback: ErrorOrResponse): void;
@@ -2327,7 +2327,7 @@ declare module azurestorage {
           */
           commitBlocks(container: string, blob: string, blockList: BlobService.PutBlockListRequest, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResult<BlobService.BlobResult>): void;
           commitBlocks(container: string, blob: string, blockList: BlobService.PutBlockListRequest, callback: ErrorOrResult<BlobService.BlobResult>): void;
-          
+
           /**
           * Retrieves the list of blocks that have been uploaded as part of a block blob.
           *
@@ -2383,7 +2383,7 @@ declare module azurestorage {
           * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
           * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 hash.
           * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
-          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to.
           *                                                                           Please see StorageUtilities.LocationMode for the possible values.
           * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
           * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -2393,7 +2393,7 @@ declare module azurestorage {
           * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
           *                                                                           The default value is false.
           * @param {errorOrResponse}    callback                                      `error` will contain information
-          *                                                                           if an error occurs; otherwise 
+          *                                                                           if an error occurs; otherwise
           *                                                                           `response` will contain information related to this operation.
           */
           createOrReplaceAppendBlob(container: string, blob: string, options: BlobService.CreateBlobRequestOptions, callback: ErrorOrResponse): void;
@@ -2424,7 +2424,7 @@ declare module azurestorage {
           * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
           * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 hash.
           * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
-          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to.
           *                                                                           Please see StorageUtilities.LocationMode for the possible values.
           * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
           * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -2453,7 +2453,7 @@ declare module azurestorage {
           * @param {Object}             browserFile                                   The File object to be uploaded created by HTML File API.
           * @param {Object}             [options]                                     The request options.
           * @param {bool}               [options.absorbConditionalErrorsOnRetry]      Specifies whether to absorb the conditional error on retry.
-          * @param {string}             [options.leaseId]                             The lease identifier. 
+          * @param {string}             [options.leaseId]                             The lease identifier.
           * @param {Object}             [options.metadata]                            The metadata key/value pairs.
           * @param {bool}               [options.storeBlobContentMD5]                 Specifies whether the blob's ContentMD5 header should be set on uploads. The default value is true for block blobs.
           * @param {bool}               [options.useTransactionalMD5]                 Calculate and send/validate content MD5 for transactions.
@@ -2465,7 +2465,7 @@ declare module azurestorage {
           * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
           * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 ahash.
           * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
-          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to.
           *                                                                           Please see StorageUtilities.LocationMode for the possible values.
           * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
           * @param {int}                [options.clientRequestTimeoutInMs]            The timeout of client requests, in milliseconds, to use for the request.
@@ -2512,7 +2512,7 @@ declare module azurestorage {
           * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
           * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 hash.
           * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
-          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to.
           *                                                                           Please see StorageUtilities.LocationMode for the possible values.
           * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
           * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -2553,7 +2553,7 @@ declare module azurestorage {
           * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
           * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 hash.
           * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
-          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to.
           *                                                                           Please see StorageUtilities.LocationMode for the possible values.
           * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
           * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -2584,7 +2584,7 @@ declare module azurestorage {
           * @param {bool}               [options.absorbConditionalErrorsOnRetry]      Specifies whether to absorb the conditional error on retry.
           * @param {string}             [options.leaseId]                             The lease identifier.
           * @param {Object}             [options.metadata]                            The metadata key/value pairs.
-          * @param {bool}               [options.storeBlobContentMD5]                 Specifies whether the blob's ContentMD5 header should be set on uploads. 
+          * @param {bool}               [options.storeBlobContentMD5]                 Specifies whether the blob's ContentMD5 header should be set on uploads.
           *                                                                           The default value is false for page blobs and true for block blobs.
           * @param {bool}               [options.useTransactionalMD5]                 Calculate and send/validate content MD5 for transactions.
           * @param {Object}             [options.contentSettings]                     The content settings of the blob.
@@ -2595,7 +2595,7 @@ declare module azurestorage {
           * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
           * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 hash.
           * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
-          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to.
           *                                                                           Please see StorageUtilities.LocationMode for the possible values.
           * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
           * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -2618,7 +2618,7 @@ declare module azurestorage {
           createWriteStreamToNewAppendBlob(container: string, blob: string, callback: ErrorOrResult<BlobService.BlobResult>): stream.Writable;
 
           /**
-          * Provides a stream to write to an existing append blob. Assumes that the blob exists. 
+          * Provides a stream to write to an existing append blob. Assumes that the blob exists.
           * If it does not, please create the blob using createAppendBlob before calling this method or use createWriteStreamToNewAppendBlob.
           * This API should be used strictly in a single writer scenario because the API internally uses the append-offset conditional header to avoid duplicate blocks.
           * If you are guaranteed to have a single writer scenario, please look at options.absorbConditionalErrorsOnRetry and see if setting this flag to true is acceptable for you.
@@ -2631,7 +2631,7 @@ declare module azurestorage {
           * @param {bool}               [options.absorbConditionalErrorsOnRetry]      Specifies whether to absorb the conditional error on retry.
           * @param {string}             [options.leaseId]                             The lease identifier.
           * @param {Object}             [options.metadata]                            The metadata key/value pairs.
-          * @param {bool}               [options.storeBlobContentMD5]                 Specifies whether the blob's ContentMD5 header should be set on uploads. 
+          * @param {bool}               [options.storeBlobContentMD5]                 Specifies whether the blob's ContentMD5 header should be set on uploads.
           *                                                                           The default value is false for page blobs and true for block blobs.
           * @param {bool}               [options.useTransactionalMD5]                 Calculate and send/validate content MD5 for transactions.
           * @param {Object}             [options.contentSettings]                     The content settings of the blob.
@@ -2642,7 +2642,7 @@ declare module azurestorage {
           * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
           * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 hash.
           * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
-          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to.
           *                                                                           Please see StorageUtilities.LocationMode for the possible values.
           * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
           * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -2686,7 +2686,7 @@ declare module azurestorage {
           * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
           * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 hash.
           * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
-          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to.
           *                                                                           Please see StorageUtilities.LocationMode for the possible values.
           * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
           * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -2723,7 +2723,7 @@ declare module azurestorage {
           * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
           * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 hash.
           * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
-          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to.
           *                                                                           Please see StorageUtilities.LocationMode for the possible values.
           * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
           * @param {int}                [options.clientRequestTimeoutInMs]            The timeout of client requests, in milliseconds, to use for the request.
@@ -2767,7 +2767,7 @@ declare module azurestorage {
           * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
           * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 hash.
           * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
-          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to.
           *                                                                           Please see StorageUtilities.LocationMode for the possible values.
           * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
           * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -2805,7 +2805,7 @@ declare module azurestorage {
           * @param {string}             [options.contentSettings.contentDisposition]  The blob's content disposition.
           * @param {string}             [options.contentSettings.contentMD5]          The blob's MD5 hash.
           * @param {AccessConditions}   [options.accessConditions]                    The access conditions.
-          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+          * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to.
           *                                                                           Please see StorageUtilities.LocationMode for the possible values.
           * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
           * @param {int}                [options.maximumExecutionTimeInMs]            The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -2839,7 +2839,7 @@ declare module azurestorage {
           * @param {string}             [options.leaseId]                         The target blob lease identifier.
           * @param {string}             [options.transactionalContentMD5]         An MD5 hash of the block content. This hash is used to verify the integrity of the block during transport.
           * @param {AccessConditions}   [options.accessConditions]                The access conditions.
-          * @param {LocationMode}       [options.locationMode]                    Specifies the location mode used to decide which location the request should be sent to. 
+          * @param {LocationMode}       [options.locationMode]                    Specifies the location mode used to decide which location the request should be sent to.
           *                                                                       Please see StorageUtilities.LocationMode for the possible values.
           * @param {int}                [options.timeoutIntervalInMs]             The server timeout interval, in milliseconds, to use for the request.
           * @param {int}                [options.maximumExecutionTimeInMs]        The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -2872,7 +2872,7 @@ declare module azurestorage {
           * @param {string}             [options.leaseId]                         The target blob lease identifier.
           * @param {string}             [options.transactionalContentMD5]         An MD5 hash of the block content. This hash is used to verify the integrity of the block during transport.
           * @param {AccessConditions}   [options.accessConditions]                The access conditions.
-          * @param {LocationMode}       [options.locationMode]                    Specifies the location mode used to decide which location the request should be sent to. 
+          * @param {LocationMode}       [options.locationMode]                    Specifies the location mode used to decide which location the request should be sent to.
           *                                                                       Please see StorageUtilities.LocationMode for the possible values.
           * @param {int}                [options.timeoutIntervalInMs]             The server timeout interval, in milliseconds, to use for the request.
           * @param {int}                [options.maximumExecutionTimeInMs]        The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -3157,7 +3157,7 @@ declare module azurestorage {
           }
         }
       }
-      
+
       // ###########################
       // ./services/blob/blobutilities
       // ###########################
@@ -3227,9 +3227,9 @@ declare module azurestorage {
 
         /**
         * Creates a new QueueService object.
-        * 
+        *
         * The QueueService class is used to perform operations on the Microsoft Azure Queue Service.
-        * 
+        *
         * For more information on using the Queue Service, as well as task focused information on using it from a Node.js application, see
         * [How to Use the Queue Service from Node.js](http://azure.microsoft.com/en-us/documentation/articles/storage-nodejs-how-to-use-queues/).
         * The following defaults can be set on the Queue service.
@@ -3238,7 +3238,7 @@ declare module azurestorage {
         * defaultClientRequestTimeoutInMs                     The default timeout of client requests, in milliseconds, to use for the request made via the Queue service.
         * defaultMaximumExecutionTimeInMs                     The default maximum execution time across all potential retries, for requests made via the Queue service.
         * defaultLocationMode                                 The default location mode for requests made via the Queue service.
-        * useNagleAlgorithm                                   Determines whether the Nagle algorithm is used for requests made via the Queue service; true to use the  
+        * useNagleAlgorithm                                   Determines whether the Nagle algorithm is used for requests made via the Queue service; true to use the
         *                                                     Nagle algorithm; otherwise, false. The default value is false.
         * If no connection string or storageaccount and storageaccesskey are provided,
         * the AZURE_STORAGE_CONNECTION_STRING or AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_ACCESS_KEY environment variables will be used.
@@ -3246,7 +3246,7 @@ declare module azurestorage {
         * @constructor QueueService
         * @param {string} [storageAccountOrConnectionString]  The storage account or the connection string.
         * @param {string} [storageAccessKey]                  The storage access key.
-        * @param {string|object} [host]                       The host address. To define primary only, pass a string. 
+        * @param {string|object} [host]                       The host address. To define primary only, pass a string.
         *                                                     Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.
         * @param {string} [sasToken]                          The Shared Access Signature token.
         * @param {string} [endpointSuffix]                    The endpoint suffix.
@@ -3276,7 +3276,7 @@ declare module azurestorage {
         * @return {QueueService} A new service client with the filter applied.
         */
         withFilter(newFilter: common.filters.IFilter): QueueService;
-          
+
         /**
         * Gets the service stats for a storage account’s Queue service.
         *
@@ -3284,7 +3284,7 @@ declare module azurestorage {
         *
         * @this {QueueService}
         * @param {Object}       [options]                                         The request options.
-        * @param {LocationMode} [options.locationMode]                            Specifies the location mode used to decide which location the request should be sent to. 
+        * @param {LocationMode} [options.locationMode]                            Specifies the location mode used to decide which location the request should be sent to.
         *                                                                         Please see StorageUtilities.LocationMode for the possible values.
         * @param {int}          [options.timeoutIntervalInMs]                     The server timeout interval, in milliseconds, to use for the request.
         * @param {int}          [options.maximumExecutionTimeInMs]                The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -3299,7 +3299,7 @@ declare module azurestorage {
         *                                                                         will contain information related to this operation.
         */
         getServiceStats(options: common.RequestOptions, callback: ErrorOrResult<common.models.ServiceStats>): void;
-        
+
         /**
         * Gets the service stats for a storage account’s Queue service.
         *
@@ -3318,7 +3318,7 @@ declare module azurestorage {
         *
         * @this {QueueService}
         * @param {Object}             [options]                                 The request options.
-        * @param {LocationMode}       [options.locationMode]                    Specifies the location mode used to decide which location the request should be sent to. 
+        * @param {LocationMode}       [options.locationMode]                    Specifies the location mode used to decide which location the request should be sent to.
         *                                                                       Please see StorageUtilities.LocationMode for the possible values.
         * @param {int}                [options.timeoutIntervalInMs]             The server timeout interval, in milliseconds, to use for the request.
         * @param {int}                [options.maximumExecutionTimeInMs]        The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -3352,7 +3352,7 @@ declare module azurestorage {
         * @this {QueueService}
         * @param {Object}             serviceProperties                        The service properties.
         * @param {Object}             [options]                                The request options.
-        * @param {LocationMode}       [options.locationMode]                   Specifies the location mode used to decide which location the request should be sent to. 
+        * @param {LocationMode}       [options.locationMode]                   Specifies the location mode used to decide which location the request should be sent to.
         *                                                                      Please see StorageUtilities.LocationMode for the possible values.
         * @param {int}                [options.timeoutIntervalInMs]            The server timeout interval, in milliseconds, to use for the request.
         * @param {int}                [options.maximumExecutionTimeInMs]       The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -3387,7 +3387,7 @@ declare module azurestorage {
         * @param {Object}             [options]                                   The request options.
         * @param {int}                [options.maxResults]                        Specifies the maximum number of queues to return per call to Azure storage. This does NOT affect list size returned by this function. (maximum: 5000)
         * @param {string}             [options.include]                           Include this parameter to specify that the queue's metadata be returned as part of the response body. (allowed values: '', 'metadata')
-        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
         *                                                                         Please see StorageUtilities.LocationMode for the possible values.
         * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -3397,7 +3397,7 @@ declare module azurestorage {
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
         * @param {errorOrResult}  callback                                        `error` will contain information
-        *                                                                         if an error occurs; otherwise `result` will contain `entries` and `continuationToken`. 
+        *                                                                         if an error occurs; otherwise `result` will contain `entries` and `continuationToken`.
         *                                                                         `entries`  gives a list of queues and the `continuationToken` is used for the next listing operation.
         *                                                                         `response` will contain information related to this operation.
         */
@@ -3411,7 +3411,7 @@ declare module azurestorage {
         * @this {QueueService}
         * @param {Object}             currentToken                                A continuation token returned by a previous listing operation. Please use 'null' or 'undefined' if this is the first operation.
         * @param {errorOrResult}  callback                                        `error` will contain information
-        *                                                                         if an error occurs; otherwise `result` will contain `entries` and `continuationToken`. 
+        *                                                                         if an error occurs; otherwise `result` will contain `entries` and `continuationToken`.
         *                                                                         `entries`  gives a list of queues and the `continuationToken` is used for the next listing operation.
         *                                                                         `response` will contain information related to this operation.
         */
@@ -3429,7 +3429,7 @@ declare module azurestorage {
         * @param {string}             [options.marker]                            String value that identifies the portion of the list to be returned with the next list operation.
         * @param {int}                [options.maxResults]                        Specifies the maximum number of queues to return per call to Azure storage. This does NOT affect list size returned by this function. (maximum: 5000)
         * @param {string}             [options.include]                           Include this parameter to specify that the queue's metadata be returned as part of the response body. (allowed values: '', 'metadata')
-        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
         *                                                                         Please see StorageUtilities.LocationMode for the possible values.
         * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -3439,7 +3439,7 @@ declare module azurestorage {
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
         * @param {errorOrResult}  callback                                        `error` will contain information
-        *                                                                         if an error occurs; otherwise `result` will contain `entries` and `continuationToken`. 
+        *                                                                         if an error occurs; otherwise `result` will contain `entries` and `continuationToken`.
         *                                                                         `entries`  gives a list of queues and the `continuationToken` is used for the next listing operation.
         *                                                                         `response` will contain information related to this operation.
         */
@@ -3454,7 +3454,7 @@ declare module azurestorage {
         * @param {string}             prefix                                      The prefix of the queue name.
         * @param {Object}             currentToken                                A continuation token returned by a previous listing operation. Please use 'null' or 'undefined' if this is the first operation.*
         * @param {errorOrResult}  callback                                        `error` will contain information
-        *                                                                         if an error occurs; otherwise `result` will contain `entries` and `continuationToken`. 
+        *                                                                         if an error occurs; otherwise `result` will contain `entries` and `continuationToken`.
         *                                                                         `entries`  gives a list of queues and the `continuationToken` is used for the next listing operation.
         *                                                                         `response` will contain information related to this operation.
         */
@@ -3468,7 +3468,7 @@ declare module azurestorage {
         * @this {QueueService}
         * @param {string}             queue                                       The queue name.
         * @param {Object}             [options]                                   The request options.
-        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
         *                                                                         Please see StorageUtilities.LocationMode for the possible values.
         * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -3507,7 +3507,7 @@ declare module azurestorage {
         * @param {string}             queue                                       The queue name.
         * @param {Object}             [options]                                   The request options.
         * @param {Object}             [options.metadata]                          The metadata key/value pairs.
-        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
         *                                                                         Please see StorageUtilities.LocationMode for the possible values.
         * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -3546,7 +3546,7 @@ declare module azurestorage {
         * @param {string}             queue                                       The queue name.
         * @param {Object}             [options]                                   The request options.
         * @param {Object}             [options.metadata]                          The metadata key/value pairs.
-        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
         *                                                                         Please see StorageUtilities.LocationMode for the possible values.
         * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -3556,8 +3556,8 @@ declare module azurestorage {
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
         * @param {errorOrResult}  callback                                       `error` will contain information
-        *                                                                         if an error occurs; otherwise `result` will be true if the 
-        *                                                                         queue was created by this operation and false if not, and 
+        *                                                                         if an error occurs; otherwise `result` will be true if the
+        *                                                                         queue was created by this operation and false if not, and
         *                                                                         `response` will contain information related to this operation.
         *
         * @example
@@ -3567,7 +3567,7 @@ declare module azurestorage {
         *   if(!error) {
         *     // Queue created or exists
         *   }
-        * }); 
+        * });
         */
         createQueueIfNotExists(queue: string, optionsOrCallback: QueueService.CreateQueueRequestOptions, callback?: ErrorOrResult<QueueService.QueueResult>): void;
 
@@ -3579,8 +3579,8 @@ declare module azurestorage {
         * @this {QueueService}
         * @param {string}             queue                                       The queue name.
         * @param {errorOrResult}  callback                                       `error` will contain information
-        *                                                                         if an error occurs; otherwise `result` will be true if the 
-        *                                                                         queue was created by this operation and false if not, and 
+        *                                                                         if an error occurs; otherwise `result` will be true if the
+        *                                                                         queue was created by this operation and false if not, and
         *                                                                         `response` will contain information related to this operation.
         *
         * @example
@@ -3590,7 +3590,7 @@ declare module azurestorage {
         *   if(!error) {
         *     // Queue created or exists
         *   }
-        * }); 
+        * });
         */
         createQueueIfNotExists(queue: string, callback?: ErrorOrResult<QueueService.QueueResult>): void;
 
@@ -3602,7 +3602,7 @@ declare module azurestorage {
         * @this {QueueService}
         * @param {string}             queue                                       The queue name.
         * @param {Object}             [options]                                   The request options.
-        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
         *                                                                         Please see StorageUtilities.LocationMode for the possible values.
         * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -3611,7 +3611,7 @@ declare module azurestorage {
         * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
-        * @param {errorOrResponse}  callback                                      `error` will contain information if an error occurs; 
+        * @param {errorOrResponse}  callback                                      `error` will contain information if an error occurs;
         *                                                                         `response` will contain information related to this operation.
         */
         deleteQueue(queue: string, options: common.RequestOptions, callback: ErrorOrResponse): void;
@@ -3623,7 +3623,7 @@ declare module azurestorage {
         *
         * @this {QueueService}
         * @param {string}             queue                                       The queue name.
-        * @param {errorOrResponse}  callback                                      `error` will contain information if an error occurs; 
+        * @param {errorOrResponse}  callback                                      `error` will contain information if an error occurs;
         *                                                                         `response` will contain information related to this operation.
         */
         deleteQueue(queue: string, callback: ErrorOrResponse): void;
@@ -3636,7 +3636,7 @@ declare module azurestorage {
         * @this {QueueService}
         * @param {string}             queue                                       The queue name.
         * @param {Object}             [options]                                   The request options.
-        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
         *                                                                         Please see StorageUtilities.LocationMode for the possible values.
         * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -3674,7 +3674,7 @@ declare module azurestorage {
         * @this {QueueService}
         * @param {string}             queue                                       The queue name.
         * @param {Object}             [options]                                   The request options.
-        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
         *                                                                         Please see StorageUtilities.LocationMode for the possible values.
         * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -3713,7 +3713,7 @@ declare module azurestorage {
         * @param {string}             queue                                       The queue name.
         * @param {Object}             metadata                                    The metadata key/value pairs.
         * @param {Object}             [options]                                   The request options.
-        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
         *                                                                         Please see StorageUtilities.LocationMode for the possible values.
         * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -3745,20 +3745,20 @@ declare module azurestorage {
         setQueueMetadata(queue: string, metadata: { [key: string]: string; }, callback: ErrorOrResult<QueueService.QueueResult>): void;
 
         /**
-        * Adds a new message to the back of the message queue. 
-        * The encoded message can be up to 64KB in size for versions 2011-08-18 and newer, or 8KB in size for previous versions. 
-        * Unencoded messages must be in a format that can be included in an XML request with UTF-8 encoding. 
-        * Queue messages are encoded by default. See queueService.messageEncoder to set encoding defaults. 
+        * Adds a new message to the back of the message queue.
+        * The encoded message can be up to 64KB in size for versions 2011-08-18 and newer, or 8KB in size for previous versions.
+        * Unencoded messages must be in a format that can be included in an XML request with UTF-8 encoding.
+        * Queue messages are encoded by default. See queueService.messageEncoder to set encoding defaults.
         *
         * @function QueueService#createMessage
-        * 
+        *
         * @this {QueueService}
         * @param {string}             queue                                       The queue name.
         * @param {string|Buffer}      messageText                                 The message text.
         * @param {Object}             [options]                                   The request options.
         * @param {int}                [options.messageTimeToLive]                 The time-to-live interval for the message, in seconds. The maximum time-to-live allowed is 7 days. If this parameter is omitted, the default time-to-live is 7 days
         * @param {int}                [options.visibilityTimeout]                 Specifies the new visibility timeout value, in seconds, relative to server time. The new value must be larger than or equal to 0, and cannot be larger than 7 days. The visibility timeout of a message cannot be set to a value later than the expiry time. visibilitytimeout should be set to a value smaller than the time-to-live value.
-        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
         *                                                                         Please see StorageUtilities.LocationMode for the possible values.
         * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -3784,13 +3784,13 @@ declare module azurestorage {
         createMessage(queue: string, messageText: string|Buffer, options: QueueService.CreateMessageRequestOptions, callback?: ErrorOrResult<QueueService.QueueMessageResult>): void;
 
         /**
-        * Adds a new message to the back of the message queue. 
-        * The encoded message can be up to 64KB in size for versions 2011-08-18 and newer, or 8KB in size for previous versions. 
-        * Unencoded messages must be in a format that can be included in an XML request with UTF-8 encoding. 
-        * Queue messages are encoded by default. See queueService.messageEncoder to set encoding defaults. 
+        * Adds a new message to the back of the message queue.
+        * The encoded message can be up to 64KB in size for versions 2011-08-18 and newer, or 8KB in size for previous versions.
+        * Unencoded messages must be in a format that can be included in an XML request with UTF-8 encoding.
+        * Queue messages are encoded by default. See queueService.messageEncoder to set encoding defaults.
         *
         * @function QueueService#createMessage
-        * 
+        *
         * @this {QueueService}
         * @param {string}             queue                                       The queue name.
         * @param {string|Buffer}      messageText                                 The message text.
@@ -3818,7 +3818,7 @@ declare module azurestorage {
         * @param {Object}             [options]                                   The request options.
         * @param {int}                [options.numOfMessages]                     A nonzero integer value that specifies the number of messages to retrieve from the queue, up to a maximum of 32. By default, a single message is retrieved from the queue with this operation.
         * @param {int}                [options.visibilityTimeout]                 Required if not peek only. Specifies the new visibility timeout value, in seconds, relative to server time. The new value must be larger than or equal to 0, and cannot be larger than 7 days. The visibility timeout of a message can be set to a value later than the expiry time.
-        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
         *                                                                         Please see StorageUtilities.LocationMode for the possible values.
         * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -3889,7 +3889,7 @@ declare module azurestorage {
         * @param {string}             queue                                       The queue name.
         * @param {Object}             [options]                                   The request options.
         * @param {int}                [options.visibilityTimeout]                 Required if not peek only. Specifies the new visibility timeout value, in seconds, relative to server time. The new value must be larger than or equal to 0, and cannot be larger than 7 days. The visibility timeout of a message can be set to a value later than the expiry time.
-        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
         *                                                                         Please see StorageUtilities.LocationMode for the possible values.
         * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -3960,7 +3960,7 @@ declare module azurestorage {
         * @param {string}             queue                                       The queue name.
         * @param {Object}             [options]                                   The request options.
         * @param {int}                [options.numOfMessages]                     A nonzero integer value that specifies the number of messages to retrieve from the queue, up to a maximum of 32. By default, a single message is retrieved from the queue with this operation.
-        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
         *                                                                         Please see StorageUtilities.LocationMode for the possible values.
         * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -3998,7 +3998,7 @@ declare module azurestorage {
         * @this {QueueService}
         * @param {string}             queue                                       The queue name.
         * @param {Object}             [options]                                   The request options.
-        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
         *                                                                         Please see StorageUtilities.LocationMode for the possible values.
         * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -4038,7 +4038,7 @@ declare module azurestorage {
         * @param {string}             messageId                                   The message identifier of the message to delete.
         * @param {string}             popReceipt                                  A valid pop receipt value returned from an earlier call to the Get Messages or Update Message operation
         * @param {Object}             [options]                                   The request options.
-        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
         *                                                                         Please see StorageUtilities.LocationMode for the possible values.
         * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -4047,7 +4047,7 @@ declare module azurestorage {
         * @param {string}             [options.clientRequestId]                   A string that represents the client request ID with a 1KB character limit.
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
-        * @param {errorOrResponse}  callback                                      `error` will contain information if an error occurs; 
+        * @param {errorOrResponse}  callback                                      `error` will contain information if an error occurs;
         *                                                                         `response` will contain information related to this operation.
         */
         deleteMessage(queue: string, messageId: string, popReceipt: string, options: common.RequestOptions, callback: ErrorOrResponse): void;
@@ -4061,7 +4061,7 @@ declare module azurestorage {
         * @param {string}             queue                                       The queue name.
         * @param {string}             messageId                                   The message identifier of the message to delete.
         * @param {string}             popReceipt                                  A valid pop receipt value returned from an earlier call to the Get Messages or Update Message operation
-        * @param {errorOrResponse}  callback                                      `error` will contain information if an error occurs; 
+        * @param {errorOrResponse}  callback                                      `error` will contain information if an error occurs;
         *                                                                         `response` will contain information related to this operation.
         */
         deleteMessage(queue: string, messageId: string, popReceipt: string, callback: ErrorOrResponse): void;
@@ -4074,7 +4074,7 @@ declare module azurestorage {
         * @this {QueueService}
         * @param {string}             queue                                       The queue name.
         * @param {Object}             [options]                                   The request options.
-        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
         *                                                                         Please see StorageUtilities.LocationMode for the possible values.
         * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -4084,7 +4084,7 @@ declare module azurestorage {
         * @param {bool}               [options.useNagleAlgorithm]                 Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                         The default value is false.
         * @param {errorOrResponse}  callback                                      `error` will contain information
-        *                                                                         if an error occurs; otherwise 
+        *                                                                         if an error occurs; otherwise
         *                                                                         `response` will contain information related to this operation.
         */
         clearMessages(queue: string, options: common.RequestOptions, callback: ErrorOrResponse): void;
@@ -4097,7 +4097,7 @@ declare module azurestorage {
         * @this {QueueService}
         * @param {string}             queue                                       The queue name.
         * @param {errorOrResponse}  callback                                      `error` will contain information
-        *                                                                         if an error occurs; otherwise 
+        *                                                                         if an error occurs; otherwise
         *                                                                         `response` will contain information related to this operation.
         */
         clearMessages(queue: string, callback: ErrorOrResponse): void;
@@ -4115,7 +4115,7 @@ declare module azurestorage {
         * @param {int}                visibilityTimeout                           Specifies the new visibility timeout value, in seconds, relative to server time. The new value must be larger than or equal to 0, and cannot be larger than 7 days. The visibility timeout of a message can be set to a value later than the expiry time.
         * @param {Object}             [options]                                   The request options.
         * @param {Object}             [options.messageText]                       The new message text.
-        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
         *                                                                         Please see StorageUtilities.LocationMode for the possible values.
         * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -4157,7 +4157,7 @@ declare module azurestorage {
         * @this {QueueService}
         * @param {string}             queue                                       The queue name.
         * @param {Object}             [options]                                   The request options.
-        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
         *                                                                         Please see StorageUtilities.LocationMode for the possible values.
         * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -4196,7 +4196,7 @@ declare module azurestorage {
         * @param {string}             queue                                       The queue name.
         * @param {Object}             signedIdentifiers                           The signed identifiers. Signed identifiers must be in an array.
         * @param {Object}             [options]                                   The request options.
-        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to. 
+        * @param {LocationMode}       [options.locationMode]                      Specifies the location mode used to decide which location the request should be sent to.
         *                                                                         Please see StorageUtilities.LocationMode for the possible values.
         * @param {int}                [options.timeoutIntervalInMs]               The server timeout interval, in milliseconds, to use for the request.
         * @param {int}                [options.maximumExecutionTimeInMs]          The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
@@ -4228,7 +4228,7 @@ declare module azurestorage {
         *   },
         *   Id: processAndDelete,
         * }];
-        * 
+        *
         * queueService.setQueueAcl(queueName, sharedAccessPolicy, function(error, queueResult, response) {
         *     // do whatever
         * });
@@ -4266,7 +4266,7 @@ declare module azurestorage {
         *   },
         *   Id: processAndDelete,
         * }];
-        * 
+        *
         * queueService.setQueueAcl(queueName, sharedAccessPolicy, function(error, queueResult, response) {
         *     // do whatever
         * });
@@ -4305,7 +4305,7 @@ declare module azurestorage {
         * @return {string}                                                                The shared access signature query string. Note this string does not contain the leading "?".
         */
         generateSharedAccessSignatureWithVersion(queue: string, sharedAccessPolicy: common.SharedAccessPolicy, sasVersion: string): string;
-          
+
         getUrl(queue: string, sasToken?: string, primary?: boolean): string;
       }
 
@@ -4381,23 +4381,23 @@ declare module azurestorage {
           visibilityTimeout?: number;
         }
       }
-      
+
       export interface QueueMessageEncoder {
         encode(input: any) : string;
         decode(textToBeDecoded: string) : any;
       }
-      
+
       module QueueMessageEncoder{
         export class TextBase64QueueMessageEncoder implements QueueMessageEncoder {
           encode(input: string) : string;
           decode(textToBeDecoded: string) : string;
         }
-        
+
         export class BinaryBase64QueueMessageEncoder implements QueueMessageEncoder {
           encode(input: Buffer) : string;
           decode(textToBeDecoded: string) : Buffer;
         }
-        
+
         export class TextXmlQueueMessageEncoder implements QueueMessageEncoder {
           encode(input: string) : string;
           decode(textToBeDecoded: string) : string;
@@ -4451,7 +4451,7 @@ declare module azurestorage {
         * @return {TableService} A new service client with the filter applied.
         */
         withFilter(newFilter: common.filters.IFilter): TableService;
-        
+
         /**
         * Gets the service stats for a storage account’s Table service.
         *
@@ -5401,7 +5401,7 @@ declare module azurestorage {
       }
 
       export module TableService {
-        
+
         export interface TableResult {
           isSuccessful?: boolean;
           statusCode?: string | number;
@@ -5416,14 +5416,14 @@ declare module azurestorage {
           StartRk?: string;
           EndRk?: string;
         }
-        
+
         export interface TableSharedAccessPolicy {
           /** The signed identifier. */
           Id?: string;
           /** The Table Access Policy information */
           AccessPolicy: TableAccessPolicy;
         }
-        
+
         export interface ListTablesRequestOptions extends common.RequestOptions {
           maxResults?: number;
           payloadFormat?: string;
@@ -5682,7 +5682,7 @@ declare module azurestorage {
          * });
          */
         where(condition: string, ...args: any[]): TableQuery;
-  
+
         /**
          * Specifies an AND where condition.
          *
@@ -6138,7 +6138,7 @@ declare module azurestorage {
         createShare(share: string, options: FileService.CreateShareRequestOptions, callback: ErrorOrResult<FileService.ShareResult>): void;
         createShare(share: string, callback: ErrorOrResult<FileService.ShareResult>): void;
 
-        createShareSnapshot(share: string, options: common.RequestOptions, callback: ErrorOrResult<string>): void;        
+        createShareSnapshot(share: string, options: common.RequestOptions, callback: ErrorOrResult<string>): void;
         createShareSnapshot(share: string, callback: ErrorOrResult<string>): void;
 
         /**
@@ -6204,7 +6204,7 @@ declare module azurestorage {
         * Sets the properties for the specified share.
         *
         * @this {FileService}
-        * @param {string}             share                                       The share name.     
+        * @param {string}             share                                       The share name.
         * @param {Object}             [properties]                                The share properties to set.
         * @param {string|int}         [properties.quota]                          Specifies the maximum size of the share, in gigabytes.
         * @param {Object}             [options]                                   The request options.
@@ -6300,7 +6300,7 @@ declare module azurestorage {
         * @this {FileService}
         * @param {string}             share                               The share name.
         * @param {Object}             [options]                           The request options.
-        * @param {string}             [options.deleteSnapshots]           The snapshot delete option. See azure.FileUtilities.ShareSnapshotDeleteOptions.*. 
+        * @param {string}             [options.deleteSnapshots]           The snapshot delete option. See azure.FileUtilities.ShareSnapshotDeleteOptions.*.
         * @param {string}             [options.shareSnapshotId]           The snapshot identifier of the share.
         * @param {LocationMode}       [options.locationMode]              Specifies the location mode used to decide which location the request should be sent to.
         *                                                                 Please see StorageUtilities.LocationMode for the possible values.
@@ -6348,7 +6348,7 @@ declare module azurestorage {
         * @this {FileService}
         * @param {string}             share                               The share name.
         * @param {Object}             [options]                           The request options.
-        * @param {string}             [options.deleteSnapshots]           The snapshot delete option. See azure.FileUtilities.ShareSnapshotDeleteOptions.*. 
+        * @param {string}             [options.deleteSnapshots]           The snapshot delete option. See azure.FileUtilities.ShareSnapshotDeleteOptions.*.
         * @param {string}             [options.shareSnapshotId]           The snapshot identifier of the share.
         * @param {LocationMode}       [options.locationMode]              Specifies the location mode used to decide which location the request should be sent to.
         *                                                                 Please see StorageUtilities.LocationMode for the possible values.
@@ -7269,7 +7269,7 @@ declare module azurestorage {
         * @param {Object}             browserFile                                   The File object to be uploaded created by HTML File API.
         * @param {Object}             [options]                                     The request options.
         * @param {SpeedSummary}       [options.speedSummary]                        The download tracker objects;
-        * @param {bool}               [options.storeFileContentMD5]                 Specifies whether the file's ContentMD5 header should be set on uploads. 
+        * @param {bool}               [options.storeFileContentMD5]                 Specifies whether the file's ContentMD5 header should be set on uploads.
         *                                                                           The default value is false for files.
         * @param {bool}               [options.useTransactionalMD5]                 Calculate and send/validate content MD5 for transactions.
         * @param {Object}             [options.contentSettings]                     The file's content settings.
@@ -7280,7 +7280,7 @@ declare module azurestorage {
         * @param {string}             [options.contentSettings.contentDisposition]  The file's content disposition.
         * @param {string}             [options.contentSettings.contentMD5]          The file's MD5 hash.
         * @param {Object}             [options.metadata]                            The metadata key/value pairs.
-        * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to. 
+        * @param {LocationMode}       [options.locationMode]                        Specifies the location mode used to decide which location the request should be sent to.
         *                                                                           Please see StorageUtilities.LocationMode for the possible values.
         * @param {int}                [options.timeoutIntervalInMs]                 The server timeout interval, in milliseconds, to use for the request.
         * @param {int}                [options.clientRequestTimeoutInMs]            The timeout of client requests, in milliseconds, to use for the request.
@@ -7290,13 +7290,13 @@ declare module azurestorage {
         * @param {string}             [options.clientRequestId]                     A string that represents the client request ID with a 1KB character limit.
         * @param {bool}               [options.useNagleAlgorithm]                   Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
         *                                                                           The default value is false.
-        * @param {errorOrResult}      callback                                      `error` will contain information if an error occurs; 
+        * @param {errorOrResult}      callback                                      `error` will contain information if an error occurs;
         *                                                                           otherwise `[result]{@link FileResult}` will contain the file information.
         *                                                                           `response` will contain information related to this operation.
         * @return {SpeedSummary}
         */
         createFileFromBrowserFile(share: string, directory: string, file: string, browserFile: Object, options: FileService.CreateFileRequestOptions, callback: ErrorOrResult<FileService.FileResult>): common.streams.speedsummary.SpeedSummary;
-        createFileFromBrowserFile(share: string, directory: string, file: string, browserFile: Object, callback: ErrorOrResult<FileService.FileResult>): common.streams.speedsummary.SpeedSummary; 
+        createFileFromBrowserFile(share: string, directory: string, file: string, browserFile: Object, callback: ErrorOrResult<FileService.FileResult>): common.streams.speedsummary.SpeedSummary;
 
         /**
         * Uploads a file from a stream.
@@ -7502,7 +7502,7 @@ declare module azurestorage {
           exists?: boolean;
           created?: boolean;
         }
-        
+
         export interface ShareAclResult extends ShareResult {
           signedIdentifiers?: Map<common.AccessPolicy>
         }
@@ -7584,11 +7584,11 @@ declare module azurestorage {
           maxResults?: number;
           include?: string;
         }
-        
+
         export interface CreateShareRequestOptions extends common.RequestOptions {
           quota?: string | number;
         }
-        
+
         export interface CreateFileRequestOptions extends common.RequestOptions {
           speedsummary?: common.streams.speedsummary.SpeedSummary;
           metadata?: { [key: string]: string; };
@@ -7603,22 +7603,22 @@ declare module azurestorage {
           useTransactionalMD5?: boolean;
           storeFileContentMD5?: boolean;
         }
-        
+
         export interface CopyFileRequestOptions extends common.RequestOptions {
           metadata?: { [key: string]: string; };
           accessConditions?: AccessConditions;
           sourceAccessConditions?: AccessConditions;
         }
-        
+
         export interface CreateRangeRequestOptions extends common.RequestOptions {
           useTransactionalMD5?: boolean;
           transactionalContentMD5?: string;
         }
-        
+
         export interface CreateDirectoryRequestOptions extends common.RequestOptions {
           metadata?: { [key: string]: string; };
         }
-        
+
         export interface SetFilePropertiesRequestOptions extends common.RequestOptions {
           contentType?: string;
           contentEncoding?: string;
@@ -7627,7 +7627,7 @@ declare module azurestorage {
           cacheControl?: string;
           contentDisposition?: string;
         }
-          
+
         export interface FileToText {
           (error: Error, text: string, result: FileResult, response: ServiceResponse): void
         }
@@ -7641,7 +7641,7 @@ declare module azurestorage {
         * @class
         * The FileService class is used to perform operations on the Microsoft Azure File Service.
         * The File Service provides storage for binary large objects, and provides functions for working with data stored in files.
-        * 
+        *
         * For more information on the File Service, as well as task focused information on using it in a Node.js application, see
         * [How to Use the File Service from Node.js](http://azure.microsoft.com/en-us/documentation/articles/storage-nodejs-how-to-use-file-storage/).
         * The following defaults can be set on the file service.
@@ -7652,14 +7652,14 @@ declare module azurestorage {
         * defaultMaximumExecutionTimeInMs                     The default maximum execution time across all potential retries, for requests made via the file service.
         * defaultLocationMode                                 The default location mode for requests made via the file service.
         * parallelOperationThreadCount                        The number of parallel operations that may be performed when uploading a file.
-        * useNagleAlgorithm                                   Determines whether the Nagle algorithm is used for requests made via the file service; true to use the  
+        * useNagleAlgorithm                                   Determines whether the Nagle algorithm is used for requests made via the file service; true to use the
         *                                                     Nagle algorithm; otherwise, false. The default value is false.
         * @constructor
         * @extends {StorageServiceClient}
         *
         * @param {string} [storageAccountOrConnectionString]  The storage account or the connection string.
         * @param {string} [storageAccessKey]                  The storage access key.
-        * @param {string|object} [host]                       The host address. To define primary only, pass a string. 
+        * @param {string|object} [host]                       The host address. To define primary only, pass a string.
         *                                                     Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.
         * @param {string} [sasToken]                          The Shared Access Signature token.
         * @param {string} [endpointSuffix]                    The endpoint suffix.
@@ -7698,19 +7698,19 @@ declare module azurestorage {
 
   module common {
     module filters {
-      
+
       export interface IFilter {
         handle(requestOptions: common.RequestOptions, next: Next) : void
       }
-      
+
       export interface Next {
         (returnedObject: any, finalCallback: Post, nextPostCallback: Post) : void;
       }
-      
+
       export interface Post {
         (returnedObject: any) : void;
       }
-      
+
       // ###########################
       // ./common/filters/retrypolicyfilter
       // ###########################
@@ -7741,7 +7741,7 @@ declare module azurestorage {
           * var blobService = azure.createBlobService().withFilter(retryPolicy);
           */
           constructor(retryCount?: number, retryInterval?: number): RetryPolicyFilter;
-          
+
           shouldRetry(statusCode: number, retryData: RetryPolicyFilter.IRetryRequestOptions): {
             retryInterval: number;
             retryable: boolean;
@@ -7908,7 +7908,7 @@ declare module azurestorage {
         * @const
         * @type {bool}
         */
-        export var DEFAULT_ENABLE_REUSE_SOCKET: boolean;        
+        export var DEFAULT_ENABLE_REUSE_SOCKET: boolean;
         /**
         * Constant representing a kilobyte (Non-SI version).
         *
@@ -7979,7 +7979,7 @@ declare module azurestorage {
           PRIMARY = 0,
           SECONDARY = 1,
         }
-        
+
         export var AccountSasConstants: {
           /**
           * Permission types
@@ -7997,7 +7997,7 @@ declare module azurestorage {
             DELETE: string,
             LIST: string
           },
-          
+
           /**
           * Services types
           *
@@ -8010,7 +8010,7 @@ declare module azurestorage {
             QUEUE: string,
             TABLE: string,
           },
-          
+
           /**
           * Resources types
           *
@@ -8022,13 +8022,13 @@ declare module azurestorage {
             CONTAINER: string,
             OBJECT: string
           },
-          
+
           Protocols: {
             HTTPSONLY: string,
             HTTPSORHTTP: string
           },
         };
-        
+
         /**
         * Defines constants for use with shared access policies.
         */
@@ -8490,7 +8490,7 @@ declare module azurestorage {
         };
 
       }
-      
+
       // ###########################
       // ./common/util/storageutilities
       // ###########################
@@ -8560,7 +8560,7 @@ declare module azurestorage {
         export function generateIfExistsCondition(): AccessConditions;
 
         /**
-        * Constructs an access condition such that an operation will be performed only if the resource's ETag value 
+        * Constructs an access condition such that an operation will be performed only if the resource's ETag value
         * does not match the specified ETag value
         *
         * Setting this access condition modifies the request to include the HTTP If-None-Match conditional header
@@ -9071,20 +9071,32 @@ declare module azurestorage {
           /**
           * Get running seconds
           */
-          getElapsedSeconds(humanReadable: boolean): number;
+          getElapsedSeconds(): string;
+          getElapsedSeconds(humanReadable: false): number;
+          getElapsedSeconds(humanReadable: true): string;
+          getElapsedSeconds(humanReadable?: boolean): string | number;
           /**
           * Get complete percentage
           * @param {int} len The number of digits after the decimal point.
           */
-          getCompletePercent(len: number): number;
+          getCompletePercent(len?: number): string;
+          getCompletePercent(humanReadable: false): number;
+          getCompletePercent(humanReadable: true, len?: number): string;
+          getCompletePercent(humanReadable?: boolean, len?: number): string | number;
           /**
           * Get average upload/download speed
           */
-          getAverageSpeed(humanReadable: boolean): string;
+          getAverageSpeed(): string;
+          getAverageSpeed(humanReadable: false): number;
+          getAverageSpeed(humanReadable: true): string;
+          getAverageSpeed(humanReadable?: boolean): string | number;
           /**
           * Get instant speed
           */
-          getSpeed(humanReadable: boolean): string | number;
+          getSpeed(): string;
+          getSpeed(humanReadable: false): number;
+          getSpeed(humanReadable: true): string;
+          getSpeed(humanReadable?: boolean): string | number;
           /**
           * Increment the complete data size
           */
@@ -9096,11 +9108,17 @@ declare module azurestorage {
           /**
           * Get total size
           */
-          getTotalSize(humanReadable: boolean): string | number;
+          getTotalSize(): string;
+          getTotalSize(humanReadable: false): number;
+          getTotalSize(humanReadable: true): string;
+          getTotalSize(humanReadable?: boolean): string | number;
           /**
           * Get completed data size
           */
-          getCompleteSize(humanReadable: boolean): string | number;
+          getCompleteSize(): string;
+          getCompleteSize(humanReadable: false): number;
+          getCompleteSize(humanReadable: true): string;
+          getCompleteSize(humanReadable?: boolean): string | number;
         }
       }
     }
@@ -9301,14 +9319,14 @@ declare module azurestorage {
       /** The resource type for a shared access signature associated with this shared access policy. */
       ResourceTypes?: string;
     }
-    
+
     export interface SharedAccessPolicy {
       /** The signed identifier. */
       Id?: string;
       /** The Access Policy information */
       AccessPolicy: AccessPolicy;
     }
-    
+
     export interface ContentSettingsHeaders {
       cacheControl?: string;
       contentType?: string;
@@ -9445,8 +9463,8 @@ declare module azurestorage {
 
   /**
   * Creates a new {@link BlobService} object using the host Uri and the {@link TokenCredential} provided, which supports OAuth.
-  * 
-  * @param {string|object} host                         The host address. To define primary only, pass a string. 
+  *
+  * @param {string|object} host                         The host address. To define primary only, pass a string.
   *                                                     Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.
   * @param {TokenCredential} token                      The TokenCredential object.
   * @return {BlobService}                               A new BlobService object with the {@link TokenCredential} credentials.
@@ -9532,11 +9550,11 @@ declare module azurestorage {
   * @return {QueueService}                              A new QueueService object with the SAS credentials.
   */
   export function createQueueServiceWithSas(host: string | StorageHost, sasToken: string): QueueService;
-  
+
   /**
   * Creates a new {@link QueueService} object using the host Uri and the {@link TokenCredential} provided, which supports OAuth.
-  * 
-  * @param {string|object} host                         The host address. To define primary only, pass a string. 
+  *
+  * @param {string|object} host                         The host address. To define primary only, pass a string.
   *                                                     Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.
   * @param {TokenCredential} token                      The TokenCredential object.
   * @return {QueueService}                              A new QueueService object with the {@link TokenCredential} object.
@@ -9612,7 +9630,7 @@ declare module azurestorage {
   *                                                               For Put Page operation only. See https://msdn.microsoft.com/en-us/library/azure/ee691975.aspx for more information.
   * @property   {Number|string}   SequenceNumberEqual             If the blob’s sequence number is equal to the specified value.
   *                                                               For Put Page operation only. See https://msdn.microsoft.com/en-us/library/azure/ee691975.aspx for more information.
-  * @property   {Number|string}   MaxBlobSize                     If the Append Block operation would cause the blob to exceed that limit or if the blob size is already greater than the specified value. 
+  * @property   {Number|string}   MaxBlobSize                     If the Append Block operation would cause the blob to exceed that limit or if the blob size is already greater than the specified value.
   *                                                               For Append Block operation only. See https://msdn.microsoft.com/en-us/library/mt427365.aspx for more information.
   * @property   {Number|string}   MaxAppendPosition               If the append position is equal to the specified value.
   *                                                               For Append Block operation only. See https://msdn.microsoft.com/en-us/library/mt427365.aspx for more information.
