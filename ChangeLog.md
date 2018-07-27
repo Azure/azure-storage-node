@@ -5,6 +5,7 @@ be taken. This is a GA release and the changes described below indicate the chan
 
 ALL
 * Added a parameter `enableGlobalHttpAgent` to all services. To enable global HTTP(s) agent, please set `{blob|queue|table|file}Service.enableGlobalHttpAgent` to true.
+* Fixed content type for json.
 
 2018.06 Version 2.10.0
 
