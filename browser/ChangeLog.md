@@ -1,5 +1,11 @@
 Note: This is the change log file for Azure Storage JavaScript Client Library.
 
+2018.08 Version 2.10.101
+
+ALL
+* Fixed a bug that content type value is incorrect for json.
+* Fixed an issue that user agent is set in browser environment.
+
 2018.06 Version 2.10.100
 
 ALL
