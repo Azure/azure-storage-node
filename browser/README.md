@@ -1,7 +1,5 @@
 # Azure Storage JavaScript Client Library for Browsers
 
-* Join the community discussion on Slack! [![Slack](https://azurestorageslack.azurewebsites.net/badge.svg)]( https://azurestorageslack.azurewebsites.net) 
-
 ## Downloading
 
 It's recommended to use the Azure Storage JavaScript Client Library provided by us. Please [download the latest library](https://aka.ms/downloadazurestoragejs).
