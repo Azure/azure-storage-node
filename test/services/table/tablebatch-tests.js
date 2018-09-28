@@ -68,7 +68,7 @@ function generateEntities(count) {
       RowKey: eg.String('row' + (i + 1).toString()),
       StringProperty: eg.String('stringSample'),
       BooleanProperty: eg.Boolean(true),
-      BinaryProperty: eg.Binary(new Buffer('SampleStringInBuffer!')),
+      BinaryProperty: eg.Binary(Buffer.from('SampleStringInBuffer!')),
       Int32Property: eg.Int32(42),
       Int64Property: eg.Int64('5432873627392'),
       DoubleProperty: eg.Double(4.81516),

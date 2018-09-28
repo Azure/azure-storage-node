@@ -5902,7 +5902,7 @@ declare module azurestorage {
          * @param {string|buffer}value          A 'buffer' containing the value to compare with the property.
          * @return {string} A string containing the formatted filter condition.
          * @example
-         * var query = TableQuery.binaryFilter('BinaryField', QueryComparisons.EQUAL, new Buffer('hello'));
+         * var query = TableQuery.binaryFilter('BinaryField', QueryComparisons.EQUAL, Buffer.from('hello'));
          */
         binaryFilter(propertyName: string, operation: string, value: Buffer | string): string;
 
