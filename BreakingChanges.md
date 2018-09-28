@@ -4,7 +4,7 @@ ALL
 * Fixed the issue that retry filter will continuously retry for client error like `ETIMEDOUT`.
 
 BLOB
-* When specifiying access condition `If-None-Match: *` for read, it will always fail.
+* When specifying access condition `If-None-Match: *` for read, it will always fail.
 
 QUEUE
 * `createMessage` callback has been changed from `errorOrResponse` to `errorOrResult<QueueMessageResult>` which contains `messageId`, `popReceipt`, `timeNextVisible`, `insertionTime` and `expirationTime`. It can be passed to `updateMessage` and `deleteMessage` APIs.
