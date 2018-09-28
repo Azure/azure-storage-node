@@ -181,7 +181,7 @@ tableService.retrieveEntity('mytable', 'part2', 'row1', function(error, result, 
 });
 ```
 
-The method **replaceEntity** or **insertOrReplaceEntity** can be called to update/edit an existing entry. In the following example we asssume that an entity `'part2', 'row1'` with a field `'taskDone'` set to `false` already exists.
+The method **replaceEntity** or **insertOrReplaceEntity** can be called to update/edit an existing entry. In the following example we assume that an entity `'part2', 'row1'` with a field `'taskDone'` set to `false` already exists.
 
 ```Javascript
 var azure = require('azure-storage');
@@ -456,7 +456,7 @@ By default, no retry will be performed with service instances newly created by A
 Two pre-written retry polices [ExponentialRetryPolicyFilter](http://azure.github.io/azure-storage-node/ExponentialRetryPolicyFilter.html) and [LinearRetryPolicyFilter](http://azure.github.io/azure-storage-node/LinearRetryPolicyFilter.html) are available with modifiable settings, and can be used through associating filter.
 Any custom retry logic may be used by customizing RetryPolicyFilter instance.
 
-For how to use pre-writtern retry policies and how to define customized retry policy, please refer to **retrypolicysample** in samples directory. 
+For how to use pre-written retry policies and how to define customized retry policy, please refer to **retrypolicysample** in samples directory.
 
 ## Code Samples
 
