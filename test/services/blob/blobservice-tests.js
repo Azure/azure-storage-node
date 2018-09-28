@@ -57,7 +57,7 @@ var blobNames = [];
 var blobNamesPrefix = 'blob';
 
 var fileName = 'blobservice_test.tmp';
-var blob60MBuffer = new Buffer(80 * 1024 * 1024);
+var blob60MBuffer = Buffer.alloc(80 * 1024 * 1024);
 
 var suite = new TestSuite('blobservice-tests');
 var runOrSkip = testutil.itSkipMock(suite.isMocked);
@@ -374,7 +374,7 @@ describe('BlobService', function () {
 
       it('withBuffer', function (done) {
         var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
-        var blobText = new Buffer('Hello World');
+        var blobText = Buffer.from('Hello World');
 
         blobService.createBlockBlobFromText(containerName, blobName, blobText, function (uploadError, blob, uploadResponse) {
           assert.equal(uploadError, null);
@@ -756,7 +756,7 @@ describe('BlobService', function () {
         var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
         var fileNameSource = testutil.generateId('getBlobFile', [], suite.isMocked) + '.test';
 
-        var blobBuffer = new Buffer(1024);
+        var blobBuffer = Buffer.alloc(1024);
         blobBuffer.fill(0);
         blobBuffer[0] = '1';
         blobService.createPageBlob(containerName, blobName, 1024, function(createErr) {

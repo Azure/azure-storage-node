@@ -925,7 +925,7 @@ var runFilesPermissionTests = function(sharedAccessPolicy, next){
   var fileName = suite.getName("file-");
   var localTempFileName = suite.getName('fileservice_test_block');
   var fileSize = 100;
-  var fileBuffer = new Buffer( fileSize );
+  var fileBuffer = Buffer.alloc( fileSize );
   fileBuffer.fill(1);
   writeFile(localTempFileName, fileBuffer);
   

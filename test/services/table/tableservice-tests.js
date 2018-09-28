@@ -133,7 +133,7 @@ describe('tableservice-tests', function () {
 
   it('SetDefaultPortProperly', function (done) {
     var storageAccount = 'account';
-    var storageAccountKey = new Buffer('key').toString('base64');
+    var storageAccountKey = Buffer.from('key').toString('base64');
 
     var service = azure.createTableService(storageAccount, storageAccountKey, 'https://account.table.core.windows.net');
     assert.equal(service.host.primaryHost, 'https://account.table.core.windows.net:443/');
