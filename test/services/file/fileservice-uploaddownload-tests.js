@@ -839,6 +839,28 @@ describe('FileUploadDownload', function () {
   });
 
   describe('createFileFromText', function () {
+    it('should work with empty text', function(done){
+      var fileText = '';
+      var fileName='emptyfile';
+      fileService.createFileFromText(shareName, directoryName, fileName, fileText, function (uploadError, file, uploadResponse) {
+        assert.equal(uploadError, null);
+        assert.ok(file);
+        assert.ok(uploadResponse.isSuccessful);
+        assert.equal(file.share, shareName);
+        assert.equal(file.directory, directoryName);
+        assert.equal(file.name, fileName);
+
+        fileService.getFileToText(shareName, directoryName, fileName, function (downloadErr, text, file, downloadResponse) {
+          assert.equal(downloadErr, null);
+          assert.ok(downloadResponse.isSuccessful);
+          assert.ok(file);
+          assert.equal(text, fileText);
+
+          done();
+        });
+      });
+    });
+
     it('should work with basic text', function (done) {
       var fileText = 'Hello World';
       fileService.createFileFromText(shareName, directoryName, fileName, fileText, function (uploadError, file, uploadResponse) {
