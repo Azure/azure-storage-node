@@ -671,10 +671,10 @@ declare module azurestorage {
           * @param {Object}             currentToken                      A continuation token returned by a previous listing operation. Please use 'null' or 'undefined' if this is the first operation.
           * @param {errorOrResult}      callback                          `error` will contain information
           *                                                               if an error occurs; otherwise `result` will contain `entries` and `continuationToken`. 
-          *                                                               `entries`  gives a list of `[directories]{@link DirectoryResult}` and the `continuationToken` is used for the next listing operation.
+          *                                                               `entries`  gives a list of `[directories]{@link BlobDirectoryResult}` and the `continuationToken` is used for the next listing operation.
           *                                                               `response` will contain information related to this operation.
           */
-         listBlobDirectoriesSegmented(container: string, currentToken: common.ContinuationToken, callback: ErrorOrResult<BlobService.ListBlobPrefixesResult>): void;    
+         listBlobDirectoriesSegmented(container: string, currentToken: common.ContinuationToken, callback: ErrorOrResult<BlobService.ListBlobDirectoriesResult>): void;
 
           /**
           * Lists a segment containing a collection of blob directory items in the container.
@@ -696,13 +696,13 @@ declare module azurestorage {
           *                                                                 The default value is false.
           * @param {errorOrResult}      callback                            `error` will contain information
           *                                                                 if an error occurs; otherwise `result` will contain `entries` and `continuationToken`. 
-          *                                                                 `entries`  gives a list of `[directories]{@link DirectoryResult}` and the `continuationToken` is used for the next listing operation.
+          *                                                                 `entries`  gives a list of `[directories]{@link BlobDirectoryResult}` and the `continuationToken` is used for the next listing operation.
           *                                                                 `response` will contain information related to this operation.
           */
-          listBlobDirectoriesSegmented(container: string, currentToken: common.ContinuationToken, options: BlobService.ListBlobPrefixesSegmentedRequestOptions, callback: ErrorOrResult<BlobService.ListBlobPrefixesResult>): void;
+          listBlobDirectoriesSegmented(container: string, currentToken: common.ContinuationToken, options: BlobService.ListBlobPrefixesSegmentedRequestOptions, callback: ErrorOrResult<BlobService.ListBlobDirectoriesResult>): void;
 
           /**
-          * Lists a segment containing a collection of blob items whose names begin with the specified prefix in the container.
+          * Lists a segment containing a collection of blob directory items whose names begin with the specified prefix in the container.
           *
           * @this {BlobService}
           * @param {string}             container                         The container name.
@@ -710,13 +710,13 @@ declare module azurestorage {
           * @param {Object}             currentToken                      A continuation token returned by a previous listing operation. Please use 'null' or 'undefined' if this is the first operation.
           * @param {errorOrResult}      callback                          `error` will contain information
           *                                                               if an error occurs; otherwise `result` will contain `entries` and `continuationToken`. 
-          *                                                               `entries`  gives a list of `[directories]{@link BlobResult}` and the `continuationToken` is used for the next listing operation.
+          *                                                               `entries`  gives a list of `[directories]{@link BlobDirectoryResult}` and the `continuationToken` is used for the next listing operation.
           *                                                               `response` will contain information related to this operation.
           */
-          listBlobDirectoriesSegmentedWithPrefix(container: string, prefix: string, currentToken: common.ContinuationToken, callback: ErrorOrResult<BlobService.ListBlobPrefixesResult>): void;
+          listBlobDirectoriesSegmentedWithPrefix(container: string, prefix: string, currentToken: common.ContinuationToken, callback: ErrorOrResult<BlobService.ListBlobDirectoriesResult>): void;
 
           /**
-          * Lists a segment containing a collection of blob directory items in the container.
+          * Lists a segment containing a collection of blob directory items whose names begin with the specified prefix in the container.
           *
           * @this {BlobService}
           * @param {string}             container                           The container name.
@@ -736,10 +736,10 @@ declare module azurestorage {
           *                                                                 The default value is false.
           * @param {errorOrResult}      callback                            `error` will contain information
           *                                                                 if an error occurs; otherwise `result` will contain `entries` and `continuationToken`. 
-          *                                                                 `entries`  gives a list of `[directories]{@link BlobResult}` and the `continuationToken` is used for the next listing operation.
+          *                                                                 `entries`  gives a list of `[directories]{@link BlobDirectoryResult}` and the `continuationToken` is used for the next listing operation.
           *                                                                 `response` will contain information related to this operation.
           */
-          listBlobDirectoriesSegmentedWithPrefix(container: string, prefix: string, currentToken: common.ContinuationToken, options: BlobService.ListBlobPrefixesSegmentedRequestOptions, callback: ErrorOrResult<BlobService.ListBlobPrefixesResult>): void;
+          listBlobDirectoriesSegmentedWithPrefix(container: string, prefix: string, currentToken: common.ContinuationToken, options: BlobService.ListBlobPrefixesSegmentedRequestOptions, callback: ErrorOrResult<BlobService.ListBlobDirectoriesResult>): void;
 
           /**
           * Lists a segment containing a collection of blob items in the container.
@@ -3046,8 +3046,8 @@ declare module azurestorage {
             continuationToken?: common.ContinuationToken;
           }
 
-          export interface ListBlobPrefixesResult {
-            entries: BlobPrefixResult[];
+          export interface ListBlobDirectoriesResult {
+            entries: BlobDirectoryResult[];
             continuationToken?: common.ContinuationToken;
           }
 
@@ -3078,7 +3078,7 @@ declare module azurestorage {
             entries: ContainerResult[];
           }
 
-          export interface BlobPrefixResult {
+          export interface BlobDirectoryResult {
             name: string;
           }
 
