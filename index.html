@@ -100,15 +100,45 @@
 
 
     <section class="readme-section">
-        <article><h1>Microsoft Azure Storage SDK for Node.js and JavaScript for Browsers</h1><p><a href="http://badge.fury.io/js/azure-storage"><img src="https://badge.fury.io/js/azure-storage.svg" alt="NPM version"></a> <a href="https://azurestorageslack.azurewebsites.net"><img src="https://azurestorageslack.azurewebsites.net/badge.svg" alt="Slack"></a></p>
+        <article><h1>Microsoft Azure Storage SDK for Node.js and JavaScript for Browsers</h1><p><a href="http://badge.fury.io/js/azure-storage"><img src="https://badge.fury.io/js/azure-storage.svg" alt="NPM version"></a></p>
 <ul>
 <li>Master <a href="https://travis-ci.org/Azure/azure-storage-node/branches"><img src="https://travis-ci.org/Azure/azure-storage-node.svg?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/Azure/azure-storage-node?branch=master"><img src="https://coveralls.io/repos/Azure/azure-storage-node/badge.svg?branch=master&amp;service=github" alt="Coverage Status"></a></li>
 <li>Dev <a href="https://travis-ci.org/Azure/azure-storage-node/branches"><img src="https://travis-ci.org/Azure/azure-storage-node.svg?branch=dev" alt="Build Status"></a> <a href="https://coveralls.io/github/Azure/azure-storage-node?branch=dev"><img src="https://coveralls.io/repos/Azure/azure-storage-node/badge.svg?branch=dev&amp;service=github" alt="Coverage Status"></a></li>
 </ul>
 <p>This project provides a Node.js package and a browser compatible <a href="https://github.com/Azure/azure-storage-node#azure-storage-javascript-client-library-for-browsers">JavaScript Client Library</a> that makes it easy to consume and manage Microsoft Azure Storage Services.</p>
 <blockquote>
-<p>If you are looking for the Node.js SDK for other Azure services, visit <a href="https://github.com/Azure/azure-sdk-for-node">https://github.com/Azure/azure-sdk-for-node</a>.</p>
+<p>This README page is a reference to the SDK v2. For the new SDK v10, go to <a href="https://github.com/Azure/azure-storage-js">Storage SDK v10 for JavaScript (Preview)</a>.</p>
 </blockquote>
+<table>
+<thead>
+<tr>
+<th>SDK Name</th>
+<th>Version</th>
+<th>Description</th>
+<th>NPM/API Reference Links</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/Azure/azure-storage-js">Storage SDK v10 for JavaScript</a></td>
+<td>v10-Preview</td>
+<td>The next generation async Storage SDK (Blob only, async and promise support)</td>
+<td><a href="https://www.npmjs.com/package/@azure/storage-blob">NPM</a> - <a href="https://docs.microsoft.com/en-us/javascript/api/%40azure/storage-blob/index?view=azure-node-preview">Reference</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/Azure/azure-storage-node">Storage SDK v2 for JavaScript</a></td>
+<td>v2</td>
+<td>Legacy Storage SDK in this repository (Blob/Queue/File/Table, callback style)</td>
+<td><a href="https://www.npmjs.com/package/azure-storage">NPM</a> - <a href="https://docs.microsoft.com/en-us/javascript/api/azure-storage/?view=azure-node-latest">Reference</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/Azure/azure-sdk-for-node">Azure Management SDKs for JavaScript</a></td>
+<td>v2</td>
+<td>Management SDKs including Storage Resource Provider APIs</td>
+<td><a href="https://www.npmjs.com/package/azure">NPM</a> - <a href="https://github.com/Azure/azure-sdk-for-node#documentation">Reference</a></td>
+</tr>
+</tbody>
+</table>
 <h1>Features</h1><ul>
 <li>Blobs<ul>
 <li>Create/Delete Containers</li>
@@ -138,7 +168,11 @@
 </ul>
 </li>
 </ul>
-<p>Please check details on <a href="http://azure.github.io/azure-storage-node">API reference documents</a>.</p>
+<p>Please check details on API reference documents:</p>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/javascript/api/azure-storage/?view=azure-node-latest">Microsoft official API document on docs.microsoft.com</a></li>
+<li><a href="http://azure.github.io/azure-storage-node">Generated API references on GitHub pages</a></li>
+</ul>
 <h1>Getting Started</h1><h2>Install</h2><pre class="prettyprint source lang-shell"><code>npm install azure-storage</code></pre><h2>Usage</h2><pre class="prettyprint source lang-Javascript"><code>var azure = require('azure-storage');</code></pre><p>When using the Storage SDK, you must provide connection information for the storage account to use. This can be provided using:</p>
 <ul>
 <li><p>Environment variables - <strong>AZURE_STORAGE_ACCOUNT</strong> and <strong>AZURE_STORAGE_ACCESS_KEY</strong>, or <strong>AZURE_STORAGE_CONNECTION_STRING</strong>.</p>
@@ -229,7 +263,7 @@ tableService.retrieveEntity('mytable', 'part2', 'row1', function(error, result, 
   if (!error) {
     // result contains the entity
   }
-});</code></pre><p>The method <strong>replaceEntity</strong> or <strong>insertOrReplaceEntity</strong> can be called to update/edit an existing entry. In the following example we asssume that an entity <code>'part2', 'row1'</code> with a field <code>'taskDone'</code> set to <code>false</code> already exists.</p>
+});</code></pre><p>The method <strong>replaceEntity</strong> or <strong>insertOrReplaceEntity</strong> can be called to update/edit an existing entry. In the following example we assume that an entity <code>'part2', 'row1'</code> with a field <code>'taskDone'</code> set to <code>false</code> already exists.</p>
 <pre class="prettyprint source lang-Javascript"><code>var azure = require('azure-storage');
 var tableService = azure.createTableService();
 var entity = {
@@ -422,7 +456,7 @@ blobService.getServiceProperties(function(error, result, response) {
     });
   } 
 });</code></pre><h3>Retry Policies</h3><p>By default, no retry will be performed with service instances newly created by Azure storage client library for Node.js.<br>Two pre-written retry polices <a href="http://azure.github.io/azure-storage-node/ExponentialRetryPolicyFilter.html">ExponentialRetryPolicyFilter</a> and <a href="http://azure.github.io/azure-storage-node/LinearRetryPolicyFilter.html">LinearRetryPolicyFilter</a> are available with modifiable settings, and can be used through associating filter.<br>Any custom retry logic may be used by customizing RetryPolicyFilter instance.</p>
-<p>For how to use pre-writtern retry policies and how to define customized retry policy, please refer to <strong>retrypolicysample</strong> in samples directory. </p>
+<p>For how to use pre-written retry policies and how to define customized retry policy, please refer to <strong>retrypolicysample</strong> in samples directory.</p>
 <h2>Code Samples</h2><p>How-Tos focused around accomplishing specific tasks are available on the <a href="http://azure.microsoft.com/en-us/develop/nodejs/">Microsoft Azure Node.js Developer Center</a>.</p>
 <ul>
 <li><p><a href="http://azure.microsoft.com/en-us/documentation/articles/storage-nodejs-how-to-use-blob-storage/">How to use the Blob Service from Node.js</a></p>
@@ -440,10 +474,7 @@ blobService.getServiceProperties(function(error, result, response) {
 <pre class="prettyprint source lang-Batchfile"><code>set AZURE_NOCK_RECORD=true</code></pre><p>In order to be able to use a proxy like fiddler, an additional environment variable should be set up:</p>
 <pre class="prettyprint source lang-Batchfile"><code>set NODE_TLS_REJECT_UNAUTHORIZED=0
 set HTTP_PROXY=http://127.0.0.1:8888</code></pre><p>On Linux, please use <code>export</code> other than <code>set</code> to set the variables.</p>
-<h1>Azure Storage JavaScript Client Library for Browsers</h1><ul>
-<li>Questions and feedback are welcome in our <a href="https://azurestorageslack.azurewebsites.net">Slack channel</a>.</li>
-</ul>
-<p>Azure Storage Node.js Client Library is compatible with <a href="http://browserify.org/">Browserify</a>. This means you can bundle your Node.js application which depends on the Node.js Client Library using Browserify.</p>
+<h1>Azure Storage JavaScript Client Library for Browsers</h1><p>Azure Storage Node.js Client Library is compatible with <a href="http://browserify.org/">Browserify</a>. This means you can bundle your Node.js application which depends on the Node.js Client Library using Browserify.</p>
 <p>You can also choose to download the JavaScript Client Library provided by us, or generate the library by yourself. Please refer to the <a href="https://github.com/Azure/azure-storage-node/blob/master/browser/README.md">README.md</a> under <code>browser</code> folder for detailed usage guidelines.</p>
 <h2>Downloading Azure Storage JavaScript Client Library</h2><p>It's recommended to use the Azure Storage JavaScript Client Library provided by us. Please <a href="https://aka.ms/downloadazurestoragejs">download the latest library</a>.</p>
 <h2>Generating Azure Storage JavaScript Client Library</h2><p>We also provide browserify bundle scripts which generate Azure Storage JavaScript Client Library. The bundle script reduces the size of the Storage Client Library by splitting into smaller files, one per storage service. For more detailed information, refer to <a href="https://github.com/Azure/azure-storage-node/blob/master/browser/README.md">README.md</a> under <code>browser</code> folder.</p>
@@ -505,9 +536,9 @@ set HTTP_PROXY=http://127.0.0.1:8888</code></pre><p>On Linux, please use <code>e
 
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
 	
-		on Thu Aug 2nd 2018
+		on Tue Oct 16th 2018
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
