@@ -85,7 +85,7 @@ function generateTempFile(fileName, size, hasEmptyBlock, callback) {
     var buffer;
 
     if (zero) {
-      buffer = new Buffer(writeSize);
+      buffer = Buffer.alloc(writeSize);
       buffer.fill(0);
     } else {
       buffer = crypto.randomBytes(writeSize);
@@ -146,7 +146,7 @@ describe('FileUploadDownload', function () {
 
   describe('createWriteStream', function() {
     skipMockAndBrowser('existing file', function (done) {
-      var fileBuffer = new Buffer( 5 * 1024 * 1024 );
+      var fileBuffer = Buffer.alloc( 5 * 1024 * 1024 );
       fileBuffer.fill(1);
 
       // Write file so that it can be piped
@@ -169,7 +169,7 @@ describe('FileUploadDownload', function () {
     });
 
     skipMockAndBrowser('new file', function (done) {
-      var fileBuffer = new Buffer( 6 * 1024 * 1024 );
+      var fileBuffer = Buffer.alloc( 6 * 1024 * 1024 );
       fileBuffer.fill(1);
 
       // Write file so that it can be piped
@@ -189,7 +189,7 @@ describe('FileUploadDownload', function () {
     });
 
     skipMockAndBrowser('store the MD5 on the server', function (done) {
-      var fileBuffer = new Buffer( 3 * 1024 * 1024 );
+      var fileBuffer = Buffer.alloc( 3 * 1024 * 1024 );
       fileBuffer.fill(1);
 
       // Write file so that it can be piped
@@ -232,7 +232,7 @@ describe('FileUploadDownload', function () {
       var sourceFileNameTarget = testutil.generateId('getFileSourceFile', [], suite.isMocked) + '.test';
       var destinationFileNameTarget = testutil.generateId('getFileDestinationFile', [], suite.isMocked) + '.test';
 
-      var fileBuffer = new Buffer( 5 * 1024 );
+      var fileBuffer = Buffer.alloc( 5 * 1024 );
       fileBuffer.fill(1);
 
       fs.writeFileSync(sourceFileNameTarget, fileBuffer);
@@ -400,7 +400,7 @@ describe('FileUploadDownload', function () {
 
   describe('clearRange', function() {
     skipBrowser('should work', function (done) {
-      var buffer = new Buffer(512);
+      var buffer = Buffer.alloc(512);
       buffer.fill(0);
       buffer[0] = '1';
       writeFile(localFileName, buffer);
@@ -427,7 +427,7 @@ describe('FileUploadDownload', function () {
     });
 
     skipBrowser('multiple ranges', function (done) {
-      var buffer = new Buffer(1024);
+      var buffer = Buffer.alloc(1024);
       buffer.fill(0);
       buffer[0] = '1';
       writeFile(localFileName, buffer);
@@ -458,7 +458,7 @@ describe('FileUploadDownload', function () {
 
   describe('listRanges', function() {
     skipBrowser('should work', function (done) {
-      var buffer = new Buffer(512);
+      var buffer = Buffer.alloc(512);
       buffer.fill(0);
       buffer[0] = '1';
       writeFile(localFileName, buffer);
@@ -499,7 +499,7 @@ describe('FileUploadDownload', function () {
     });
 
     skipBrowser('multiple discrete ranges', function (done) {
-      var buffer = new Buffer(512);
+      var buffer = Buffer.alloc(512);
       buffer.fill(0);
       buffer[0] = '1';
       writeFile(localFileName, buffer);
@@ -673,7 +673,7 @@ describe('FileUploadDownload', function () {
     });
     
     skipBrowser('should download a file to a local file in chunks', function (done) {
-      var buffer = new Buffer(4 * 1024 * 1024 + 512); // Don't be a multiple of 4MB to cover more scenarios
+      var buffer = Buffer.alloc(4 * 1024 * 1024 + 512); // Don't be a multiple of 4MB to cover more scenarios
       var originLimit = fileService.singleFileThresholdInBytes;
       buffer.fill(0);
       writeFile(localFileName, buffer);
@@ -839,6 +839,28 @@ describe('FileUploadDownload', function () {
   });
 
   describe('createFileFromText', function () {
+    it('should work with empty text', function(done){
+      var fileText = '';
+      var fileName='emptyfile';
+      fileService.createFileFromText(shareName, directoryName, fileName, fileText, function (uploadError, file, uploadResponse) {
+        assert.equal(uploadError, null);
+        assert.ok(file);
+        assert.ok(uploadResponse.isSuccessful);
+        assert.equal(file.share, shareName);
+        assert.equal(file.directory, directoryName);
+        assert.equal(file.name, fileName);
+
+        fileService.getFileToText(shareName, directoryName, fileName, function (downloadErr, text, file, downloadResponse) {
+          assert.equal(downloadErr, null);
+          assert.ok(downloadResponse.isSuccessful);
+          assert.ok(file);
+          assert.equal(text, fileText);
+
+          done();
+        });
+      });
+    });
+
     it('should work with basic text', function (done) {
       var fileText = 'Hello World';
       fileService.createFileFromText(shareName, directoryName, fileName, fileText, function (uploadError, file, uploadResponse) {
@@ -901,7 +923,7 @@ describe('FileUploadDownload', function () {
     });
 
     it('should work with buffer', function (done) {
-      var fileText = new Buffer('Hello World');
+      var fileText = Buffer.from('Hello World');
       fileService.createFileFromText(shareName, directoryName, fileName, fileText, function (uploadError, file, uploadResponse) {
         assert.equal(uploadError, null);
         assert.ok(file);
@@ -949,7 +971,7 @@ describe('FileUploadDownload', function () {
       var fileContentMD5;
       before(function (done) {
         fileContentMD5 = writeFile(localFileName, fileText);
-        var zeroBuffer = new Buffer(0);
+        var zeroBuffer = Buffer.alloc(0);
         zeroFileContentMD5 = writeFile(zeroSizeFileName, zeroBuffer);
         done();
       });
@@ -1080,7 +1102,7 @@ describe('FileUploadDownload', function () {
   
       before(function (done) {
         fileContentMD5 = writeFile(localFileName, fileText);
-        var zeroBuffer = new Buffer(0);
+        var zeroBuffer = Buffer.alloc(0);
         zeroFileContentMD5 = writeFile(zeroSizeFileName, zeroBuffer);
         done();
       });
@@ -1174,7 +1196,7 @@ describe('FileUploadDownload', function () {
   
       skipMockAndBrowser('should work with parallelOperationsThreadCount in options', function(done) {
         var options = { parallelOperationThreadCount : 4 };
-        var buffer = new Buffer(65 * 1024 * 1024);
+        var buffer = Buffer.alloc(65 * 1024 * 1024);
         buffer.fill(0);
         buffer[0] = '1';
         writeFile(localFileName, buffer);
@@ -1203,7 +1225,7 @@ describe('FileUploadDownload', function () {
     };
 
     skipMockAndBrowser('storeFileContentMD5/useTransactionalMD5 on file', function (done) {
-      var fileBuffer = new Buffer(5 * 1024 * 1024);
+      var fileBuffer = Buffer.alloc(5 * 1024 * 1024);
       fileBuffer.fill(0);
       fileBuffer[0] = '1';
       var fileMD5 = writeFile(localFileName, fileBuffer);
@@ -1234,7 +1256,7 @@ describe('FileUploadDownload', function () {
     });
     
     skipBrowser('storeFileContentMD5/useTransactionalMD5 with streams/ranges', function (done) {
-      var fileBuffer = new Buffer(5 * 1024 * 1024);
+      var fileBuffer = Buffer.alloc(5 * 1024 * 1024);
       fileBuffer.fill(0);
       fileBuffer[0] = '1';
       var fileMD5 = writeFile(localFileName, fileBuffer);
@@ -1289,7 +1311,7 @@ describe('FileUploadDownload', function () {
     });
 
     skipMockAndBrowser('disableContentMD5Validation', function (done) {
-      var fileBuffer = new Buffer(5 * 1024 * 1024);
+      var fileBuffer = Buffer.alloc(5 * 1024 * 1024);
       fileBuffer.fill(0);
       fileBuffer[0] = '1';
       var fileMD5 = writeFile(localFileName, fileBuffer);

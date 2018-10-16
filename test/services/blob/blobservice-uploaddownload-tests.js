@@ -63,10 +63,10 @@ var downloadName = 'blobservice_download.tmp';
 
 var fileText = 'Hello World!';
 
-var pageBlobBuffer = new Buffer(1 * 1024);
-var pageBlob2KBuffer = new Buffer(2 * 1024);
-var appendBlobBuffer = new Buffer(1 * 1024);
-var appendBlob2KBuffer = new Buffer(2 * 1024);
+var pageBlobBuffer = Buffer.alloc(1 * 1024);
+var pageBlob2KBuffer = Buffer.alloc(2 * 1024);
+var appendBlobBuffer = Buffer.alloc(1 * 1024);
+var appendBlob2KBuffer = Buffer.alloc(2 * 1024);
 
 var pageBlobContentMD5 = '';
 var pageBlob2KContentMD5 = '';
@@ -110,7 +110,7 @@ var generateTempFile = function (fileName, size, hasEmptyBlock, callback) {
     var buffer;
 
     if (zero) {
-      buffer = new Buffer(writeSize);
+      buffer = Buffer.alloc(writeSize);
       buffer.fill(0);
     } else {
       buffer = crypto.randomBytes(writeSize);
@@ -133,7 +133,7 @@ var generateTempFile = function (fileName, size, hasEmptyBlock, callback) {
 var getFileMD5 = function (fileName, callback) {
   var md5hash = crypto.createHash('md5');
   var blockSize = 4 * 1024 * 1024;
-  var buffer = new Buffer(blockSize);
+  var buffer = Buffer.alloc(blockSize);
   var offset = 0;
   var bytesRead = 0;
   var file = fs.openSync(fileName, 'r');
@@ -290,7 +290,7 @@ describe('blob-uploaddownload-tests', function () {
     skipMockAndBrowser('should be able to upload block blob from piped stream', function (done) { 
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var fileNameTarget = testutil.generateId('uploadBlockBlobPiping', [], suite.isMocked) + '.blocktest';
-      var blobBuffer = new Buffer( 6 * 1024 * 1024);
+      var blobBuffer = Buffer.alloc( 6 * 1024 * 1024);
       blobBuffer.fill(1);
 
       // Write file so that it can be piped
@@ -314,7 +314,7 @@ describe('blob-uploaddownload-tests', function () {
     skipMockAndBrowser('should be able to upload block blob from piped stream with IfNoneMatch:*', function (done) { 
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var fileNameTarget = testutil.generateId('uploadBlockBlobPiping', [], suite.isMocked) + '.blocktest';
-      var blobBuffer = new Buffer( 6 * 1024 * 1024);
+      var blobBuffer = Buffer.alloc( 6 * 1024 * 1024);
       blobBuffer.fill(1);
 
       // Write file so that it can be piped
@@ -338,7 +338,7 @@ describe('blob-uploaddownload-tests', function () {
     skipMockAndBrowser('should be able to upload pageblob from piped stream', function (done) {
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var fileNameTarget = testutil.generateId('uploadPageBlobPiping', [], suite.isMocked) + '.test';
-      var blobBuffer = new Buffer( 5 * 1024 * 1024 );
+      var blobBuffer = Buffer.alloc( 5 * 1024 * 1024 );
       blobBuffer.fill(1);
 
       // Write file so that it can be piped
@@ -368,7 +368,7 @@ describe('blob-uploaddownload-tests', function () {
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var fileNameTarget = testutil.generateId('uploadPageBlobMD5Piping', [], suite.isMocked) + '.test';
       var length = 3 * 1024 * 1024;
-      var blobBuffer = new Buffer(length);
+      var blobBuffer = Buffer.alloc(length);
       blobBuffer.fill(1);
 
       blobService.createContainer(containerName, function (createError1, container1) {
@@ -399,7 +399,7 @@ describe('blob-uploaddownload-tests', function () {
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var fileNameTarget = testutil.generateId('uploadAppendBlobMD5Piping', [], suite.isMocked) + '.test';
       var length = 3 * 1024 * 1024;
-      var blobBuffer = new Buffer(length);
+      var blobBuffer = Buffer.alloc(length);
       blobBuffer.fill(1);
 
       // Write file so that it can be piped
@@ -440,7 +440,7 @@ describe('blob-uploaddownload-tests', function () {
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var fileNameTarget = testutil.generateId('uploadPageBlobStreamPiping', [], suite.isMocked) + '.test';
       var length = 6 * 1024 * 1024;
-      var blobBuffer = new Buffer(length);
+      var blobBuffer = Buffer.alloc(length);
       blobBuffer.fill(1);
 
       // Write file so that it can be piped
@@ -465,7 +465,7 @@ describe('blob-uploaddownload-tests', function () {
       var sourceFileNameTarget = testutil.generateId('getBlobSourceFile', [], suite.isMocked) + '.test';
       var destinationFileNameTarget = testutil.generateId('getBlobDestinationFile', [], suite.isMocked) + '.test';
       var length = 5 * 1024;
-      var blobBuffer = new Buffer(length);
+      var blobBuffer = Buffer.alloc(length);
       blobBuffer.fill(1);
 
       fs.writeFileSync(sourceFileNameTarget, blobBuffer);
@@ -498,7 +498,7 @@ describe('blob-uploaddownload-tests', function () {
       var sourceFileNameTarget = testutil.generateId('getBlobSourceFile', [], suite.isMocked) + '.test';
       var destinationFileNameTarget = testutil.generateId('getBlobDestinationFile', [], suite.isMocked) + '.test';
       var length = 33 * 1024 * 1024;
-      var blobBuffer = new Buffer(length);
+      var blobBuffer = Buffer.alloc(length);
       blobBuffer.fill(1);
 
       fs.writeFileSync(sourceFileNameTarget, blobBuffer);
@@ -611,7 +611,7 @@ describe('blob-uploaddownload-tests', function () {
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var fileNameSource = testutil.generateId('getPageRanges', [], suite.isMocked) + '.test';
 
-      var blobBuffer = new Buffer(512);
+      var blobBuffer = Buffer.alloc(512);
       blobBuffer.fill(0);
       blobBuffer[0] = '1';
 
@@ -696,12 +696,12 @@ describe('blob-uploaddownload-tests', function () {
       var fileNameSource = testutil.generateId('getPageRangesDiff', [], suite.isMocked) + '.test';
       var fileNameSourceUpdated = testutil.generateId('getPageRangesDiffUpdated', [], suite.isMocked) + '.test';
 
-      var blobBuffer = new Buffer(512);
+      var blobBuffer = Buffer.alloc(512);
       blobBuffer.fill(0);
       blobBuffer[0] = '1';
       blobBuffer[1] = '1';
 
-      var blobBufferUpdated = new Buffer(512);
+      var blobBufferUpdated = Buffer.alloc(512);
       blobBufferUpdated.fill(0);
       blobBufferUpdated[0] = '1';
       blobBufferUpdated[1] = '1';
@@ -1055,7 +1055,7 @@ describe('blob-uploaddownload-tests', function () {
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var fileNameSource = testutil.generateId('MD5Validation', [], suite.isMocked) + '.test';
 
-      var blobBuffer = new Buffer(5 * 1024 * 1024);
+      var blobBuffer = Buffer.alloc(5 * 1024 * 1024);
       blobBuffer.fill(0);
       blobBuffer[0] = '1';
 
@@ -1100,7 +1100,7 @@ describe('blob-uploaddownload-tests', function () {
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var fileNameSource = testutil.generateId('getBlockBlobFileMD5', [], suite.isMocked) + '.test';
 
-      var blobBuffer = new Buffer(5 * 1024 * 1024);
+      var blobBuffer = Buffer.alloc(5 * 1024 * 1024);
       blobBuffer.fill(0);
       blobBuffer[0] = '1';
 
@@ -1146,7 +1146,7 @@ describe('blob-uploaddownload-tests', function () {
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var fileNameSource = testutil.generateId('getPageBlobMD5', [], suite.isMocked) + '.test';
 
-      var blobBuffer = new Buffer(5 * 1024 * 1024);
+      var blobBuffer = Buffer.alloc(5 * 1024 * 1024);
       blobBuffer.fill(0);
       blobBuffer[0] = '1';
 
@@ -1193,7 +1193,7 @@ describe('blob-uploaddownload-tests', function () {
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var fileNameSource = testutil.generateId('getBlockBlobRange', [], suite.isMocked) + '.test';
 
-      var blobBuffer = new Buffer(5 * 1024 * 1024);
+      var blobBuffer = Buffer.alloc(5 * 1024 * 1024);
       blobBuffer.fill(0);
       blobBuffer[0] = '1';
 
@@ -1226,7 +1226,7 @@ describe('blob-uploaddownload-tests', function () {
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var fileNameSource = testutil.generateId('getPageBlobRange', [], suite.isMocked) + '.test';
 
-      var blobBuffer = new Buffer(5 * 1024 * 1024);
+      var blobBuffer = Buffer.alloc(5 * 1024 * 1024);
       blobBuffer.fill(0);
       blobBuffer[0] = '1';
 
@@ -1369,7 +1369,7 @@ describe('blob-uploaddownload-tests', function () {
       var zeroFileContentMD5;
       before(function (done) {
         blockBlobContentMD5 = writeFile(blockFileName, fileText);
-        var zeroBuffer = new Buffer(0);
+        var zeroBuffer = Buffer.alloc(0);
         zeroFileContentMD5 = writeFile(zeroSizeFileName, zeroBuffer);
         done();
       });
@@ -1597,7 +1597,7 @@ describe('blob-uploaddownload-tests', function () {
   
       before(function (done) {
         blockBlobContentMD5 = writeFile(blockFileName, fileText);
-        var zeroBuffer = new Buffer(0);
+        var zeroBuffer = Buffer.alloc(0);
         zeroFileContentMD5 = writeFile(zeroSizeFileName, zeroBuffer);
         done();
       });
@@ -1692,8 +1692,8 @@ describe('blob-uploaddownload-tests', function () {
           storeBlobContentMD5: false,
           useTransactionalMD5: false
         };
-        var buffer = new Buffer(15 * 1024 * 1024);
-        var tempBuffer = new Buffer(10);
+        var buffer = Buffer.alloc(15 * 1024 * 1024);
+        var tempBuffer = Buffer.alloc(10);
         var uploadLength = buffer.length + tempBuffer.length;
         buffer.fill(1);
         tempBuffer.fill(2);
@@ -1748,8 +1748,8 @@ describe('blob-uploaddownload-tests', function () {
           useTransactionalMD5: true
         };
         var expectedMD5;
-        var buffer = new Buffer(20 * 1024 * 1024);
-        var tempBuffer = new Buffer(10);
+        var buffer = Buffer.alloc(20 * 1024 * 1024);
+        var tempBuffer = Buffer.alloc(10);
         var uploadLength = buffer.length * 2 + tempBuffer.length;
         buffer.fill(1);
         var internalHash = crypto.createHash('md5');
@@ -1791,7 +1791,7 @@ describe('blob-uploaddownload-tests', function () {
           parallelOperationThreadCount: 4
         };
         var expectedMD5;
-        var buffer = new Buffer(25 * 1024 * 1024);
+        var buffer = Buffer.alloc(25 * 1024 * 1024);
         var uploadLength = buffer.length * 3;
         buffer.fill(1);
         var internalHash = crypto.createHash('md5');
@@ -1835,7 +1835,7 @@ describe('blob-uploaddownload-tests', function () {
         pageBlobContentMD5 = writeFile(pageFileName, pageBlobBuffer);
         pageBlob2KBuffer.fill(1);
         pageBlob2KContentMD5 = writeFile(page2KFileName, pageBlob2KBuffer);
-        var zeroBuffer = new Buffer(0);
+        var zeroBuffer = Buffer.alloc(0);
         zeroFileContentMD5 = writeFile(zeroSizeFileName, zeroBuffer);
         done();
       });
@@ -2115,8 +2115,8 @@ describe('blob-uploaddownload-tests', function () {
           storeBlobContentMD5: true,
           useTransactionalMD5: true
         };
-        var buffer = new Buffer(15 * 1024 * 1024);
-        var tempBuffer = new Buffer(512);
+        var buffer = Buffer.alloc(15 * 1024 * 1024);
+        var tempBuffer = Buffer.alloc(512);
         var uploadLength = buffer.length + tempBuffer.length;
         buffer.fill(1);
         tempBuffer.fill(2);
@@ -2156,7 +2156,7 @@ describe('blob-uploaddownload-tests', function () {
           parallelOperationThreadCount : 4
         };
   
-        var buffer = new Buffer(65 * 1024 * 1024);
+        var buffer = Buffer.alloc(65 * 1024 * 1024);
         buffer.fill(1);
         var stream = rfs.createReadStream(pageFileName);
         
@@ -2181,7 +2181,7 @@ describe('blob-uploaddownload-tests', function () {
         appendBlobContentMD5 = writeFile(appendFileName, appendBlobBuffer);
         appendBlob2KBuffer.fill(1);
         appendBlob2KContentMD5 = writeFile(append2KFileName, appendBlob2KBuffer);
-        var zeroBuffer = new Buffer(0);
+        var zeroBuffer = Buffer.alloc(0);
         zeroFileContentMD5 = writeFile(zeroSizeFileName, zeroBuffer);
         done();
       });
@@ -2345,7 +2345,7 @@ describe('blob-uploaddownload-tests', function () {
       
       before(function (done) {
         appendBlobContentMD5 = writeFile(appendFileName, fileText);
-        var zeroBuffer = new Buffer(0);
+        var zeroBuffer = Buffer.alloc(0);
         zeroFileContentMD5 = writeFile(zeroSizeFileName, zeroBuffer);
         done();
       });
@@ -2443,8 +2443,8 @@ describe('blob-uploaddownload-tests', function () {
           storeBlobContentMD5: true,
           useTransactionalMD5: true
         };
-        var buffer = new Buffer(15 * 1024 * 1024);
-        var tempBuffer = new Buffer(512);
+        var buffer = Buffer.alloc(15 * 1024 * 1024);
+        var tempBuffer = Buffer.alloc(512);
         var uploadLength = buffer.length + tempBuffer.length;
         buffer.fill(1);
         tempBuffer.fill(2);
@@ -2879,7 +2879,7 @@ describe('blob-uploaddownload-tests', function () {
       it('should download a block blob to a local file in chunks', function (done) {
         var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
         var fileNameSource = testutil.generateId('getBlockBlobRangeStreamLocal', [], suite.isMocked) + '.test';
-        var buffer = new Buffer(4 * 1024 * 1024 + 512); // Don't be a multiple of 4MB to cover more scenarios
+        var buffer = Buffer.alloc(4 * 1024 * 1024 + 512); // Don't be a multiple of 4MB to cover more scenarios
         var originLimit = blobService.singleBlobPutThresholdInBytes;
         buffer.fill(0);
         writeFile(fileNameSource, buffer);
@@ -2910,7 +2910,7 @@ describe('blob-uploaddownload-tests', function () {
   
           var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
           var fileNameSource = testutil.generateId('getBlockBlobRangeStreamLocal', [], suite.isMocked) + '.test';
-          var buffer = new Buffer(4 * 1024 * 1024 + 512); // Don't be a multiple of 4MB to cover more scenarios
+          var buffer = Buffer.alloc(4 * 1024 * 1024 + 512); // Don't be a multiple of 4MB to cover more scenarios
           var originLimit = blobService.singleBlobPutThresholdInBytes;
           buffer.fill(0);
           writeFile(fileNameSource, buffer);
@@ -2984,7 +2984,7 @@ describe('blob-uploaddownload-tests', function () {
       it('should work with basic stream for block blob', function(done) {
         var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
         var fileNameTarget = testutil.generateId('createWriteStreamToBlockBlob', [], suite.isMocked) + '.blocktest';
-        var blobBuffer = new Buffer(99);
+        var blobBuffer = Buffer.alloc(99);
         blobBuffer.fill(1);
   
         // Write file so that it can be piped
@@ -3006,7 +3006,7 @@ describe('blob-uploaddownload-tests', function () {
         var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
         var fileNameTarget = testutil.generateId('createWriteStreamToPageBlob', [], suite.isMocked) + '.pagetest';
         var length = 99;
-        var blobBuffer = new Buffer(length);
+        var blobBuffer = Buffer.alloc(length);
         blobBuffer.fill('b');
         // Write file so that it can be piped
         fs.writeFileSync(fileNameTarget, blobBuffer);
@@ -3024,7 +3024,7 @@ describe('blob-uploaddownload-tests', function () {
         var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
         var fileNameTarget = testutil.generateId('createWriteStreamToPageBlob', [], suite.isMocked) + '.pagetest';
         var length = 2 * 1024 * 1024;
-        var blobBuffer = new Buffer(length);
+        var blobBuffer = Buffer.alloc(length);
         blobBuffer.fill('a');
         pageBlobContentMD5 = writeFile(fileNameTarget, blobBuffer);
         var readable = rfs.createReadStream(fileNameTarget);
@@ -3044,7 +3044,7 @@ describe('blob-uploaddownload-tests', function () {
         var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
         var fileNameTarget = testutil.generateId('createWriteStreamToAppendBlob', [], suite.isMocked) + '.appendtest';
         var length = 2 * 1024 * 1024;
-        var blobBuffer = new Buffer(length);
+        var blobBuffer = Buffer.alloc(length);
         blobBuffer.fill('a');
         pageBlobContentMD5 = writeFile(fileNameTarget, blobBuffer);
         var readable = rfs.createReadStream(fileNameTarget);

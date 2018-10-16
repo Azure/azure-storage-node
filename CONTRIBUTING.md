@@ -2,9 +2,9 @@
 
 If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](https://azure.github.io/guidelines/).
 
-Look at issues in the repository labeled 'good first issue' to choose what'd you liked to jump into!
+Look at issues in the repository labeled 'good first issue' to choose what you would like to jump into!
 
-## Project Steup
+## Project Setup
 The Azure Storage development team uses Visual Studio Code so instructions will be tailored to that preference. However, any preferred IDE or other toolset should be usable.
 
 ### Install

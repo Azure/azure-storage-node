@@ -448,14 +448,14 @@ describe('QueueServiceTests', function() {
         assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         // Create message
-        queueService.createMessage(queueName, new Buffer(messageText1), function (createMessageError, createdMessage, createMessageResponse) {
+        queueService.createMessage(queueName, Buffer.from(messageText1), function (createMessageError, createdMessage, createMessageResponse) {
           assert.equal(createMessageError, null);
           assert.notEqual(createdMessage, null);
           assert.ok(createMessageResponse.isSuccessful);
           assert.equal(createMessageResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
           // Create another message
-          queueService.createMessage(queueName, new Buffer(messageText2), function (createMessageError2, createdMessage2, createMessageResponse2) {
+          queueService.createMessage(queueName, Buffer.from(messageText2), function (createMessageError2, createdMessage2, createMessageResponse2) {
             assert.equal(createMessageError, null);
             assert.notEqual(createdMessage2, null);
             assert.ok(createMessageResponse2.isSuccessful);
@@ -639,14 +639,14 @@ describe('QueueServiceTests', function() {
         assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         // Create message
-        queueService.createMessage(queueName, new Buffer(messageText1), function (createMessageError, createdMessage, createMessageResponse) {
+        queueService.createMessage(queueName, Buffer.from(messageText1), function (createMessageError, createdMessage, createMessageResponse) {
           assert.equal(createMessageError, null);
           assert.notEqual(createdMessage, null);
           assert.ok(createMessageResponse.isSuccessful);
           assert.equal(createMessageResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
           // Create another message
-          queueService.createMessage(queueName, new Buffer(messageText2), function (createMessageError2, createdMessage2, createMessageResponse2) {
+          queueService.createMessage(queueName, Buffer.from(messageText2), function (createMessageError2, createdMessage2, createMessageResponse2) {
             assert.equal(createMessageError, null);
             assert.notEqual(createdMessage2, null);
             assert.ok(createMessageResponse2.isSuccessful);

@@ -75,7 +75,7 @@ var getNewEntityToTest = function () {
     RowKey: eg.String('row1'),
     StringProperty: eg.String('stringSample'),
     BooleanProperty: eg.Boolean(true, 'Edm.Boolean'),
-    BinaryProperty: eg.Binary(new Buffer('SampleStringInBuffer!')),
+    BinaryProperty: eg.Binary(Buffer.from('SampleStringInBuffer!')),
     Int32Property: eg.Int32(42),
     Int64Property: eg.Int64('5432873627392'),
     DoubleProperty: eg.Double(4.81516),
@@ -316,7 +316,7 @@ function compareProperties (propFromService, prop, expectTypeOnService) {
     }
   }
   if (prop['$'] === 'Edm.Binary' && (!propFromService.hasOwnProperty('$') || propFromService['$'] === 'Edm.String')) {
-    assert.strictEqual(new Buffer(propFromService['_'], 'base64').toString(), prop['_'].toString());
+    assert.strictEqual(Buffer.from(propFromService['_'], 'base64').toString(), prop['_'].toString());
   } else if (prop['$'] === 'Edm.DateTime' && (!propFromService.hasOwnProperty('$') || propFromService['$'] === 'Edm.String')){
     assert.strictEqual((new Date(propFromService['_'])).toString(), prop['_'].toString());
   } else if (prop['$'] === 'Edm.Double') {
@@ -526,7 +526,7 @@ function entityResolverTest (options, done) {
       PartitionKey: eg.String('partition1'),
       RowKey: eg.String('row1'),
       BooleanProperty: eg.Boolean(true),
-      BinaryProperty: eg.Binary(new Buffer('SampleStringInBuffer!')),
+      BinaryProperty: eg.Binary(Buffer.from('SampleStringInBuffer!')),
       Int32Property: eg.Int32(42)
     };
 

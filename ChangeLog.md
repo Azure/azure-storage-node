@@ -1,6 +1,23 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
 be taken. This is a GA release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
 
+2018.10 Version 2.10.2
+
+ALL
+* Upgrade `xmlbuilder` to 9.0.7 and `extend` to 3.0.2 to avoid vulnerabilities.
+* Removed deprecated Buffer constructor calls in favor of static methods `Buffer.from` and `Buffer.alloc`.
+* Added JSv10 link and docs.microsoft.com link.
+* Improved documents.
+
+BLOB
+* Added typescript declarations to `listBlobDirectoriesSegmented` and `listBlobDirectoriesSegmentedWithPrefix`.
+
+FILE
+* Fixed an issue that empty text isn’t supported in `createFileFromText`.
+
+TABLE
+* Fixed an issue that uncaught TypeError could be thrown from `createTable` when request is not sent properly.
+
 2018.08 Version 2.10.1
 
 ALL

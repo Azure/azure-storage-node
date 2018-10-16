@@ -181,7 +181,7 @@ describe('exponentialretrypolicyfilter-tests', function () {
     var fileSize = 100;
 
     // Real stream length is smaller than the expected data length to mock the client timeout error to trigger the retry
-    var fileBuffer = new Buffer( fileSize / 2 );
+    var fileBuffer = Buffer.alloc( fileSize / 2 );
     fileBuffer.fill(1);
     fs.writeFileSync(localTempFileName, fileBuffer);
     

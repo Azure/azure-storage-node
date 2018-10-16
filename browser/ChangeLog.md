@@ -1,5 +1,15 @@
 Note: This is the change log file for Azure Storage JavaScript Client Library.
 
+2018.10 Version 2.10.102
+
+ALL
+* Generated browser compatible JavaScript files based on Microsoft Azure Storage SDK for Node.js 2.10.2.
+* Optimized browser samples and other documents.
+* Added JSv10 link and docs.microsoft.com link.
+
+FILE
+* Fixed an issue that empty text isn’t supported in `createFileFromText`.
+
 2018.08 Version 2.10.101
 
 ALL

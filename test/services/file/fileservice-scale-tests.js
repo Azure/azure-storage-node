@@ -129,7 +129,7 @@ describe('FileUploadDownloadScale', function () {
   function generateTempFile(fileName, size, callback) {
     var blockSize = 4 * 1024 * 1024;
     if(!internalBuffer) {
-      internalBuffer = new Buffer(blockSize);
+      internalBuffer = Buffer.alloc(blockSize);
     }
     var md5hash = crypto.createHash('md5');
     var fileInfo = {name: fileName, contentMD5: '', size: size};
@@ -142,7 +142,7 @@ describe('FileUploadDownloadScale', function () {
         content = internalBuffer;
         size -= blockSize;
       } else {
-        content = new Buffer(size);
+        content = Buffer.alloc(size);
         size = 0;
       }
       if (content.length) {

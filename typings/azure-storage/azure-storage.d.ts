@@ -662,6 +662,84 @@ declare module azurestorage {
           *                                                                 `response` will contain information related to this operation.
           */
           deleteContainerIfExists(container: string, options: BlobService.ContainerOptions, callback: ErrorOrResult<boolean>): void;
+          
+          /**
+          * Lists a segment containing a collection of blob directory items in the container.
+          *
+          * @this {BlobService}
+          * @param {string}             container                         The container name.
+          * @param {Object}             currentToken                      A continuation token returned by a previous listing operation. Please use 'null' or 'undefined' if this is the first operation.
+          * @param {errorOrResult}      callback                          `error` will contain information
+          *                                                               if an error occurs; otherwise `result` will contain `entries` and `continuationToken`. 
+          *                                                               `entries`  gives a list of `[directories]{@link BlobDirectoryResult}` and the `continuationToken` is used for the next listing operation.
+          *                                                               `response` will contain information related to this operation.
+          */
+         listBlobDirectoriesSegmented(container: string, currentToken: common.ContinuationToken, callback: ErrorOrResult<BlobService.ListBlobDirectoriesResult>): void;
+
+          /**
+          * Lists a segment containing a collection of blob directory items in the container.
+          *
+          * @this {BlobService}
+          * @param {string}             container                           The container name.
+          * @param {object}             currentToken                        A continuation token returned by a previous listing operation. Please use 'null' or 'undefined' if this is the first operation.
+          * @param {object}             [options]                           The request options.
+          * @param {int}                [options.maxResults]                Specifies the maximum number of directories to return per call to Azure ServiceClient. This does NOT affect list size returned by this function. (maximum: 5000)
+          * @param {LocationMode}       [options.locationMode]              Specifies the location mode used to decide which location the request should be sent to. 
+          *                                                                 Please see StorageUtilities.LocationMode for the possible values.
+          * @param {int}                [options.timeoutIntervalInMs]       The server timeout interval, in milliseconds, to use for the request.
+          * @param {int}                [options.clientRequestTimeoutInMs]  The timeout of client requests, in milliseconds, to use for the request.
+          * @param {int}                [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+          *                                                                 The maximum execution time interval begins at the time that the client begins building the request. The maximum
+          *                                                                 execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]           A string that represents the client request ID with a 1KB character limit.
+          * @param {bool}               [options.useNagleAlgorithm]         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+          *                                                                 The default value is false.
+          * @param {errorOrResult}      callback                            `error` will contain information
+          *                                                                 if an error occurs; otherwise `result` will contain `entries` and `continuationToken`. 
+          *                                                                 `entries`  gives a list of `[directories]{@link BlobDirectoryResult}` and the `continuationToken` is used for the next listing operation.
+          *                                                                 `response` will contain information related to this operation.
+          */
+          listBlobDirectoriesSegmented(container: string, currentToken: common.ContinuationToken, options: BlobService.ListBlobPrefixesSegmentedRequestOptions, callback: ErrorOrResult<BlobService.ListBlobDirectoriesResult>): void;
+
+          /**
+          * Lists a segment containing a collection of blob directory items whose names begin with the specified prefix in the container.
+          *
+          * @this {BlobService}
+          * @param {string}             container                         The container name.
+          * @param {string}             prefix                            The prefix of the blob name.
+          * @param {Object}             currentToken                      A continuation token returned by a previous listing operation. Please use 'null' or 'undefined' if this is the first operation.
+          * @param {errorOrResult}      callback                          `error` will contain information
+          *                                                               if an error occurs; otherwise `result` will contain `entries` and `continuationToken`. 
+          *                                                               `entries`  gives a list of `[directories]{@link BlobDirectoryResult}` and the `continuationToken` is used for the next listing operation.
+          *                                                               `response` will contain information related to this operation.
+          */
+          listBlobDirectoriesSegmentedWithPrefix(container: string, prefix: string, currentToken: common.ContinuationToken, callback: ErrorOrResult<BlobService.ListBlobDirectoriesResult>): void;
+
+          /**
+          * Lists a segment containing a collection of blob directory items whose names begin with the specified prefix in the container.
+          *
+          * @this {BlobService}
+          * @param {string}             container                           The container name.
+          * @param {string}             prefix                              The prefix of the blob directory.
+          * @param {object}             currentToken                        A continuation token returned by a previous listing operation. Please use 'null' or 'undefined' if this is the first operation.
+          * @param {object}             [options]                           The request options.
+          * @param {int}                [options.maxResults]                Specifies the maximum number of directories to return per call to Azure ServiceClient. This does NOT affect list size returned by this function. (maximum: 5000)
+          * @param {LocationMode}       [options.locationMode]              Specifies the location mode used to decide which location the request should be sent to. 
+          *                                                                 Please see StorageUtilities.LocationMode for the possible values.
+          * @param {int}                [options.timeoutIntervalInMs]       The server timeout interval, in milliseconds, to use for the request.
+          * @param {int}                [options.clientRequestTimeoutInMs]  The timeout of client requests, in milliseconds, to use for the request.
+          * @param {int}                [options.maximumExecutionTimeInMs]  The maximum execution time, in milliseconds, across all potential retries, to use when making this request.
+          *                                                                 The maximum execution time interval begins at the time that the client begins building the request. The maximum
+          *                                                                 execution time is checked intermittently while performing requests, and before executing retries.
+          * @param {string}             [options.clientRequestId]           A string that represents the client request ID with a 1KB character limit.
+          * @param {bool}               [options.useNagleAlgorithm]         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
+          *                                                                 The default value is false.
+          * @param {errorOrResult}      callback                            `error` will contain information
+          *                                                                 if an error occurs; otherwise `result` will contain `entries` and `continuationToken`. 
+          *                                                                 `entries`  gives a list of `[directories]{@link BlobDirectoryResult}` and the `continuationToken` is used for the next listing operation.
+          *                                                                 `response` will contain information related to this operation.
+          */
+          listBlobDirectoriesSegmentedWithPrefix(container: string, prefix: string, currentToken: common.ContinuationToken, options: BlobService.ListBlobPrefixesSegmentedRequestOptions, callback: ErrorOrResult<BlobService.ListBlobDirectoriesResult>): void;
 
           /**
           * Lists a segment containing a collection of blob items in the container.
@@ -2952,6 +3030,8 @@ declare module azurestorage {
             include?: string;
           }
 
+          export interface ListBlobPrefixesSegmentedRequestOptions extends ListBlobsSegmentedRequestOptions {}
+
           export interface LeaseResult {
             container: string;
             blob: string;
@@ -2963,6 +3043,11 @@ declare module azurestorage {
 
           export interface ListBlobsResult {
             entries: BlobResult[];
+            continuationToken?: common.ContinuationToken;
+          }
+
+          export interface ListBlobDirectoriesResult {
+            entries: BlobDirectoryResult[];
             continuationToken?: common.ContinuationToken;
           }
 
@@ -2991,6 +3076,10 @@ declare module azurestorage {
           export interface ListContainerResult {
             continuationToken: common.ContinuationToken;
             entries: ContainerResult[];
+          }
+
+          export interface BlobDirectoryResult {
+            name: string;
           }
 
           export interface BlobResult {
@@ -5813,7 +5902,7 @@ declare module azurestorage {
          * @param {string|buffer}value          A 'buffer' containing the value to compare with the property.
          * @return {string} A string containing the formatted filter condition.
          * @example
-         * var query = TableQuery.binaryFilter('BinaryField', QueryComparisons.EQUAL, new Buffer('hello'));
+         * var query = TableQuery.binaryFilter('BinaryField', QueryComparisons.EQUAL, Buffer.from('hello'));
          */
         binaryFilter(propertyName: string, operation: string, value: Buffer | string): string;
 
