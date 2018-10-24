@@ -3020,7 +3020,7 @@ declare module azurestorage {
              */
             delimiter?: string;
             /**
-             * {int} Specifies the maximum number of blobs to return per call to Azure ServiceClient. This does NOT affect list size returned by this function. (maximum: 5000)
+             * {int} Specifies the maximum number of blobs to return per call to Azure ServiceClient. (maximum: 5000)
              */
             maxResults?: number;
 
