@@ -129,6 +129,50 @@ var token = blobService.generateSharedAccessSignature(containerName, blobName, s
 var sasUrl = blobService.getUrl(containerName, blobName, token);
 ```
 
+#### Retries on uploads
+Any failing block in blob will make the entrire upload to fail. It is possible to add retry policy to the transfer. See directory `lib/common/filters/` for different approaches on retries.
+
+```Javascript
+// This example is client-side code.
+// Server-side wouldn't have <input /> fields.
+
+// Assume:
+// 1) There is a <input type="file" id="uploadInput" /> somewhere
+// 2) a Shared Access Signature was created on server-side
+
+const ajax_reply = {
+	host_uri: '-Azure-Storage-URI-here-',
+	access_token: '-received-token-here-',
+	container: '-Blob-container-name-here-',
+	filename: '-Blob-filename-in-container-here-'
+};
+var options = {
+    blockSize: 10485760		// Using 10 MiB blocks, max. upload size is 48 GiB
+};
+
+// Go for exponential retry policy:
+var exponentialRetryPolicyFilter = new azure.ExponentialRetryPolicyFilter();
+var blobService = azure.createBlobServiceWithSas(
+	ajax_reply.host_uri, ajax_reply.access_token
+).withFilter(exponentialRetryPolicyFilter);
+
+const speedSummary = blobService.createBlockBlobFromBrowserFile(
+	ajax_reply.container,
+	ajax_reply.filename,
+	uploadInput.files[0],
+	options,
+	function (err, result, response) {
+		console.log("Upload done!");
+	}
+);
+
+// Upload progress
+speedSummary.on('progress', function () {
+    var progress = parseFloat(speedSummary.getCompletePercent());
+	console.log("Uploaded " + progress + "%");
+});
+```
+
 ### Table Storage
 
 To ensure a table exists, call **createTableIfNotExists**:
