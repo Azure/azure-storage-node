@@ -140,7 +140,7 @@ tableService.deleteTableIfExists('mytable', function(error, result) {
             <p><code>TableService</code> provides <code>queryEntities</code> for querying a table under a storage account.</p>
 <pre>
 var tableQuery = new AzureStorage.Table.TableQuery().top(200);
-tableService.queryEntities('mytable', tableQuery, null, function(error, result) {
+tableService.queryEntities('mytable', tableQuery, null, function(error, results) {
     if (error) {
         // Query entities error
     } else {
