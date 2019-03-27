@@ -1,6 +1,14 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
 be taken. This is a GA release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
 
+2019.04 Version 2.10.3
+
+*	Fixed callback not being called in _getBlobToLocalFile.
+*	Removed retryInfo.retryable check in retrypolicyfilter.js.
+*	Removed comment about maxResults.
+*	Fixed Travis-CI failed validation.
+* Updated latest links and descriptions to V10 SDK in readme.md.
+
 2018.10 Version 2.10.2
 
 ALL

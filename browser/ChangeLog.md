@@ -1,5 +1,14 @@
 Note: This is the change log file for Azure Storage JavaScript Client Library.
 
+2019.04 Version 2.10.103
+
+* Generated browser compatible JavaScript files based on Microsoft Azure Storage SDK for Node.js 2.10.3.
+* Fixed callback not being called in _getBlobToLocalFile.
+* Removed retryInfo.retryable check in retrypolicyfilter.js.
+* Removed comment about maxResults.
+* Fixed Travis-CI failed validation.
+* Updated latest links and descriptions to V10 SDK in readme.md.
+
 2018.10 Version 2.10.102
 
 ALL
