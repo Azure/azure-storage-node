@@ -3,10 +3,10 @@ be taken. This is a GA release and the changes described below indicate the chan
 
 2019.04 Version 2.10.3
 
-*	Fixed callback not being called in _getBlobToLocalFile.
-*	Removed retryInfo.retryable check in retrypolicyfilter.js.
-*	Removed comment about maxResults.
-*	Fixed Travis-CI failed validation.
+* Fixed callback not being called in _getBlobToLocalFile.
+* Removed retryInfo.retryable check in retrypolicyfilter.js.
+* Removed comment about maxResults.
+* Fixed Travis-CI failed validation.
 * Updated latest links and descriptions to V10 SDK in readme.md.
 
 2018.10 Version 2.10.2
