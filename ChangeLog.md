@@ -8,6 +8,7 @@ be taken. This is a GA release and the changes described below indicate the chan
 * Removed comment about maxResults.
 * Fixed Travis-CI failed validation.
 * Updated latest links and descriptions to V10 SDK in readme.md.
+* Fixed some errors are thrown in a inner async callback which cannot be caught.
 
 2018.10 Version 2.10.2
 
