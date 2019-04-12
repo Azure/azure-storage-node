@@ -35,14 +35,14 @@
   "devDependencies": {
     "batchflow": "0.4.0",
     "browserify": "^16.1.1",
-    "coveralls": "^2.11.4",
+    "coveralls": "^3.0.3",
     "factor-bundle": "^2.5.0",
     "grunt": "^1.0.4",
-    "grunt-jsdoc": "~2.1.0",
+    "grunt-jsdoc": "^2.3.0",
     "ink-docstrap": "^1.3.0",
     "istanbul": "^0.4.5",
     "jshint": ">= 2.1.4",
-    "karma": "^2.0.0",
+    "karma": "^4.0.1",
     "karma-chrome-launcher": "^2.2.0",
     "karma-edge-launcher": "^0.4.2",
     "karma-env-preprocessor": "^0.1.1",
@@ -66,8 +66,8 @@
     "url": "http://github.com/Azure/azure-storage-node/issues"
   },
   "scripts": {
-    "check": "jshint lib && npm audit",
-    "test": "jshint lib && npm audit && mocha --no-timeouts --recursive test",
+    "check": "jshint lib && npm set audit-level high && npm audit",
+    "test": "mocha --no-timeouts --recursive test",
     "cover": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec -u bdd --no-timeouts --recursive test",
     "coveralls": "npm run cover && cat ./coverage/lcov.info | node ./node_modules/coveralls/bin/coveralls.js",
     "genjs": "node ./browser/bundle.js",
