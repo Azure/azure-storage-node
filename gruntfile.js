@@ -18,22 +18,6 @@ module.exports = function(grunt) {
   //init stuff
   grunt.initConfig({
 
-    nsp: {
-      package: grunt.file.readJSON('package.json')
-    },
-
-    mochaTest: {
-      test: {
-        options: {
-          reporter: 'spec',
-          quiet: false,
-          clearRequireCache: false,
-          timeout: 100000
-        },
-        src: ['test/**/*.js']
-      }
-    },
-
     //jsdoc config
     jsdoc: {
       dist: {
@@ -78,29 +62,10 @@ module.exports = function(grunt) {
       }
     },
 
-    // devserver config
-    devserver: {
-      server : {},
-      options: {
-        'base': 'docs'
-      }
-    },
-
-    jshint: {
-      all: ['Gruntfile.js', 'lib/**/*.js'],
-      options: {
-        jshintrc: true
-      }
-    }
   });
 
   grunt.loadNpmTasks('grunt-jsdoc');
-  grunt.loadNpmTasks('grunt-mocha-test');
-  grunt.loadNpmTasks('grunt-devserver');
-  grunt.loadNpmTasks('grunt-nsp');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
 
-  grunt.registerTask('doc', ['jsdoc', 'devserver']);
-  grunt.registerTask('validate', ['jshint', 'nsp']);
-  grunt.registerTask('default', ['validate', 'mochaTest']);
+  grunt.registerTask('doc', ['jsdoc']);
+  grunt.registerTask('default', ['doc',]);
 };
