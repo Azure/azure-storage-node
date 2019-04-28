@@ -9324,8 +9324,12 @@ declare module azurestorage {
           * @member {bool} StorageServiceClient#enableGlobalHttpAgent
           */
           enableGlobalHttpAgent: boolean;
+          /** The host information for the service.
+          * @member {StorageHost} StorageServiceClient#host
+          */
+          host: StorageHost;
           /** The proxy object specified by caller.
-          * @member {Proxy}   StorageServiceClient#proxy
+          * @member {Proxy} StorageServiceClient#proxy
           */
           proxy: Proxy;
           /** The logging settings object.
