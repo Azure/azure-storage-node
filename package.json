@@ -15,6 +15,9 @@
     "storage"
   ],
   "main": "./lib/azure-storage.js",
+  "browserify": {
+    "./lib/common/signing/sharedkey.js": "./lib/common/signing/sharedkey.browser.js"
+  },
   "engines": {
     "node": ">= 0.8.26"
   },

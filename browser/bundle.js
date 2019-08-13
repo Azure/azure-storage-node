@@ -43,7 +43,7 @@ if (!fs.existsSync(outputFolderPath)) {
 }
 
 function build(exportFilePath, outputFilePath, moduleName, isMinify) {
-    browserify(exportFilePath, {standalone: moduleName}).bundle(function (err, src) {
+    browserify(exportFilePath, {standalone: moduleName, browserField: "browserify"}).bundle(function (err, src) {
         if (err) {
             console.error('Failed when parsing', exportFilePath, err);
             return;
