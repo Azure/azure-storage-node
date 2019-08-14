@@ -33,7 +33,7 @@ var skipBrowser = testutil.itSkipBrowser();
 
 describe('StorageServiceClientTests', function () {
 
-  it('devStore', function (done) {
+  skipBrowser('devStore', function (done) {
     var devStoreCreds = azure.generateDevelopmentStorageCredentials();
     var devStoreBlobService = azure.createBlobService(devStoreCreds);
 

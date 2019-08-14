@@ -48,7 +48,7 @@ describe('linearretrypolicyfilter-tests', function () {
     }
     suite.setupSuite(function () {
       linearRetryPolicyFilter = new LinearRetryPolicyFilter();
-      tableService = azure.createTableService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(linearRetryPolicyFilter);
+      tableService = testutil.getTableService(azure).withFilter(linearRetryPolicyFilter);
       done();
     });
   });

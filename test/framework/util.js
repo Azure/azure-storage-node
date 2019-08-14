@@ -160,6 +160,54 @@ exports.itSkipMockAndBrowser = function (isMocked) {
   return exports.isBrowser() ? it.skip : exports.itSkipMock(isMocked);
 }
 
+exports.getQueueService = function (azure) {
+  if (exports.isBrowser()) {
+    var account = process.env['AZURE_ACCOUNT'];
+    var host = "https://" + account + ".queue.core.windows.net";
+    var sas = process.env['AZURE_SAS'];
+    return azure.createQueueServiceWithSas(host, sas);
+  } else {
+    var connectionString = process.env['AZURE_STORAGE_CONNECTION_STRING'];
+    return azure.createQueueService(connectionString).withFilter(new azure.ExponentialRetryPolicyFilter());    
+  }
+};
+
+exports.getTableService = function (azure) {
+  if (exports.isBrowser()) {
+    var account = process.env['AZURE_ACCOUNT'];
+    var host = "https://" + account + ".table.core.windows.net";
+    var sas = process.env['AZURE_SAS'];
+    return azure.createTableServiceWithSas(host, sas);
+  } else {
+    var connectionString = process.env['AZURE_STORAGE_CONNECTION_STRING'];
+    return azure.createTableService(connectionString).withFilter(new azure.ExponentialRetryPolicyFilter());    
+  }
+};
+
+exports.getFileService = function (azure) {
+  if (exports.isBrowser()) {
+    var account = process.env['AZURE_ACCOUNT'];
+    var host = "https://" + account + ".file.core.windows.net";
+    var sas = process.env['AZURE_SAS'];
+    return azure.createFileServiceWithSas(host, sas);
+  } else {
+    var connectionString = process.env['AZURE_STORAGE_CONNECTION_STRING'];
+    return azure.createFileService(connectionString).withFilter(new azure.ExponentialRetryPolicyFilter());    
+  }
+};
+
+exports.getBlobService = function (azure, connectionStringEnv) {
+  if (exports.isBrowser()) {
+    var account = process.env['AZURE_ACCOUNT'];
+    var host = "https://" + account + ".blob.core.windows.net";
+    var sas = process.env['AZURE_SAS'];
+    return azure.createBlobServiceWithSas(host, sas);
+  } else {
+    var connectionString = process.env[connectionStringEnv || 'AZURE_STORAGE_CONNECTION_STRING'];
+    return azure.createBlobService(connectionString).withFilter(new azure.ExponentialRetryPolicyFilter());    
+  }
+};
+
 exports.polyfillArrayFind = function () {
   // https://tc39.github.io/ecma262/#sec-array.prototype.find
   if (!Array.prototype.find && exports.isBrowser()) {

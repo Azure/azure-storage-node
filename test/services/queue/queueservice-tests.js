@@ -64,7 +64,7 @@ describe('QueueServiceTests', function() {
       testutil.POLL_REQUEST_INTERVAL = 0;
     }
     suite.setupSuite(function () {
-      queueService = azure.createQueueService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
+      queueService = testutil.getQueueService(azure);
       done();
     });
   });
@@ -885,7 +885,7 @@ describe('QueueServiceTests', function() {
   });
 
   describe('ConnectionStringTests', function () {
-    it('should work', function (done) {
+    skipBrowser('should work', function (done) {
       var key = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
       var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=' + key;
       var queueService = azure.createQueueService(connectionString);
@@ -901,7 +901,7 @@ describe('QueueServiceTests', function() {
       done();
     });
 
-    it('should work with dev store', function (done) {
+    skipBrowser('should work with dev store', function (done) {
       var connectionString = 'UseDevelopmentStorage=true';
       var queueService = azure.createQueueService(connectionString);
 
@@ -1002,7 +1002,7 @@ describe('QueueServiceTests', function() {
   });
   
   describe('Queue ACL', function() {
-    it('setQueueACL and getQueueACL should work', function(done) {
+    skipBrowser('setQueueACL and getQueueACL should work', function(done) {
       queueService.createQueueIfNotExists(queueName, function() {
         var startDate = new Date('2015-01-01T12:00:00.0000000Z');
         var expiryDate = new Date(startDate);
@@ -1031,7 +1031,7 @@ describe('QueueServiceTests', function() {
   });
 
   describe('testSAS', function() {
-    runOrSkip('should work with noPolicy', function(done) {
+    skipMockAndBrowser('should work with noPolicy', function(done) {
       queueService.createQueueIfNotExists(queueName, function() {
         var text = 'Sample message text';
         queueService.createMessage(queueName, text, function() {
@@ -1068,7 +1068,7 @@ describe('QueueServiceTests', function() {
     });
 
     // Skip this case in nock because the signing key is different between live run and mocked run
-    runOrSkip('should work with policy', function(done) {
+    skipMockAndBrowser('should work with policy', function(done) {
       queueService.createQueueIfNotExists(queueName, function() {
         var text = 'Sample message text';
         queueService.createMessage(queueName, text, function() {
@@ -1115,7 +1115,7 @@ describe('QueueServiceTests', function() {
   });
   
   describe('getUrl', function(){
-    it('should work', function(done) {
+    skipBrowser('should work', function(done) {
       
         var queueName = 'queue1';
         var queueService = azure.createQueueService('storageAccount', 'storageAccessKey', {primaryHost: 'https://host.com:80/', secondaryHost: 'https://host-secondary.com:80/'});
@@ -1140,7 +1140,7 @@ describe('QueueServiceTests', function() {
         done();
     });
 
-    it('should work against storage emulator', function(done) {
+    skipBrowser('should work against storage emulator', function(done) {
         var queueName = 'queue1';
         var queueService = azure.createQueueService('storageAccount', 'storageAccessKey', {primaryHost: 'https://host.com:80/account1', secondaryHost: 'https://host-secondary.com:80/account1'});
 

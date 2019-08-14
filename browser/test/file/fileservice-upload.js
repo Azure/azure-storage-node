@@ -30,7 +30,7 @@ if (testUtil.isBrowser()) {
   
   describe('FileServiceUpload', function () {
     before(function (done) {
-      fileService = azure.createFileService(process.env['AZURE_STORAGE_CONNECTION_STRING']);
+      fileService = testUtil.getFileService(azure);
       assert.notEqual(null, fileService, 'FileService should not be null');
   
       shareName = suite.getName(shareNamesPrefix);

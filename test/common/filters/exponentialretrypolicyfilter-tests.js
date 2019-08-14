@@ -62,7 +62,7 @@ describe('exponentialretrypolicyfilter-tests', function () {
     }
     suite.setupSuite(function () {
       exponentialRetryPolicyFilter = new ExponentialRetryPolicyFilter();
-      tableService = azure.createTableService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(exponentialRetryPolicyFilter);
+      tableService = testutil.getTableService(azure).withFilter(exponentialRetryPolicyFilter);
       done();
     });
   });

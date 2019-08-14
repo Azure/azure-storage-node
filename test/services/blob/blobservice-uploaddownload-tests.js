@@ -166,7 +166,7 @@ describe('blob-uploaddownload-tests', function () {
       testutil.POLL_REQUEST_INTERVAL = 0;
     }
     suite.setupSuite(function () {
-      blobService = azure.createBlobService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
+      blobService = testutil.getBlobService(azure);
       //blobService.logger.level = azure.Logger.LogLevels.DEBUG;
       done();
     });
@@ -275,13 +275,6 @@ describe('blob-uploaddownload-tests', function () {
       assert.equal(error, null);
       blobService.removeAllListeners('sendingRequestEvent');
 
-      done();
-    });
-  });
-  
-  skipBrowser('returns correct error when specifying invalid content-length', function (done) {
-    blobService.createBlockFromStream('test', containerName, blockBlobName, rfs.createReadStream(blockFileName), 'invalidlength', function (error) {
-      assert.ok(error.message.indexOf('invalid content length') !== -1);
       done();
     });
   });
@@ -911,7 +904,7 @@ describe('blob-uploaddownload-tests', function () {
       });
     });
 
-    it('createBlockFromUrl should work', function(done) {
+    skipBrowser('createBlockFromUrl should work', function(done) {
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var destBlobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var blobText = 'Hello World!';

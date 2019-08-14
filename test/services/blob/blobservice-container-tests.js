@@ -48,7 +48,7 @@ describe('BlobContainer', function () {
       testutil.POLL_REQUEST_INTERVAL = 0;
     }
     suite.setupSuite(function () {
-      blobService = azure.createBlobService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
+      blobService = testutil.getBlobService(azure);
       done();
     }); 
   });
@@ -482,7 +482,7 @@ describe('BlobContainer', function () {
   });
 
   describe('getContainerAcl', function () {
-    it('should work', function (done) {
+    skipBrowser('should work', function (done) {
       blobService.getContainerAcl(containerName, function (containerAclError, containerBlob, containerAclResponse) {
         assert.equal(containerAclError, null);
         assert.notEqual(containerBlob, null);
@@ -501,7 +501,7 @@ describe('BlobContainer', function () {
   });
 
   describe('setContainerAcl', function () {
-    it('should work', function (done) {
+    skipBrowser('should work', function (done) {
       var blobServiceAnonymous = azure.createBlobServiceAnonymous(blobService.host.primaryHost)
         .withFilter(new azure.ExponentialRetryPolicyFilter());
 
@@ -564,7 +564,7 @@ describe('BlobContainer', function () {
       });
     });
 
-    it('should work with policies', function (done) {
+    skipBrowser('should work with policies', function (done) {
       var readWriteStartDate = new Date(Date.UTC(2012, 10, 10));
       var readWriteExpiryDate = new Date(readWriteStartDate);
       readWriteExpiryDate.setMinutes(readWriteStartDate.getMinutes() + 10);
@@ -617,7 +617,7 @@ describe('BlobContainer', function () {
       });
     });
 
-    it('should work with signed identifiers', function (done) {
+    skipBrowser('should work with signed identifiers', function (done) {
       var signedIdentifiers = {
         id1: {
           Start: '2009-10-10T00:00:00.123Z',
@@ -842,6 +842,9 @@ describe('BlobContainer', function () {
                 assert.equal(blobs.length, 2);
                 
                 var sourceUrl = blobService.getUrl(containerName, blobName1);
+                if (testutil.isBrowser) {
+                  sourceUrl += process.env["AZURE_SAS"];
+                }
                 var blobName3 = suite.getName(blobNamesPrefix);
                 blobService.startCopyBlob(sourceUrl, containerName, blobName3, function (copyErr) {
                   assert.equal(copyErr, null);

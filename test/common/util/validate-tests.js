@@ -20,6 +20,21 @@ var assert = require('assert');
 var testutil = require('../../framework/util');
 var Validate = require('../../../lib/common/util/validate');
 
+if (!String.prototype.includes) {
+  String.prototype.includes = function(search, start) {
+    'use strict';
+    if (typeof start !== 'number') {
+      start = 0;
+    }
+
+    if (start + search.length > this.length) {
+      return false;
+    } else {
+      return this.indexOf(search, start) !== -1;
+    }
+  };
+}
+
 describe('validator-tests', function () {
   it('isValidEnumValue should work', function (done) {
     Validate.isValidEnumValue('a', ['a', 'b', 'c']).should.be.ok;
@@ -28,7 +43,7 @@ describe('validator-tests', function () {
         Validate.isValidEnumValue('d', ['a', 'b', 'c']);
       },
       function(err) {
-        return (err instanceof RangeError) && err.message === 'Invalid value: d. Options are: a,b,c.';
+        return (err instanceof RangeError) && err.message.includes('Invalid value: d. Options are');
       }
     );
     done();
@@ -302,7 +317,7 @@ describe('validator-tests', function () {
         Validate.blobTypeIsValid('something');
       },
       function(err) {
-        return (err instanceof RangeError) && err.message === 'Invalid value: something. Options are: BlockBlob,PageBlob,AppendBlob.';
+        return (err instanceof RangeError) && err.message.includes('Invalid value: something. Options are:');
       }
     );
     done();

@@ -61,7 +61,7 @@ describe('File', function () {
       testutil.POLL_REQUEST_INTERVAL = 0;
     }
     suite.setupSuite(function () {
-      fileService = azure.createFileService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
+      fileService = testutil.getFileService(azure);
       done();
     });
   });
@@ -98,11 +98,11 @@ describe('File', function () {
     var share = 'share';
     var directory = 'directory';
     var file = 'file'
-    var fileServiceForUrl = azure.createFileService('storageAccount', 'storageAccessKey');
     var shareSnapshotId = '2017-05-10T04:40:00.0000000Z';
     var url;
 
-    it('Directory and file', function (done) {
+    skipBrowser('Directory and file', function (done) {
+      var fileServiceForUrl = azure.createFileService('storageAccount', 'storageAccessKey');
       fileServiceForUrl.setHost({ primaryHost: 'host.com' });
       url = fileServiceForUrl.getUrl(share, directory, file, null, true);
       assert.strictEqual(url, 'https://host.com/' + share + '/' + directory + '/' + file);
@@ -158,7 +158,9 @@ describe('File', function () {
       done();
     });
 
-    it('No file', function (done) {
+    skipBrowser('No file', function (done) {
+      var fileServiceForUrl = azure.createFileService('storageAccount', 'storageAccessKey');
+
       fileServiceForUrl.setHost({ primaryHost: 'host.com' });
       url = fileServiceForUrl.getUrl(share, directory, null, null, true);
       assert.strictEqual(url, 'https://host.com/' + share + '/' + directory);
@@ -204,7 +206,9 @@ describe('File', function () {
       done();
     });
 
-    it('No directory', function (done) {
+    skipBrowser('No directory', function (done) {
+      var fileServiceForUrl = azure.createFileService('storageAccount', 'storageAccessKey');
+      
       fileServiceForUrl.setHost({ primaryHost: 'host.com' });
       url = fileServiceForUrl.getUrl(share, '', null, null, true);
       assert.strictEqual(url, 'https://host.com/' + share);
@@ -858,7 +862,7 @@ describe('File', function () {
       });
     });
 
-    runOrSkip('should work with SAS', function (done) {
+    skipMockAndBrowser('should work with SAS', function (done) {
       var sourceShareName = suite.getName(shareNamesPrefix);
       var targetShareName = suite.getName(shareNamesPrefix);
       
@@ -982,7 +986,7 @@ describe('File', function () {
       
     });
 
-    runOrSkip('should work with a normal file name', function (done) {
+    skipMockAndBrowser('should work with a normal file name', function (done) {
       var sasToken = fileService.generateSharedAccessSignature(shareName, directoryName, sasTestFileName, sharedAccessPolicy);
       var fileServiceSAS = azure.createFileServiceWithSas(fileService.host, sasToken);
 
@@ -1002,7 +1006,7 @@ describe('File', function () {
       });      
     });
 
-    runOrSkip('should work with a file name with special characters', function (done) {
+    skipMockAndBrowser('should work with a file name with special characters', function (done) {
       var sasToken = fileService.generateSharedAccessSignature(shareName, directoryName, sasTestFileNameWithSpecialChar, sharedAccessPolicy);
       var fileServiceSAS = azure.createFileServiceWithSas(fileService.host, sasToken);
 

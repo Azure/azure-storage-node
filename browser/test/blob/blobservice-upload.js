@@ -30,7 +30,7 @@ if (testUtil.isBrowser()) {
     
     describe('BlobServiceUpload', function () {
         before(function (done) {
-            blobService = azure.createBlobService(process.env['AZURE_STORAGE_CONNECTION_STRING']);
+            blobService = testUtil.getBlobService(azure);
             assert.notEqual(null, blobService, 'blobService should not be null');
     
             containerName = suite.getName(containerNamesPrefix);
