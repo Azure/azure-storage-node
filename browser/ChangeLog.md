@@ -1,5 +1,9 @@
 Note: This is the change log file for Azure Storage JavaScript Client Library.
 
+2019.08 Version 3.0.100
+
+* [Breaking] SharedKey based authentication and SAS generation will not be supported in browser bundles.
+
 2019.04 Version 2.10.103
 
 * Generated browser compatible JavaScript files based on Microsoft Azure Storage SDK for Node.js 2.10.3.
