@@ -79,7 +79,7 @@ describe('BlobService', function () {
       testutil.POLL_REQUEST_INTERVAL = 0;
     }
     suite.setupSuite(function () {
-      blobService = azure.createBlobService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
+      blobService = testutil.getBlobService(azure);
       done();
     });
   });
@@ -1292,7 +1292,11 @@ describe('BlobService', function () {
           blobService.createBlockBlobFromText(sourceContainerName, sourceBlobName, blobText, function (uploadErr) {
             assert.equal(uploadErr, null);
 
-            blobService.startCopyBlob(blobService.getUrl(sourceContainerName, sourceBlobName), targetContainerName, targetBlobName, function (copyErr, copyRes) {
+            var sourceURL = blobService.getUrl(sourceContainerName, sourceBlobName);
+            if (testutil.isBrowser()) {
+              sourceURL += process.env["AZURE_SAS"];
+            }
+            blobService.startCopyBlob(sourceURL, targetContainerName, targetBlobName, function (copyErr, copyRes) {
               assert.equal(copyErr, null);
 
               blobService.abortCopyBlob(targetContainerName, targetBlobName, copyRes.copyId, function (copyErr) {
@@ -1344,7 +1348,11 @@ describe('BlobService', function () {
                 assert.ok(snapshotResponse.isSuccessful);
               }
 
-              blobService.startCopyBlob(blobService.getUrl(sourceContainerName, sourceBlobName), targetContainerName, targetBlobName, {'snapshotId': snapshotId}, function (copyErr, copyRes) {
+              var sourceURL = blobService.getUrl(sourceContainerName, sourceBlobName);
+              if (testutil.isBrowser()) {
+                sourceURL += process.env["AZURE_SAS"];
+              }
+              blobService.startCopyBlob(sourceURL, targetContainerName, targetBlobName, {'snapshotId': snapshotId}, function (copyErr, copyRes) {
                 assert.equal(copyErr, null);
                 blobService.getBlobToText(targetContainerName, targetBlobName, function (downloadErr, text) {
                   assert.equal(downloadErr, null);
@@ -1365,7 +1373,7 @@ describe('BlobService', function () {
       });
     });
 
-    runOrSkip('incremental copy should work', function(done) {
+    skipMockAndBrowser('incremental copy should work', function(done) {
       var sourceContainerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
       var targetContainerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
 
@@ -1451,7 +1459,7 @@ describe('BlobService', function () {
 
   describe('shared access signature', function () {
     describe('getBlobUrl', function () {
-      it('should work', function (done) {
+      skipBrowser('should work', function (done) {
         var containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
         var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
 
@@ -1510,7 +1518,7 @@ describe('BlobService', function () {
         done();
       });
 
-      it('should work with shared access policy', function (done) {
+      skipBrowser('should work with shared access policy', function (done) {
         var containerName = 'container';
         var blobName = 'blob';
 
@@ -1597,7 +1605,7 @@ describe('BlobService', function () {
       });
     });
 
-    it('GenerateSharedAccessSignature', function (done) {
+    skipBrowser('GenerateSharedAccessSignature', function (done) {
       var containerName = 'images';
       var blobName = 'pic1.png';
 
@@ -1626,7 +1634,7 @@ describe('BlobService', function () {
       done();
     });
 
-    runOrSkip('should be able to append block to AppendBlob using SharedAccessSignature', function (done) {
+    skipMockAndBrowser('should be able to append block to AppendBlob using SharedAccessSignature', function (done) {
       var containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var blobService = azure.createBlobService(process.env['AZURE_STORAGE_CONNECTION_STRING'])
@@ -1674,7 +1682,7 @@ describe('BlobService', function () {
       });
     });
 
-    runOrSkip('should be able to download blob using SharedAccessSignature', function (done) {
+    skipMockAndBrowser('should be able to download blob using SharedAccessSignature', function (done) {
       var containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var blobService = azure.createBlobService(process.env['AZURE_STORAGE_CONNECTION_STRING'])
@@ -1731,7 +1739,7 @@ describe('BlobService', function () {
       });
     });
 
-    it('should NOT be able to specify api-version in SAS', function (done) {
+    skipMockAndBrowser('should NOT be able to specify api-version in SAS', function (done) {
       var containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var blobService = azure.createBlobService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
@@ -1750,7 +1758,7 @@ describe('BlobService', function () {
       done();
     });
 
-    runOrSkip('should append api-version', function (done) {
+    skipMockAndBrowser('should append api-version', function (done) {
       var containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
       var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
       var blobService = azure.createBlobService(process.env['AZURE_STORAGE_CONNECTION_STRING'])
@@ -1801,7 +1809,7 @@ describe('BlobService', function () {
     });
   
     describe('SasStrangeChars', function() {
-      runOrSkip('SasStrangeCharsBlobName', function (done) {
+      skipMockAndBrowser('SasStrangeCharsBlobName', function (done) {
         var containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
         var blobName = 'def@#/abef?def/& &/abcde+=-';
         var blobService = azure.createBlobService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
@@ -1845,7 +1853,7 @@ describe('BlobService', function () {
         var blobText = 'sampletext!';
 
         before(function (done) {
-          blobService = azure.createBlobService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
+          blobService = testutil.getBlobService(azure);
           done();
         })
 
@@ -1862,7 +1870,7 @@ describe('BlobService', function () {
           });
         });
 
-        runOrSkip('should work', function(done) {
+        skipMockAndBrowser('should work', function(done) {
           blobService.createBlockBlobFromText(containerName, blobName, blobText, function (error2) {
             assert.equal(error2, null);
       
@@ -1903,7 +1911,9 @@ describe('BlobService', function () {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, suite.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, suite.isMocked);
     var blobText = 'hi there';
-    var timeBeforeCreation = new Date().toUTCString();
+    var timeBeforeCreation = new Date();
+    timeBeforeCreation.setMinutes(timeBeforeCreation.getMinutes() - 5);
+    timeBeforeCreation = timeBeforeCreation.toUTCString();
     var lastModified;
     var etag;
 
@@ -2021,7 +2031,7 @@ describe('BlobService', function () {
   });
 
   // Even the execution time is 1ms in this case, we need skip it in nock as it may receive response in less than 1ms when it is mocked.
-  runOrSkip('maximumExecutionTime should work', function (done) {
+  skipMockAndBrowser('maximumExecutionTime should work', function (done) {
     //set the maximum execution time.
     var options = {
       maximumExecutionTimeInMs: 1,
@@ -2064,7 +2074,7 @@ describe('BlobService', function () {
     });
   });
 
-  it('storageConnectionStrings', function (done) {
+  skipBrowser('storageConnectionStrings', function (done) {
     var key = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
     var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=' + key;
     var blobService = azure.createBlobService(connectionString);
@@ -2076,7 +2086,7 @@ describe('BlobService', function () {
     done();
   });
 
-  it('storageConnectionStringsDevStore', function (done) {
+  skipBrowser('storageConnectionStringsDevStore', function (done) {
     var connectionString = 'UseDevelopmentStorage=true';
     var blobService = azure.createBlobService(connectionString);
 

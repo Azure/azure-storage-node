@@ -40,10 +40,8 @@ module.exports = function (config) {
     // environment values MUST be exported or set with same console running "karma start"
     // https://www.npmjs.com/package/karma-env-preprocessor
     envPreprocessor: [
-      'AZURE_STORAGE_CONNECTION_STRING',
-      'AZURE_STORAGE_CONNECTION_STRING_SSE_ENABLED_ACCOUNT',
-      'AZURE_STORAGE_CONNECTION_STRING_BLOB_ACCOUNT',
-      'AZURE_STORAGE_CONNECTION_STRING_PREMIUM_ACCOUNT'
+      'AZURE_ACCOUNT',
+      'AZURE_SAS'
     ],
 
     // test results reporter to use

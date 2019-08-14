@@ -20,6 +20,7 @@ var os = require('os');
 var path = require('path');
 var guid = require('uuid');
 var nockHelper = require('./nock-helper');
+var testutil = require('./util');
 
 exports = module.exports = TestSuite;
 
@@ -50,6 +51,20 @@ function TestSuite(testPrefix, env, forceMocked) {
     secure: stripAccessKey,
     optional: true
   }];
+
+  if (testutil.isBrowser()) {
+    requiredEnvironment = [{
+        name: 'AZURE_ACCOUNT',
+        secure: stripAccessKey,
+        optional: false
+      },{
+        name: 'AZURE_SAS',
+        secure: stripAccessKey,
+        optional: false
+      }
+    ]
+  }
+
   env = env.concat(requiredEnvironment);
 
   this.testPrefix = testPrefix;
@@ -77,6 +92,8 @@ function TestSuite(testPrefix, env, forceMocked) {
     process.env['AZURE_STORAGE_CONNECTION_STRING'] = window.__env__['AZURE_STORAGE_CONNECTION_STRING'];
     process.env['AZURE_STORAGE_CONNECTION_STRING_SSE_ENABLED_ACCOUNT'] = window.__env__['AZURE_STORAGE_CONNECTION_STRING_SSE_ENABLED_ACCOUNT'];
     process.env['AZURE_STORAGE_CONNECTION_STRING_BLOB_ACCOUNT'] = window.__env__['AZURE_STORAGE_CONNECTION_STRING_BLOB_ACCOUNT'];
+    process.env['AZURE_ACCOUNT'] = window.__env__['AZURE_ACCOUNT'];
+    process.env['AZURE_SAS'] = window.__env__['AZURE_SAS'];
     
     // Premium blob storage account doesn't support CORS currently
     // process.env['AZURE_STORAGE_CONNECTION_STRING_PREMIUM_ACCOUNT'] = window.__env__['AZURE_STORAGE_CONNECTION_STRING_PREMIUM_ACCOUNT'];

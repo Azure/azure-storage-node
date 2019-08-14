@@ -42,7 +42,7 @@ describe('tableservice-gb-tests', function () {
       testutil.POLL_REQUEST_INTERVAL = 0;
     }
     suite.setupSuite(function () {
-      tableService = azure.createTableService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
+      tableService = testutil.getTableService(azure);
       done();
     }); 
   });

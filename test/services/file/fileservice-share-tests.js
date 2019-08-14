@@ -48,7 +48,7 @@ describe('FileShare', function () {
       testutil.POLL_REQUEST_INTERVAL = 0;
     }
     suite.setupSuite(function () {
-      fileService = azure.createFileService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
+      fileService = testutil.getFileService(azure);
       done();
     });
   });
@@ -559,7 +559,7 @@ describe('FileShare', function () {
   });
 
   describe('shared access signature', function () {
-    it('should work with shared access policy', function (done) {
+    skipBrowser('should work with shared access policy', function (done) {
       var share = 'testshare';
       var directoryName = "testdir";
       var fileName = "testfile";
@@ -582,7 +582,7 @@ describe('FileShare', function () {
     });
 
     // Skip this case in nock because the signing key is different between live run and mocked run
-    runOrSkip('should work with share and file policies', function (done) {
+    skipMockAndBrowser('should work with share and file policies', function (done) {
       var readWriteSharePolicy = {
         AccessPolicy: {
           Permissions: 'rw',
@@ -640,7 +640,7 @@ describe('FileShare', function () {
   });
 
   describe('getShareAcl', function () {
-    it('should work', function (done) {
+    skipBrowser('should work', function (done) {
       fileService.createShareIfNotExists(shareName, function () {
         fileService.getShareAcl(shareName, function (shareAclError, shareResult, shareAclResponse) {
           assert.equal(shareAclError, null);
@@ -656,7 +656,7 @@ describe('FileShare', function () {
   });
   
   describe('setShareAcl', function () {    
-    it('should work with policies', function (done) {
+    skipBrowser('should work with policies', function (done) {
       var readWriteStartDate = new Date(Date.UTC(2012, 10, 10));
       var readWriteExpiryDate = new Date(readWriteStartDate);
       readWriteExpiryDate.setMinutes(readWriteStartDate.getMinutes() + 10);
@@ -716,7 +716,7 @@ describe('FileShare', function () {
       });
     });
     
-    it('should work with signed identifiers', function (done) {
+    skipBrowser('should work with signed identifiers', function (done) {
       var signedIdentifiers = {
         id1: {
           Start: '2009-10-10T00:00:00.123Z',

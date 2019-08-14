@@ -41,7 +41,7 @@ describe('BlobServiceLeasing', function () {
       testutil.POLL_REQUEST_INTERVAL = 0;
     }
     suite.setupSuite(function () {
-      blobService = azure.createBlobService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
+      blobService = testutil.getBlobService(azure);
       done();
     });
   });

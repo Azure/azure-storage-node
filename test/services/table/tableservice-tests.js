@@ -99,7 +99,7 @@ describe('tableservice-tests', function () {
       testutil.POLL_REQUEST_INTERVAL = 0;
     }
     suite.setupSuite(function () {
-      tableService = azure.createTableService(process.env['AZURE_STORAGE_CONNECTION_STRING']).withFilter(new azure.ExponentialRetryPolicyFilter());
+      tableService = testutil.getTableService(azure);
       done();
     }); 
   });
@@ -131,7 +131,7 @@ describe('tableservice-tests', function () {
     });
   });
 
-  it('SetDefaultPortProperly', function (done) {
+  skipBrowser('SetDefaultPortProperly', function (done) {
     var storageAccount = 'account';
     var storageAccountKey = Buffer.from('key').toString('base64');
 
@@ -881,7 +881,7 @@ describe('tableservice-tests', function () {
   });
   
   describe('Table ACL', function() {
-    it('setTableACL and getTableACL should work', function(done) {
+    skipBrowser('setTableACL and getTableACL should work', function(done) {
       tableService.createTableIfNotExists(tableName1, function() {
         var startDate = new Date('2015-01-01T12:00:00.0000000Z');
         var expiryDate = new Date(startDate.toISOString());
@@ -912,7 +912,7 @@ describe('tableservice-tests', function () {
   });
 
   describe('SAS', function () {
-    runOrSkip('SASNoPolicy', function (done) {
+    skipMockAndBrowser('SASNoPolicy', function (done) {
       tableService.createTable(tableName1, function (error1) {
         assert.equal(error1, null);
         insertManyEntities(function () {  
@@ -942,7 +942,7 @@ describe('tableservice-tests', function () {
       });
     });
     
-    runOrSkip('SASNoPolicyWithUpperCaseTableName', function (done) {
+    skipMockAndBrowser('SASNoPolicyWithUpperCaseTableName', function (done) {
       var tableName = tableName1.toUpperCase();
       tableService.createTable(tableName, function (error1) {
         assert.equal(error1, null);
@@ -974,7 +974,7 @@ describe('tableservice-tests', function () {
     });
 
     // Skip this case in nock because the signing key is different between live run and mocked run
-    runOrSkip('SASWithPolicy', function(done) {
+    skipMockAndBrowser('SASWithPolicy', function(done) {
       tableService.createTable(tableName1, function (error1) {
         assert.equal(error1, null);
         insertManyEntities(function () {
@@ -1040,7 +1040,7 @@ describe('tableservice-tests', function () {
   });
   
   describe('getUrl', function(){
-    it('should work', function(done) {
+    skipBrowser('should work', function(done) {
       
         var tableName = 'table1';
         var tableService = azure.createTableService('storageAccount', 'storageAccessKey', {primaryHost: 'https://host.com:80/', secondaryHost: 'https://host-secondary.com:80/'});
@@ -1065,7 +1065,7 @@ describe('tableservice-tests', function () {
         done();
     });
 
-    it('should work against storage emulator', function(done) {
+    skipBrowser('should work against storage emulator', function(done) {
         var tableName = 'table1';
         var tableService = azure.createTableService('storageAccount', 'storageAccessKey', {primaryHost: 'https://host.com:80/account1', secondaryHost: 'https://host-secondary.com:80/account1'});
 

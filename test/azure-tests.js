@@ -148,7 +148,7 @@ describe('azure', function () {
     assert.strictEqual(queueServiceWithTokenCredential.storageCredentials.tokenCredential.get(), 'renewed');
   });
 
-  it('NotEmulatedExplicitCredentials', function (done) {
+  skipBrowser('NotEmulatedExplicitCredentials', function (done) {
     // Make sure is not emulated
     delete process.env[StorageServiceClientConstants.EnvironmentVariables.EMULATED];
 
@@ -172,7 +172,7 @@ describe('azure', function () {
     done();
   });
 
-  it('EmulatedExplicitCredentials', function (done) {
+  skipBrowser('EmulatedExplicitCredentials', function (done) {
     // set emulated to true
     process.env[StorageServiceClientConstants.EnvironmentVariables.EMULATED] = "true";
 
