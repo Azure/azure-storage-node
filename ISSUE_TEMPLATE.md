@@ -1,3 +1,5 @@
+> For latest features support, please switch to [Azure Storage JavaScript SDK V10](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage). 
+
 ### Which service(blob, file, queue, table) does this issue concern?
 
 
