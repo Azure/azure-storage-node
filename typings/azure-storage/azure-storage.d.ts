@@ -8871,9 +8871,9 @@ declare module azurestorage {
         * Validates a table name.
         *
         * @param {string} table  The table name.
-        * @param {boolean} skipRegExMatch The regex match check(skip or allow) for cosmosdb
+        * @param {boolean} cosmosdb Check for cosmosdb
         */
-        export function tableNameIsValid(table: string, skipRegExMatch?: boolean, callback?: Function): boolean;
+        export function tableNameIsValid(table: string, cosmosdb?: boolean, callback?: Function): boolean;
         /**
         * Validates page ranges.
         *
@@ -8890,7 +8890,7 @@ declare module azurestorage {
         export function blobTypeIsValid(type: string, callback?: Function): boolean;
         export class ArgumentValidator {
           func: string;
-          tableNameIsValid: (tableName: string, skipRegExMatch?: boolean, callback?: Function) => boolean;
+          tableNameIsValid: (tableName: string, cosmosdb?: boolean, callback?: Function) => boolean;
           containerNameIsValid: (containerName: string, callback?: Function) => boolean;
           shareNameIsValid: (shareName: string, callback?: Function) => boolean;
           blobNameIsValid: (containerName: string, blobName: string, callback?: Function) => boolean;
@@ -9496,7 +9496,6 @@ declare module azurestorage {
   * environment variables will be used.
   *
   * @param {string} [storageAccountOrConnectionString]  The storage account or the connection string.
-  * @param {boolean} [skipRegExMatch]                   The regex match check(skip or allow) for cosmosdb. 
   * @param {string} [storageAccessKey]                  The storage access key.
   * @param {string|object} [host]                       The host address. To define primary only, pass a string.
   *                                                     Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.
@@ -9504,7 +9503,7 @@ declare module azurestorage {
   *
   */
   export function createTableService(): TableService;
-  export function createTableService(connectionString: string, skipRegExMatch?:boolean): TableService;
+  export function createTableService(connectionString: string): TableService;
   export function createTableService(storageAccountOrConnectionString: string, storageAccessKey: string, host?: StorageHost): TableService;
 
   /**
