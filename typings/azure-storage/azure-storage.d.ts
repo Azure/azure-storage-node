@@ -8871,9 +8871,8 @@ declare module azurestorage {
         * Validates a table name.
         *
         * @param {string} table  The table name.
-        * @param {boolean} cosmosdb Check for cosmosdb
         */
-        export function tableNameIsValid(table: string, cosmosdb?: boolean, callback?: Function): boolean;
+        export function tableNameIsValid(table: string, callback?: Function): boolean;
         /**
         * Validates page ranges.
         *
@@ -8890,7 +8889,7 @@ declare module azurestorage {
         export function blobTypeIsValid(type: string, callback?: Function): boolean;
         export class ArgumentValidator {
           func: string;
-          tableNameIsValid: (tableName: string, cosmosdb?: boolean, callback?: Function) => boolean;
+          tableNameIsValid: (tableName: string, callback?: Function) => boolean;
           containerNameIsValid: (containerName: string, callback?: Function) => boolean;
           shareNameIsValid: (shareName: string, callback?: Function) => boolean;
           blobNameIsValid: (containerName: string, blobName: string, callback?: Function) => boolean;
