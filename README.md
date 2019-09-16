@@ -136,6 +136,7 @@ To ensure a table exists, call **createTableIfNotExists**:
 ```Javascript
 var azure = require('azure-storage');
 var tableService = azure.createTableService();
+//process.env.cosmosdb = true; //for cosmosdb table(Optional)
 tableService.createTableIfNotExists('mytable', function(error, result, response) {
   if (!error) {
     // result contains true if created; false if already exists
@@ -147,6 +148,7 @@ A new entity can be added by calling **insertEntity** or **insertOrReplaceEntity
 ```Javascript
 var azure = require('azure-storage');
 var tableService = azure.createTableService();
+//process.env.cosmosdb = true; //for cosmosdb table(Optional)
 var entGen = azure.TableUtilities.entityGenerator;
 var entity = {
   PartitionKey: entGen.String('part2'),
@@ -183,6 +185,7 @@ The method **retrieveEntity** can then be used to fetch the entity that was just
 ```Javascript
 var azure = require('azure-storage');
 var tableService = azure.createTableService();
+//process.env.cosmosdb = true; //for cosmosdb table(Optional)
 tableService.retrieveEntity('mytable', 'part2', 'row1', function(error, result, response) {
   if (!error) {
     // result contains the entity
@@ -195,6 +198,7 @@ The method **replaceEntity** or **insertOrReplaceEntity** can be called to updat
 ```Javascript
 var azure = require('azure-storage');
 var tableService = azure.createTableService();
+//process.env.cosmosdb = true; //for cosmosdb table(Optional)
 var entity = {
   PartitionKey: entGen.String('part2'),
   RowKey: entGen.String('row1'),
@@ -213,6 +217,7 @@ Use **TableQuery** to build complex queries:
 ```Javascript
 var azure = require('azure-storage');
 var tableService = azure.createTableService();
+//process.env.cosmosdb = true; //for cosmosdb table(Optional)
 var query = new azure.TableQuery()
   .top(5)
   .where('PartitionKey eq ?', 'part2');
