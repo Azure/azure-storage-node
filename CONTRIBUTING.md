@@ -72,7 +72,7 @@ The following are the minimum requirements for any pull request that must be met
 * Thoroughly test your feature
 
 ### Branching Policy
-Changes should be based on the **dev** branch, not master as master is considered publicly released code. Each breaking change should be recorded in [BreakingChanges.md](BreakingChanges.md).
+Changes should be based on the **master** branch. Each breaking change should be recorded in [BreakingChanges.md](BreakingChanges.md).
 
 ### Adding Features for All Platforms
 We strive to release each new feature for each of our environments at the same time. Therefore, we ask that all contributions be written for Node v4 and later.
