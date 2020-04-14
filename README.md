@@ -7,7 +7,7 @@
 
 This project provides a Node.js package and a browser compatible [JavaScript Client Library](https://github.com/Azure/azure-storage-node#azure-storage-javascript-client-library-for-browsers) that makes it easy to consume and manage Microsoft Azure Storage Services.
 
-> This README page is a reference to the SDK v2. For the new SDK v12, go to [Storage SDK v12 for JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage).
+## If you would like to access our latest JS SDK, please refer to the Storage SDK v12 for JS link in the table below. If you would like more information on Azure's burgeoning effort to coordinate the development of the SDKs across services, of which this change is a part, please refer to [this article](https://azure.microsoft.com/en-us/blog/previewing-azure-sdks-following-new-azure-sdk-api-standards/).
 
 | SDK Name                                                                                 | Version     | Description                                                                              | NPM/API Reference Links                                                                                                                                 |
 |------------------------------------------------------------------------------------------|-------------|------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
