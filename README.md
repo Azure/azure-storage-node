@@ -3,7 +3,6 @@
 [![NPM version](https://badge.fury.io/js/azure-storage.svg)](http://badge.fury.io/js/azure-storage)
 
 * Master [![Build Status](https://travis-ci.org/Azure/azure-storage-node.svg?branch=master)](https://travis-ci.org/Azure/azure-storage-node/branches) [![Coverage Status](https://coveralls.io/repos/Azure/azure-storage-node/badge.svg?branch=master&service=github)](https://coveralls.io/github/Azure/azure-storage-node?branch=master)
-* Dev [![Build Status](https://travis-ci.org/Azure/azure-storage-node.svg?branch=dev)](https://travis-ci.org/Azure/azure-storage-node/branches) [![Coverage Status](https://coveralls.io/repos/Azure/azure-storage-node/badge.svg?branch=dev&service=github)](https://coveralls.io/github/Azure/azure-storage-node?branch=dev)
 
 This project provides a Node.js package and a browser compatible [JavaScript Client Library](https://github.com/Azure/azure-storage-node#azure-storage-javascript-client-library-for-browsers) that makes it easy to consume and manage Microsoft Azure Storage Services.
 
