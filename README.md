@@ -36,7 +36,7 @@ This project provides a Node.js package and a browser compatible [JavaScript Cli
 
 Please check details on API reference documents:
 
-* [Microsoft official API document on docs.microsoft.com](https://docs.microsoft.com/en-us/javascript/api/azure-storage/?view=azure-node-latest)
+* [Microsoft official API document on docs.microsoft.com](https://docs.microsoft.com/javascript/api/azure-storage/?view=azure-node-legacy)
 * [Generated API references on GitHub pages](http://azure.github.io/azure-storage-node)
 
 # Getting Started
