@@ -57,7 +57,7 @@
     "mocha-lcov-reporter": "^1.0.0",
     "nock": "0.16",
     "should": "1.2.x",
-    "uglify-js": "~3.3.9",
+    "uglify-js": "~3.12.8",
     "watchify": "^3.11.0"
   },
   "homepage": "http://github.com/Azure/azure-storage-node",

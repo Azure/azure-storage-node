@@ -53,7 +53,7 @@ function build(exportFilePath, outputFilePath, moduleName, isMinify) {
         if (isMinify) {
             result = UglifyJS.minify(code.trim());
             if (result.error) {
-                console.error('Minify failed when parsing', exportFilePath, err);
+                console.error('Minify failed when parsing', exportFilePath, result.error);
                 return;
             }
 
