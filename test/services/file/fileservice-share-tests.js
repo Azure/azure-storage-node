@@ -586,21 +586,21 @@ describe('FileShare', function () {
       var readWriteSharePolicy = {
         AccessPolicy: {
           Permissions: 'rw',
-          Expiry: new Date('2020-10-01')
+          Expiry: new Date('2022-10-01')
         }
       };
       
       var readCreateSharePolicy = {
         AccessPolicy: {
           Permissions: 'rc',
-          Expiry: new Date('2020-10-01')
+          Expiry: new Date('2022-10-01')
         }
       };
 
       var filePolicy = {
         AccessPolicy: {
           Permissions: 'd',
-          Expiry: new Date('2020-10-10')
+          Expiry: new Date('2022-10-10')
         }
       };
       

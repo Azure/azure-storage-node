@@ -891,14 +891,14 @@ describe('File', function () {
                 
                 var sourceSharedAccessPolicy = {
                   AccessPolicy: {
-                    Expiry: new Date('February 12, 2020 11:03:40 am GMT'),
+                    Expiry: new Date('February 12, 2022 11:03:40 am GMT'),
                     Permissions: 'r'
                   }
                 };
                 
                 var destSharedAccessPolicy = {
                   AccessPolicy: {
-                    Expiry: new Date('February 12, 2020 11:03:40 am GMT'),
+                    Expiry: new Date('February 12, 2022 11:03:40 am GMT'),
                     Permissions: 'rwd'
                   }
                 };
@@ -961,7 +961,7 @@ describe('File', function () {
     var sasTestFileNameWithSpecialChar;
 
     var startDate = new Date('May 30, 2015 08:00:00 am GMT');
-    var expiryDate = new Date('May 30, 2020 08:00:00 am GMT');
+    var expiryDate = new Date('May 30, 2022 08:00:00 am GMT');
     var sharedAccessPolicy = {
           AccessPolicy: {
             Permissions: FileUtilities.SharedAccessPermissions.READ,

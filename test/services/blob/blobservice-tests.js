@@ -1103,8 +1103,8 @@ describe('BlobService', function () {
           assert.equal(error, null);
           assert.equal(result.entries.length, 1);
           assert.notEqual(result.entries[0], undefined);
+          assert.ok(result.entries[0].remainingRetentionDays !== undefined);
           assert.equal(result.entries[0].deleted, true);
-          assert.equal(result.entries[0].remainingRetentionDays === softdeleteDays || result.entries[0].remainingRetentionDays === softdeleteDays - 1, true);
           assert.notEqual(result.entries[0].deletedTime, undefined);
           assert.equal(result.entries[0].deletedTime.length > 0, true);
           done();
@@ -2171,7 +2171,7 @@ describe('BlobService', function () {
       var sharedAccessPolicy = {
         AccessPolicy: {
           Permissions: BlobUtilities.SharedAccessPermissions.READ,
-          Expiry: new Date('October 12, 2020 11:53:40 am GMT'),
+          Expiry: new Date('October 12, 2022 11:53:40 am GMT'),
         }
       };
 
@@ -2199,7 +2199,7 @@ describe('BlobService', function () {
       var sharedAccessPolicy = {
         AccessPolicy: {
           Permissions: BlobUtilities.SharedAccessPermissions.READ,
-          Expiry: new Date('October 12, 2020 11:53:40 am GMT'),
+          Expiry: new Date('October 12, 2022 11:53:40 am GMT'),
         }
       };
 
