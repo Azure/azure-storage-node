@@ -1,18 +1,25 @@
 # Microsoft Azure Storage SDK for Node.js and JavaScript for Browsers
 
-[![NPM version](https://badge.fury.io/js/azure-storage.svg)](http://badge.fury.io/js/azure-storage)
+[![NPM version](https://badge.fury.io/js/azure-storage.svg)](http://badge.fury.io/js/azure-storage) [![Build Status](https://travis-ci.org/Azure/azure-storage-node.svg?branch=master)](https://travis-ci.org/Azure/azure-storage-node/branches) [![Coverage Status](https://coveralls.io/repos/Azure/azure-storage-node/badge.svg?branch=master&service=github)](https://coveralls.io/github/Azure/azure-storage-node?branch=master)
 
-* Master [![Build Status](https://travis-ci.org/Azure/azure-storage-node.svg?branch=master)](https://travis-ci.org/Azure/azure-storage-node/branches) [![Coverage Status](https://coveralls.io/repos/Azure/azure-storage-node/badge.svg?branch=master&service=github)](https://coveralls.io/github/Azure/azure-storage-node?branch=master)
+This project provides a Node.js package `azure-storage` which is browser compatible [JavaScript Client Library](https://github.com/Azure/azure-storage-node#azure-storage-javascript-client-library-for-browsers) as well to consume and manage Microsoft Azure Storage Services.
+- [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/)
+- [Azure Queue Storage](https://azure.microsoft.com/services/storage/queues/)
+- [Azure Files](https://azure.microsoft.com/services/storage/files)
+- [Azure Table Storage](https://azure.microsoft.com/services/storage/tables/)
 
-This project provides a Node.js package and a browser compatible [JavaScript Client Library](https://github.com/Azure/azure-storage-node#azure-storage-javascript-client-library-for-browsers) that makes it easy to consume and manage Microsoft Azure Storage Services.
+> Please note, newer packages `@azure/storage-blob`, `@azure/storage-queue` and `@azure/storage-file` are available as of November 2019 and `@azure/data-tables` is available as of June 2021 for the individual services. While the legacy `azure-storage` package will continue to receive critical bug fixes, we strongly encourage you to upgrade.
 
-## If you would like to access our latest JS SDK, please refer to the Storage SDK v12 for JS link in the table below. If you would like more information on Azure's burgeoning effort to coordinate the development of the SDKs across services, of which this change is a part, please refer to [this article](https://azure.microsoft.com/en-us/blog/previewing-azure-sdks-following-new-azure-sdk-api-standards/).
+Below are a set of links with information on both the latest and legacy packages for the different Storage services from Azure. For more, please read [State of the Azure SDK 2021](https://devblogs.microsoft.com/azure-sdk/state-of-the-azure-sdk-2021/)
 
-| SDK Name                                                                                 | Version     | Description                                                                              | NPM/API Reference Links                                                                                                                                 |
+| Package                                                                                 | Version     | Description                                                                              | API Reference Links                                                                                                                                 |
 |------------------------------------------------------------------------------------------|-------------|------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Storage SDK v12 for JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage)              | v12         | The next generation Storage SDK (Blob/Queue/File, async and promise support)             | [NPM](https://www.npmjs.com/package/@azure/storage-blob) - [Reference](https://docs.microsoft.com/en-us/javascript/api/overview/azure/storage/client?view=azure-node-latest) |
-| [Storage SDK v2 for JavaScript](https://github.com/Azure/azure-storage-node)             | v2          | Legacy Storage SDK in this repository (Blob/Queue/File/Table, callback style)            | [NPM](https://www.npmjs.com/package/azure-storage) - [Reference](https://docs.microsoft.com/en-us/javascript/api/azure-storage/?view=azure-node-latest) |
-| [Azure Management SDKs for JavaScript](https://github.com/Azure/azure-sdk-for-node)      | v2          | Management SDKs including Storage Resource Provider APIs                                 | [NPM](https://www.npmjs.com/package/azure) - [Reference](https://github.com/Azure/azure-sdk-for-node#documentation)                                     |
+| [@azure/storage-blob](https://www.npmjs.com/package/@azure/storage-blob)              | v12         | The next generation SDK for Azure Blob Storage             |  [API Reference for Blob SDK](https://docs.microsoft.com/javascript/api/@azure/storage-blob) |
+| [@azure/storage-queue](https://www.npmjs.com/package/@azure/storage-queue)              | v12         | The next generation SDK for Azure Queue Storage             |  [API Reference for Queues SDK](https://docs.microsoft.com/javascript/api/@azure/storage-queue) |
+| [@azure/storage-file-share](https://www.npmjs.com/package/@azure/storage-file-share)              | v12         | The next generation SDK for Azure Files             |  [API Reference for Files SDK](https://docs.microsoft.com/javascript/api/@azure/storage-file-share) |
+| [@azure/data-tables](https://www.npmjs.com/package/@azure/data-tables)              | v12         | The next generation SDK for Azure Table Storage             |  [API Reference for Tables SDK](https://docs.microsoft.com/javascript/api/@azure/data-tables) |
+| [azure-storage](https://www.npmjs.com/package/azure-storage)             | v2          | Legacy Storage SDK in this repository (Blob/Queue/File/Table, callback style)            | [API Reference for legacy Storage SDK](https://docs.microsoft.com/javascript/api/azure-storage) |
+| [@azure/arm-storage](https://www.npmjs.com/package/@azure/arm-storage)      | v7 & above          | Management SDKs including Storage Resource Provider APIs                                 | [API Reference for Storage Management SDK](https://docs.microsoft.com/javascript/api/@azure/arm-storage)                                     |
 
 # Features
 
