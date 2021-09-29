@@ -31,7 +31,7 @@
     "request": "^2.86.0",
     "underscore": "^1.12.1",
     "uuid": "^3.0.0",
-    "validator": "~9.4.1",
+    "validator": "~13.6.0",
     "xml2js": "0.2.8",
     "xmlbuilder": "^9.0.7"
   },
