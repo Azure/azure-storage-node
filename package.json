@@ -1,7 +1,7 @@
 {
   "name": "azure-storage",
   "author": "Microsoft Corporation",
-  "version": "2.10.5",
+  "version": "2.10.6",
   "description": "Microsoft Azure Storage Client Library for Node.js",
   "typings": "typings/azure-storage/azure-storage.d.ts",
   "tags": [
@@ -33,7 +33,8 @@
     "uuid": "^3.0.0",
     "validator": "~13.7.0",
     "xml2js": "0.2.8",
-    "xmlbuilder": "^9.0.7"
+    "xmlbuilder": "^9.0.7",
+    "json-schema": "^0.4.0"
   },
   "devDependencies": {
     "batchflow": "0.4.0",

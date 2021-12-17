@@ -1,6 +1,12 @@
 Note: This is an Azure Storage only package. The all up Azure node sdk still has the old storage bits in there. In a future release, those storage bits will be removed and an npm dependency to this storage node sdk will 
 be taken. This is a GA release and the changes described below indicate the changes from the Azure node SDK 0.9.8 available here - https://github.com/Azure/azure-sdk-for-node.
 
+2021.12 Version 2.10.6
+
+* Upgraded `validator` to 13.7.0.
+* Upgraded `json-schema` to 0.4.0.
+* Fixed an issue where customized retry interval doesn't take effact.
+
 2021.09 Version 2.10.5
 
 * Upgraded `validator` to 13.6.0.
