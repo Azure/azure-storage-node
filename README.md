@@ -1,8 +1,8 @@
-# Microsoft Azure Storage SDK for Node.js and JavaScript for Browsers
+# Legacy Azure Storage SDK for JavaScript
 
 [![NPM version](https://badge.fury.io/js/azure-storage.svg)](http://badge.fury.io/js/azure-storage) [![Build Status](https://travis-ci.org/Azure/azure-storage-node.svg?branch=master)](https://travis-ci.org/Azure/azure-storage-node/branches) [![Coverage Status](https://coveralls.io/repos/Azure/azure-storage-node/badge.svg?branch=master&service=github)](https://coveralls.io/github/Azure/azure-storage-node?branch=master)
 
-This project provides a Node.js package `azure-storage` which is browser compatible to consume and manage Microsoft Azure Storage Services like [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/), [Azure Queue Storage](https://azure.microsoft.com/services/storage/queues/), [Azure Files](https://azure.microsoft.com/services/storage/files) and [Azure Table Storage](https://azure.microsoft.com/services/storage/tables/)
+This project provides the **legacy** Node.js package `azure-storage` which is browser compatible to consume and manage Microsoft Azure Storage Services like [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/), [Azure Queue Storage](https://azure.microsoft.com/services/storage/queues/), [Azure Files](https://azure.microsoft.com/services/storage/files) and [Azure Table Storage](https://azure.microsoft.com/services/storage/tables/)
 
 > Please note, newer packages `@azure/storage-blob`, `@azure/storage-queue` and `@azure/storage-file` are available as of November 2019 and `@azure/data-tables` is available as of June 2021 for the individual services. While the legacy `azure-storage` package will continue to receive critical bug fixes, we strongly encourage you to upgrade.
 
