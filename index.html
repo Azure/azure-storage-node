@@ -114,6 +114,7 @@
 <th>Version</th>
 <th>Description</th>
 <th>API Reference Links</th>
+<th>Migration Guide Links</th>
 </tr>
 </thead>
 <tbody>
@@ -122,486 +123,45 @@
 <td>v12</td>
 <td>The next generation SDK for Azure Blob Storage</td>
 <td><a href="https://docs.microsoft.com/javascript/api/@azure/storage-blob">API Reference for Blob SDK</a></td>
+<td><a href="https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/storage/storage-blob/MigrationGuide.md">Migration Guide from <code>azure-storage</code> to <code>@azure/storage-blob</code></a></td>
 </tr>
 <tr>
 <td><a href="https://www.npmjs.com/package/@azure/storage-queue">@azure/storage-queue</a></td>
 <td>v12</td>
 <td>The next generation SDK for Azure Queue Storage</td>
 <td><a href="https://docs.microsoft.com/javascript/api/@azure/storage-queue">API Reference for Queues SDK</a></td>
+<td><a href="https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/storage/storage-queue/MigrationGuide.md">Migration Guide from <code>azure-storage</code> to <code>@azure/storage-queue</code></a></td>
 </tr>
 <tr>
 <td><a href="https://www.npmjs.com/package/@azure/storage-file-share">@azure/storage-file-share</a></td>
 <td>v12</td>
 <td>The next generation SDK for Azure Files</td>
 <td><a href="https://docs.microsoft.com/javascript/api/@azure/storage-file-share">API Reference for Files SDK</a></td>
+<td><a href="https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/storage/storage-file-share/MigrationGuide.md">Migration Guide from <code>azure-storage</code> to <code>@azure/storage-file-share</code></a></td>
 </tr>
 <tr>
 <td><a href="https://www.npmjs.com/package/@azure/data-tables">@azure/data-tables</a></td>
 <td>v12</td>
 <td>The next generation SDK for Azure Table Storage</td>
 <td><a href="https://docs.microsoft.com/javascript/api/@azure/data-tables">API Reference for Tables SDK</a></td>
+<td><a href="https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/tables/data-tables/MigrationGuide.md">Migration Guide from <code>azure-storage</code> to <code>@azure/data-tables</code></a></td>
 </tr>
 <tr>
 <td><a href="https://www.npmjs.com/package/azure-storage">azure-storage</a></td>
 <td>v2</td>
 <td>Legacy Storage SDK in this repository (Blob/Queue/File/Table, callback style)</td>
 <td><a href="https://docs.microsoft.com/javascript/api/azure-storage">API Reference for legacy Storage SDK</a></td>
+<td></td>
 </tr>
 <tr>
 <td><a href="https://www.npmjs.com/package/@azure/arm-storage">@azure/arm-storage</a></td>
 <td>v7 &amp; above</td>
 <td>Management SDKs including Storage Resource Provider APIs</td>
 <td><a href="https://docs.microsoft.com/javascript/api/@azure/arm-storage">API Reference for Storage Management SDK</a></td>
+<td></td>
 </tr>
 </tbody>
-</table>
-<h1>Features</h1>
-<ul>
-<li>Blobs
-<ul>
-<li>Create/Delete Containers</li>
-<li>Create/Read/Update/Delete Blobs</li>
-</ul>
-</li>
-<li>Tables
-<ul>
-<li>Create/Delete Tables</li>
-<li>Query/Create/Read/Update/Delete Entities</li>
-</ul>
-</li>
-<li>Files
-<ul>
-<li>Create/Delete Shares</li>
-<li>Create/Delete Directories</li>
-<li>Create/Read/Update/Delete Files</li>
-</ul>
-</li>
-<li>Queues
-<ul>
-<li>Create/Delete Queues</li>
-<li>Insert/Peek Queue Messages</li>
-<li>Advanced Queue Operations</li>
-</ul>
-</li>
-<li>Service Properties
-<ul>
-<li>Get Service Properties</li>
-<li>Set Service Properties</li>
-</ul>
-</li>
-</ul>
-<p>Please check details on API reference documents:</p>
-<ul>
-<li><a href="https://docs.microsoft.com/javascript/api/azure-storage/?view=azure-node-legacy">Microsoft official API document on docs.microsoft.com</a></li>
-<li><a href="http://azure.github.io/azure-storage-node">Generated API references on GitHub pages</a></li>
-</ul>
-<h1>Getting Started</h1>
-<h2>Install</h2>
-<pre class="prettyprint source lang-shell"><code>npm install azure-storage
-</code></pre>
-<h2>Usage</h2>
-<pre class="prettyprint source lang-Javascript"><code>var azure = require('azure-storage');
-</code></pre>
-<p>When using the Storage SDK, you must provide connection information for the storage account to use. This can be provided using:</p>
-<ul>
-<li>
-<p>Environment variables - <strong>AZURE_STORAGE_ACCOUNT</strong> and <strong>AZURE_STORAGE_ACCESS_KEY</strong>, or <strong>AZURE_STORAGE_CONNECTION_STRING</strong>.</p>
-</li>
-<li>
-<p>Constructors - For example, <code>var tableSvc = azure.createTableService(accountName, accountKey);</code></p>
-</li>
-</ul>
-<h3>Blob Storage</h3>
-<p>The <strong>createContainerIfNotExists</strong> method can be used to create a<br>
-container in which to store a blob:</p>
-<pre class="prettyprint source lang-Javascript"><code>var azure = require('azure-storage');
-var blobService = azure.createBlobService();
-blobService.createContainerIfNotExists('taskcontainer', {
-  publicAccessLevel: 'blob'
-}, function(error, result, response) {
-  if (!error) {
-    // if result = true, container was created.
-    // if result = false, container already existed.
-  }
-});
-</code></pre>
-<p>To upload a file (assuming it is called task1-upload.txt and it is placed in the same folder as the script below), the method <strong>createBlockBlobFromLocalFile</strong> can be used.</p>
-<pre class="prettyprint source lang-Javascript"><code>var azure = require('azure-storage');
-var blobService = azure.createBlobService();
-
-blobService.createBlockBlobFromLocalFile('mycontainer', 'taskblob', 'task1-upload.txt', function(error, result, response) {
-  if (!error) {
-    // file uploaded
-  }
-});
-</code></pre>
-<p>For page blobs, use <strong>createPageBlobFromLocalFile</strong>. There are other methods for uploading blobs also, such as <strong>createBlockBlobFromText</strong> or <strong>createPageBlobFromStream</strong>.</p>
-<p>There are also several ways to download block and page blobs. For example, <strong>getBlobToStream</strong> downloads the blob to a stream:</p>
-<pre class="prettyprint source lang-Javascript"><code>var blobService = azure.createBlobService();
-var fs = require('fs');
-blobService.getBlobToStream('mycontainer', 'taskblob', fs.createWriteStream('output.txt'), function(error, result, response) {
-  if (!error) {
-    // blob retrieved
-  }
-});
-</code></pre>
-<p>To create a Shared Access Signature (SAS), use the <strong>generateSharedAccessSignature</strong> method. Additionally you can use the <strong>date</strong> helper functions to easily create a SAS that expires at some point relative to the current time.</p>
-<pre class="prettyprint source lang-Javascript"><code>var azure = require('azure-storage');
-var blobService = azure.createBlobService();
-
-var startDate = new Date();
-var expiryDate = new Date(startDate);
-expiryDate.setMinutes(startDate.getMinutes() + 100);
-startDate.setMinutes(startDate.getMinutes() - 100);
-
-var sharedAccessPolicy = {
-  AccessPolicy: {
-    Permissions: azure.BlobUtilities.SharedAccessPermissions.READ,
-    Start: startDate,
-    Expiry: expiryDate
-  }
-};
-
-var token = blobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
-var sasUrl = blobService.getUrl(containerName, blobName, token);
-</code></pre>
-<h3>Table Storage</h3>
-<p>To ensure a table exists, call <strong>createTableIfNotExists</strong>:</p>
-<pre class="prettyprint source lang-Javascript"><code>var azure = require('azure-storage');
-var tableService = azure.createTableService();
-tableService.createTableIfNotExists('mytable', function(error, result, response) {
-  if (!error) {
-    // result contains true if created; false if already exists
-  }
-});
-</code></pre>
-<p>A new entity can be added by calling <strong>insertEntity</strong> or <strong>insertOrReplaceEntity</strong>:</p>
-<pre class="prettyprint source lang-Javascript"><code>var azure = require('azure-storage');
-var tableService = azure.createTableService();
-var entGen = azure.TableUtilities.entityGenerator;
-var entity = {
-  PartitionKey: entGen.String('part2'),
-  RowKey: entGen.String('row1'),
-  boolValueTrue: entGen.Boolean(true),
-  boolValueFalse: entGen.Boolean(false),
-  intValue: entGen.Int32(42),
-  dateValue: entGen.DateTime(new Date(Date.UTC(2011, 10, 25))),
-  complexDateValue: entGen.DateTime(new Date(Date.UTC(2013, 02, 16, 01, 46, 20)))
-};
-tableService.insertEntity('mytable', entity, function(error, result, response) {
-  if (!error) {
-    // result contains the ETag for the new entity
-  }
-});
-</code></pre>
-<p>Instead of creating entities manually, you can use <strong>entityGenerator</strong>:</p>
-<pre class="prettyprint source lang-Javascript"><code>var azure = require('azure-storage');
-var entGen = azure.TableUtilities.entityGenerator;
-var task = {
-  PartitionKey: entGen.String('hometasks'),
-  RowKey: entGen.String('1'),
-  description: entGen.String('take out the trash'),
-  dueDate: entGen.DateTime(new Date(Date.UTC(2015, 6, 20)))
-};
-</code></pre>
-<p>The method <strong>retrieveEntity</strong> can then be used to fetch the entity that was just inserted:</p>
-<pre class="prettyprint source lang-Javascript"><code>var azure = require('azure-storage');
-var tableService = azure.createTableService();
-tableService.retrieveEntity('mytable', 'part2', 'row1', function(error, result, response) {
-  if (!error) {
-    // result contains the entity
-  }
-});
-</code></pre>
-<p>The method <strong>replaceEntity</strong> or <strong>insertOrReplaceEntity</strong> can be called to update/edit an existing entry. In the following example we assume that an entity <code>'part2', 'row1'</code> with a field <code>'taskDone'</code> set to <code>false</code> already exists.</p>
-<pre class="prettyprint source lang-Javascript"><code>var azure = require('azure-storage');
-var tableService = azure.createTableService();
-var entity = {
-  PartitionKey: entGen.String('part2'),
-  RowKey: entGen.String('row1'),
-  taskDone: entGen.Boolean(true),
-};
-
-tableService.insertOrReplaceEntity('mytable', entity, function(error, result, response) {
-  if (!error) {
-    // result contains the entity with field 'taskDone' set to `true`
-  }
-});
-</code></pre>
-<p>Use <strong>TableQuery</strong> to build complex queries:</p>
-<pre class="prettyprint source lang-Javascript"><code>var azure = require('azure-storage');
-var tableService = azure.createTableService();
-var query = new azure.TableQuery()
-  .top(5)
-  .where('PartitionKey eq ?', 'part2');
-
-tableService.queryEntities('mytable', query, null, function(error, result, response) {
-  if (!error) {
-    // result.entries contains entities matching the query
-  }
-});
-</code></pre>
-<h3>Queue Storage</h3>
-<p>The <strong>createQueueIfNotExists</strong> method can be used to ensure a queue exists:</p>
-<pre class="prettyprint source lang-Javascript"><code>var azure = require('azure-storage');
-var queueService = azure.createQueueService();
-queueService.createQueueIfNotExists('taskqueue', function(error) {
-  if (!error) {
-    // Queue exists
-  }
-});
-</code></pre>
-<p>The <strong>createMessage</strong> method can then be called to insert the message into the queue:</p>
-<pre class="prettyprint source lang-Javascript"><code>var queueService = azure.createQueueService();
-queueService.createMessage('taskqueue', 'Hello world!', function(error) {
-  if (!error) {
-    // Message inserted
-  }
-});
-</code></pre>
-<p>It is then possible to call the <strong>getMessage</strong> method, process the message and then call <strong>deleteMessage</strong> inside the callback. This two-step process ensures messages don't get lost when they are removed from the queue.</p>
-<pre class="prettyprint source lang-Javascript"><code>var queueService = azure.createQueueService(),
-  queueName = 'taskqueue';
-queueService.getMessages(queueName, function(error, serverMessages) {
-  if (!error) {
-    // Process the message in less than 30 seconds, the message
-    // text is available in serverMessages[0].messageText
-
-    queueService.deleteMessage(queueName, serverMessages[0].messageId, serverMessages[0].popReceipt, function(error) {
-      if (!error) {
-        // Message deleted
-      }
-    });
-  }
-});
-</code></pre>
-<h3>File Storage</h3>
-<p>The <strong>createShareIfNotExists</strong> method can be used to create a<br>
-share in which to store a file or a directory of files:</p>
-<pre class="prettyprint source lang-Javascript"><code>var azure = require('azure-storage');
-var fileService = azure.createFileService();
-fileService.createShareIfNotExists('taskshare', function(error, result, response) {
-  if (!error) {
-    // if result = true, share was created.
-    // if result = false, share already existed.
-  }
-});
-</code></pre>
-<p>To create a directory, the method <strong>createDirectoryIfNotExists</strong> can be used.</p>
-<pre class="prettyprint source lang-Javascript"><code>var azure = require('azure-storage');
-var fileService = azure.createFileService();
-
-fileService.createDirectoryIfNotExists('taskshare', 'taskdirectory', function(error, result, response) {
-  if (!error) {
-    // if result.created = true, share was created.
-    // if result.created = false, share already existed.
-  }
-});
-</code></pre>
-<p>To upload a file (assuming it is called task1-upload.txt and it is placed in the same folder as the script below), the method <strong>createFileFromLocalFile</strong> can be used.</p>
-<pre class="prettyprint source lang-Javascript"><code>var azure = require('azure-storage');
-var fileService = azure.createFileService();
-
-fileService.createFileFromLocalFile('taskshare', 'taskdirectory', 'taskfile', 'task1-upload.txt', function(error, result, response) {
-  if (!error) {
-    // file uploaded
-  }
-});
-</code></pre>
-<p>To upload a file from a stream, the method <strong>createFileFromStream</strong> can be used. The var <code>myFileBuffer</code> in the script below is a native Node Buffer, or ArrayBuffer object if within a browser environment.</p>
-<pre class="prettyprint source lang-Javascript"><code> var stream = require('stream');
- var azure = require('azure-storage');
- var fileService = azure.createFileService();
-
- var fileStream = new stream.Readable();
- fileStream.push(myFileBuffer);
- fileStream.push(null);
-
- fileService.createFileFromStream('taskshare', 'taskdirectory', 'taskfile', fileStream, myFileBuffer.length, function(error, result, response) {
-   if (!error) {
-     // file uploaded
-   }
- });
-</code></pre>
-<p>To create a file from a text string, the method <strong>createFileFromText</strong> can be used. A Node Buffer or ArrayBuffer object containing the text can also be supplied.</p>
-<pre class="prettyprint source lang-Javascript"><code> var azure = require('azure-storage');
- var fileService = azure.createFileService();
-
- var text = 'Hello World!';
-
- fileService.createFileFromText('taskshare', 'taskdirectory', 'taskfile', text, function(error, result, response) {
-   if (!error) {
-     // file created
-   }
- });
-</code></pre>
-<p>There are also several ways to download files. For example, <strong>getFileToStream</strong> downloads the file to a stream:</p>
-<pre class="prettyprint source lang-Javascript"><code>var fileService = azure.createFileService();
-var fs = require('fs');
-fileService.getFileToStream('taskshare', 'taskdirectory', 'taskfile', fs.createWriteStream('output.txt'), function(error, result, response) {
-  if (!error) {
-    // file retrieved
-  }
-});
-</code></pre>
-<h3>Service Properties</h3>
-<p>The <strong>getServiceProperties</strong> method can be used to fetch the logging, metrics and CORS settings on your storage account:</p>
-<pre class="prettyprint source lang-Javascript"><code>var azure = require('azure-storage');
-var blobService = azure.createBlobService();
-
-blobService.getServiceProperties(function(error, result, response) {  
-  if (!error) {
-     var serviceProperties = result;
-     // properties are fetched
-  } 
-});  
-</code></pre>
-<p>The <strong>setServiceProperties</strong> method can be used to modify the logging, metrics and CORS settings on your storage account:</p>
-<pre class="prettyprint source lang-Javascript"><code>var azure = require('azure-storage');
-var blobService = azure.createBlobService();
-
-var serviceProperties = generateServiceProperties(); 
-
-blobService.setServiceProperties(serviceProperties, function(error, result, response) {  
-  if (!error) {
-    // properties are set
-  }
-});  
-
-function generateServiceProperties() {
-  return serviceProperties = {
-    Logging: {
-      Version: '1.0',
-      Delete: true,
-      Read: true,
-      Write: true,
-      RetentionPolicy: {
-        Enabled: true,
-        Days: 10,
-      },
-    },
-    HourMetrics: {
-      Version: '1.0',
-      Enabled: true,
-      IncludeAPIs: true,
-      RetentionPolicy: {
-        Enabled: true,
-        Days: 10,
-      },
-    },
-    MinuteMetrics: {
-      Version: '1.0',
-      Enabled: true,
-      IncludeAPIs: true,
-      RetentionPolicy: {
-        Enabled: true,
-        Days: 10,
-      },
-    },
-    Cors: {
-      CorsRule: [
-        {
-          AllowedOrigins: ['www.azure.com', 'www.microsoft.com'],
-          AllowedMethods: ['GET', 'PUT'],
-          AllowedHeaders: ['x-ms-meta-data*', 'x-ms-meta-target*', 'x-ms-meta-xyz', 'x-ms-meta-foo'],
-          ExposedHeaders: ['x-ms-meta-data*', 'x-ms-meta-source*', 'x-ms-meta-abc', 'x-ms-meta-bcd'],
-          MaxAgeInSeconds: 500,
-        },
-        {
-          AllowedOrigins: ['www.msdn.com', 'www.asp.com'],
-          AllowedMethods: ['GET', 'PUT'],
-          AllowedHeaders: ['x-ms-meta-data*', 'x-ms-meta-target*', 'x-ms-meta-xyz', 'x-ms-meta-foo'],
-          ExposedHeaders: ['x-ms-meta-data*', 'x-ms-meta-source*', 'x-ms-meta-abc', 'x-ms-meta-bcd'],
-          MaxAgeInSeconds: 500,
-        },
-      ],
-    },
-  };
-}
-</code></pre>
-<p>When modifying the service properties, you can fetch the properties and then modify the them to prevent overwriting the existing settings.</p>
-<pre class="prettyprint source lang-Javascript"><code>var azure = require('azure-storage');
-var blobService = azure.createBlobService();
-
-blobService.getServiceProperties(function(error, result, response) {  
-  if (!error) {
-    var serviceProperties = result;
-     
-    // modify the properties
-
-    blobService.setServiceProperties(serviceProperties, function(error, result, response) {  
-      if (!error) {
-        // properties are set
-      }
-    });
-  } 
-});
-</code></pre>
-<h3>Retry Policies</h3>
-<p>By default, no retry will be performed with service instances newly created by Azure storage client library for Node.js.<br>
-Two pre-written retry polices <a href="http://azure.github.io/azure-storage-node/ExponentialRetryPolicyFilter.html">ExponentialRetryPolicyFilter</a> and <a href="http://azure.github.io/azure-storage-node/LinearRetryPolicyFilter.html">LinearRetryPolicyFilter</a> are available with modifiable settings, and can be used through associating filter.<br>
-Any custom retry logic may be used by customizing RetryPolicyFilter instance.</p>
-<p>For how to use pre-written retry policies and how to define customized retry policy, please refer to <strong>retrypolicysample</strong> in samples directory.</p>
-<h2>Code Samples</h2>
-<p>How-Tos focused around accomplishing specific tasks are available on the <a href="http://azure.microsoft.com/en-us/develop/nodejs/">Microsoft Azure Node.js Developer Center</a>.</p>
-<ul>
-<li>
-<p><a href="http://azure.microsoft.com/en-us/documentation/articles/storage-nodejs-how-to-use-blob-storage/">How to use the Blob Service from Node.js</a></p>
-</li>
-<li>
-<p><a href="http://azure.microsoft.com/en-us/documentation/articles/storage-nodejs-how-to-use-table-storage/">How to use the Table Service from Node.js</a></p>
-</li>
-<li>
-<p><a href="http://azure.microsoft.com/en-us/documentation/articles/storage-nodejs-how-to-use-queues/">How to use the Queue Service from Node.js</a></p>
-</li>
-</ul>
-<h1>Running Tests</h1>
-<p>Unit tests can then be run from the module's root directory using:</p>
-<pre class="prettyprint source lang-shell"><code>npm test
-</code></pre>
-<p>Running test is also supported by Grunt by:</p>
-<pre class="prettyprint source lang-shell"><code>grunt # mochaTest as the default task
-</code></pre>
-<p>By default the unit tests are ran with Nock recording data. To run tests against real storage account, please set environment variable to turn off Nock by:</p>
-<pre class="prettyprint source"><code>set NOCK_OFF=true
-</code></pre>
-<p>and set up the following environment variable for storage account credentials by</p>
-<pre class="prettyprint source lang-Batchfile"><code>set AZURE_STORAGE_CONNECTION_STRING=&quot;valid storage connection string&quot;
-</code></pre>
-<p>To record the data in a test pass against real storage account for future Nock usage:</p>
-<pre class="prettyprint source lang-Batchfile"><code>set AZURE_NOCK_RECORD=true
-</code></pre>
-<p>In order to be able to use a proxy like fiddler, an additional environment variable should be set up:</p>
-<pre class="prettyprint source lang-Batchfile"><code>set NODE_TLS_REJECT_UNAUTHORIZED=0
-set HTTP_PROXY=http://127.0.0.1:8888
-</code></pre>
-<p>On Linux, please use <code>export</code> other than <code>set</code> to set the variables.</p>
-<h1>Azure Storage JavaScript Client Library for Browsers</h1>
-<p>Azure Storage Node.js Client Library is compatible with <a href="http://browserify.org/">Browserify</a>. This means you can bundle your Node.js application which depends on the Node.js Client Library using Browserify.</p>
-<p>You can also choose to download the JavaScript Client Library provided by us, or generate the library by yourself. Please refer to the <a href="https://github.com/Azure/azure-storage-node/blob/master/browser/README.md">README.md</a> under <code>browser</code> folder for detailed usage guidelines.</p>
-<h2>Downloading Azure Storage JavaScript Client Library</h2>
-<p>It's recommended to use the Azure Storage JavaScript Client Library provided by us. Please <a href="https://aka.ms/downloadazurestoragejs">download the latest library</a>.</p>
-<h2>Generating Azure Storage JavaScript Client Library</h2>
-<p>We also provide browserify bundle scripts which generate Azure Storage JavaScript Client Library. The bundle script reduces the size of the Storage Client Library by splitting into smaller files, one per storage service. For more detailed information, refer to <a href="https://github.com/Azure/azure-storage-node/blob/master/browser/README.md">README.md</a> under <code>browser</code> folder.</p>
-<h1>JsDoc</h1>
-<p>JsDoc can be generated by <code>grunt jsdoc</code>.</p>
-<p>To load the docs by devserver after generation, run <code>grunt doc</code> and then browse the docs at <a href="http://localhost:8888">http://localhost:8888</a>.</p>
-<h1>Need Help?</h1>
-<p>Be sure to check out the Microsoft Azure <a href="http://go.microsoft.com/fwlink/?LinkId=234489">Developer Forums on MSDN</a> if you have trouble with the provided code or use StackOverflow.</p>
-<h1>Learn More</h1>
-<ul>
-<li><a href="http://azure.microsoft.com/en-us/develop/nodejs/">Microsoft Azure Node.js Developer Center</a></li>
-<li><a href="http://blogs.msdn.com/b/windowsazurestorage/">Azure Storage Team Blog</a></li>
-</ul>
-<h1>Contribute</h1>
-<p>We gladly accept community contributions.</p>
-<ul>
-<li>Issues: Please report bugs using the Issues section of GitHub</li>
-<li>Forums: Interact with the development teams on StackOverflow or the Microsoft Azure Forums</li>
-<li>Source Code Contributions: If you would like to become an active contributor to this project please follow the instructions provided in <a href="CONTRIBUTING.md">Contributing.md</a>.</li>
-</ul>
-<p>This project has adopted the <a href="https://opensource.microsoft.com/codeofconduct/">Microsoft Open Source Code of Conduct</a>. For more information see the <a href="https://opensource.microsoft.com/codeofconduct/faq/">Code of Conduct FAQ</a> or contact <a href="mailto:opencode@microsoft.com">opencode@microsoft.com</a> with any additional questions or comments.</p>
-<p>For general suggestions about Microsoft Azure please use our <a href="http://feedback.azure.com/forums/34192--general-feedback">UserVoice forum</a>.</p></article>
+</table></article>
     </section>
 
 
@@ -647,7 +207,7 @@ set HTTP_PROXY=http://127.0.0.1:8888
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a>
 	
-		on Thu Dec 30th 2021
+		on Tue Jan 4th 2022
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
